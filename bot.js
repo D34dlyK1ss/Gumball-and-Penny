@@ -106,7 +106,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                 {
                   bot.sendMessage({
                     to: channelID,
-                    message: 'A soma de dois números idênticos é igual ao dobro de cada um.'
+                    message: 'A soma de dois números idênticos é igual ao dobro de um deles. :nine: :heavy_plus_sign: :nine: = :nine: :heavy_multiplication_x: :two:'
                   })
                 }
                 if (rnd == 2)
@@ -127,7 +127,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                 {
                   bot.sendMessage({
                     to: channelID,
-                    message: 'A soma do valor dos lados opostos de um dado tradicional dá sempre a soma de 7.\nhttps://www.gianninisports.com.br/image/cache/catalog/produtos/foto%202016/Jogo%20Dado%2014%20Mm%20(pct%20C12)%20Preco%20Unidade%20cod.%201078(2)-750x750.jpg'
+                    message: 'A soma do valor dos lados opostos de um dado tradicional dá sempre a soma de 7. :game_die:'
                   })
                 }
                 if (rnd == 5)
@@ -141,7 +141,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                 {
                   bot.sendMessage({
                     to: channelID,
-                    message: 'Ninguém morre por comer uma laranja à noite.\nhttps://www.healtholino.com/wp-content/uploads/2016/09/Health-Benefits-of-Eating-Orange-at-Night.jpg'
+                    message: 'Ninguém morre por comer uma laranja à noite. :tangerine:'
                   })
                 }
             break;
