@@ -26,6 +26,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
         var custom = '';
         var jojo = '';
         var last = '';
+        var first = '';
 
         args = args.splice(1);
 
@@ -149,15 +150,11 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                 last = userID.slice(-1);
                 if (last == 0)
                 {
-                  last = userID.slice(-18);
+                  jojo = 'És o George Joestar I!\nhttps://vignette.wikia.nocookie.net/jjba/images/c/c6/George_Joestar_%28Anime%29.png';
                 }
                 if (last == 1)
                 {
-                  last = userID.slice(-18);
-                  if (last == 1)
-                  {
-                    last = 1+1;
-                  }
+                  jojo = 'És a Jolyne Kujo!\nhttps://vignette.wikia.nocookie.net/jjba/images/3/3e/Jolyne_infobox_manga.jpg';
                 }
                 if (last == 2)
                 {
@@ -173,7 +170,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                 }
                 if (last == 5)
                 {
-                  jojo = 'És a Jolyne Kujo!\nhttps://vignette.wikia.nocookie.net/jjba/images/3/3e/Jolyne_infobox_manga.jpg';
+                  jojo = 'És o George Joestar II!\nhttps://vignette.wikia.nocookie.net/jjba/images/9/92/George_Joestar_II_%28Anime%29.png';
                 }
                 if (last == 6)
                 {
