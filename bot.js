@@ -26,8 +26,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
         var custom = '';
         var jojo = '';
         var last = '';
-        var first = '';
-
+        
         args = args.splice(1);
 
         switch(command) {
