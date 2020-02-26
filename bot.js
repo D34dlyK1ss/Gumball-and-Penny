@@ -26,7 +26,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
         var custom = '';
         var jojo = '';
         var last = '';
-        var rnd;
+        var rnd = 0;
         
         args = args.splice(1);
 
@@ -262,7 +262,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
             break;
             case 'random':
                 custom = args.join(" ");
-                if (custom == '')
+                if (custom == "")
                 {
                     rnd = Math.floor(Math.random() * 100);
                     rnd++;
