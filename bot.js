@@ -36,7 +36,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                 {
                 	bot.sendMessage({
                         to: channelID,
-                        message: 'Todos os nossos comandos! :video_game:\n```\ncommands\nfact\ninvite\nping\nsay\nwhichjojo```Para saberes mais sobre algum comando usa `+commands [nome do comando]`.'
+                        message: 'Todos os nossos comandos! :video_game:\n```\ncommands\nfact\ninvite\nping\nsay\nwhichjojo```Para saberes mais sobre algum comando usa `+commands [nome do comando]`.\n\nP.S.:Existem uns quantos secretos :smiling_imp:'
                     })
                 }
                 else
