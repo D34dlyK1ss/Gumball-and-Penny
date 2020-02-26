@@ -37,7 +37,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                 {
                 	bot.sendMessage({
                         to: channelID,
-                        message: 'Todos os nossos comandos! :video_game:\n```\ncommands\nfact\ninvite\nping\nsay\nwhichjojo```Para saberes mais sobre algum comando usa `+commands [nome do comando]`.\n\nP.S.:Existem uns quantos secretos :smiling_imp:'
+                        message: 'Todos os nossos comandos! :video_game:\n```\ncommands\nfact\ninvite\nping\nrandom\ssay\nwhichjojo```Para saberes mais sobre algum comando usa `+commands [nome do comando]`.\n\nP.S.:Existem uns quantos secretos :smiling_imp:'
                     })
                 }
                 else
@@ -63,6 +63,14 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                         bot.sendMessage({
                             to: channelID,
                             message: 'Uhm... pong?'
+                        })
+                    }
+                    
+                    if (custom == 'random')
+                    {
+                        bot.sendMessage({
+                            to: channelID,
+                            message: 'Diremos um número aleatório entre 1 e o número indicado. O predefinido é 100'
                         })
                     }
                     
@@ -254,7 +262,14 @@ bot.on('message', function (user, userID, channelID, message, evt) {
             break;
             case 'hmm':
                 custom = args.join(" ");
-                rnd = Math.floor((Math.random() * custom) + 1);
+                if (custom == '')
+                {
+                    rnd = Math.floor((Math.random() * 100) + 1);
+                }
+                else
+                {
+                    rnd = Math.floor((Math.random() * custom) + 1);
+                }
                 bot.sendMessage({
                     to: channelID,
                     message: rnd
