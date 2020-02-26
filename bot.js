@@ -209,6 +209,48 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                     message: custom
                 })
             break;
+            case 'shine':
+                custom = args.join(" ");
+                bot.sendMessage({
+                    to: channelID,
+                    message: 'https://i.imgur.com/qSDP6OC.png'
+                })
+            break;
+            case 'boi':
+                custom = args.join(" ");
+                bot.sendMessage({
+                    to: channelID,
+                    message: 'https://i.imgur.com/5TQK5F3.png'
+                })
+            break;
+            case 'justmonika':
+                custom = args.join(" ");
+                bot.sendMessage({
+                    to: channelID,
+                    message: 'https://i.imgur.com/vpbnsDm.png'
+                })
+            break;
+            case 'nou':
+                custom = args.join(" ");
+                bot.sendMessage({
+                    to: channelID,
+                    message: 'https://i.imgur.com/O3WduAq.png'
+                })
+            break;
+            case 'e':
+                custom = args.join(" ");
+                bot.sendMessage({
+                    to: channelID,
+                    message: 'https://i.imgur.com/sHFZIi5.png'
+                })
+            break;
+            case 'hmm':
+                custom = args.join(" ");
+                bot.sendMessage({
+                    to: channelID,
+                    message: 'https://i.imgur.com/SP5VZVG.jpg'
+                })
+            break;
          }
      }
 });
