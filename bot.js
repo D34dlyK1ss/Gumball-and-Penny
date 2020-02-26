@@ -260,7 +260,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                     message: 'https://i.imgur.com/SP5VZVG.jpg'
                 })
             break;
-            case 'hmm':
+            case 'random':
                 custom = args.join(" ");
                 if (custom == '')
                 {
@@ -272,7 +272,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                 }
                 bot.sendMessage({
                     to: channelID,
-                    message: rnd
+                    message: rnd'!'
                 })
             break;
          }
