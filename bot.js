@@ -264,11 +264,13 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                 custom = args.join(" ");
                 if (custom == '')
                 {
-                    rnd = Math.floor(Math.random() * 100) + 1;
+                    rnd = Math.floor(Math.random() * 100);
+                    rnd++;
                 }
                 else
                 {
-                    rnd = Math.floor(Math.random() * custom) + 1;
+                    rnd = Math.floor(Math.random() * custom);
+                    rnd++;
                 }
                 bot.sendMessage({
                     to: channelID,
