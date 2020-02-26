@@ -26,7 +26,6 @@ bot.on('message', function (user, userID, channelID, message, evt) {
         var custom = '';
         var jojo = '';
         var last = '';
-        var rnd = 0;
         
         args = args.splice(1);
 
@@ -99,7 +98,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                 })
             break;
             case 'fact':
-                rnd = Math.floor(Math.random() * 7);
+                var rnd = Math.floor(Math.random() * 7);
                 if (userID == 271737298951995393)
                 {
                 rnd = 0;
