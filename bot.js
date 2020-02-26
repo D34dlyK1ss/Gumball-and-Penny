@@ -26,6 +26,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
         var custom = '';
         var jojo = '';
         var last = '';
+        var rnd;
         
         args = args.splice(1);
 
@@ -90,7 +91,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                 })
             break;
             case 'fact':
-                var rnd = Math.floor(Math.random() * 7);
+                rnd = Math.floor(Math.random() * 7);
                 if (userID == 271737298951995393)
                 {
                 rnd = 0;
@@ -249,6 +250,14 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                 bot.sendMessage({
                     to: channelID,
                     message: 'https://i.imgur.com/SP5VZVG.jpg'
+                })
+            break;
+            case 'hmm':
+                custom = args.join(" ");
+                rnd = Math.floor((Math.random() * custom) + 1);
+                bot.sendMessage({
+                    to: channelID,
+                    message: rnd
                 })
             break;
          }
