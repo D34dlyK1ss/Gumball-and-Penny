@@ -114,7 +114,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                 {
                   bot.sendMessage({
                     to: channelID,
-                    message: 'A soma de dois números idênticos é igual ao dobro de um deles. :nine: :heavy_plus_sign: :nine: = :nine: :heavy_multiplication_x: :two:'
+                    message: 'A soma de dois números idênticos é igual ao dobro de um deles. :nine: x :nine: = :nine: x :two:'
                   })
                 }
                 if (rnd == 2)
