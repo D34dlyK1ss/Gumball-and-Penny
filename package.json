@@ -1,7 +1,7 @@
 {
   "name": "Gumball & Penny",
   "version": "1.0.0",
-  "description": "",
+  "description": "A Discord bot",
   "main": "bot.js",
   "author": "D34dlyK!$$",
   "dependencies": {
