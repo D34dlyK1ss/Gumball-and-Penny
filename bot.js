@@ -261,7 +261,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
             break;
             case 'random':
                 custom = args.join(" ");
-                if (custom == "")
+                if (custom == '')
                 {
                     rnd = Math.floor(Math.random() * 100);
                     rnd++;
