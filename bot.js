@@ -263,13 +263,11 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                 custom = args.join(" ");
                 if (custom == '')
                 {
-                    rnd = Math.floor(Math.random() * 100);
-                    rnd++;
+                    rnd = Math.floor(Math.random() * 100) + 1;
                 }
                 else
                 {
-                    rnd = Math.floor(Math.random() * custom);
-                    rnd++;
+                    rnd = Math.floor(Math.random() * custom) + 1;
                 }
                 bot.sendMessage({
                     to: channelID,
