@@ -7,8 +7,6 @@ bot.once('ready', () => {
     bot.user.setGame("JavaScript");
 })
 
-bot.login(token);
-
 bot.on('message', message => {
     
     var custom = '';
@@ -192,4 +190,6 @@ bot.on('message', message => {
                 });
             }
          }
-});
+})
+
+bot.login(token);
