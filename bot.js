@@ -1,17 +1,9 @@
 const Discord = require('discord.io', 'discord.js');
 const logger = require('winston');
 const auth = require('./auth.json');
-// Configure logger settings
-logger.remove(logger.transports.Console);
-logger.add(new logger.transports.Console, {
-    colorize: true
-});
-logger.level = 'debug';
+const bot = new Discord.Client
+
 // Initialize Discord Bot
-const bot = new Discord.Client({
-   token: auth.token,
-   autorun: true
-});
 bot.on('ready', function (evt) {
     console.log('Preparados! ^^');
 });
