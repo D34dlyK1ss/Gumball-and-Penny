@@ -7,6 +7,8 @@ bot.on('ready', () => {
     console.log('Preparados! ^^');
 });
 
+client.login('Njc5MDQxNTQ4OTU1OTQyOTE0.XleH3g.VKU3TFaCfwlOorzjm4LlS67V5Mg');
+
 bot.on('message', message => {
 
     if (message.substring(0, 1) == '+') {
