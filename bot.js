@@ -4,7 +4,7 @@ const bot = new Discord.Client();
 
 bot.once('ready', () => {
     console.log('Preparados! ^^')
-    bot.user.setGame("JavaScript");
+    bot.user.setActivity("+help");
 })
 
 bot.on('message', message => {
@@ -13,14 +13,14 @@ bot.on('message', message => {
     var jojo = '';
     var last = '';
 
-	if (message.content.startsWith(`${prefix}commands`)) {	
+	if (message.content.startsWith(`${prefix}help`)) {	
 		if (custom == '')
 		{
 			message.channel.send('Todos os nossos comandos! :video_game:\n```\ncommands\nfact\ninvite\nping\nrandom\ssay\nwhichjojo```Para saberes mais sobre algum comando usa `+commands [nome do comando]`.\n\nP.S.:Existem uns quantos secretos :smiling_imp:')
 		}
 		else
 		{
-            if (custom == 'commands')
+            if (custom == 'help')
             {
                message.channel.send('Se não sabes, soubesses! :unamused:')
             }
