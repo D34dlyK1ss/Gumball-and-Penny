@@ -2,6 +2,7 @@
 
 Um bot para o Discord!
 
+
 ## FAQ
 
 ### O que é o Gumball & Penny?
