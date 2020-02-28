@@ -3,11 +3,11 @@ const logger = require('winston');
 const auth = require('./auth.json');
 const bot = new Discord.Client();
 
-bot.on('ready', function (evt) {
+bot.on('ready', () => {
     console.log('Preparados! ^^');
 });
 
-bot.on('message', function (user, userID, channelID, message, evt) {
+bot.on('message', function (user, userID, channelID, message, evt) => {
 
     if (message.substring(0, 1) == '+') {
         var args = message.substring(1).split(' ');
