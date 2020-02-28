@@ -192,13 +192,15 @@ bot.on('message', message => {
   if (message.content.startsWith(`${prefix}clear`)) {
     if (custom == '')
     {
+      message.channel.bulkDelete(custom).then(() => {
       message.channel.send("Tens de definir o número de mensagens que queres apagar!").then(msg => msg.delete(3000));
+      });
     }
     else
     {
       message.channel.bulkDelete(custom).then(() => {
       message.channel.send(custom + " mensagens foram apagadas!").then(msg => msg.delete(3000));
-    });
+      });
     }
   }
 })
