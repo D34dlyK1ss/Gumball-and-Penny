@@ -1,6 +1,8 @@
 var Discord = require('discord.io');
 var logger = require('winston');
 var auth = require('./auth.json');
+const Discord = require('discord.js');
+const config = require("./config.json");
 // Configure logger settings
 logger.remove(logger.transports.Console);
 logger.add(new logger.transports.Console, {
@@ -274,6 +276,12 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                     message: rnd + '!'
                 })
             break;
+            case 'clear':
+                custom = args.join(" ");
+                message.channel.bulkDelete(custom).then(() => {
+                message.channel.send(custom + " mensagens foram apagadas!").then(msg => msg.delete(3000));
+            break;
+});
          }
      }
 });
