@@ -274,8 +274,8 @@ bot.on('message', function (user, userID, channelID, message, evt) {
             break;
             case 'clear':
                 custom = args.join(" ");
-                bot.message.channel.bulkDelete(custom).then(() => {
-                    bot.message.channel.send(custom + " mensagens foram apagadas!").then(msg => msg.delete(3000));
+                channelID.bulkDelete(custom).then(() => {
+                    channelID.send(custom + " mensagens foram apagadas!").then(msg => msg.delete(3000));
                 });
             break;
          }
