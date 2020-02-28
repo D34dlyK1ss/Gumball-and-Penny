@@ -15,51 +15,45 @@ bot.on('message', message => {
     var jojo = '';
     var last = '';
 
-	if (message.content.startsWith(`${prefix}commands`)) {
-		custom = args.join(" ");		
+	if (message.content.startsWith(`${prefix}commands`)) {	
 		if (custom == '')
 		{
-			message.channel.send('Todos os nossos comandos! :video_game:\n```\ncommands\nfact\ninvite\nping\nrandom\ssay\nwhichjojo```Para saberes mais sobre algum comando usa `+commands [nome do comando]`.\n\nP.S.:Existem uns quantos secretos :smiling_imp:');
+			message.channel.send('Todos os nossos comandos! :video_game:\n```\ncommands\nfact\ninvite\nping\nrandom\ssay\nwhichjojo```Para saberes mais sobre algum comando usa `+commands [nome do comando]`.\n\nP.S.:Existem uns quantos secretos :smiling_imp:')
 		}
 		else
 		{
             if (custom == 'commands')
             {
-               message.channel.send('Se não sabes, soubesses! :unamused:');
+               message.channel.send('Se não sabes, soubesses! :unamused:')
             }
                     
             if (custom == 'invite')
             {
-                message.channel.send('O `invite` mostra o link para nos convidares para um dos teus servidores!');
+                message.channel.send('O `invite` mostra o link para nos convidares para um dos teus servidores!')
             }
             
             if (custom == 'ping')
             {
-                        message.channel.send('Uhm... pong?');
-                    }
-                    
-                    if (custom == 'random')
-                    {
-                         message.channel.send('Diremos um número aleatório entre 1 e o número indicado. O predefinido é 100');
-                    }
-                    
-                    if (custom == 'say')
-                    {
-                         message.channel.send('O `say` faz um de nós dizer o que quiseres! :slight_smile:');
-                    }
-                    
-                    if (custom == 'whichjojo')
-                    {
-                         message.channel.send("Com o `whichjojo` diremos qual JoJo de _JoJo's Bizarre Adventure_ és!");
-                    }
-                }
-    
-            if (message.content.startsWith(`${prefix}ping`)) {
-                custom = args.join(" ");
-                 message.channel.send('Pong!');
+				message.channel.send('Uhm... pong?')
             }
-    
-            if (message.content.startsWith(`${prefix}fact`)) {
+                    
+            if (custom == 'random')
+            {
+                 message.channel.send('Diremos um número aleatório entre 1 e o número indicado. O predefinido é 100')
+            }
+            
+            if (custom == 'say')
+            {
+                 message.channel.send('O `say` faz um de nós dizer o que quiseres! :slight_smile:')
+            }
+            
+            if (custom == 'whichjojo')
+            {
+                 message.channel.send("Com o `whichjojo` diremos qual JoJo de _JoJo's Bizarre Adventure_ és!")
+            }
+		}
+		
+		if (message.content.startsWith(`${prefix}fact`)) {
                 var rnd = Math.floor(Math.random() * 7);
                 if (message.member.id == 271737298951995393)
                 {
@@ -100,7 +94,7 @@ bot.on('message', message => {
                 {
                    message.channel.send('Ninguém morre por comer uma laranja à noite. :tangerine:');
                 }
-            }
+		}
     
             if (message.content.startsWith(`${prefix}whichjojo`)) {
                 last = message.member.id.slice(-1);
@@ -152,7 +146,6 @@ bot.on('message', message => {
             }
     
             if (message.content.startsWith(`${prefix}say`)) {
-                custom = args.join(" ");
                 message.channel.deleteMessage();
                 message.channel.send(custom);
             }
@@ -182,7 +175,6 @@ bot.on('message', message => {
             }
     
             if (message.content.startsWith(`${prefix}random`)) {
-                custom = args.join(" ");
                 if (custom == '')
                 {
                     rnd = Math.floor(Math.random() * 100) + 1;
@@ -195,7 +187,6 @@ bot.on('message', message => {
             }
     
             if (message.content.startsWith(`${prefix}clear`)) {
-                custom = args.join(" ");
                 message.channel.bulkDelete(custom).then(() => {
                     message.channel.send(custom + " mensagens foram apagadas!").then(msg => msg.delete(3000));
                 });
