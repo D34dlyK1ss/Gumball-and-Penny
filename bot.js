@@ -7,7 +7,7 @@ bot.on('ready', function (evt) {
     console.log('Preparados! ^^');
 });
 
-bot.on('message', (function userID), message => {
+bot.on('message', function (user, userID, channelID, message, evt) {
 
     if (message.substring(0, 1) == '+') {
         var args = message.substring(1).split(' ');
