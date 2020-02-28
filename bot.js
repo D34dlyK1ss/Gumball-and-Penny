@@ -191,17 +191,19 @@ bot.on('message', message => {
   }
 
   if (message.content.startsWith(`${prefix}clear`)) {
-    message.channel.deleteMessage();
     if (!message.member.hasPermission("MANAGE_MESSAGES")) {
+      message.channel.deleteMessage();
       message.channel.send("Não tens permissão para usar este comando! :anger:").then(msg => msg.delete(3000));
     }
     else {
       if (custom == 0)
       {
+        message.channel.deleteMessage();
         message.channel.send("Tens de definir o número de mensagens que queres apagar!").then(msg => msg.delete(3000));
       }
       else
       {
+        message.channel.deleteMessage();
         message.channel.bulkDelete(custom).then(() => {
         message.channel.send(custom + " mensagens foram apagadas!").then(msg => msg.delete(3000));
         });
