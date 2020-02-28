@@ -154,27 +154,27 @@ bot.on('message', message => {
   }
 
   if (message.content == 'shine') {
-    message.channel.send('https://i.imgur.com/qSDP6OC.png');
+    message.channel.send({files:["./images/shine.png"]});
   }
 
   if (message.content == 'boi') {
-    message.channel.send('https://i.imgur.com/5TQK5F3.png');
+    message.channel.send({files:["./images/boi.png"]});
   }
 
   if (message.content == 'just monika') {
-    message.channel.send('https://i.imgur.com/vpbnsDm.png');
+    message.channel.send({files:["./images/monika.png"]});
   }
 
   if (message.content == 'no u') {
-    message.channel.send('https://i.imgur.com/O3WduAq.png');
+    message.channel.send({files:["./images/reverse.png"]});
   }
 
   if (message.content == 'E') {
-    message.channel.send('https://i.imgur.com/sHFZIi5.png');
+    message.channel.send({files:["./images/E.png"]});
   }
 
   if (message.content == 'hmm') {
-    message.channel.send('https://i.imgur.com/SP5VZVG.jpg');
+    message.channel.send({ files: ["./images/hmm.jpg"] });
   }
 
   if (message.content.startsWith(`${prefix}random`)) {
