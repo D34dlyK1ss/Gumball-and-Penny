@@ -193,7 +193,6 @@ bot.on('message', message => {
                     message.channel.send(custom + " mensagens foram apagadas!").then(msg => msg.delete(3000));
                 });
             }
-         }
 })
 
 bot.login(token);
