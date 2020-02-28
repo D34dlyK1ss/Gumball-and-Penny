@@ -1,6 +1,4 @@
 const Discord = require('discord.js');
-const logger = require('winston');
-const auth = require('./auth.json');
 const bot = new Discord.Client();
 
 bot.on('ready', () => {
