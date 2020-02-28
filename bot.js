@@ -14,7 +14,7 @@ bot.on('message', message => {
   var last = '';
 
   if (message.content.startsWith(`${prefix}ping`)) {
-    message.channel.send('Pong!');
+    message.channel.reply('Pong!');
   }
 
   if (message.content.startsWith(`${prefix}help`)) {
@@ -153,28 +153,28 @@ bot.on('message', message => {
     message.channel.send(custom);
   }
 
-  if (message.content === 'shine') {
-    message.reply('https://i.imgur.com/qSDP6OC.png');
+  if (message.content == 'shine') {
+    message.channel.send('https://i.imgur.com/qSDP6OC.png');
   }
 
-  if (message.content === 'boi') {
-    message.reply('https://i.imgur.com/5TQK5F3.png');
+  if (message.content == 'boi') {
+    message.channel.send('https://i.imgur.com/5TQK5F3.png');
   }
 
-  if (message.content === 'just monika') {
-    message.reply('https://i.imgur.com/vpbnsDm.png');
+  if (message.content == 'just monika') {
+    message.channel.send('https://i.imgur.com/vpbnsDm.png');
   }
 
-  if (message.content === 'no u') {
-    message.reply('https://i.imgur.com/O3WduAq.png');
+  if (message.content == 'no u') {
+    message.channel.send('https://i.imgur.com/O3WduAq.png');
   }
 
-  if (message.content === 'E') {
-    message.reply('https://i.imgur.com/sHFZIi5.png');
+  if (message.content == 'E') {
+    message.channel.send('https://i.imgur.com/sHFZIi5.png');
   }
 
-  if (message.content === 'hmm') {
-    message.reply('https://i.imgur.com/SP5VZVG.jpg');
+  if (message.content == 'hmm') {
+    message.channel.send('https://i.imgur.com/SP5VZVG.jpg');
   }
 
   if (message.content.startsWith(`${prefix}random`)) {
