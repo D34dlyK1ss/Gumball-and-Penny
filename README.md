@@ -1,9 +1,11 @@
 # Gumball & Penny
 
+Um bot para o Discord!
+
 ## FAQ
 
 ### O que é o Gumball & Penny?
-O Gumball & Penny é um bot para o Discord que eu criei não só para diversão, como para também aprimorar os meus conhecimentos em programação.
+O Gumball & Penny é um bot para Discord que eu criei não só para diversão, como para também aprimorar os meus conhecimentos em programação.
 
 ### O que faz um bot desses?
 Os bots para Discord são aplicacões que funcionam como utilizadores normais: podem escrever, enviar ficheiros, e até mesmo usar o voice chat!
