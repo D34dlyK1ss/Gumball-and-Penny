@@ -13,6 +13,10 @@ bot.on('message', message => {
     var jojo = '';
     var last = '';
 
+    if (message.content.startsWith(`${prefix}ping`)) {
+        message.channel.send('TPong!')
+    }
+    
 	if (message.content.startsWith(`${prefix}help`)) {	
 		if (custom == '')
 		{
@@ -22,7 +26,7 @@ bot.on('message', message => {
 		{
             if (custom == 'help')
             {
-               message.channel.send('Se não sabes, soubesses! :unamused:')
+				message.channel.send('Se não sabes, soubesses! :unamused:')
             }
                     
             if (custom == 'invite')
@@ -32,7 +36,7 @@ bot.on('message', message => {
             
             if (custom == 'ping')
             {
-		message.channel.send('Uhm... pong?')
+				message.channel.send('Uhm... pong?')
             }
                     
             if (custom == 'random')
@@ -50,8 +54,8 @@ bot.on('message', message => {
                  message.channel.send("Com o `whichjojo` diremos qual JoJo de _JoJo's Bizarre Adventure_ és!")
             }
 		}
-		
-		if (message.content.startsWith(`${prefix}fact`)) {
+        
+        if (message.content.startsWith(`${prefix}fact`)) {
                 var rnd = Math.floor(Math.random() * 7);
                 if (message.member.id == 271737298951995393)
                 {
