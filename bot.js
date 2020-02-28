@@ -190,6 +190,10 @@ bot.on('message', message => {
             }
 
             if (message.content.startsWith(`${prefix}clear`)) {
+		    if (custom = '')
+		    {
+		    	message.channel.send("0 mensagens foram apagadas!").then(msg => msg.delete(3000));
+		    }
                 message.channel.bulkDelete(custom).then(() => {
                     message.channel.send(custom + " mensagens foram apagadas!").then(msg => msg.delete(3000));
                 });
