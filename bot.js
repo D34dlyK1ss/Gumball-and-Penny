@@ -150,7 +150,7 @@ bot.on('message', message => {
   }
 
   if (message.content.startsWith(`${prefix}say`)) {
-    message.channel.delete();
+    message.delete();
     message.channel.send(custom);
   }
 
@@ -191,7 +191,7 @@ bot.on('message', message => {
   }
 
   if (message.content.startsWith(`${prefix}clear`)) {
-    message.channel.delete();
+    message.delete();
     if (!message.member.hasPermission("MANAGE_MESSAGES")) {
       message.channel.send("Não tens permissão para usar este comando! :anger:").then(msg => msg.delete(3000));
     }
