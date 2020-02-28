@@ -153,19 +153,19 @@ bot.on('message', message => {
     message.channel.send(custom);
   }
 
-  if (message.content === 'shine')) {
+  if (message.content === 'shine') {
     message.reply('https://i.imgur.com/qSDP6OC.png');
   }
 
-  if (message.content === 'boi')) {
+  if (message.content === 'boi') {
     message.reply('https://i.imgur.com/5TQK5F3.png');
   }
 
-  if (message.content === 'just monika')) {
+  if (message.content === 'just monika') {
     message.reply('https://i.imgur.com/vpbnsDm.png');
   }
 
-  if (message.content === 'no u')) {
+  if (message.content === 'no u') {
     message.reply('https://i.imgur.com/O3WduAq.png');
   }
 
@@ -173,7 +173,7 @@ bot.on('message', message => {
     message.reply('https://i.imgur.com/sHFZIi5.png');
   }
 
-  if (message.content === 'hmm')) {
+  if (message.content === 'hmm') {
     message.reply('https://i.imgur.com/SP5VZVG.jpg');
   }
 
