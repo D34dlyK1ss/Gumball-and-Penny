@@ -10,7 +10,6 @@ bot.once('ready', () => {
 bot.on('message', message => {
 
   const jojo = '';
-  const last = '';
   const custom = message.content.slice(prefix.length).split(' ');
   const command = custom.shift().toLowerCase();
   
