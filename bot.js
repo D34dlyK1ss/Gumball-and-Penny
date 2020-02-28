@@ -12,7 +12,7 @@ bot.on('message', message => {
   const jojo = '';
   const last = '';
   const number = 0;
-  const args = message.content.slice(prefix.length).split(' ');
+  const args = message.substring(1).split(' ');
   const custom = args.shift().toLowerCase();
   
   if (message.content.startsWith(`${prefix}ping`)) {
