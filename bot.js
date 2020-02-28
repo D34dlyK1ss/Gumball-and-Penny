@@ -11,7 +11,6 @@ bot.on('message', message => {
 
   const jojo = '';
   const last = '';
-  const number = 0;
   const custom = message.content.slice(prefix.length).split(' ');
   const command = custom.shift().toLowerCase();
   
@@ -192,18 +191,19 @@ bot.on('message', message => {
   }
 
   if (message.content.startsWith(`${prefix}clear`)) {
+    message.channel.deleteMessage();
     if (!message.member.hasPermission("MANAGE_MESSAGES")) {
       message.channel.send("Não tens permissão para usar este comando! :anger:").then(msg => msg.delete(3000));
     }
     else {
-      if (number == 0)
+      if (custom == 0)
       {
         message.channel.send("Tens de definir o número de mensagens que queres apagar!").then(msg => msg.delete(3000));
       }
       else
       {
-        message.channel.bulkDelete(number).then(() => {
-        message.channel.send(number + " mensagens foram apagadas!").then(msg => msg.delete(3000));
+        message.channel.bulkDelete(custom).then(() => {
+        message.channel.send(custom + " mensagens foram apagadas!").then(msg => msg.delete(3000));
         });
       }
     }
