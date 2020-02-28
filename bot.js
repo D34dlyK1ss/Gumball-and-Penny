@@ -9,14 +9,13 @@ bot.once('ready', () => {
 
 bot.on('message', message => {
 
-  var custom = '';
-  var jojo = '';
-  var last = '';
-  var number = 0;
+  const jojo = '';
+  const last = '';
+  const number = 0;
   const args = message.content.slice(prefix.length).split(' ');
-  const command = args.shift().toLowerCase();
+  const custom = args.shift().toLowerCase();
   
-  if (command == 'Ping') {
+  if (message.content.startsWith(`${prefix}ping`)) {
     message.channel.reply('Pong!');
   }
 
