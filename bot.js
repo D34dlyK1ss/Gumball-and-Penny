@@ -154,27 +154,27 @@ bot.on('message', message => {
   }
 
   if (message.content == 'shine') {
-    message.channel.send({files:["./images/shine.png"]});
+    message.channel.send({files:["images/shine.png"]});
   }
 
   if (message.content == 'boi') {
-    message.channel.send({files:["./images/boi.png"]});
+    message.channel.send({files:["images/boi.png"]});
   }
 
   if (message.content == 'just monika') {
-    message.channel.send({files:["./images/monika.png"]});
+    message.channel.send({files:["images/monika.png"]});
   }
 
   if (message.content == 'no u') {
-    message.channel.send({files:["./images/reverse.png"]});
+    message.channel.send({files:["images/reverse.png"]});
   }
 
   if (message.content == 'E') {
-    message.channel.send({files:["./images/E.png"]});
+    message.channel.send({files:["images/E.png"]});
   }
 
   if (message.content == 'hmm') {
-    message.channel.send({ files: ["./images/hmm.jpg"] });
+    message.channel.send({ files: ["images/hmm.jpg"] });
   }
 
   if (message.content.startsWith(`${prefix}random`)) {
