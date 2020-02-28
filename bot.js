@@ -7,7 +7,7 @@ bot.on('ready', () => {
     console.log('Preparados! ^^');
 });
 
-bot.on('message', function (user, userID, channelID, message, evt) => {
+bot.on('message', message => {
 
     if (message.substring(0, 1) == '+') {
         var args = message.substring(1).split(' ');
@@ -64,7 +64,7 @@ bot.on('message', function (user, userID, channelID, message, evt) => {
             break;
             case 'fact':
                 var rnd = Math.floor(Math.random() * 7);
-                if (userID == 271737298951995393)
+                if (message.member.id == 271737298951995393)
                 {
                 rnd = 0;
                 }
@@ -98,7 +98,7 @@ bot.on('message', function (user, userID, channelID, message, evt) => {
                 }
             break;
             case 'whichjojo':
-                last = userID.slice(-1);
+                last = message.member.id.slice(-1);
                 if (last == 0)
                 {
                   jojo = 'És o George Joestar I!\nhttps://vignette.wikia.nocookie.net/jjba/images/c/c6/George_Joestar_%28Anime%29.png';
