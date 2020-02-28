@@ -153,27 +153,27 @@ bot.on('message', message => {
     message.channel.send(custom);
   }
 
-  if (message.content.startsWith(`${prefix}shine`)) {
+  if (message.content === 'shine')) {
     message.channel.send('https://i.imgur.com/qSDP6OC.png')
   }
 
-  if (message.content.startsWith(`${prefix}boi`)) {
+  if (message.content === 'boi')) {
     message.channel.send('https://i.imgur.com/5TQK5F3.png')
   }
 
-  if (message.content.startsWith(`${prefix}justmonika`)) {
+  if (message.content === 'just monika')) {
     message.channel.send('https://i.imgur.com/vpbnsDm.png')
   }
 
-  if (message.content.startsWith(`${prefix}nou`)) {
+  if (message.content === 'no u')) {
     message.channel.send('https://i.imgur.com/O3WduAq.png')
   }
 
-  if (message.content.startsWith(`${prefix}e`)) {
+  if (message.content === 'E') {
     message.channel.send('https://i.imgur.com/sHFZIi5.png')
   }
 
-  if (message.content.startsWith(`${prefix}hmm`)) {
+  if (message.content === 'hmm')) {
     message.channel.send('https://i.imgur.com/SP5VZVG.jpg')
   }
 
@@ -194,9 +194,12 @@ bot.on('message', message => {
     {
       message.channel.send("0 mensagens foram apagadas!").then(msg => msg.delete(3000));
     }
+    else
+    {
     message.channel.bulkDelete(custom).then(() => {
       message.channel.send(custom + " mensagens foram apagadas!").then(msg => msg.delete(3000));
     });
+    }
   }
 })
 
