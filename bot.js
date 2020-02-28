@@ -3,14 +3,15 @@ const logger = require('winston');
 const auth = require('./auth.json');
 
 // Initialize Discord Bot
-bot.on('ready', function (evt) {
-    console.log('Preparados! ^^');
-});
-
 const bot = new Discord.Client({
    token: auth.token,
    autorun: true
 });
+
+bot.on('ready', function (evt) {
+    console.log('Preparados! ^^');
+});
+
 
 bot.on('message', function (user, userID, channelID, message, evt) {
 
