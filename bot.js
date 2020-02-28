@@ -13,8 +13,10 @@ bot.on('message', message => {
   var jojo = '';
   var last = '';
   var number = 0;
-
-  if (message.content.startsWith(`${prefix}ping`)) {
+  const args = message.content.slice(prefix.length).split(' ');
+  const command = args.shift().toLowerCase();
+  
+  if (command == 'Ping') {
     message.channel.reply('Pong!');
   }
 
@@ -191,7 +193,7 @@ bot.on('message', message => {
   }
 
   if (message.content.startsWith(`${prefix}clear`)) {
-    if (!this.member.hasPermission(['MANAGE_MESSAGES'])) {
+    if (!message.member.hasPermission("MANAGE_MESSAGES")) {
       message.channel.send("Não tens permissão para usar este comando! :anger:").then(msg => msg.delete(3000));
     }
     else {
