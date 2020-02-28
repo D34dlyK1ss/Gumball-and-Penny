@@ -201,5 +201,4 @@ bot.on('message', message => {
                 });
             }
          }
-     }
 });
