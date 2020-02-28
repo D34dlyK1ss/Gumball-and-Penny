@@ -12,6 +12,7 @@ bot.on('message', message => {
   var custom = '';
   var jojo = '';
   var last = '';
+  var number = 0;
 
   if (message.content.startsWith(`${prefix}ping`)) {
     message.channel.reply('Pong!');
@@ -190,17 +191,20 @@ bot.on('message', message => {
   }
 
   if (message.content.startsWith(`${prefix}clear`)) {
-    if (custom == '')
-    {
-      message.channel.bulkDelete(custom).then(() => {
-      message.channel.send("Tens de definir o número de mensagens que queres apagar!").then(msg => msg.delete(3000));
-      });
+    if (!member.has('MANAGE_MESSAGES', checkAdmin = true)) {
+      message.channel.send("Não tens permissão para usar este comando! :anger:").then(msg => msg.delete(3000));
     }
-    else
-    {
-      message.channel.bulkDelete(custom).then(() => {
-      message.channel.send(custom + " mensagens foram apagadas!").then(msg => msg.delete(3000));
-      });
+    else {
+      if (number == 0)
+      {
+        message.channel.send("Tens de definir o número de mensagens que queres apagar!").then(msg => msg.delete(3000));
+      }
+      else
+      {
+        message.channel.bulkDelete(number).then(() => {
+        message.channel.send(number + " mensagens foram apagadas!").then(msg => msg.delete(3000));
+        });
+      }
     }
   }
 })
