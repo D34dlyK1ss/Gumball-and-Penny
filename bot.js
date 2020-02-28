@@ -191,7 +191,7 @@ bot.on('message', message => {
   }
 
   if (message.content.startsWith(`${prefix}clear`)) {
-    if (!member.has('MANAGE_MESSAGES', checkAdmin = true)) {
+    if (!this.member.has('MANAGE_MESSAGES', checkAdmin = true)) {
       message.channel.send("Não tens permissão para usar este comando! :anger:").then(msg => msg.delete(3000));
     }
     else {
