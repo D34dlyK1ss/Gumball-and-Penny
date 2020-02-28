@@ -10,8 +10,6 @@ bot.login('Njc5MDQxNTQ4OTU1OTQyOTE0.XleH3g.VKU3TFaCfwlOorzjm4LlS67V5Mg');
 bot.on('message', message => {
 
     if (message.content.startsWith('+')) {
-        var args = message.substring(1).split(' ');
-        var command = args[0];
         var custom = '';
         var jojo = '';
         var last = '';
