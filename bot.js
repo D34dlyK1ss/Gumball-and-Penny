@@ -14,44 +14,44 @@ bot.on('message', message => {
   var last = '';
 
   if (message.content.startsWith(`${prefix}ping`)) {
-    message.channel.send('Pong!')
+    message.channel.send('Pong!');
   }
 
   if (message.content.startsWith(`${prefix}help`)) {
     if (custom == '')
     {
-      message.channel.send('Todos os nossos comandos! :video_game:\n```\nhelp\nfact\ninvite\nping\nrandom\ssay\nwhichjojo```Para saberes mais sobre algum comando usa `+help [nome do comando]`.\n\nP.S.:Existem uns quantos secretos :smiling_imp:')
+      message.channel.send('Todos os nossos comandos! :video_game:\n```\nhelp\nfact\ninvite\nping\nrandom\ssay\nwhichjojo```Para saberes mais sobre algum comando usa `+help [nome do comando]`.\n\nP.S.:Existem uns quantos secretos :smiling_imp:');
     }
     else
     {
       if (custom == 'help')
       {
-        message.channel.send('Se não sabes, soubesses! :unamused:')
+        message.channel.send('Se não sabes, soubesses! :unamused:');
       }
 
       if (custom == 'invite')
       {
-        message.channel.send('O `invite` mostra o link para nos convidares para um dos teus servidores!')
+        message.channel.send('O `invite` mostra o link para nos convidares para um dos teus servidores!');
       }
 
       if (custom == 'ping')
       {
-        message.channel.send('Uhm... pong?')
+        message.channel.send('Uhm... pong?');
       }
 
       if (custom == 'random')
       {
-        message.channel.send('Diremos um número aleatório entre 1 e o número indicado. O predefinido é 100')
+        message.channel.send('Diremos um número aleatório entre 1 e o número indicado. O predefinido é 100');
       }
 
       if (custom == 'say')
       {
-        message.channel.send('O `say` faz um de nós dizer o que quiseres! :slight_smile:')
+        message.channel.send('O `say` faz um de nós dizer o que quiseres! :slight_smile:');
       }
 
       if (custom == 'whichjojo')
       {
-        message.channel.send("Com o `whichjojo` diremos qual JoJo de _JoJo's Bizarre Adventure_ és!")
+        message.channel.send("Com o `whichjojo` diremos qual JoJo de _JoJo's Bizarre Adventure_ és!");
       }
     }
   }
@@ -65,17 +65,17 @@ bot.on('message', message => {
 
     if (rnd == 0)
     {
-      message.channel.send('O Leandro é gay.\nhttps://i.imgur.com/CYTHGhZ.png')
+      message.channel.send('O Leandro é gay.\nhttps://i.imgur.com/CYTHGhZ.png');
     }
 
     if (rnd == 1)
     {
-      message.channel.send('A soma de dois números idênticos é igual ao dobro de um deles. :nine: x :nine: = :nine: x :two:')
+      message.channel.send('A soma de dois números idênticos é igual ao dobro de um deles. :nine: x :nine: = :nine: x :two:');
     }
 
     if (rnd == 2)
     {
-      message.channel.send('Adolf Hitler foi um político alemão que serviu como líder do Partido Nazista, Chanceler do Reich e Führer da Alemanha Nazista desde 1934 até 1945. Como ditador do Reich Alemão, ele foi o principal instigador da Segunda Guerra Mundial e figura central do Holocausto.\nhttps://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Hitler_portrait_crop.jpg/260px-Hitler_portrait_crop.jpg')
+      message.channel.send('Adolf Hitler foi um político alemão que serviu como líder do Partido Nazista, Chanceler do Reich e Führer da Alemanha Nazista desde 1934 até 1945. Como ditador do Reich Alemão, ele foi o principal instigador da Segunda Guerra Mundial e figura central do Holocausto.\nhttps://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Hitler_portrait_crop.jpg/260px-Hitler_portrait_crop.jpg');
     }
 
     if (rnd == 3)
@@ -85,17 +85,17 @@ bot.on('message', message => {
 
     if (rnd == 4)
     {
-      message.channel.send('A soma do valor dos lados opostos de um dado tradicional dá sempre a soma de 7. :game_die:')
+      message.channel.send('A soma do valor dos lados opostos de um dado tradicional dá sempre a soma de 7. :game_die:');
     }
 
     if (rnd == 5)
     {
-      message.channel.send('A cada 60 segundos em África, um minuto passa.\nhttps://s2.dmcdn.net/v/N3yL71REyTtHN8eYF/x1080')
+      message.channel.send('A cada 60 segundos em África, um minuto passa.\nhttps://s2.dmcdn.net/v/N3yL71REyTtHN8eYF/x1080');
     }
 
     if (rnd == 6)
     {
-      message.channel.send('Ninguém morre por comer uma laranja à noite. :tangerine:')
+      message.channel.send('Ninguém morre por comer uma laranja à noite. :tangerine:');
     }
   }
 
@@ -145,7 +145,7 @@ bot.on('message', message => {
   }
 
   if (message.content.startsWith(`${prefix}invite`)) {
-    message.channel.send('Convida-nos para o teu server! :grin:\nhttps://discordapp.com/oauth2/authorize?&client_id=679041548955942914&scope=bot&permissions=305523718')
+    message.channel.send('Convida-nos para o teu server! :grin:\nhttps://discordapp.com/oauth2/authorize?&client_id=679041548955942914&scope=bot&permissions=305523718');
   }
 
   if (message.content.startsWith(`${prefix}say`)) {
@@ -154,27 +154,27 @@ bot.on('message', message => {
   }
 
   if (message.content === 'shine')) {
-    message.channel.send('https://i.imgur.com/qSDP6OC.png')
+    message.reply('https://i.imgur.com/qSDP6OC.png');
   }
 
   if (message.content === 'boi')) {
-    message.channel.send('https://i.imgur.com/5TQK5F3.png')
+    message.reply('https://i.imgur.com/5TQK5F3.png');
   }
 
   if (message.content === 'just monika')) {
-    message.channel.send('https://i.imgur.com/vpbnsDm.png')
+    message.reply('https://i.imgur.com/vpbnsDm.png');
   }
 
   if (message.content === 'no u')) {
-    message.channel.send('https://i.imgur.com/O3WduAq.png')
+    message.reply('https://i.imgur.com/O3WduAq.png');
   }
 
   if (message.content === 'E') {
-    message.channel.send('https://i.imgur.com/sHFZIi5.png')
+    message.reply('https://i.imgur.com/sHFZIi5.png');
   }
 
   if (message.content === 'hmm')) {
-    message.channel.send('https://i.imgur.com/SP5VZVG.jpg')
+    message.reply('https://i.imgur.com/SP5VZVG.jpg');
   }
 
   if (message.content.startsWith(`${prefix}random`)) {
