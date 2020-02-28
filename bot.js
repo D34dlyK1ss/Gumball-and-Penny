@@ -16,7 +16,7 @@ bot.on('message', message => {
   const custom = args.shift().toLowerCase();
   
   if (message.content.startsWith(`${prefix}ping`)) {
-    message.channel.reply('Pong!');
+    message.reply('Pong!');
   }
 
   if (message.content.startsWith(`${prefix}help`)) {
