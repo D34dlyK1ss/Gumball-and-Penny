@@ -14,7 +14,7 @@ bot.on('message', message => {
     var last = '';
 
     if (message.content.startsWith(`${prefix}ping`)) {
-        message.channel.send('TPong!')
+        message.channel.send('Pong!')
     }
     
 	if (message.content.startsWith(`${prefix}help`)) {	
