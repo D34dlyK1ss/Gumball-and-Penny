@@ -13,9 +13,7 @@ const bot = new Discord.Client({
    autorun: true
 });
 bot.on('ready', function (evt) {
-    logger.info('Connected');
-    logger.info('Logged in as: ');
-    logger.info(bot.username + ' - (' + bot.id + ')');
+    logger.info('Preparados! ^^');
 });
 
 bot.on('message', function (user, userID, channelID, message, evt) {
@@ -276,9 +274,9 @@ bot.on('message', function (user, userID, channelID, message, evt) {
             break;
             case 'clear':
                 custom = args.join(" ");
-                message.channel.bulkDelete(100).then(() => {
-                message.channel.send("Deleted 100 messages.").then(msg => msg.delete(3000));
-                });    
+                message.channel.bulkDelete(custom).then(() => {
+                    message.channel.send(custom + " mensagens foram apagadas!").then(msg => msg.delete(3000));
+                });
             break;
          }
      }
