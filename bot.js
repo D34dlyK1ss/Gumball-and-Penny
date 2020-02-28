@@ -12,8 +12,8 @@ bot.on('message', message => {
   const jojo = '';
   const last = '';
   const number = 0;
-  const args = message.content.slice(prefix.length).split(' ');
-  const custom = args.shift().toLowerCase();
+  const custom = message.content.slice(prefix.length).split(' ');
+  const command = custom.shift().toLowerCase();
   
   if (message.content.startsWith(`${prefix}ping`)) {
     message.reply('Pong!');
