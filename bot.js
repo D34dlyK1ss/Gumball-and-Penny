@@ -9,8 +9,8 @@ bot.once('ready', () => {
 
 bot.on('message', message => {
 
-  const jojo = '';
-  const last = 0;
+  var jojo = '';
+  var last = 0;
   const custom = message.content.slice(prefix.length).split(' ');
   const command = custom.shift().toLowerCase();
   
