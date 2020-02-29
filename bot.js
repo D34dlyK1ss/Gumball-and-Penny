@@ -191,6 +191,7 @@ bot.on('message', message => {
 
   if (message.content.startsWith(`${prefix}clear`)) {
     message.delete();
+    message.channel.send(custom).then(msg => msg.delete(3000));
     if (!message.member.hasPermission("MANAGE_MESSAGES")) {
       message.channel.send("Não tens permissão para usar este comando! :anger:").then(msg => msg.delete(3000));
     }
@@ -202,7 +203,7 @@ bot.on('message', message => {
       else
       {
         message.channel.bulkDelete(custom).then(() => {
-        message.channel.send("Deleted 100 messages.").then(msg => msg.delete(3000)).catch(error => console.log.send(`Error: ${error}`));
+        message.channel.send("Deleted 100 messages.").then(msg => msg.delete(3000));
       });
       }
     }
