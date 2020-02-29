@@ -20,12 +20,10 @@ bot.on('message', message => {
   }
 
   if (command == 'help') {
-    if (custom == '')
-    {
+    if (custom == '') {
       message.channel.send('Todos os nossos comandos! :video_game:\n```\nclear\nfact\nhelp\ninvite\nping\nrandom\nsay\nwhichjojo```Para saberes mais sobre algum comando usa `+help [nome do comando]`.\n\nP.S.:Existem uns quantos secretos :smiling_imp:');
     }
-    else
-    {
+    else {
       if (custom == 'help')
       {
         message.channel.send('Se não sabes, soubesses! :unamused:');
@@ -184,8 +182,7 @@ bot.on('message', message => {
     {
       rnd = Math.floor(Math.random() * 100) + 1;
     }
-    else
-    {
+    else {
       rnd = Math.floor(Math.random() * custom) + 1;
     }
     message.channel.send(rnd + '!');
@@ -193,6 +190,10 @@ bot.on('message', message => {
   
   if (command == 'clear') {
     message.delete();
+    if (!bot.hasPermission("MANAGE_MESSAGES")) {
+      message.channel.send("Nós não temos permissão para apagar mensagens! :anger:").then(msg => msg.delete(3000));
+    }
+    else {
     if (!message.member.hasPermission("MANAGE_MESSAGES")) {
       message.channel.send("Não tens permissão para usar este comando! :anger:").then(msg => msg.delete(3000));
     }
