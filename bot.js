@@ -194,7 +194,7 @@ bot.on('message', message => {
         message.channel.send("Não tens permissão para usar este comando! :anger:").then(msg => msg.delete(3000));
     }
     else {
-      if (!bot.member.hasPermission("MANAGE_MESSAGES")) {
+      if (!bot.message.member.hasPermission("MANAGE_MESSAGES")) {
       message.channel.send("Nós não temos permissão para apagar mensagens! :anger:").then(msg => msg.delete(3000));
       }
       else {
