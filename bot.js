@@ -190,12 +190,12 @@ bot.on('message', message => {
   
   if (command == 'clear') {
     message.delete();
-    if (!bot.member.hasPermission("MANAGE_MESSAGES")) {
-      message.channel.send("Nós não temos permissão para apagar mensagens! :anger:").then(msg => msg.delete(3000));
+    if ((!message.member.hasPermission("MANAGE_MESSAGES")) {
+        message.channel.send("Não tens permissão para usar este comando! :anger:").then(msg => msg.delete(3000));
     }
     else {
-      if (!message.member.hasPermission("MANAGE_MESSAGES")) {
-        message.channel.send("Não tens permissão para usar este comando! :anger:").then(msg => msg.delete(3000));
+      if (!bot.guild.me.hasPermission("MANAGE_MESSAGES")) {
+      message.channel.send("Nós não temos permissão para apagar mensagens! :anger:").then(msg => msg.delete(3000));
       }
       else {
         if (custom == '' || custom == '0')
