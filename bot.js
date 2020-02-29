@@ -15,6 +15,7 @@ bot.on('message', message => {
   
   const command = message.content.split(' ');
   const custom = command.slice(prefix);
+    console.log(custom + ' ' + command)
   
   if (command == 'ping') {
     message.reply('Pong!');
