@@ -202,7 +202,7 @@ bot.on('message', message => {
       }
       else
       {
-        message.channel.bulkDelete(custom).then(() => message.channel.send(custom + "foram apagadas!").then(msg => msg.delete(3000));
+        message.channel.bulkDelete(custom).then(() => message.channel.send(custom + "foram apagadas!").then(msg => msg.delete(3000)));
       }
     }
   }
