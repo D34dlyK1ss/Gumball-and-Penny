@@ -3,13 +3,13 @@ const {prefix, token} = require('./config.json');
 const bot = new Discord.Client();
 
 bot.once('ready', () => {
-  console.log('Preparados!\nO prefixo é ' + prefix)
+  console.log('Preparados!\nO prefixo é ' + prefix);
   bot.user.setActivity("+help");
 })
 
 bot.on('message', message => {
 
-  if (message.content.substring(0, 1) == '!') {
+  if (message.content.substring(0, 1) == '+') {
     var custom = message.content.substring(1).split(' ');
     var command = custom[0];
     custom = custom.splice(1);
