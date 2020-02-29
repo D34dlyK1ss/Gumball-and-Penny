@@ -9,7 +9,7 @@ bot.once('ready', () => {
 
 bot.on('message', message => {
 
-  if (message.substring(0, 1) == prefix) {
+  if (message.string(0, 1) == prefix) {
     var custom = message.string(1).split(' ');
     var command = custom[0];
     custom = custom.splice(1);
