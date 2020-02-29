@@ -189,11 +189,6 @@ bot.on('message', message => {
     }
     message.channel.send(rnd + '!');
   }
-
-  if (command == 'limpa')
-  {
-    message.channel.bulkDelete(5);
-  }
   
   if (command == 'clear') {
     message.delete();
@@ -207,9 +202,7 @@ bot.on('message', message => {
       }
       else
       {
-        message.channel.bulkDelete(custom).then(() => {
-        message.channel.send(custom + "foram apagadas!").then(msg => msg.delete(3000));
-      });
+        message.channel.bulkDelete(custom).then(() => message.channel.send(custom + "foram apagadas!").then(msg => msg.delete(3000));
       }
     }
   }
