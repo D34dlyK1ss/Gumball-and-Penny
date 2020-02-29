@@ -190,14 +190,11 @@ bot.on('message', message => {
   
   if (command == 'clear') {
     message.delete();
+    
     if (!message.member.hasPermission("MANAGE_MESSAGES")) {
         message.channel.send("Não tens permissão para usar este comando! :anger:").then(msg => msg.delete(3000));
     }
     else {
-      if (!bot.guildMember.hasPermission("MANAGE_MESSAGES")) {
-      message.channel.send("Nós não temos permissão para apagar mensagens! :anger:").then(msg => msg.delete(3000));
-      }
-      else {
         if (custom == '' || custom == '0')
         {
           message.channel.send("Tens de definir o número de mensagens que queres apagar!").then(msg => msg.delete(3000));
@@ -205,11 +202,10 @@ bot.on('message', message => {
         else
         {
           number = parseInt(custom);
-          message.channel.bulkDelete(number).then(() => message.channel.send("`" + custom + "` foram apagadas!").then(msg => msg.delete(3000)));
+          message.channel.bulkDelete(number).then(() => message.channel.send("`" + custom + "` foram apagadas!").then(msg => msg.delete(3000))).catch(console.error);
         }
       }
     }
-  }
 })
 
 bot.login(token);
