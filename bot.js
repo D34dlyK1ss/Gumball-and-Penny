@@ -13,7 +13,7 @@ bot.on('message', message => {
   const custom = message.content.slice(prefix.length).split(' ');
   const command = custom.shift().toLowerCase();
   
-  if (message.content.startsWith(`${prefix}ping`)) {
+  if (message.content.startsWith(command = 'ping')) {
     message.reply('Pong!');
   }
 
