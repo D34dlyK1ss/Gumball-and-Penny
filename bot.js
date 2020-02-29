@@ -12,8 +12,10 @@ bot.on('message', message => {
   var jojo = '';
   var last = 0;
   var number = 0;
-  const custom = message.content.slice(prefix).split(' ');
-  const command = custom.shift().toLowerCase();
+  
+  const array = message.content.split(' ');
+  const command = array[0];
+  const custom = array.slice(1);
   
   if (command == 'ping') {
     message.reply('Pong!');
