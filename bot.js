@@ -3,7 +3,7 @@ const {prefix, token} = require('./config.json');
 const bot = new Discord.Client();
 
 bot.once('ready', () => {
-  console.log('Preparados! ^^')
+  console.log('Preparados!\nO prefixo é' + prefix)
   bot.user.setActivity("+help");
 })
 
