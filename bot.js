@@ -9,10 +9,10 @@ bot.once('ready', () => {
 
 bot.on('message', message => {
 
-  if (message.string(0, 1) == prefix) {
-    var custom = message.string(1).split(' ');
-    var command = custom[0];
-    custom = custom.splice(1);
+  if (message.content.substring(0, 1) == '!') {
+    var args = message.content.substring(1).split(' ');
+    var cmd = args[0];
+    args = args.splice(1);
   }
   
   var jojo = '';
