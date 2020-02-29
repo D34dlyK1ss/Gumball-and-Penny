@@ -190,7 +190,7 @@ bot.on('message', message => {
   
   if (command == 'clear') {
     message.delete();
-    if ((!message.member.hasPermission("MANAGE_MESSAGES")) {
+    if (!message.member.hasPermission("MANAGE_MESSAGES")) {
         message.channel.send("Não tens permissão para usar este comando! :anger:").then(msg => msg.delete(3000));
     }
     else {
