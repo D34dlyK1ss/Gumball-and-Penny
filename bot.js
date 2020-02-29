@@ -11,6 +11,7 @@ bot.on('message', message => {
 
   var jojo = '';
   var last = 0;
+  var number = 0;
   const custom = message.content.slice(prefix.length).split(' ');
   const command = custom.shift().toLowerCase();
   
@@ -202,7 +203,8 @@ bot.on('message', message => {
       }
       else
       {
-        message.channel.bulkDelete(custom).then(() => message.channel.send(custom + "foram apagadas!").then(msg => msg.delete(3000)));
+        number = parseInt(custom);
+        message.channel.bulkDelete(number).then(() => message.channel.send(custom + "foram apagadas!").then(msg => msg.delete(3000)));
       }
     }
   }
