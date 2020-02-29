@@ -21,7 +21,7 @@ bot.on('message', message => {
   if (command == 'help') {
     if (custom == '')
     {
-      message.channel.send('Todos os nossos comandos! :video_game:\n```\nclear\nfact\nhelp\ninvite\nping\nrandom\nsay\nwhichjojo```Para saberes mais sobre algum comando usa '+help [nome do comando]'.\n\nP.S.:Existem uns quantos secretos :smiling_imp:');
+      message.channel.send('Todos os nossos comandos! :video_game:\n```\nclear\nfact\nhelp\ninvite\nping\nrandom\nsay\nwhichjojo```Para saberes mais sobre algum comando usa `+help [nome do comando]`.\n\nP.S.:Existem uns quantos secretos :smiling_imp:');
     }
     else
     {
