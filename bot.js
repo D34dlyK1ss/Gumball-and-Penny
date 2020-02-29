@@ -201,7 +201,10 @@ bot.on('message', message => {
         else
         {
           number = parseInt(custom);
-          message.channel.bulkDelete(number).then(() => message.channel.send("`" + custom + "` foram apagadas!").then(msg => msg.delete(3000))).catch(console.error);
+          if (number > 100){
+            number = 100;
+          }
+          message.channel.bulkDelete(number).then(() => message.channel.send("`" + number + "` foram apagadas!").then(msg => msg.delete(3000))).catch(console.error);
         }
       }
     }
