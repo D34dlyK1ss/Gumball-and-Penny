@@ -204,7 +204,7 @@ bot.on('message', message => {
       else
       {
         number = parseInt(custom);
-        message.channel.bulkDelete(number).then(() => message.channel.send(custom + "foram apagadas!").then(msg => msg.delete(3000)));
+        message.channel.bulkDelete(number).then(() => message.channel.send("`" + custom + "` foram apagadas!").then(msg => msg.delete(3000)));
       }
     }
   }
