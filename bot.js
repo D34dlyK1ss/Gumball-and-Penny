@@ -13,7 +13,7 @@ bot.on('message', message => {
   const custom = message.content.slice(prefix.length).split(' ');
   const command = custom.shift().toLowerCase();
   
-  if (message.content.startsWith(command = 'ping')) {
+  if (message.content.startsWith(command == 'ping')) {
     message.reply('Pong!');
   }
 
@@ -191,7 +191,6 @@ bot.on('message', message => {
 
   if (message.content.startsWith(`${prefix}clear`)) {
     message.delete();
-    message.channel.send(custom).then(msg => msg.delete(3000));
     if (!message.member.hasPermission("MANAGE_MESSAGES")) {
       message.channel.send("Não tens permissão para usar este comando! :anger:").then(msg => msg.delete(3000));
     }
@@ -203,7 +202,7 @@ bot.on('message', message => {
       else
       {
         message.channel.bulkDelete(custom).then(() => {
-        message.channel.send("Deleted 100 messages.").then(msg => msg.delete(3000));
+        message.channel.send(custom + "foram apagadas!").then(msg => msg.delete(3000));
       });
       }
     }
