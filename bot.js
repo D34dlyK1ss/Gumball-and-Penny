@@ -3,7 +3,7 @@ const {prefix, token} = require('./config.json');
 const bot = new Discord.Client();
 
 bot.once('ready', () => {
-  console.log('Preparados!\nO prefixo é' + prefix)
+  console.log('Preparados!\nO prefixo é ' + prefix)
   bot.user.setActivity("+help");
 })
 
@@ -12,7 +12,7 @@ bot.on('message', message => {
   var jojo = '';
   var last = 0;
   var number = 0;
-  const custom = message.content.slice(prefix.length).split(' ');
+  const custom = message.content.slice(prefix).split(' ');
   const command = custom.shift().toLowerCase();
   
   if (command == 'ping') {
