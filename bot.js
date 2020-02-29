@@ -192,7 +192,7 @@ bot.on('message', message => {
 
   if (command == 'limpa')
   {
-    message.channel.bulkDelete();
+    message.channel.bulkDelete(5);
   }
   
   if (command == 'clear') {
