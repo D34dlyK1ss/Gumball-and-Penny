@@ -202,7 +202,7 @@ bot.on('message', message => {
       else
       {
         message.channel.bulkDelete(custom).then(() => {
-        message.channel.send("Deleted 100 messages.").then(msg => msg.delete(3000));
+        message.channel.send("Deleted 100 messages.").then(msg => msg.delete(3000)).catch(error => console.log.send(`Error: ${error}`));
       });
       }
     }
