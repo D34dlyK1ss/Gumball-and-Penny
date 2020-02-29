@@ -9,13 +9,15 @@ bot.once('ready', () => {
 
 bot.on('message', message => {
 
+  if (message.substring(0, 1) == prefix) {
+        var args = message.substring(1).split(' ');
+        var cmd = args[0];
+        args = args.splice(1);
+  }
+  
   var jojo = '';
   var last = 0;
   var number = 0;
-  
-  const command = message.content.split(' ');
-  const custom = command.slice(prefix);
-  console.log(custom + ' ' + command);
   
   if (command == 'ping') {
     message.reply('Pong!');
