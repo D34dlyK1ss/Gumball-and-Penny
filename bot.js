@@ -10,6 +10,7 @@ bot.once('ready', () => {
 bot.on('message', message => {
 
   const jojo = '';
+  const last = '';
   const custom = message.content.slice(prefix.length).split(' ');
   const command = custom.shift().toLowerCase();
   
@@ -17,10 +18,10 @@ bot.on('message', message => {
     message.reply('Pong!');
   }
 
-  if (message.content.startsWith(`${prefix}help`)) {
+  if (command == 'help')) {
     if (custom == '')
     {
-      message.channel.send('Todos os nossos comandos! :video_game:\n```\nhelp\nfact\ninvite\nping\nrandom\ssay\nwhichjojo```Para saberes mais sobre algum comando usa `+help [nome do comando]`.\n\nP.S.:Existem uns quantos secretos :smiling_imp:');
+      message.channel.send('Todos os nossos comandos! :video_game:\n```\nclear\nfact\nhelp\ninvite\nping\nrandom\ssay\nwhichjojo```Para saberes mais sobre algum comando usa '+help [nome do comando]'.\n\nP.S.:Existem uns quantos secretos :smiling_imp:');
     }
     else
     {
@@ -31,7 +32,7 @@ bot.on('message', message => {
 
       if (custom == 'invite')
       {
-        message.channel.send('O `invite` mostra o link para nos convidares para um dos teus servidores!');
+        message.channel.send('Mostraremos o link para nos convidares para um dos teus servidores!');
       }
 
       if (custom == 'ping')
@@ -46,17 +47,17 @@ bot.on('message', message => {
 
       if (custom == 'say')
       {
-        message.channel.send('O `say` faz um de nós dizer o que quiseres! :slight_smile:');
+        message.channel.send('Isso faz um de nós dizer o que quiseres! :slight_smile:');
       }
 
       if (custom == 'whichjojo')
       {
-        message.channel.send("Com o `whichjojo` diremos qual JoJo de _JoJo's Bizarre Adventure_ és!");
+        message.channel.send("Com o 'whichjojo' diremos qual JoJo de _JoJo's Bizarre Adventure_ és!");
       }
     }
   }
 
-  if (message.content.startsWith(`${prefix}fact`)) {
+  if (command == 'fact')) {
     var rnd = Math.floor(Math.random() * 7);
     if (message.member.id == 271737298951995393)
     {
@@ -99,7 +100,7 @@ bot.on('message', message => {
     }
   }
 
-  if (message.content.startsWith(`${prefix}whichjojo`)) {
+  if (command == 'whichjojo')) {
     last = message.member.id.slice(-1);
     if (last == 0)
     {
@@ -144,11 +145,11 @@ bot.on('message', message => {
     message.channel.send(jojo);
   }
 
-  if (message.content.startsWith(`${prefix}invite`)) {
+  if (command == 'invite')) {
     message.channel.send('Convida-nos para o teu server! :grin:\nhttps://discordapp.com/oauth2/authorize?&client_id=679041548955942914&scope=bot&permissions=305523718');
   }
 
-  if (message.content.startsWith(`${prefix}say`)) {
+  if (command == 'say')) {
     message.delete();
     message.channel.send(custom);
   }
@@ -177,7 +178,7 @@ bot.on('message', message => {
     message.channel.send({ files: ["images/hmm.jpg"] });
   }
 
-  if (message.content.startsWith(`${prefix}random`)) {
+  if (command == 'random')) {
     if (custom == '')
     {
       rnd = Math.floor(Math.random() * 100) + 1;
@@ -189,7 +190,7 @@ bot.on('message', message => {
     message.channel.send(rnd + '!');
   }
 
-  if (message.content.startsWith(`${prefix}clear`)) {
+  if (command == 'clear')) {
     message.delete();
     if (!message.member.hasPermission("MANAGE_MESSAGES")) {
       message.channel.send("Não tens permissão para usar este comando! :anger:").then(msg => msg.delete(3000));
