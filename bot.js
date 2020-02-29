@@ -191,12 +191,12 @@ bot.on('message', message => {
   if (command == 'clear') {
     message.delete();
     if (!message.member.hasPermission("MANAGE_MESSAGES")) {
-        message.channel.send("Não tens permissão para usar este comando! :anger:").then(msg => msg.delete(3000));
+        message.reply("Não tens permissão para usar este comando! :anger:").then(msg => msg.delete(3000));
     }
     else {
         if (custom == '' || custom == '0')
         {
-          message.channel.send("Tens de definir o número de mensagens que queres apagar!").then(msg => msg.delete(3000));
+          message.reply("Tens de definir o número de mensagens que queres apagar!").then(msg => msg.delete(3000));
         }
         else
         {
