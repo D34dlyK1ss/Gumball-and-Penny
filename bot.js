@@ -18,7 +18,7 @@ bot.on('message', message => {
     message.reply('Pong!');
   }
 
-  if (command == 'help')) {
+  if (command == 'help') {
     if (custom == '')
     {
       message.channel.send('Todos os nossos comandos! :video_game:\n```\nclear\nfact\nhelp\ninvite\nping\nrandom\ssay\nwhichjojo```Para saberes mais sobre algum comando usa '+help [nome do comando]'.\n\nP.S.:Existem uns quantos secretos :smiling_imp:');
@@ -57,7 +57,7 @@ bot.on('message', message => {
     }
   }
 
-  if (command == 'fact')) {
+  if (command == 'fact') {
     var rnd = Math.floor(Math.random() * 7);
     if (message.member.id == 271737298951995393)
     {
@@ -100,7 +100,7 @@ bot.on('message', message => {
     }
   }
 
-  if (command == 'whichjojo')) {
+  if (command == 'whichjojo') {
     last = message.member.id.slice(-1);
     if (last == 0)
     {
@@ -145,11 +145,11 @@ bot.on('message', message => {
     message.channel.send(jojo);
   }
 
-  if (command == 'invite')) {
+  if (command == 'invite') {
     message.channel.send('Convida-nos para o teu server! :grin:\nhttps://discordapp.com/oauth2/authorize?&client_id=679041548955942914&scope=bot&permissions=305523718');
   }
 
-  if (command == 'say')) {
+  if (command == 'say') {
     message.delete();
     message.channel.send(custom);
   }
@@ -178,7 +178,7 @@ bot.on('message', message => {
     message.channel.send({ files: ["images/hmm.jpg"] });
   }
 
-  if (command == 'random')) {
+  if (command == 'random') {
     if (custom == '')
     {
       rnd = Math.floor(Math.random() * 100) + 1;
@@ -190,7 +190,7 @@ bot.on('message', message => {
     message.channel.send(rnd + '!');
   }
 
-  if (command == 'clear')) {
+  if (command == 'clear') {
     message.delete();
     if (!message.member.hasPermission("MANAGE_MESSAGES")) {
       message.channel.send("Não tens permissão para usar este comando! :anger:").then(msg => msg.delete(3000));
