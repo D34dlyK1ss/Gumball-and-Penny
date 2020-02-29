@@ -14,7 +14,7 @@ bot.on('message', message => {
   var number = 0;
   
   const array = message.content.split(' ');
-  const command = array[0];
+  const command = array[1];
   const custom = array.slice(1);
   
   if (command == 'ping') {
