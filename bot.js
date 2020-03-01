@@ -149,7 +149,7 @@ bot.on('message', message => {
   }
 
   if (command == 'invite') {
-    message.channel.send('Convida-nos para o teu server! :grin:\nhttps://discordapp.com/oauth2/authorize?&client_id=679041548955942914&scope=bot&permissions=305523718');
+    message.channel.send('Convida-nos para o teu server! :grin:\nhttps://discordapp.com/oauth2/authorize?&client_id=679041548955942914&scope=bot&permissions=1916267615');
   }
 
   if (command == 'say') {
@@ -208,7 +208,13 @@ bot.on('message', message => {
           if (number > 100){
             number = 100;
           }
-          message.channel.bulkDelete(number).then(() => message.channel.send("`" + number + "` foram apagadas!").then(msg => msg.delete(3000))).catch(console.error);
+          message.channel.bulkDelete(number)
+          if (number == 1){
+            message.channel.send("`1`mensagem foi apagada!").then(msg => msg.delete(3000))).catch(console.error);
+          }
+          else {
+            message.channel.send("`" + number + "`mensagens foram apagadas!").then(msg => msg.delete(3000))).catch(console.error);
+          }
         }
       }
     }
