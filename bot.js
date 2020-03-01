@@ -210,10 +210,10 @@ bot.on('message', message => {
           }
           message.channel.bulkDelete(number)
           if (number == 1){
-            message.channel.send("`1`mensagem foi apagada!").then(msg => msg.delete(3000))).catch(console.error);
+            message.channel.send("`1`mensagem foi apagada!").then(msg => msg.delete(3000)).catch(console.error);
           }
           else {
-            message.channel.send("`" + number + "`mensagens foram apagadas!").then(msg => msg.delete(3000))).catch(console.error);
+            message.channel.send("`" + number + "`mensagens foram apagadas!").then(msg => msg.delete(3000)).catch(console.error);
           }
         }
       }
