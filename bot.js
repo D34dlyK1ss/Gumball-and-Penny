@@ -12,7 +12,7 @@ bot.on('message', message => {
   if (message.content.substring(0, 1) == prefix) {
     var custom = message.content.substring(1).split(' ');
     var command = custom[0];
-    custom = custom.splice(1);
+    custom = custom.join(' ');
   }
   
   var jojo = '';
