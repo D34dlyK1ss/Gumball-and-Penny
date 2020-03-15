@@ -154,8 +154,14 @@ bot.on('message', message => {
   }
 
   if (command == 'say') {
-    message.delete();
-    message.channel.send(custom);
+    if (custom != '')
+    {
+      message.delete();
+      message.channel.send(custom);
+    }
+    else {
+      message.delete();
+    }
   }
 
   if (message.content == 'shine') {
