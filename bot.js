@@ -13,7 +13,7 @@ bot.on('message', message => {
     var custom = message.content.substring(1).split(' ');
     var command = custom[0];
     custom = custom.splice(1);
-    custom = custom.join(' '):
+    custom = custom.join(' ');
   }
   
   var jojo = '';
@@ -154,14 +154,8 @@ bot.on('message', message => {
   }
 
   if (command == 'say') {
-    if (custom != '')
-    {
       message.delete();
       message.channel.send(custom);
-    }
-    else {
-      message.delete();
-    }
   }
 
   if (message.content == 'shine') {
