@@ -108,45 +108,45 @@ bot.on('message', message => {
     last = message.member.id.slice(-1);
     if (last == 0)
     {
-      jojo = 'És o George Joestar I!\nhttps://vignette.wikia.nocookie.net/jjba/images/c/c6/George_Joestar_%28Anime%29.png';
+      jojo = 'És o George Joestar I! - わたしの名はジョースター。';
     }
     if (last == 1)
     {
-      jojo = 'És a Jolyne Kujo!\nhttps://vignette.wikia.nocookie.net/jjba/images/3/3e/Jolyne_infobox_manga.jpg';
+      jojo = 'És a Jolyne Kujo! - _やれやれだわ。_';
     }
     if (last == 2)
     {
-      jojo = 'És o Johnathan Joestar!\nhttps://vignette.wikia.nocookie.net/jjba/images/3/3f/JonathanP2.png';
+      jojo = 'És o Johnathan Joestar! - _サンライトイエローオーバードライブ！_';
     }
     if (last == 3)
     {
-      jojo = 'És o Johnny Joestar!\nhttps://vignette.wikia.nocookie.net/jjba/images/9/96/Johny_Joestar_profile.jpg';
+      jojo = 'És o Johnny Joestar! - _家に帰りましょう。。。_';
     }
     if (last == 4)
     {
-      jojo = 'És o Josuke Higashikata!\nhttps://vignette.wikia.nocookie.net/jjba/images/d/d2/Jo2uke.png';
+      jojo = 'És o Josuke Higashikata! - _ぼくは一体何？！_';
     }
     if (last == 5)
     {
-      jojo = 'És o George Joestar II!\nhttps://vignette.wikia.nocookie.net/jjba/images/9/92/George_Joestar_II_%28Anime%29.png';
+      jojo = 'És o George Joestar II! - ~~死んだ~~';
     }
     if (last == 6)
     {
-      jojo = 'És o Josuke Higashikata!\nhttps://vignette.wikia.nocookie.net/jjba/images/2/24/JosukeAnime.PNG';
+      jojo = 'És o Josuke Higashikata! - _グレートですよこいつはァ！_';
     }
     if (last == 7)
     {
-      jojo = 'És o Joseph Joestar!\nhttps://vignette.wikia.nocookie.net/jjba/images/e/e4/OldJosephAnime.png';
+      jojo = 'És o Joseph Joestar! - _逃げるんだよ!_';
     }
     if (last == 8)
     {
-      jojo = 'És o Jotaro Kujo!\nhttps://vignette.wikia.nocookie.net/jjba/images/9/99/KujoAnime.png';
+      jojo = 'És o Jotaro Kujo! - _やれやれだぜ。_';
     }
     if (last == 9)
     {
-      jojo = 'És o Giorno Giovanna!\nhttps://vignette.wikia.nocookie.net/jjba/images/1/19/Giorno_Giovanna_Anime.png';
+      jojo = 'És o Giorno Giovanna! - _このジョルノジョバーナには夢がある。_';
     }
-    message.channel.send(jojo);
+    message.channel.send(jojo, {files:["images/jojo (" + last + ").webp"]});
   }
 
   if (command == 'invite') {
