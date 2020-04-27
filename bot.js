@@ -202,6 +202,12 @@ bot.on('message', message => {
     mention.sendMessage (mentionMessage);
   }
 
+  if (command == 'test'){
+    if (mention == null) {return;}
+    message.delete(3000);
+    message.reply(mention.length);
+  }
+
   if (command == 'clear') {
     message.delete();
     if (!message.member.hasPermission("MANAGE_MESSAGES")) {
