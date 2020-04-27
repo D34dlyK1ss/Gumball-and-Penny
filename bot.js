@@ -199,7 +199,7 @@ bot.on('message', message => {
     if (mention == null) {return;}
     message.delete();
     var mention2 =  String(mention);
-    mentionMessage = message.content.slice (mention2.length);
+    mentionMessage = message.content.slice (5 + mention2.length);
     mention.sendMessage (mentionMessage);
   }
 
