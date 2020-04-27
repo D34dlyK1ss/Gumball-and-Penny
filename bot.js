@@ -1,5 +1,6 @@
 const Discord = require('discord.js');
 const {prefix, token} = require('./config.json');
+const schedule = require('node-schedule');
 const bot = new Discord.Client();
 
 bot.once('ready', () => {
@@ -17,12 +18,15 @@ bot.on('message', message => {
     custom = custom.join(' ');
   }
   
+  var j = schedule.scheduleJob('* 20 * * *', function(){
+    console.log('The answer to life, the universe, and everything!');
+  });
+
   var mentionMessage;
   var jojo = '';
   var last = 0;
   var number = 0;
   var currentdate = new Date(); 
-  var datetime = currentdate.getDate() + "/" + (currentdate.getMonth()+1)  + "/" + currentdate.getFullYear() + " @ " + currentdate.getHours() + ":" + currentdate.getMinutes() + ":" + currentdate.getSeconds();
   
   if (command == 'ping') {
     message.reply('Pong!');
