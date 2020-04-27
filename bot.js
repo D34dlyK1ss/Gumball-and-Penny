@@ -2,12 +2,13 @@ const Discord = require('discord.js');
 const {prefix, token} = require('./config.json');
 const schedule = require('node-schedule');
 const bot = new Discord.Client();
-const currentdate = new Date("DD-MM-YYYY");
+const date = new Date();
+const currentdate = new Intl.DateTimeFormat('en', { year: 'numeric', month: 'short', day: '2-digit' })
 
 bot.once('ready', () => {
   console.log('Preparados!\nO prefixo é ' + prefix);
   bot.user.setActivity("+help");
-  var j = schedule.scheduleJob({date: 28}, function(){
+  var j = schedule.scheduleJob({date: 28, hour: 12}, function(){
     bot.users.get("287953505992572929").send(":tada: Parabéns Lilly! Completaste" + howmuch + "com o teu Ruru! :purple_heart:");
     bot.users.get("503009296267608066").send(":tada: Parabéns Ruru! Completaste" + howmuch + "com a tua Lilly! :purple_heart:");
   });
