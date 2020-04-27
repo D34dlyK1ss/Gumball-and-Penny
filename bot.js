@@ -6,9 +6,8 @@ const bot = new Discord.Client();
 bot.once('ready', () => {
   console.log('Preparados!\nO prefixo é ' + prefix);
   bot.user.setActivity("+help");
-  var j = schedule.scheduleJob('36 * * * *', function(){
-    var user = bot.get_user(287953505992572929);
-    user.send('The answer to life, the universe, and everything!');
+  var j = schedule.scheduleJob('39 * * * *', function(){
+    bot.users.get("287953505992572929").send("ESTÁ A FUNCIONAR!");
   });
 })
 
