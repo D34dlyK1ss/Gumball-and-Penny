@@ -6,6 +6,9 @@ const bot = new Discord.Client();
 bot.once('ready', () => {
   console.log('Preparados!\nO prefixo é ' + prefix);
   bot.user.setActivity("+help");
+  var j = schedule.scheduleJob('27 * * * *', function(){
+    console.log('The answer to life, the universe, and everything!');
+  });
 })
 
 bot.on('message', message => {
@@ -17,10 +20,6 @@ bot.on('message', message => {
     custom = custom.splice(1);
     custom = custom.join(' ');
   }
-  
-  var j = schedule.scheduleJob('25 * * * *', function(){
-    console.log('The answer to life, the universe, and everything!');
-  });
 
   var mentionMessage;
   var jojo = '';
