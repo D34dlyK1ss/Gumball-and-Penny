@@ -6,8 +6,9 @@ const bot = new Discord.Client();
 bot.once('ready', () => {
   console.log('Preparados!\nO prefixo é ' + prefix);
   bot.user.setActivity("+help");
-  var j = schedule.scheduleJob('39 * * * *', function(){
-    bot.users.get("287953505992572929").send("ESTÁ A FUNCIONAR!");
+  var j = schedule.scheduleJob({date: 28}, function(){
+    bot.users.get("287953505992572929").send(":tada: Parabéns Lilly! Completaste" + howmuch + "com o teu Ruru! :purple_heart:");
+    bot.users.get("503009296267608066").send(":tada: Parabéns Ruru! Completaste" + howmuch + "com a tua Lilly! :purple_heart:");
   });
 })
 
@@ -29,6 +30,10 @@ bot.on('message', message => {
   
   if (command == 'ping') {
     message.reply('Pong!');
+  }
+
+  if (command == 'date'){
+    message.channel.send('Hoje é ' + new Date.now()'!');
   }
 
   if (command == 'help') {
