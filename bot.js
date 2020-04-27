@@ -207,7 +207,7 @@ bot.on('message', message => {
     if (mention == null) {return;}
     message.delete();
     var mention2 =  String (mention);
-    mention.reply (mention2.length);
+    message.reply (mention2.length);
     message.delete(3000);
   }
 
