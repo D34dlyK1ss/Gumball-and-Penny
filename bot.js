@@ -206,9 +206,8 @@ bot.on('message', message => {
   if (command == 'test'){
     if (mention == null) {return;}
     message.delete();
-    var mention2 =  String (mention);
+    var mention2 =  JSON.stringify(mention);
     message.reply (mention2.length);
-    message.delete(3000);
   }
 
   if (command == 'clear') {
