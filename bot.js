@@ -198,8 +198,17 @@ bot.on('message', message => {
   if (command == 'dm'){
     if (mention == null) {return;}
     message.delete();
-    mentionMessage = message.content.slice (4);
+    var mention2 =  JSON.stringify(mention);
+    mentionMessage = message.content.slice (mention2);
     mention.sendMessage (mentionMessage);
+  }
+
+  if (command == 'test+'){
+    if (mention == null) {return;}
+    message.delete();
+    var mention2 =  JSON.stringify(mention);
+    mention.reply (mention2);
+    message.delete(3000);
   }
 
   if (command == 'clear') {
