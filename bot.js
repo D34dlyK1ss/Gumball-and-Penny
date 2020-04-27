@@ -26,14 +26,14 @@ bot.on('message', message => {
   var jojo = '';
   var last = 0;
   var number = 0;
-  var currentdate = new Date(); 
+  var currentdate = new Date.now(); 
   
   if (command == 'ping') {
     message.reply('Pong!');
   }
 
   if (command == 'date'){
-    message.channel.send('Hoje é ' + new Date.now()'!');
+    message.channel.send('Hoje é ' + currentdate + '!');
   }
 
   if (command == 'help') {
