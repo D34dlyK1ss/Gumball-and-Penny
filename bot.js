@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 const {prefix, token} = require('./config.json');
 const schedule = require('node-schedule');
 const bot = new Discord.Client();
-const currentdate = new Date.format("DD/MM/YYYY");
+const currentdate = new Date().format("DD/MM/YYYY");
 
 bot.once('ready', () => {
   console.log('Preparados!\nO prefixo é ' + prefix);
