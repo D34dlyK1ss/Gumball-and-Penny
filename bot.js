@@ -18,7 +18,7 @@ bot.on('message', message => {
     custom = custom.join(' ');
   }
   
-  var j = schedule.scheduleJob('23 * * * *', function(){
+  var j = schedule.scheduleJob('25 * * * *', function(){
     console.log('The answer to life, the universe, and everything!');
   });
 
