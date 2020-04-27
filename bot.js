@@ -2,15 +2,18 @@ const Discord = require('discord.js');
 const {prefix, token} = require('./config.json');
 const schedule = require('node-schedule');
 const bot = new Discord.Client();
-const date = new Date();
-const currentdate = new Intl.DateTimeFormat('en', { year: 'numeric', month: 'short', day: '2-digit' })
-
+const currentdate = new Date();
+const relationship = new Date(2019, 12, 28);
+const mili = currentdate - relationship;
+const value = mili/2629746000;
+const months = Math.round(mili/2629746000);
+const years = Math.round(mili/31536000000);
 bot.once('ready', () => {
   console.log('Preparados!\nO prefixo é ' + prefix);
   bot.user.setActivity("+help");
-  var j = schedule.scheduleJob({date: 28, hour: 12}, function(){
-    bot.users.get("287953505992572929").send(":tada: Parabéns Lilly! Completaste" + howmuch + "com o teu Ruru! :purple_heart:");
-    bot.users.get("503009296267608066").send(":tada: Parabéns Ruru! Completaste" + howmuch + "com a tua Lilly! :purple_heart:");
+  var j = schedule.scheduleJob({date: 28, hour: 13}, function(){
+    bot.users.get("287953505992572929").send(":tada: Parabéns Lilly! Completaste " + years + " anos e " + months + " meses com o teu Ruru! :purple_heart:");
+    bot.users.get("503009296267608066").send(":tada: Parabéns Ruru! Completaste " + years + " anos e " + months + " meses com a tua Lilly! :purple_heart:");
   });
 })
 
