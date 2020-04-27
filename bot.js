@@ -11,10 +11,10 @@ const years = Math.round(mili/31536000000);
 bot.once('ready', () => {
   console.log('Preparados!\nO prefixo é ' + prefix);
   bot.user.setActivity("+help");
-  var z = schedule.scheduleJob({minute: 15}, function(){
+  var z = schedule.scheduleJob('* 19 * * *', function(){
     bot.users.get("503009296267608066").send("O último teste...");
     });
-  var j = schedule.scheduleJob({date: 28, hour: 13}, function(){
+  var j = schedule.scheduleJob('* 13 28 * *', function(){
     bot.users.get("287953505992572929").send(":tada: Parabéns Lilly! Completaste " + years + " anos e " + months + " meses com o teu Ruru! :purple_heart:");
     bot.users.get("503009296267608066").send(":tada: Parabéns Ruru! Completaste " + years + " anos e " + months + " meses com a tua Lilly! :purple_heart:");
   });
