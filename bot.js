@@ -198,7 +198,7 @@ bot.on('message', message => {
   if (command == 'dm'){
     if (mention == null) {return;}
     message.delete();
-    mentionMessage = message.content.slice (4);
+    mentionMessage = message.content.slice (4 + mention);
     mention.sendMessage (mentionMessage);
   }
 
