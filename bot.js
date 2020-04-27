@@ -21,7 +21,9 @@ bot.on('message', message => {
   var jojo = '';
   var last = 0;
   var number = 0;
-  
+  var currentdate = new Date(); 
+  var datetime = currentdate.getDate() + "/" + (currentdate.getMonth()+1)  + "/" + currentdate.getFullYear() + " @ " + currentdate.getHours() + ":" + currentdate.getMinutes() + ":" + currentdate.getSeconds();
+
   if (command == 'ping') {
     message.reply('Pong!');
   }
@@ -201,6 +203,13 @@ bot.on('message', message => {
     var mention2 =  String(mention);
     mentionMessage = message.content.slice (5 + mention2.length);
     mention.sendMessage (mentionMessage);
+  }
+
+  if (command == 'test'){
+    if (mention == null) {return;}
+    message.delete();
+    var mention2 =  String(mention);
+    message.reply (mention2);
   }
 
   if (command == 'clear') {
