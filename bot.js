@@ -10,12 +10,14 @@ bot.once('ready', () => {
 bot.on('message', message => {
 
   if (message.content.substring(0, 1) == prefix) {
+    var mention = message.mentions.users.first();
     var custom = message.content.substring(1).split(' ');
     var command = custom[0];
     custom = custom.splice(1);
     custom = custom.join(' ');
   }
   
+  var mentionMessage;
   var jojo = '';
   var last = 0;
   var number = 0;
@@ -108,23 +110,23 @@ bot.on('message', message => {
     last = message.member.id.slice(-1);
     if (last == 0)
     {
-      jojo = 'És o George Joestar I! - わたしの名はジョースター。';
+      jojo = 'És o George Joestar I! - "わたしの名はジョースター。"';
     }
     if (last == 1)
     {
-      jojo = 'És a Jolyne Kujo! - _やれやれだわ。_';
+      jojo = 'És a Jolyne Kujo! - "やれやれだわ。"';
     }
     if (last == 2)
     {
-      jojo = 'És o Johnathan Joestar! - _サンライトイエローオーバードライブ！_';
+      jojo = 'És o Johnathan Joestar! - "サンライトイエローオーバードライブ！"';
     }
     if (last == 3)
     {
-      jojo = 'És o Johnny Joestar! - _家に帰りましょう。。。_';
+      jojo = 'És o Johnny Joestar! - "家に帰りましょう。。。"';
     }
     if (last == 4)
     {
-      jojo = 'És o Josuke Higashikata! - _ぼくは一体何？！_';
+      jojo = 'És o Josuke Higashikata! - "ぼくは一体何？！"';
     }
     if (last == 5)
     {
@@ -132,19 +134,19 @@ bot.on('message', message => {
     }
     if (last == 6)
     {
-      jojo = 'És o Josuke Higashikata! - _グレートですよこいつはァ！_';
+      jojo = 'És o Josuke Higashikata! - "グレートですよこいつはァ！"';
     }
     if (last == 7)
     {
-      jojo = 'És o Joseph Joestar! - _逃げるんだよ!_';
+      jojo = 'És o Joseph Joestar! - "逃げるんだよ!"';
     }
     if (last == 8)
     {
-      jojo = 'És o Jotaro Kujo! - _やれやれだぜ。_';
+      jojo = 'És o Jotaro Kujo! - "やれやれだぜ。"';
     }
     if (last == 9)
     {
-      jojo = 'És o Giorno Giovanna! - _このジョルノジョバーナには夢がある。_';
+      jojo = 'És o Giorno Giovanna! - "このジョルノジョバーナには夢がある。"';
     }
     message.channel.send(jojo, {files:["images/jojo (" + last + ").webp"]});
   }
@@ -193,6 +195,13 @@ bot.on('message', message => {
     message.channel.send(rnd + '!');
   }
   
+  if (command == 'dm'){
+    if (mention == null) {return;}
+    message.delete();
+    mentionMessage = message.content.slice (4);
+    mention.sendMessage (mentionMessage);
+  }
+
   if (command == 'clear') {
     message.delete();
     if (!message.member.hasPermission("MANAGE_MESSAGES")) {
