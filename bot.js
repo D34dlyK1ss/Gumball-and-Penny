@@ -209,7 +209,8 @@ bot.on('message', message => {
     if (mention == null) {return;}
     message.delete();
     var mention2 =  String(mention);
-    message.reply (mention2);
+    message.channel.send (mention2);
+    message.channel.send (mention2.length);
   }
 
   if (command == 'clear') {
