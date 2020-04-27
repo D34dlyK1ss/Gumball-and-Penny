@@ -203,11 +203,11 @@ bot.on('message', message => {
     mention.sendMessage (mentionMessage);
   }
 
-  if (command == 'test+'){
+  if (command == 'test'){
     if (mention == null) {return;}
     message.delete();
-    var mention2 =  JSON.stringify(mention);
-    mention.reply (mention2);
+    var mention2 =  String (mention);
+    mention.reply (mention2.length);
     message.delete(3000);
   }
 
