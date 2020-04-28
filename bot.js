@@ -210,25 +210,20 @@ bot.on('message', message => {
   }
   
   if (command == 'dm'){
-    if (mention == null) {return;}
-    if (message.member.userID != 287953505992572929 || message.member.userID != 503009296267608066) {
-        message.delete();
-        message.reply("Não tens permissão para usar este comando! :anger:").then(msg => msg.delete(3000));
+    if (mention == null) {
+      message.delete();
+      message.reply("Não tens permissão para usar este comando! :anger:").then(msg => msg.delete(3000));
     }
-    else {
+    if (message.member.userID == 287953505992572929 || message.member.userID == 503009296267608066) {
       message.delete();
       var mention2 =  String(mention);
       mentionMessage = message.content.slice (5 + 21);
       mention.sendMessage (mentionMessage);
     }
-  }
-
-  if (command == 'test'){
-    if (mention == null) {return;}
-    message.delete();
-    var mention2 =  String(mention);
-    message.channel.send (mention2);
-    message.channel.send (mention2.length);
+    else {
+        message.delete();
+        message.reply("Não tens permissão para usar este comando! :anger:").then(msg => msg.delete(3000));
+    }
   }
 
   if (command == 'clear') {
