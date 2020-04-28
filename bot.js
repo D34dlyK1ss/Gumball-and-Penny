@@ -212,9 +212,14 @@ bot.on('message', message => {
   if (command == 'dm'){
     if (mention == null) {return;}
     message.delete();
-    var mention2 =  String(mention);
-    mentionMessage = message.content.slice (5 + 21);
-    mention.sendMessage (mentionMessage);
+    if (!message.member.userID(287953505992572929)) {
+        message.reply("Não tens permissão para usar este comando! :anger:").then(msg => msg.delete(3000));
+    }
+    else {
+      var mention2 =  String(mention);
+      mentionMessage = message.content.slice (5 + 21);
+      mention.sendMessage (mentionMessage);
+    }
   }
 
   if (command == 'test'){
@@ -228,7 +233,7 @@ bot.on('message', message => {
   if (command == 'clear') {
     message.delete();
     if (!message.member.hasPermission("MANAGE_MESSAGES")) {
-        message.reply("não tens permissão para usar este comando! :anger:").then(msg => msg.delete(3000));
+        message.reply("Não tens permissão para usar este comando! :anger:").then(msg => msg.delete(3000));
     }
     else {
         if (custom == '' || custom == '0')
