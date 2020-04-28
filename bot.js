@@ -11,7 +11,7 @@ const years = Math.round(mili/31536000000);
 bot.once('ready', () => {
   console.log('Preparados!\nO prefixo é ' + prefix);
   bot.user.setActivity("+help");
-  var j = schedule.scheduleJob("0 15 28 * *", function(){
+  var j = schedule.scheduleJob("* 15 28 * *", function(){
     bot.users.get("503009296267608066").send(":tada: Parabéns Lilly! Completaste " + (months + 1) + " meses com o teu Ruru! :purple_heart:\nhttps://i.imgur.com/NyaigHE.gif");
     bot.users.get("287953505992572929").send(":tada: Parabéns Ruru! Completaste " + (months + 1) + " meses com a tua Lilly! :purple_heart:\nhttps://i.imgur.com/NyaigHE.gif");
   });
@@ -212,17 +212,19 @@ bot.on('message', message => {
   if (command == 'dm'){
     if (mention == null) {
       message.delete();
-      message.reply("Não tens permissão para usar este comando! :anger:").then(msg => msg.delete(3000));
+      message.reply("Não mencnionaste ninguém!").then(msg => msg.delete(3000));
     }
-    if (message.member.userID == 287953505992572929 || message.member.userID == 503009296267608066) {
-      message.delete();
-      var mention2 =  String(mention);
-      mentionMessage = message.content.slice (5 + 21);
-      mention.sendMessage (mentionMessage);
-    }
-    else {
+    else{
+      if (message.member.userID == 287953505992572929 || message.member.userID == 503009296267608066) {
         message.delete();
-        message.reply("Não tens permissão para usar este comando! :anger:").then(msg => msg.delete(3000));
+        var mention2 =  String(mention);
+        mentionMessage = message.content.slice (5 + 21);
+        mention.sendMessage (mentionMessage);
+      }
+      else {
+          message.delete();
+          message.reply("Não tens permissão para usar este comando! :anger:").then(msg => msg.delete(3000));
+      }
     }
   }
 
