@@ -212,7 +212,7 @@ bot.on('message', message => {
   if (command == 'dm'){
     if (mention == null) {return;}
     message.delete();
-    if (!message.member.userID(287953505992572929)) {
+    if (message.member.userID != 287953505992572929 || message.member.userID != 503009296267608066) {
         message.reply("Não tens permissão para usar este comando! :anger:").then(msg => msg.delete(3000));
     }
     else {
