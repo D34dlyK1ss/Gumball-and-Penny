@@ -171,7 +171,9 @@ bot.on('message', message => {
         message.channel.send("Não podemos escrever links!");
         message.delete(3000);
     }
+    else{
       message.channel.send(custom);
+    }
   }
 
   if (message.content == 'shine') {
