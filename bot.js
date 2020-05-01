@@ -3,7 +3,6 @@ const {prefix, token} = require('./config.json');
 const schedule = require('node-schedule');
 const bot = new Discord.Client();
 
-const permfail = 'Não tens permissão para usar este comando! :anger:'
 
 const date = new Date(2012, 11, 21, 5, 30, 0);
 const currentdate = new Date();
@@ -23,6 +22,12 @@ bot.once('ready', () => {
 
 bot.on('message', message => {
 
+  const permfail = 'Não tens permissão para usar este comando! :anger:'
+  var mentionMessage;
+  var jojo = '';
+  var last = 0;
+  var number = 0;
+  
   if (message.content.substring(0, 1) == prefix) {
     var mention = message.mentions.users.first();
     var custom = message.content.substring(1).split(' ');
@@ -30,11 +35,10 @@ bot.on('message', message => {
     custom = custom.splice(1);
     custom = custom.join(' ');
   }
-
-  var mentionMessage;
-  var jojo = '';
-  var last = 0;
-  var number = 0;
+  
+  if (command == 'test'){
+    message.channel.send(permfail);
+  }
   
   if (command == 'ping') {
     message.reply('Pong!');
@@ -241,7 +245,7 @@ bot.on('message', message => {
     else {
         if (custom == '' || custom == '0')
         {
-          message.reply("tens de definir o número de mensagens que queres apagar!").then(msg => msg.delete(3000));
+          message.reply("Tens de definir o número de mensagens que queres apagar!").then(msg => msg.delete(3000));
         }
         else
         {
