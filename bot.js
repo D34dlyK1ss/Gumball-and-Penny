@@ -2,12 +2,16 @@ const Discord = require('discord.js');
 const {prefix, token} = require('./config.json');
 const schedule = require('node-schedule');
 const bot = new Discord.Client();
+
+const permfail = 'Não tens permissão para usar este comando! :anger:'
+
 const date = new Date(2012, 11, 21, 5, 30, 0);
 const currentdate = new Date();
 const relationship = new Date(2019, 12, 28);
 const mili = currentdate - relationship;
 const months = Math.round(mili/2629746000);
 const years = Math.round(mili/31536000000);
+
 bot.once('ready', () => {
   console.log('Preparados!\nO prefixo é ' + prefix);
   bot.user.setActivity("+help");
@@ -31,7 +35,6 @@ bot.on('message', message => {
   var jojo = '';
   var last = 0;
   var number = 0;
-  var permfail = 'Não tens permissão para usar este comando! :anger:'
   
   if (command == 'ping') {
     message.reply('Pong!');
