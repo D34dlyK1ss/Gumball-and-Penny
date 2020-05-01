@@ -167,6 +167,10 @@ bot.on('message', message => {
 
   if (command == 'say') {
       message.delete();
+    if (custom.startsWith("http"){
+        message.channel.send("Não podemos escrever links!");
+        message.delete(3000);
+    }
       message.channel.send(custom);
   }
 
