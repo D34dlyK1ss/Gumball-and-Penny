@@ -79,12 +79,12 @@ bot.on('message', message => {
     {
       rnd = 0;
     }
-
+    
     if (rnd == 0)
     {
-      message.channel.send('O Leandro é gay.\nhttps://i.imgur.com/CYTHGhZ.png');
+      message.channel.send('Usada muitas vezes de forma excessiva, para algumas pessoas a palavra swag tem um significado diferente do normal: Secretly We Are Gay\nhttps://i.imgur.com/CoRrIKr.jpg');
     }
-
+    
     if (rnd == 1)
     {
       message.channel.send('A soma de dois números idênticos é igual ao dobro de um deles. :nine: x :nine: = :nine: x :two:');
