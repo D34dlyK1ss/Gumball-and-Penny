@@ -5,7 +5,6 @@ const bot = new Discord.Client();
 
 const permfail = 'Não tens permissão para usar este comando! :anger:'
 
-const date = new Date(2012, 11, 21, 5, 30, 0);
 const currentdate = new Date();
 const relationship = new Date(2019, 12, 28);
 const mili = currentdate - relationship;
