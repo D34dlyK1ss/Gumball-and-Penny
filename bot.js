@@ -166,13 +166,11 @@ bot.on('message', message => {
   }
 
   if (command == 'say') {
+    message.delete();
     if (custom.startsWith("http")){
-      message.delete();
-      message.channel.send("Não podemos escrever links!");
-      message.delete(3000);
+      message.channel.send("Não podemos escrever links!").then(msg => msg.delete(3000));
     }
     else{
-      message.delete();
       message.channel.send(custom);
     }
   }
