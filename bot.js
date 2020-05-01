@@ -3,6 +3,7 @@ const {prefix, token} = require('./config.json');
 const schedule = require('node-schedule');
 const bot = new Discord.Client();
 
+const permfail = 'Não tens permissão para usar este comando! :anger:'
 
 const date = new Date(2012, 11, 21, 5, 30, 0);
 const currentdate = new Date();
@@ -22,7 +23,6 @@ bot.once('ready', () => {
 
 bot.on('message', message => {
 
-  const permfail = 'Não tens permissão para usar este comando! :anger:'
   var mentionMessage;
   var jojo = '';
   var last = 0;
