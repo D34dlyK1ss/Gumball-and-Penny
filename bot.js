@@ -31,6 +31,7 @@ bot.on('message', message => {
   var jojo = '';
   var last = 0;
   var number = 0;
+  var permfail = 'Não tens permissão para usar este comando! :anger:'
   
   if (command == 'ping') {
     message.reply('Pong!');
@@ -224,7 +225,7 @@ bot.on('message', message => {
       }
       else {
           message.delete();
-          message.reply("Não tens permissão para usar este comando! :anger:").then(msg => msg.delete(3000));
+          message.reply(permfail).then(msg => msg.delete(3000));
       }
     }
   }
@@ -232,7 +233,7 @@ bot.on('message', message => {
   if (command == 'clear') {
     message.delete();
     if (!message.member.hasPermission("MANAGE_MESSAGES")) {
-        message.reply("Não tens permissão para usar este comando! :anger:").then(msg => msg.delete(3000));
+        message.reply(permfail).then(msg => msg.delete(3000));
     }
     else {
         if (custom == '' || custom == '0')
