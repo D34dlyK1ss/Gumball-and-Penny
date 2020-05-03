@@ -2,7 +2,6 @@ const Discord = require('discord.js');
 const {token, owner} = require('./config.json');
 let prefix;
 const bot = new Discord.Client();
-bot.user.setActivity('dc!help');
 
 const firebase = require('firebase/app');
 const FieldValue = require('firebase-admin').firestore.FieldValue;
@@ -19,6 +18,7 @@ let db = admin.firestore();
 const permfail = 'Não tens permissão para usar este comando! :anger:';
 
 bot.once('ready', async () => {
+  bot.user.setActivity('dc!help');
   console.log('Preparado!');
 });
 
