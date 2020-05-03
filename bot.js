@@ -57,7 +57,7 @@ bot.on('message', async message => {
     }
 
     if (command == 'invite') {
-      message.channel.send('Convida-me para o teu server! :grin:\nhttps://discordapp.com/oauth2/authorize?&client_id=706141316446421053&scope=bot&permissions=8');
+      message.channel.send('Convida-me para o teu servidor! :grin:\nhttps://discordapp.com/oauth2/authorize?&client_id=706141316446421053&scope=bot&permissions=8');
     }
 
     if (command == 'say') {
