@@ -22,7 +22,7 @@ bot.once('ready', async () => {
   console.log('Preparado!');
 });
 
-bot.on('message', async message => {
+bot.on('message', message => {
   db.collection('servidores').doc(message.guild.id).get().then((query) => {
     if (query.exists){
       prefix = query.data().prefix;
@@ -93,7 +93,7 @@ bot.on('message', async message => {
         if (message.member.hasPermission("MANAGE_MESSAGES")) {
           message.delete();
           var mention2 =  String(mention);
-          mentionMessage = message.content.slice (5 + 21);
+          mentionMessage = message.content.slice (command.length + 21);
           mention.sendMessage (mentionMessage);
         }
         else {
