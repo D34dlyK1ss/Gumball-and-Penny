@@ -33,10 +33,14 @@ bot.on('message', message => {
     }
   }).then(() => {
     if (message.content.substring(0, 1) == prefix) {
-      var custom = message.content.substring(1).split(' ');
-      var command = custom[0];
+      let custom = message.content.substring(1).split(' ');
+      let command = custom[0];
       custom = custom.splice(1);
       custom = custom.join(' ');
+    }
+
+    if (command == 'ping') {
+      message.reply('Pong!');
     }
 
     if (command == 'setprefix'){
@@ -51,10 +55,6 @@ bot.on('message', message => {
           message.channel.send(`O prefixo para este servidor agora é ${newPrefix}`);
         });
       }
-    }
-
-    if (command == 'ping') {
-      message.reply('Pong!');
     }
 
     if (command == 'invite') {
