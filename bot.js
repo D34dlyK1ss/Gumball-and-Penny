@@ -1,8 +1,7 @@
 const Discord = require('discord.js');
 const {token} = require('./config.json');
 const bot = new Discord.Client();
-
-var firebase = require("firebase/app");
+const firebase = require('firebase');
 require("firebase/firestore");
 
 const firebaseConfig = {
@@ -16,13 +15,16 @@ const firebaseConfig = {
 };
 firebase.initializeApp(firebaseConfig);
 
+const db = firebase.database();
+
 const permfail = 'Não tens permissão para usar este comando! :anger:'
 
 bot.once('ready', () => {
+  console.log('Preparado!');
   bot.user.setActivity('dc!help');
 })
 
-bot.on('message', message => {
+bot.on('message', async message => {
   var serverid = message.guild.id;
   var mentionMessage;
   var mention = message.mentions.users.first();
