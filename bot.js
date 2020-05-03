@@ -39,10 +39,10 @@ bot.on('message', async message => {
         prefixo: prefix
       };
       let servidorRef = db.ref(`servidores/${message.guild.id}/`).set(data);
-      prefix = db.ref(`servidores/${message.guild.id}/prefixo`);
+      prefix = db.ref(`servidores/${message.guild.id}/prefixo`).data();
     }
     else {
-      prefix = db.ref(`servidores/${message.guild.id}/prefixo`);
+      prefix = db.ref(`servidores/${message.guild.id}/prefixo`).data();
     }
   })
   .catch(err => {
