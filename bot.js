@@ -2,7 +2,9 @@ const Discord = require('discord.js');
 const {token} = require('./config.json');
 const bot = new Discord.Client();
 
-var firebase = require("firebase/firestore");
+var firebase = require("firebase/app");
+require("firebase/firestore");
+
 const firebaseConfig = {
   apiKey: "AIzaSyBHGPw5jyEJO7ehDBIVXbzOpLQQ8715G0Q",
   authDomain: "dc-bot-3caa4.firebaseapp.com",
