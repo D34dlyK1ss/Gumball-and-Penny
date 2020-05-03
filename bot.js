@@ -1,5 +1,5 @@
 const Discord = require('discord.js');
-const {prefix, token} = require('./config.json');
+const token = require('./config.json');
 const bot = new Discord.Client();
 
 const firebaseConfig = {
@@ -21,26 +21,48 @@ const db = admin.firestore();
 const permfail = 'Não tens permissão para usar este comando! :anger:'
 
 bot.once('ready', () => {
-  console.log('Preparado!\nO prefixo é ' + prefix);
   bot.user.setActivity(prefix + 'help');
 })
 
 bot.on('message', message => {
-
+  var serverid = message.guild.id;
   var mentionMessage;
+  var mention = message.mentions.users.first();
   var last = 0;
   var number = 0;
+  let servidorRef = db.collection('servidores').doc(serverid);
+  let getDoc = servidorRef.get()
+  .then(doc => {
+    if (!doc.exists){
+      let data = {
+        prefix: '!'
+      };
+      let servidorRef = db.collection('servidores').doc(serverid).set(data);
+    }
+    else {
+      var prefix = db.collection('servidores').doc(serverid).data(prefixo);
+    }
+  })
+  .catch(err => {
+    console.log('Error getting document', err);
+  });
 
   if (message.content.substring(0, 1) == prefix) {
-    var mention = message.mentions.users.first();
     var custom = message.content.substring(1).split(' ');
     var command = custom[0];
     custom = custom.splice(1);
     custom = custom.join(' ');
   }
 
-  if (command == 'test'){
-    message.channel.send(permfail);
+  if (command == 'prefix'){
+    let data = {
+      prefixo: custom
+    };
+    let servidorRef = db.collection('servidores').doc(serverid);
+    let setWithOptions = servidorRef.set({
+      prefixo: true
+    }, {merge: true});
+    message.send('O prefixo para este servidor é agora`' + prefix + '`')
   }
 
   if (command == 'ping') {
