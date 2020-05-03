@@ -67,34 +67,6 @@ bot.on('message', message => {
     message.reply('Pong!');
   }
 
-  if (command == 'help') {
-    if (custom == '') {
-      message.channel.send('Todos os comandos! :video_game:\n```\nclear\nfact\nhelp\ninvite\nping\nrandom\nsay\nwhichjojo```Para saberes mais sobre algum comando usa `' + prefix + 'help [nome do comando]`.\n\nP.S.:Existem uns quantos secretos :smiling_imp:');
-    }
-    else {
-
-      if (custom == 'invite')
-      {
-        message.channel.send('O link para me convidar para um servidor!');
-      }
-
-      if (custom == 'ping')
-      {
-        message.channel.send('Uhm... pong?');
-      }
-
-      if (custom == 'random')
-      {
-        message.channel.send('Direi um número aleatório entre 1 e o número indicado. O predefinido é 100');
-      }
-
-      if (custom == 'say')
-      {
-        message.channel.send('Isso faz-me dizer o que quiseres! :slight_smile:');
-      }
-    }
-  }
-
   if (command == 'invite') {
     message.channel.send('Convida-me para o teu server! :grin:\nhttps://discordapp.com/oauth2/authorize?&client_id=706141316446421053&scope=bot&permissions=8');
   }
