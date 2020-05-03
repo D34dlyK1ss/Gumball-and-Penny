@@ -2,6 +2,7 @@ const Discord = require('discord.js');
 const {token} = require('./config.json');
 const bot = new Discord.Client();
 
+var firebase = require("firebase/firestore");
 const firebaseConfig = {
   apiKey: "AIzaSyBHGPw5jyEJO7ehDBIVXbzOpLQQ8715G0Q",
   authDomain: "dc-bot-3caa4.firebaseapp.com",
@@ -11,11 +12,7 @@ const firebaseConfig = {
   messagingSenderId: "1002622548576",
   appId: "1:1002622548576:web:c2d25d944cd55108e96105"
 };
-const admin = require('firebase-admin');
-admin.initializeApp({
-  credential: admin.credential.applicationDefault()
-});
-const db = admin.firestore();
+firebase.initializeApp(firebaseConfig);
 
 const permfail = 'Não tens permissão para usar este comando! :anger:'
 
