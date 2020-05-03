@@ -6,7 +6,7 @@ const permfail = 'Não tens permissão para usar este comando! :anger:'
 
 bot.once('ready', () => {
   console.log('Preparado!\nO prefixo é ' + prefix);
-  bot.user.setActivity("+help");
+  bot.user.setActivity(prefix + 'help');
 })
 
 bot.on('message', message => {
