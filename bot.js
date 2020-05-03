@@ -12,10 +12,7 @@ const firebaseConfig = {
   appId: "1:1002622548576:web:c2d25d944cd55108e96105"
 };
 
-const admin = require('firebase-admin');
-admin.initializeApp({
-  credential: admin.credential.applicationDefault()
-});
+const admin = admin.initializeApp();
 const db = admin.firestore();
 
 const permfail = 'Não tens permissão para usar este comando! :anger:'
@@ -46,7 +43,7 @@ bot.on('message', message => {
     }
   })
   .catch(err => {
-    console.log('Error getting document', err);
+    console.log('Erro ao receber documento', err);
   });
 
   if (message.content.substring(0, 1) == prefix) {
