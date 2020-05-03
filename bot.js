@@ -32,10 +32,11 @@ bot.on('message', message => {
       if (msg.channel.type === "dm") return;
       if (msg.author.bot) return;
 
-      let custom = message.content.substring(1).split(' ');
-      let command = custom[0];
+      var custom = message.content.substring(1).split(' ');
+      var command = custom[0];
       custom = custom.splice(1);
       custom = custom.join(' ');
+    }
 
     if (command == 'setprefix'){
       if (custom == ''){
@@ -128,7 +129,6 @@ bot.on('message', message => {
           }
         }
       }
-    }
   });
 });
 
