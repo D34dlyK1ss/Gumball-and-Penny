@@ -31,9 +31,7 @@ bot.on('message', async message => {
   var last = 0;
   var number = 0;
   var prefix ='dc!'
-  let servidorRef = db.ref(`servidores/${message.guild.id}/`)
-  let getDoc = servidorRef.get()
-  .then(doc => {
+  db.ref(`servidores/${message.guild.id}/`).then(doc => {
     if (!doc.exists){
       let data = {
         prefixo: prefix
