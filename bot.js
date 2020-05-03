@@ -12,7 +12,11 @@ const firebaseConfig = {
   appId: "1:1002622548576:web:c2d25d944cd55108e96105"
 };
 
-const admin = admin.initializeApp();
+const admin = require('firebase-admin');
+admin.initializeApp({
+  credential: admin.credential.applicationDefault()
+});
+
 const db = admin.firestore();
 
 const permfail = 'Não tens permissão para usar este comando! :anger:'
