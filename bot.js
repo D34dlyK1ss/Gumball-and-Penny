@@ -22,7 +22,7 @@ bot.once('ready', async () => {
   console.log('Preparado!');
 });
 
-bot.on('message', message => {
+bot.on('message', async message => {
   db.collection('servidores').doc(message.guild.id).get().then((query) => {
     if (query.exists){
       prefix = query.data().prefix;
@@ -132,13 +132,13 @@ bot.on('message', message => {
   });
 });
 
-bot.on('guildCreate', async gData => {
-  db.collection('servidores').doc(gData.id).set({
-    'guildID': gData.id,
-    'guildName': gData.name,
-    'guildOwner': gdata.owner.user.username,
-    'guildOwnerID': gData.owner.id,
-    'guildMemberCount': gData.memberCount,
+bot.on('guildCreate', async guildData => {
+  db.collection('servidores').doc(guildData.id).set({
+    'guildID': guildData.id,
+    'guildName': guildData.name,
+    'guildOwner': guildData.owner.user.username,
+    'guildOwnerID': guildData.owner.id,
+    'guildMemberCount': guildData.memberCount,
     'prefix': 'dc!'
   });
 });
