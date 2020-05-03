@@ -1,0 +1,10 @@
+{
+  "name": "dc-bot",
+  "version": "1.0.0",
+  "description": "Um bot de utilidade e moderação",
+  "main": "bot.js",
+  "author": "Rodrigo Silva",
+  "dependencies": {
+    "discord.js": "^12.2.0"
+  }
+}
