@@ -23,15 +23,16 @@ bot.once('ready', async () => {
 });
 
 bot.on('message', message => {
+
+  if (message.channel.type === "dm") return;
+  if (message.author.bot) return;
+
   db.collection('servidores').doc(message.guild.id).get().then((query) => {
     if (query.exists){
       prefix = query.data().prefix;
     }
   }).then(() => {
     if (message.content.substring(0, 1) == prefix) {
-      if (msg.channel.type === "dm") return;
-      if (msg.author.bot) return;
-
       var custom = message.content.substring(1).split(' ');
       var command = custom[0];
       custom = custom.splice(1);
