@@ -36,7 +36,6 @@ bot.on('message', message => {
       let command = custom[0];
       custom = custom.splice(1);
       custom = custom.join(' ');
-    };
 
     if (command == 'setprefix'){
       if (custom == ''){
@@ -129,6 +128,7 @@ bot.on('message', message => {
           }
         }
       }
+    }
   });
 });
 
