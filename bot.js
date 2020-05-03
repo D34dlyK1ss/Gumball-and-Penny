@@ -1,5 +1,5 @@
 const Discord = require('discord.js');
-const token = require('./config.json');
+const {token} = require('./config.json');
 const bot = new Discord.Client();
 
 const firebaseConfig = {
