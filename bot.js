@@ -21,7 +21,7 @@ const db = admin.firestore();
 const permfail = 'Não tens permissão para usar este comando! :anger:'
 
 bot.once('ready', () => {
-  bot.user.setActivity(prefix + 'help');
+  bot.user.setActivity('dc!help');
 })
 
 bot.on('message', message => {
@@ -35,7 +35,7 @@ bot.on('message', message => {
   .then(doc => {
     if (!doc.exists){
       let data = {
-        prefix: '!'
+        prefix: 'dc!'
       };
       let servidorRef = db.collection('servidores').doc(serverid).set(data);
     }
