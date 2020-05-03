@@ -2,6 +2,16 @@ const Discord = require('discord.js');
 const {prefix, token} = require('./config.json');
 const bot = new Discord.Client();
 
+const firebaseConfig = {
+  apiKey: "AIzaSyBHGPw5jyEJO7ehDBIVXbzOpLQQ8715G0Q",
+  authDomain: "dc-bot-3caa4.firebaseapp.com",
+  databaseURL: "https://dc-bot-3caa4.firebaseio.com",
+  projectId: "dc-bot-3caa4",
+  storageBucket: "dc-bot-3caa4.appspot.com",
+  messagingSenderId: "1002622548576",
+  appId: "1:1002622548576:web:c2d25d944cd55108e96105"
+};
+
 const permfail = 'Não tens permissão para usar este comando! :anger:'
 
 bot.once('ready', () => {
@@ -90,7 +100,7 @@ bot.on('message', message => {
       message.reply("Não mencnionaste ninguém!").then(msg => msg.delete(3000));
     }
     else{
-      if (message.member.userID == 287953505992572929 || message.member.userID == 503009296267608066) {
+      if (message.member.hasPermission("MANAGE_MESSAGES")) {
         message.delete();
         var mention2 =  String(mention);
         mentionMessage = message.content.slice (5 + 21);
