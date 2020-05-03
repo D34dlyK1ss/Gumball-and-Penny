@@ -31,18 +31,18 @@ bot.on('message', async message => {
   var last = 0;
   var number = 0;
   var prefix ='dc!'
-  let servidorRef = db.collection('servidores').doc(serverid);
+  let servidorRef = db.ref(`servidores/${message.guild.id}/`)
   let getDoc = servidorRef.get()
   .then(doc => {
     if (!doc.exists){
       let data = {
         prefixo: prefix
       };
-      let servidorRef = db.collection('servidores').doc(serverid).set(data);
-      prefix = db.collection('servidores').doc(serverid).data(prefixo);
+      let servidorRef = db.ref(`servidores/${message.guild.id}/`).set(data);
+      prefix = db.ref(`servidores/${message.guild.id}/prefixo`);
     }
     else {
-      prefix = db.collection('servidores').doc(serverid).data(prefixo);
+      prefix = db.ref(`servidores/${message.guild.id}/prefixo`);
     }
   })
   .catch(err => {
