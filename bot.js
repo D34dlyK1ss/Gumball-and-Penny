@@ -30,17 +30,19 @@ bot.on('message', message => {
   var mention = message.mentions.users.first();
   var last = 0;
   var number = 0;
+  var prefix ='dc!'
   let servidorRef = db.collection('servidores').doc(serverid);
   let getDoc = servidorRef.get()
   .then(doc => {
     if (!doc.exists){
       let data = {
-        prefix: 'dc!'
+        prefixo: prefix
       };
       let servidorRef = db.collection('servidores').doc(serverid).set(data);
+      prefix = db.collection('servidores').doc(serverid).data(prefixo);
     }
     else {
-      var prefix = db.collection('servidores').doc(serverid).data(prefixo);
+      prefix = db.collection('servidores').doc(serverid).data(prefixo);
     }
   })
   .catch(err => {
