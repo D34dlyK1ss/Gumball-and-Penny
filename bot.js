@@ -21,7 +21,7 @@ bot.once('ready', async () => {
   console.log('Preparado!');
 });
 
-bot.on('message', message => {
+bot.on('message', message, command, custom => {
 
   if (message.channel.type === "dm") return;
   if (message.author.bot) return;
@@ -34,8 +34,8 @@ bot.on('message', message => {
     }
   }).then(() => {
     if (message.content.substring(0, 1) == prefix) {
-      let custom = message.content.substring(1).split(' ');
-      let command = custom[0];
+      custom = message.content.substring(1).split(' ');
+      command = custom[0];
       custom = custom.splice(1);
       custom = custom.join(' ');
     }
