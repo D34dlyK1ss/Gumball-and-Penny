@@ -7,7 +7,7 @@ module.exports.run = async (bot, message, args, db) => {
     db.collection('servidores').doc(message.guild.id).update({
       'prefix': newPrefix
     }).then(() => {
-      message.channel.send(`O prefixo para este servidor agora é ${newPrefix}`);
+      message.channel.send(`O prefixo para este servidor agora é **${newPrefix}**`);
     });
   }
 }
