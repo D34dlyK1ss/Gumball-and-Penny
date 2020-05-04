@@ -26,9 +26,11 @@ bot.on('message', message => {
   if (message.channel.type === "dm") return;
   if (message.author.bot) return;
 
+  let prefix;
+
   db.collection('servidores').doc(message.guild.id).get().then((query) => {
     if (query.exists){
-      let prefix = query.data().prefix;
+      prefix = query.data().prefix;
     }
   }).then(() => {
     if (message.content.substring(0, 1) == prefix) {
