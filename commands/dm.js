@@ -9,7 +9,7 @@ module.exports.run = async (bot, message, command, args, db) => {
         if (message.member.userID == 287953505992572929 || message.member.userID == 503009296267608066) {
             message.delete();
             let mention2 = String(mention);
-            mentionMessage = message.content.slice(command + 21);
+            mentionMessage = message.content.slice(command.length + 21);
             mention.sendMessage(mentionMessage);
         }
         else {
