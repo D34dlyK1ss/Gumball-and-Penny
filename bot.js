@@ -26,9 +26,9 @@ bot.on('message', message => {
   if (message.channel.type === "dm") return;
   if (message.author.bot) return;
 
-  let prefix;
-  let command;
-  let custom;
+  let prefix = '';
+  let command = '';
+  let custom = '';
 
   db.collection('servidores').doc(message.guild.id).get().then((query) => {
     if (query.exists){
@@ -41,6 +41,10 @@ bot.on('message', message => {
       custom = custom.splice(1);
       custom = custom.join(' ');
     }
+
+    console.log(`prefix:${prefix}`);
+    console.log(`command:${command}`);
+    console.log(`custom:${custom}`);
 
     if (command == 'ping') {
       message.reply('Pong!');
