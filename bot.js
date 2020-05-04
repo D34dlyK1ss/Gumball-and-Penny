@@ -1,6 +1,13 @@
 const Discord = require('discord.js');
-const {token, owner} = require('./config.json');
+const fs = require('fs');
+const config = require('./config.json');
+
 const bot = new Discord.Client();
+bot.commands = new Discord.Collection();
+
+let prefix;
+const token = config.token;
+const owner = config.owner;
 
 const firebase = require('firebase/app');
 const FieldValue = require('firebase-admin').firestore.FieldValue;
@@ -14,7 +21,21 @@ admin.initializeApp({
 
 let db = admin.firestore();
 
-const permfail = 'Não tens permissão para usar este comando! :anger:';
+fs.readdir('./commands', (err, files) => {
+  if (err){
+    console.log(err);
+  }
+
+  let commandFiles = files.filter(f => f.split('.').pop() === 'js');
+
+  if (command.length === 0) return;
+
+  commandFiles.forEach((f, i) => {
+    let props = require(`./commands/${f}`);
+    bot.commands.set(props.help.name, props);
+  });
+
+})
 
 bot.once('ready', async () => {
   bot.user.setActivity('dc!help');
@@ -23,119 +44,26 @@ bot.once('ready', async () => {
 
 bot.on('message', message => {
 
-  if (message.channel.type === "dm") return;
-  if (message.author.bot) return;
-
-  let prefix = '';
-  let command = '';
-  let custom = '';
-
   db.collection('servidores').doc(message.guild.id).get().then((query) => {
     if (query.exists){
       prefix = query.data().prefix;
     }
   }).then(() => {
-    if (message.StartsWith(prefix)) {
-      custom = message.content.substring(1).split(' ');
-      command = custom[0];
-      custom = custom.splice(1);
-      custom = custom.join(' ');
-      console.log(`prefix:${prefix}`);
-      console.log(`command:${command}`);
-      console.log(`custom:${custom}`);
-    }
+    if (message.channel.type === "dm") return;
+    if (message.author.bot) return;
 
-    if (command == 'ping') {
-      message.reply('Pong!');
-    }
+    let array = message.content.split(' ');
+    let command = array[0];
+    let args = array.slice(1);
 
-    if (command == 'setprefix'){
-      if (custom == ''){
-        message.channel.send('Preciso de saber qual é o prefixo desejado!');
-      }
-      else{
-        let newPrefix = custom;
-        db.collection('guilds').doc(message.guild.id).update({
-          'prefix': newPrefix
-        }).then(() => {
-          message.channel.send(`O prefixo para este servidor agora é ${newPrefix}`);
-        });
+    if (!command.startsWith(prefix)) return;
+
+    if (bot.commands.get(command.slice(prefix.length))){
+      let cmd = bot.commands.get(command.slice(prefix.length));
+      if (cmd){
+        cmd.run(bot, message, args, db);
       }
     }
-
-    if (command == 'invite') {
-      message.channel.send('Convida-me para o teu servidor! :grin:\nhttps://discordapp.com/oauth2/authorize?&client_id=706141316446421053&scope=bot&permissions=8');
-    }
-
-    if (command == 'say') {
-      message.delete();
-      if (custom.startsWith("http")){
-        message.channel.send("Não posso escrever links!").then(msg => msg.delete(3000));
-      }
-      else{
-        message.channel.send(custom);
-      }
-    }
-
-    if (command == 'random') {
-      if (custom == '')
-      {
-        rnd = Math.floor(Math.random() * 100) + 1;
-      }
-      else {
-        rnd = Math.floor(Math.random() * custom) + 1;
-      }
-      message.channel.send(rnd + '!');
-    }
-
-    if (command == 'dm'){
-      let mentionMessage;
-      let mention = message.mentions.users.first();
-
-      if (mention == null) {
-        message.delete();
-        message.reply("Não mencnionaste ninguém!").then(msg => msg.delete(3000));
-      }
-      else{
-        if (message.member.hasPermission("MANAGE_MESSAGES")) {
-          message.delete();
-          var mention2 =  String(mention);
-          mentionMessage = message.content.slice (command.length + 21);
-          mention.sendMessage (mentionMessage);
-        }
-        else {
-            message.delete();
-            message.reply(permfail).then(msg => msg.delete(3000));
-        }
-      }
-    }
-
-    if (command == 'clear') {
-      message.delete();
-      if (!message.member.hasPermission("MANAGE_MESSAGES")) {
-          message.reply(permfail).then(msg => msg.delete(3000));
-      }
-      else {
-          if (custom == '' || custom == '0')
-          {
-            message.reply("Tens de definir o número de mensagens que queres apagar!").then(msg => msg.delete(3000));
-          }
-          else
-          {
-            let number = parseInt(custom);
-            if (number > 100){
-              number = 100;
-            }
-            message.channel.bulkDelete(number)
-            if (number == 1){
-              message.channel.send('`1`mensagem foi apagada!').then(msg => msg.delete(3000)).catch(console.error);
-            }
-            else {
-              message.channel.send('`' + number + '`mensagens foram apagadas!').then(msg => msg.delete(3000)).catch(console.error);
-            }
-          }
-        }
-      }
   });
 });
 
