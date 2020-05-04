@@ -40,11 +40,10 @@ bot.on('message', message => {
       command = custom[0];
       custom = custom.splice(1);
       custom = custom.join(' ');
+      console.log(`prefix:${prefix}`);
+      console.log(`command:${command}`);
+      console.log(`custom:${custom}`);
     }
-
-    console.log(`prefix:${prefix}`);
-    console.log(`command:${command}`);
-    console.log(`custom:${custom}`);
 
     if (command == 'ping') {
       message.reply('Pong!');
