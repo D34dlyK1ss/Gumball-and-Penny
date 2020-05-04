@@ -4,7 +4,7 @@ module.exports.run = async (bot, message, args, db) => {
       }
   else {
     let newPrefix = args[0];
-    db.collection('guilds').doc(message.guild.id).update({
+    db.collection('servidores').doc(message.guild.id).update({
       'prefix': newPrefix
     }).then(() => {
       message.channel.send(`O prefixo para este servidor agora é ${newPrefix}`);
