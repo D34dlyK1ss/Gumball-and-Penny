@@ -28,7 +28,7 @@ fs.readdir('./commands', (err, files) => {
 
   let commandFiles = files.filter(f => f.split('.').pop() === 'js');
 
-  if (command.length === 0) return;
+  if (commandFiles.length === 0) return;
 
   commandFiles.forEach((f, i) => {
     let props = require(`./commands/${f}`);
