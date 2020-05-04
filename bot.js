@@ -4,9 +4,10 @@ const config = require('./config.json');
 const fs = require('fs');
 const bot = new Discord.Client();
 bot.commands = new Discord.Collection();
-let prefix;
 const token = config.token;
 const owner = config.owner;
+let prefix;
+let permfail = 'Não tens permissão para usar este comando! :anger:';
 
 //Aceder à base de dados
 const firebase = require('firebase/app');
@@ -60,7 +61,7 @@ bot.on('message', message => {
     if (bot.commands.get(command.slice(prefix.length))){
       let cmd = bot.commands.get(command.slice(prefix.length));
       if (cmd){
-        cmd.run(bot, message, command, args, db);
+        cmd.run(bot, message, command, args, permfail, db);
       }
     }
   });

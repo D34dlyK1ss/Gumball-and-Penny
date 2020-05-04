@@ -1,4 +1,4 @@
-module.exports.run = async (bot, message, command, args, db) => {
+module.exports.run = async (message, command, args, permfail) => {
     let mention = message.mentions.users.first();
     let mentionMessage;
     if (mention == null) {
@@ -9,7 +9,7 @@ module.exports.run = async (bot, message, command, args, db) => {
         if (message.member.userID == 287953505992572929 || message.member.userID == 503009296267608066) {
             message.delete();
             let mention2 = String(mention);
-            mentionMessage = message.content.slice(command.length + 21);
+            mentionMessage = message.content.slice(command.length + args);
             mention.sendMessage(mentionMessage);
         }
         else {
