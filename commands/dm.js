@@ -1,20 +1,21 @@
-module.exports.run = async (message, command, args, permfail) => {
+let Discord = require('discord.js');
+
+module.exports.run = async (bot, message, command, args, db) => {
     let mention = message.mentions.users.first();
-    let mentionMessage;
+
     if (mention == null) {
         message.delete();
-        message.reply("Não mencnionaste ninguém!").then(msg => msg.delete(3000));
+        message.reply("Não mencionaste ninguém!").then(msg => msg.delete(3000));
     }
     else {
-        if (message.member.userID == 287953505992572929 || message.member.userID == 503009296267608066) {
+        if (message.member.userID == message.guild.owner.userID) {
+            let mentionMessage = message.content.slice(command.length + args[0].length + 2);
             message.delete();
-            let mention2 = String(mention);
-            mentionMessage = message.content.slice(command.length + args);
-            mention.sendMessage(mentionMessage);
+            mention.send(mentionMessage);
         }
         else {
             message.delete();
-            message.reply(permfail).then(msg => msg.delete(3000));
+            message.reply('não tens permissão para usar este comando! :anger:').then(msg => msg.delete(3000));
         }
     }
 }

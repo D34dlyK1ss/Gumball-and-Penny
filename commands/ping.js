@@ -1,4 +1,4 @@
-module.exports.run = async (bot, message, args, db) => {
+module.exports.run = async (bot, message, command, args, db) => {
   message.reply('Pong!');
 }
 

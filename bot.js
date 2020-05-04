@@ -7,7 +7,6 @@ bot.commands = new Discord.Collection();
 const token = config.token;
 const owner = config.owner;
 let prefix;
-let permfail = 'Não tens permissão para usar este comando! :anger:';
 
 //Aceder à base de dados
 const firebase = require('firebase/app');
@@ -41,14 +40,13 @@ bot.once('ready', async () => {
 
 //Ações para quando o bot receber uma mensagem
 bot.on('message', message => {
+  if (message.channel.type === "dm") return;
+  if (message.author.bot) return;
   db.collection('servidores').doc(message.guild.id).get().then((query) => {
     if (query.exists){
       prefix = query.data().prefix;
     }
   }).then(() => {
-    if (message.channel.type === "dm") return;
-    if (message.author.bot) return;
-
     let array = message.content.split(' ');
     let command = array[0];
     let args = array.slice(1);
@@ -61,7 +59,7 @@ bot.on('message', message => {
     if (bot.commands.get(command.slice(prefix.length))){
       let cmd = bot.commands.get(command.slice(prefix.length));
       if (cmd){
-        cmd.run(bot, message, command, args, permfail, db);
+        cmd.run(bot, message, command, args, db);
       }
     }
   });
@@ -76,6 +74,10 @@ bot.on('guildCreate', async guildData => {
     'guildOwnerID': guildData.owner.id,
     'guildMemberCount': guildData.memberCount,
     'prefix': 'dc!'
+  });
+
+  db.collection('roles').doc(guildData.id).set({
+    role_id: []
   });
 });
 

@@ -1,4 +1,4 @@
-module.exports.run = async (bot, message, args, db) => {
+module.exports.run = async (bot, message, command, args, db) => {
   if (args.length === 0){
         message.channel.send('Preciso de saber qual é o prefixo desejado!');
       }
