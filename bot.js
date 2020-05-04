@@ -21,12 +21,14 @@ bot.once('ready', async () => {
   console.log('Preparado!');
 });
 
-bot.on('message', message, command, custom => {
+bot.on('message', message => {
 
   if (message.channel.type === "dm") return;
   if (message.author.bot) return;
 
   let prefix;
+  let command;
+  let custom;
 
   db.collection('servidores').doc(message.guild.id).get().then((query) => {
     if (query.exists){
