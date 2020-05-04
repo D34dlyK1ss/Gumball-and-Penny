@@ -3,7 +3,7 @@ module.exports.run = async (bot, message, args, db) => {
         message.channel.send('Preciso de saber qual é o prefixo desejado!');
       }
   else {
-    let newPrefix = custom;
+    let newPrefix = args;
     db.collection('guilds').doc(message.guild.id).update({
       'prefix': newPrefix
     }).then(() => {
