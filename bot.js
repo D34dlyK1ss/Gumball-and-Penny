@@ -35,7 +35,7 @@ bot.on('message', message => {
       prefix = query.data().prefix;
     }
   }).then(() => {
-    if (message.content.substring(0, 1) == prefix) {
+    if (message.StartsWith(prefix)) {
       custom = message.content.substring(1).split(' ');
       command = custom[0];
       custom = custom.splice(1);
