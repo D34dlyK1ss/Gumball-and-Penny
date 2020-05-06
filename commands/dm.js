@@ -1,21 +1,18 @@
-let Discord = require('discord.js');
-
 module.exports.run = async (bot, message, command, args, db) => {
     let mention = message.mentions.users.first();
-
-    if (mention == null) {
-        message.delete();
-        message.reply("Não mencionaste ninguém!").then(msg => msg.delete(3000));
+    message.delete();
+    if (mention == null || mention == '') {
+        message.reply(`não mencionaste ninguém!`).then(msg => { msg.delete({ timeout: 3000 }) }).catch(err => { console.error(err) });
+        return;
     }
     else {
-        if (message.member.userID == message.guild.owner.userID) {
-            let mentionMessage = message.content.slice(command.length + args[0].length + 2);
-            message.delete();
-            mention.send(mentionMessage);
+        if (!message.member.hasPermission('MANAGE_GUILD')) {
+            message.reply(`não tens permissão para usar este comando! :anger:`).then(msg => { msg.delete({ timeout: 3000 }) }).catch(err => { console.error(err) });
         }
         else {
-            message.delete();
-            message.reply('não tens permissão para usar este comando! :anger:').then(msg => msg.delete(3000));
+            let mentionMessage = message.content.slice(command.length + args[0].length + 2);
+            mention.send(mentionMessage);
+            message.reply(`enviado!`).then(msg => { msg.delete({ timeout: 3000 }) }).catch(err => { console.error(err) });
         }
     }
 }

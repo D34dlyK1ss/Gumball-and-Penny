@@ -1,14 +1,20 @@
 module.exports.run = async (bot, message, command, args, db) => {
-  if (args.length === 0){
-        message.channel.send('Preciso de saber qual é o prefixo desejado!');
-      }
-  else {
-    let newPrefix = args[0];
-    db.collection('servidores').doc(message.guild.id).update({
-      'prefix': newPrefix
-    }).then(() => {
-      message.channel.send(`O prefixo para este servidor agora é **${newPrefix}**`);
-    });
+  if (!message.member.hasPermission('MANAGE_GUILD')) {
+    message.delete();
+    message.reply(`não tens permissão para usar este comando! :anger:`).then(msg => { msg.delete({ timeout: 3000 }) }).catch(err => { console.error(err) });
+  }
+  else{
+    if (args.length === 0){
+      message.reply('preciso de saber qual é o prefixo desejado!').then(msg => { msg.delete({ timeout: 3000 }) }).catch(err => { console.error(err) });
+    }
+    else {
+      let newPrefix = args[0];
+      db.collection('servidores').doc(message.guild.id).update({
+        'prefix': newPrefix
+      }).then(() => {
+        message.channel.send('O prefixo para este servidor agora é `' + newPrefix + '`');
+      }).catch(err => { console.error(err) });
+    }
   }
 }
 

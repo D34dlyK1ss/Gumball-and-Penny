@@ -15,7 +15,7 @@ const admin = require('firebase-admin');
 const serviceAccount = require('./serviceAccount.json');
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
-  databaseURL: "https://pap-dc-bot.firebaseio.com"
+  databaseURL: 'https://pap-dc-bot.firebaseio.com'
 });
 let db = admin.firestore();
 
@@ -40,8 +40,9 @@ bot.once('ready', async () => {
 
 //Ações para quando o bot receber uma mensagem
 bot.on('message', message => {
-  if (message.channel.type === "dm") return;
+  if (message.channel.type === 'dm') return;
   if (message.author.bot) return;
+
   db.collection('servidores').doc(message.guild.id).get().then((query) => {
     if (query.exists){
       prefix = query.data().prefix;
@@ -50,10 +51,7 @@ bot.on('message', message => {
     let array = message.content.split(' ');
     let command = array[0];
     let args = array.slice(1);
-
-    console.log(`command = ${command}`);
-    console.log(`args = ${args}`);
-
+    
     if (!command.startsWith(prefix)) return;
 
     if (bot.commands.get(command.slice(prefix.length))){
@@ -63,6 +61,28 @@ bot.on('message', message => {
       }
     }
   });
+
+  let gName = db.collection('servidores').doc(message.guild.id).get('guildName');
+  let oName = db.collection('servidores').doc(message.guild.id).get('ownerName');
+  let mCount = db.collection('servidores').doc(message.guild.id).get('memberCount');
+  
+  if (message.guild.name != gName) {
+    db.collection('servidores').doc(message.guild.id).update({
+      guildName: message.guild.name
+    });
+  }
+
+  if (message.guild.owner.user.username != oName) {
+    db.collection('servidores').doc(message.guild.id).update({
+      guildOwner: message.guild.owner.user.username
+    });
+  }
+
+  if (message.guild.members != mCount) {
+    db.collection('servidores').doc(message.guild.id).update({
+      memberCount: message.guild.memberCount
+    });
+  }
 });
 
 //Ações para quando o bot for adicionado a um novo servidor
@@ -72,12 +92,8 @@ bot.on('guildCreate', async guildData => {
     'guildName': guildData.name,
     'guildOwner': guildData.owner.user.username,
     'guildOwnerID': guildData.owner.id,
-    'guildMemberCount': guildData.memberCount,
+    'memberCount': guildData.memberCount,
     'prefix': 'dc!'
-  });
-
-  db.collection('roles').doc(guildData.id).set({
-    role_id: []
   });
 });
 
