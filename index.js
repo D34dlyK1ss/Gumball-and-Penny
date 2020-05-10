@@ -1,23 +1,21 @@
-//Inicializar o bot
-const Discord = require('discord.js');
-const config = require('./config.json');
-const fs = require('fs');
-const bot = new Discord.Client();
-bot.commands = new Discord.Collection();
-const token = config.token;
-const owner = config.owner;
-let prefix;
+const Discord = require('discord.js'); //Biblioteca do Discord.js
+const bot = new Discord.Client(); //Cliente
 
-//Aceder à base de dados
-const firebase = require('firebase/app');
-const FieldValue = require('firebase-admin').firestore.FieldValue;
-const admin = require('firebase-admin');
-const serviceAccount = require('./serviceAccount.json');
+const config = require('./config.json'); //Propriedades default do bot
+const token = config.token; //Token do bot para autenticação
+const botOwner = config.botOwner; //Discord ID do proprietário do bot
+
+const fs = require('fs'); //File System
+
+bot.commands = new Discord.Collection(); //Classe de utilidade 'Collection' do Discord.js
+
+const admin = require('firebase-admin'); //Acesso de administrador à BD
+const serviceAccount = require('./serviceAccount.json'); //Chaves de autenticação à BD
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
   databaseURL: 'https://pap-dc-bot.firebaseio.com'
-});
-let db = admin.firestore();
+});//Autenticação à BD
+const db = admin.firestore(); //BD
 
 //Leitura dos ficheiros de comandos
 fs.readdir('./commands', (err, files) => {
@@ -32,32 +30,35 @@ fs.readdir('./commands', (err, files) => {
   });
 })
 
-//Ações para quando o bot esitver online
+//Uma vez que o bot está ativo:
 bot.once('ready', async () => {
-  bot.user.setActivity('dc!help'); //Definir a atividade, que é demonstrada online
-  console.log('Preparado!'); //Verificar se o bot está apto para receber mensagens
+  bot.user.setActivity('dc!help'); //Define a atividade, que é demonstrada online
+  console.log('Preparado!'); //Avisa que está apto para receber comandos
 });
 
 //Ações para quando o bot receber uma mensagem
 bot.on('message', message => {
+  //Ignorar mensagens de outros bots e mensagens privadas
   if (message.channel.type === 'dm') return;
   if (message.author.bot) return;
 
+  let prefix;
+
   db.collection('servidores').doc(message.guild.id).get().then((query) => {
     if (query.exists){
-      prefix = query.data().prefix;
+      prefix = query.data().prefix; //Obter o prefixo definido para o servidor
     }
   }).then(() => {
     let array = message.content.split(' ');
     let command = array[0];
     let args = array.slice(1);
     
-    if (!command.startsWith(prefix)) return;
+    if (!command.startsWith(prefix)) return; //Ignorar mensagens que não comecem com o prefixo
 
     if (bot.commands.get(command.slice(prefix.length))){
       let cmd = bot.commands.get(command.slice(prefix.length));
       if (cmd){
-        cmd.run(bot, message, command, args, db);
+        cmd.run(bot, message, command, args, db); //Correr as ações do comando
       }
     }
   });
@@ -65,19 +66,22 @@ bot.on('message', message => {
   let gName = db.collection('servidores').doc(message.guild.id).get('guildName');
   let oName = db.collection('servidores').doc(message.guild.id).get('ownerName');
   let mCount = db.collection('servidores').doc(message.guild.id).get('memberCount');
-  
+
+  //Atualizar o Nome do Servidor
   if (message.guild.name != gName) {
     db.collection('servidores').doc(message.guild.id).update({
       guildName: message.guild.name
     });
   }
 
+  //Atualizar o nome do proprietário do servidor
   if (message.guild.owner.user.username != oName) {
     db.collection('servidores').doc(message.guild.id).update({
       guildOwner: message.guild.owner.user.username
     });
   }
 
+  //Atualizar o número de membros do servidor
   if (message.guild.members != mCount) {
     db.collection('servidores').doc(message.guild.id).update({
       memberCount: message.guild.memberCount
@@ -85,7 +89,7 @@ bot.on('message', message => {
   }
 });
 
-//Ações para quando o bot for adicionado a um novo servidor
+//Quando o bot for adicionado a um novo servidor, são armazenados dados do mesmo
 bot.on('guildCreate', async guildData => {
   db.collection('servidores').doc(guildData.id).set({
     'guildID': guildData.id,
@@ -97,5 +101,5 @@ bot.on('guildCreate', async guildData => {
   });
 });
 
-//Para fazer login é usado o respetivo token de aplicação para Discord
+//Autenticação do bot
 bot.login(token);
