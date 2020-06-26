@@ -5,10 +5,7 @@
   "main": "bot.js",
   "author": "Rodrigo Silva",
   "dependencies": {
-    "@discordjs/opus": "^0.3.2",
     "discord.js": "^12.2.0",
-    "firebase": "^7.14.2",
-    "firebase-admin": "^8.11.0",
-    "request": "^2.88.2"
+    "firebase-admin": "^8.12.1"
   }
 }
