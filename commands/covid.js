@@ -5,17 +5,18 @@ module.exports.run = async (bot, message, command, args, db) => {
     if (args == '' || args == null){
         message.channel.send('É necessário mencionar o país!');
     }
-    else if (args.length == 2){
+    else {
         args = args.toUpperCase();
         var options = {
             'method': 'GET',
-            'url': 'https://api.covid19api.com/summary',
+            'url': `https://api.covid19api.com/country/${args}?from=2020-06-24T23:59:59Z&to=2020-06-25T00:00:00Z`,
             'headers': {
             }
         };
+        
         request(options, function (error, response) {
             if (error) throw new Error(error);
-            console.log(response.body);
+            message.channel.send(response.body);
         });
     }
 }
