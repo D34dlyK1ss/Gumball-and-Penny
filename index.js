@@ -10,12 +10,13 @@ const fs = require('fs'); //File System
 bot.commands = new Discord.Collection(); //Classe de utilidade 'Collection' do Discord.js
 
 const admin = require('firebase-admin'); //Acesso de administrador à BD
-const serviceAccount = require('./serviceAccount.json'); //Chaves de autenticação à BD
+const serviceAccount = require('./serviceAccountKey.json'); //Chaves de autenticação à BD
 admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount),
+  credential: admin.credential.cert(serviceAccount), //Autenticação à BD
   databaseURL: 'https://pap-dc-bot.firebaseio.com'
-});//Autenticação à BD
-const db = admin.firestore(); //BD
+});
+
+const db = admin.firestore();
 
 //Leitura dos ficheiros de comandos
 fs.readdir('./commands', (err, files) => {
@@ -32,7 +33,6 @@ fs.readdir('./commands', (err, files) => {
 
 //Uma vez que o bot está ativo:
 bot.once('ready', async () => {
-  bot.user.setActivity('dc!help'); //Define a atividade, que é demonstrada online
   console.log('Preparado!'); //Avisa que está apto para receber comandos
 });
 
