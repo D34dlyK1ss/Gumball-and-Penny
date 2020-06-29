@@ -11,22 +11,38 @@ module.exports.run = async (bot, message, command, args, db) => {
 
     yesterday = yyyy + '-' + mm + '-' + dd;
 
-    args = args.toString();
+    today = today.toString();
+
+    args = args.join("-");
+    args = args.toString().toLowerCase();
+
     if (args == '' || args == null){
         message.channel.send('É necessário mencionar o país!');
     }
     else {
-        args = args.toUpperCase();
         var options = {
             'method': 'GET',
-            'url': `https://api.covid19api.com/country/${args}?from=${yesterday.toString}&to=${today.toString}`,
+            'url': `https://api.covid19api.com/country/${args}?from=${yesterday}&to=${today}`,
             'headers': {
             }
         };
         
         request(options, function (error, response) {
-            if (error) throw new Error(error);
-            message.channel.send(response.body);
+            if (error) console.log(error);
+            else if (response.body.startsWith('{') || response.body.startsWith('"')){
+                message.channel.send('Esse país não existe!').catch(err => { console.log(err) });
+            }
+            else {
+                let info = JSON.parse(response.body.toString());
+                let filterArray = ["Country", "Confirmed", "Deaths", "Recovered", "Active", "Date"];
+                let res = [];
+                for (var i = 0; i < res.length; i++) {
+                    for (var filterItem in filterArray) {
+                        res.push(info[i][filterArray[filterItem]]);
+                    }
+                }
+            }
+
         });
     }
 }
