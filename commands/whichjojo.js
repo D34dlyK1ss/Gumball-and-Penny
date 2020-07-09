@@ -9,7 +9,7 @@ module.exports.run = async (bot, message, command, args, db) => {
     jojo = 'És a Jolyne Kujo! - "やれやれだわ。"';
   }
   if (last == 2) {
-    jojo = 'És o Johnathan Joestar! - "サンライトイエローオーバードライブ！"';
+    jojo = 'És o 'És o Jotaro Kujo! - "やれやれだぜ。"'';
   }
   if (last == 3) {
     jojo = 'És o Johnny Joestar! - "家に帰りましょう。。。"';
@@ -27,7 +27,7 @@ module.exports.run = async (bot, message, command, args, db) => {
     jojo = 'És o Joseph Joestar! - "逃げるんだよ!"';
   }
   if (last == 8) {
-    jojo = 'És o Jotaro Kujo! - "やれやれだぜ。"';
+    jojo = 'És o Johnathan Joestar! - "サンライトイエローオーバードライブ！"';
   }
   if (last == 9) {
     jojo = 'És o Giorno Giovanna! - "このジョルノジョバーナには夢がある。"';
