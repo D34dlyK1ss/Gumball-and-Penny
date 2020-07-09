@@ -33,7 +33,7 @@ fs.readdir('./commands', (err, files) => {
 
 //Uma vez que o bot está ativo:
 bot.once('ready', async () => {
-  console.log('Preparados!\nO prefixo é ' + prefix);
+  console.log('Preparados!');
 
   const currentdate = new Date();
   const relationship = new Date(2019, 12, 28);
