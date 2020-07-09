@@ -9,7 +9,7 @@ module.exports.run = async (bot, message, command, args, db) => {
     jojo = 'És a Jolyne Kujo! - "やれやれだわ。"';
   }
   if (last == 2) {
-    jojo = 'És o 'És o Jotaro Kujo! - "やれやれだぜ。"'';
+    jojo = 'És o Jotaro Kujo! - "やれやれだぜ。"';
   }
   if (last == 3) {
     jojo = 'És o Johnny Joestar! - "家に帰りましょう。。。"';
