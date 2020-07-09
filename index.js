@@ -5,6 +5,7 @@ const config = require('./config.json'); //Propriedades default do bot
 const token = config.token; //Token do bot para autenticação
 const botOwner = config.botOwner; //Discord ID do proprietário do bot
 
+const schedule = require('node-schedule');
 const fs = require('fs'); //File System
 
 bot.commands = new Discord.Collection(); //Classe de utilidade 'Collection' do Discord.js
@@ -42,7 +43,7 @@ bot.once('ready', async () => {
   const years = Math.round(mili / 31536000000);
 
   bot.user.setActivity("+help");
-  var j = schedule.scheduleJob("0 15 28 * *", function () {
+  let j = schedule.scheduleJob("0 15 28 * *", function () {
     bot.users.get("503009296267608066").send(":tada: Parabéns Lilly! Completaste " + (months + 1) + " meses com o teu Ruru! :purple_heart:\nhttps://i.imgur.com/NyaigHE.gif");
     bot.users.get("287953505992572929").send(":tada: Parabéns Ruru! Completaste " + (months + 1) + " meses com a tua Lilly! :purple_heart:\nhttps://i.imgur.com/NyaigHE.gif");
   });
