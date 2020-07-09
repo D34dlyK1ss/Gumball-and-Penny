@@ -5,7 +5,7 @@ module.exports.run = async (bot, message, command, args, db) => {
   }
   else{
     if (args.length === 0){
-      message.reply('preciso de saber qual é o prefixo desejado!').then(msg => { msg.delete({ timeout: 3000 }) }).catch(err => { console.error(err) });
+      message.reply('precisamos de saber qual é o prefixo desejado!').then(msg => { msg.delete({ timeout: 3000 }) }).catch(err => { console.error(err) });
     }
     else {
       let newPrefix = args[0];

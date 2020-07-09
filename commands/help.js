@@ -1,21 +1,46 @@
 const Discord = require('discord.js');
 
 module.exports.run = async (bot, message, command, args, db) => {
-
-  const embed = new Discord.MessageEmbed()
-    .setColor('#8000ff')
-    .setTitle('Ajuda')
-    .setURL('https://discord.js.org/')
-    .setAuthor('DC Bot', 'https://i.imgur.com/60QrOiR.png')
-    .setDescription('O DC Bot ajuda a moderar, divertir e informar!\nAqui está a lista de comandos disponíveis:')
-    .setThumbnail('https://i.imgur.com/60QrOiR.png')
-    .addFields(
-      { name: 'Diversos', value: '`avatar`, `members`, `ping`, `random`, `say`', inline: true },
-      { name: 'Moderação', value: '`ban`, `clear`, `kick`, `setprefix`', inline: true },
-      { name: 'Covid-19', value: '`covid`', inline: true },
-    )
+  if (args ==''){
+    const embed = new Discord.MessageEmbed()
+      .setColor('#8000ff')
+      .setTitle('Ajuda')
+      .setAuthor('Gumball & Penny', 'https://i.imgur.com/FuYC9KG.jpg')
+      .setDescription('Nós somos o Gumball e a Penny e temos como objetivo tornar qualquer servidor em que estamos num lugar divertido!\nAqui está a lista de comandos disponíveis:')
+      .setThumbnail('https://i.imgur.com/FuYC9KG.jpg')
+      .addFields(
+        { name: 'Diversão', value: '`avatar`, `fact`, `random`, `say`, `whichjojo`', inline: true },
+        { name: 'Moderação', value: '`ban`, `clear`, `kick`, `setprefix`', inline: true },
+        { name: 'Diversos', value: '`invite`, `members`, `ping`', inline: true },
+      )
 
     message.channel.send(embed);
+  }
+  else {
+    if (args == 'help') {
+      message.channel.send('Se não sabes, soubesses! :unamused:');
+    }
+
+    if (args == 'invite') {
+      message.channel.send('Mostraremos o link para nos convidares para um dos teus servidores!');
+    }
+
+    if (args == 'ping') {
+      message.channel.send('Uhm... pong?');
+    }
+
+    if (args == 'random') {
+      message.channel.send('Diremos um número aleatório entre 1 e o número indicado. O predefinido é 100');
+    }
+
+    if (args == 'say') {
+      message.channel.send('Isso faz um de nós dizer o que quiseres! :slight_smile:');
+    }
+
+    if (args == 'whichjojo') {
+      message.channel.send("Com o 'whichjojo' diremos qual JoJo de _JoJo's Bizarre Adventure_ és!");
+    }
+  }
 }
 
 module.exports.help = {

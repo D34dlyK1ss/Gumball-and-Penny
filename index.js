@@ -13,7 +13,7 @@ const admin = require('firebase-admin'); //Acesso de administrador à BD
 const serviceAccount = require('./serviceAccountKey.json'); //Chaves de autenticação à BD
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount), //Autenticação à BD
-  databaseURL: 'https://pap-dc-bot.firebaseio.com'
+  databaseURL: 'https://gumball-and-penny.firebaseio.com'
 });
 
 const db = admin.firestore();
@@ -33,7 +33,19 @@ fs.readdir('./commands', (err, files) => {
 
 //Uma vez que o bot está ativo:
 bot.once('ready', async () => {
-  console.log('Preparado!'); //Avisa que está apto para receber comandos
+  console.log('Preparados!\nO prefixo é ' + prefix);
+
+  const currentdate = new Date();
+  const relationship = new Date(2019, 12, 28);
+  const mili = currentdate - relationship;
+  const months = Math.round(mili / 2629746000);
+  const years = Math.round(mili / 31536000000);
+
+  bot.user.setActivity("+help");
+  var j = schedule.scheduleJob("0 15 28 * *", function () {
+    bot.users.get("503009296267608066").send(":tada: Parabéns Lilly! Completaste " + (months + 1) + " meses com o teu Ruru! :purple_heart:\nhttps://i.imgur.com/NyaigHE.gif");
+    bot.users.get("287953505992572929").send(":tada: Parabéns Ruru! Completaste " + (months + 1) + " meses com a tua Lilly! :purple_heart:\nhttps://i.imgur.com/NyaigHE.gif");
+  });
 });
 
 //Ações para quando o bot receber uma mensagem
@@ -86,6 +98,30 @@ bot.on('message', message => {
     db.collection('servidores').doc(message.guild.id).update({
       memberCount: message.guild.memberCount
     });
+  }
+
+  if (message.content == 'shine') {
+    message.channel.send({ files: ["images/shine.png"] });
+  }
+
+  if (message.content == 'boi') {
+    message.channel.send({ files: ["images/boi.png"] });
+  }
+
+  if (message.content == 'just monika') {
+    message.channel.send({ files: ["images/monika.png"] });
+  }
+
+  if (message.content == 'no u') {
+    message.channel.send({ files: ["images/reverse.png"] });
+  }
+
+  if (message.content == 'E') {
+    message.channel.send({ files: ["images/E.png"] });
+  }
+
+  if (message.content == 'hmm') {
+    message.channel.send({ files: ["images/hmm.jpg"] });
   }
 });
 

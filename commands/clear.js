@@ -14,10 +14,10 @@ module.exports.run = async (bot, message, command, args, db) => {
             }
             message.channel.bulkDelete(number, true).then(deleted =>{
                 if (number == 1) {
-                    message.channel.send("`1` mensagem foi apagada!").then(msg => msg.delete({ timeout: 3000 })).catch(err => { console.error(err) });
+                    message.channel.send("Apagámos `1` mensagem!").then(msg => msg.delete({ timeout: 3000 })).catch(err => { console.error(err) });
                 }
                 else {
-                    message.channel.send("`" + deleted.size + "` mensagens foram apagadas!").then(msg => msg.delete({ timeout: 3000 })).catch(err => { console.error(err) });
+                    message.channel.send("Apagámos `" + deleted.size + "` mensagens!").then(msg => msg.delete({ timeout: 3000 })).catch(err => { console.error(err) });
                 }
             })
         }

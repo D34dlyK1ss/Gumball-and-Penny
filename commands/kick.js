@@ -11,7 +11,7 @@ module.exports.run = async (bot, message, command, args, db) => {
         }
         else {
             member.kick().then((member) => {
-                message.channel.send(`${member.displayName} foi expulso! :wave:`).then(msg => msg.delete({ timeout: 3000 })).catch(err => { console.error(err) });
+                message.channel.send(`**${member.displayName}** foi expulso! :wave:`).then(msg => msg.delete({ timeout: 3000 })).catch(err => { console.error(err) });
             });
         }
     }

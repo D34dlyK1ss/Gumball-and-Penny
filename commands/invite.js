@@ -1,5 +1,5 @@
 module.exports.run = async (bot, message, command, args, db) => {
-    message.channel.send('https://discord.com/oauth2/authorize?client_id=706141316446421053&scope=bot&permissions=8');
+    message.channel.send('Convida-nos para o teu server! :grin:\nhttps://discordapp.com/oauth2/authorize?&client_id=679041548955942914&scope=bot&permissions=1916267607');
 }
 
 module.exports.help = {
