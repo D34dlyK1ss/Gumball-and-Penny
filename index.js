@@ -77,7 +77,8 @@ bot.on('message', message => {
   });
 
   let gName = db.collection('servidores').doc(message.guild.id).get('guildName');
-  let oName = db.collection('servidores').doc(message.guild.id).get('ownerName');
+  let oName = db.collection('servidores').doc(message.guild.id).get('guildOwner');
+  let oID = db.collection('servidores').doc(message.guild.id).get('guildOwnerID');
   let mCount = db.collection('servidores').doc(message.guild.id).get('memberCount');
 
   //Atualizar o Nome do servidor
@@ -95,7 +96,7 @@ bot.on('message', message => {
   }
 
   //Atualizar o ID do proprietário do servidor
-  if (message.guild.owner.user.username != oName) {
+  if (message.guild.owner.user.id != oID) {
     db.collection('servidores').doc(message.guild.id).update({
       guildOwner: message.guild.owner.user.id
     });
