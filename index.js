@@ -98,7 +98,7 @@ bot.on('message', message => {
   //Atualizar o ID do proprietário do servidor
   if (message.guild.owner.user.id != oID) {
     db.collection('servidores').doc(message.guild.id).update({
-      guildOwner: message.guild.owner.user.id
+      guildOwnerID: message.guild.owner.user.id
     });
   }
 
