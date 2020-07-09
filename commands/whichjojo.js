@@ -1,5 +1,5 @@
 module.exports.run = async (bot, message, command, args, db) => {
-  last = message.member.id.slice(-1);
+  let last = message.member.id.slice(-1);
   let jojo = '';
 
   if (last == 0) {
