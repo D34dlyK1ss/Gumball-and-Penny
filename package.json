@@ -1,9 +1,9 @@
 {
-  "name": "dc-bot",
+  "name": "gumball-and-penny",
   "version": "1.0.0",
-  "description": "Um bot de utilidade e moderação",
+  "description": "Somos o Gumball e a Penny!",
   "main": "index.js",
-  "author": "Rodrigo Silva",
+  "author": "D34dlyK!$$",
   "dependencies": {
     "discord.js": "^12.2.0",
     "firebase-admin": "^8.12.1",

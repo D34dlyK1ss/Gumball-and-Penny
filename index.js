@@ -133,7 +133,7 @@ bot.on('guildCreate', async guildData => {
     'guildOwner': guildData.owner.user.username,
     'guildOwnerID': guildData.owner.id,
     'memberCount': guildData.memberCount,
-    'prefix': 'dc!'
+    'prefix': '+'
   });
 });
 
