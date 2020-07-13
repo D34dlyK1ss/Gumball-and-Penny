@@ -56,10 +56,10 @@ module.exports.run = async (bot, message, command, args, db) => {
       dn = 'És o Touta Matsuda!';
     }
     if (last == 4) {
-      dn = 'És o Nate River!';
+      dn = 'És a Rem!';
     }
     if (last == 5) {
-      dn = 'És a Rem!';
+      dn = 'És o Nate River!';
     }
     if (last == 6) {
       dn = 'És o Teru Mikami!';
@@ -119,10 +119,10 @@ module.exports.run = async (bot, message, command, args, db) => {
       opm = 'És o Genos!';
     }
     if (last == 3) {
-      opm = 'És o Puri-Puri Prisoner!';
+      opm = "És o Speed-o' - Sound Sonic!";
     }
     if (last == 4) {
-      opm = "És o Speed-o'-Sound Sonic!";
+      opm = "És o Puri-Puri Prisoner!";
     }
     if (last == 5) {
       opm = 'És o Bang!';
@@ -173,6 +173,39 @@ module.exports.run = async (bot, message, command, args, db) => {
       cg = 'És o Lelouch vi Britannia!';
     }
     message.channel.send(cg, { files: ["images/cg (" + last + ").webp"] });
+  }
+  else if (args == 'code,geass') {
+    if (last == 0) {
+      kakegurui = 'És a Yumemi Yumemite!';
+    }
+    if (last == 1) {
+      kakegurui = 'És o Kaede Manyuda!';
+    }
+    if (last == 2) {
+      kakegurui = 'És o Ryouta Suzui!';
+    }
+    if (last == 3) {
+      kakegurui = 'És a Mary Saotome!';
+    }
+    if (last == 4) {
+      kakegurui = "És a Ririka Momobami!";
+    }
+    if (last == 5) {
+      kakegurui = 'És a Yumeko Jabami!';
+    }
+    if (last == 6) {
+      kakegurui = 'És a Runa Yomozuki!';
+    }
+    if (last == 7) {
+      kakegurui = 'És a Itsuki Sumeragi!';
+    }
+    if (last == 8) {
+      kakegurui = 'És a Kirari Momobami!';
+    }
+    if (last == 9) {
+      kakegurui = 'És a Midari Ikishima!';
+    }
+    message.channel.send(kakegurui, { files: ["images/kakegurui (" + last + ").webp"] });
   }
 }
 
