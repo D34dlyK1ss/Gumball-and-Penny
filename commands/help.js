@@ -6,10 +6,10 @@ module.exports.run = async (bot, message, command, args, db) => {
       .setColor('#8000ff')
       .setTitle('Ajuda')
       .setAuthor('Gumball & Penny', 'https://i.imgur.com/FuYC9KG.jpg')
-      .setDescription('Nós somos o Gumball e a Penny e temos como objetivo tornar qualquer servidor em que estamos num lugar divertido!\nAqui está a lista de comandos disponíveis:')
       .setThumbnail('https://i.imgur.com/FuYC9KG.jpg')
+      .setDescription('Nós somos o Gumball e a Penny e temos como objetivo tornar qualquer servidor em que estamos num lugar divertido!\nEm caso de dúvida nalgum comando usa `+help [comando]`\nAqui está a lista de comandos disponíveis:')
       .addFields(
-        { name: 'Diversão', value: '`avatar`, `fact`, `random`, `say`, `whichjojo`', inline: true },
+        { name: 'Diversão', value: '`avatar`, `fact`, `random`, `say`, `which`', inline: true },
         { name: 'Moderação', value: '`ban`, `clear`, `kick`, `setprefix`', inline: true },
         { name: 'Diversos', value: '`invite`, `members`, `ping`', inline: true },
       )
@@ -23,6 +23,10 @@ module.exports.run = async (bot, message, command, args, db) => {
 
     if (args == 'invite') {
       message.channel.send('Mostraremos o link para nos convidares para um dos teus servidores!');
+    }
+
+    if (args == 'which') {
+      message.channel.send('Com este comando podes saber que personagem de anime és!\nAnimes disponíveis: `akame ga kill`, `jojo`, `death note`');
     }
 
     if (args == 'ping') {

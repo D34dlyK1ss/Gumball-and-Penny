@@ -4,6 +4,8 @@ module.exports.run = async (bot, message, command, args, db) => {
   let dn = '';
   let agk = '';
   
+  args = args.toString();
+
   if (args == ''){
     message.channel.send("Tens de mencionar um anime!");
   }
@@ -40,9 +42,9 @@ module.exports.run = async (bot, message, command, args, db) => {
     }
     message.channel.send(jojo, { files: ["images/jojo (" + last + ").webp"] });
   }
-  else if (args == 'death note'){
+  else if (args == 'death,note'){
     if (last == 0) {
-      dn = 'És a Misa Amane!';
+      dn = 'És o Ryuk!';
     }
     if (last == 1) {
       dn = 'És o Mello!';
@@ -66,14 +68,14 @@ module.exports.run = async (bot, message, command, args, db) => {
       dn = 'És o Souichiro Yagami!';
     }
     if (last == 8) {
-      dn = 'És o Ryuk!';
+      dn = 'És a Misa Amane!';
     }
     if (last == 9) {
       dn = 'És o Light Yagami!';
     }
     message.channel.send(dn, { files: ["images/dn (" + last + ").webp"] });
   }
-  else if (args == 'akame ga kill') {
+  else if (args == 'akame,ga,kill') {
     if (last == 0) {
       agk = 'És a Mine!';
     }
@@ -93,10 +95,10 @@ module.exports.run = async (bot, message, command, args, db) => {
       agk = 'És a Akame!';
     }
     if (last == 6) {
-      agk = 'És o Susanoo!';
+      agk = 'És a Najenda!';
     }
     if (last == 7) {
-      agk = 'És a Najenda!';
+      agk = 'És o Susanoo!';
     }
     if (last == 8) {
       agk = 'És a Leone!';
@@ -105,6 +107,72 @@ module.exports.run = async (bot, message, command, args, db) => {
       agk = 'És a Sheele!';
     }
     message.channel.send(agk, { files: ["images/agk (" + last + ").webp"] });
+  }
+  else if (args == 'one,punch,man') {
+    if (last == 0) {
+      opm = 'És a Superalloy Darkshine!';
+    }
+    if (last == 1) {
+      opm = 'És o King!';
+    }
+    if (last == 2) {
+      opm = 'És o Genos!';
+    }
+    if (last == 3) {
+      opm = 'És o Puri-Puri Prisoner!';
+    }
+    if (last == 4) {
+      opm = "És o Speed-o'-Sound Sonic!";
+    }
+    if (last == 5) {
+      opm = 'És o Bang!';
+    }
+    if (last == 6) {
+      opm = 'És a Tatsumaki!';
+    }
+    if (last == 7) {
+      opm = 'És o Garou!';
+    }
+    if (last == 8) {
+      opm = 'És a Fubuki!';
+    }
+    if (last == 9) {
+      opm = 'És o Saitama!';
+    }
+    message.channel.send(opm, { files: ["images/opm (" + last + ").webp"] });
+  }
+  else if (args == 'code,geass') {
+    if (last == 0) {
+      cg = 'És a Euphemia li Britannia!';
+    }
+    if (last == 1) {
+      cg = 'És o Xingke Li!';
+    }
+    if (last == 2) {
+      cg = 'És o Suzaku Kururugi!';
+    }
+    if (last == 3) {
+      cg = 'És o Kaname Ougi!';
+    }
+    if (last == 4) {
+      cg = "És a Cornelia li Britannia!";
+    }
+    if (last == 5) {
+      cg = 'És a Nunnally vi Britannia!';
+    }
+    if (last == 6) {
+      cg = 'És a Shirley Fenette!';
+    }
+    if (last == 7) {
+      cg = 'És a Kallen Stadtfeld!';
+    }
+    if (last == 8) {
+      cg = 'És a C.C.!';
+    }
+    if (last == 9) {
+      cg = 'És o Lelouch vi Britannia!';
+    }
+    message.channel.send(cg, { files: ["images/cg (" + last + ").webp"] });
   }
 }
 
