@@ -240,6 +240,39 @@ module.exports.run = async (bot, message, command, args, db) => {
     }
     message.channel.send(noragami, { files: ["images/noragami (" + last + ").webp"] });
   }
+  else if (args == 'mirai,nikki') {
+    if (last == 0) {
+      mn = 'És o Deus Ex Machina!';
+    }
+    if (last == 1) {
+      mn = 'És o Aru Akise!';
+    }
+    if (last == 2) {
+      mn = 'És o Keigo Kurusu!';
+    }
+    if (last == 3) {
+      mn = 'És o Yomotsu Hirasaka!';
+    }
+    if (last == 4) {
+      mn = "És a Tsubaki Kasugano!";
+    }
+    if (last == 5) {
+      mn = 'És o Yukiteru Amano!';
+    }
+    if (last == 6) {
+      mn = 'És a Yuno Gasai!';
+    }
+    if (last == 7) {
+      mn = 'És a Hinata Hino!';
+    }
+    if (last == 8) {
+      mn = 'És a Muru Muru!';
+    }
+    if (last == 9) {
+      mn = 'És a Minene Uryuu!';
+    }
+    message.channel.send(mn, { files: ["images/mn (" + last + ").webp"] });
+  }
 }
 
 module.exports.help = {
