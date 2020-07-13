@@ -3,8 +3,11 @@ module.exports.run = async (bot, message, command, args, db) => {
   let jojo = '';
   let dn = '';
   let agk = '';
-
-  if (args == 'jojo'){
+  
+  if (args == ''){
+    message.channel.send("Tens de mencionar um anime!");
+  }
+  else if (args == 'jojo'){
     if (last == 0) {
       jojo = 'És o George Joestar I!';
     }
@@ -70,7 +73,7 @@ module.exports.run = async (bot, message, command, args, db) => {
     }
     message.channel.send(dn, { files: ["images/dn (" + last + ").webp"] });
   }
-  else if (args == 'death note') {
+  else if (args == 'akame ga kill') {
     if (last == 0) {
       agk = 'És a Mine!';
     }
