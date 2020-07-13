@@ -6,6 +6,7 @@ const token = config.token; //Token do bot para autenticação
 const botOwner = config.botOwner; //Discord ID do proprietário do bot
 
 const schedule = require('node-schedule');
+
 const fs = require('fs'); //File System
 
 bot.commands = new Discord.Collection(); //Classe de utilidade 'Collection' do Discord.js
