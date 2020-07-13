@@ -3,7 +3,6 @@ module.exports.run = async (bot, message, command, args, db) => {
   let jojo = '';
   let dn = '';
   let agk = '';
-  args = args.toLowerCase();
 
   if (args == 'jojo'){
     if (last == 0) {
