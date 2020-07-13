@@ -174,7 +174,7 @@ module.exports.run = async (bot, message, command, args, db) => {
     }
     message.channel.send(cg, { files: ["images/cg (" + last + ").webp"] });
   }
-  else if (args == 'code,geass') {
+  else if (args == 'kakegurui') {
     if (last == 0) {
       kakegurui = 'És a Yumemi Yumemite!';
     }
