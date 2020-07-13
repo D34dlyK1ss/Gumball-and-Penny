@@ -26,7 +26,7 @@ module.exports.run = async (bot, message, command, args, db) => {
     }
 
     if (args == 'which') {
-      message.channel.send('Com este comando podes saber que personagem de anime és!\nAnimes disponíveis: `akame ga kill`, `code geass`, `death note`, `jojo`, `kakegurui`, `one punch man`');
+      message.channel.send('Com este comando podes saber que personagem de anime és!\nAnimes disponíveis: `akame ga kill`, `code geass`, `death note`, `jojo`, `kakegurui`, `noragami`, `one punch man`');
     }
 
     if (args == 'ping') {

@@ -123,7 +123,7 @@ bot.on('message', message => {
   }
 
   if (message.content == 'no u') {
-    message.channel.send({ files: ["images/reverse.png"] });
+    message.channel.send({ files: ["images/no u.png"] });
   }
 
   if (message.content == 'E') {

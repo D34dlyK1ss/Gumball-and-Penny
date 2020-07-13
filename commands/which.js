@@ -119,7 +119,7 @@ module.exports.run = async (bot, message, command, args, db) => {
       opm = 'És o Genos!';
     }
     if (last == 3) {
-      opm = "És o Speed-o' - Sound Sonic!";
+      opm = "És o Speed-o'-Sound Sonic!";
     }
     if (last == 4) {
       opm = "És o Puri-Puri Prisoner!";
@@ -206,6 +206,39 @@ module.exports.run = async (bot, message, command, args, db) => {
       kakegurui = 'És a Midari Ikishima!';
     }
     message.channel.send(kakegurui, { files: ["images/kakegurui (" + last + ").webp"] });
+  }
+  else if (args == 'noragami') {
+    if (last == 0) {
+      noragami = 'És a Mayu!';
+    }
+    if (last == 1) {
+      noragami = 'És o Daikoku!';
+    }
+    if (last == 2) {
+      noragami = 'És o Yato!';
+    }
+    if (last == 3) {
+      noragami = 'És a Nora!';
+    }
+    if (last == 4) {
+      noragami = "És o Tenjin!";
+    }
+    if (last == 5) {
+      noragami = 'És o Kazuma!';
+    }
+    if (last == 6) {
+      noragami = 'És o Yukine!';
+    }
+    if (last == 7) {
+      noragami = 'És a Kofuku!';
+    }
+    if (last == 8) {
+      noragami = 'És a Hiyori Iki!';
+    }
+    if (last == 9) {
+      noragami = 'És a Bishamon!';
+    }
+    message.channel.send(noragami, { files: ["images/noragami (" + last + ").webp"] });
   }
 }
 
