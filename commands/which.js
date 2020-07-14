@@ -1,280 +1,75 @@
 module.exports.run = async (bot, message, command, args, db) => {
   let last = message.member.id.slice(-1);
-  let jojo = '';
-  let dn = '';
-  let agk = '';
-  
+  let char = [];
   args = args.toString();
+  args = args.toLowerCase();
 
-  if (args == ''){
+  if (args == null || args == '') {
     message.channel.send("Tens de mencionar um anime!");
   }
-  else if (args == 'jojo'){
-    if (last == 0) {
-      jojo = 'És o George Joestar I!';
+  else {
+    switch (last) {
+      case '0':
+        char = ["o George Joestar I", "o Teru Mikami", "a Mine", "o Mumen Rider", "a Euphemia li Britannia", "a Yumemi Yumemite", "o Ebisu", "o Deus Ex Machina"];
+        break;
+      case '1':
+        char = ["a Jolyne Kujo", "o Mihael Keehl", "o Bulat", "o King", "o Xingke Li", "o Kaede Manyuda", "o Daikoku", "o Aru Akise"];
+        break;
+      case '2':
+        char = ["o Jotaro Kujo", "o L", "o Tatsumi", "o Genos", "o Suzaku Kururugi", "o Ryouta Suzui", "o Yato", "o Keigo Kurusu"];
+        break;
+      case '3':
+        char = ["o Johnny Joestar", "o Touta Matsuda", "a Chelsea", "o Speed-o'-Sound Sonic", "o Kaname Ougi", "a Mary Saotome", "a Nora", "o Yomotsu Hirasaka"];
+        break;
+      case '4':
+        char = ["o Josuke Higashikata!", "a Rem", "o Lubbock", "o Puri-Puri Prisoner", "a Cornelia li Britannia", "a Ririka Momobami", "o Tenjin", "a Tsubaki Kasugano"];
+        break;
+      case '5':
+        char = ["o George Joestar II!", "a Naomi Misora", "a Akame", "o Bang", "a Nunnally vi Britannia", "a Yumeko Jabami", "o Kazuma", "o Yukiteru Amano"];
+        break;
+      case '6':
+        char = ["o Josuke Higashikata", "o Ryuk", "a Najenda", "a Tatsumaki", "a Shirley Fenette", "a Runa Yomozuki", "o Yukine", "a Yuno Gasai"];
+        break;
+      case '7':
+        char = ["o Joseph Joestar", "o Nate River", "a Esdeath", "o Garou", "a Kallen Stadtfeld", "a Itsuki Sumeragi", "a Kofuku", "a Hinata Hino"];
+        break;
+      case '8':
+        char = ["o Johnathan Joestar", "a Misa Amane", "a Leone", "a Fubuki", "a C.C.", "a Kirari Momobami", "a Hiyori Iki", "a Muru Muru"];
+        break;
+      case '9':
+        char = ["o Giorno Giovanna", "o Light Yagami!", "a Sheele", "o Saitama", "o Lelouch vi Britannia", "a Midari Ikishima", "a Bishamon", "a Minene Uryuu"];
+        break;
+    }
+
+    switch (args) {
+      case "jojo":
+        message.channel.send(`És ${char[0]}!`, { files: ["images/which/jojo (" + last + ").jpg"] });
+        break;
+      case "death,note":
+        message.channel.send(`És ${char[1]}!`, { files: ["images/which/dn (" + last + ").jpg"] });
+        break;
+      case "akame,ga,kill":
+        message.channel.send(`És ${char[2]}!`, { files: ["images/which/agk (" + last + ").jpg"] });
+        break;
+      case "one,punch,man":
+        message.channel.send(`És ${char[3]}!`, { files: ["images/which/opm (" + last + ").jpg"] });
+        break;
+      case "code,geass":
+        message.channel.send(`És ${char[4]}!`, { files: ["images/which/cg (" + last + ").jpg"] });
+        break;
+      case "kakegurui":
+        message.channel.send(`És ${char[5]}!`, { files: ["images/which/kakegurui (" + last + ").jpg"] });
+        break;
+      case "noragami":
+        message.channel.send(`És ${char[6]}!`, { files: ["images/which/noragami (" + last + ").jpg"] });
+        break;
+      case "mirai,nikki":
+        message.channel.send(`És ${char[7]}!`, { files: ["images/which/mn (" + last + ").jpg"] });
+        break;
     }
-    if (last == 1) {
-      jojo = 'És a Jolyne Kujo!';
-    }
-    if (last == 2) {
-      jojo = 'És o Jotaro Kujo!';
-    }
-    if (last == 3) {
-      jojo = 'És o Johnny Joestar!';
-    }
-    if (last == 4) {
-      jojo = 'És o Josuke Higashikata!';
-    }
-    if (last == 5) {
-      jojo = 'És o George Joestar II!';
-    }
-    if (last == 6) {
-      jojo = 'És o Josuke Higashikata!';
-    }
-    if (last == 7) {
-      jojo = 'És o Joseph Joestar!';
-    }
-    if (last == 8) {
-      jojo = 'És o Johnathan Joestar!';
-    }
-    if (last == 9) {
-      jojo = 'És o Giorno Giovanna!';
-    }
-    message.channel.send(jojo, { files: ["images/jojo (" + last + ").webp"] });
-  }
-  else if (args == 'death,note'){
-    if (last == 0) {
-      dn = 'És o Ryuk!';
-    }
-    if (last == 1) {
-      dn = 'És o Mello!';
-    }
-    if (last == 2) {
-      dn = 'És o L!';
-    }
-    if (last == 3) {
-      dn = 'És o Touta Matsuda!';
-    }
-    if (last == 4) {
-      dn = 'És a Rem!';
-    }
-    if (last == 5) {
-      dn = 'És o Nate River!';
-    }
-    if (last == 6) {
-      dn = 'És o Teru Mikami!';
-    }
-    if (last == 7) {
-      dn = 'És o Souichiro Yagami!';
-    }
-    if (last == 8) {
-      dn = 'És a Misa Amane!';
-    }
-    if (last == 9) {
-      dn = 'És o Light Yagami!';
-    }
-    message.channel.send(dn, { files: ["images/dn (" + last + ").webp"] });
-  }
-  else if (args == 'akame,ga,kill') {
-    if (last == 0) {
-      agk = 'És a Mine!';
-    }
-    if (last == 1) {
-      agk = 'És o Bulat!';
-    }
-    if (last == 2) {
-      agk = 'És o Tatsumi!';
-    }
-    if (last == 3) {
-      agk = 'És a Chelsea!';
-    }
-    if (last == 4) {
-      agk = 'És o Lubbock!';
-    }
-    if (last == 5) {
-      agk = 'És a Akame!';
-    }
-    if (last == 6) {
-      agk = 'És a Najenda!';
-    }
-    if (last == 7) {
-      agk = 'És o Susanoo!';
-    }
-    if (last == 8) {
-      agk = 'És a Leone!';
-    }
-    if (last == 9) {
-      agk = 'És a Sheele!';
-    }
-    message.channel.send(agk, { files: ["images/agk (" + last + ").webp"] });
-  }
-  else if (args == 'one,punch,man') {
-    if (last == 0) {
-      opm = 'És a Superalloy Darkshine!';
-    }
-    if (last == 1) {
-      opm = 'És o King!';
-    }
-    if (last == 2) {
-      opm = 'És o Genos!';
-    }
-    if (last == 3) {
-      opm = "És o Speed-o'-Sound Sonic!";
-    }
-    if (last == 4) {
-      opm = "És o Puri-Puri Prisoner!";
-    }
-    if (last == 5) {
-      opm = 'És o Bang!';
-    }
-    if (last == 6) {
-      opm = 'És a Tatsumaki!';
-    }
-    if (last == 7) {
-      opm = 'És o Garou!';
-    }
-    if (last == 8) {
-      opm = 'És a Fubuki!';
-    }
-    if (last == 9) {
-      opm = 'És o Saitama!';
-    }
-    message.channel.send(opm, { files: ["images/opm (" + last + ").webp"] });
-  }
-  else if (args == 'code,geass') {
-    if (last == 0) {
-      cg = 'És a Euphemia li Britannia!';
-    }
-    if (last == 1) {
-      cg = 'És o Xingke Li!';
-    }
-    if (last == 2) {
-      cg = 'És o Suzaku Kururugi!';
-    }
-    if (last == 3) {
-      cg = 'És o Kaname Ougi!';
-    }
-    if (last == 4) {
-      cg = "És a Cornelia li Britannia!";
-    }
-    if (last == 5) {
-      cg = 'És a Nunnally vi Britannia!';
-    }
-    if (last == 6) {
-      cg = 'És a Shirley Fenette!';
-    }
-    if (last == 7) {
-      cg = 'És a Kallen Stadtfeld!';
-    }
-    if (last == 8) {
-      cg = 'És a C.C.!';
-    }
-    if (last == 9) {
-      cg = 'És o Lelouch vi Britannia!';
-    }
-    message.channel.send(cg, { files: ["images/cg (" + last + ").webp"] });
-  }
-  else if (args == 'kakegurui') {
-    if (last == 0) {
-      kakegurui = 'És a Yumemi Yumemite!';
-    }
-    if (last == 1) {
-      kakegurui = 'És o Kaede Manyuda!';
-    }
-    if (last == 2) {
-      kakegurui = 'És o Ryouta Suzui!';
-    }
-    if (last == 3) {
-      kakegurui = 'És a Mary Saotome!';
-    }
-    if (last == 4) {
-      kakegurui = "És a Ririka Momobami!";
-    }
-    if (last == 5) {
-      kakegurui = 'És a Yumeko Jabami!';
-    }
-    if (last == 6) {
-      kakegurui = 'És a Runa Yomozuki!';
-    }
-    if (last == 7) {
-      kakegurui = 'És a Itsuki Sumeragi!';
-    }
-    if (last == 8) {
-      kakegurui = 'És a Kirari Momobami!';
-    }
-    if (last == 9) {
-      kakegurui = 'És a Midari Ikishima!';
-    }
-    message.channel.send(kakegurui, { files: ["images/kakegurui (" + last + ").webp"] });
-  }
-  else if (args == 'noragami') {
-    if (last == 0) {
-      noragami = 'És a Mayu!';
-    }
-    if (last == 1) {
-      noragami = 'És o Daikoku!';
-    }
-    if (last == 2) {
-      noragami = 'És o Yato!';
-    }
-    if (last == 3) {
-      noragami = 'És a Nora!';
-    }
-    if (last == 4) {
-      noragami = "És o Tenjin!";
-    }
-    if (last == 5) {
-      noragami = 'És o Kazuma!';
-    }
-    if (last == 6) {
-      noragami = 'És o Yukine!';
-    }
-    if (last == 7) {
-      noragami = 'És a Kofuku!';
-    }
-    if (last == 8) {
-      noragami = 'És a Hiyori Iki!';
-    }
-    if (last == 9) {
-      noragami = 'És a Bishamon!';
-    }
-    message.channel.send(noragami, { files: ["images/noragami (" + last + ").webp"] });
-  }
-  else if (args == 'mirai,nikki') {
-    if (last == 0) {
-      mn = 'És o Deus Ex Machina!';
-    }
-    if (last == 1) {
-      mn = 'És o Aru Akise!';
-    }
-    if (last == 2) {
-      mn = 'És o Keigo Kurusu!';
-    }
-    if (last == 3) {
-      mn = 'És o Yomotsu Hirasaka!';
-    }
-    if (last == 4) {
-      mn = "És a Tsubaki Kasugano!";
-    }
-    if (last == 5) {
-      mn = 'És o Yukiteru Amano!';
-    }
-    if (last == 6) {
-      mn = 'És a Yuno Gasai!';
-    }
-    if (last == 7) {
-      mn = 'És a Hinata Hino!';
-    }
-    if (last == 8) {
-      mn = 'És a Muru Muru!';
-    }
-    if (last == 9) {
-      mn = 'És a Minene Uryuu!';
-    }
-    message.channel.send(mn, { files: ["images/mn (" + last + ").webp"] });
   }
 }
 
 module.exports.help = {
-  name: 'which'
+  name: "which"
 }

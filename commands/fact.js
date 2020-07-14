@@ -1,8 +1,5 @@
 module.exports.run = async (bot, message, command, args, db) => {
   var rnd = Math.floor(Math.random() * 7);
-  if (message.member.id == 271737298951995393) {
-    rnd = 0;
-  }
 
   if (rnd == 0) {
     message.channel.send('Usada muitas vezes de forma excessiva, para algumas pessoas a palavra swag tem um significado diferente do normal: Secretly We Are Gay\nhttps://i.imgur.com/CoRrIKr.jpg');
