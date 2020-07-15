@@ -133,6 +133,10 @@ bot.on('message', message => {
   if (message.content == 'hmm') {
     message.channel.send({ files: ["images/hmm.jpg"] });
   }
+
+  if (message.content == 'noice') {
+    message.channel.send({ files: ["images/noice.png"] });
+  }
 });
 
 //Quando o bot for adicionado a um novo servidor, são armazenados dados do mesmo
