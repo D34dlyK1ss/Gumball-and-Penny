@@ -1,8 +1,7 @@
 module.exports.run = async (bot, message, command, args, db) => {
+  args = args.toString();
   let last = message.member.id.slice(-1);
   let char = [];
-  args = args.toString();
-  args = args.toLowerCase();
 
   if (args == null || args == '') {
     message.channel.send("Tens de mencionar um anime!");
