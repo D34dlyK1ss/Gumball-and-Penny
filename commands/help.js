@@ -2,7 +2,8 @@ const Discord = require('discord.js');
 
 module.exports.run = async (bot, message, command, args, db) => {
   args = args.toString();
-  commandname = bot.commands.get(args);
+  command = bot.commands.get(args);
+  let name = args.charAt(0).toUpperCase() + args.slice(1);
   const embed = new Discord.MessageEmbed()
     .setColor('#8000ff')
     .setTitle('Ajuda')
@@ -13,14 +14,14 @@ module.exports.run = async (bot, message, command, args, db) => {
       { name: 'Diversão', value: '`fact`, `random`, `say`, `which`' },
       { name: 'Diversos', value: '`avatar`, `invite`, `ping`' },
       { name: 'Moderação', value: '`ban`, `clear`, `kick`' },
-      { name: 'Servidor', value: '`members`, setprefix`, `userinfo`' }
+      { name: 'Servidor', value: '`members`, `setprefix`, `userinfo`' }
     );
 
   if (args == null || args == ''){
     message.channel.send(embed);
   }
-  else{
-    message.channel.send(`Categoria: ${commandname.help.category}\nDescrição: ${commandname.help.description}\nComo usar: ${commandname.help.usage}`).catch(err => { console.error(err) });
+  else {
+    message.channel.send(`Nome: ${name}\nCategoria: ${command.help.category}\nDescrição: ${command.help.description}\nComo usar: ${command.help.usage}`);
   }
 }
 
