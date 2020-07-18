@@ -70,5 +70,8 @@ module.exports.run = async (bot, message, command, args, db) => {
 }
 
 module.exports.help = {
-  name: "which"
+  name: "Which",
+  category: "Diversão",
+  description: "Com este comando podes saber que personagem de anime és!\nAnimes disponíveis: `akame ga kill`, `code geass`, `death note`, `jojo`, `kakegurui`, `mirai nikki`, `noragami`, `one punch man`'",
+  usage: "`+avatar [opcional - @utilizador]`"
 }

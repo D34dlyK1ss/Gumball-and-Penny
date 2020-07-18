@@ -10,5 +10,8 @@ module.exports.run = async (bot, message, command, args, db) => {
 }
 
 module.exports.help = {
-    name: 'random'
+    name: 'Random',
+    category: "Diversão",
+    description: "Diremos um número aleatório entre 1 e o número indicado. O predefinido é 100",
+    usage: "`+random [opcional - número]`"
 }

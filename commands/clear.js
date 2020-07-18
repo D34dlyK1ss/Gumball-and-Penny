@@ -25,5 +25,8 @@ module.exports.run = async (bot, message, command, args, db) => {
 }
 
 module.exports.help = {
-    name: 'clear'
+    name: 'Clear',
+    category: "Moderação",
+    description: "Limpa o chat",
+    usage: "`+clear [número]`"
 }

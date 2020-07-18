@@ -13,5 +13,8 @@ module.exports.run = async (bot, message, command, args, db) => {
 }
 
 module.exports.help = {
-    name: 'say'
+    name: 'Say',
+    category: "Diversos",
+    description: "Isso faz um de nós dizer o que quiseres! :slight_smile:",
+    usage: "`+say [mensagem]`"
 }

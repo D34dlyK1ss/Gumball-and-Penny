@@ -18,5 +18,8 @@ module.exports.run = async (bot, message, command, args, db) => {
 }
 
 module.exports.help = {
-    name: 'dm'
+    name: 'DM',
+    category: "Diversos",
+    description: "Enviamos uma mensagem privada ao utilizador mencionado",
+    usage: "`+dm [@utilizador] [mensagem]`"
 }
