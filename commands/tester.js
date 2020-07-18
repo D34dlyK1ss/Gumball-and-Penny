@@ -4,7 +4,7 @@ module.exports.run = async (bot, message, command, args, db) => {
 
 module.exports.help = {
     name: 'Tester',
-    category: "Diversos",
-    description: "",
-    usage: "`+avatar [opcional - @utilizador]`"
+    category: "NaN",
+    description: "Comando para teste",
+    usage: "`+tester`"
 }
