@@ -13,19 +13,19 @@ module.exports.run = async (bot, message, command, args, db) => {
       { name: 'Diversão', value: '`fact`, `random`, `say`, `which`' },
       { name: 'Diversos', value: '`avatar`, `invite`, `ping`' },
       { name: 'Moderação', value: '`ban`, `clear`, `kick`' },
-      { name: 'Servidor', value: '``members`, setprefix`, `userinfo`' }
+      { name: 'Servidor', value: '`members`, setprefix`, `userinfo`' }
     );
 
   if (args == null || args == ''){
     message.channel.send(embed);
   }
   else{
-    message.channel.send(`Nome: ${commandname.help.name}\nCategoria: ${commandname.help.category}\nDescrição: ${commandname.help.description}\nComo usar: ${commandname.help.usage}`).catch(err => { console.error(err) });
+    message.channel.send(`Categoria: ${commandname.help.category}\nDescrição: ${commandname.help.description}\nComo usar: ${commandname.help.usage}`).catch(err => { console.error(err) });
   }
 }
 
 module.exports.help = {
-  name: 'Help',
+  name: 'help',
   category: "Ajuda",
   description: "Se não sabes, soubesses! :unamused:",
   usage: "`+help`"

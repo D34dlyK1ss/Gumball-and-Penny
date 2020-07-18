@@ -67,7 +67,7 @@ bot.on('message', message => {
     let command = array[0];
     let args = array.slice(1);
     
-    if (!command.startsWith(prefix)) return; //Ignorar mensagens que não comecem com o prefixo
+    if (!command.startsWith(prefix)) return; //Ignorar mensagens que não começam com o prefixo
 
     if (bot.commands.get(command.slice(prefix.length))){
       let cmd = bot.commands.get(command.slice(prefix.length));

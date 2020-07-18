@@ -6,7 +6,7 @@ module.exports.run = async (bot, message, command, args, db) => {
 }
 
 module.exports.help = {
-    name: 'Avatar',
+    name: 'avatar',
     category: "Diversos",
     description: "Vê o avatar de um membro do servidor!",
     usage: "`+avatar [opcional - @utilizador]`"

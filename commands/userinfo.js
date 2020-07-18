@@ -41,7 +41,7 @@ module.exports.run = async (bot, message, command, args, db) => {
 }
 
 module.exports.help = {
-    name: 'User Info',
+    name: 'userinfo',
     category: "Diversos",
     description: "Com este comando serás informado sobre algum membro mencionado!",
     usage: "`+userinfo [opcional - @utilizador]`"

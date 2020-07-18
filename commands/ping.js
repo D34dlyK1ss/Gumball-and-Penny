@@ -3,7 +3,7 @@ module.exports.run = async (bot, message, command, args, db) => {
 }
 
 module.exports.help = {
-  name: 'Ping',
+  name: 'ping',
   category: "Diversos",
   description: "Uhm... pong?",
   usage: "`+ping`"

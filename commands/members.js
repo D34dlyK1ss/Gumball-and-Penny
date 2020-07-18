@@ -3,7 +3,7 @@ module.exports.run = async (bot, message, command, args, db) => {
 }
 
 module.exports.help = {
-    name: 'Members',
+    name: 'members',
     category: "Diversos",
     description: "Mostraremos a quantidade de membros no servidor!",
     usage: "`+members`"

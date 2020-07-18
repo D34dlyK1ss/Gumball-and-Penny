@@ -19,7 +19,7 @@ module.exports.run = async (bot, message, command, args, db) => {
 }
 
 module.exports.help = {
-  name: 'Setprefix',
+  name: 'setprefix',
   category: "Servidor",
   description: "Muda o nosso prefixo para este servidor",
   usage: "`+setprefix [prefixo]`"

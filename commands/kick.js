@@ -18,7 +18,7 @@ module.exports.run = async (bot, message, command, args, db) => {
 }
 
 module.exports.help = {
-    name: 'Kick',
+    name: 'kick',
     category: "Diversão",
     description: "Expulsaremos um membro do servidor!",
     usage: "`+kick [@utilizador]`"

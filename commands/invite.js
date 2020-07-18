@@ -3,7 +3,7 @@ module.exports.run = async (bot, message, command, args, db) => {
 }
 
 module.exports.help = {
-    name: 'Invite',
+    name: 'invite',
     category: "Diversão",
     description: "Enviaremos o link para nos convidares para um servidor!",
     usage: "`+invite`"
