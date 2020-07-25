@@ -69,7 +69,7 @@ module.exports.run = async (bot, message, command, args, db) => {
         message.channel.send(`És ${char[8]}!`, { files: ["images/which/sg (" + last + ").jpg"] });
         break;
       case "higurashi":
-        message.channel.send(`És ${char[8]}!`, { files: ["images/which/higurashi (" + last + ").jpg"] });
+        message.channel.send(`És ${char[9]}!`, { files: ["images/which/higurashi (" + last + ").jpg"] });
         break;
     }
   }
