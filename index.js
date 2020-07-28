@@ -38,15 +38,17 @@ bot.once('ready', async () => {
   console.log('Preparados!');
 
   const currentdate = new Date();
-  const relationship = new Date(2019, 12, 28);
+  const relationship = new Date(2019, 11, 28);
   const mili = currentdate - relationship;
   const months = Math.round(mili / 2629746000);
   const years = Math.round(mili / 31536000000);
+  const lilly = bot.users.resolve("503009296267608066");
+  const ruru = bot.users.resolve("287953505992572929");
 
   bot.user.setActivity("+help");
-  let j = schedule.scheduleJob("0 15 28 * *", function () {
-    bot.users.get("503009296267608066").send(":tada: Parabéns Lilly! Completaste " + (months + 1) + " meses com o teu Ruru! :purple_heart:\nhttps://i.imgur.com/NyaigHE.gif");
-    bot.users.get("287953505992572929").send(":tada: Parabéns Ruru! Completaste " + (months + 1) + " meses com a tua Lilly! :purple_heart:\nhttps://i.imgur.com/NyaigHE.gif");
+  let j = schedule.scheduleJob("0 14 28 * *", function () {
+    lilly.send(`:tada: Parabéns Lilly! Completaste ${months} meses com o teu Ruru! :purple_heart:\nhttps://i.imgur.com/clrwrEk.gif`);
+    ruru.send(`:tada: Parabéns Ruru! Completaste ${months} meses com a tua Lilly! :purple_heart:\nhttps://i.imgur.com/clrwrEk.gif`);
   });
 });
 

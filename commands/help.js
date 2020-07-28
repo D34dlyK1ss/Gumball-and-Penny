@@ -4,7 +4,7 @@ module.exports.run = async (bot, message, command, args, db) => {
   args = args.toString();
   command = bot.commands.get(args);
   let name = args.charAt(0).toUpperCase() + args.slice(1);
-  const embed = new Discord.MessageEmbed()
+  const helpEmbed = new Discord.MessageEmbed()
     .setColor('#8000ff')
     .setTitle('Ajuda')
     .setAuthor('Gumball & Penny', `${bot.user.displayAvatarURL()}`)
@@ -18,10 +18,19 @@ module.exports.run = async (bot, message, command, args, db) => {
     );
 
   if (args == null || args == ''){
-    message.channel.send(embed);
+    message.channel.send(helpEmbed);
   }
   else {
-    message.channel.send(`Nome: ${name}\nCategoria: ${command.help.category}\nDescrição: ${command.help.description}\nComo usar: ${command.help.usage}`);
+    const commandEmbed = new Discord.MessageEmbed()
+      .setColor('#8000ff')
+      .addFields(
+        { name: 'Nome', value: `${name}`},
+        { name: 'Categoria', value: `${command.help.category}`},
+        { name: 'Como usar', value: `${command.help.usage}`},
+        { name: 'Descrição', value: `${command.help.description}` }
+      );
+
+    message.channel.send(commandEmbed);
   }
 }
 
