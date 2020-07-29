@@ -74,7 +74,7 @@ bot.on('message', message => {
     if (bot.commands.get(command.slice(prefix.length))){
       let cmd = bot.commands.get(command.slice(prefix.length));
       if (cmd){
-        cmd.run(bot, message, command, args, db, ref); //Correr as ações do comando
+        cmd.run(bot, message, command, args, db); //Correr as ações do comando
       }
     }
   });
