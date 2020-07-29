@@ -11,7 +11,7 @@ module.exports.run = async (bot, message, command, args, db) => {
 
             message.channel.send(`Tens ¤${bal}`);
         }
-    })
+    }).catch(err => { console.error(err) });
 }
 
 module.exports.help = {

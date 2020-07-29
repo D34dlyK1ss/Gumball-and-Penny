@@ -10,38 +10,84 @@ module.exports.run = async (bot, message, command, args, db) => {
 
     switch (option){
         case 'create':
-            db.collection('perfis').doc(user.id).set({
-                'balance': 0,
-                'description': 'N/A',
-                'id': user.id,
-                'name': user.username
-            }).then(() => {message.reply('o teu perfil foi criado! Adiciona uma descricão com `+profile setdescription [descrição]`!')});
-        break;
+            ref.get().then(doc => {
+                if (doc.exists) {
+                    if (user == message.author) {
+                        message.channel.send("Já tens um perfil criado, não podes criar outro! 💢");
+                    }
+                }
+                else {
+                    db.collection('perfis').doc(message.author.id).set({
+                        'balance': 0,
+                        'description': 'N/A',
+                        'id': user.id,
+                        'lastDaily': new Date(1970, 0, 1, 0, 0, 0, 0),
+                        'name': user.username,
+                        'nickname': 'N/A'
+                    }).then(() => {
+                        message.reply('o teu perfil foi criado! Adiciona uma descricão com `+profile setdescription [descrição]`!')
+                    }).catch(err => { console.error(err) });
+                }
+            })
+            break;
+        case 'setnickname':
+            ref.get().then(doc => {
+                if (!doc.exists) {
+                    if (user == message.author) {
+                        message.channel.send("Ainda não criaste um perfil! Para criares um perfil usa `+profile create`!");
+                    }
+                }
+                else {
+                    db.collection('perfis').doc(message.author.id).update({
+                        'nickname': args
+                    }).then(() => {
+                        message.reply('a tua alcunha foi alterada!');
+                    }).catch(err => { console.error(err) });
+                }
+            })
+            break;
         case 'setdescription':
-            db.collection('perfis').doc(user.id).update({
-                'description': args
-            }).then(() => {
-                message.reply('a tua descrição foi alterada!');
-            }).catch(err => { console.error(err) });
-        break;
+            ref.get().then(doc => {
+                if (!doc.exists) {
+                    if (user == message.author) {
+                        message.channel.send("Ainda não criaste um perfil! Para criares um perfil usa `+profile create`!");
+                    }
+                }
+                else {
+                    db.collection('perfis').doc(message.author.id).update({
+                        'description': args
+                    }).then(() => {
+                        message.reply('a tua descrição foi alterada!');
+                    }).catch(err => { console.error(err) });
+                }
+            })
+            break;
         default:
             ref.get().then(doc => {
                 if (!doc.exists) {
                     if (user == message.author){
                         message.channel.send("Ainda não criaste um perfil! Para criares um perfil usa `+profile create`!");
                     }
+                    else if (user.id == 679041548955942914) {
+                        message.channel.send("Nós não precisamos de ter um perfil!");
+                    }
+                    else if (user.bot){
+                        message.channel.send("Os bots não criam perfis! 😂 ");
+                    }
                     else {
                         message.channel.send("Este utilizador ainda não criou um perfil!");
                     }
                 }
                 else {
-                    let desc = doc.get("description"),
+                    let nick = doc.get("nickname"),
+                        desc = doc.get("description"),
                         bal = doc.get("balance");
                     const embed = new Discord.MessageEmbed()
                         .setColor('#8000ff')
-                        .setAuthor(`${user.tag}`, `${user.displayAvatarURL()}`)
+                        .setAuthor(`${user.tag}`)
                         .setThumbnail(`${user.displayAvatarURL()}`)
                         .addFields(
+                            { name: 'Alcunha', value: `${nick}` },
                             { name: 'Descrição', value: `${desc}`},
                             { name: 'Capital', value: `¤${bal}`},
                         )
@@ -49,13 +95,13 @@ module.exports.run = async (bot, message, command, args, db) => {
                     message.channel.send(embed);
                 }
             })
-        break;
+            break;
     }
 }
 
 module.exports.help = {
     name: 'profile',
-    category: "Diversos",
-    description: "Vê o teu perfil ou o de alguém!",
-    usage: "`+profile [opcional - @utilizador]`"
+    category: "Utilidade",
+    description: "Vê o teu perfil ou o de alguém!\nOpções disponíveis: `create`, `setnickname`, `setdescription`",
+    usage: "`+profile [opcional - opção | @utilizador]`"
 }

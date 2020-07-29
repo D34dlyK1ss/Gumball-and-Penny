@@ -14,7 +14,7 @@ module.exports.run = async (bot, message, command, args, db) => {
 
 module.exports.help = {
     name: 'say',
-    category: "Diversos",
+    category: "Diversão",
     description: "Isso faz um de nós dizer o que quiseres! :slight_smile:",
     usage: "`+say [mensagem]`"
 }

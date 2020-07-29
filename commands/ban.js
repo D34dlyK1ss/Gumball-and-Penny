@@ -3,7 +3,7 @@ module.exports.run = async (bot, message, command, args, db) => {
     let mention = message.mentions.users.first(),
         member = message.guild.member(mention);
     if (!message.member.hasPermission('BAN_MEMBERS')) {
-        message.reply('não tens permissão para usar este comando! :anger:').then(msg => msg.delete({ timeout: 5000 })).catch(err => { console.error(err) });
+        message.reply('não tens permissão para usar este comando! 💢').then(msg => msg.delete({ timeout: 5000 })).catch(err => { console.error(err) });
     }
     else {
         if (mention == null) {
@@ -11,7 +11,7 @@ module.exports.run = async (bot, message, command, args, db) => {
         }
         else {
             member.ban().then((member) => {
-                message.channel.send(`**${member.displayName}** foi banido! :hammer:`).then(msg => msg.delete({ timeout: 5000 })).catch(err => { console.error(err) });
+                message.channel.send(`**${member.displayName}** foi banido! 🔨`).then(msg => msg.delete({ timeout: 5000 })).catch(err => { console.error(err) });
             });
         }
     }

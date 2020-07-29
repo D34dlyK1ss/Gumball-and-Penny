@@ -1,7 +1,7 @@
 module.exports.run = async (bot, message, command, args, db) => {
     message.delete();
     if (!message.member.hasPermission('MANAGE_MESSAGES')) {
-        message.reply(`não tens permissão para usar este comando! :anger:`).then(msg => { msg.delete({ timeout: 5000 }) }).catch(err => { console.error(err) });
+        message.reply(`não tens permissão para usar este comando! 💢`).then(msg => { msg.delete({ timeout: 5000 }) }).catch(err => { console.error(err) });
     }
     else {
         if (args == '' || args == '0') {

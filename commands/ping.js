@@ -4,7 +4,7 @@ module.exports.run = async (bot, message, command, args, db) => {
 
 module.exports.help = {
   name: 'ping',
-  category: "Diversos",
+  category: "Utilidade",
   description: "Uhm... pong?",
   usage: "`+ping`"
 }
