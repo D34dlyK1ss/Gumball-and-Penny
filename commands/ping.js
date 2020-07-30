@@ -1,10 +1,10 @@
-module.exports.run = async (bot, message, command, args, db) => {
-  message.reply('Pong!');
-}
-
-module.exports.help = {
+module.exports = {
   name: 'ping',
   category: "Utilidade",
   description: "Uhm... pong?",
-  usage: "`+ping`"
+  usage: "`+ping`",
+
+  execute(message) {
+    message.reply('Pong!');
+  }
 }

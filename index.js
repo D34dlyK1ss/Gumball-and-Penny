@@ -18,17 +18,13 @@ admin.initializeApp({
 const db = admin.firestore();
 
 //Leitura dos ficheiros de comandos
-fs.readdir('./commands', (err, files) => {
-  if (err){
-    console.log(err);
-  }
-  let commandFiles = files.filter(f => f.split('.').pop() === 'js');
-  if (commandFiles.length === 0) return;
-  commandFiles.forEach((f, i) => {
-    let props = require(`./commands/${f}`);
-    bot.commands.set(props.help.name, props);
-  });
-})
+
+let commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
+if (commandFiles.length === 0) return;
+for (const file of commandFiles) {
+  const props = require(`./commands/${file}`);
+  bot.commands.set(props.name, props);
+}
 
 //Uma vez que o bot está ativo:
 bot.once('ready', async () => {
@@ -52,8 +48,7 @@ bot.once('ready', async () => {
 //Ações para quando o bot receber uma mensagem
 bot.on('message', message => {
   //Ignorar mensagens de outros bots e mensagens privadas
-  if (message.channel.type === 'dm') return;
-  if (message.author.bot) return;
+  if (message.channel.type === 'dm' || message.author.bot) return;
 
   let prefix;
   let ref = db.collection('servidores').doc(message.guild.id);
@@ -63,17 +58,20 @@ bot.on('message', message => {
       prefix = doc.data().prefix; //Obter o prefixo definido para o servidor
     }
   }).then(() => {
-    let array = message.content.split(' '),
-        command = array[0],
-        args = array.slice(1);
-    
-    if (!command.startsWith(prefix)) return; //Ignorar mensagens que não começam com o prefixo
+    if (!message.content.startsWith(prefix)) return; //Ignorar mensagens que não começam com o prefixo
 
-    if (bot.commands.get(command.slice(prefix.length))){
-      let cmd = bot.commands.get(command.slice(prefix.length));
-      if (cmd){
-        cmd.run(bot, message, command, args, db); //Correr as ações do comando mencionado na mensagem lida
-      }
+    const args = message.content.slice(prefix.length).trim().split(/ +/),
+          commandName = args.shift().toLowerCase();
+
+    if (!bot.commands.has(commandName)) return;
+
+    const command = bot.commands.get(commandName);
+
+    try {
+      command.execute(message, args, db);
+    } catch (err) {
+      console.error(err);
+      message.reply('houve um erro ao tentar executar esse comando!');
     }
   });
 
@@ -82,7 +80,7 @@ bot.on('message', message => {
       oID = ref.get('guildOwnerID'),
       mCount = ref.get('memberCount');
 
-  //Atualizar o Nome do servidor
+  //Atualizar o nome do servidor
   if (message.guild.name != gName) {
     ref.update({
       guildName: message.guild.name

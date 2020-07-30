@@ -1,10 +1,10 @@
-module.exports.run = async (bot, message, command, args, db) => {
-
-}
-
-module.exports.help = {
+module.exports = {
     name: 'tester',
     category: "NaN",
     description: "Comando para teste",
-    usage: "`+tester`"
+    usage: "`+tester`",
+
+    execute(message, args) {
+        
+    }
 }
