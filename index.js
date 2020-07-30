@@ -1,13 +1,10 @@
 const Discord = require('discord.js'); //Biblioteca do Discord.js
 const bot = new Discord.Client(); //Cliente
-
 const config = require('./config.json'); //Propriedades default do bot
 const token = config.token; //Token do bot para autenticação
 const botOwner = config.botOwner; //Discord ID do proprietário do bot
-
-const schedule = require('node-schedule');
-
-const fs = require('fs'); //File System
+const schedule = require('node-schedule');//Biblioteca para horários
+const fs = require('fs'); //Biblioteca para sistema de ficheiros
 
 bot.commands = new Discord.Collection(); //Classe de utilidade 'Collection' do Discord.js
 
@@ -60,6 +57,7 @@ bot.on('message', message => {
 
   let prefix;
   let ref = db.collection('servidores').doc(message.guild.id);
+
   ref.get().then(doc => {
     if (doc.exists){
       prefix = doc.data().prefix; //Obter o prefixo definido para o servidor
@@ -74,7 +72,7 @@ bot.on('message', message => {
     if (bot.commands.get(command.slice(prefix.length))){
       let cmd = bot.commands.get(command.slice(prefix.length));
       if (cmd){
-        cmd.run(bot, message, command, args, db); //Correr as ações do comando
+        cmd.run(bot, message, command, args, db); //Correr as ações do comando mencionado na mensagem lida
       }
     }
   });
@@ -112,6 +110,7 @@ bot.on('message', message => {
     });
   }
 
+  //Responder de acordo com o conteúdo da mensagem lida
   switch (message.content){
     case 'shine':
       message.channel.send({ files: ["images/shine.png"] });
