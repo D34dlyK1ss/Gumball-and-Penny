@@ -2,6 +2,7 @@ const Discord = require('discord.js');
 
 module.exports = {
 	name: 'profile',
+	aliases: ['p'],
 	category: 'Utilidade',
 	description: 'Vê o teu perfil ou o de alguém!\nOpções disponíveis: `create`, `setnickname`, `setdescription`',
 	usage: '`+profile [opcional - opção | @utilizador]`',
@@ -36,6 +37,7 @@ module.exports = {
 			});
 			break;
 		case 'setnickname':
+			if (args == '') args = 'N/A';
 			ref.get().then(doc => {
 				if (!doc.exists) {
 					if (user == message.author) {

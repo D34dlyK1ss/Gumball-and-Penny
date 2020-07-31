@@ -1,5 +1,6 @@
 module.exports = {
 	name: 'balance',
+	aliases: ['bal'],
 	category: 'Economia',
 	description: 'Verifica o teu capital!',
 	usage: '`+balance`',

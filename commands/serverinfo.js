@@ -3,6 +3,7 @@ const moment = require('moment');
 
 module.exports = {
 	name: 'serverinfo',
+	aliases: ['sinfo'],
 	category: 'Servidor',
 	description: 'Todas as informações do servidor!',
 	usage: '`+serverinfo`',

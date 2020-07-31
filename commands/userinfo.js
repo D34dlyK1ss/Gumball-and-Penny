@@ -3,6 +3,7 @@ const moment = require('moment');
 
 module.exports = {
 	name: 'userinfo',
+	aliases: ['uinfo'],
 	category: 'Servidor',
 	description: 'Com este comando serás informado sobre algum membro mencionado!',
 	usage: '`+userinfo [opcional - @utilizador]`',

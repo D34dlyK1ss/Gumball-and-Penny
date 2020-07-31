@@ -2,6 +2,7 @@
 /* eslint-disable no-unused-vars */
 module.exports = {
 	name: 'tester',
+	aliases: ['t'],
 	category: 'NaN',
 	description: 'Comando para teste',
 	usage: '`+tester`',

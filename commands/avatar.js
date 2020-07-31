@@ -2,6 +2,7 @@ const { MessageAttachment } = require('discord.js');
 
 module.exports = {
 	name: 'avatar',
+	aliases: ['icon', 'pfp'],
 	category: 'Utilidade',
 	description: 'Vê o avatar de um membro do servidor!',
 	usage: '`+avatar [opcional - @utilizador]`',
