@@ -11,13 +11,12 @@ module.exports = {
 
 		ref.get().then(doc => {
 			const now = new Date(),
-				lastdaily = doc.get('lastDaily').toDate(),
-				timepassed = now - lastdaily;
+				lastdaily = doc.get('lastDaily').toDate();
 			if (!doc.exists) {
 				message.channel.send('Ainda não criaste um perfil! Para criares um perfil usa `+profile create`!');
 			}
-			else if (timepassed < 86400000) {
-				message.channel.send('Ainda não passaram 24 horas desde o teu último `+daily`!');
+			else if (now.getFullYear() == lastdaily.getFullYear() && now.getMonth() == lastdaily.getMonth() && now.getDate() == lastdaily.getDate()) {
+				message.channel.send('Amanhã poderás receber o teu montante diário outra vez');
 			}
 			else {
 				const bal = doc.get('balance');
