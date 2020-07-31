@@ -1,10 +1,10 @@
 module.exports = {
-  name: 'ping',
-  category: "Utilidade",
-  description: "Uhm... pong?",
-  usage: "`+ping`",
+	name: 'ping',
+	category: 'Utilidade',
+	description: 'Uhm... pong?',
+	usage: '`+ping`',
 
-  execute(bot, message, command, args, db) {
-    message.reply('Pong!');
-  }
-}
+	execute(bot, message) {
+		message.reply('Pong!');
+	},
+};
