@@ -10,7 +10,7 @@ module.exports = {
 			message.reply('não tens permissão para usar este comando! 💢').then(msg => { msg.delete({ timeout: 3000 }); }).catch(err => { console.error(err); });
 		}
 		else if (args.length === 0) {
-			message.reply('precisamos de saber qual é o prefixo desejado!').then(msg => { msg.delete({ timeout: 3000 }); }).catch(err => { console.error(err); });
+			message.reply('precisamos de saber qual é o prefixo desejado!');
 		}
 		else {
 			const newPrefix = args[0];

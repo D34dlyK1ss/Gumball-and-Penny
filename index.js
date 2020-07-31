@@ -74,14 +74,15 @@ bot.on('message', message => {
 		if (!message.content.startsWith(prefix)) return;
 
 		const array = message.content.split(' ');
-		const command = array[0].slice(prefix.length);
+		const commandName = array[0].slice(prefix.length).toLowerCase();
 		const args = array.slice(1);
+		const command = bot.commands.get(commandName) || bot.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
 
 		// Ignorar mensagem se o bot não tiver tal comando
-		if (!bot.commands.has(command)) return;
+		if (!command) return;
 
 		try {
-			bot.commands.get(command).execute(bot, message, command, args, db);
+			command.execute(bot, message, command, args, db);
 		}
 		catch (err) {
 			console.error(err);
