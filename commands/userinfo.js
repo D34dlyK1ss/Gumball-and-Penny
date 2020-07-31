@@ -1,15 +1,18 @@
+const Discord = require('discord.js');
+let moment = require('moment');
+
 module.exports = {
     name: 'userinfo',
     category: "Servidor",
     description: "Com este comando serás informado sobre algum membro mencionado!",
     usage: "`+userinfo [opcional - @utilizador]`",
 
-    execute (message){
+    execute(bot, message, command, args, db){
         let user = message.mentions.users.first() || message.author;
-        member = message.guild.member(user),
+        let member = message.guild.member(user),
             createdDate = moment(user.createdAt).locale('pt'),
-            joinedDate = moment(member.joinedAt).locale('pt'),
-            created = createdDate.from(Date.now()),
+            joinedDate = moment(member.joinedAt).locale('pt');
+        let created = createdDate.from(Date.now()),
             joined = joinedDate.from(Date.now());
 
         switch (user.presence.status) {

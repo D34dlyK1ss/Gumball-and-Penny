@@ -6,7 +6,7 @@ module.exports = {
     description: "Vê o teu perfil ou o de alguém!\nOpções disponíveis: `create`, `setnickname`, `setdescription`",
     usage: "`+profile [opcional - opção | @utilizador]`",
 
-    execute (message, args, db){
+    execute(bot, message, command, args, db){
         let user = message.mentions.users.first() || message.author,
             member = message.guild.member(user),
             ref = db.collection('perfis').doc(user.id),

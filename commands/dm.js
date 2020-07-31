@@ -4,7 +4,7 @@ module.exports = {
     description: "Enviamos uma mensagem privada ao utilizador mencionado",
     usage: "`+dm [@utilizador] [mensagem]`",
 
-    execute(message, args) {
+    execute(bot, message, command, args, db) {
         let mention = message.mentions.users.first();
         message.delete();
         if (mention == null || mention == '') {

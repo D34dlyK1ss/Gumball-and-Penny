@@ -4,7 +4,7 @@ module.exports = {
     description: "Limpa o chat",
     usage: "`+clear [número]`",
 
-    execute(message, args) {
+    execute(bot, message, command, args, db) {
         message.delete();
         if (!message.member.hasPermission('MANAGE_MESSAGES')) {
             message.reply(`não tens permissão para usar este comando! 💢`).then(msg => { msg.delete({ timeout: 5000 }) }).catch(err => { console.error(err) });

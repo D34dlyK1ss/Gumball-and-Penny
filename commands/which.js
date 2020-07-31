@@ -4,7 +4,7 @@ module.exports = {
   description: "Com este comando podes saber que personagem de anime és!\nAnimes disponíveis: `akame ga kill`, `code geass`, `death note`, `higurashi` , `jojo`, `kakegurui`, `mirai nikki`, `noragami`, `one punch man`, `psycho-pass`, `steins;gate`",
   usage: "`+which [anime]`",
 
-  execute(message, args) {
+  execute(bot, message, command, args, db) {
     args = args.toString();
     let last = message.member.id.slice(-1);
     let char = [];

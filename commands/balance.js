@@ -4,7 +4,7 @@ module.exports = {
     description: "Verifica o teu capital!",
     usage: "`+balance`",
 
-    execute(message, db) {
+    execute(bot, message, command, args, db) {
         let user = message.author,
             ref = db.collection('perfis').doc(user.id);
 

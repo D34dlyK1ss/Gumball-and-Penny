@@ -4,7 +4,7 @@ module.exports = {
   description: "Uhm... pong?",
   usage: "`+ping`",
 
-  execute(message) {
+  execute(bot, message, command, args, db) {
     message.reply('Pong!');
   }
 }

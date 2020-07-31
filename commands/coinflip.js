@@ -4,7 +4,7 @@ module.exports = {
     description: "Roda a moeda e aposta no que vai calhar!",
     usage: "`+coinflip [quantidade] [cara/coroa]`",
 
-    execute(message, args, db) {
+    execute(bot, message, command, args, db) {
         let user = message.author,
             ref = db.collection('perfis').doc(user.id);
 

@@ -6,12 +6,7 @@ module.exports = {
   description: "Se não sabes, soubesses! :unamused:",
   usage: "`+help`",
 
-  execute(bot, message, args) {
-    args = args.toString();
-
-    const command = bot.commands.get(args);
-    let name = args.charAt(0).toUpperCase() + args.slice(1);
-    
+  execute(bot, message, command, args, db) {
     const helpEmbed = new Discord.MessageEmbed()
       .setColor('#8000ff')
       .setTitle('Ajuda')
@@ -31,16 +26,24 @@ module.exports = {
       message.channel.send(helpEmbed);
     }
     else {
-      const commandEmbed = new Discord.MessageEmbed()
-        .setColor('#8000ff')
-        .addFields(
-          { name: 'Nome', value: `${name}` },
-          { name: 'Categoria', value: `${command.category}` },
-          { name: 'Como usar', value: `${command.usage}` },
-          { name: 'Descrição', value: `${command.description}` }
-        );
+      args = args.toString();
+      let name = args.charAt(0).toUpperCase() + args.slice(1);
 
-      message.channel.send(commandEmbed);
+      if (!command) {
+        return message.reply('that\'s not a valid command!');
+      }
+      else {
+        const commandEmbed = new Discord.MessageEmbed()
+          .setColor('#8000ff')
+          .addFields(
+            { name: 'Nome', value: `${name}` },
+            { name: 'Categoria', value: `${command.category}` },
+            { name: 'Como usar', value: `${command.usage}` },
+            { name: 'Descrição', value: `${command.description}` }
+          );
+
+        message.channel.send(commandEmbed);
+      }
     }
   }
 }

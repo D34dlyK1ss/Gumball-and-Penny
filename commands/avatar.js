@@ -6,7 +6,7 @@ module.exports = {
     description: "Vê o avatar de um membro do servidor!",
     usage: "`+avatar [opcional - @utilizador]`",
 
-    execute (message, args){
+    execute(bot, message, command, args, db){
         let user = message.mentions.users.first() || message.author;
         message.channel.send(new MessageAttachment(user.displayAvatarURL()));
     }

@@ -4,7 +4,7 @@ module.exports = {
   description: "**Factos**",
   usage: "`+fact`",
 
-  execute(message) {
+  execute(bot, message, command, args, db) {
     var rnd = Math.round(Math.random() * 16);
 
     switch (rnd) {

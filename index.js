@@ -47,31 +47,31 @@ bot.once('ready', async () => {
 
 //Ações para quando o bot receber uma mensagem
 bot.on('message', message => {
-  //Ignorar mensagens de outros bots e mensagens privadas
-  if (message.channel.type === 'dm' || message.author.bot) return;
 
   let prefix;
-  let ref = db.collection('servidores').doc(message.guild.id);
+  const ref = db.collection('servidores').doc(message.guild.id);
+
+  //Ignorar mensagens privadas e mensagens de outros bots
+  if (message.channel.type === 'dm' || message.author.bot) return;
 
   ref.get().then(doc => {
-    if (doc.exists){
-      prefix = doc.data().prefix; //Obter o prefixo definido para o servidor
+    if (doc.exists) {
+      prefix = doc.get("prefix"); //Obter o prefixo definido para o servidor
     }
   }).then(() => {
     if (!message.content.startsWith(prefix)) return; //Ignorar mensagens que não começam com o prefixo
 
-    const args = message.content.slice(prefix.length).trim().split(/ +/),
-          commandName = args.shift().toLowerCase();
+    let array = message.content.split(' ');
+    let command = array[0].slice(prefix.length);
+    let args = array.slice(1);
 
-    if (!bot.commands.has(commandName)) return;
-
-    const command = bot.commands.get(commandName);
+    if (!bot.commands.has(command)) return; //Ignorar mensagem se o bot não tiver tal comando
 
     try {
-      command.execute(message, args, db);
+      bot.commands.get(command).execute(bot, message, command, args, db);
     } catch (err) {
       console.error(err);
-      message.reply('houve um erro ao tentar executar esse comando!');
+      message.reply('ocorreu um erro ao tentar executar esse comando!');
     }
   });
 

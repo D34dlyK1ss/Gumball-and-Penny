@@ -4,7 +4,7 @@ module.exports = {
     description: "Diremos um número aleatório entre 1 e o número indicado. O predefinido é 100",
     usage: "`+random [opcional - número]`",
 
-    execute(message, args) {
+    execute(bot, message, command, args, db) {
         let rnd;
         if (args == '') {
             rnd = Math.floor(Math.random() * 100) + 1;

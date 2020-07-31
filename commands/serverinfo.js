@@ -4,7 +4,7 @@ module.exports = {
     description: "Todas as informações do servidor!",
     usage: "`+serverinfo`",
 
-    execute (message){
+    execute(bot, message, command, args, db){
         let server = message.guild,
             createdDate = moment(server.createdAt).locale('pt');
 

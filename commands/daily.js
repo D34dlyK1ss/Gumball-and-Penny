@@ -4,7 +4,7 @@ module.exports = {
     description: "Receberás ¤250 a cada 24 horas!",
     usage: "`+daily`",
 
-    execute(message, db) {
+    execute(bot, message, command, args, db) {
         let user = message.author,
             ref = db.collection('perfis').doc(user.id);
 

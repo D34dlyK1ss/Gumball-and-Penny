@@ -4,7 +4,7 @@ module.exports = {
     description: "Comando para teste",
     usage: "`+tester`",
 
-    execute(message, args) {
+    execute(bot, message, command, args, db) {
         
     }
 }
