@@ -1,5 +1,6 @@
 module.exports = {
 	name: 'daily',
+	aliases: ['d'],
 	category: 'Economia',
 	description: 'Receberás ¤250 a cada 24 horas!',
 	usage: '`+daily`',
