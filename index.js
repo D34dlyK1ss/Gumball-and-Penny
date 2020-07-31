@@ -4,8 +4,6 @@ const Discord = require('discord.js');
 const bot = new Discord.Client();
 // Propriedades default do bot
 const config = require('./config.json');
-// Token do bot para autenticação
-const token = config.token;
 // Biblioteca para horários
 const schedule = require('node-schedule');
 // Biblioteca para sistema de ficheiros
@@ -50,8 +48,8 @@ bot.once('ready', async () => {
 		years = Math.round(mili / 31536000000);
 
 	schedule.scheduleJob('0 14 28 * *', function() {
-		bot.users.resolve('503009296267608066').send(`:tada: Parabéns Lilly! Completaste ${months} meses com o teu Ruru! :purple_heart:\nhttps://i.imgur.com/clrwrEk.gif`);
-		bot.users.resolve('287953505992572929').send(`:tada: Parabéns Ruru! Completaste ${months} meses com a tua Lilly! :purple_heart:\nhttps://i.imgur.com/clrwrEk.gif`);
+		bot.users.resolve(config.lilly).send(`:tada: Parabéns Lilly! Completaste ${months} meses com o teu Ruru! :purple_heart:\nhttps://i.imgur.com/clrwrEk.gif`);
+		bot.users.resolve(config.botOwner).send(`:tada: Parabéns Ruru! Completaste ${months} meses com a tua Lilly! :purple_heart:\nhttps://i.imgur.com/clrwrEk.gif`);
 	});
 });
 
@@ -162,4 +160,4 @@ bot.on('guildCreate', async guildData => {
 });
 
 // Autenticação do bot
-bot.login(token);
+bot.login(config.token);
