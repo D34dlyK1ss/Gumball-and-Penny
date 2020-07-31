@@ -2,7 +2,7 @@ module.exports = {
 	name: 'daily',
 	aliases: ['d'],
 	category: 'Economia',
-	description: 'Receberás ¤250 a cada 24 horas!',
+	description: 'Receberás ¤250 a cada dia!',
 	usage: '`+daily`',
 
 	execute(bot, message, command, args, db) {
