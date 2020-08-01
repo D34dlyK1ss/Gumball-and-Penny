@@ -1,3 +1,15 @@
+function msToTime(duration) {
+	let seconds = Math.floor((duration / 1000) % 60),
+		minutes = Math.floor((duration / (1000 * 60)) % 60),
+		hours = Math.floor((duration / (1000 * 60 * 60)) % 24);
+
+	hours = (hours < 10) ? '0' + hours : hours;
+	minutes = (minutes < 10) ? '0' + minutes : minutes;
+	seconds = (seconds < 10) ? '' + seconds : seconds;
+
+	return `${hours} horas, ${minutes} minutos e ${seconds} segundos.`;
+}
+
 module.exports = {
 	name: 'daily',
 	aliases: ['d'],
@@ -11,12 +23,19 @@ module.exports = {
 
 		ref.get().then(doc => {
 			const now = new Date();
+			const next = new Date();
+			next.setDate(next.getDate() + 1);
+			next.setHours(0);
+			next.setMinutes(0);
+			next.setSeconds(0);
+			next.setMilliseconds(0);
 			const lastdaily = doc.get('lastDaily').toDate();
+			const timeLeft = next - now;
 			if (!doc.exists) {
 				message.channel.send('Ainda não criaste um perfil! Para criares um perfil usa `+profile create`!');
 			}
 			else if (now.getUTCFullYear() == lastdaily.getUTCFullYear() && now.getUTCMonth() == lastdaily.getUTCMonth() && now.getUTCDate() == lastdaily.getUTCDate()) {
-				message.channel.send('Amanhã poderás receber o teu montante diário outra vez');
+				message.channel.send(`Poderás receber o teu montante diário outra vez em ${msToTime(timeLeft)}`);
 			}
 			else {
 				const bal = doc.get('balance');
