@@ -16,7 +16,7 @@ module.exports = {
 			.setThumbnail(`${bot.user.displayAvatarURL()}`)
 			.setDescription('Nós somos o Gumball e a Penny e temos como objetivo tornar qualquer servidor em que estamos num lugar divertido!\nEm caso de dúvida nalgum comando usa `+help [nome do comando]`')
 			.addFields(
-				{ name: '🎭 Ações', value: '`fact`, `random`, `say`, `which`', inline: true },
+				{ name: '🎭 Ações', value: '`kiss`, `laugh`, `pat`, `run`, `slap`', inline: true },
 				{ name: '🎰 Casino', value: '`coinflip`', inline: true },
 				{ name: '😁 Diversão', value: '`fact`, `random`, `say`, `which`', inline: true },
 				{ name: '💰 Economia', value: '`balance`, `daily`', inline: true },
