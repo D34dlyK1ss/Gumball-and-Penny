@@ -44,7 +44,7 @@ module.exports = {
 					else if (res == guess) {
 						const won = money * 2;
 						db.collection('perfis').doc(user.id).update({
-							'balance': (bal - money + won),
+							'balance': (bal + won),
 						}).then(() => {
 							message.channel.send(`Ganhaste ¤${won}!`);
 						}).catch(err => { console.error(err); });

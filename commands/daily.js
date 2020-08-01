@@ -12,32 +12,38 @@ function msToTime(duration) {
 		hours = '';
 		break;
 	case 1:
-		hours = `${hours} hora`;
+		hours = `${hours} hora, `;
 		break;
 	default:
-		hours = `${hours} horas`;
+		hours = `${hours} horas, `;
 		break;
 	}
 
 	switch (minutes) {
+	case 0:
+		minutes = ' e ';
+		break;
 	case 1:
 		minutes = `${minutes} minuto`;
 		break;
 	default:
-		minutes = `${minutes} minutos`;
+		minutes = `${minutes} minutos e `;
 		break;
 	}
 
 	switch (seconds) {
+	case 0:
+		seconds = '.';
+		break;
 	case 1:
-		seconds = `${seconds} segundo`;
+		seconds = `${seconds} segundo.`;
 		break;
 	default:
-		seconds = `${seconds} segundos`;
+		seconds = `${seconds} segundos.`;
 		break;
 	}
 
-	return `${hours}, ${minutes} e ${seconds}.`;
+	return `${hours, minutes, seconds}`;
 }
 
 module.exports = {
