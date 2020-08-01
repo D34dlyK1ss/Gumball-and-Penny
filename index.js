@@ -42,7 +42,7 @@ for (const file of commandFiles) {
 
 // Uma vez que o bot está ativo:
 bot.once('ready', async () => {
-	console.log(`Preparados! [${moment.format('LLL')}]`);
+	console.log(`Preparados! [${moment().format('LLL')}]`);
 
 	bot.user.setActivity('+help');
 
