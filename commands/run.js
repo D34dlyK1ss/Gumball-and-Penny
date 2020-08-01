@@ -18,7 +18,7 @@ module.exports = {
 			message.channel.send(`${message.author} fugiu para longe de nós!`, { files: [`images/actions/${command.name} (${rnd}).gif`] });
 		}
 		else {
-			message.channel.send(`${message.author} fugiu para longe do/a ${user}!`, { files: [`images/actions/${command.name} (${rnd}).gif`] });
+			message.channel.send(`${message.author} fugiu para longe de ${user}!`, { files: [`images/actions/${command.name} (${rnd}).gif`] });
 		}
 	},
 };

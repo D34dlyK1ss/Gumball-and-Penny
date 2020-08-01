@@ -18,7 +18,7 @@ module.exports = {
 			message.channel.send(`${message.author} acariciou-nos! 😊`, { files: [`images/actions/${command.name} (${rnd}).gif`] });
 		}
 		else {
-			message.channel.send(`${message.author} acariciou o/a ${user}!`, { files: [`images/actions/${command.name} (${rnd}).gif`] });
+			message.channel.send(`${message.author} acariciou ${user}!`, { files: [`images/actions/${command.name} (${rnd}).gif`] });
 		}
 	},
 };

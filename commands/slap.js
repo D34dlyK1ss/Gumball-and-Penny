@@ -18,7 +18,7 @@ module.exports = {
 			message.channel.send(`${message.author} deu-nos uma chapada! 😠`, { files: [`images/actions/${command.name} (${rnd}).gif`] });
 		}
 		else {
-			message.channel.send(`${message.author} deu uma chapada ao/à ${user}!`, { files: [`images/actions/${command.name} (${rnd}).gif`] });
+			message.channel.send(`${message.author} deu uma chapada a ${user}!`, { files: [`images/actions/${command.name} (${rnd}).gif`] });
 		}
 	},
 };

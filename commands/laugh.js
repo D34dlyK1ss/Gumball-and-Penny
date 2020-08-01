@@ -18,7 +18,7 @@ module.exports = {
 			message.channel.send(`${message.author} está a rir-se de nós!`, { files: [`images/actions/${command.name} (${rnd}).gif`] });
 		}
 		else {
-			message.channel.send(`${message.author} está a rir-se do/a ${user}!`, { files: [`images/actions/${command.name} (${rnd}).gif`] });
+			message.channel.send(`${message.author} está a rir-se de ${user}!`, { files: [`images/actions/${command.name} (${rnd}).gif`] });
 		}
 	},
 };
