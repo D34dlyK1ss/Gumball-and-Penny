@@ -10,8 +10,8 @@ module.exports = {
 			ref = db.collection('perfis').doc(user.id);
 
 		ref.get().then(doc => {
-			const now = new Date(),
-				lastdaily = doc.get('lastDaily').toDate();
+			const now = new Date();
+			const lastdaily = doc.get('lastDaily').toDate();
 			if (!doc.exists) {
 				message.channel.send('Ainda não criaste um perfil! Para criares um perfil usa `+profile create`!');
 			}
@@ -25,7 +25,7 @@ module.exports = {
 					'balance': (bal + 250),
 					'lastDaily': new Date(),
 				}).then(() => {
-					message.channel.send('Recebeste os teus ¤250 diários!');
+					message.reply('recebeste os teus ¤250 diários!');
 				}).catch(err => { console.error(err); });
 			}
 		}).catch(err => { console.error(err); });
