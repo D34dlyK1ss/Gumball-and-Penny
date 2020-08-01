@@ -12,6 +12,7 @@ const schedule = require('node-schedule');
 
 // Biblioteca para momentos
 const moment = require('moment');
+moment.locale('pt');
 
 // Biblioteca para sistema de ficheiros
 const fs = require('fs');
@@ -42,7 +43,7 @@ for (const file of commandFiles) {
 
 // Uma vez que o bot está ativo:
 bot.once('ready', async () => {
-	console.log(`Preparados! [${moment().format('LLL')}]`);
+	console.log(`Preparados! (${moment().format('LLL')})`);
 
 	bot.user.setActivity('+help');
 
