@@ -121,28 +121,30 @@ bot.on('message', message => {
 		});
 	}
 
+	const pic = new Discord.MessageAttachment(`images/${message.content}.png`);
+
 	// Responder de acordo com o conteúdo da mensagem lida
 	switch (message.content) {
 	case 'shine':
-		message.channel.send({ files: ['images/shine.png'] });
+		message.channel.send(pic);
 		break;
 	case 'boi':
-		message.channel.send({ files: ['images/boi.png'] });
+		message.channel.send(pic);
 		break;
 	case 'just monika':
-		message.channel.send({ files: ['images/just monika.png'] });
+		message.channel.send(pic);
 		break;
 	case 'no u':
-		message.channel.send({ files: ['images/no u.png'] });
+		message.channel.send(pic);
 		break;
 	case 'E':
-		message.channel.send({ files: ['images/E.png'] });
+		message.channel.send(pic);
 		break;
 	case 'hmm':
-		message.channel.send({ files: ['images/hmm.png'] });
+		message.channel.send(pic);
 		break;
 	case 'noice':
-		message.channel.send({ files: ['images/noice.png'] });
+		message.channel.send(pic);
 		break;
 	}
 });

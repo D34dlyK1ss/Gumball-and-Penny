@@ -6,7 +6,8 @@ module.exports = {
 	usage: '`+which [anime]`',
 
 	execute(bot, message, command, args) {
-		args = args.toString();
+		args = args.join(' ');
+		args = args.toLowerCase();
 		const last = message.member.id.slice(-1);
 		let char = [];
 
@@ -49,37 +50,37 @@ module.exports = {
 
 			switch (args) {
 			case 'jojo':
-				message.channel.send(`És ${char[0]}!`, { files: ['images/which/jojo (' + last + ').jpg'] });
+				message.channel.send(`És ${char[0]}!`, { files: [`images/which/${args} (${last}).jpg`] });
 				break;
-			case 'death,note':
-				message.channel.send(`És ${char[1]}!`, { files: ['images/which/dn (' + last + ').jpg'] });
+			case 'death note':
+				message.channel.send(`És ${char[1]}!`, { files: [`images/which/${args} (${last}).jpg`] });
 				break;
-			case 'akame,ga,kill':
-				message.channel.send(`És ${char[2]}!`, { files: ['images/which/agk (' + last + ').jpg'] });
+			case 'akame ga kill':
+				message.channel.send(`És ${char[2]}!`, { files: [`images/which/${args} (${last}).jpg`] });
 				break;
-			case 'one,punch,man':
-				message.channel.send(`És ${char[3]}!`, { files: ['images/which/opm (' + last + ').jpg'] });
+			case 'one punch man':
+				message.channel.send(`És ${char[3]}!`, { files: [`images/which/${args} (${last}).jpg`] });
 				break;
-			case 'code,geass':
-				message.channel.send(`És ${char[4]}!`, { files: ['images/which/cg (' + last + ').jpg'] });
+			case 'code geass':
+				message.channel.send(`És ${char[4]}!`, { files: [`images/which/${args} (${last}).jpg`] });
 				break;
 			case 'kakegurui':
-				message.channel.send(`És ${char[5]}!`, { files: ['images/which/kakegurui (' + last + ').jpg'] });
+				message.channel.send(`És ${char[5]}!`, { files: [`images/which/${args} (${last}).jpg`] });
 				break;
 			case 'noragami':
-				message.channel.send(`És ${char[6]}!`, { files: ['images/which/noragami (' + last + ').jpg'] });
+				message.channel.send(`És ${char[6]}!`, { files: [`images/which/${args} (${last}).jpg`] });
 				break;
-			case 'mirai,nikki':
-				message.channel.send(`És ${char[7]}!`, { files: ['images/which/mn (' + last + ').jpg'] });
+			case 'mirai nikki':
+				message.channel.send(`És ${char[7]}!`, { files: [`images/which/${args} (${last}).jpg`] });
 				break;
 			case 'steins;gate':
-				message.channel.send(`És ${char[8]}!`, { files: ['images/which/sg (' + last + ').jpg'] });
+				message.channel.send(`És ${char[8]}!`, { files: [`images/which/${args} (${last}).jpg`] });
 				break;
 			case 'higurashi':
-				message.channel.send(`És ${char[9]}!`, { files: ['images/which/higurashi (' + last + ').jpg'] });
+				message.channel.send(`És ${char[9]}!`, { files: [`images/which/${args} (${last}).jpg`] });
 				break;
 			case 'psycho-pass':
-				message.channel.send(`És ${char[10]}!`, { files: ['images/which/pp (' + last + ').jpg'] });
+				message.channel.send(`És ${char[10]}!`, { files: [`images/which/${args} (${last}).jpg`] });
 				break;
 			}
 		}
