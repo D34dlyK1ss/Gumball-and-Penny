@@ -129,7 +129,7 @@ bot.on('message', message => {
 		});
 	}
 
-	const pic = new Discord.MessageAttachment(`images/${message.content}.png`);
+	const pic = new Discord.MessageAttachment(`images/${message.content}.jpg`);
 
 	// Responder de acordo com o conteúdo da mensagem lida
 	switch (message.content) {
