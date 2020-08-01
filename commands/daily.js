@@ -3,11 +3,41 @@ function msToTime(duration) {
 		minutes = Math.floor((duration / (1000 * 60)) % 60),
 		hours = Math.floor((duration / (1000 * 60 * 60)) % 24);
 
-	hours = (hours < 10) ? '0' + hours : hours;
-	minutes = (minutes < 10) ? '0' + minutes : minutes;
-	seconds = (seconds < 10) ? '' + seconds : seconds;
+	hours = (hours < 10) ? hours : hours;
+	minutes = (minutes < 10) ? minutes : minutes;
+	seconds = (seconds < 10) ? seconds : seconds;
 
-	return `${hours} horas, ${minutes} minutos e ${seconds} segundos.`;
+	switch (hours) {
+	case 0:
+		hours = '';
+		break;
+	case 1:
+		hours = `${hours} hora`;
+		break;
+	default:
+		hours = `${hours} horas`;
+		break;
+	}
+
+	switch (minutes) {
+	case 1:
+		minutes = `${minutes} minuto`;
+		break;
+	default:
+		minutes = `${minutes} minutos`;
+		break;
+	}
+
+	switch (seconds) {
+	case 1:
+		seconds = `${seconds} segundo`;
+		break;
+	default:
+		seconds = `${seconds} segundos`;
+		break;
+	}
+
+	return `${hours}, ${minutes} e ${seconds}.`;
 }
 
 module.exports = {
