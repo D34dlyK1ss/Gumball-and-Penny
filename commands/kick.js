@@ -4,7 +4,7 @@ module.exports = {
 	name: 'kick',
 	category: 'Moderação',
 	description: 'Expulsaremos um membro do servidor!',
-	usage: '`+kick [@utilizador] [opcional - razão]`',
+	usage: '`+kick [@membro] [opcional - razão]`',
 
 	execute(bot, message, command, args) {
 		message.delete();

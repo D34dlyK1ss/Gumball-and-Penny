@@ -5,7 +5,7 @@ module.exports = {
 	aliases: ['p'],
 	category: 'Utilidade',
 	description: 'Vê o teu perfil ou o de alguém!\nOpções disponíveis: `create`, `setnickname`, `setdescription`',
-	usage: '`+profile [opcional - opção | @utilizador]`',
+	usage: '`+profile [opcional - opção | @membro]`',
 
 	execute(bot, message, command, args, db) {
 		const user = message.mentions.users.first() || message.author,

@@ -56,11 +56,11 @@ bot.once('ready', async () => {
 // Ações para quando o bot receber uma mensagem
 bot.on('message', message => {
 
-	let prefix;
-	const ref = db.collection('servidores').doc(message.guild.id);
-
 	// Ignorar mensagens privadas e mensagens de outros bots
 	if (message.channel.type === 'dm' || message.author.bot) return;
+
+	let prefix;
+	const ref = db.collection('servidores').doc(message.guild.id);
 
 	ref.get().then(doc => {
 		if (doc.exists) {
