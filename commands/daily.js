@@ -64,7 +64,7 @@ module.exports = {
 			if (!doc.exists) {
 				message.channel.send('Ainda não criaste um perfil! Para criares um perfil usa `+profile create`!');
 			}
-			else if (now.getFullYear() == lastdaily.getUTCFullYear() && now.getMonth() == lastdaily.getUTCMonth() && now.getDate() == lastdaily.getUTCDate()) {
+			else if (now.getFullYear() == lastdaily.getFullYear() && now.getMonth() == lastdaily.getMonth() && now.getDate() == lastdaily.getDate()) {
 				message.channel.send(`Poderás receber o teu montante diário outra vez em ${msToTime(timeLeft)}`);
 			}
 			else {
