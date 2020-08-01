@@ -1,11 +1,18 @@
 // Biblioteca do Discord.js
 const Discord = require('discord.js');
+
 // Cliente
 const bot = new Discord.Client();
+
 // Propriedades default do bot
 const config = require('./config.json');
+
 // Biblioteca para horários
 const schedule = require('node-schedule');
+
+// Biblioteca para momentos
+const moment = require('moment');
+
 // Biblioteca para sistema de ficheiros
 const fs = require('fs');
 
@@ -14,6 +21,7 @@ bot.commands = new Discord.Collection();
 
 // Acesso de administrador à BD
 const admin = require('firebase-admin');
+
 // Chaves de autenticação à BD
 const serviceAccount = require('./serviceAccountKey.json');
 admin.initializeApp({
@@ -25,7 +33,6 @@ admin.initializeApp({
 const db = admin.firestore();
 
 // Leitura dos ficheiros de comandos
-
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
 if (commandFiles.length === 0) return;
 for (const file of commandFiles) {
@@ -35,7 +42,7 @@ for (const file of commandFiles) {
 
 // Uma vez que o bot está ativo:
 bot.once('ready', async () => {
-	console.log('Preparados!');
+	console.log(`Preparados! [${moment.format('LLL')}]`);
 
 	bot.user.setActivity('+help');
 
