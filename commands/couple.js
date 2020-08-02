@@ -28,7 +28,7 @@ module.exports = {
 				message.reply('isso não vai funcionar com um bot! 😂');
 			}
 			else {
-				message.channel.send(`Vocês têm **${number}%** de chance de dar certo!`);
+				message.channel.send(`Tu és **${number}%** compatível com ${other}!`);
 			}
 		}
 	},
