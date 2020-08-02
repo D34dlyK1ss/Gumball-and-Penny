@@ -24,7 +24,7 @@ module.exports = {
 			else {
 				const bal = doc.get('balance');
 
-				doc.update({
+				ref.update({
 					'balance': (bal + 250),
 					'lastDaily': today,
 				}).then(() => {
