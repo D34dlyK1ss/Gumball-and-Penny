@@ -13,8 +13,8 @@ module.exports = {
 			ref = db.collection('perfis').doc(user.id);
 
 		ref.get().then(doc => {
-			const today = moment().format('L');
-			const lastDaily = doc.get('lastDaily');
+			const today = moment().format('L'),
+				lastDaily = doc.get('lastDaily');
 			if (!doc.exists) {
 				message.channel.send('Ainda não criaste um perfil! Para criares um perfil usa `+profile create`!');
 			}
