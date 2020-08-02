@@ -1,7 +1,7 @@
 /* eslint-disable no-empty-function */
 /* eslint-disable no-unused-vars */
 
-const config = require('./config.json');
+const config = require('../config.json');
 const botOwner = config.botOwner,
 	lilly = config.lilly;
 
