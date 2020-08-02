@@ -64,8 +64,8 @@ module.exports = {
 			ref = db.collection('perfis').doc(user.id);
 
 		ref.get().then(doc => {
-			const now = new Date();
-			const next = new Date();
+			const now = new Date().getTime();
+			const next = new Date().getTime();
 			next.setDate(next.getUTCDate() + 1);
 			next.setHours(0);
 			next.setMinutes(0);
@@ -84,7 +84,7 @@ module.exports = {
 
 				db.collection('perfis').doc(user.id).update({
 					'balance': (bal + 250),
-					'lastDaily': new Date(),
+					'lastDaily': now,
 				}).then(() => {
 					message.reply('recebeste os teus ¤250 diários!');
 				}).catch(err => { console.error(err); });
