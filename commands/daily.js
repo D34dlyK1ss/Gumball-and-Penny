@@ -22,9 +22,9 @@ module.exports = {
 				message.channel.send(`Poderás receber o teu montante diário outra vez ${moment().endOf('day').fromNow()}.`);
 			}
 			else {
-				const bal = ref.get('balance');
+				const bal = doc.get('balance');
 
-				ref.update({
+				doc.update({
 					'balance': (bal + 250),
 					'lastDaily': today,
 				}).then(() => {
