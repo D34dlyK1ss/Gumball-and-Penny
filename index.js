@@ -51,9 +51,7 @@ bot.once('ready', async () => {
 		relationship = new Date(2019, 11, 28),
 		mili = currentdate - relationship;
 
-	const months = Math.round(mili / 2629746000),
-		// eslint-disable-next-line no-unused-vars
-		years = Math.round(mili / 31536000000);
+	const months = Math.round(mili / 2629746000);
 
 	schedule.scheduleJob('0 14 28 * *', function() {
 		bot.users.resolve(config.lilly).send(`:tada: Parabéns Lilly! Completaste ${months} meses com o teu Ruru! :purple_heart:\nhttps://i.imgur.com/clrwrEk.gif`);
@@ -96,6 +94,23 @@ bot.on('message', message => {
 		}
 	});
 
+	const oName = ref.get('guildOwner'),
+		oID = ref.get('guildOwnerID');
+
+	// Atualizar o nome do proprietário do servidor
+	if (message.guild.owner.user.username != oName) {
+		ref.update({
+			guildOwner: message.guild.owner.user.username,
+		});
+	}
+
+	// Atualizar o ID do proprietário do servidor
+	if (message.guild.owner.user.id != oID) {
+		ref.update({
+			guildOwnerID: message.guild.owner.user.id,
+		});
+	}
+
 	const pic = new Discord.MessageAttachment(`images/${message.content}.png`);
 
 	// Responder de acordo com o conteúdo da mensagem lida
@@ -136,15 +151,24 @@ bot.on('guildCreate', async guildData => {
 	});
 });
 
-// Quando o bot for retirado de um servidor, são apagados os dados armazenados
+// Atualizar o nome do servidor
 bot.on('guildUpdate', (oldGuild, newGuild) => {
 	db.collection('servidores').doc(newGuild.id).set({
-		'guildID': newGuild.id,
 		'guildName': newGuild.name,
-		'guildOwner': newGuild.owner.user.username,
-		'guildOwnerID': newGuild.owner.user.id,
-		'memberCount': newGuild.memberCount,
-		'prefix': '+',
+	});
+});
+
+// Atualizar o número de membros
+
+bot.on('guildMemberAdd', async guildData => {
+	db.collection('servidores').doc(guildData.id).set({
+		'memberCount': guildData.memberCount,
+	});
+});
+
+bot.on('guildMemberRemove', async guildData => {
+	db.collection('servidores').doc(guildData.id).set({
+		'memberCount': guildData.memberCount,
 	});
 });
 
