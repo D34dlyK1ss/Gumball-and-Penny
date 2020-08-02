@@ -18,8 +18,8 @@ module.exports = {
 			message.reply('não mencionaste ninguém!');
 		}
 		else {
-			const last = Number(`${message.member.id.slice(-1)}`),
-				otherLast = Number(`${other.id.slice(-1)}`);
+			const last = parseInt(message.member.id.slice(-1)),
+				otherLast = parseInt(other.id.slice(-1));
 			let number = `${Math.abs(last - otherLast) * 30}`;
 
 			if (number > 100) number = number.substr(1);
