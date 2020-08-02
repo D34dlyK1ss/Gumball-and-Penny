@@ -1,56 +1,5 @@
-function msToTime(duration) {
-	let seconds = Math.floor((duration / 1000) % 60),
-		minutes = Math.floor((duration / (1000 * 60)) % 60),
-		hours = Math.floor((duration / (1000 * 60 * 60)) % 24);
-
-	hours = (hours < 10) ? hours : hours;
-	minutes = (minutes < 10) ? minutes : minutes;
-	seconds = (seconds < 10) ? seconds : seconds;
-
-	switch (hours) {
-	case 0:
-		hours = '';
-		break;
-	case 1:
-		if (minutes == 0 && seconds == 0) hours = '1 hora';
-		else hours = '1 hora, ';
-		break;
-	default:
-		if (minutes == 0 && seconds == 0) hours = `${hours} horas`;
-		else hours = `${hours} horas,`;
-		break;
-	}
-
-	switch (minutes) {
-	case 0:
-		minutes = '';
-		break;
-	case 1:
-		if (hours != 0 && seconds == 0) minutes = ' e 1 minuto';
-		else minutes = ' 1 minuto';
-		break;
-	default:
-		if (hours != 0 && seconds == 0) minutes = ` e ${minutes} minutos`;
-		else minutes = ` ${minutes} minutos`;
-		break;
-	}
-
-	switch (seconds) {
-	case 0:
-		seconds = '.';
-		break;
-	case 1:
-		if (hours == 0 && minutes == 0) seconds = '1 segundo.';
-		else seconds = ' e 1 segundo.';
-		break;
-	default:
-		if (hours == 0 && minutes == 0) seconds = ` ${seconds} segundos.`;
-		else seconds = ` e ${seconds} segundos.`;
-		break;
-	}
-
-	return `${hours}${minutes}${seconds}`;
-}
+const moment = require('moment');
+moment.locale('pt');
 
 module.exports = {
 	name: 'daily',
@@ -64,23 +13,20 @@ module.exports = {
 			ref = db.collection('perfis').doc(user.id);
 
 		ref.get().then(doc => {
-			const now = new Date();
-			const next = new Date();
-			next.setDate(next.getUTCDate() + 1);
-			const lastDaily = doc.get('lastDaily').toDate();
-			const timeLeft = next - now;
+			const today = moment().format('L');
+			const lastDaily = doc.get('lastDaily');
 			if (!doc.exists) {
 				message.channel.send('Ainda não criaste um perfil! Para criares um perfil usa `+profile create`!');
 			}
-			else if (now.getUTCFullYear() == lastDaily.getUTCFullYear() && now.getUTCMonth() == lastDaily.getUTCMonth() && now.getUTCDate() == lastDaily.getUTCDate()) {
-				message.channel.send(`Poderás receber o teu montante diário outra vez em ${msToTime(timeLeft)}`);
+			else if (today == lastDaily) {
+				message.channel.send(`Poderás receber o teu montante diário outra vez ${moment().endOf('day').fromNow()}.`);
 			}
 			else {
-				const bal = doc.get('balance');
+				const bal = ref.get('balance');
 
-				db.collection('perfis').doc(user.id).update({
+				ref.update({
 					'balance': (bal + 250),
-					'lastDaily': now,
+					'lastDaily': today,
 				}).then(() => {
 					message.reply('recebeste os teus ¤250 diários!');
 				}).catch(err => { console.error(err); });

@@ -27,7 +27,7 @@ module.exports = {
 						'balance': 0,
 						'description': 'N/A',
 						'id': user.id,
-						'lastDaily': new Date(1970, 0, 1, 0, 0, 0, 0),
+						'lastDaily': '01/01/1970',
 						'name': user.username,
 						'nickname': 'N/A',
 					}).then(() => {
