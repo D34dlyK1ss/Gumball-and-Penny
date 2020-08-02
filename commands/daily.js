@@ -84,7 +84,7 @@ module.exports = {
 
 				db.collection('perfis').doc(user.id).update({
 					'balance': (bal + 250),
-					'lastDaily': new Date(),
+					'lastDaily': now.UTC(),
 				}).then(() => {
 					message.reply('recebeste os teus ¤250 diários!');
 				}).catch(err => { console.error(err); });
