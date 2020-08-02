@@ -17,12 +17,7 @@ module.exports = {
 		}
 		else {
 			otherLast = other.id.slice(-1);
-
-			if (last >= 5 && otherLast >= 5 && last > otherLast) number = `${otherLast}${last}`;
-			else if (last >= 5 && otherLast <= 5 && last > otherLast) number = `${last}${otherLast}`;
-			else if (last <= 5 && otherLast >= 5 && last > otherLast) number = `${last}${otherLast}`;
-			else number = `${otherLast}${last}`;
-
+			number = `${last + otherLast}0`;
 
 			if (other == message.author) {
 				message.reply('não podes usar este comando em ti!');
