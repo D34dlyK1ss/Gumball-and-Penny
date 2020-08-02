@@ -51,7 +51,9 @@ bot.once('ready', async () => {
 		relationship = new Date(2019, 11, 28),
 		mili = currentdate - relationship;
 
-	const months = Math.round(mili / 2629746000);
+	const months = Math.round(mili / 2629746000),
+		// eslint-disable-next-line no-unused-vars
+		years = Math.round(mili / 31536000000);
 
 	schedule.scheduleJob('0 14 28 * *', function() {
 		bot.users.resolve(config.lilly).send(`:tada: Parabéns Lilly! Completaste ${months} meses com o teu Ruru! :purple_heart:\nhttps://i.imgur.com/clrwrEk.gif`);
@@ -94,8 +96,17 @@ bot.on('message', message => {
 		}
 	});
 
-	const oName = ref.get('guildOwner'),
-		oID = ref.get('guildOwnerID');
+	const gName = ref.get('guildName'),
+		oName = ref.get('guildOwner'),
+		oID = ref.get('guildOwnerID'),
+		mCount = ref.get('memberCount');
+
+	// Atualizar o nome do servidor
+	if (message.guild.name != gName) {
+		ref.update({
+			guildName: message.guild.name,
+		});
+	}
 
 	// Atualizar o nome do proprietário do servidor
 	if (message.guild.owner.user.username != oName) {
@@ -108,6 +119,13 @@ bot.on('message', message => {
 	if (message.guild.owner.user.id != oID) {
 		ref.update({
 			guildOwnerID: message.guild.owner.user.id,
+		});
+	}
+
+	// Atualizar o número de membros do servidor
+	if (message.guild.members != mCount) {
+		ref.update({
+			memberCount: message.guild.memberCount,
 		});
 	}
 
@@ -148,27 +166,6 @@ bot.on('guildCreate', async guildData => {
 		'guildOwnerID': guildData.owner.user.id,
 		'memberCount': guildData.memberCount,
 		'prefix': '+',
-	});
-});
-
-// Atualizar o nome do servidor
-bot.on('guildUpdate', (oldGuild, newGuild) => {
-	db.collection('servidores').doc(newGuild.id).set({
-		'guildName': newGuild.name,
-	});
-});
-
-// Atualizar o número de membros
-
-bot.on('guildMemberAdd', async guildData => {
-	db.collection('servidores').doc(guildData.id).set({
-		'memberCount': guildData.memberCount,
-	});
-});
-
-bot.on('guildMemberRemove', async guildData => {
-	db.collection('servidores').doc(guildData.id).set({
-		'memberCount': guildData.memberCount,
 	});
 });
 
