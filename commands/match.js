@@ -20,7 +20,9 @@ module.exports = {
 		else {
 			const last = Number(`${message.member.id.slice(-1)}`),
 				otherLast = Number(`${other.id.slice(-1)}`);
-			const number = `${Math.abs(last - otherLast) * 10}`;
+			let number = `${Math.abs(last - otherLast) * 30}`;
+
+			if (number > 100) number = number.substr(1);
 
 			if (other == message.author) {
 				message.reply('não podes usar este comando em ti!');
@@ -30,9 +32,6 @@ module.exports = {
 			}
 			else if (other.bot) {
 				message.reply('isso não vai funcionar com um bot! 😂');
-			}
-			else if ((message.author.id == botOwner || message.author.id == lilly) && (other.id == botOwner || other.id == lilly)) {
-				message.channel.send(`Tu és **90%** compatível com ${other}!`);
 			}
 			else {
 				message.channel.send(`Tu és **${number}%** compatível com ${other}!`);
