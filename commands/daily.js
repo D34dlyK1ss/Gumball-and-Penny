@@ -64,8 +64,8 @@ module.exports = {
 			ref = db.collection('perfis').doc(user.id);
 
 		ref.get().then(doc => {
-			const now = new Date().toISOString();
-			const next = new Date().toISOString();
+			const now = new Date();
+			const next = new Date();
 			next.setDate(next.getUTCDate() + 1);
 			next.setHours(0);
 			next.setMinutes(0);
