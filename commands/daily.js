@@ -12,32 +12,44 @@ function msToTime(duration) {
 		hours = '';
 		break;
 	case 1:
-		hours = `${hours} hora, `;
+		if (minutes == 0 && seconds == 0) hours = '1 hora';
+		else hours = '1 hora, ';
 		break;
 	default:
-		hours = `${hours} horas, `;
+		if (minutes == 0 && seconds == 0) hours = `${hours} horas`;
+		else hours = `${hours} horas,`;
 		break;
 	}
 
 	switch (minutes) {
+	case 0:
+		minutes = '';
+		break;
 	case 1:
-		minutes = `${minutes} minuto`;
+		if (hours != 0 && seconds == 0) minutes = ' e 1 minuto';
+		else minutes = ' 1 minuto';
 		break;
 	default:
-		minutes = `${minutes} minutos`;
+		if (hours != 0 && seconds == 0) minutes = ` e ${minutes} minutos`;
+		else minutes = ` ${minutes} minutos`;
 		break;
 	}
 
 	switch (seconds) {
+	case 0:
+		seconds = '.';
+		break;
 	case 1:
-		seconds = `${seconds} segundo.`;
+		if (hours == 0 && minutes == 0) seconds = '1 segundo.';
+		else seconds = ' e 1 segundo.';
 		break;
 	default:
-		seconds = `${seconds} segundos.`;
+		if (hours == 0 && minutes == 0) seconds = ` ${seconds} segundos.`;
+		else seconds = ` e ${seconds} segundos.`;
 		break;
 	}
 
-	return `${hours}${minutes} e ${seconds}`;
+	return `${hours}${minutes}${seconds}`;
 }
 
 module.exports = {
@@ -52,9 +64,9 @@ module.exports = {
 			ref = db.collection('perfis').doc(user.id);
 
 		ref.get().then(doc => {
-			const now = new Date();
-			const next = new Date();
-			next.setDate(next.getDate() + 1);
+			const now = new Date.UTC();
+			const next = new Date.UTC();
+			next.setDate(next.getUTCDate() + 1);
 			next.setHours(0);
 			next.setMinutes(0);
 			next.setSeconds(0);
@@ -64,7 +76,7 @@ module.exports = {
 			if (!doc.exists) {
 				message.channel.send('Ainda não criaste um perfil! Para criares um perfil usa `+profile create`!');
 			}
-			else if (now.getFullYear() == lastdaily.getFullYear() && now.getMonth() == lastdaily.getMonth() && now.getDate() == lastdaily.getDate()) {
+			else if (now.getUTCFullYear() == lastdaily.getUTCFullYear() && now.getUTCMonth() == lastdaily.getUTCMonth() && now.getUTCDate() == lastdaily.getUTCDate()) {
 				message.channel.send(`Poderás receber o teu montante diário outra vez em ${msToTime(timeLeft)}`);
 			}
 			else {
