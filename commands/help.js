@@ -18,7 +18,7 @@ module.exports = {
 			.addFields(
 				{ name: '🎭 Ações', value: '`hug`, `kiss`, `laugh`, `pat`, `run`, `slap`', inline: true },
 				{ name: '🎰 Casino', value: '`coinflip`', inline: true },
-				{ name: '😁 Diversão', value: '`fact`, `random`, `say`, `which`', inline: true },
+				{ name: '😁 Diversão', value: '`fact`, `match`, `random`, `say`, `which`', inline: true },
 				{ name: '💰 Economia', value: '`balance`, `daily`', inline: true },
 				{ name: '⚠️ Moderação', value: '`ban`, `clear`, `kick`', inline: true },
 				{ name: '🌐 Servidor', value: '`members`, `setprefix`, `userinfo`', inline: true },
