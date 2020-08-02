@@ -67,13 +67,12 @@ module.exports = {
 			const now = new Date();
 			const next = new Date();
 			next.setDate(next.getUTCDate() + 1);
-			const ISO = doc.get('lastDaily').toISOString();
-			const lastdaily = ISO.toDate();
+			const lastDaily = doc.get('lastDaily').toDate();
 			const timeLeft = next - now;
 			if (!doc.exists) {
 				message.channel.send('Ainda não criaste um perfil! Para criares um perfil usa `+profile create`!');
 			}
-			else if (now.getUTCFullYear() == lastdaily.getUTCFullYear() && now.getUTCMonth() == lastdaily.getUTCMonth() && now.getUTCDate() == lastdaily.getUTCDate()) {
+			else if (now.getUTCFullYear() == lastDaily.getUTCFullYear() && now.getUTCMonth() == lastDaily.getUTCMonth() && now.getUTCDate() == lastDaily.getUTCDate()) {
 				message.channel.send(`Poderás receber o teu montante diário outra vez em ${msToTime(timeLeft)}`);
 			}
 			else {
