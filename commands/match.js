@@ -16,7 +16,7 @@ module.exports = {
 			const last = Number(`${message.member.id.slice(-1)}`),
 				otherLast = Number(`${other.id.slice(-1)}`);
 
-			const number = `${last + otherLast}0`;
+			const number = `${(last + otherLast) * 5}`;
 
 			if (other == message.author) {
 				message.reply('não podes usar este comando em ti!');
