@@ -96,39 +96,6 @@ bot.on('message', message => {
 		}
 	});
 
-	const gName = ref.get('guildName'),
-		oName = ref.get('guildOwner'),
-		oID = ref.get('guildOwnerID'),
-		mCount = ref.get('memberCount');
-
-	// Atualizar o nome do servidor
-	if (message.guild.name != gName) {
-		ref.update({
-			guildName: message.guild.name,
-		});
-	}
-
-	// Atualizar o nome do proprietário do servidor
-	if (message.guild.owner.user.username != oName) {
-		ref.update({
-			guildOwner: message.guild.owner.user.username,
-		});
-	}
-
-	// Atualizar o ID do proprietário do servidor
-	if (message.guild.owner.user.id != oID) {
-		ref.update({
-			guildOwnerID: message.guild.owner.user.id,
-		});
-	}
-
-	// Atualizar o número de membros do servidor
-	if (message.guild.members != mCount) {
-		ref.update({
-			memberCount: message.guild.memberCount,
-		});
-	}
-
 	const pic = new Discord.MessageAttachment(`images/${message.content}.png`);
 
 	// Responder de acordo com o conteúdo da mensagem lida
@@ -165,6 +132,18 @@ bot.on('guildCreate', async guildData => {
 		'guildOwner': guildData.owner.user.username,
 		'guildOwnerID': guildData.owner.user.id,
 		'memberCount': guildData.memberCount,
+		'prefix': '+',
+	});
+});
+
+// Quando o bot for retirado de um servidor, são apagados os dados armazenados
+bot.on('guildUpdate', (newGuild) => {
+	db.collection('servidores').doc(newGuild.id).set({
+		'guildID': newGuild.id,
+		'guildName': newGuild.name,
+		'guildOwner': newGuild.owner.user.username,
+		'guildOwnerID': newGuild.owner.user.id,
+		'memberCount': newGuild.memberCount,
 		'prefix': '+',
 	});
 });
