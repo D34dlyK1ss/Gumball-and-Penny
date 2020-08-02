@@ -67,10 +67,6 @@ module.exports = {
 			const now = new Date();
 			const next = new Date();
 			next.setDate(next.getUTCDate() + 1);
-			next.setHours(0);
-			next.setMinutes(0);
-			next.setSeconds(0);
-			next.setMilliseconds(0);
 			const lastdaily = doc.get('lastDaily').toDate();
 			const timeLeft = next - now;
 			if (!doc.exists) {
