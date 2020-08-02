@@ -67,7 +67,8 @@ module.exports = {
 			const now = new Date();
 			const next = new Date();
 			next.setDate(next.getUTCDate() + 1);
-			const lastdaily = doc.get('lastDaily').toDate();
+			const ISO = doc.get('lastDaily').toISOString();
+			const lastdaily = ISO.toDate();
 			const timeLeft = next - now;
 			if (!doc.exists) {
 				message.channel.send('Ainda não criaste um perfil! Para criares um perfil usa `+profile create`!');
