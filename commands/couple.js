@@ -24,10 +24,18 @@ module.exports = {
 			else number = `${otherLast}${last}`;
 
 
-			if (other == message.author) message.reply('não podes usar este comando em ti!');
-			else if (other == bot.user) message.channel.send('Hey, nós já temos um par! 😠');
-			else if (other.bot) message.reply('iss onão vai funcionar com um bot! 😂');
-			else message.channel.send(`Vocês têm **${number}%** de chance de dar certo!`);
+			if (other == message.author) {
+				message.reply('não podes usar este comando em ti!');
+			}
+			else if (other == bot.user) {
+				message.channel.send('Hey, nós já temos um par! 😠');
+			}
+			else if (other.bot) {
+				message.reply('isso não vai funcionar com um bot! 😂');
+			}
+			else {
+				message.channel.send(`Vocês têm **${number}%** de chance de dar certo!`);
+			}
 		}
 	},
 };
