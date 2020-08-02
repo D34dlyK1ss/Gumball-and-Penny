@@ -137,7 +137,7 @@ bot.on('guildCreate', async guildData => {
 });
 
 // Quando o bot for retirado de um servidor, são apagados os dados armazenados
-bot.on('guildUpdate', (newGuild) => {
+bot.on('guildUpdate', (oldGuild, newGuild) => {
 	db.collection('servidores').doc(newGuild.id).set({
 		'guildID': newGuild.id,
 		'guildName': newGuild.name,
