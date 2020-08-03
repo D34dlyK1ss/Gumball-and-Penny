@@ -23,7 +23,7 @@ module.exports = {
 						amount = parseInt(args[1]);
 
 					if ((bal + amount) > 999999999) {
-						message.reply('não podes adicionar mais dinheiro à tua conta bancária');
+						message.reply('não podes adicionar mais dinheiro à tua conta bancária! 😧');
 					}
 					else {
 						ref.update({
