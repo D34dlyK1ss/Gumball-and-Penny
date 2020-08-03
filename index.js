@@ -107,7 +107,7 @@ bot.on('message', message => {
 
 				db.collection('perfis').doc(user.id).update({
 					xp: newXP,
-					level: (newXP / 100),
+					level: Math.floor(newXP / 100),
 				});
 			}
 		});

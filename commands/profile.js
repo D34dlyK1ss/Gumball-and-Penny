@@ -99,7 +99,7 @@ module.exports = {
 						.addFields(
 							{ name: 'Alcunha', value: `${nick}` },
 							{ name: 'Descrição', value: `${desc}` },
-							{ name: 'Nível', value: `¤${level}` },
+							{ name: 'Nível', value: `${level}` },
 							{ name: 'Capital', value: `¤${bal}` },
 						);
 
