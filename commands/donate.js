@@ -37,7 +37,10 @@ module.exports = {
 							balU = docU.get('balance'),
 							amount = parseInt(args[1]);
 
-						if ((balU + amount) > 999999999) {
+						if (amount > balD) {
+							message.reply('não tens dinheiro suficiente!');
+						}
+						else if ((balU + amount) > 999999999) {
 							message.reply(`não podes doar dinheiro a ${user.tag}! 😧`);
 						}
 						else {
