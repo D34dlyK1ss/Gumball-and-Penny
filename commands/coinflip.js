@@ -2,7 +2,7 @@ module.exports = {
 	name: 'coinflip',
 	category: 'Casino',
 	description: 'Roda a moeda e aposta no que vai calhar!',
-	usage: '`+coinflip [quantidade] [cara/coroa]`',
+	usage: '`+coinflip [cara/coroa] [quantidade]`',
 
 	execute(bot, message, command, args, db) {
 		const user = message.author,
@@ -12,12 +12,12 @@ module.exports = {
 			if (!doc.exists) {
 				message.channel.send('Ainda não criaste um perfil! Para criares um perfil usa `+profile create`!');
 			}
-			else if (args == null || args[0] == '' || (args[1] != 'cara' && args[1] != 'coroa')) {
-				message.channel.send('Sintaxe errada! Como usar: `+coinflip [quantidade] [cara/coroa]`');
+			else if (args == null || args[1] == '' || (args[0] != 'cara' && args[0] != 'coroa')) {
+				message.channel.send('Sintaxe errada! Como usar: `+coinflip [cara/coroa] [quantidade]`');
 			}
 			else {
 				const bal = doc.get('balance'),
-					money = args[0];
+					money = args[1];
 				if (money > bal) {
 					message.reply('Não tens dinheiro suficiente!');
 				}
@@ -26,8 +26,8 @@ module.exports = {
 				}
 				else {
 					const value = Math.round(Math.random()),
-						guess = args[1].toLowerCase();
-					let res = 0;
+						guess = args[0].toLowerCase();
+					let res;
 
 					if (value == 0) res = 'cara';
 					if (value == 1) res = 'coroa';

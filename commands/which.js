@@ -12,7 +12,7 @@ module.exports = {
 		let char = [];
 
 		if (args == null || args == '') {
-			message.channel.send('Tens de mencionar um anime!');
+			message.reply('tens de mencionar um anime!');
 		}
 		else {
 			switch (last) {

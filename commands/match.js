@@ -34,7 +34,7 @@ module.exports = {
 				message.reply('isso não vai funcionar com um bot! 😂');
 			}
 			else {
-				message.channel.send(`Tu és **${number}%** compatível com ${other}!`);
+				message.reply(`tu és **${number}%** compatível com ${other}!`);
 			}
 		}
 	},

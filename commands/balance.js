@@ -15,7 +15,7 @@ module.exports = {
 
 		ref.get().then(doc => {
 			if (!doc.exists) {
-				message.channel.send('Ainda não criaste um perfil! Para criares um perfil usa `+profile create`!');
+				message.reply('ainda não criaste um perfil! Para criares um perfil usa `+profile create`!');
 			}
 			else if (args[0] == 'add') {
 				if (user.id == botOwner || user.id == lilly) {

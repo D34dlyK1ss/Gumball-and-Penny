@@ -7,7 +7,7 @@ module.exports = {
 	execute(bot, message, command, args) {
 		message.delete();
 		if (args == null || args == '') {
-			message.reply('Não escreveste nada!').then(msg => msg.delete({ timeout: 5000 }));
+			message.reply('não escreveste nada!').then(msg => msg.delete({ timeout: 5000 }));
 		}
 		else if (args[0].startsWith('http')) {
 			message.reply('não podemos escrever links!').then(msg => msg.delete({ timeout: 5000 })).catch(err => { console.error(err); });
