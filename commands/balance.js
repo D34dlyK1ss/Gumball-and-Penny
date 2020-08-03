@@ -16,7 +16,7 @@ module.exports = {
 			else {
 				const bal = doc.get('balance');
 
-				message.channel.send(`Tens ¤${bal}`);
+				message.channel.send(`Tens **¤${bal}**`);
 			}
 		}).catch(err => { console.error(err); });
 	},
