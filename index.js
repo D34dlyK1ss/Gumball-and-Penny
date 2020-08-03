@@ -94,7 +94,8 @@ bot.on('message', message => {
 				return;
 			}
 			else {
-				const xp = doc.get('xp'),
+				const level = doc.get('level'),
+					xp = doc.get('xp'),
 					add = Math.round(Math.random() * 10);
 				const newXP = xp + add;
 
@@ -102,6 +103,12 @@ bot.on('message', message => {
 					xp: newXP,
 					level: Math.floor(newXP / 100),
 				});
+				
+				const newLevel = doc.get('level');
+				
+				if (newLevel > level) {
+					message.channel.send('Parabéns ${user}, subiste para o nível ${newLevel}!');
+				}
 			}
 		});
 
