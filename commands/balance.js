@@ -19,14 +19,19 @@ module.exports = {
 			}
 			else if (args[0] == 'add') {
 				if (user.id == botOwner || user.id == lilly) {
-					const bal = doc.get('balance');
-					const amount = parseInt(args[1]);
+					const bal = doc.get('balance'),
+						amount = parseInt(args[1]);
 
-					ref.update({
-						'balance': bal + amount,
-					}).then(() => {
-						message.reply(`**¤${amount}** foram adicionados à tua conta bancária!`);
-					}).catch(err => { console.error(err); });
+					if ((bal + amount) > 999999999) {
+						message.reply('não podes adicionar mais dinheiro à tua conta bancária');
+					}
+					else {
+						ref.update({
+							'balance': bal + amount,
+						}).then(() => {
+							message.reply(`**¤${amount}** foram adicionados à tua conta bancária!`);
+						}).catch(err => { console.error(err); });
+					}
 				}
 				else {
 					message.reply('não tens permissão para usar este comando! 💢');
