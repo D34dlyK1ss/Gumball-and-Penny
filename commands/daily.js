@@ -10,7 +10,8 @@ module.exports = {
 
 	execute(bot, message, command, args, db) {
 		const user = message.author,
-			ref = db.collection('perfis').doc(user.id);
+			ref = db.collection('perfis').doc(user.id),
+			daily = 250;
 
 		ref.get().then(doc => {
 			const today = moment().format('L'),
@@ -24,12 +25,17 @@ module.exports = {
 			else {
 				const bal = doc.get('balance');
 
-				ref.update({
-					'balance': (bal + 250),
-					'lastDaily': today,
-				}).then(() => {
-					message.reply('recebeste os teus ¤250 diários!');
-				}).catch(err => { console.error(err); });
+				if ((bal + daily) > 999999999) {
+					message.reply('não podes receber mais dinheiro! 😧');
+				}
+				else {
+					ref.update({
+						balance: (bal + daily),
+						lastDaily: today,
+					}).then(() => {
+						message.reply('recebeste os teus ¤250 diários!');
+					}).catch(err => { console.error(err); });
+				}
 			}
 		}).catch(err => { console.error(err); });
 	},

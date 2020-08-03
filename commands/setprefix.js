@@ -15,7 +15,7 @@ module.exports = {
 		else {
 			const newPrefix = args[0];
 			db.collection('servidores').doc(message.guild.id).update({
-				'prefix': newPrefix,
+				prefix: newPrefix,
 			}).then(() => {
 				message.channel.send('O prefixo para este servidor agora é `' + newPrefix + '`');
 			}).catch(err => { console.error(err); });

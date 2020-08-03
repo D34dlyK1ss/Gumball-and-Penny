@@ -71,17 +71,15 @@ bot.on('message', message => {
 	const ref = db.collection('servidores').doc(message.guild.id);
 
 	ref.get().then(doc => {
-		if (doc.exists) {
-			// Obter o prefixo definido para o servidor
-			prefix = doc.get('prefix');
-		}
+		// Obter o prefixo definido para o servidor
+		prefix = doc.get('prefix');
 	}).then(() => {
 		// Ignorar mensagens que não começam com o prefixo
 		if (!message.content.startsWith(prefix)) return;
 
-		const array = message.content.split(' ');
-		const commandName = array[0].slice(prefix.length).toLowerCase();
-		const args = array.slice(1);
+		const array = message.content.split(' '),
+			commandName = array[0].slice(prefix.length).toLowerCase(),
+			args = array.slice(1);
 		const command = bot.commands.get(commandName) || bot.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
 
 		// Ignorar mensagem se o bot não tiver tal comando
@@ -94,6 +92,25 @@ bot.on('message', message => {
 			console.error(err);
 			message.reply('ocorreu um erro ao tentar executar esse comando!');
 		}
+
+		const user = message.author;
+
+		// Adicionar XP ao perfil do utilizador
+		db.collection('perfis').doc(user.id).get().then(doc => {
+			if (!doc.exists) {
+				return;
+			}
+			else {
+				const xp = doc.get('xp'),
+					add = Math.round(Math.random() * 10);
+				const newXP = xp + add;
+
+				db.collection('perfis').doc(user.id).update({
+					xp: newXP,
+					level: (newXP / 100),
+				});
+			}
+		});
 	});
 
 	const gName = ref.get('guildName'),

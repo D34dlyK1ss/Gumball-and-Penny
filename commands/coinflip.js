@@ -18,7 +18,11 @@ module.exports = {
 			else {
 				const bal = doc.get('balance'),
 					money = args[1];
-				if (money > bal) {
+
+				if ((bal + money) > 999999999) {
+					message.reply('não podes ganhar mais dinheiro! 😧');
+				}
+				else if (money > bal) {
 					message.reply('Não tens dinheiro suficiente!');
 				}
 				else if (money < 50) {
@@ -36,7 +40,7 @@ module.exports = {
 
 					if (res != guess) {
 						db.collection('perfis').doc(user.id).update({
-							'balance': (bal - money),
+							balance: (bal - money),
 						}).then(() => {
 							message.channel.send(`Perdeste ¤${money}!`);
 						}).catch(err => { console.error(err); });
@@ -44,7 +48,7 @@ module.exports = {
 					else if (res == guess) {
 						const won = money * 2;
 						db.collection('perfis').doc(user.id).update({
-							'balance': (bal + won),
+							balance: (bal + won),
 						}).then(() => {
 							message.channel.send(`Ganhaste ¤${won + 50}!`);
 						}).catch(err => { console.error(err); });

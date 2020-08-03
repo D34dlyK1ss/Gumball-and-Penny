@@ -24,12 +24,14 @@ module.exports = {
 				}
 				else {
 					db.collection('perfis').doc(message.author.id).set({
-						'balance': 0,
-						'description': 'N/A',
-						'id': user.id,
-						'lastDaily': '01/01/1970',
-						'name': user.username,
-						'nickname': 'N/A',
+						balance: 0,
+						description: 'N/A',
+						id: user.id,
+						lastDaily: '01/01/1970',
+						level: 1,
+						name: user.username,
+						nickname: 'N/A',
+						xp: 0,
 					}).then(() => {
 						message.reply('o teu perfil foi criado! Adiciona uma descricão com `+profile setdescription [descrição]`!');
 					}).catch(err => { console.error(err); });
@@ -46,7 +48,7 @@ module.exports = {
 				}
 				else {
 					db.collection('perfis').doc(message.author.id).update({
-						'nickname': args,
+						nickname: args,
 					}).then(() => {
 						message.reply('a tua alcunha foi alterada!');
 					}).catch(err => { console.error(err); });
@@ -62,7 +64,7 @@ module.exports = {
 				}
 				else {
 					db.collection('perfis').doc(message.author.id).update({
-						'description': args,
+						description: args,
 					}).then(() => {
 						message.reply('a tua descrição foi alterada!');
 					}).catch(err => { console.error(err); });
@@ -88,7 +90,8 @@ module.exports = {
 				else {
 					const nick = doc.get('nickname'),
 						desc = doc.get('description'),
-						bal = doc.get('balance');
+						bal = doc.get('balance'),
+						level = doc.get('level');
 					const embed = new Discord.MessageEmbed()
 						.setColor('#8000ff')
 						.setAuthor(`${user.tag}`)
@@ -96,6 +99,7 @@ module.exports = {
 						.addFields(
 							{ name: 'Alcunha', value: `${nick}` },
 							{ name: 'Descrição', value: `${desc}` },
+							{ name: 'Nível', value: `¤${level}` },
 							{ name: 'Capital', value: `¤${bal}` },
 						);
 

@@ -45,10 +45,10 @@ module.exports = {
 						}
 						else {
 							refU.update({
-								'balance': balU + amount,
+								balance: balU + amount,
 							}).then(() => {
 								refD.update({
-									'balance': balD - amount,
+									balance: balD - amount,
 								}).then(() => {
 									message.reply(`doaste **¤${amount}** a ${user}!`);
 								}).catch(err => { console.error(err); });
