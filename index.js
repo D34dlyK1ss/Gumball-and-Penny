@@ -90,7 +90,7 @@ bot.on('message', message => {
 					newLevel = doc.get('level');
 
 				db.collection('perfis').doc(message.author.id).update({
-					xp: newXP,
+					xp: parseInt(newXP),
 					level: Math.floor(newXP / ((level + 1) * 50)),
 				});
 
