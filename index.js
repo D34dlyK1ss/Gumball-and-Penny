@@ -70,6 +70,21 @@ bot.on('message', message => {
 	// Ignorar mensagens privadas e mensagens de outros bots
 	if (message.channel.type === 'dm' || message.author.bot) return;
 
+	db.collection('perfis').doc(message.author.id).get().then(doc => {
+		if (!doc.exists) {
+			return;
+		}
+		else {
+			const name = db.collection('perfis').doc(message.author.id).get('name');
+
+			if (message.author.tag != name) {
+				db.collection('perfis').doc(message.author.id).update({
+					name: message.author.tag,
+				});
+			}
+		}
+	});
+
 	let prefix;
 	const ref = db.collection('servidores').doc(message.guild.id);
 
@@ -169,9 +184,9 @@ bot.on('message', message => {
 	}
 
 	// Atualizar o nome do proprietário do servidor
-	if (message.guild.owner.user.username != oName) {
+	if (message.guild.owner.user.tag != oName) {
 		ref.update({
-			guildOwner: message.guild.owner.user.username,
+			guildOwner: message.guild.owner.user.tag,
 		});
 	}
 
@@ -195,7 +210,7 @@ bot.on('guildCreate', async guildData => {
 	db.collection('servidores').doc(guildData.id).set({
 		'guildID': guildData.id,
 		'guildName': guildData.name,
-		'guildOwner': guildData.owner.user.username,
+		'guildOwner': guildData.owner.user.tag,
 		'guildOwnerID': guildData.owner.user.id,
 		'memberCount': guildData.memberCount,
 		'prefix': '+',
