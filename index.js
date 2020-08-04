@@ -70,39 +70,6 @@ bot.on('message', message => {
 	// Ignorar mensagens privadas e mensagens de outros bots
 	if (message.channel.type === 'dm' || message.author.bot) return;
 
-	onCooldown.add(message.author.id);
-
-	// Adicionar XP ao perfil do utilizador
-	db.collection('perfis').doc(message.author.id).get().then(doc => {
-		if (!doc.exists) {
-			return;
-		}
-		else if (onCooldown.has(message.author.id)) {
-			return;
-		}
-		else {
-			const level = doc.get('level'),
-				xp = doc.get('xp'),
-				add = Math.round(Math.random() * 10);
-			const newXP = xp + add;
-
-			db.collection('perfis').doc(message.author.id).update({
-				xp: newXP,
-				level: Math.floor(newXP / 100),
-			});
-
-			const newLevel = doc.get('level');
-
-			if (newLevel > level) {
-				message.channel.send('Parabéns ${user}, subiste para o nível ${newLevel}!');
-			}
-		}
-	});
-
-	setTimeout(() => {
-		onCooldown.delete(message.author);
-	}, cooldown);
-
 	let prefix;
 	const ref = db.collection('servidores').doc(message.guild.id);
 
@@ -129,6 +96,67 @@ bot.on('message', message => {
 			message.reply('ocorreu um erro ao tentar executar esse comando!');
 		}
 	});
+
+	// Se o utilizador já tiver enviado mensagem no último minuto, ignorar a atribuição de xp
+	if (onCooldown.has(message.author.id)) return;
+
+	onCooldown.add(message.author.id);
+
+	// Adicionar XP ao perfil do utilizador
+	db.collection('perfis').doc(message.author.id).get().then(doc => {
+		if (!doc.exists) {
+			return;
+		}
+		else {
+			const level = doc.get('level'),
+				xp = doc.get('xp'),
+				add = Math.round(Math.random() * 10);
+			const newXP = xp + add;
+
+			db.collection('perfis').doc(message.author.id).update({
+				xp: newXP,
+				level: Math.floor(newXP / 100),
+			});
+
+			const newLevel = doc.get('level');
+
+			if (newLevel > level) {
+				message.channel.send('Parabéns ${user}, subiste para o nível ${newLevel}!');
+			}
+		}
+	});
+
+	setTimeout(() => {
+		onCooldown.delete(message.author);
+	}, cooldown);
+
+
+	const pic = new Discord.MessageAttachment(`images/${message.content}.png`);
+
+	// Responder de acordo com o conteúdo da mensagem lida
+	switch (message.content) {
+	case 'shine':
+		message.channel.send(pic);
+		break;
+	case 'boi':
+		message.channel.send(pic);
+		break;
+	case 'just monika':
+		message.channel.send(pic);
+		break;
+	case 'no u':
+		message.channel.send(pic);
+		break;
+	case 'E':
+		message.channel.send(pic);
+		break;
+	case 'hmm':
+		message.channel.send(pic);
+		break;
+	case 'noice':
+		message.channel.send(pic);
+		break;
+	}
 
 	const gName = ref.get('guildName'),
 		oName = ref.get('guildOwner'),
@@ -161,33 +189,6 @@ bot.on('message', message => {
 		ref.update({
 			memberCount: message.guild.memberCount,
 		});
-	}
-
-	const pic = new Discord.MessageAttachment(`images/${message.content}.png`);
-
-	// Responder de acordo com o conteúdo da mensagem lida
-	switch (message.content) {
-	case 'shine':
-		message.channel.send(pic);
-		break;
-	case 'boi':
-		message.channel.send(pic);
-		break;
-	case 'just monika':
-		message.channel.send(pic);
-		break;
-	case 'no u':
-		message.channel.send(pic);
-		break;
-	case 'E':
-		message.channel.send(pic);
-		break;
-	case 'hmm':
-		message.channel.send(pic);
-		break;
-	case 'noice':
-		message.channel.send(pic);
-		break;
 	}
 });
 
