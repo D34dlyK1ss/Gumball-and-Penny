@@ -97,39 +97,40 @@ bot.on('message', message => {
 		}
 	});
 
-	// Se o utilizador já tiver enviado mensagem no último minuto, ignorar a atribuição de xp
-	if (onCooldown.has(message.author.id)) return;
+	if (onCooldown.has(message.author.id)) {
+		return;
+	}
+	else {
+		onCooldown.add(message.author.id);
 
-	onCooldown.add(message.author.id);
-
-	// Adicionar XP ao perfil do utilizador
-	db.collection('perfis').doc(message.author.id).get().then(doc => {
-		if (!doc.exists) {
-			return;
-		}
-		else {
-			const level = doc.get('level'),
-				xp = doc.get('xp'),
-				add = Math.round(Math.random() * 10);
-			const newXP = xp + add;
-
-			db.collection('perfis').doc(message.author.id).update({
-				xp: newXP,
-				level: Math.floor(newXP / 100),
-			});
-
-			const newLevel = doc.get('level');
-
-			if (newLevel > level) {
-				message.channel.send('Parabéns ${user}, subiste para o nível ${newLevel}!');
+		// Adicionar XP ao perfil do utilizador
+		db.collection('perfis').doc(message.author.id).get().then(doc => {
+			if (!doc.exists) {
+				return;
 			}
-		}
-	});
+			else {
+				const level = doc.get('level'),
+					xp = doc.get('xp'),
+					add = Math.round(Math.random() * 10);
+				const newXP = xp + add;
 
-	setTimeout(() => {
-		onCooldown.delete(message.author);
-	}, cooldown);
+				db.collection('perfis').doc(message.author.id).update({
+					xp: newXP,
+					level: Math.floor(newXP / 100),
+				});
 
+				const newLevel = doc.get('level');
+
+				if (newLevel > level) {
+					message.channel.send('Parabéns ${user}, subiste para o nível ${newLevel}!');
+				}
+			}
+		});
+
+		setTimeout(() => {
+			onCooldown.delete(message.author);
+		}, cooldown);
+	}
 
 	const pic = new Discord.MessageAttachment(`images/${message.content}.png`);
 
