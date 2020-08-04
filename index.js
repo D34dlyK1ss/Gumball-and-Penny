@@ -85,17 +85,18 @@ bot.on('message', message => {
 			else {
 				const level = doc.get('level'),
 					xp = doc.get('xp'),
-					add = Math.round(Math.random() * 10) + 50;
-				const newXP = xp + add,
-					newLevel = 1000 * (Math.pow(2, level) - 1);
+					add = Math.floor(Math.random() * 10) + 50;
+				const nextLevel = 1000 * (Math.pow(2, level) - 1);
 
 				db.collection('perfis').doc(message.author.id).update({
-					xp: newXP,
-					level: newLevel,
+					xp: xp + add,
 				});
 
-				if (newLevel > level) {
-					message.channel.send(`Parabéns ${message.author}, subiste para o nível ${newLevel}!`);
+				if (nextLevel <= xp) {
+					db.collection('perfis').doc(message.author.id).update({
+						level: level + 1,
+					});
+					message.channel.send(`Parabéns ${message.author}, subiste para o nível ${level + 1}!`);
 				}
 			}
 		});
