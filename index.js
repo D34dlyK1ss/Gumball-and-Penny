@@ -70,12 +70,10 @@ bot.on('message', message => {
 	// Ignorar mensagens privadas e mensagens de outros bots
 	if (message.channel.type === 'dm' || message.author.bot) return;
 
-	const user = message.author;
-
 	onCooldown.add(message.author.id);
 
 	// Adicionar XP ao perfil do utilizador
-	db.collection('perfis').doc(user.id).get().then(doc => {
+	db.collection('perfis').doc(message.author.id).get().then(doc => {
 		if (!doc.exists) {
 			return;
 		}
@@ -88,7 +86,7 @@ bot.on('message', message => {
 				add = Math.round(Math.random() * 10);
 			const newXP = xp + add;
 
-			db.collection('perfis').doc(user.id).update({
+			db.collection('perfis').doc(message.author.id).update({
 				xp: newXP,
 				level: Math.floor(newXP / 100),
 			});
