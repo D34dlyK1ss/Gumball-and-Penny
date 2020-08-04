@@ -70,33 +70,6 @@ bot.on('message', message => {
 	// Ignorar mensagens privadas e mensagens de outros bots
 	if (message.channel.type === 'dm' || message.author.bot) return;
 
-	let prefix;
-	const ref = db.collection('servidores').doc(message.guild.id);
-
-	ref.get().then(doc => {
-		// Obter o prefixo definido para o servidor
-		prefix = doc.get('prefix');
-	}).then(() => {
-		// Ignorar mensagens que não começam com o prefixo
-		if (!message.content.startsWith(prefix)) return;
-
-		const array = message.content.split(' '),
-			commandName = array[0].slice(prefix.length).toLowerCase(),
-			args = array.slice(1);
-		const command = bot.commands.get(commandName) || bot.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
-
-		// Ignorar mensagem se o bot não tiver tal comando
-		if (!command) return;
-
-		try {
-			command.execute(bot, message, command, args, db);
-		}
-		catch (err) {
-			console.error(err);
-			message.reply('ocorreu um erro ao tentar executar esse comando!');
-		}
-	});
-
 	if (!xpCooldown.has(message.author.id)) {
 
 		xpCooldown.add(message.author.id);
@@ -128,6 +101,33 @@ bot.on('message', message => {
 			}
 		});
 	}
+
+	let prefix;
+	const ref = db.collection('servidores').doc(message.guild.id);
+
+	ref.get().then(doc => {
+		// Obter o prefixo definido para o servidor
+		prefix = doc.get('prefix');
+	}).then(() => {
+		// Ignorar mensagens que não começam com o prefixo
+		if (!message.content.startsWith(prefix)) return;
+
+		const array = message.content.split(' '),
+			commandName = array[0].slice(prefix.length).toLowerCase(),
+			args = array.slice(1);
+		const command = bot.commands.get(commandName) || bot.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
+
+		// Ignorar mensagem se o bot não tiver tal comando
+		if (!command) return;
+
+		try {
+			command.execute(bot, message, command, args, db);
+		}
+		catch (err) {
+			console.error(err);
+			message.reply('ocorreu um erro ao tentar executar esse comando!');
+		}
+	});
 
 	const pic = new Discord.MessageAttachment(`images/${message.content}.png`);
 
