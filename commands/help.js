@@ -8,13 +8,14 @@ module.exports = {
 	usage: '`+help`',
 
 	execute(bot, message, command, args) {
-		const { commands } = message.client;
+		const { commands } = message.client,
+			update = '**Update:** Sistema de leveling adicionado\nPor cada mensagem enviada a cada minuto, XP será adicionado ao perfil.';
 		const helpEmbed = new Discord.MessageEmbed()
 			.setColor('#8000ff')
 			.setTitle('Ajuda')
 			.setAuthor('Gumball & Penny', `${bot.user.displayAvatarURL()}`)
 			.setThumbnail(`${bot.user.displayAvatarURL()}`)
-			.setDescription('Nós somos o Gumball e a Penny e temos como objetivo tornar qualquer servidor em que estamos num lugar divertido!\nEm caso de dúvida nalgum comando usa `+help [nome do comando]`\n**Update:** Sistema de leveling adicionado\nPor cada mensagem enviada a cada minuto, XP será adicionado ao perfil.')
+			.setDescription(`Nós somos o Gumball e a Penny e temos como objetivo tornar qualquer servidor em que estamos num lugar divertido!\nEm caso de dúvida nalgum comando usa \`+help [nome do comando]\`\n${update}`)
 			.addFields(
 				{ name: '🎭 Ações', value: '`hug`, `kiss`, `laugh`, `pat`, `run`, `slap`', inline: true },
 				{ name: '🎰 Casino', value: '`coinflip`', inline: true },
