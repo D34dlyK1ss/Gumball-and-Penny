@@ -29,7 +29,7 @@ module.exports = {
 						id: user.id,
 						lastDaily: '01/01/1970',
 						level: 1,
-						name: user.username,
+						name: user.tag,
 						nickname: 'N/A',
 						xp: 0,
 					}).then(() => {
