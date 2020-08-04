@@ -43,7 +43,7 @@ for (const file of commandFiles) {
 
 // Uma vez que o bot está ativo:
 bot.once('ready', async () => {
-	console.log(`Preparados! (${moment().format('LLL')})`);
+	console.log(`Preparados! (${moment().format('LL')} ${moment().format('LTS')})`);
 
 	bot.user.setActivity('+help');
 
@@ -61,7 +61,9 @@ bot.once('ready', async () => {
 	});
 });
 
+
 const onCooldown = new Set(),
+	// eslint-disable-next-line no-unused-vars
 	cooldown = 60000;
 
 // Ações para quando o bot receber uma mensagem
@@ -97,10 +99,10 @@ bot.on('message', message => {
 		}
 	});
 
-	if (onCooldown.has(message.author.id)) {
-		return;
-	}
-	else {
+	console.log(onCooldown);
+
+	if (!onCooldown.has(message.author.id)) {
+
 		onCooldown.add(message.author.id);
 
 		// Adicionar XP ao perfil do utilizador
@@ -126,10 +128,11 @@ bot.on('message', message => {
 				}
 			}
 		});
-
+	}
+	else {
 		setTimeout(() => {
 			onCooldown.delete(message.author);
-		}, cooldown);
+		}, 2000);
 	}
 
 	const pic = new Discord.MessageAttachment(`images/${message.content}.png`);
