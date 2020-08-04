@@ -9,7 +9,7 @@ module.exports = {
 
 	execute(bot, message, command, args) {
 		const { commands } = message.client,
-			update = '**Update:** Sistema de leveling adicionado\nPor cada mensagem enviada a cada minuto, XP será adicionado ao perfil.';
+			update = '**Update:** Sistema de leveling adicionado\nPor cada comando usado a cada minuto, XP será adicionado ao perfil.';
 		const helpEmbed = new Discord.MessageEmbed()
 			.setColor('#8000ff')
 			.setTitle('Ajuda')
