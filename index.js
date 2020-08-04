@@ -91,7 +91,7 @@ bot.on('message', message => {
 
 				db.collection('perfis').doc(message.author.id).update({
 					xp: parseInt(newXP),
-					level: Math.floor(newXP / ((level + 1) * 30)),
+					level: Math.floor(newXP / ((newLevel + 1) * 30)),
 				});
 
 				if (newLevel > level) {
