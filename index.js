@@ -87,11 +87,11 @@ bot.on('message', message => {
 					xp = doc.get('xp'),
 					add = Math.round(Math.random() * 10);
 				const newXP = xp + add,
-					newLevel = doc.get('level');
+					newLevel = 3 / 2 * Math.floor(Math.sqrt(newXP));
 
 				db.collection('perfis').doc(message.author.id).update({
 					xp: newXP,
-					level: (3 / 2) * Math.floor(Math.sqrt(newXP)),
+					level: newLevel,
 				});
 
 				if (newLevel > level) {
