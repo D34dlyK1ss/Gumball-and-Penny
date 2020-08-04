@@ -62,9 +62,7 @@ bot.once('ready', async () => {
 });
 
 
-const onCooldown = new Set(),
-	// eslint-disable-next-line no-unused-vars
-	cooldown = 60000;
+const xpCooldown = new Set();
 
 // Ações para quando o bot receber uma mensagem
 bot.on('message', message => {
@@ -99,11 +97,12 @@ bot.on('message', message => {
 		}
 	});
 
-	console.log(onCooldown);
+	if (!xpCooldown.has(message.author.id)) {
 
-	if (!onCooldown.has(message.author.id)) {
-
-		onCooldown.add(message.author.id);
+		xpCooldown.add(message.author.id);
+		setTimeout(() => {
+			xpCooldown.delete(message.author.id);
+		}, 60000);
 
 		// Adicionar XP ao perfil do utilizador
 		db.collection('perfis').doc(message.author.id).get().then(doc => {
@@ -128,11 +127,6 @@ bot.on('message', message => {
 				}
 			}
 		});
-	}
-	else {
-		setTimeout(() => {
-			onCooldown.delete(message.author);
-		}, 2000);
 	}
 
 	const pic = new Discord.MessageAttachment(`images/${message.content}.png`);
