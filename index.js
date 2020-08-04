@@ -61,11 +61,49 @@ bot.once('ready', async () => {
 	});
 });
 
+const onCooldown = new Set(),
+	cooldown = 60000;
+
 // Ações para quando o bot receber uma mensagem
 bot.on('message', message => {
 
 	// Ignorar mensagens privadas e mensagens de outros bots
 	if (message.channel.type === 'dm' || message.author.bot) return;
+
+	const user = message.author;
+
+	onCooldown.add(message.author.id);
+
+	// Adicionar XP ao perfil do utilizador
+	db.collection('perfis').doc(user.id).get().then(doc => {
+		if (!doc.exists) {
+			return;
+		}
+		else if (onCooldown.has(message.author.id)) {
+			return;
+		}
+		else {
+			const level = doc.get('level'),
+				xp = doc.get('xp'),
+				add = Math.round(Math.random() * 10);
+			const newXP = xp + add;
+
+			db.collection('perfis').doc(user.id).update({
+				xp: newXP,
+				level: Math.floor(newXP / 100),
+			});
+
+			const newLevel = doc.get('level');
+
+			if (newLevel > level) {
+				message.channel.send('Parabéns ${user}, subiste para o nível ${newLevel}!');
+			}
+		}
+	});
+
+	setTimeout(() => {
+		onCooldown.delete(message.author);
+	}, cooldown);
 
 	let prefix;
 	const ref = db.collection('servidores').doc(message.guild.id);
@@ -84,33 +122,6 @@ bot.on('message', message => {
 
 		// Ignorar mensagem se o bot não tiver tal comando
 		if (!command) return;
-
-
-		const user = message.author;
-
-		// Adicionar XP ao perfil do utilizador
-		db.collection('perfis').doc(user.id).get().then(doc => {
-			if (!doc.exists) {
-				return;
-			}
-			else {
-				const level = doc.get('level'),
-					xp = doc.get('xp'),
-					add = Math.round(Math.random() * 10);
-				const newXP = xp + add;
-
-				db.collection('perfis').doc(user.id).update({
-					xp: newXP,
-					level: Math.floor(newXP / 100),
-				});
-				
-				const newLevel = doc.get('level');
-				
-				if (newLevel > level) {
-					message.channel.send('Parabéns ${user}, subiste para o nível ${newLevel}!');
-				}
-			}
-		});
 
 		try {
 			command.execute(bot, message, command, args, db);
