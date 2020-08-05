@@ -20,10 +20,10 @@ module.exports = {
 				{ name: '🎭 Ações', value: '`hug`, `kiss`, `laugh`, `pat`, `run`, `slap`', inline: true },
 				{ name: '🎰 Casino', value: '`coinflip`', inline: true },
 				{ name: '😁 Diversão', value: '`fact`, `match`, `random`, `say`, `which`', inline: true },
-				{ name: '💰 Economia', value: '`balance`, `daily`, `donate`', inline: true },
+				{name: '💰 Perfil', value: '`balance`, `daily`, `donate, `profile`', inline: true },
 				{ name: '⚠️ Moderação', value: '`ban`, `clear`, `kick`', inline: true },
 				{ name: '🌐 Servidor', value: '`members`, `setprefix`, `userinfo`', inline: true },
-				{ name: '🛠️ Utilidade', value: '`avatar`, `invite`, `ping`, `profile`', inline: true },
+				{ name: '🛠️ Utilidade', value: '`avatar`, `invite`, `ping`', inline: true },
 			);
 
 		if (args == null || args == '') {

@@ -3,7 +3,7 @@ const config = require('../config.json');
 module.exports = {
 	name: 'balance',
 	aliases: ['bal'],
-	category: 'Economia',
+	category: 'Perfil',
 	description: 'Verifica o teu capital!',
 	usage: '`+balance`',
 

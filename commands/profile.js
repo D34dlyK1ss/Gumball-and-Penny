@@ -3,7 +3,7 @@ const Discord = require('discord.js');
 module.exports = {
 	name: 'profile',
 	aliases: ['p'],
-	category: 'Utilidade',
+	category: 'Perfil',
 	description: 'Vê o teu perfil ou o de alguém!\nOpções disponíveis: `create`, `setnickname`, `setdescription`',
 	usage: '`+profile [opcional - opção | @membro]`',
 
