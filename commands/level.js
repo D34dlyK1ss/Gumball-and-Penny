@@ -1,23 +1,21 @@
 const Discord = require('discord.js');
 
+function convert(value) {
+	if(value >= 1000000) {
+		value=(value / 1000000)+'M';
+	}
+	else if(value >= 1000) {
+		value=(value / 1000) + 'k';
+	}
+	return value;
+}
+
 module.exports = {
 	name: 'level',
 	category: 'Perfil',
 	description: 'Verifica o teu nível e XP!',
 	usage: '`+level`',
 	
-	function convert(value) {
-	    if(value >= 1000000)
-	    {
-		value=(value / 1000000)+'M';
-	    }
-	    else if(value >= 1000)
-	    {
-		value=(value / 1000) + 'k';
-	    }
-	    return value;
-	},
-
 	execute(bot, message, command, args, db) {
 		db.collection('perfis').doc(message.author.id).get().then(doc => {
 			if (!doc.exists) {
