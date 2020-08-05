@@ -17,30 +17,33 @@ module.exports = {
 			if (!doc.exists) {
 				message.reply('ainda não criaste um perfil! Para criares um perfil usa `+profile create`!');
 			}
-			else if (args[0] == 'add') {
-				if (user.id == botOwner || user.id == lilly) {
-					const bal = doc.get('balance'),
-						amount = parseInt(args[1]);
-
-					if ((bal + amount) > 999999999) {
-						message.reply('não podes adicionar mais dinheiro à tua conta bancária! 😧');
-					}
-					else {
-						ref.update({
-							balance: bal + amount,
-						}).then(() => {
-							message.reply(`**¤${amount}** foram adicionados à tua conta bancária!`);
-						}).catch(err => { console.error(err); });
-					}
-				}
-				else {
-					message.reply('não tens permissão para usar este comando! 💢');
-				}
-			}
 			else {
 				const bal = doc.get('balance');
 
-				message.reply(`tens **¤${bal}**`);
+				switch (args) {
+				case 'add':
+					if (user.id == botOwner || user.id == lilly) {
+						const amount = parseInt(args[1]);
+
+						if ((bal + amount) > 999999999) {
+							message.reply('não podes adicionar mais dinheiro à tua conta bancária! 😧');
+						}
+						else {
+							ref.update({
+								balance: bal + amount,
+							}).then(() => {
+								message.reply(`**¤${amount}** foram adicionados à tua conta bancária!`);
+							}).catch(err => { console.error(err); });
+						}
+					}
+					else {
+						message.reply('não tens permissão para usar este comando! 💢');
+					}
+					break;
+				default:
+					message.reply(`tens **¤${bal}**`);
+					break;
+				}
 			}
 		}).catch(err => { console.error(err); });
 	},
