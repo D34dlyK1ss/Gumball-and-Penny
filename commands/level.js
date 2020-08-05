@@ -17,8 +17,7 @@ module.exports = {
 				const nextLevel = 500 * Math.round(level * (level + 1) / 2),
 					embed = new Discord.MessageEmbed()
 						.setColor('#8000ff')
-						.setTitle(message.author.tag)
-						.setAuthor(message.author.tag, `${message.author.displayAvatarURL()}`)
+						.setAuthor(message.author.tag)
 						.setThumbnail(`${message.author.displayAvatarURL()}`)
 						.setDescription(`Estás a nível **${level}**\n**${xp} xp**`)
 						.addFields(
