@@ -23,7 +23,7 @@ module.exports = {
 				{ name: '💰 Perfil', value: '`balance`, `daily`, `donate, `level`, `profile`', inline: true },
 				{ name: '⚠️ Moderação', value: '`ban`, `clear`, `kick`', inline: true },
 				{ name: '🌐 Servidor', value: '`members`, `setprefix`, `userinfo`', inline: true },
-				{ name: '🛠️ Utilidade', value: '`avatar`, `invite`, `ping`', inline: true },
+				{ name: '🛠️ Utilidade', value: '`avatar`, `invite`, `ping`, `support`', inline: true },
 			);
 
 		if (args == null || args == '') {
