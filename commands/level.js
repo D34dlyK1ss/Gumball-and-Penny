@@ -5,6 +5,18 @@ module.exports = {
 	category: 'Perfil',
 	description: 'Verifica o teu nível e XP!',
 	usage: '`+level`',
+	
+	function convert(value) {
+	    if(value >= 1000000)
+	    {
+		value=(value / 1000000)+'M';
+	    }
+	    else if(value >= 1000)
+	    {
+		value=(value / 1000) + 'k';
+	    }
+	    return value;
+	}
 
 	execute(bot, message, command, args, db) {
 		db.collection('perfis').doc(message.author.id).get().then(doc => {
@@ -19,9 +31,9 @@ module.exports = {
 						.setColor('#8000ff')
 						.setAuthor(message.author.tag)
 						.setThumbnail(`${message.author.displayAvatarURL()}`)
-						.setDescription(`Estás a nível **${level}**\n**${xp} xp**`)
+						.setDescription(`Estás a nível **${level}**\n**${convert(xp)} xp**`)
 						.addFields(
-							{ name: 'XP para o próximo nível', value: nextLevel - xp },
+							{ name: 'XP para o próximo nível', value: convert(nextLevel - xp) },
 						);
 
 				message.channel.send(embed);
