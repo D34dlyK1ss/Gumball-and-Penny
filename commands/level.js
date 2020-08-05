@@ -29,9 +29,9 @@ module.exports = {
 						.setColor('#8000ff')
 						.setAuthor(message.author.tag)
 						.setThumbnail(`${message.author.displayAvatarURL()}`)
-						.setDescription(`Estás a nível **${level}**\n**${convert(xp)} xp**`)
+						.setDescription(`Estás a nível **${level}**\n**${convert(xp)} XP**`)
 						.addFields(
-							{ name: 'XP para o próximo nível', value: convert(nextLevel - xp) },
+							{ name: 'XP para o próximo nível', value: `${convert(nextLevel - xp)} XP`},
 						);
 
 				message.channel.send(embed);
