@@ -16,7 +16,7 @@ module.exports = {
 		value=(value / 1000) + 'k';
 	    }
 	    return value;
-	}
+	},
 
 	execute(bot, message, command, args, db) {
 		db.collection('perfis').doc(message.author.id).get().then(doc => {
