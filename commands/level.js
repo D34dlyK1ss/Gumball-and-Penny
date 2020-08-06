@@ -29,7 +29,7 @@ module.exports = {
 						.setAuthor(message.author.tag)
 						.setThumbnail(`${message.author.displayAvatarURL()}`)
 						.addFields(
-							{ name: `Estás a nível **${level}**`, value: `${convert(xp)} XP` },
+							{ name: `Estás a nível ${level}`, value: `${convert(xp)} XP` },
 							{ name: 'XP para o próximo nível', value: `${convert(nextLevel - xp)} XP` },
 						);
 
