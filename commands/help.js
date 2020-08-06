@@ -20,7 +20,7 @@ module.exports = {
 				{ name: '🎭 Ações', value: '`hug`, `kiss`, `laugh`, `pat`, `run`, `slap`', inline: true },
 				{ name: '🎰 Casino', value: '`coinflip`', inline: true },
 				{ name: '😁 Diversão', value: '`fact`, `match`, `random`, `say`, `which`', inline: true },
-				{ name: '💰 Perfil', value: '`balance`, `daily`, `donate, `level`, `profile`', inline: true },
+				{ name: '💰 Perfil', value: '`balance`, `daily`, `donate`, `level`, `profile`', inline: true },
 				{ name: '⚠️ Moderação', value: '`ban`, `clear`, `kick`', inline: true },
 				{ name: '🌐 Servidor', value: '`members`, `setprefix`, `userinfo`', inline: true },
 				{ name: '🛠️ Utilidade', value: '`avatar`, `invite`, `ping`, `support`', inline: true },

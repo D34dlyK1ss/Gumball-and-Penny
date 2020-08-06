@@ -15,7 +15,6 @@ module.exports = {
 	category: 'Perfil',
 	description: 'Verifica o teu nível e XP!',
 	usage: '`+level`',
-	
 	execute(bot, message, command, args, db) {
 		db.collection('perfis').doc(message.author.id).get().then(doc => {
 			if (!doc.exists) {
@@ -31,7 +30,7 @@ module.exports = {
 						.setThumbnail(`${message.author.displayAvatarURL()}`)
 						.setDescription(`Estás a nível **${level}**\n**${convert(xp)} XP**`)
 						.addFields(
-							{ name: 'XP para o próximo nível', value: `${convert(nextLevel - xp)} XP`},
+							{ name: 'XP para o próximo nível', value: `${convert(nextLevel - xp)} XP` },
 						);
 
 				message.channel.send(embed);
