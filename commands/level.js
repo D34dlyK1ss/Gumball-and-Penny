@@ -28,8 +28,8 @@ module.exports = {
 						.setColor('#8000ff')
 						.setAuthor(message.author.tag)
 						.setThumbnail(`${message.author.displayAvatarURL()}`)
-						.setDescription(`Estás a nível **${level}**\n**${convert(xp)} XP**`)
 						.addFields(
+							{ name: `Estás a nível **${level}**`, value: `${convert(xp)} XP` },
 							{ name: 'XP para o próximo nível', value: `${convert(nextLevel - xp)} XP` },
 						);
 
