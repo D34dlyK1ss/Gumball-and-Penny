@@ -137,7 +137,7 @@ bot.on('message', message => {
 						db.collection('perfis').doc(message.author.id).update({
 							level: level + 1,
 						});
-						message.channel.send(`Parabéns ${message.author}, subiste para o nível ${level + 1}!`);
+						message.channel.send(`🎉 Parabéns ${message.author}, subiste para o nível ${level + 1}! 🆙`);
 					}
 				}
 			});
