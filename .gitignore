@@ -1,5 +1,5 @@
-#ESLinter
-.eslintrc
+# ESLinter
+.eslintrc.*
 
 # Logs
 logs
