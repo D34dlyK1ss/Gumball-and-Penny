@@ -1,2 +1,10 @@
-node_modules
+# Packages
+node_modules/
+
+# Log files
+logs/
+*.log
+
+# Miscellaneous
+.vscode/
 .eslintrc.*
