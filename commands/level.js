@@ -25,14 +25,14 @@ module.exports = {
 				if (user == message.author) {
 					message.reply('ainda não criaste um perfil! Para criares um perfil usa `+profile create`!');
 				}
-				else if (user.id == bot.user.id) {
-					message.reply('nós não precisamos de nível!');
+				else if (user == bot.user) {
+					message.reply('nós não precisamos de ter um perfil!');
 				}
 				else if (user.bot) {
-					message.reply('os bots não têm nível! 😂 ');
+					message.reply('os bots não criam perfis! 😂 ');
 				}
 				else {
-					message.reply('este utilizador ainda não criou um perfil!');
+					message.reply(`${user} ainda não criou um perfil!`);
 				}
 			}
 			else {

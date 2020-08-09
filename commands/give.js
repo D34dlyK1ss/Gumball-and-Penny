@@ -21,16 +21,16 @@ module.exports = {
 
 				refU.get().then(docU => {
 					if (user == bot.user) {
-						message.channel.send('Obrigado, mas vais precisar mais desse dinheiro do que nós! 😁');
+						message.reply('Obrigado, mas vais precisar mais desse dinheiro do que nós! 😁');
 					}
 					else if (user.bot) {
 						message.reply('os bots não têm perfis!');
 					}
 					else if (args[1] == null || args[1] == '' || args == user) {
-						message.channel.send('Sintaxe errada! Como usar: `+give [@membro] [quantidade]`');
+						message.reply('Sintaxe errada! Como usar: `+give [@membro] [quantidade]`');
 					}
 					else if (!docU.exists) {
-						message.channel.send(`${user} ainda não criou um perfil!`);
+						message.reply(`${user} ainda não criou um perfil!`);
 					}
 					else {
 						const balD = docD.get('balance'),
