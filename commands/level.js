@@ -48,21 +48,25 @@ module.exports = {
 				ctx.beginPath();
 				ctx.lineWidth = 2;
 				ctx.strokeStyle = '#ffffff';
-                                ctx.globalAlpha = 0.2;
+				ctx.globalAlpha = 0.2;
 				ctx.fillStyle = '#ffffff';
 				ctx.fillRect(180, 226, 770, 65);
 				ctx.fill();
-                                ctx.globalAlpha = 1;
+				ctx.globalAlpha = 1;
 				ctx.strokeRect(180, 226, 770, 65);
 				ctx.stroke();
 
 				ctx.fillStyle = '#8000ff';
-				ctx.globalAlpha = 0.6;
+				ctx.globalAlpha = 0.8;
 				ctx.fillRect(180, 226, ((100 / nextLevel) * (xp - prevLevel) * 7.7), 65);
 				ctx.fill();
 				ctx.globalAlpha = 1;
 
 				ctx.font = 'bold 42px Helvetica';
+				ctx.shadowColor = "black";
+				ctx.shadowBlur = 6;
+				ctx.shadowOffsetX = 5;
+				ctx.shadowOffsetY = 5;
 				ctx.textAlign = 'center';
 				ctx.fillStyle = '#ffffff';
 				ctx.fillText(`${convert(xp)} / ${convert(nextLevel)}`, 600, 275);
