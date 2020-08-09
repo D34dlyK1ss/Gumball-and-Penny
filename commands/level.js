@@ -62,6 +62,12 @@ module.exports = {
 				ctx.fill();
 				ctx.globalAlpha = 1;
 
+				
+				ctx.arc(170, 170, 120, 0, Math.PI * 2, true);
+				ctx.lineWidth = 6;
+				ctx.strokeStyle = '#ffffff';
+				ctx.stroke();
+				
 				ctx.font = '42px Helvetica';
 				ctx.shadowColor = "black";
 				ctx.shadowBlur = 6;
@@ -74,11 +80,6 @@ module.exports = {
 				ctx.textAlign = 'left';
 				ctx.fillText(`${user.tag}`, 320, 140);
 				ctx.fillText(`Level: ${level}`, 320, 190);
-
-				ctx.arc(170, 170, 120, 0, Math.PI * 2, true);
-				ctx.lineWidth = 6;
-				ctx.strokeStyle = '#ffffff';
-				ctx.stroke();
 				ctx.closePath();
 				ctx.clip();
 
