@@ -36,9 +36,9 @@ module.exports = {
 				}
 			}
 			else {
-				const level = await doc.get('level'),
-					xp = await doc.get('xp');
-				const nextLevel = await 500 * Math.round(level * (level + 1) / 2);
+				const level = doc.get('level'),
+					xp = doc.get('xp');
+				const nextLevel = 500 * Math.round(level * (level + 1) / 2);
 
 				ctx.fillStyle = '#404040';
 				ctx.fillRect(0, 0, 1000, 333);
@@ -66,7 +66,7 @@ module.exports = {
 				ctx.fillText(`${convert(xp)} XP / ${convert(nextLevel)}`, 600, 270);
 
 				ctx.textAlign = 'left';
-				ctx.fillText(`${user.tag}`, 320, 140);
+				ctx.fillText(`${await user.tag}`, 320, 140);
 				ctx.fillText(`Level: ${level}`, 320, 190);
 
 				ctx.arc(170, 170, 120, 0, Math.PI * 2, true);
