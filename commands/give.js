@@ -30,7 +30,7 @@ module.exports = {
 						message.reply('Sintaxe errada! Como usar: `+give [@membro] [quantidade]`');
 					}
 					else if (!docU.exists) {
-						message.reply(`${user} ainda não criou um perfil!`);
+						message.reply(`${user.tag} ainda não criou um perfil!`);
 					}
 					else {
 						const balD = docD.get('balance'),
