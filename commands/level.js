@@ -64,7 +64,7 @@ module.exports = {
 				ctx.font = '40px Comic Sans MS';
 				ctx.textAlign = 'center';
 				ctx.fillStyle = '#ffffff';
-				ctx.fillText(`${convert(xp)} XP / ${convert(nextLevel)}`, 600, 270);
+				ctx.fillText(`${convert(xp)} / ${convert(nextLevel)}`, 600, 270);
 
 				ctx.textAlign = 'left';
 				ctx.fillText(`${user.tag}`, 320, 140);
