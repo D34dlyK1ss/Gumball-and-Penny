@@ -61,7 +61,6 @@ module.exports = {
 				ctx.fillRect(170, 226, ((100 / nextLevel) * (xp - prevLevel) * 7.7), 65);
 				ctx.fill();
 				ctx.globalAlpha = 1;
-
 				
 				ctx.arc(170, 170, 120, 0, Math.PI * 2, true);
 				ctx.lineWidth = 6;
@@ -85,7 +84,6 @@ module.exports = {
 
 				const avatar = await loadImage(user.displayAvatarURL({ format: 'jpg' }));
 				ctx.drawImage (avatar, 40, 40, 250, 250);
-
 
 				const attachment = new MessageAttachment(canvas.toBuffer(), 'level.png');
 
