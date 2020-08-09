@@ -53,23 +53,23 @@ module.exports = {
 				ctx.fillRect(180, 226, 770, 65);
 				ctx.fill();
 				ctx.globalAlpha = 1;
-				ctx.strokeRect(180, 226, 770, 65);
+				ctx.strokeRect(170, 226, 770, 65);
 				ctx.stroke();
 
 				ctx.fillStyle = '#8000ff';
 				ctx.globalAlpha = 0.8;
-				ctx.fillRect(180, 226, ((100 / nextLevel) * (xp - prevLevel) * 7.7), 65);
+				ctx.fillRect(170, 226, ((100 / nextLevel) * (xp - prevLevel) * 7.7), 65);
 				ctx.fill();
 				ctx.globalAlpha = 1;
 
-				ctx.font = 'bold 42px Helvetica';
+				ctx.font = '42px Helvetica';
 				ctx.shadowColor = "black";
 				ctx.shadowBlur = 6;
 				ctx.shadowOffsetX = 5;
 				ctx.shadowOffsetY = 5;
 				ctx.textAlign = 'center';
 				ctx.fillStyle = '#ffffff';
-				ctx.fillText(`${convert(xp)} / ${convert(nextLevel)}`, 600, 275);
+				ctx.fillText(`${convert(xp)} / ${convert(nextLevel)}`, 600, 274);
 
 				ctx.textAlign = 'left';
 				ctx.fillText(`${user.tag}`, 320, 140);
