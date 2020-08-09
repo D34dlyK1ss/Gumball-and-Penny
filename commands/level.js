@@ -50,15 +50,15 @@ module.exports = {
 				ctx.strokeStyle = '#ffffff';
 				ctx.globalAlpha = 0.2;
 				ctx.fillStyle = '#ffffff';
-				ctx.fillRect(180, 230, 770, 65);
+				ctx.fillRect(180, 228, 770, 65);
 				ctx.fill();
 				ctx.globalAlpha = 1;
-				ctx.strokeRect(180, 230, 770, 65);
+				ctx.strokeRect(180, 228, 770, 65);
 				ctx.stroke();
 
 				ctx.fillStyle = '#8000ff';
 				ctx.globalAlpha = 0.8;
-				ctx.fillRect(170, 226, ((100 / nextLevel) * (xp - prevLevel) * 7.7), 65);
+				ctx.fillRect(170, 228, ((100 / nextLevel) * (xp - prevLevel) * 7.7), 65);
 				ctx.fill();
 				ctx.globalAlpha = 1;
 				
