@@ -75,16 +75,16 @@ module.exports = {
 			ref.get().then(doc => {
 				if (!doc.exists) {
 					if (user == message.author) {
-						message.channel.send('Ainda não criaste um perfil! Para criares um perfil usa `+profile create`!');
+						message.reply('ainda não criaste um perfil! Para criares um perfil usa `+profile create`!');
 					}
-					else if (user.id == 679041548955942914) {
-						message.channel.send('Nós não precisamos de ter um perfil!');
+					else if (user.id == bot.user.id) {
+						message.reply('nós não precisamos de ter um perfil!');
 					}
 					else if (user.bot) {
-						message.channel.send('Os bots não criam perfis! 😂 ');
+						message.reply('os bots não criam perfis! 😂 ');
 					}
 					else {
-						message.channel.send('Este utilizador ainda não criou um perfil!');
+						message.reply('este utilizador ainda não criou um perfil!');
 					}
 				}
 				else {

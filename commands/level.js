@@ -1,4 +1,7 @@
-const Discord = require('discord.js');
+const { MessageAttachment } = require('discord.js');
+const { createCanvas, loadImage } = require('canvas');
+const canvas = createCanvas(1000, 333);
+const ctx = canvas.getContext('2d');
 
 function convert(value) {
 	if (value >= 1000000) {
@@ -16,24 +19,70 @@ module.exports = {
 	description: 'Verifica o teu nível e XP!',
 	usage: '`+level`',
 	execute(bot, message, command, args, db) {
-		db.collection('perfis').doc(message.author.id).get().then(doc => {
+		const user = message.mentions.users.first() || message.author;
+		db.collection('perfis').doc(user.id).get().then(async doc => {
 			if (!doc.exists) {
-				message.channel.send('Ainda não criaste um perfil! Para criares um perfil usa `+profile create`!');
+				if (user == message.author) {
+					message.reply('ainda não criaste um perfil! Para criares um perfil usa `+profile create`!');
+				}
+				else if (user.id == bot.user.id) {
+					message.reply('nós não precisamos de nível!');
+				}
+				else if (user.bot) {
+					message.reply('os bots não têm nível! 😂 ');
+				}
+				else {
+					message.reply('este utilizador ainda não criou um perfil!');
+				}
 			}
 			else {
 				const level = doc.get('level'),
 					xp = doc.get('xp');
-				const nextLevel = 500 * Math.round(level * (level + 1) / 2),
-					embed = new Discord.MessageEmbed()
-						.setColor('#8000ff')
-						.setAuthor(message.author.tag)
-						.setThumbnail(`${message.author.displayAvatarURL()}`)
-						.addFields(
-							{ name: `Estás a nível ${level}`, value: `${convert(xp)} XP` },
-							{ name: 'XP para o próximo nível', value: `${convert(nextLevel - xp)} XP` },
-						);
+				const nextLevel = 500 * Math.round(level * (level + 1) / 2);
 
-				message.channel.send(embed);
+				ctx.fillStyle = '#404040';
+				ctx.fillRect(0, 0, 1000, 333);
+
+				ctx.beginPath();
+				ctx.lineWidth = 2;
+				ctx.strokeStyle = '#ffffff';
+				ctx.globalAlpha = 0.2;
+				ctx.fillStyle = '#ffffff';
+				ctx.fillRect(180, 226, 770, 65);
+				ctx.fill();
+				ctx.globalAlpha = 1;
+				ctx.strokeRect(180, 226, 770, 65);
+				ctx.stroke();
+
+				ctx.fillStyle = '#8000ff';
+				ctx.globalAlpha = 0.5;
+				ctx.fillRect(180, 226, ((100 / nextLevel) * xp * 7.7), 65);
+				ctx.fill();
+				ctx.globalAlpha = 1;
+
+				ctx.font = '40px Comic Sans MS';
+				ctx.textAlign = 'center';
+				ctx.fillStyle = '#ffffff';
+				ctx.fillText(`${convert(xp)} XP / ${convert(nextLevel)}`, 600, 270);
+
+				ctx.textAlign = 'left';
+				ctx.fillText(`${user.tag}`, 320, 140);
+				ctx.fillText(`Level: ${level}`, 320, 190);
+
+				ctx.arc(170, 170, 120, 0, Math.PI * 2, true);
+				ctx.lineWidth = 6;
+				ctx.strokeStyle = '#ffffff';
+				ctx.stroke();
+				ctx.closePath();
+				ctx.clip();
+
+				const avatar = await loadImage(user.displayAvatarURL({ format: 'jpg' }));
+				ctx.drawImage (avatar, 40, 40, 250, 250);
+
+
+				const attachment = new MessageAttachment(canvas.toBuffer(), 'level.png');
+
+				message.channel.send(attachment);
 			}
 		});
 	},

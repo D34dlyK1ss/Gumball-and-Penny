@@ -65,7 +65,7 @@ bot.once('ready', async () => {
 const xpCooldown = new Set();
 
 // Ações para quando o bot receber uma mensagem
-bot.on('message', message => {
+bot.on('message', async message => {
 
 	// Ignorar mensagens privadas e mensagens de outros bots
 	if (message.channel.type === 'dm' || message.author.bot) return;
