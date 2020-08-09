@@ -50,10 +50,10 @@ module.exports = {
 				ctx.strokeStyle = '#ffffff';
 				ctx.globalAlpha = 0.2;
 				ctx.fillStyle = '#ffffff';
-				ctx.fillRect(180, 226, 770, 65);
+				ctx.fillRect(180, 230, 770, 65);
 				ctx.fill();
 				ctx.globalAlpha = 1;
-				ctx.strokeRect(180, 226, 770, 65);
+				ctx.strokeRect(180, 230, 770, 65);
 				ctx.stroke();
 
 				ctx.fillStyle = '#8000ff';
@@ -63,13 +63,13 @@ module.exports = {
 				ctx.globalAlpha = 1;
 				
 				ctx.arc(170, 170, 120, 0, Math.PI * 2, true);
-				ctx.lineWidth = 6;
+				ctx.lineWidth = 5;
 				ctx.strokeStyle = '#ffffff';
 				ctx.stroke();
 				
 				ctx.font = 'bold 42px Helvetica';
 				ctx.shadowColor = "black";
-				ctx.shadowBlur = 6;
+				ctx.shadowBlur = 4;
 				ctx.shadowOffsetX = 6;
 				ctx.shadowOffsetY = 6;
 				ctx.textAlign = 'center';
