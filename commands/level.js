@@ -65,8 +65,8 @@ module.exports = {
 				ctx.font = '42px Helvetica';
 				ctx.shadowColor = "black";
 				ctx.shadowBlur = 6;
-				ctx.shadowOffsetX = 5;
-				ctx.shadowOffsetY = 5;
+				ctx.shadowOffsetX = 6;
+				ctx.shadowOffsetY = 6;
 				ctx.textAlign = 'center';
 				ctx.fillStyle = '#ffffff';
 				ctx.fillText(`${convert(xp)} / ${convert(nextLevel)}`, 600, 274);
