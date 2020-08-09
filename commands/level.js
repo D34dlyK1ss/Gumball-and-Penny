@@ -48,9 +48,11 @@ module.exports = {
 				ctx.beginPath();
 				ctx.lineWidth = 2;
 				ctx.strokeStyle = '#ffffff';
+                                ctx.globalAlpha = 0.2;
 				ctx.fillStyle = '#ffffff';
 				ctx.fillRect(180, 226, 770, 65);
 				ctx.fill();
+                                ctx.globalAlpha = 1;
 				ctx.strokeRect(180, 226, 770, 65);
 				ctx.stroke();
 
