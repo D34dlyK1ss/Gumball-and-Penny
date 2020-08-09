@@ -26,7 +26,7 @@ module.exports = {
 					message.reply('ainda não criaste um perfil! Para criares um perfil usa `+profile create`!');
 				}
 				else if (user == bot.user) {
-					message.reply('nós não precisamos de ter um perfil!');
+					message.reply('nós não precisamos de ter nível!');
 				}
 				else if (user.bot) {
 					message.reply('os bots não criam perfis! 😂 ');
@@ -36,9 +36,9 @@ module.exports = {
 				}
 			}
 			else {
-				const level = doc.get('level'),
-					xp = doc.get('xp');
-				const nextLevel = 500 * Math.round(level * (level + 1) / 2);
+				const level = await doc.get('level'),
+					xp = await doc.get('xp');
+				const nextLevel = await 500 * Math.round(level * (level + 1) / 2);
 
 				ctx.fillStyle = '#404040';
 				ctx.fillRect(0, 0, 1000, 333);
