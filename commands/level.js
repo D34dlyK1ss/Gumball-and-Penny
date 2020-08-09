@@ -53,7 +53,7 @@ module.exports = {
 				ctx.fillRect(180, 226, 770, 65);
 				ctx.fill();
 				ctx.globalAlpha = 1;
-				ctx.strokeRect(170, 226, 770, 65);
+				ctx.strokeRect(180, 226, 770, 65);
 				ctx.stroke();
 
 				ctx.fillStyle = '#8000ff';
@@ -67,7 +67,7 @@ module.exports = {
 				ctx.strokeStyle = '#ffffff';
 				ctx.stroke();
 				
-				ctx.font = '42px Helvetica';
+				ctx.font = 'bold 42px Helvetica';
 				ctx.shadowColor = "black";
 				ctx.shadowBlur = 6;
 				ctx.shadowOffsetX = 6;
