@@ -42,8 +42,8 @@ module.exports = {
 				const canvas = createCanvas(1000, 333),
 					ctx = canvas.getContext('2d');
 
-				ctx.fillStyle = '#404040';
-				ctx.fillRect(0, 0, 1000, 333);
+				const bg = await loadImage('images/profile/level.jpg');
+				ctx.drawImage(bg, 0, 0, canvas.width, canvas.height);
 
 				ctx.beginPath();
 				ctx.lineWidth = 2;
@@ -62,10 +62,10 @@ module.exports = {
 				ctx.fill();
 				ctx.globalAlpha = 1;
 
-				ctx.font = '40px Comic Sans MS';
+				ctx.font = 'bold 44px Comic Sans MS';
 				ctx.textAlign = 'center';
 				ctx.fillStyle = '#ffffff';
-				ctx.fillText(`${convert(xp)} / ${convert(nextLevel)}`, 600, 270);
+				ctx.fillText(`${convert(xp)} / ${convert(nextLevel)}`, 600, 275);
 
 				ctx.textAlign = 'left';
 				ctx.fillText(`${user.tag}`, 320, 140);
