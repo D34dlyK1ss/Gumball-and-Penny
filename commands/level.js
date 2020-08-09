@@ -36,7 +36,8 @@ module.exports = {
 			else {
 				const level = doc.get('level'),
 					xp = doc.get('xp');
-				const nextLevel = 500 * Math.round(level * (level + 1) / 2);
+				const nextLevel = 500 * Math.round(level * (level + 1) / 2),
+					prevLevel = 500 * Math.round(level * (level - 1) / 2);
 
 				const canvas = createCanvas(1000, 333),
 					ctx = canvas.getContext('2d');
@@ -57,11 +58,11 @@ module.exports = {
 
 				ctx.fillStyle = '#8000ff';
 				ctx.globalAlpha = 0.5;
-				ctx.fillRect(180, 226, ((100 / nextLevel) * xp * 7.7), 65);
+				ctx.fillRect(180, 226, ((100 / nextLevel) * (xp - prevLevel) * 7.7), 65);
 				ctx.fill();
 				ctx.globalAlpha = 1;
 
-				ctx.font = '40px Comic';
+				ctx.font = '40px Comic Sans MS';
 				ctx.textAlign = 'center';
 				ctx.fillStyle = '#ffffff';
 				ctx.fillText(`${convert(xp)} / ${convert(nextLevel)}`, 600, 270);
