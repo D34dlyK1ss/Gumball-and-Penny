@@ -46,10 +46,6 @@ module.exports = {
 				ctx.drawImage(bg, 0, 0, canvas.width, canvas.height);
 
 				ctx.beginPath();
-				ctx.lineWidth = 6;
-				ctx.strokeStyle = '#ffffff';
-				ctx.strokeRect(180, 225, 770, 65);
-				ctx.stroke();
 				
 				ctx.globalAlpha = 0.2;
 				ctx.fillStyle = '#ffffff';
@@ -62,6 +58,11 @@ module.exports = {
 				ctx.fillRect(170, 225, ((100 / nextLevel) * (xp - prevLevel) * 7.7), 65);
 				ctx.fill();
 				ctx.globalAlpha = 1;
+				
+				ctx.lineWidth = 6;
+				ctx.strokeStyle = '#ffffff';
+				ctx.strokeRect(180, 225, 770, 65);
+				ctx.stroke();
 				
 				ctx.arc(170, 170, 120, 0, Math.PI * 2, true);
 				ctx.lineWidth = 6;
