@@ -61,7 +61,7 @@ module.exports = {
 				ctx.fill();
 				ctx.globalAlpha = 1;
 
-				ctx.font = '40px Comic Sans MS';
+				ctx.font = '40px Comic';
 				ctx.textAlign = 'center';
 				ctx.fillStyle = '#ffffff';
 				ctx.fillText(`${convert(xp)} / ${convert(nextLevel)}`, 600, 270);
