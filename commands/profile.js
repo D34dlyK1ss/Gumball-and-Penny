@@ -198,7 +198,7 @@ module.exports = {
 					ctx.shadowOffsetY = 4;
 					ctx.textAlign = 'center';
 					ctx.fillStyle = 'white';
-					ctx.fillText(`${convert(xp - prevLevel)} / ${convert(nextLevel)}`, 275, 336);
+					ctx.fillText(`${convert(xp - prevLevel)} / ${convert(nextLevel - prevLevel)}`, 275, 336);
 
 					ctx.closePath();
 
