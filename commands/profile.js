@@ -153,13 +153,13 @@ module.exports = {
 					ctx.font = '18px Helvetica';
 					ctx.fillStyle = 'black';
 					ctx.textAlign = 'left';
-					ctx.fillText(`XP Total: ${xp}`, 120, 230);
+					ctx.fillText(`XP Total: ${xp}`, 110, 230);
 
 					ctx.font = 'bold 16px Helvetica';
-					ctx.fillText('Descrição:', 118, 405);
+					ctx.fillText('Descrição:', 110, 405);
 
 					ctx.font = '14px Helvetica';
-					ctx.fillText(`${desc}`, 120, 430);
+					ctx.fillText(`${desc}`, 110, 430);
 
 					ctx.font = '18px Helvetica';
 					ctx.fillStyle = 'gold';
@@ -167,7 +167,7 @@ module.exports = {
 					ctx.shadowBlur = 4;
 					ctx.shadowOffsetX = 4;
 					ctx.shadowOffsetY = 4;
-					ctx.fillText(`Capital: ¤${bal}`, 120, 265);
+					ctx.fillText(`Capital: ¤${bal}`, 110, 265);
 
 					ctx.font = '28px Helvetica';
 					ctx.fillStyle = 'white';
@@ -187,7 +187,7 @@ module.exports = {
 					ctx.stroke();
 
 					ctx.lineWidth = 1;
-					ctx.moveTo(125, 380);
+					ctx.moveTo(120, 385);
 					ctx.lineTo(425, 380);
 					ctx.strokeStyle = 'black';
 					ctx.stroke();
