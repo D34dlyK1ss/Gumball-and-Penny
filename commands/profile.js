@@ -2,6 +2,16 @@
 const { MessageAttachment } = require('discord.js');
 const { createCanvas, loadImage } = require('canvas');
 
+function convert(value) {
+	if (value >= 1000000) {
+		value = (value / 1000000) + 'M';
+	}
+	else if (value >= 1000) {
+		value = (value / 1000) + 'k';
+	}
+	return value;
+}
+
 module.exports = {
 	name: 'profile',
 	aliases: ['p'],
@@ -101,6 +111,8 @@ module.exports = {
 						bal = doc.get('balance'),
 						level = doc.get('level'),
 						xp = doc.get('xp');
+					const nextLevel = 500 * Math.round(level * (level + 1) / 2),
+						prevLevel = 500 * Math.round(level * (level - 1) / 2);
 
 					const canvas = createCanvas(500, 500),
 						ctx = canvas.getContext('2d');
@@ -118,7 +130,16 @@ module.exports = {
 					ctx.fillStyle = 'white';
 					ctx.fillRect(100, 160, 350, 290);
 					ctx.fill();
+
+					ctx.globalAlpha = 0.2;
+					ctx.fillStyle = 'white';
+					ctx.fillRect(110, 310, 330, 40);
+					ctx.fill();
 					ctx.globalAlpha = 1;
+
+					ctx.fillStyle = '#8000ff';
+					ctx.fillRect(110, 310, ((100 / nextLevel) * (xp - prevLevel) * 3.3), 40);
+					ctx.fill();
 
 					ctx.arc(100, 100, 60, 0, Math.PI * 2, true);
 					ctx.lineWidth = 4;
@@ -128,11 +149,6 @@ module.exports = {
 					ctx.shadowOffsetY = 4;
 					ctx.strokeStyle = 'white';
 					ctx.stroke();
-
-					ctx.shadowColor = 'none';
-					ctx.shadowBlur = 0;
-					ctx.shadowOffsetX = 0;
-					ctx.shadowOffsetY = 0;
 
 					ctx.lineWidth = 1;
 					ctx.moveTo(125, 380);
@@ -152,7 +168,7 @@ module.exports = {
 					ctx.font = '18px Helvetica';
 					ctx.fillStyle = 'black';
 					ctx.textAlign = 'left';
-					ctx.fillText(`XP Total: ${xp}`, 120, 250);
+					ctx.fillText(`XP Total: ${xp}`, 120, 230);
 
 					ctx.font = 'bold 16px Helvetica';
 					ctx.fillText('Descrição:', 120, 410);
@@ -165,15 +181,24 @@ module.exports = {
 					ctx.shadowBlur = 4;
 					ctx.shadowOffsetX = 4;
 					ctx.shadowOffsetY = 4;
-					ctx.fillText(`Capital: ¤${bal}`, 120, 300);
+					ctx.fillText(`Capital: ¤${bal}`, 120, 265);
 
 					ctx.font = '28px Helvetica';
 					ctx.fillStyle = 'white';
 					ctx.textAlign = 'center';
-					ctx.fillText('NÍVEL:', 370, 255);
+					ctx.fillText('NÍVEL:', 370, 230);
 
 					ctx.font = 'bold 48px Helvetica';
-					ctx.fillText(`${level}`, 370, 305);
+					ctx.fillText(`${level}`, 370, 280);
+
+					ctx.font = '20px Helvetica';
+					ctx.shadowColor = 'black';
+					ctx.shadowBlur = 4;
+					ctx.shadowOffsetX = 4;
+					ctx.shadowOffsetY = 4;
+					ctx.textAlign = 'center';
+					ctx.fillStyle = 'white';
+					ctx.fillText(`${convert(xp - prevLevel)} / ${convert(nextLevel)}`, 275, 336);
 
 					ctx.closePath();
 

@@ -54,10 +54,8 @@ module.exports = {
 				ctx.globalAlpha = 1;
 
 				ctx.fillStyle = '#8000ff';
-				ctx.globalAlpha = 1;
-				ctx.fillRect(170, 225, ((100 / nextLevel) * (xp - prevLevel) * 7.7), 65);
+				ctx.fillRect(180, 225, ((100 / nextLevel) * (xp - prevLevel) * 7.7), 65);
 				ctx.fill();
-				ctx.globalAlpha = 1;
 
 				ctx.lineWidth = 5;
 				ctx.strokeStyle = 'white';
