@@ -156,13 +156,14 @@ module.exports = {
 					ctx.fillText(`XP Total: ${xp}`, 120, 230);
 
 					ctx.font = 'bold 16px Helvetica';
-					ctx.fillText('Descrição:', 120, 410);
+					ctx.fillText('Descrição:', 118, 405);
 
 					ctx.font = '14px Helvetica';
 					ctx.fillText(`${desc}`, 120, 430);
 
 					ctx.font = '18px Helvetica';
 					ctx.fillStyle = 'gold';
+					ctx.shadowColor = 'black';
 					ctx.shadowBlur = 4;
 					ctx.shadowOffsetX = 4;
 					ctx.shadowOffsetY = 4;
@@ -176,7 +177,7 @@ module.exports = {
 					ctx.font = 'bold 48px Helvetica';
 					ctx.fillText(`${level}`, 370, 280);
 
-					ctx.arc(100, 100, 60, 0, Math.PI * 2, true);
+					ctx.arc(100, 130, 60, 0, Math.PI * 2, true);
 					ctx.lineWidth = 4;
 					ctx.shadowColor = 'black';
 					ctx.shadowBlur = 8;
@@ -205,7 +206,7 @@ module.exports = {
 					ctx.clip();
 
 					const avatar = await loadImage(user.displayAvatarURL({ format: 'jpg' }));
-					ctx.drawImage (avatar, 35, 40, 125, 125);
+					ctx.drawImage (avatar, 35, 70, 125, 125);
 
 					const attachment = new MessageAttachment(canvas.toBuffer(), 'profile.png');
 
