@@ -149,7 +149,7 @@ module.exports = {
 					ctx.fillText(`${nick}`, 375, 80);
 
 					ctx.font = '12px Helvetica';
-					ctx.fillText(`${desc}`, 400, 140);
+					ctx.fillText(`${desc}`, 398, 140);
 
 					ctx.font = '14px Helvetica';
 					ctx.textAlign = 'left';
