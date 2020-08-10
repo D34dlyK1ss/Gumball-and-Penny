@@ -141,21 +141,6 @@ module.exports = {
 					ctx.fillRect(110, 310, ((100 / nextLevel) * (xp - prevLevel) * 3.3), 40);
 					ctx.fill();
 
-					ctx.arc(100, 100, 60, 0, Math.PI * 2, true);
-					ctx.lineWidth = 4;
-					ctx.shadowColor = 'black';
-					ctx.shadowBlur = 8;
-					ctx.shadowOffsetX = 4;
-					ctx.shadowOffsetY = 4;
-					ctx.strokeStyle = 'white';
-					ctx.stroke();
-
-					ctx.lineWidth = 1;
-					ctx.moveTo(125, 380);
-					ctx.lineTo(425, 380);
-					ctx.strokeStyle = 'black';
-					ctx.stroke();
-
 					ctx.font = 'bold 22px Helvetica';
 					ctx.textAlign = 'center';
 					ctx.fillStyle = 'white';
@@ -190,6 +175,21 @@ module.exports = {
 
 					ctx.font = 'bold 48px Helvetica';
 					ctx.fillText(`${level}`, 370, 280);
+
+					ctx.arc(100, 100, 60, 0, Math.PI * 2, true);
+					ctx.lineWidth = 4;
+					ctx.shadowColor = 'black';
+					ctx.shadowBlur = 8;
+					ctx.shadowOffsetX = 4;
+					ctx.shadowOffsetY = 4;
+					ctx.strokeStyle = 'white';
+					ctx.stroke();
+
+					ctx.lineWidth = 1;
+					ctx.moveTo(125, 380);
+					ctx.lineTo(425, 380);
+					ctx.strokeStyle = 'black';
+					ctx.stroke();
 
 					ctx.font = '20px Helvetica';
 					ctx.shadowColor = 'black';
