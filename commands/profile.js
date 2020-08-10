@@ -67,8 +67,8 @@ module.exports = {
 						message.channel.send('Ainda não criaste um perfil! Para criares um perfil usa `+profile create`!');
 					}
 				}
-				else if (args.length > 128) {
-					message.reply('o limite máximo de caracteres para a descrição é de 128!');
+				else if (args.length > 32) {
+					message.reply('o limite máximo de caracteres para a descrição é de 32!');
 				}
 				else {
 					db.collection('perfis').doc(message.author.id).update({
@@ -110,7 +110,7 @@ module.exports = {
 
 					ctx.beginPath();
 
-					ctx.globalAlpha = 0.5;
+					ctx.globalAlpha = 0.6;
 					ctx.fillStyle = 'grey';
 					ctx.fillRect(100, 100, 350, 60);
 					ctx.fill();
@@ -146,30 +146,34 @@ module.exports = {
 					ctx.fillText(`${user.tag}`, 305, 125);
 
 					ctx.font = '16px Helvetica';
-					ctx.textAlign = 'center';
 					ctx.fillStyle = 'white';
 					ctx.fillText(`${nick}`, 305, 150);
 
 					ctx.font = '18px Helvetica';
-					ctx.textAlign = 'left';
 					ctx.fillStyle = 'black';
+					ctx.textAlign = 'left';
 					ctx.fillText(`XP Total: ${xp}`, 120, 250);
 
 					ctx.font = 'bold 16px Helvetica';
-					ctx.textAlign = 'left';
 					ctx.fillText('Descrição:', 120, 410);
 
 					ctx.font = '14px Helvetica';
-					ctx.textAlign = 'left';
 					ctx.fillText(`${desc}`, 120, 430);
 
 					ctx.font = '18px Helvetica';
-					ctx.textAlign = 'left';
 					ctx.fillStyle = 'gold';
 					ctx.shadowBlur = 4;
 					ctx.shadowOffsetX = 4;
 					ctx.shadowOffsetY = 4;
 					ctx.fillText(`Capital: ¤${bal}`, 120, 300);
+
+					ctx.font = '28px Helvetica';
+					ctx.fillStyle = 'white';
+					ctx.textAlign = 'center';
+					ctx.fillText('NÍVEL:', 370, 255);
+
+					ctx.font = 'bold 48px Helvetica';
+					ctx.fillText(`${level}`, 370, 305);
 
 					ctx.closePath();
 
