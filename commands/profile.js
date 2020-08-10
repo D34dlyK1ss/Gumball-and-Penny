@@ -1,4 +1,6 @@
-const Discord = require('discord.js');
+/* eslint-disable no-unused-vars */
+const { MessageAttachment } = require('discord.js');
+const { createCanvas, loadImage } = require('canvas');
 
 module.exports = {
 	name: 'profile',
@@ -46,6 +48,9 @@ module.exports = {
 						message.channel.send('Ainda não criaste um perfil! Para criares um perfil usa `+profile create`!');
 					}
 				}
+				else if (args.length > 32) {
+					message.reply('o limite máximo de caracteres para a alcunha é de 32!');
+				}
 				else {
 					db.collection('perfis').doc(message.author.id).update({
 						nickname: args,
@@ -62,6 +67,9 @@ module.exports = {
 						message.channel.send('Ainda não criaste um perfil! Para criares um perfil usa `+profile create`!');
 					}
 				}
+				else if (args.length > 128) {
+					message.reply('o limite máximo de caracteres para a descrição é de 128!');
+				}
 				else {
 					db.collection('perfis').doc(message.author.id).update({
 						description: args,
@@ -72,7 +80,7 @@ module.exports = {
 			});
 			break;
 		default:
-			ref.get().then(doc => {
+			ref.get().then(async doc => {
 				if (!doc.exists) {
 					if (user == message.author) {
 						message.reply('ainda não criaste um perfil! Para criares um perfil usa `+profile create`!');
@@ -91,19 +99,88 @@ module.exports = {
 					const nick = doc.get('nickname'),
 						desc = doc.get('description'),
 						bal = doc.get('balance'),
-						level = doc.get('level');
-					const embed = new Discord.MessageEmbed()
-						.setColor('#8000ff')
-						.setAuthor(`${user.tag}`)
-						.setThumbnail(`${user.displayAvatarURL()}`)
-						.addFields(
-							{ name: 'Alcunha', value: `${nick}` },
-							{ name: 'Descrição', value: `${desc}` },
-							{ name: 'Nível', value: `${level}` },
-							{ name: 'Capital', value: `¤${bal}` },
-						);
+						level = doc.get('level'),
+						xp = doc.get('xp');
 
-					message.channel.send(embed);
+					const canvas = createCanvas(500, 500),
+						ctx = canvas.getContext('2d');
+
+					const bg = await loadImage('images/profile/profile.jpg');
+					ctx.drawImage(bg, 0, 0, canvas.width, canvas.height);
+
+					ctx.beginPath();
+
+					ctx.globalAlpha = 0.5;
+					ctx.fillStyle = 'grey';
+					ctx.fillRect(100, 100, 350, 60);
+					ctx.fill();
+
+					ctx.fillStyle = 'white';
+					ctx.fillRect(100, 160, 350, 290);
+					ctx.fill();
+					ctx.globalAlpha = 1;
+
+					ctx.arc(100, 100, 60, 0, Math.PI * 2, true);
+					ctx.lineWidth = 4;
+					ctx.shadowColor = 'black';
+					ctx.shadowBlur = 8;
+					ctx.shadowOffsetX = 4;
+					ctx.shadowOffsetY = 4;
+					ctx.strokeStyle = 'white';
+					ctx.stroke();
+
+					ctx.shadowColor = 'none';
+					ctx.shadowBlur = 0;
+					ctx.shadowOffsetX = 0;
+					ctx.shadowOffsetY = 0;
+
+					ctx.lineWidth = 1;
+					ctx.moveTo(125, 380);
+					ctx.lineTo(425, 380);
+					ctx.strokeStyle = 'black';
+					ctx.stroke();
+
+					ctx.font = 'bold 22px Helvetica';
+					ctx.textAlign = 'center';
+					ctx.fillStyle = 'white';
+					ctx.fillText(`${user.tag}`, 305, 125);
+
+					ctx.font = '16px Helvetica';
+					ctx.textAlign = 'center';
+					ctx.fillStyle = 'white';
+					ctx.fillText(`${nick}`, 305, 150);
+
+					ctx.font = '18px Helvetica';
+					ctx.textAlign = 'left';
+					ctx.fillStyle = 'black';
+					ctx.fillText(`XP Total: ${xp}`, 120, 250);
+
+					ctx.font = 'bold 16px Helvetica';
+					ctx.textAlign = 'left';
+					ctx.fillText('Descrição:', 120, 410);
+
+					ctx.font = '14px Helvetica';
+					ctx.textAlign = 'left';
+					ctx.fillText(`${desc}`, 120, 430);
+
+					ctx.font = '18px Helvetica';
+					ctx.textAlign = 'left';
+					ctx.fillStyle = 'gold';
+					ctx.shadowBlur = 4;
+					ctx.shadowOffsetX = 4;
+					ctx.shadowOffsetY = 4;
+					ctx.fillText(`Capital: ¤${bal}`, 120, 300);
+
+					ctx.closePath();
+
+					ctx.clip();
+
+					const avatar = await loadImage(user.displayAvatarURL({ format: 'jpg' }));
+					ctx.drawImage (avatar, 35, 40, 125, 125);
+
+					const attachment = new MessageAttachment(canvas.toBuffer(), 'profile.png');
+
+					message.channel.send(attachment);
 				}
 			});
 			break;

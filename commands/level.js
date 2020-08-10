@@ -59,7 +59,7 @@ module.exports = {
 				ctx.fill();
 				ctx.globalAlpha = 1;
 
-				ctx.lineWidth = 6;
+				ctx.lineWidth = 5;
 				ctx.strokeStyle = 'white';
 				ctx.strokeRect(180, 225, 770, 65);
 				ctx.stroke();
@@ -72,8 +72,8 @@ module.exports = {
 				ctx.font = 'bold 42px Helvetica';
 				ctx.shadowColor = 'black';
 				ctx.shadowBlur = 4;
-				ctx.shadowOffsetX = 5;
-				ctx.shadowOffsetY = 5;
+				ctx.shadowOffsetX = 4;
+				ctx.shadowOffsetY = 4;
 				ctx.textAlign = 'center';
 				ctx.fillStyle = 'white';
 				ctx.fillText(`${convert(xp - prevLevel)} / ${convert(nextLevel)}`, 600, 274);
