@@ -46,37 +46,37 @@ module.exports = {
 				ctx.drawImage(bg, 0, 0, canvas.width, canvas.height);
 
 				ctx.beginPath();
-				
+
 				ctx.globalAlpha = 0.2;
-				ctx.fillStyle = '#ffffff';
+				ctx.fillStyle = 'white';
 				ctx.fillRect(180, 225, 770, 65);
 				ctx.fill();
 				ctx.globalAlpha = 1;
-				
+
 				ctx.fillStyle = '#8000ff';
 				ctx.globalAlpha = 0.8;
 				ctx.fillRect(170, 225, ((100 / nextLevel) * (xp - prevLevel) * 7.7), 65);
 				ctx.fill();
 				ctx.globalAlpha = 1;
-				
+
 				ctx.lineWidth = 6;
-				ctx.strokeStyle = '#ffffff';
+				ctx.strokeStyle = 'white';
 				ctx.strokeRect(180, 225, 770, 65);
 				ctx.stroke();
-				
+
 				ctx.arc(170, 170, 120, 0, Math.PI * 2, true);
 				ctx.lineWidth = 6;
-				ctx.strokeStyle = '#ffffff';
+				ctx.strokeStyle = 'white';
 				ctx.stroke();
-				
+
 				ctx.font = 'bold 42px Helvetica';
-				ctx.shadowColor = "black";
+				ctx.shadowColor = 'black';
 				ctx.shadowBlur = 4;
 				ctx.shadowOffsetX = 5;
 				ctx.shadowOffsetY = 5;
 				ctx.textAlign = 'center';
-				ctx.fillStyle = '#ffffff';
-				ctx.fillText(`${convert(xp)} / ${convert(nextLevel)}`, 600, 274);
+				ctx.fillStyle = 'white';
+				ctx.fillText(`${convert(xp - prevLevel)} / ${convert(nextLevel)}`, 600, 274);
 
 				ctx.textAlign = 'left';
 				ctx.fillText(`${user.tag}`, 320, 140);
