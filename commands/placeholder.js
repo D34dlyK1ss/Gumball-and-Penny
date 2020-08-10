@@ -72,10 +72,10 @@ module.exports = {
 				ctx.fillStyle = 'white';
 				ctx.fillText(`${nick}`, 375, 80);
 
-				ctx.font = '14px Helvetica';
+				ctx.font = '12px Helvetica';
 				ctx.fillText(`${desc}`, 400, 140);
 
-				ctx.font = '16px Helvetica';
+				ctx.font = '14px Helvetica';
 				ctx.textAlign = 'left';
 				ctx.fillText(`XP Total: ${xp}`, 160, 125);
 
