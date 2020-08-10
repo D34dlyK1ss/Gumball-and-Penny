@@ -173,6 +173,7 @@ module.exports = {
 					ctx.font = 'italic bold 48px Helvetica';
 					ctx.globalAlpha = 0.8;
 					ctx.fillText('Em breve...', 375, 290);
+					ctx.globalAlpha = 1;
 
 					ctx.closePath();
 
@@ -201,7 +202,7 @@ module.exports = {
 					ctx.clip();
 
 					const avatar = await loadImage(user.displayAvatarURL({ format: 'jpg' }));
-					ctx.drawImage (avatar, 36, 10, 110, 110);
+					ctx.drawImage (avatar, 34, 10, 110, 110);
 
 					const attachment = new MessageAttachment(canvas.toBuffer(), 'profile.png');
 
