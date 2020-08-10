@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 const { MessageAttachment } = require('discord.js');
 const { createCanvas, loadImage } = require('canvas');
 
@@ -143,7 +142,7 @@ module.exports = {
 					ctx.globalAlpha = 1;
 
 					ctx.lineWidth = 1;
-					ctx.moveTo(110, 370);
+					ctx.moveTo(110, 360);
 					ctx.lineTo(425, 360);
 					ctx.strokeStyle = 'black';
 					ctx.stroke();
