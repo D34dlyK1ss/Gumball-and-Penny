@@ -135,8 +135,8 @@ module.exports = {
 					ctx.fillStyle = 'white';
 					ctx.fillRect(110, 310, 330, 40);
 					ctx.fill();
-					ctx.globalAlpha = 1;
 
+					ctx.globalAlpha = 0.9;
 					ctx.fillStyle = '#8000ff';
 					ctx.fillRect(110, 310, ((100 / nextLevel) * (xp - prevLevel) * 3.3), 40);
 					ctx.fill();
