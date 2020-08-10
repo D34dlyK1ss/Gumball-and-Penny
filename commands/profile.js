@@ -143,7 +143,7 @@ module.exports = {
 					ctx.globalAlpha = 1;
 
 					ctx.lineWidth = 1;
-					ctx.moveTo(120, 360);
+					ctx.moveTo(110, 370);
 					ctx.lineTo(425, 360);
 					ctx.strokeStyle = 'black';
 					ctx.stroke();
@@ -160,10 +160,10 @@ module.exports = {
 					ctx.font = 'bold 16px Helvetica';
 					ctx.textAlign = 'left';
 					ctx.fillStyle = 'black';
-					ctx.fillText('Descrição:', 110, 390);
+					ctx.fillText('Descrição:', 120, 390);
 
 					ctx.font = '14px Helvetica';
-					ctx.fillText(`${desc}`, 110, 420);
+					ctx.fillText(`${desc}`, 120, 420);
 
 					ctx.font = '18px Helvetica';
 					ctx.fillText(`XP Total: ${xp}`, 120, 210);
