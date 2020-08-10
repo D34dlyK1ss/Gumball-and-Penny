@@ -170,6 +170,9 @@ module.exports = {
 					ctx.font = 'bold 28px Helvetica';
 					ctx.fillText(`${level}`, 555, 156);
 
+					ctx.font = 'italic bold 48px Helvetica';
+					ctx.fillText('Em breve...', 375, 290);
+
 					ctx.closePath();
 
 					ctx.beginPath();
