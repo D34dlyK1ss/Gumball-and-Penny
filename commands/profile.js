@@ -148,8 +148,8 @@ module.exports = {
 					ctx.fillStyle = 'white';
 					ctx.fillText(`${nick}`, 375, 80);
 
-					ctx.font = '12px Helvetica';
-					ctx.fillText(`${desc}`, 398, 140);
+					ctx.font = '14px Helvetica';
+					ctx.fillText(`${desc}`, 392, 140);
 
 					ctx.font = '14px Helvetica';
 					ctx.textAlign = 'left';
@@ -162,12 +162,12 @@ module.exports = {
 					ctx.shadowOffsetY = 4;
 					ctx.fillText(`Capital: ¤${bal}`, 160, 155);
 
-					ctx.font = '22px Helvetica';
+					ctx.font = '20px Helvetica';
 					ctx.fillStyle = 'white';
 					ctx.textAlign = 'center';
 					ctx.fillText('NÍVEL', 555, 130);
 
-					ctx.font = 'bold 28px Helvetica';
+					ctx.font = 'bold 24px Helvetica';
 					ctx.fillText(`${level}`, 555, 156);
 
 					ctx.font = 'italic bold 48px Helvetica';
