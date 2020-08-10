@@ -21,7 +21,7 @@ module.exports = {
 				{ name: '🎰 Casino', value: '`coinflip`', inline: true },
 				{ name: '😁 Diversão', value: '`fact`, `match`, `random`, `say`, `which`', inline: true },
 				{ name: '🛠️ Doações', value: '`donate`', inline: true },
-				{ name: '💰 Perfil', value: '`balance`, `daily`, `give`, `level`, `profile`', inline: true },
+				{ name: '💰 Perfil', value: '`balance`, `daily`, `give`, `profile`', inline: true },
 				{ name: '⚠️ Moderação', value: '`ban`, `clear`, `kick`', inline: true },
 				{ name: '🌐 Servidor', value: '`members`, `setprefix`, `userinfo`', inline: true },
 				{ name: '🛠️ Utilidade', value: '`avatar`, `invite`, `ping`, `support`', inline: true },

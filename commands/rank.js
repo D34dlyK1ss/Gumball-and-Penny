@@ -12,10 +12,10 @@ function convert(value) {
 }
 
 module.exports = {
-	name: 'level',
+	name: 'rank',
 	category: 'Perfil',
 	description: 'Verifica o teu nível e XP!',
-	usage: '`+level`',
+	usage: '`+rank`',
 	execute(bot, message, command, args, db) {
 		const user = message.mentions.users.first() || message.author;
 		db.collection('perfis').doc(user.id).get().then(async doc => {
@@ -34,15 +34,15 @@ module.exports = {
 				}
 			}
 			else {
-				const level = doc.get('level'),
+				const rank = doc.get('rank'),
 					xp = doc.get('xp');
-				const nextLevel = 500 * Math.round(level * (level + 1) / 2),
-					prevLevel = 500 * Math.round(level * (level - 1) / 2);
+				const nextRank = 500 * Math.round(rank * (rank + 1) / 2),
+					prevRank = 500 * Math.round(rank * (rank - 1) / 2);
 
 				const canvas = createCanvas(1000, 333),
 					ctx = canvas.getContext('2d');
 
-				const bg = await loadImage('images/profile/level.jpg');
+				const bg = await loadImage('images/profile/rank.jpg');
 				ctx.drawImage(bg, 0, 0, canvas.width, canvas.height);
 
 				ctx.beginPath();
@@ -54,7 +54,7 @@ module.exports = {
 				ctx.globalAlpha = 1;
 
 				ctx.fillStyle = '#8000ff';
-				ctx.fillRect(180, 225, ((100 / nextLevel) * (xp - prevLevel) * 7.7), 65);
+				ctx.fillRect(180, 225, ((100 / nextRank) * (xp - prevRank) * 7.7), 65);
 				ctx.fill();
 
 				ctx.lineWidth = 5;
@@ -74,18 +74,18 @@ module.exports = {
 				ctx.shadowOffsetY = 4;
 				ctx.textAlign = 'center';
 				ctx.fillStyle = 'white';
-				ctx.fillText(`${convert(xp - prevLevel)} / ${convert(nextLevel)}`, 600, 274);
+				ctx.fillText(`${convert(xp - prevRank)} / ${convert(nextRank)}`, 600, 274);
 
 				ctx.textAlign = 'left';
 				ctx.fillText(`${user.tag}`, 320, 140);
-				ctx.fillText(`Level: ${level}`, 320, 190);
+				ctx.fillText(`Rank: ${rank}`, 320, 190);
 				ctx.closePath();
 				ctx.clip();
 
 				const avatar = await loadImage(user.displayAvatarURL({ format: 'jpg' }));
 				ctx.drawImage (avatar, 40, 40, 250, 250);
 
-				const attachment = new MessageAttachment(canvas.toBuffer(), 'level.png');
+				const attachment = new MessageAttachment(canvas.toBuffer(), 'rank.png');
 
 				message.channel.send(attachment);
 			}
