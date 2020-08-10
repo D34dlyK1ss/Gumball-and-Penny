@@ -107,87 +107,74 @@ module.exports = {
 				else {
 					const nick = doc.get('nickname'),
 						desc = doc.get('description'),
-						bal = doc.get('balance'),
-						level = doc.get('level'),
-						xp = doc.get('xp');
+						bal = doc.get('balance');
+					let xp = doc.get('xp'),
+						level = doc.get('level');
 					const nextLevel = 500 * Math.round(level * (level + 1) / 2),
 						prevLevel = 500 * Math.round(level * (level - 1) / 2);
+					const xpToNext = xp - prevLevel,
+						xpNeeded = nextLevel - prevLevel;
 
-					const canvas = createCanvas(500, 500),
+					if (xp > nextLevel) {
+						level++;
+						xp = nextLevel;
+					}
+
+					const canvas = createCanvas(640, 360),
 						ctx = canvas.getContext('2d');
 
-					const bg = await loadImage('images/profile/profile.jpg');
+					const bg = await loadImage('images/profile/placeholder.png');
 					ctx.drawImage(bg, 0, 0, canvas.width, canvas.height);
 
 					ctx.beginPath();
 
-					ctx.globalAlpha = 0.6;
-					ctx.fillStyle = 'grey';
-					ctx.fillRect(100, 80, 350, 60);
-					ctx.fill();
-
-					ctx.fillStyle = 'white';
-					ctx.fillRect(100, 140, 350, 300);
-					ctx.fill();
-
 					ctx.globalAlpha = 0.4;
 					ctx.fillStyle = 'white';
-					ctx.fillRect(110, 300, 330, 40);
+					ctx.fillRect(160, 170, 425, 30);
 					ctx.fill();
 
 					ctx.globalAlpha = 0.8;
 					ctx.fillStyle = '#8000ff';
-					ctx.fillRect(110, 300, ((100 / (nextLevel - prevLevel)) * (xp - prevLevel) * 3.3), 40);
+					ctx.fillRect(160, 170, ((100 / (nextLevel - prevLevel)) * (xp - prevLevel) * 4.25), 30);
 					ctx.fill();
 					ctx.globalAlpha = 1;
 
-					ctx.lineWidth = 1;
-					ctx.moveTo(110, 360);
-					ctx.lineTo(425, 360);
-					ctx.strokeStyle = 'black';
-					ctx.stroke();
-
-					ctx.font = 'bold 22px Helvetica';
+					ctx.font = 'bold 20px Helvetica';
 					ctx.textAlign = 'center';
 					ctx.fillStyle = 'white';
-					ctx.fillText(`${user.tag}`, 305, 105);
+					ctx.fillText(`${user.tag}`, 375, 60);
 
 					ctx.font = '16px Helvetica';
 					ctx.fillStyle = 'white';
-					ctx.fillText(`${nick}`, 305, 130);
+					ctx.fillText(`${nick}`, 375, 80);
 
-					ctx.font = 'bold 16px Helvetica';
-					ctx.textAlign = 'left';
-					ctx.fillStyle = 'black';
-					ctx.fillText('Descrição:', 120, 390);
+					ctx.font = '12px Helvetica';
+					ctx.fillText(`${desc}`, 400, 140);
 
 					ctx.font = '14px Helvetica';
-					ctx.fillText(`${desc}`, 120, 420);
+					ctx.textAlign = 'left';
+					ctx.fillText(`XP Total: ${xp}`, 160, 125);
 
-					ctx.font = '18px Helvetica';
-					ctx.fillText(`XP Total: ${xp}`, 120, 210);
-
-					ctx.font = '18px Helvetica';
 					ctx.fillStyle = 'gold';
 					ctx.shadowColor = 'black';
 					ctx.shadowBlur = 4;
 					ctx.shadowOffsetX = 4;
 					ctx.shadowOffsetY = 4;
-					ctx.fillText(`Capital: ¤${bal}`, 120, 250);
+					ctx.fillText(`Capital: ¤${bal}`, 160, 155);
 
-					ctx.font = '28px Helvetica';
+					ctx.font = '22px Helvetica';
 					ctx.fillStyle = 'white';
 					ctx.textAlign = 'center';
-					ctx.fillText('NÍVEL:', 370, 210);
+					ctx.fillText('NÍVEL', 555, 130);
 
-					ctx.font = 'bold 48px Helvetica';
-					ctx.fillText(`${level}`, 370, 260);
+					ctx.font = 'bold 28px Helvetica';
+					ctx.fillText(`${level}`, 555, 156);
 
 					ctx.closePath();
 
 					ctx.beginPath();
 
-					ctx.arc(100, 110, 60, 0, Math.PI * 2, true);
+					ctx.arc(88, 62, 50, 0, Math.PI * 2, true);
 					ctx.lineWidth = 4;
 					ctx.shadowColor = 'black';
 					ctx.shadowBlur = 8;
@@ -196,21 +183,21 @@ module.exports = {
 					ctx.strokeStyle = 'white';
 					ctx.stroke();
 
-					ctx.font = '20px Helvetica';
+					ctx.font = '18px Helvetica';
 					ctx.shadowColor = 'black';
 					ctx.shadowBlur = 4;
 					ctx.shadowOffsetX = 4;
 					ctx.shadowOffsetY = 4;
 					ctx.textAlign = 'center';
 					ctx.fillStyle = 'white';
-					ctx.fillText(`${convert(xp - prevLevel)} / ${convert(nextLevel - prevLevel)}`, 275, 326);
+					ctx.fillText(`${convert(xpToNext)} / ${convert(xpNeeded)}`, 380, 192);
 
 					ctx.closePath();
 
 					ctx.clip();
 
 					const avatar = await loadImage(user.displayAvatarURL({ format: 'jpg' }));
-					ctx.drawImage (avatar, 35, 50, 125, 125);
+					ctx.drawImage (avatar, 36, 10, 110, 110);
 
 					const attachment = new MessageAttachment(canvas.toBuffer(), 'profile.png');
 
