@@ -172,7 +172,7 @@ module.exports = {
 					ctx.font = '14px Helvetica';
 					ctx.fillText(`${desc}`, 395, 140);
 
-					ctx.font = '14px Helvetica';
+					ctx.font = '16px Helvetica';
 					ctx.textAlign = 'left';
 					ctx.fillText(`XP Total: ${xp}`, 160, 125);
 
