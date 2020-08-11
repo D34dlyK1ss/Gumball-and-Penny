@@ -19,7 +19,7 @@ function toHex(color) {
 		hex = '#202020';
 		break;
 	case 'blue':
-		hex = '#0000ff';
+		hex = '#0080ff';
 		break;
 	case 'brown':
 		hex = '#800000';
@@ -52,7 +52,7 @@ function toHex(color) {
 
 module.exports = {
 	name: 'profile',
-	aliases: ['p'],
+	aliases: ['pr'],
 	category: 'Perfil',
 	description: 'Vê o teu perfil ou o de alguém!\nOpções disponíveis: `create`, `setnickname`, `setdescription`',
 	usage: '`+profile [opcional - opção | @membro]`',
@@ -144,17 +144,6 @@ module.exports = {
 							.setColor(toHex(color));
 
 					message.channel.send(embed).then(async msg => {
-						await msg.react('🕷️');
-						await msg.react('🦋');
-						await msg.react('🐻');
-						await msg.react('🐸');
-						await msg.react('🐨');
-						await msg.react('🦊');
-						await msg.react('🦑');
-						await msg.react('🐙');
-						await msg.react('🐞');
-						await msg.react('🐯');
-
 						msg.awaitReactions(filter, {
 							max: 1, time: 30000, errors: ['time'],
 						}).then(collected => {
@@ -247,6 +236,22 @@ module.exports = {
 							msg.delete();
 							message.reply('não selecionaste cor nenhuma!');
 						});
+
+						try {
+							msg.react('🕷️');
+							await msg.react('🦋');
+							await msg.react('🐻');
+							await msg.react('🐸');
+							await msg.react('🐨');
+							await msg.react('🦊');
+							await msg.react('🦑');
+							await msg.react('🐙');
+							await msg.react('🐞');
+							await msg.react('🐯');
+						}
+						catch {
+							return;
+						}
 					});
 				}
 			});
