@@ -130,11 +130,45 @@ module.exports = {
 						bal = doc.get('balance'),
 						color = doc.get('color');
 					let xp = doc.get('xp'),
-						level = doc.get('level');
+						level = doc.get('level'),
+						hex;
 					const nextLevel = 500 * Math.round(level * (level + 1) / 2),
 						prevLevel = 500 * Math.round(level * (level - 1) / 2);
 					const xpToNext = xp - prevLevel,
 						xpNeeded = nextLevel - prevLevel;
+
+					switch (color) {
+					case 'black':
+						hex = '#101010';
+						break;
+					case 'blue':
+						hex = '#0000ff';
+						break;
+					case 'brown':
+						hex = '#800000';
+						break;
+					case 'green':
+						hex = '#00ff00';
+						break;
+					case 'orange':
+						hex = '#ff8000';
+						break;
+					case 'pink':
+						hex = '#ff00ff';
+						break;
+					case 'purple':
+						hex = '#8000ff';
+						break;
+					case 'red':
+						hex = '#ff0000';
+						break;
+					case 'yellow':
+						hex = '#ffff00';
+						break;
+					default:
+						hex = '#808080';
+						break;
+					}
 
 					if (xp > nextLevel) {
 						level++;
@@ -155,7 +189,7 @@ module.exports = {
 					ctx.fill();
 
 					ctx.globalAlpha = 0.8;
-					ctx.fillStyle = '#8000ff';
+					ctx.fillStyle = hex;
 					ctx.fillRect(160, 170, ((100 / (nextLevel - prevLevel)) * (xp - prevLevel) * 4.25), 30);
 					ctx.fill();
 					ctx.globalAlpha = 1;
