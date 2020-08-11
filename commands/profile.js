@@ -52,7 +52,7 @@ function toHex(color) {
 
 module.exports = {
 	name: 'profile',
-	aliases: ['pr'],
+	aliases: ['p'],
 	category: 'Perfil',
 	description: 'Vê o teu perfil ou o de alguém!\nOpções disponíveis: `create`, `setnickname`, `setdescription`',
 	usage: '`+profile [opcional - opção | @membro]`',
@@ -136,8 +136,8 @@ module.exports = {
 					}
 				}
 				else {
-					let color = doc.get('color');
-					const filter = (reaction, member) => ['🕷️', '🦋', '🐻', '🐸', '🐨', '🦊', '🦑', '🐙', '🐞', '🐯'].includes(reaction.emoji.name) && member.id === message.author.id,
+					const color = doc.get('color'),
+						filter = (reaction, member) => ['🕷️', '🦋', '🐻', '🐸', '🐨', '🦊', '🦑', '🐙', '🐞', '🐯'].includes(reaction.emoji.name) && member.id === message.author.id,
 						embed = new MessageEmbed()
 							.setAuthor(`${message.author.tag}`)
 							.setTitle('Escolhe uma cor')
@@ -145,7 +145,7 @@ module.exports = {
 
 					message.channel.send(embed).then(async msg => {
 						msg.awaitReactions(filter, {
-							max: 1, time: 30000, errors: ['time'],
+							max: 1, time: 60000, errors: ['time'],
 						}).then(collected => {
 
 							const reaction = collected.first();
@@ -208,8 +208,8 @@ module.exports = {
 								}).catch(err => { console.error(err); });
 								break;
 							case '🐙':
-								color = 'purple';
 								db.collection('perfis').doc(message.author.id).update({
+									color: 'purple',
 								}).then(() => {
 									msg.delete();
 									message.reply('a cor do teu perfil foi alterada!');
