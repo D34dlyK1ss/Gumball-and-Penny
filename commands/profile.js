@@ -36,6 +36,7 @@ module.exports = {
 				else {
 					db.collection('perfis').doc(message.author.id).set({
 						balance: 0,
+						color: 'grey',
 						description: 'N/A',
 						id: user.id,
 						lastDaily: '01/01/1970',
@@ -88,6 +89,25 @@ module.exports = {
 				}
 			});
 			break;
+		case 'setcolor':
+			ref.get().then(doc => {
+				if (!doc.exists) {
+					if (user == message.author) {
+						message.channel.send('Ainda não criaste um perfil! Para criares um perfil usa `+profile create`!');
+					}
+				}
+				else if (args == ('black' || 'blue' || 'brown' || 'green' || 'grey' || 'orange' || 'pink' || 'purple' || 'red' || 'yellow')) {
+					db.collection('perfis').doc(message.author.id).update({
+						color: args,
+					}).then(() => {
+						message.reply('a cor do teu perfil foi alterada!');
+					}).catch(err => { console.error(err); });
+				}
+				else {
+					message.reply('essa cor não está disponível!\nCores disponíveis `black`,  `blue`,  `brown`,  `green`,  `grey`,  `orange`,  `pink`,  `purple`,  `red`,  `yellow`');
+				}
+			});
+			break;
 		default:
 			ref.get().then(async doc => {
 				if (!doc.exists) {
@@ -107,7 +127,8 @@ module.exports = {
 				else {
 					const nick = doc.get('nickname'),
 						desc = doc.get('description'),
-						bal = doc.get('balance');
+						bal = doc.get('balance'),
+						color = doc.get('color');
 					let xp = doc.get('xp'),
 						level = doc.get('level');
 					const nextLevel = 500 * Math.round(level * (level + 1) / 2),
@@ -123,7 +144,7 @@ module.exports = {
 					const canvas = createCanvas(640, 360),
 						ctx = canvas.getContext('2d');
 
-					const bg = await loadImage('images/profile/placeholder.png');
+					const bg = await loadImage(`images/profile/profile (${color}).png`);
 					ctx.drawImage(bg, 0, 0, canvas.width, canvas.height);
 
 					ctx.beginPath();
