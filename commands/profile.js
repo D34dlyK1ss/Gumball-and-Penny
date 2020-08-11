@@ -96,7 +96,7 @@ module.exports = {
 						message.channel.send('Ainda não criaste um perfil! Para criares um perfil usa `+profile create`!');
 					}
 				}
-				else if (args == ('black' || 'blue' || 'brown' || 'green' || 'grey' || 'orange' || 'pink' || 'purple' || 'red' || 'yellow')) {
+				else if (args == 'black' || args == 'blue' || args == 'brown' || args == 'green' || args == 'grey' || args == 'orange' || args == 'pink' || args == 'purple' || args == 'red' || args == 'yellow') {
 					db.collection('perfis').doc(message.author.id).update({
 						color: args,
 					}).then(() => {
