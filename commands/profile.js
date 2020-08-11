@@ -137,7 +137,7 @@ module.exports = {
 				}
 				else {
 					const color = doc.get('color'),
-						filter = (reaction, member) => ['🕷️', '🦋', '🐻', '🐸', '🐨', '🦊', '🦑', '🐙', '🐞', '🐯'].includes(reaction.emoji.name) && member.id === message.author.id,
+						filter = (reaction, member) => ['🕷️', '🦋', '🐻', '🐸', '🐺', '🦊', '🦑', '🐙', '🐞', '🐼', '🐯'].includes(reaction.emoji.name) && member.id === message.author.id,
 						embed = new MessageEmbed()
 							.setAuthor(`${message.author.tag}`)
 							.setTitle('Escolhe uma cor 👇')
@@ -183,7 +183,7 @@ module.exports = {
 									message.reply('a cor do teu perfil foi alterada!');
 								}).catch(err => { console.error(err); });
 								break;
-							case '🐨':
+							case '🐺':
 								db.collection('perfis').doc(message.author.id).update({
 									color: 'grey',
 								}).then(() => {
@@ -223,6 +223,14 @@ module.exports = {
 									message.reply('a cor do teu perfil foi alterada!');
 								}).catch(err => { console.error(err); });
 								break;
+							case '🐼':
+								db.collection('perfis').doc(message.author.id).update({
+									color: 'white',
+								}).then(() => {
+									msg.delete();
+									message.reply('a cor do teu perfil foi alterada!');
+								}).catch(err => { console.error(err); });
+								break;
 							case '🐯':
 								db.collection('perfis').doc(message.author.id).update({
 									color: 'yellow',
@@ -242,11 +250,12 @@ module.exports = {
 							await msg.react('🦋');
 							await msg.react('🐻');
 							await msg.react('🐸');
-							await msg.react('🐨');
+							await msg.react('🐺');
 							await msg.react('🦊');
 							await msg.react('🦑');
 							await msg.react('🐙');
 							await msg.react('🐞');
+							await msg.react('🐼');
 							await msg.react('🐯');
 						}
 						catch {
