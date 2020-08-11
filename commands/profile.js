@@ -155,7 +155,7 @@ module.exports = {
 						await msg.react('🐞');
 						await msg.react('🐯');
 
-						message.awaitReactions(filter, {
+						msg.awaitReactions(filter, {
 							max: 1, time: 30000, errors: ['time'],
 						}).then(collected => {
 
