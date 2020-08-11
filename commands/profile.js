@@ -140,7 +140,7 @@ module.exports = {
 						filter = (reaction, member) => ['🕷️', '🦋', '🐻', '🐸', '🐨', '🦊', '🦑', '🐙', '🐞', '🐯'].includes(reaction.emoji.name) && member.id === message.author.id,
 						embed = new MessageEmbed()
 							.setAuthor(`${message.author.tag}`)
-							.setTitle('Escolhe uma cor')
+							.setTitle('Escolhe uma cor 👇')
 							.setColor(toHex(color));
 
 					message.channel.send(embed).then(async msg => {
