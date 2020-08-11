@@ -20,12 +20,15 @@ module.exports = {
 			else {
 				const bal = doc.get('balance');
 
-				switch (args) {
+				switch (args[0]) {
 				case 'add':
 					if (user.id == botOwner || user.id == lilly) {
 						const amount = parseInt(args[1]);
 
-						if ((bal + amount) > 999999999) {
+						if (!amount) {
+							message.reply('não indicaste uma quantia!');
+						}
+						else if ((bal + amount) > 999999999) {
 							message.reply('não podes adicionar mais dinheiro à tua conta bancária! 😧');
 						}
 						else {

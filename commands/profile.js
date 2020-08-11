@@ -195,6 +195,10 @@ module.exports = {
 					ctx.globalAlpha = 1;
 
 					ctx.font = 'bold 20px Helvetica';
+					ctx.shadowColor = 'black';
+					ctx.shadowBlur = 4;
+					ctx.shadowOffsetX = 4;
+					ctx.shadowOffsetY = 4;
 					ctx.textAlign = 'center';
 					ctx.fillStyle = 'white';
 					ctx.fillText(`${user.tag}`, 375, 60);
@@ -211,10 +215,6 @@ module.exports = {
 					ctx.fillText(`XP Total: ${xp}`, 160, 125);
 
 					ctx.fillStyle = 'gold';
-					ctx.shadowColor = 'black';
-					ctx.shadowBlur = 4;
-					ctx.shadowOffsetX = 4;
-					ctx.shadowOffsetY = 4;
 					ctx.fillText(`Capital: ¤${bal}`, 160, 155);
 
 					ctx.font = '20px Helvetica';
@@ -225,9 +225,10 @@ module.exports = {
 					ctx.font = 'bold 24px Helvetica';
 					ctx.fillText(`${level}`, 555, 156);
 
-					ctx.font = 'italic bold 48px Helvetica';
-					ctx.globalAlpha = 0.5;
-					ctx.fillText('Em breve...', 375, 290);
+					ctx.font = 'italic bold 11px Helvetica';
+					ctx.globalAlpha = 0.6;
+					ctx.textAlign = 'right';
+					ctx.fillText('Em breve...', 585, 315);
 					ctx.globalAlpha = 1;
 
 					ctx.closePath();
@@ -250,7 +251,7 @@ module.exports = {
 					ctx.shadowOffsetY = 4;
 					ctx.textAlign = 'center';
 					ctx.fillStyle = 'white';
-					ctx.fillText(`${convert(xpToNext)} / ${convert(xpNeeded)}`, 380, 192);
+					ctx.fillText(`${convert(xpToNext)} / ${convert(xpNeeded)}`, 370, 192);
 
 					ctx.closePath();
 
