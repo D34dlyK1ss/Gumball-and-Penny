@@ -171,7 +171,7 @@ module.exports = {
 					ctx.fillText(`${level}`, 555, 156);
 
 					ctx.font = 'italic bold 48px Helvetica';
-					ctx.globalAlpha = 0.8;
+					ctx.globalAlpha = 0.5;
 					ctx.fillText('Em breve...', 375, 290);
 					ctx.globalAlpha = 1;
 
