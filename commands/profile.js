@@ -1,4 +1,4 @@
-const { MessageAttachment } = require('discord.js');
+const { MessageAttachment, MessageEmbed } = require('discord.js');
 const { createCanvas, loadImage } = require('canvas');
 
 function convert(value) {
@@ -11,9 +11,48 @@ function convert(value) {
 	return value;
 }
 
+function toHex(color) {
+	let hex;
+
+	switch (color) {
+	case 'black':
+		hex = '#101010';
+		break;
+	case 'blue':
+		hex = '#0000ff';
+		break;
+	case 'brown':
+		hex = '#800000';
+		break;
+	case 'green':
+		hex = '#00ff00';
+		break;
+	case 'orange':
+		hex = '#ff8000';
+		break;
+	case 'pink':
+		hex = '#ff00ff';
+		break;
+	case 'purple':
+		hex = '#8000ff';
+		break;
+	case 'red':
+		hex = '#ff0000';
+		break;
+	case 'yellow':
+		hex = '#ffff00';
+		break;
+	default:
+		hex = '#808080';
+		break;
+	}
+
+	return hex;
+}
+
 module.exports = {
 	name: 'profile',
-	aliases: ['p'],
+	aliases: ['pila'],
 	category: 'Perfil',
 	description: 'Vê o teu perfil ou o de alguém!\nOpções disponíveis: `create`, `setnickname`, `setdescription`',
 	usage: '`+profile [opcional - opção | @membro]`',
@@ -96,15 +135,119 @@ module.exports = {
 						message.channel.send('Ainda não criaste um perfil! Para criares um perfil usa `+profile create`!');
 					}
 				}
-				else if (args == 'black' || args == 'blue' || args == 'brown' || args == 'green' || args == 'grey' || args == 'orange' || args == 'pink' || args == 'purple' || args == 'red' || args == 'yellow') {
-					db.collection('perfis').doc(message.author.id).update({
-						color: args,
-					}).then(() => {
-						message.reply('a cor do teu perfil foi alterada!');
-					}).catch(err => { console.error(err); });
-				}
 				else {
-					message.reply('essa cor não está disponível!\nCores disponíveis `black`,  `blue`,  `brown`,  `green`,  `grey`,  `orange`,  `pink`,  `purple`,  `red`,  `yellow`');
+					let color = doc.get('color');
+					const filter = (reaction, member) => ['🕷️', '🦋', '🐻', '🐸', '🐨', '🦊', '🦑', '🐙', '🐞', '🐯'].includes(reaction.emoji.name) && member.id === message.author.id,
+						embed = new MessageEmbed()
+							.setAuthor(`${message.author.tag}`)
+							.setTitle('Escolhe uma cor')
+							.setColor(toHex(color));
+
+					message.channel.send(embed).then(async msg => {
+						await msg.react('🕷️');
+						await msg.react('🦋');
+						await msg.react('🐻');
+						await msg.react('🐸');
+						await msg.react('🐨');
+						await msg.react('🦊');
+						await msg.react('🦑');
+						await msg.react('🐙');
+						await msg.react('🐞');
+						await msg.react('🐯');
+
+						message.awaitReactions(filter, {
+							max: 1, time: 30000, errors: ['time'],
+						}).then(collected => {
+
+							const reaction = collected.first();
+
+							switch (reaction.emoji.name) {
+							case '🕷️':
+								db.collection('perfis').doc(message.author.id).update({
+									color: 'black',
+								}).then(() => {
+									msg.delete();
+									message.reply('a cor do teu perfil foi alterada!');
+								}).catch(err => { console.error(err); });
+								break;
+							case '🦋':
+								db.collection('perfis').doc(message.author.id).update({
+									color: 'blue',
+								}).then(() => {
+									msg.delete();
+									message.reply('a cor do teu perfil foi alterada!');
+								}).catch(err => { console.error(err); });
+								break;
+							case '🐻':
+								db.collection('perfis').doc(message.author.id).update({
+									color: 'brown',
+								}).then(() => {
+									msg.delete();
+									message.reply('a cor do teu perfil foi alterada!');
+								}).catch(err => { console.error(err); });
+								break;
+							case '🐸':
+								db.collection('perfis').doc(message.author.id).update({
+									color: 'green',
+								}).then(() => {
+									msg.delete();
+									message.reply('a cor do teu perfil foi alterada!');
+								}).catch(err => { console.error(err); });
+								break;
+							case '🐨':
+								db.collection('perfis').doc(message.author.id).update({
+									color: 'grey',
+								}).then(() => {
+									msg.delete();
+									message.reply('a cor do teu perfil foi alterada!');
+								}).catch(err => { console.error(err); });
+								break;
+							case '🦊':
+								db.collection('perfis').doc(message.author.id).update({
+									color: 'orange',
+								}).then(() => {
+									msg.delete();
+									message.reply('a cor do teu perfil foi alterada!');
+								}).catch(err => { console.error(err); });
+								break;
+							case '🦑':
+								db.collection('perfis').doc(message.author.id).update({
+									color: 'pink',
+								}).then(() => {
+									msg.delete();
+									message.reply('a cor do teu perfil foi alterada!');
+								}).catch(err => { console.error(err); });
+								break;
+							case '🐙':
+								color = 'purple';
+								db.collection('perfis').doc(message.author.id).update({
+								}).then(() => {
+									msg.delete();
+									message.reply('a cor do teu perfil foi alterada!');
+								}).catch(err => { console.error(err); });
+								break;
+							case '🐞':
+								db.collection('perfis').doc(message.author.id).update({
+									color: 'red',
+								}).then(() => {
+									msg.delete();
+									message.reply('a cor do teu perfil foi alterada!');
+								}).catch(err => { console.error(err); });
+								break;
+							case '🐯':
+								db.collection('perfis').doc(message.author.id).update({
+									color: 'yellow',
+								}).then(() => {
+									msg.delete();
+									message.reply('a cor do teu perfil foi alterada!');
+								}).catch(err => { console.error(err); });
+								break;
+							}
+						}).catch(() => {
+							msg.delete();
+							message.reply('não selecionaste cor nenhuma!');
+						});
+					});
 				}
 			});
 			break;
@@ -128,52 +271,19 @@ module.exports = {
 					const nick = doc.get('nickname'),
 						desc = doc.get('description'),
 						bal = doc.get('balance'),
-						color = doc.get('color');
-					let xp = doc.get('xp'),
-						level = doc.get('level'),
-						hex;
+						color = doc.get('color'),
+						xp = doc.get('xp');
+					let level = doc.get('level');
+
 					const nextLevel = 500 * Math.round(level * (level + 1) / 2),
 						prevLevel = 500 * Math.round(level * (level - 1) / 2);
-					const xpToNext = xp - prevLevel,
-						xpNeeded = nextLevel - prevLevel;
-
-					switch (color) {
-					case 'black':
-						hex = '#101010';
-						break;
-					case 'blue':
-						hex = '#0000ff';
-						break;
-					case 'brown':
-						hex = '#800000';
-						break;
-					case 'green':
-						hex = '#00ff00';
-						break;
-					case 'orange':
-						hex = '#ff8000';
-						break;
-					case 'pink':
-						hex = '#ff00ff';
-						break;
-					case 'purple':
-						hex = '#8000ff';
-						break;
-					case 'red':
-						hex = '#ff0000';
-						break;
-					case 'yellow':
-						hex = '#ffff00';
-						break;
-					default:
-						hex = '#808080';
-						break;
-					}
 
 					if (xp > nextLevel) {
 						level++;
-						xp = nextLevel;
 					}
+
+					const xpToNext = xp - prevLevel,
+						xpNeeded = nextLevel - prevLevel;
 
 					const canvas = createCanvas(640, 360),
 						ctx = canvas.getContext('2d');
@@ -189,7 +299,7 @@ module.exports = {
 					ctx.fill();
 
 					ctx.globalAlpha = 0.8;
-					ctx.fillStyle = hex;
+					ctx.fillStyle = toHex(color);
 					ctx.fillRect(160, 170, ((100 / (nextLevel - prevLevel)) * (xp - prevLevel) * 4.25), 30);
 					ctx.fill();
 					ctx.globalAlpha = 1;
