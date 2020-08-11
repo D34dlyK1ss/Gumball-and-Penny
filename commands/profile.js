@@ -16,7 +16,7 @@ function toHex(color) {
 
 	switch (color) {
 	case 'black':
-		hex = '#101010';
+		hex = '#202020';
 		break;
 	case 'blue':
 		hex = '#0000ff';
