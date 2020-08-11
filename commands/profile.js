@@ -283,8 +283,15 @@ module.exports = {
 					const nextLevel = 500 * Math.round(level * (level + 1) / 2),
 						prevLevel = 500 * Math.round(level * (level - 1) / 2);
 
-					const xpToNext = xp - prevLevel,
+					let newLevel = level,
+						xpToNext = xp - prevLevel,
 						xpNeeded = nextLevel - prevLevel;
+
+					if (xp > nextLevel) {
+						newLevel = level + 1;
+						xpToNext = xp - prevLevel;
+						xpNeeded = nextLevel - prevLevel;
+					}
 
 					const canvas = createCanvas(640, 360),
 						ctx = canvas.getContext('2d');
@@ -334,7 +341,7 @@ module.exports = {
 					ctx.fillText('NÍVEL', 555, 130);
 
 					ctx.font = 'bold 24px Helvetica';
-					ctx.fillText(`${level}`, 555, 156);
+					ctx.fillText(`${newLevel}`, 555, 156);
 
 					ctx.font = 'italic bold 11px Helvetica';
 					ctx.globalAlpha = 0.6;
