@@ -98,7 +98,7 @@ module.exports = {
 					}
 				}
 				else if (args.length > 32) {
-					message.reply('o limite máximo de caracteres para a alcunha é de 32!');
+					message.reply(`o limite máximo de caracteres para a alcunha é de 32!\nEssa alcunha tem ${args.length}.`);
 				}
 				else {
 					db.collection('perfis').doc(message.author.id).update({
@@ -116,8 +116,8 @@ module.exports = {
 						message.channel.send('Ainda não criaste um perfil! Para criares um perfil usa `+profile create`!');
 					}
 				}
-				else if (args.length > 32) {
-					message.reply('o limite máximo de caracteres para a descrição é de 32!');
+				else if (args.length > 44) {
+					message.reply(`o limite máximo de caracteres para a descrição é de 44!\nEssa descrição tem ${args.length}.`);
 				}
 				else {
 					db.collection('perfis').doc(message.author.id).update({
@@ -304,12 +304,12 @@ module.exports = {
 
 					ctx.globalAlpha = 0.4;
 					ctx.fillStyle = 'white';
-					ctx.fillRect(160, 170, 425, 30);
+					ctx.fillRect(160, 172, 425, 30);
 					ctx.fill();
 
 					ctx.globalAlpha = 0.8;
 					ctx.fillStyle = toHex(color);
-					ctx.fillRect(160, 170, ((100 / (nextLevel - prevLevel)) * (xp - prevLevel) * 4.25), 30);
+					ctx.fillRect(160, 172, ((100 / (nextLevel - prevLevel)) * (xp - prevLevel) * 4.25), 30);
 					ctx.fill();
 					ctx.globalAlpha = 1;
 
@@ -326,29 +326,20 @@ module.exports = {
 					ctx.fillStyle = 'white';
 					ctx.fillText(`${nick}`, 375, 80);
 
-					ctx.font = '14px Helvetica';
-					ctx.fillText(`${desc}`, 395, 140);
-
-					ctx.font = '16px Helvetica';
+					ctx.font = '18px Helvetica';
 					ctx.textAlign = 'left';
 					ctx.fillText(`XP Total: ${xp}`, 160, 125);
+					ctx.fillText(`Nível: ${newLevel}`, 160, 155);
 
 					ctx.fillStyle = 'gold';
-					ctx.fillText(`Capital: ¤${bal}`, 160, 155);
-
-					ctx.font = '20px Helvetica';
-					ctx.fillStyle = 'white';
-					ctx.textAlign = 'center';
-					ctx.fillText('NÍVEL', 555, 130);
-
-					ctx.font = 'bold 24px Helvetica';
-					ctx.fillText(`${newLevel}`, 555, 156);
-
-					ctx.font = 'italic bold 11px Helvetica';
-					ctx.globalAlpha = 0.6;
 					ctx.textAlign = 'right';
-					ctx.fillText('Em breve...', 585, 315);
-					ctx.globalAlpha = 1;
+					ctx.fillText(`Capital: ¤${bal}`, 585, 140);
+
+					ctx.font = '18px Helvetica';
+					ctx.fillStyle = 'white';
+					ctx.textAlign = 'left';
+					ctx.fillText('Descrição:', 160, 245);
+					ctx.fillText(`${desc}`, 160, 285);
 
 					ctx.closePath();
 
