@@ -52,7 +52,7 @@ function toHex(color) {
 
 module.exports = {
 	name: 'profile',
-	aliases: ['pila'],
+	aliases: ['p'],
 	category: 'Perfil',
 	description: 'Vê o teu perfil ou o de alguém!\nOpções disponíveis: `create`, `setnickname`, `setdescription`',
 	usage: '`+profile [opcional - opção | @membro]`',
