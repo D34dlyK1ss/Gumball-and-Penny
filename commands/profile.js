@@ -27,6 +27,9 @@ function toHex(color) {
 	case 'green':
 		hex = '#00ff00';
 		break;
+	case 'grey':
+		hex = '#808080';
+		break;
 	case 'orange':
 		hex = '#ff8000';
 		break;
@@ -39,11 +42,11 @@ function toHex(color) {
 	case 'red':
 		hex = '#ff0000';
 		break;
+	case 'white':
+		hex = '#ffffff';
+		break;
 	case 'yellow':
 		hex = '#ffff00';
-		break;
-	default:
-		hex = '#808080';
 		break;
 	}
 
@@ -154,92 +157,63 @@ module.exports = {
 							case '🕷️':
 								db.collection('perfis').doc(message.author.id).update({
 									color: 'black',
-								}).then(() => {
-									msg.delete();
-									message.reply('a cor do teu perfil foi alterada!');
 								}).catch(err => { console.error(err); });
 								break;
 							case '🦋':
 								db.collection('perfis').doc(message.author.id).update({
 									color: 'blue',
-								}).then(() => {
-									msg.delete();
-									message.reply('a cor do teu perfil foi alterada!');
 								}).catch(err => { console.error(err); });
 								break;
 							case '🐻':
 								db.collection('perfis').doc(message.author.id).update({
 									color: 'brown',
-								}).then(() => {
-									msg.delete();
-									message.reply('a cor do teu perfil foi alterada!');
 								}).catch(err => { console.error(err); });
 								break;
 							case '🐸':
 								db.collection('perfis').doc(message.author.id).update({
 									color: 'green',
-								}).then(() => {
-									msg.delete();
-									message.reply('a cor do teu perfil foi alterada!');
 								}).catch(err => { console.error(err); });
 								break;
 							case '🐺':
 								db.collection('perfis').doc(message.author.id).update({
 									color: 'grey',
-								}).then(() => {
-									msg.delete();
-									message.reply('a cor do teu perfil foi alterada!');
 								}).catch(err => { console.error(err); });
 								break;
 							case '🦊':
 								db.collection('perfis').doc(message.author.id).update({
 									color: 'orange',
-								}).then(() => {
-									msg.delete();
-									message.reply('a cor do teu perfil foi alterada!');
 								}).catch(err => { console.error(err); });
 								break;
 							case '🦑':
 								db.collection('perfis').doc(message.author.id).update({
 									color: 'pink',
-								}).then(() => {
-									msg.delete();
-									message.reply('a cor do teu perfil foi alterada!');
 								}).catch(err => { console.error(err); });
 								break;
 							case '🐙':
 								db.collection('perfis').doc(message.author.id).update({
 									color: 'purple',
-								}).then(() => {
-									msg.delete();
-									message.reply('a cor do teu perfil foi alterada!');
 								}).catch(err => { console.error(err); });
 								break;
 							case '🐞':
 								db.collection('perfis').doc(message.author.id).update({
 									color: 'red',
-								}).then(() => {
-									msg.delete();
-									message.reply('a cor do teu perfil foi alterada!');
 								}).catch(err => { console.error(err); });
 								break;
 							case '🐼':
 								db.collection('perfis').doc(message.author.id).update({
 									color: 'white',
-								}).then(() => {
-									msg.delete();
-									message.reply('a cor do teu perfil foi alterada!');
 								}).catch(err => { console.error(err); });
 								break;
 							case '🐯':
 								db.collection('perfis').doc(message.author.id).update({
 									color: 'yellow',
-								}).then(() => {
-									msg.delete();
-									message.reply('a cor do teu perfil foi alterada!');
 								}).catch(err => { console.error(err); });
 								break;
 							}
+
+							msg.delete();
+							message.reply('a cor do teu perfil foi alterada!');
+
 						}).catch(() => {
 							msg.delete();
 							message.reply('não selecionaste cor nenhuma!');
