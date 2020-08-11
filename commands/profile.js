@@ -280,15 +280,16 @@ module.exports = {
 						xp = doc.get('xp'),
 						level = doc.get('level');
 
-					const nextLevel = 500 * Math.round(level * (level + 1) / 2),
-						prevLevel = 500 * Math.round(level * (level - 1) / 2);
-
-					let newLevel = level,
+					let nextLevel = 500 * Math.round(level * (level + 1) / 2),
+						prevLevel = 500 * Math.round(level * (level - 1) / 2),
+						newLevel = level,
 						xpToNext = xp - prevLevel,
 						xpNeeded = nextLevel - prevLevel;
 
 					if (xp > nextLevel) {
 						newLevel = level + 1;
+						nextLevel = 500 * Math.round(level * (level + 1) / 2),
+						prevLevel = 500 * Math.round(level * (level - 1) / 2);
 						xpToNext = xp - prevLevel;
 						xpNeeded = nextLevel - prevLevel;
 					}
