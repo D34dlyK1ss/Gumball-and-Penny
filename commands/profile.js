@@ -277,15 +277,11 @@ module.exports = {
 						desc = doc.get('description'),
 						bal = doc.get('balance'),
 						color = doc.get('color'),
-						xp = doc.get('xp');
-					let level = doc.get('level');
+						xp = doc.get('xp'),
+						level = doc.get('level');
 
 					const nextLevel = 500 * Math.round(level * (level + 1) / 2),
 						prevLevel = 500 * Math.round(level * (level - 1) / 2);
-
-					if (xp > nextLevel) {
-						level++;
-					}
 
 					const xpToNext = xp - prevLevel,
 						xpNeeded = nextLevel - prevLevel;

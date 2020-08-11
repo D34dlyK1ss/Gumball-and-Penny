@@ -103,14 +103,6 @@ bot.on('message', async message => {
 		// Ignorar mensagem se o bot não tiver tal comando
 		if (!command) return;
 
-		try {
-			command.execute(bot, message, command, args, db);
-		}
-		catch (err) {
-			console.error(err);
-			message.reply('ocorreu um erro ao tentar executar esse comando!');
-		}
-
 		if (!xpCooldown.has(message.author.id)) {
 
 			xpCooldown.add(message.author.id);
@@ -141,6 +133,14 @@ bot.on('message', async message => {
 					}
 				}
 			});
+		}
+
+		try {
+			command.execute(bot, message, command, args, db);
+		}
+		catch (err) {
+			console.error(err);
+			message.reply('ocorreu um erro ao tentar executar esse comando!');
 		}
 	});
 
