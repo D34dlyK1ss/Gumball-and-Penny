@@ -286,7 +286,7 @@ module.exports = {
 						xpToNext = xp - prevLevel,
 						xpNeeded = nextLevel - prevLevel;
 
-					if (xp > nextLevel) {
+					if (xp >= nextLevel) {
 						newLevel = level + 1;
 						nextLevel = 500 * Math.round(newLevel * (newLevel + 1) / 2),
 						prevLevel = 500 * Math.round(newLevel * (newLevel - 1) / 2);

@@ -125,7 +125,7 @@ bot.on('message', async message => {
 						xp: xp + add,
 					});
 
-					if (nextLevel <= xp) {
+					if (xp >= nextLevel) {
 						db.collection('perfis').doc(message.author.id).update({
 							level: level + 1,
 						});
