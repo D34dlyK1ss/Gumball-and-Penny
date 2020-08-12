@@ -114,16 +114,17 @@ bot.on('message', async message => {
 					add = Math.floor(Math.random() * 10) + 50;
 				const nextLevel = 500 * Math.round(level * (level + 1) / 2);
 
-				if (xp >= nextLevel) {
+				db.collection('perfis').doc(message.author.id).update({
+					xp: xp + add,
+				});
+
+				if ((xp + add) >= nextLevel) {
 					db.collection('perfis').doc(message.author.id).update({
 						level: level + 1,
 					});
 					message.channel.send(`🎉 Parabéns ${message.author}, subiste para o nível ${level + 1}! 🆙`);
 				}
 
-				db.collection('perfis').doc(message.author.id).update({
-					xp: xp + add,
-				});
 			}
 		});
 
