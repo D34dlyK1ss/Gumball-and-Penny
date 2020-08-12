@@ -27,7 +27,7 @@ module.exports = {
 				{ name: '🛠️ Utilidade', value: '`avatar`, `invite`, `ping`, `support`', inline: true },
 			);
 
-		if (args == null || args == '') {
+		if (!args || args == '') {
 			message.channel.send(helpEmbed);
 		}
 		else {

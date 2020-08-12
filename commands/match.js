@@ -14,7 +14,7 @@ module.exports = {
 	execute(bot, message, command, args, db) {
 		const other = message.mentions.users.first();
 
-		if (other == null) {
+		if (!other) {
 			message.reply('não mencionaste ninguém!');
 		}
 		else {

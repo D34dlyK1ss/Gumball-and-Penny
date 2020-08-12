@@ -6,7 +6,7 @@ module.exports = {
 
 	execute(bot, message, command, args) {
 		message.delete();
-		if (args == null || args == '') {
+		if (!args || args == '') {
 			message.reply('não escreveste nada!').then(msg => msg.delete({ timeout: 5000 }));
 		}
 		else if (args[0].startsWith('http')) {

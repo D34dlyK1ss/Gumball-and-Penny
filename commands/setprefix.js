@@ -7,7 +7,7 @@ module.exports = {
 	execute(bot, message, command, args, db) {
 		if (!message.member.hasPermission('MANAGE_GUILD')) {
 			message.delete();
-			message.reply('não tens permissão para usar este comando! 💢').then(msg => { msg.delete({ timeout: 3000 }); }).catch(err => { console.error(err); });
+			message.reply('não tens permissão para usar este comando! 💢').then(msg => { msg.delete({ timeout: 3000 }); });
 		}
 		else if (args.length === 0) {
 			message.reply('precisamos de saber qual é o prefixo desejado!');
