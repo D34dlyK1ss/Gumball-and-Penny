@@ -31,7 +31,7 @@ function toHex(color) {
 		hex = '#808080';
 		break;
 	case 'lux':
-		hex = '#9530b6';
+		hex = '#400080';
 		break;
 	case 'orange':
 		hex = '#ff8000';
