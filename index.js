@@ -103,36 +103,36 @@ bot.on('message', async message => {
 		// Ignorar mensagem se o bot não tiver tal comando
 		if (!command) return;
 
+		// Adicionar XP ao perfil do utilizador
+		db.collection('perfis').doc(message.author.id).get().then(doc => {
+			if (!doc.exists) {
+				return;
+			}
+			else {
+				const level = doc.get('level'),
+					xp = doc.get('xp'),
+					add = Math.floor(Math.random() * 10) + 50;
+				const nextLevel = 500 * Math.round(level * (level + 1) / 2);
+
+				if (xp >= nextLevel) {
+					db.collection('perfis').doc(message.author.id).update({
+						level: level + 1,
+					});
+					message.channel.send(`🎉 Parabéns ${message.author}, subiste para o nível ${level + 1}! 🆙`);
+				}
+
+				db.collection('perfis').doc(message.author.id).update({
+					xp: xp + add,
+				});
+			}
+		});
+
 		if (!xpCooldown.has(message.author.id)) {
 
 			xpCooldown.add(message.author.id);
 			setTimeout(() => {
 				xpCooldown.delete(message.author.id);
 			}, 60000);
-
-			// Adicionar XP ao perfil do utilizador
-			db.collection('perfis').doc(message.author.id).get().then(doc => {
-				if (!doc.exists) {
-					return;
-				}
-				else {
-					const level = doc.get('level'),
-						xp = doc.get('xp'),
-						add = Math.floor(Math.random() * 10) + 50;
-					const nextLevel = 500 * Math.round(level * (level + 1) / 2);
-
-					db.collection('perfis').doc(message.author.id).update({
-						xp: xp + add,
-					});
-
-					if (xp >= nextLevel) {
-						db.collection('perfis').doc(message.author.id).update({
-							level: level + 1,
-						});
-						message.channel.send(`🎉 Parabéns ${message.author}, subiste para o nível ${level + 1}! 🆙`);
-					}
-				}
-			});
 		}
 
 		try {
