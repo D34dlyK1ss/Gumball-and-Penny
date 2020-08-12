@@ -6,6 +6,7 @@
   "author": "D34dlyK!$$",
   "dependencies": {
     "canvas": "^2.6.1",
+    "common-tags": "^1.8.0",
     "discord.js": "^12.2.0",
     "firebase-admin": "^9.0.0",
     "moment": "^2.27.0",
