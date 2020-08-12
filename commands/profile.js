@@ -30,6 +30,9 @@ function toHex(color) {
 	case 'grey':
 		hex = '#808080';
 		break;
+	case 'lux':
+		hex = '#9530b6';
+		break;
 	case 'orange':
 		hex = '#ff8000';
 		break;
@@ -289,7 +292,7 @@ module.exports = {
 					ctx.fillRect(160, 172, 425, 30);
 					ctx.fill();
 
-					ctx.globalAlpha = 0.8;
+					ctx.globalAlpha = 0.6;
 					ctx.fillStyle = toHex(color);
 					ctx.fillRect(160, 172, ((100 / (nextLevel - prevLevel)) * (xp - prevLevel) * 4.25), 30);
 					ctx.fill();
