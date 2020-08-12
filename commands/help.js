@@ -15,7 +15,9 @@ module.exports = {
 			.setTitle('Ajuda')
 			.setAuthor(`${bot.user.tag}`, `${bot.user.displayAvatarURL()}`)
 			.setThumbnail(`${bot.user.displayAvatarURL()}`)
-			.setDescription(`Nós somos o Gumball e a Penny e temos como objetivo tornar qualquer servidor em que estamos num lugar divertido!\nEm caso de dúvida nalgum comando usa \`+help [nome do comando]\`\n${update}`)
+			.setDescription(`Nós somos o Gumball e a Penny e temos como objetivo tornar qualquer servidor em que estamos num lugar divertido!
+			Em caso de dúvida nalgum comando usa \`+help [nome do comando]\`
+			${update}`)
 			.addFields(
 				{ name: '🎭 Ações', value: '`hug`, `kiss`, `laugh`, `pat`, `run`, `slap`', inline: true },
 				{ name: '🎰 Casino', value: '`coinflip`', inline: true },
