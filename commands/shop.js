@@ -5,7 +5,7 @@ const { MessageEmbed } = require('discord.js');
 module.exports = {
 	name: 'shop',
 	aliases: ['s'],
-	category: 'Economia',
+	category: 'Perfil',
 	description: 'Vai às compras!',
 	usage: '`+shop`',
 
