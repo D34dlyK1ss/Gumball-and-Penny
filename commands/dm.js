@@ -11,17 +11,17 @@ module.exports = {
 		message.delete();
 
 		if (!message.member.hasPermission('MANAGE_GUILD')) {
-			message.reply('não tens permissão para usar este comando! 💢').then(msg => { msg.delete({ timeout: 5000 }); }).catch(err => { console.error(err); });
+			message.reply('não tens permissão para usar este comando! 💢').then(msg => { msg.delete({ timeout: 5000 }); });
 		}
 		else if (mention == null || mention == '') {
-			message.reply('não mencionaste ninguém!').then(msg => { msg.delete({ timeout: 5000 }); }).catch(err => { console.error(err); });
+			message.reply('não mencionaste ninguém!').then(msg => { msg.delete({ timeout: 5000 }); });
 		}
 		else if (mentionMessage == null || mentionMessage == '') {
-			message.reply('não escreveste nenhuma mensagem!').then(msg => { msg.delete({ timeout: 5000 }); }).catch(err => { console.error(err); });
+			message.reply('não escreveste nenhuma mensagem!').then(msg => { msg.delete({ timeout: 5000 }); });
 		}
 		else {
 			mention.send(mentionMessage);
-			message.reply('enviado!').then(msg => { msg.delete({ timeout: 5000 }); }).catch(err => { console.error(err); });
+			message.reply('enviado!').then(msg => { msg.delete({ timeout: 5000 }); });
 		}
 	},
 };

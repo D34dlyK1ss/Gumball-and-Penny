@@ -13,7 +13,7 @@ module.exports = {
 		const helpEmbed = new Discord.MessageEmbed()
 			.setColor('#8000ff')
 			.setTitle('Ajuda')
-			.setAuthor('Gumball & Penny', `${bot.user.displayAvatarURL()}`)
+			.setAuthor(`${bot.user.tag}`, `${bot.user.displayAvatarURL()}`)
 			.setThumbnail(`${bot.user.displayAvatarURL()}`)
 			.setDescription(`Nós somos o Gumball e a Penny e temos como objetivo tornar qualquer servidor em que estamos num lugar divertido!\nEm caso de dúvida nalgum comando usa \`+help [nome do comando]\`\n${update}`)
 			.addFields(

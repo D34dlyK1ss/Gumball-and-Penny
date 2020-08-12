@@ -15,6 +15,9 @@ module.exports = {
 			.setAuthor(`${message.author.tag}`, `${message.author.displayAvatarURL()}`)
 			.setColor('#8000ff')
 			.setTitle('Loja')
-			.setDescription('Bem vindo à nossa loja!\nAqui poderás comprar algumas coisas com o dinheiro que acumulaste até agora.');
+			.setDescription('Bem vindo à nossa loja!\nAqui poderás comprar algumas coisas com o dinheiro que acumulaste até agora.')
+			.addFields(
+				{ name: '1', value: 'Perfil' },
+			);
 	},
 };

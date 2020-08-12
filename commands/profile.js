@@ -142,7 +142,7 @@ module.exports = {
 					const color = doc.get('color'),
 						filter = (reaction, member) => ['🕷️', '🦋', '🐻', '🐸', '🐺', '🦊', '🦑', '🐙', '🐞', '🐼', '🐯'].includes(reaction.emoji.name) && member.id === message.author.id,
 						embed = new MessageEmbed()
-							.setAuthor(`${message.author.tag}`)
+							.setAuthor(`${message.author.tag}`, `${message.author.displayAvatarURL()}`)
 							.setTitle('Escolhe uma cor 👇')
 							.setColor(toHex(color));
 
