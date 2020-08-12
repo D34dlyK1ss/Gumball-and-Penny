@@ -150,7 +150,6 @@ module.exports = {
 						msg.awaitReactions(filter, {
 							max: 1, time: 60000, errors: ['time'],
 						}).then(collected => {
-
 							const reaction = collected.first();
 
 							switch (reaction.emoji.name) {
