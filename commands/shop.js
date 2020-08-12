@@ -1,7 +1,6 @@
 /* eslint-disable no-empty-function */
 /* eslint-disable no-unused-vars */
 const { MessageEmbed } = require('discord.js');
-const { createCanvas, loadImage } = require('canvas');
 
 module.exports = {
 	name: 'shop',
@@ -19,5 +18,7 @@ module.exports = {
 			.addFields(
 				{ name: '1', value: 'Perfil' },
 			);
+
+		message.channel.send(embed);
 	},
 };
