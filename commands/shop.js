@@ -59,8 +59,8 @@ module.exports = {
 				}
 				else {
 					const bal = docP.get('balance'),
-						item = bEmbed.find(thing => thing.name == args[1].toLowerCase());
-					let cost = bEmbed.find(() => item.value);
+						item = bEmbed.fields.find(thing => thing.name == args[1].toLowerCase());
+					let cost = bEmbed.fields.find(() => item.value);
 					cost.substring(1);
 					cost = parseInt(cost);
 
