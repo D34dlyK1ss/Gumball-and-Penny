@@ -27,6 +27,9 @@ function toHex(hud) {
 	case 'green':
 		hex = '#00ff00';
 		break;
+	case 'giorno':
+		hex = '#e0c000';
+		break;
 	case 'grey':
 		hex = '#808080';
 		break;
@@ -50,9 +53,6 @@ function toHex(hud) {
 		break;
 	case 'red':
 		hex = '#ff0000';
-		break;
-	case 'white':
-		hex = '#ffffff';
 		break;
 	case 'yellow':
 		hex = '#ffff00';
