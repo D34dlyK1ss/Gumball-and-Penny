@@ -150,12 +150,12 @@ module.exports = {
 				else {
 					refI.get().then(docI => {
 						const huds = docI.get('huds'),
-							newHud = args[1];
+							newHud = args;
 
 						if (!newHud || newHud == '') {
 							message.reply('não escolheste um HUD!');
 						}
-						else if (!huds.includes(newHud)) {
+						else if (!huds.includes(`${newHud}`)) {
 							message.reply('não tens esse HUD!');
 						}
 						else {
