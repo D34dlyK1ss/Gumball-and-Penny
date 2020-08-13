@@ -33,6 +33,9 @@ function toHex(hud) {
 	case 'lux':
 		hex = '#500090';
 		break;
+	case 'lelouch':
+		hex = '#400080';
+		break;
 	case 'orange':
 		hex = '#ff8000';
 		break;
@@ -161,6 +164,8 @@ module.exports = {
 						else {
 							db.collection('perfis').doc(message.author.id).update({
 								hud: newHud,
+							}).then(() => {
+								message.reply(`alteraste o teu HUD para ${newHud.charAt(0).toUpperCase() + newHud.slice(1)}`);
 							}).catch(err => { console.error(err); });
 						}
 					});
