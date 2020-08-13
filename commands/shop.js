@@ -65,7 +65,7 @@ module.exports = {
 					cost = parseInt(cost);
 
 					if (cost > bal) {
-						message.reply('Não tens dinheiro suficiente!');
+						message.reply('não tens dinheiro suficiente!');
 					}
 					else {
 						refI.get().then(docI => {
@@ -78,13 +78,18 @@ module.exports = {
 
 							const huds = docI.get('huds');
 
-							refP.update({
-								balance: (bal - cost),
-							});
+							if (huds.includes(item)) {
+								message.reply('não tens dinheiro suficiente!');
+							}
+							else {
+								refP.update({
+									balance: (bal - cost),
+								});
 
-							refI.update({
-								huds: huds.push(item),
-							});
+								refI.update({
+									huds: huds.push(item),
+								});
+							}
 						});
 					}
 				}

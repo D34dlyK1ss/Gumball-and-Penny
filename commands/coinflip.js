@@ -10,7 +10,7 @@ module.exports = {
 
 		ref.get().then(doc => {
 			if (!doc.exists) {
-				message.channel.send('Ainda não criaste um perfil! Para criares um perfil usa `+profile create`!');
+				message.reply('ainda não criaste um perfil! Para criares um perfil usa `+profile create`!');
 			}
 			else if (!args || args[1] == '' || (args[0] != 'cara' && args[0] != 'coroa')) {
 				message.channel.send('Sintaxe errada! Como usar: `+coinflip [cara/coroa] [quantidade]`');
@@ -23,10 +23,10 @@ module.exports = {
 					message.reply('não podes ganhar mais dinheiro! 😧');
 				}
 				else if (money > bal) {
-					message.reply('Não tens dinheiro suficiente!');
+					message.reply('não tens dinheiro suficiente!');
 				}
 				else if (money < 50) {
-					message.reply('Tens de apostar no mínimo ¤50!');
+					message.reply('tens de apostar no mínimo ¤50!');
 				}
 				else {
 					const value = Math.round(Math.random()),
@@ -42,7 +42,7 @@ module.exports = {
 						db.collection('perfis').doc(user.id).update({
 							balance: (bal - money),
 						}).then(() => {
-							message.channel.send(`Perdeste ¤${money}!`);
+							message.reply(`perdeste ¤${money}!`);
 						}).catch(err => { console.error(err); });
 					}
 					else if (res == guess) {
@@ -50,7 +50,7 @@ module.exports = {
 						db.collection('perfis').doc(user.id).update({
 							balance: (bal + won),
 						}).then(() => {
-							message.channel.send(`Ganhaste ¤${won + 50}!`);
+							message.reply(`ganhaste ¤${won + 50}!`);
 						}).catch(err => { console.error(err); });
 					}
 				}
