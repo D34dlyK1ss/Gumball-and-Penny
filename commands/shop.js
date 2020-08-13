@@ -80,22 +80,22 @@ module.exports = {
 
 								const iHuds = docI.get('huds');
 
-								return console.log(iHuds);
-
-								/* if (iHuds.includes(itemName)) {
+								if (iHuds.includes(itemName)) {
 									message.reply('já tens este HUD!');
 								}
 								else {
+									iHuds.push(itemName);
+
 									refP.update({
 										balance: (bal - cost),
 									});
 
 									refI.update({
-										huds: iHuds.push(itemName),
+										huds: iHuds,
 									}).then(() => {
 										message.reply(`compraste o HUD **${itemName.charAt(0).toUpperCase() + itemName.slice(1)}**`);
 									});
-								}*/
+								}
 							});
 						}
 					}
