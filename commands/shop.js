@@ -11,7 +11,8 @@ module.exports = {
 
 	execute(bot, message, command, args, db) {
 		const option = args[0],
-			ref = db.collection('inventário').doc(message.author.id),
+			refP = db.collection('perfis').doc(message.author.id),
+			refI = db.collection('inventário').doc(message.author.id),
 			mainEmbed = new MessageEmbed()
 				.setAuthor(`${bot.user.tag}`, `${bot.user.displayAvatarURL()}`)
 				.setColor('#8000ff')
@@ -52,7 +53,40 @@ module.exports = {
 
 		switch (option) {
 		case 'hud':
+			refP.get().then(docP => {
+				if (!docP.exists) {
+					message.reply('ainda não criaste um perfil! Para criares um perfil usa `+profile create`!');
+				}
+				else {
+					const bal = docP.get('balance'),
+						item = bEmbed.find(thing => thing.name == args[1].toLowerCase());
+					const cost = bEmbed.find(() => item.value);
 
+					if (cost > bal) {
+						message.reply('Não tens dinheiro suficiente!');
+					}
+					else {
+						refI.get().then(docI => {
+							if (!docI.exists) {
+								refI.set({
+									backgrounds: [],
+									huds: [],
+								});
+							}
+
+							const huds = docI.get('huds');
+
+							refP.update({
+								balance: (bal - cost),
+							});
+
+							refI.update({
+								huds: huds.push(item),
+							});
+						});
+					}
+				}
+			});
 			break;
 		default:
 			message.channel.send(mainEmbed).then(async msg => {
