@@ -30,7 +30,7 @@ module.exports = {
 					{ name: 'N/A', value: '\u200B' },
 				])
 				.setTitle('Loja - Imagens de Fundo')
-				.setDescription('`+shop background [item]`')
+				.setDescription('`+shop background [item]` para comprar.')
 				.addFields(
 
 				),
@@ -49,7 +49,7 @@ module.exports = {
 					{ name: 'Vermelho', value: '¤1500', inline: true },
 				])
 				.setTitle('Loja - HUD')
-				.setDescription('`+shop hud [item]`');
+				.setDescription('`+shop hud [item]` para comprar.');
 
 		switch (option) {
 		case 'hud':
