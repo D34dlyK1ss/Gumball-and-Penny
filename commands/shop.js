@@ -52,7 +52,7 @@ module.exports = {
 
 		switch (option) {
 		case 'buy':
-			switch (args[2]) {
+			switch (args[1]) {
 			case 'hud':
 				refP.get().then(docP => {
 					if (!docP.exists) {
