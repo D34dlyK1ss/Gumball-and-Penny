@@ -1,7 +1,7 @@
 module.exports = {
 	name: 'laugh',
 	category: 'Ações',
-	description: 'Ri!',
+	description: 'Ri-te!',
 	usage: '`+laugh [opcional - @membro]`',
 
 	execute(bot, message, command) {

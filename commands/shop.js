@@ -1,6 +1,5 @@
-/* eslint-disable no-empty-function */
-/* eslint-disable no-unused-vars */
 const { MessageEmbed } = require('discord.js');
+const { huds } = require('./pricelist.json');
 
 module.exports = {
 	name: 'shop',
@@ -30,72 +29,77 @@ module.exports = {
 					{ name: 'N/A', value: '\u200B' },
 				])
 				.setTitle('Loja - Imagens de Fundo')
-				.setDescription('`+shop background [item]` para comprar.')
+				.setDescription('`+shop buy background [item]` para comprar.')
 				.addFields(
 
 				),
 			bEmbed = new MessageEmbed(mainEmbed)
 				.spliceFields(0, 2, [
-					{ name: 'Black', value: '¤1500', inline: true },
-					{ name: 'Blue', value: '¤1500', inline: true },
-					{ name: 'Brown', value: '¤1500', inline: true },
-					{ name: 'Green', value: '¤1500', inline: true },
-					{ name: 'Grey', value: '¤1500', inline: true },
-					{ name: 'Orange', value: '¤1500', inline: true },
-					{ name: 'Pink', value: '¤1500', inline: true },
-					{ name: 'Purple', value: '¤1500', inline: true },
-					{ name: 'Red', value: '¤1500', inline: true },
-					{ name: 'White', value: '¤1500', inline: true },
-					{ name: 'Yellow', value: '¤1500', inline: true },
+					{ name: 'Black', value: `${huds.black}`, inline: true },
+					{ name: 'Blue', value: huds.blue, inline: true },
+					{ name: 'Brown', value: huds.brown, inline: true },
+					{ name: 'Green', value: huds.green, inline: true },
+					{ name: 'Grey', value: huds.grey, inline: true },
+					{ name: 'Orange', value: huds.orange, inline: true },
+					{ name: 'Pink', value: huds.pink, inline: true },
+					{ name: 'Purple', value: huds.purple, inline: true },
+					{ name: 'Red', value: huds.red, inline: true },
+					{ name: 'White', value: huds.white, inline: true },
+					{ name: 'Yellow', value: huds.yellow, inline: true },
 				])
 				.setTitle('Loja - HUD')
-				.setDescription('`+shop hud [item]` para comprar.');
+				.setDescription('`+shop buy hud [item]` para comprar.');
 
 		switch (option) {
-		case 'hud':
-			refP.get().then(docP => {
-				if (!docP.exists) {
-					message.reply('ainda não criaste um perfil! Para criares um perfil usa `+profile create`!');
-				}
-				else {
-					const bal = docP.get('balance'),
-						item = bEmbed.fields.find(thing => thing.name == args[1].toLowerCase());
-					let cost = bEmbed.fields.find(thing => thing.name(item).value);
-					cost.substring(1);
-					cost = parseInt(cost);
-
-					if (cost > bal) {
-						message.reply('não tens dinheiro suficiente!');
+		case 'buy':
+			switch (args[2]) {
+			case 'hud':
+				refP.get().then(docP => {
+					if (!docP.exists) {
+						message.reply('ainda não criaste um perfil! Para criares um perfil usa `+profile create`!');
 					}
 					else {
-						refI.get().then(docI => {
-							if (!docI.exists) {
-								refI.set({
-									backgrounds: [],
-									huds: [],
-								});
-							}
+						const bal = docP.get('balance'),
+							itemName = args[2].toLowerCase(),
+							cost = huds[itemName];
 
-							const huds = docI.get('huds');
+						if (!cost) {
+							message.reply('esse item não existe!');
+						}
+						else if (cost > bal) {
+							message.reply('não tens dinheiro suficiente!');
+						}
+						else {
+							refI.get().then(docI => {
+								if (!docI.exists) {
+									refI.set({
+										backgrounds: [],
+										huds: [],
+									});
+								}
 
-							if (huds.includes(item)) {
-								message.reply('já tens este HUD!');
-							}
-							else {
-								refP.update({
-									balance: (bal - cost),
-								});
+								const iHuds = docI.get('huds');
 
-								refI.update({
-									huds: huds.push(item),
-								}).then(() => {
-									message.reply(`compraste o HUD **${item.charAt(0).toUpperCase() + item.slice(1)}**`);
-								});
-							}
-						});
+								if (iHuds.includes(itemName)) {
+									message.reply('já tens este HUD!');
+								}
+								else {
+									refP.update({
+										balance: (bal - cost),
+									});
+
+									refI.update({
+										huds: iHuds.push(itemName),
+									}).then(() => {
+										message.reply(`compraste o HUD **${itemName.charAt(0).toUpperCase() + itemName.slice(1)}**`);
+									});
+								}
+							});
+						}
 					}
-				}
-			});
+				});
+				break;
+			}
 			break;
 		default:
 			message.channel.send(mainEmbed).then(async msg => {
@@ -117,7 +121,7 @@ module.exports = {
 
 				let onMain = true;
 
-				a.on('collect', async reaction => {
+				a.on('collect', async () => {
 					if (onMain == false) return;
 					onMain = false;
 					msg.reactions.removeAll();
@@ -125,7 +129,7 @@ module.exports = {
 					msg.react('↩️');
 				});
 
-				b.on('collect', async reaction => {
+				b.on('collect', async () => {
 					if (onMain == false) return;
 					onMain = false;
 					msg.reactions.removeAll();
@@ -133,7 +137,7 @@ module.exports = {
 					msg.react('↩️');
 				});
 
-				main.on('collect', async reaction => {
+				main.on('collect', async () => {
 					if (onMain == true) return;
 					onMain = true;
 					msg.reactions.removeAll();

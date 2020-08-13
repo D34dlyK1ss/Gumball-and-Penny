@@ -1,0 +1,19 @@
+{
+	"huds": {
+		"black": 1500,
+		"blue": 1500,
+		"brown": 1500,
+		"green": 1500,
+		"grey": 1500,
+		"orange": 1500,
+		"pink": 1500,
+		"purple": 1500,
+		"red": 1500,
+		"white": 1500,
+		"yellow": 1500
+	},
+
+	"backgrounds": {
+
+	}
+}
