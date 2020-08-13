@@ -21,8 +21,7 @@ module.exports = {
 			Usa \`+shop [número]\` para selecionares uma categoria.`)
 				.setFooter(`${message.author.tag}`, `${message.author.displayAvatarURL()}`)
 				.addFields(
-					{ name: 'A - Imagens de Fundo', value: '\u200B' },
-					{ name: 'B - HUDs', value: '\u200B' },
+					{ name: 'A - HUD', value: '\u200B' },
 				);
 		const aEmbed = new MessageEmbed(mainEmbed)
 			.spliceFields(0, 2, [
@@ -90,7 +89,6 @@ module.exports = {
 			message.channel.send(mainEmbed).then(async msg => {
 				try {
 					msg.react('🇦');
-					await msg.react('🇧');
 				}
 				catch {
 					return;
