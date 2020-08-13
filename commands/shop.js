@@ -39,7 +39,6 @@ module.exports = {
 					{ name: 'Blue', value: `¤${huds.blue}`, inline: true },
 					{ name: 'Brown', value: `¤${huds.brown}`, inline: true },
 					{ name: 'Green', value: `¤${huds.green}`, inline: true },
-					{ name: 'Grey', value: `¤${huds.grey}`, inline: true },
 					{ name: 'Orange', value: `¤${huds.orange}`, inline: true },
 					{ name: 'Pink', value: `¤${huds.pink}`, inline: true },
 					{ name: 'Purple', value: `¤${huds.purple}`, inline: true },
@@ -68,13 +67,6 @@ module.exports = {
 						}
 						else {
 							refI.get().then(docI => {
-								if (!docI.exists) {
-									refI.set({
-										backgrounds: [],
-										huds: [],
-									});
-								}
-
 								const iHuds = docI.get('huds');
 
 								if (iHuds.includes(itemName)) {

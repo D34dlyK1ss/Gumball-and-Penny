@@ -1,4 +1,4 @@
-const { MessageAttachment, MessageEmbed } = require('discord.js');
+const { MessageAttachment } = require('discord.js');
 const { createCanvas, loadImage } = require('canvas');
 
 function convert(value) {
@@ -65,14 +65,15 @@ module.exports = {
 
 	execute(bot, message, command, args, db) {
 		const user = message.mentions.users.first() || message.author,
-			ref = db.collection('perfis').doc(user.id),
+			refP = db.collection('perfis').doc(user.id),
+			refI = db.collection('inventário').doc(message.author.id),
 			option = args[0];
 		args = args.slice(1);
 		args = args.join(' ');
 
 		switch (option) {
 		case 'create':
-			ref.get().then(doc => {
+			refP.get().then(doc => {
 				if (doc.exists) {
 					if (user == message.author) {
 						message.channel.send('Já tens um perfil criado, não podes criar outro! 💢');
@@ -90,17 +91,22 @@ module.exports = {
 						nickname: 'N/A',
 						xp: 0,
 					}).then(() => {
-						message.reply('o teu perfil foi criado! Adiciona uma descricão com `+profile setdescription [descrição]`!');
+						refI.set({
+							backgrounds: [],
+							huds: ['grey'],
+						}).then(() => {
+							message.reply('o teu perfil foi criado! Adiciona uma descricão com `+profile setdescription [descrição]`!');
+						});
 					}).catch(err => { console.error(err); });
 				}
 			});
 			break;
 		case 'setnickname':
 			if (args == '') args = 'N/A';
-			ref.get().then(doc => {
+			refP.get().then(doc => {
 				if (!doc.exists) {
 					if (user == message.author) {
-						message.channel.send('Ainda não criaste um perfil! Para criares um perfil usa `+profile create`!');
+						message.reply('ainda não criaste um perfil! Para criares um perfil usa `+profile create`!');
 					}
 				}
 				else if (args.length > 32) {
@@ -116,10 +122,10 @@ module.exports = {
 			});
 			break;
 		case 'setdescription':
-			ref.get().then(doc => {
+			refP.get().then(doc => {
 				if (!doc.exists) {
 					if (user == message.author) {
-						message.channel.send('Ainda não criaste um perfil! Para criares um perfil usa `+profile create`!');
+						message.reply('ainda não criaste um perfil! Para criares um perfil usa `+profile create`!');
 					}
 				}
 				else if (args.length > 44) {
@@ -135,114 +141,31 @@ module.exports = {
 			});
 			break;
 		case 'setcolor':
-			ref.get().then(doc => {
-				if (!doc.exists) {
+			refP.get().then(docP => {
+				if (!docP.exists) {
 					if (user == message.author) {
-						message.channel.send('Ainda não criaste um perfil! Para criares um perfil usa `+profile create`!');
+						message.reply('ainda não criaste um perfil! Para criares um perfil usa `+profile create`!');
 					}
 				}
 				else {
-					const color = doc.get('color'),
-						filter = (reaction, member) => ['🕷️', '🦋', '🐻', '🐸', '🐺', '🦊', '🦑', '🐙', '🐞', '🐼', '🐯'].includes(reaction.emoji.name) && member.id === message.author.id,
-						embed = new MessageEmbed()
-							.setAuthor(`${message.author.tag}`, `${message.author.displayAvatarURL()}`)
-							.setTitle('Escolhe uma cor 👇')
-							.setColor(toHex(color));
+					refI.get().then(docI => {
+						const colors = docI.get('huds'),
+							newColor = args[1];
 
-					message.channel.send(embed).then(async msg => {
-						msg.awaitReactions(filter, {
-							max: 1, time: 60000, errors: ['time'],
-						}).then(collected => {
-							const reaction = collected.first();
-
-							switch (reaction.emoji.name) {
-							case '🕷️':
-								db.collection('perfis').doc(message.author.id).update({
-									color: 'black',
-								}).catch(err => { console.error(err); });
-								break;
-							case '🦋':
-								db.collection('perfis').doc(message.author.id).update({
-									color: 'blue',
-								}).catch(err => { console.error(err); });
-								break;
-							case '🐻':
-								db.collection('perfis').doc(message.author.id).update({
-									color: 'brown',
-								}).catch(err => { console.error(err); });
-								break;
-							case '🐸':
-								db.collection('perfis').doc(message.author.id).update({
-									color: 'green',
-								}).catch(err => { console.error(err); });
-								break;
-							case '🐺':
-								db.collection('perfis').doc(message.author.id).update({
-									color: 'grey',
-								}).catch(err => { console.error(err); });
-								break;
-							case '🦊':
-								db.collection('perfis').doc(message.author.id).update({
-									color: 'orange',
-								}).catch(err => { console.error(err); });
-								break;
-							case '🦑':
-								db.collection('perfis').doc(message.author.id).update({
-									color: 'pink',
-								}).catch(err => { console.error(err); });
-								break;
-							case '🐙':
-								db.collection('perfis').doc(message.author.id).update({
-									color: 'purple',
-								}).catch(err => { console.error(err); });
-								break;
-							case '🐞':
-								db.collection('perfis').doc(message.author.id).update({
-									color: 'red',
-								}).catch(err => { console.error(err); });
-								break;
-							case '🐼':
-								db.collection('perfis').doc(message.author.id).update({
-									color: 'white',
-								}).catch(err => { console.error(err); });
-								break;
-							case '🐯':
-								db.collection('perfis').doc(message.author.id).update({
-									color: 'yellow',
-								}).catch(err => { console.error(err); });
-								break;
-							}
-
-							msg.delete();
-							message.reply('a cor do teu perfil foi alterada!');
-
-						}).catch(() => {
-							msg.delete();
-							message.reply('não selecionaste cor nenhuma!');
-						});
-
-						try {
-							msg.react('🕷️');
-							await msg.react('🦋');
-							await msg.react('🐻');
-							await msg.react('🐸');
-							await msg.react('🐺');
-							await msg.react('🦊');
-							await msg.react('🦑');
-							await msg.react('🐙');
-							await msg.react('🐞');
-							await msg.react('🐼');
-							await msg.react('🐯');
+						if (!colors.includes(newColor)) {
+							message.reply('não tens esse HUD!');
 						}
-						catch {
-							return;
+						else {
+							db.collection('perfis').doc(message.author.id).update({
+								color: newColor,
+							}).catch(err => { console.error(err); });
 						}
 					});
 				}
 			});
 			break;
 		default:
-			ref.get().then(async doc => {
+			refP.get().then(async doc => {
 				if (!doc.exists) {
 					if (user == message.author) {
 						message.reply('ainda não criaste um perfil! Para criares um perfil usa `+profile create`!');
