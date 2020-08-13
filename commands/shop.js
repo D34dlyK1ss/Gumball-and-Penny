@@ -60,7 +60,9 @@ module.exports = {
 				else {
 					const bal = docP.get('balance'),
 						item = bEmbed.find(thing => thing.name == args[1].toLowerCase());
-					const cost = bEmbed.find(() => item.value);
+					let cost = bEmbed.find(() => item.value);
+					cost.substring(1);
+					cost = parseInt(cost);
 
 					if (cost > bal) {
 						message.reply('Não tens dinheiro suficiente!');
