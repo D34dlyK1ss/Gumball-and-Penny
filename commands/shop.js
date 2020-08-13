@@ -36,17 +36,17 @@ module.exports = {
 				),
 			bEmbed = new MessageEmbed(mainEmbed)
 				.spliceFields(0, 2, [
-					{ name: 'Amarelo', value: '¤1500', inline: true },
-					{ name: 'Azul', value: '¤1500', inline: true },
-					{ name: 'Cinzento', value: '¤1500', inline: true },
-					{ name: 'Branco', value: '¤1500', inline: true },
-					{ name: 'Castanho', value: '¤1500', inline: true },
-					{ name: 'Laranja', value: '¤1500', inline: true },
-					{ name: 'Preto', value: '¤1500', inline: true },
-					{ name: 'Rosa', value: '¤1500', inline: true },
-					{ name: 'Roxo', value: '¤1500', inline: true },
-					{ name: 'Verde', value: '¤1500', inline: true },
-					{ name: 'Vermelho', value: '¤1500', inline: true },
+					{ name: 'Black', value: '¤1500', inline: true },
+					{ name: 'Blue', value: '¤1500', inline: true },
+					{ name: 'Brown', value: '¤1500', inline: true },
+					{ name: 'Green', value: '¤1500', inline: true },
+					{ name: 'Grey', value: '¤1500', inline: true },
+					{ name: 'Orange', value: '¤1500', inline: true },
+					{ name: 'Pink', value: '¤1500', inline: true },
+					{ name: 'Purple', value: '¤1500', inline: true },
+					{ name: 'Red', value: '¤1500', inline: true },
+					{ name: 'White', value: '¤1500', inline: true },
+					{ name: 'Yellow', value: '¤1500', inline: true },
 				])
 				.setTitle('Loja - HUD')
 				.setDescription('`+shop hud [item]` para comprar.');
@@ -60,7 +60,7 @@ module.exports = {
 				else {
 					const bal = docP.get('balance'),
 						item = bEmbed.fields.find(thing => thing.name == args[1].toLowerCase());
-					let cost = bEmbed.fields.find(() => item.value);
+					let cost = bEmbed.fields.find(() => item.value.startsWith('¤'));
 					cost.substring(1);
 					cost = parseInt(cost);
 
