@@ -66,9 +66,6 @@ module.exports = {
 						if (!cost) {
 							message.reply('esse item não existe!');
 						}
-						else if (cost > bal) {
-							message.reply('não tens dinheiro suficiente!');
-						}
 						else {
 							refI.get().then(docI => {
 								if (!docI.exists) {
@@ -82,6 +79,9 @@ module.exports = {
 
 								if (iHuds.includes(itemName)) {
 									message.reply('já tens este HUD!');
+								}
+								else if (cost > bal) {
+									message.reply('não tens dinheiro suficiente!');
 								}
 								else {
 									iHuds.push(itemName);
