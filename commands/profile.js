@@ -1,6 +1,9 @@
 const { MessageAttachment } = require('discord.js');
 const { registerFont, createCanvas, loadImage } = require('canvas');
 registerFont('./fonts/comic.ttf', { family: 'Comic Sans MS' });
+registerFont('./fonts/comicb.ttf', { family: 'bold Comic Sans MS' });
+registerFont('./fonts/comici.ttf', { family: 'italic Comic Sans MS' });
+registerFont('./fonts/comicz.ttf', { family: 'bold-italic Sans MS' });
 
 function convert(value) {
 	if (value >= 1000000) {
@@ -232,7 +235,7 @@ module.exports = {
 					ctx.fill();
 					ctx.globalAlpha = 1;
 
-					ctx.font = 'bold 20px Comic Sans MS';
+					ctx.font = '20px bold Comic Sans MS';
 					ctx.shadowColor = 'black';
 					ctx.shadowBlur = 4;
 					ctx.shadowOffsetX = 4;
