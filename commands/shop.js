@@ -35,17 +35,17 @@ module.exports = {
 				),
 			bEmbed = new MessageEmbed(mainEmbed)
 				.spliceFields(0, 2, [
-					{ name: 'Black', value: `${huds.black}`, inline: true },
-					{ name: 'Blue', value: huds.blue, inline: true },
-					{ name: 'Brown', value: huds.brown, inline: true },
-					{ name: 'Green', value: huds.green, inline: true },
-					{ name: 'Grey', value: huds.grey, inline: true },
-					{ name: 'Orange', value: huds.orange, inline: true },
-					{ name: 'Pink', value: huds.pink, inline: true },
-					{ name: 'Purple', value: huds.purple, inline: true },
-					{ name: 'Red', value: huds.red, inline: true },
-					{ name: 'White', value: huds.white, inline: true },
-					{ name: 'Yellow', value: huds.yellow, inline: true },
+					{ name: 'Black', value: `¤${huds.black}`, inline: true },
+					{ name: 'Blue', value: `¤${huds.blue}`, inline: true },
+					{ name: 'Brown', value: `¤${huds.brown}`, inline: true },
+					{ name: 'Green', value: `¤${huds.green}`, inline: true },
+					{ name: 'Grey', value: `¤${huds.grey}`, inline: true },
+					{ name: 'Orange', value: `¤${huds.orange}`, inline: true },
+					{ name: 'Pink', value: `¤${huds.pink}`, inline: true },
+					{ name: 'Purple', value: `¤${huds.purple}`, inline: true },
+					{ name: 'Red', value: `¤${huds.red}`, inline: true },
+					{ name: 'White', value: `¤${huds.white}`, inline: true },
+					{ name: 'Yellow', value: `¤${huds.yellow}`, inline: true },
 				])
 				.setTitle('Loja - HUD')
 				.setDescription('`+shop buy hud [item]` para comprar.');
