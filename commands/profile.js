@@ -1,5 +1,6 @@
 const { MessageAttachment } = require('discord.js');
-const { createCanvas, loadImage } = require('canvas');
+const { registerFont, createCanvas, loadImage } = require('canvas');
+registerFont('./fonts/comic.ttf', { family: 'Comic Sans MS' });
 
 function convert(value) {
 	if (value >= 1000000) {
@@ -231,7 +232,7 @@ module.exports = {
 					ctx.fill();
 					ctx.globalAlpha = 1;
 
-					ctx.font = 'bold 20px Helvetica';
+					ctx.font = 'bold 20px Comic Sans MS';
 					ctx.shadowColor = 'black';
 					ctx.shadowBlur = 4;
 					ctx.shadowOffsetX = 4;
@@ -240,11 +241,11 @@ module.exports = {
 					ctx.fillStyle = 'white';
 					ctx.fillText(`${user.tag}`, 375, 60);
 
-					ctx.font = '16px Helvetica';
+					ctx.font = '16px Comic Sans MS';
 					ctx.fillStyle = 'white';
 					ctx.fillText(`${nick}`, 375, 80);
 
-					ctx.font = '18px Helvetica';
+					ctx.font = '18px Comic Sans MS';
 					ctx.textAlign = 'left';
 					ctx.fillText(`XP Total: ${xp}`, 160, 125);
 					ctx.fillText(`Nível: ${newLevel}`, 160, 155);
@@ -253,7 +254,7 @@ module.exports = {
 					ctx.textAlign = 'right';
 					ctx.fillText(`Capital: ¤${bal}`, 585, 140);
 
-					ctx.font = '18px Helvetica';
+					ctx.font = '18px Comic Sans MS';
 					ctx.fillStyle = 'white';
 					ctx.textAlign = 'left';
 					ctx.fillText('Descrição:', 160, 245);
@@ -272,7 +273,7 @@ module.exports = {
 					ctx.strokeStyle = 'white';
 					ctx.stroke();
 
-					ctx.font = '18px Helvetica';
+					ctx.font = '18px Comic Sans MS';
 					ctx.shadowColor = 'black';
 					ctx.shadowBlur = 4;
 					ctx.shadowOffsetX = 4;
