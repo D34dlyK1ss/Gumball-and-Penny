@@ -167,7 +167,7 @@ module.exports = {
 							db.collection('perfis').doc(message.author.id).update({
 								hud: newHud,
 							}).then(() => {
-								message.reply(`alteraste o teu HUD para ${newHud.charAt(0).toUpperCase() + newHud.slice(1)}`);
+								message.reply(`alteraste o teu HUD para **${newHud.charAt(0).toUpperCase() + newHud.slice(1)}**`);
 							}).catch(err => { console.error(err); });
 						}
 					});
