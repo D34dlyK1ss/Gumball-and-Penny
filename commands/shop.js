@@ -23,7 +23,7 @@ module.exports = {
 				.setFooter(`${message.author.tag}`, `${message.author.displayAvatarURL()}`)
 				.addFields(
 					{ name: 'A - Imagens de Fundo', value: '\u200B' },
-					{ name: 'B - HUD', value: '\u200B' },
+					{ name: 'B - HUDs', value: '\u200B' },
 				);
 		const aEmbed = new MessageEmbed(mainEmbed)
 				.spliceFields(0, 2, [
@@ -60,7 +60,7 @@ module.exports = {
 				else {
 					const bal = docP.get('balance'),
 						item = bEmbed.fields.find(thing => thing.name == args[1].toLowerCase());
-					let cost = bEmbed.fields.find(() => item.value.startsWith('¤'));
+					let cost = bEmbed.fields.find(thing => thing.name(item).value);
 					cost.substring(1);
 					cost = parseInt(cost);
 
@@ -79,7 +79,7 @@ module.exports = {
 							const huds = docI.get('huds');
 
 							if (huds.includes(item)) {
-								message.reply('não tens dinheiro suficiente!');
+								message.reply('já tens este HUD!');
 							}
 							else {
 								refP.update({
