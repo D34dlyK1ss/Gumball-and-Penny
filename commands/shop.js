@@ -18,10 +18,11 @@ module.exports = {
 				.setTitle('Loja')
 				.setDescription(`Bem vindo à nossa loja!
 			Aqui poderás comprar algumas coisas com o dinheiro que acumulaste até agora.
-			Usa \`+shop [número]\` para selecionares uma categoria.`)
+			Usa as reações para selecionares uma categoria.`)
 				.setFooter(`${message.author.tag}`, `${message.author.displayAvatarURL()}`)
 				.addFields(
 					{ name: 'A - HUD', value: '\u200B' },
+					{ name: '\u200B', value: 'Em breve serão adicionadas mais categorias.' },
 				);
 		const aEmbed = new MessageEmbed(mainEmbed)
 			.spliceFields(0, 2, [
