@@ -80,7 +80,9 @@ module.exports = {
 
 								const iHuds = docI.get('huds');
 
-								if (iHuds.includes(itemName)) {
+								return console.log(iHuds);
+
+								/* if (iHuds.includes(itemName)) {
 									message.reply('já tens este HUD!');
 								}
 								else {
@@ -93,7 +95,7 @@ module.exports = {
 									}).then(() => {
 										message.reply(`compraste o HUD **${itemName.charAt(0).toUpperCase() + itemName.slice(1)}**`);
 									});
-								}
+								}*/
 							});
 						}
 					}
