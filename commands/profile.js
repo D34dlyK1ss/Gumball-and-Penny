@@ -11,10 +11,10 @@ function convert(value) {
 	return value;
 }
 
-function toHex(color) {
+function toHex(hud) {
 	let hex;
 
-	switch (color) {
+	switch (hud) {
 	case 'black':
 		hex = '#202020';
 		break;
@@ -60,7 +60,7 @@ module.exports = {
 	name: 'profile',
 	aliases: ['p'],
 	category: 'Perfil',
-	description: 'Vê o teu perfil ou o de alguém!\nOpções disponíveis: `create`, `setcolor`, `setnickname`, `setdescription`',
+	description: 'Vê o teu perfil ou o de alguém!\nOpções disponíveis: `create`, `sethud`, `setnickname`, `setdescription`',
 	usage: '`+profile [opcional - opção | @membro]`',
 
 	execute(bot, message, command, args, db) {
@@ -82,7 +82,7 @@ module.exports = {
 				else {
 					db.collection('perfis').doc(message.author.id).set({
 						balance: 0,
-						color: 'grey',
+						hud: 'grey',
 						description: 'N/A',
 						id: user.id,
 						lastDaily: '01/01/1970',
@@ -140,7 +140,7 @@ module.exports = {
 				}
 			});
 			break;
-		case 'setcolor':
+		case 'sethud':
 			refP.get().then(docP => {
 				if (!docP.exists) {
 					if (user == message.author) {
@@ -149,15 +149,18 @@ module.exports = {
 				}
 				else {
 					refI.get().then(docI => {
-						const colors = docI.get('huds'),
-							newColor = args[1];
+						const huds = docI.get('huds'),
+							newHud = args[1];
 
-						if (!colors.includes(newColor)) {
+						if (!newHud || newHud == '') {
+							message.reply('não escolheste um HUD!');
+						}
+						else if (!huds.includes(newHud)) {
 							message.reply('não tens esse HUD!');
 						}
 						else {
 							db.collection('perfis').doc(message.author.id).update({
-								color: newColor,
+								hud: newHud,
 							}).catch(err => { console.error(err); });
 						}
 					});
@@ -184,7 +187,7 @@ module.exports = {
 					const nick = doc.get('nickname'),
 						desc = doc.get('description'),
 						bal = doc.get('balance'),
-						color = doc.get('color'),
+						hud = doc.get('hud'),
 						xp = doc.get('xp'),
 						level = doc.get('level');
 
@@ -205,7 +208,7 @@ module.exports = {
 					const canvas = createCanvas(640, 360),
 						ctx = canvas.getContext('2d');
 
-					const bg = await loadImage(`images/profile/profile (${color}).png`);
+					const bg = await loadImage(`images/profile/profile (${hud}).png`);
 					ctx.drawImage(bg, 0, 0, canvas.width, canvas.height);
 
 					ctx.beginPath();
@@ -216,7 +219,7 @@ module.exports = {
 					ctx.fill();
 
 					ctx.globalAlpha = 0.6;
-					ctx.fillStyle = toHex(color);
+					ctx.fillStyle = toHex(hud);
 					ctx.fillRect(160, 172, ((100 / (nextLevel - prevLevel)) * (xp - prevLevel) * 4.25), 30);
 					ctx.fill();
 					ctx.globalAlpha = 1;

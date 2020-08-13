@@ -63,7 +63,7 @@ module.exports = {
 							cost = huds[itemName];
 
 						if (!cost) {
-							message.reply('esse item não existe!');
+							message.reply('esse item não está à venda!');
 						}
 						else {
 							refI.get().then(docI => {
