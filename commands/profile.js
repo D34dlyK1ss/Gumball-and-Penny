@@ -72,7 +72,7 @@ module.exports = {
 
 		switch (option) {
 		case 'create':
-			ref.get().then(doc => {
+			ref.get().then(async doc => {
 				if (doc.exists) {
 					if (user == message.author) {
 						message.channel.send('Já tens um perfil criado, não podes criar outro! 💢');
@@ -89,9 +89,12 @@ module.exports = {
 						name: user.tag,
 						nickname: 'N/A',
 						xp: 0,
-					}).then(() => {
-						message.reply('o teu perfil foi criado! Adiciona uma descricão com `+profile setdescription [descrição]`!');
-					}).catch(err => { console.error(err); });
+					});
+					await db.collection('inventário').doc(message.author.id).set({
+						backgrounds: [],
+						huds: [],
+					});
+					await message.reply('o teu perfil foi criado! Adiciona uma descricão com `+profile setdescription [descrição]`!');
 				}
 			});
 			break;
