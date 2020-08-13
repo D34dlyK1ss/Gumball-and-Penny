@@ -95,7 +95,6 @@ module.exports = {
 						xp: 0,
 					}).then(() => {
 						refI.set({
-							backgrounds: [],
 							huds: ['grey'],
 						}).then(() => {
 							message.reply('o teu perfil foi criado! Adiciona uma descricão com `+profile setdescription [descrição]`!');

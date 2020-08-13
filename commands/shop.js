@@ -25,29 +25,20 @@ module.exports = {
 					{ name: 'B - HUDs', value: '\u200B' },
 				);
 		const aEmbed = new MessageEmbed(mainEmbed)
-				.spliceFields(0, 2, [
-					{ name: 'N/A', value: '\u200B' },
-				])
-				.setTitle('Loja - Imagens de Fundo')
-				.setDescription('`+shop buy background [item]` para comprar.')
-				.addFields(
-
-				),
-			bEmbed = new MessageEmbed(mainEmbed)
-				.spliceFields(0, 2, [
-					{ name: 'Black', value: `¤${huds.black}`, inline: true },
-					{ name: 'Blue', value: `¤${huds.blue}`, inline: true },
-					{ name: 'Brown', value: `¤${huds.brown}`, inline: true },
-					{ name: 'Green', value: `¤${huds.green}`, inline: true },
-					{ name: 'Orange', value: `¤${huds.orange}`, inline: true },
-					{ name: 'Pink', value: `¤${huds.pink}`, inline: true },
-					{ name: 'Purple', value: `¤${huds.purple}`, inline: true },
-					{ name: 'Red', value: `¤${huds.red}`, inline: true },
-					{ name: 'White', value: `¤${huds.white}`, inline: true },
-					{ name: 'Yellow', value: `¤${huds.yellow}`, inline: true },
-				])
-				.setTitle('Loja - HUD')
-				.setDescription('`+shop buy hud [item]` para comprar.');
+			.spliceFields(0, 2, [
+				{ name: 'Black', value: `¤${huds.black}`, inline: true },
+				{ name: 'Blue', value: `¤${huds.blue}`, inline: true },
+				{ name: 'Brown', value: `¤${huds.brown}`, inline: true },
+				{ name: 'Green', value: `¤${huds.green}`, inline: true },
+				{ name: 'Orange', value: `¤${huds.orange}`, inline: true },
+				{ name: 'Pink', value: `¤${huds.pink}`, inline: true },
+				{ name: 'Purple', value: `¤${huds.purple}`, inline: true },
+				{ name: 'Red', value: `¤${huds.red}`, inline: true },
+				{ name: 'White', value: `¤${huds.white}`, inline: true },
+				{ name: 'Yellow', value: `¤${huds.yellow}`, inline: true },
+			])
+			.setTitle('Loja - HUD')
+			.setDescription('`+shop buy hud [item]` para comprar.');
 
 		switch (option) {
 		case 'buy':
@@ -106,11 +97,9 @@ module.exports = {
 				}
 
 				const aF = (reaction, member) => reaction.emoji.name == '🇦' && member.id === message.author.id,
-					bF = (reaction, member) => reaction.emoji.name == '🇧' && member.id === message.author.id,
 					mainF = (reaction, member) => reaction.emoji.name == '↩️' && member.id === message.author.id;
 
 				const a = msg.createReactionCollector(aF, { time: 60000 }),
-					b = msg.createReactionCollector(bF, { time: 60000 }),
 					main = msg.createReactionCollector(mainF, { time: 60000 });
 
 				let onMain = true;
@@ -120,14 +109,6 @@ module.exports = {
 					onMain = false;
 					msg.reactions.removeAll();
 					msg.edit(aEmbed);
-					msg.react('↩️');
-				});
-
-				b.on('collect', async () => {
-					if (onMain == false) return;
-					onMain = false;
-					msg.reactions.removeAll();
-					msg.edit(bEmbed);
 					msg.react('↩️');
 				});
 

@@ -16,7 +16,6 @@ module.exports = {
 				.setThumbnail(`${message.author.displayAvatarURL()}`)
 				.addFields(
 					{ name: 'HUDs', value: 'Nenhum', inline: true },
-					{ name: 'Imagens de Fundo', value: 'Nenhuma', inline: true },
 				);
 
 		refP.get().then(docP => {
@@ -25,8 +24,7 @@ module.exports = {
 			}
 			else {
 				refI.get().then(docI => {
-					let iHuds = docI.get('huds'),
-						iBackgrounds = docI.get('backgrounds');
+					let iHuds = docI.get('huds');
 
 					if (!iHuds || iHuds == '')	{
 						iHuds = 'Nenhum';
@@ -35,17 +33,9 @@ module.exports = {
 						iHuds = `\`${iHuds.join('`, `')}\``;
 					}
 
-					if (!iBackgrounds || iBackgrounds == '')	{
-						iBackgrounds = 'Nenhuma';
-					}
-					else {
-						iBackgrounds = `\`${iBackgrounds.join('`, `')}\``;
-					}
-
 					const newIEmbed = new MessageEmbed (iEmbed)
-						.spliceFields(0, 2, [
+						.spliceFields(0, 1, [
 							{ name: 'HUDs', value: `${iHuds}`, inline: true },
-							{ name: 'Imagens de Fundo', value: `${iBackgrounds}`, inline: true },
 						]);
 					message.channel.send(newIEmbed);
 				});
