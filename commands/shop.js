@@ -1,5 +1,5 @@
 const { MessageEmbed } = require('discord.js');
-const { huds } = require('./pricelist.json');
+const { huds } = require('../pricelist.json');
 
 module.exports = {
 	name: 'shop',
