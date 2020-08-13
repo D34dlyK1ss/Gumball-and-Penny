@@ -31,7 +31,7 @@ function toHex(hud) {
 		hex = '#808080';
 		break;
 	case 'l':
-		hex = '#202020';
+		hex = '#101010';
 		break;
 	case 'lux':
 		hex = '#500090';
@@ -225,7 +225,7 @@ module.exports = {
 					ctx.fillRect(160, 172, 425, 30);
 					ctx.fill();
 
-					ctx.globalAlpha = 0.6;
+					ctx.globalAlpha = 0.7;
 					ctx.fillStyle = toHex(hud);
 					ctx.fillRect(160, 172, ((100 / (nextLevel - prevLevel)) * (xp - prevLevel) * 4.25), 30);
 					ctx.fill();
