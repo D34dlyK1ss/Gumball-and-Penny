@@ -88,6 +88,8 @@ module.exports = {
 
 								refI.update({
 									huds: huds.push(item),
+								}).then(() => {
+									message.reply(`compraste o HUD **${item.charAt(0).toUpperCase() + item.slice(1)}**`);
 								});
 							}
 						});
