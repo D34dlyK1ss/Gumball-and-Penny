@@ -30,6 +30,9 @@ function toHex(hud) {
 	case 'grey':
 		hex = '#808080';
 		break;
+	case 'l':
+		hex = '#202020';
+		break;
 	case 'lux':
 		hex = '#500090';
 		break;
