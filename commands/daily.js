@@ -4,7 +4,7 @@ moment.locale('pt');
 module.exports = {
 	name: 'daily',
 	aliases: ['d'],
-	category: 'Perfil',
+	category: 'Economia e Perfil',
 	description: 'Receberás ¤250 a cada dia!',
 	usage: '`+daily`',
 

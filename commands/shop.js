@@ -4,7 +4,7 @@ const { huds } = require('../pricelist.json');
 module.exports = {
 	name: 'shop',
 	aliases: ['s'],
-	category: 'Perfil',
+	category: 'Economia e Perfil',
 	description: 'Vai às compras!',
 	usage: '`+shop`',
 

@@ -9,7 +9,8 @@ module.exports = {
 
 	execute(bot, message, command, args) {
 		const { commands } = message.client,
-			update = '**Update:** Sistema de leveling adicionado.\nPor cada comando usado a cada minuto, XP será adicionado ao perfil.';
+			update = `**Update:** Loja adicionada!
+			Agora pode-se comprar HUDs para o perfil, por enquanto.`;
 		const helpEmbed = new Discord.MessageEmbed()
 			.setColor('#8000ff')
 			.setTitle('Ajuda')
@@ -23,7 +24,7 @@ module.exports = {
 				{ name: '🎰 Casino', value: '`coinflip`', inline: true },
 				{ name: '😁 Diversão', value: '`fact`, `match`, `random`, `say`, `which`', inline: true },
 				{ name: '🛠️ Doações', value: '`donate`', inline: true },
-				{ name: '💰 Perfil', value: '`balance`, `daily`, `give`, `profile`', inline: true },
+				{ name: '💰 Economia e Perfil', value: '`balance`, `daily`, `give`, `shop`, `profile`', inline: true },
 				{ name: '⚠️ Moderação', value: '`ban`, `clear`, `kick`', inline: true },
 				{ name: '🌐 Servidor', value: '`members`, `setprefix`, `userinfo`', inline: true },
 				{ name: '🛠️ Utilidade', value: '`avatar`, `invite`, `ping`, `support`', inline: true },

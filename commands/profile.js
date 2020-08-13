@@ -65,7 +65,7 @@ function toHex(hud) {
 module.exports = {
 	name: 'profile',
 	aliases: ['p'],
-	category: 'Perfil',
+	category: 'Economia e Perfil',
 	description: 'Vê o teu perfil ou o de alguém!\nOpções disponíveis: `create`, `sethud`, `setnickname`, `setdescription`',
 	usage: '`+profile [opcional - opção | @membro]`',
 

@@ -1,6 +1,6 @@
 module.exports = {
 	name: 'give',
-	category: 'Perfil',
+	category: 'Economia e Perfil',
 	description: 'Dá dinheiro a alguém!',
 	usage: '`+give [@membro] [quantia]`',
 
