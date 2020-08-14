@@ -111,7 +111,7 @@ bot.on('message', async message => {
 			else {
 				const level = doc.get('level'),
 					xp = doc.get('xp'),
-					add = Math.floor(Math.random() * 11) + 40;
+					add = Math.floor(Math.random() * 11) + 50;
 				const newXP = xp + add;
 
 				if (newXP > 2000000) return;
