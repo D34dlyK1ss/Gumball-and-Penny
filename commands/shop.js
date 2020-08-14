@@ -106,16 +106,16 @@ module.exports = {
 				}
 
 				const hudF = (reaction, member) => reaction.emoji.name == '🇦' && member.id === message.author.id,
-					hudPrevF = (reaction, member) => reaction.emoji.name == ('⬅️') && member.id === message.author.id,
-					hudNextF = (reaction, member) => reaction.emoji.name == ('➡️') && member.id === message.author.id,
+					PrevF = (reaction, member) => reaction.emoji.name == ('⬅️') && member.id === message.author.id,
+					NextF = (reaction, member) => reaction.emoji.name == ('➡️') && member.id === message.author.id,
 					mainF = (reaction, member) => reaction.emoji.name == '↩️' && member.id === message.author.id;
 
 				let page = 0;
 
 				const main = msg.createReactionCollector(mainF, { time: 60000 }),
 					hud = msg.createReactionCollector(hudF, { time: 60000 }),
-					hudPrevPage = msg.createReactionCollector(hudPrevF, { time: 60000 }),
-					hudNextPage = msg.createReactionCollector(hudNextF, { time: 60000 });
+					PrevPage = msg.createReactionCollector(PrevF, { time: 60000 }),
+					NextPage = msg.createReactionCollector(NextF, { time: 60000 });
 
 				let onMain = true,
 					onHud = false;
@@ -139,18 +139,20 @@ module.exports = {
 					await msg.react('↩️');
 				});
 
-				hudPrevPage.on('collect', async () => {
-					if (onHud == false) return;
+				PrevPage.on('collect', async () => {
+					if (onHud == true) {
+						msg.edit(hudEmbed);
+					}
 					if ((page--) < 0) return;
 					else page--;
-					msg.edit(hudEmbed);
 				});
 
-				hudNextPage.on('collect', async () => {
-					if (onHud == false) return;
+				NextPage.on('collect', async () => {
+					if (onHud == true) {
+						msg.edit(hudAnimeEmbed);
+					}
 					if ((page++) > 1) return;
 					else page++;
-					msg.edit(hudAnimeEmbed);
 				});
 			});
 			break;
