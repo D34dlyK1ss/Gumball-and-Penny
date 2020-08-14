@@ -7,6 +7,9 @@ const bot = new Discord.Client();
 // Propriedades default do bot
 const config = require('./config.json');
 
+// Recompensas de nível
+const rewards = require('./rewards.json');
+
 // Biblioteca para horários
 const schedule = require('node-schedule');
 
@@ -109,7 +112,8 @@ bot.on('message', async message => {
 				return;
 			}
 			else {
-				const level = doc.get('level'),
+				const rewardsArray = ['10', '20', '30', '40', '50', '60', '70', '80', '90', '100'],
+					level = doc.get('level'),
 					xp = doc.get('xp'),
 					add = Math.floor(Math.random() * 11) + 50;
 				const newXP = xp + add;
@@ -127,7 +131,21 @@ bot.on('message', async message => {
 						level: newLevel,
 					});
 
-					if (newLevel > level) message.channel.send(`🎉 Parabéns ${message.author}, subiste para o nível ${newLevel}! 🆙`);
+					if (newLevel > level) {
+						const bal = doc.get('balance'),
+							stringLevel = newLevel.toString(),
+							reward = rewards[`Level ${level}`];
+
+						if (rewardsArray.includes(stringLevel)) {
+							db.collection('perfis').doc(message.author.id).update({
+								balance: bal + reward,
+							});
+							message.channel.send(`🎉 Parabéns ${message.author}, subiste para o nível ${newLevel} e recebeste ¤${reward} 🆙💰`);
+						}
+						else {
+							message.channel.send(`🎉 Parabéns ${message.author}, subiste para o nível ${newLevel}! 🆙`);
+						}
+					}
 				}
 			}
 		});
