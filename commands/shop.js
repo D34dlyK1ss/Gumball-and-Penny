@@ -24,7 +24,10 @@ module.exports = {
 					{ name: 'A - HUD', value: '\u200B' },
 					{ name: '\u200B', value: 'Em breve serão adicionadas mais categorias.' },
 				);
-		const aEmbed = new MessageEmbed(mainEmbed)
+
+		const hudEmbed = new MessageEmbed(mainEmbed)
+			.setTitle('Loja - HUD (Cores)')
+			.setDescription('`+shop buy hud [item]` para comprar.')
 			.spliceFields(0, 2, [
 				{ name: 'Black', value: `¤${huds.black}`, inline: true },
 				{ name: 'Blue', value: `¤${huds.blue}`, inline: true },
@@ -36,9 +39,16 @@ module.exports = {
 				{ name: 'Red', value: `¤${huds.red}`, inline: true },
 				{ name: 'White', value: `¤${huds.white}`, inline: true },
 				{ name: 'Yellow', value: `¤${huds.yellow}`, inline: true },
-			])
-			.setTitle('Loja - HUD')
-			.setDescription('`+shop buy hud [item]` para comprar.');
+			]);
+
+		const hudAnimeEmbed = new MessageEmbed(hudEmbed)
+			.setTitle('Loja - HUD (Anime)')
+			.spliceFields(0, 10, [
+				{ name: 'Giorno', value: `¤${huds.giorno}`, inline: true },
+				{ name: 'Jojo4', value: `¤${huds.jojo4}`, inline: true },
+				{ name: 'L', value: `¤${huds.l}`, inline: true },
+				{ name: 'Lelouch', value: `¤${huds.lelouch}`, inline: true },
+			]);
 
 		switch (option) {
 		case 'buy':
@@ -95,21 +105,20 @@ module.exports = {
 					return;
 				}
 
-				const aF = (reaction, member) => reaction.emoji.name == '🇦' && member.id === message.author.id,
+				const hudF = (reaction, member) => reaction.emoji.name == '🇦' && member.id === message.author.id,
+					hudPrevF = (reaction, member) => reaction.emoji.name == ('⬅️') && member.id === message.author.id,
+					hudNextF = (reaction, member) => reaction.emoji.name == ('➡️') && member.id === message.author.id,
 					mainF = (reaction, member) => reaction.emoji.name == '↩️' && member.id === message.author.id;
 
-				const a = msg.createReactionCollector(aF, { time: 60000 }),
-					main = msg.createReactionCollector(mainF, { time: 60000 });
+				let page = 0;
 
-				let onMain = true;
+				const main = msg.createReactionCollector(mainF, { time: 60000 }),
+					hud = msg.createReactionCollector(hudF, { time: 60000 }),
+					hudPrevPage = msg.createReactionCollector(hudPrevF, { time: 60000 }),
+					hudNextPage = msg.createReactionCollector(hudNextF, { time: 60000 });
 
-				a.on('collect', async () => {
-					if (onMain == false) return;
-					onMain = false;
-					msg.reactions.removeAll();
-					msg.edit(aEmbed);
-					msg.react('↩️');
-				});
+				let onMain = true,
+					onHud = false;
 
 				main.on('collect', async () => {
 					if (onMain == true) return;
@@ -117,7 +126,31 @@ module.exports = {
 					msg.reactions.removeAll();
 					msg.edit(mainEmbed);
 					msg.react('🇦');
-					await msg.react('🇧');
+				});
+
+				hud.on('collect', async () => {
+					if (onMain == false) return;
+					onMain = false;
+					onHud = true;
+					msg.reactions.removeAll();
+					msg.edit(hudEmbed);
+					msg.react('⬅️');
+					await msg.react('➡️');
+					await msg.react('↩️');
+				});
+
+				hudPrevPage.on('collect', async () => {
+					if (onHud == false) return;
+					if ((page--) < 0) return;
+					else page--;
+					msg.edit(hudEmbed);
+				});
+
+				hudNextPage.on('collect', async () => {
+					if (onHud == false) return;
+					if ((page++) > 1) return;
+					else page++;
+					msg.edit(hudAnimeEmbed);
 				});
 			});
 			break;
