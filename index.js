@@ -111,9 +111,9 @@ bot.on('message', async message => {
 			else {
 				const level = doc.get('level'),
 					xp = doc.get('xp'),
-					add = Math.floor(Math.random() * 10) + 10;
+					add = Math.floor(Math.random() * 11) + 20;
 				const newXP = xp + add;
-				const newLevel = Math.floor(Math.sqrt(newXP / 100));
+				const newLevel = Math.floor(Math.sqrt(newXP / 190));
 
 				db.collection('perfis').doc(message.author.id).update({
 					xp: newXP,
