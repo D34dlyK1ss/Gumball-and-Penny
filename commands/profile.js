@@ -96,7 +96,7 @@ module.exports = {
 						description: 'N/A',
 						id: user.id,
 						lastDaily: '01/01/1970',
-						level: 1,
+						level: 0,
 						name: user.tag,
 						nickname: 'N/A',
 						xp: 0,
