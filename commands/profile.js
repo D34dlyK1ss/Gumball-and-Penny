@@ -219,7 +219,7 @@ module.exports = {
 					const canvas = createCanvas(640, 360),
 						ctx = canvas.getContext('2d');
 
-					const bg = await loadImage(`images/profile/profile (${hud}).png`);
+					const bg = await loadImage(`images/profile/hud (${hud}).png`);
 					ctx.drawImage(bg, 0, 0, canvas.width, canvas.height);
 
 					ctx.beginPath();
