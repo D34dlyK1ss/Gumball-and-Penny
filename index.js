@@ -122,11 +122,12 @@ bot.on('message', async message => {
 					xp: newXP,
 				});
 
-				if (newLevel > level) {
+				if (newLevel != level) {
 					db.collection('perfis').doc(message.author.id).update({
 						level: newLevel,
 					});
-					message.channel.send(`🎉 Parabéns ${message.author}, subiste para o nível ${newLevel}! 🆙`);
+
+					if (newLevel > level) message.channel.send(`🎉 Parabéns ${message.author}, subiste para o nível ${newLevel}! 🆙`);
 				}
 			}
 		});
