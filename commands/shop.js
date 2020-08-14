@@ -141,18 +141,32 @@ module.exports = {
 
 				PrevPage.on('collect', async () => {
 					if (onHud == true) {
-						msg.edit(hudEmbed);
+						if ((page--) < 0) {
+							return;
+						}
+						else {
+							page--;
+							msg.edit(hudEmbed);
+						}
 					}
-					if ((page--) < 0) return;
-					else page--;
+					else {
+						return;
+					}
 				});
 
 				NextPage.on('collect', async () => {
 					if (onHud == true) {
-						msg.edit(hudAnimeEmbed);
+						if ((page++) > 1) {
+							return;
+						}
+						else {
+							page++;
+							msg.edit(hudAnimeEmbed);
+						}
 					}
-					if ((page++) > 1) return;
-					else page++;
+					else {
+						return;
+					}
 				});
 			});
 			break;
