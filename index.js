@@ -111,19 +111,19 @@ bot.on('message', async message => {
 			else {
 				const level = doc.get('level'),
 					xp = doc.get('xp'),
-					add = Math.floor(Math.random() * 10) + 50;
-				const nextLevel = 500 * Math.round(level * (level + 1) / 2),
-					newXP = xp + add;
+					add = Math.floor(Math.random() * 10) + 10;
+				const newXP = xp + add;
+				const newLevel = Math.floor(Math.sqrt(newXP / 100));
 
 				db.collection('perfis').doc(message.author.id).update({
 					xp: newXP,
 				});
 
-				if (newXP >= nextLevel) {
+				if (newLevel > level) {
 					db.collection('perfis').doc(message.author.id).update({
-						level: level + 1,
+						level: newLevel,
 					});
-					message.channel.send(`🎉 Parabéns ${message.author}, subiste para o nível ${level + 1}! 🆙`);
+					message.channel.send(`🎉 Parabéns ${message.author}, subiste para o nível ${newLevel}! 🆙`);
 				}
 			}
 		});
