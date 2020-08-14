@@ -113,7 +113,10 @@ bot.on('message', async message => {
 					xp = doc.get('xp'),
 					add = Math.floor(Math.random() * 11) + 20;
 				const newXP = xp + add;
-				const newLevel = Math.floor(Math.sqrt(newXP / 190));
+
+				if (newXP > 2000000) return;
+
+				const newLevel = Math.floor(Math.sqrt(newXP / 2000000) * 100);
 
 				db.collection('perfis').doc(message.author.id).update({
 					xp: newXP,

@@ -199,22 +199,13 @@ module.exports = {
 						desc = doc.get('description'),
 						bal = doc.get('balance'),
 						hud = doc.get('hud'),
-						xp = doc.get('xp'),
-						level = doc.get('level');
+						xp = doc.get('xp');
 
-					let nextLevel = 500 * Math.round(level * (level + 1) / 2),
-						prevLevel = 500 * Math.round(level * (level - 1) / 2),
-						newLevel = level,
-						xpToNext = xp - prevLevel,
-						xpNeeded = nextLevel - prevLevel;
-
-					if (xp >= nextLevel) {
-						newLevel = level + 1;
-						nextLevel = 500 * Math.round(newLevel * (newLevel + 1) / 2),
-						prevLevel = 500 * Math.round(newLevel * (newLevel - 1) / 2);
+					const level = Math.floor(Math.sqrt(xp / 2000000) * 100),
+						prevLevel = Math.round(Math.pow((level - 1) / 100, 2) * 2000000),
+						nextLevel = Math.round(Math.pow((level + 1) / 100, 2) * 2000000);
+					const xpNeeded = nextLevel - prevLevel,
 						xpToNext = xp - prevLevel;
-						xpNeeded = nextLevel - prevLevel;
-					}
 
 					const canvas = createCanvas(640, 360),
 						ctx = canvas.getContext('2d');
@@ -251,7 +242,7 @@ module.exports = {
 					ctx.font = '18px Comic Sans MS';
 					ctx.textAlign = 'left';
 					ctx.fillText(`XP Total: ${xp}`, 160, 125);
-					ctx.fillText(`Nível: ${newLevel}`, 160, 155);
+					ctx.fillText(`Nível: ${level}`, 160, 155);
 
 					ctx.fillStyle = 'gold';
 					ctx.textAlign = 'right';
