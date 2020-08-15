@@ -18,37 +18,52 @@ module.exports = {
 				.setTitle('Loja')
 				.setDescription(`Bem vindo à nossa loja!
 			Aqui poderás comprar algumas coisas com o dinheiro que acumulaste até agora.
-			Usa as reações para selecionares uma categoria.`)
+			Usa \`+shop [categoria]\` para selecionares uma categoria.`)
 				.setFooter(`${message.author.tag}`, `${message.author.displayAvatarURL()}`)
 				.addFields(
-					{ name: 'A - HUD', value: '\u200B' },
-					{ name: '\u200B', value: 'Em breve serão adicionadas mais categorias.' },
+					{ name: 'HUDs', value: '\u200B' },
 				);
 
 		const hudEmbed = new MessageEmbed(mainEmbed)
-			.setTitle('Loja - HUD (Cores)')
-			.setDescription('`+shop buy hud [item]` para comprar.')
-			.spliceFields(0, 2, [
-				{ name: 'Black', value: `¤${huds.black}`, inline: true },
-				{ name: 'Blue', value: `¤${huds.blue}`, inline: true },
-				{ name: 'Brown', value: `¤${huds.brown}`, inline: true },
-				{ name: 'Green', value: `¤${huds.green}`, inline: true },
-				{ name: 'Orange', value: `¤${huds.orange}`, inline: true },
-				{ name: 'Pink', value: `¤${huds.pink}`, inline: true },
-				{ name: 'Purple', value: `¤${huds.purple}`, inline: true },
-				{ name: 'Red', value: `¤${huds.red}`, inline: true },
-				{ name: 'White', value: `¤${huds.white}`, inline: true },
-				{ name: 'Yellow', value: `¤${huds.yellow}`, inline: true },
-			]);
+				.setTitle('Loja - HUDs')
+				.setDescription('`+shop huds [sub-categoria]` para selecionares uma sub-categoria.')
+				.spliceFields(0, 2, [
+					{ name: 'Cores', value: '\u200B', inline: true },
+					{ name: 'Anime', value: '\u200B', inline: true },
+					{ name: 'Jogos', value: '\u200B', inline: true },
+				]),
+
+			hudColorsEmbed = new MessageEmbed(hudEmbed)
+				.setTitle('Loja - HUDs (Cores)')
+				.setDescription('`+shop buy hud [item]` para comprar.')
+				.spliceFields(0, 3, [
+					{ name: 'Black', value: `¤${huds.black}`, inline: true },
+					{ name: 'Blue', value: `¤${huds.blue}`, inline: true },
+					{ name: 'Brown', value: `¤${huds.brown}`, inline: true },
+					{ name: 'Green', value: `¤${huds.green}`, inline: true },
+					{ name: 'Orange', value: `¤${huds.orange}`, inline: true },
+					{ name: 'Pink', value: `¤${huds.pink}`, inline: true },
+					{ name: 'Purple', value: `¤${huds.purple}`, inline: true },
+					{ name: 'Red', value: `¤${huds.red}`, inline: true },
+					{ name: 'White', value: `¤${huds.white}`, inline: true },
+					{ name: 'Yellow', value: `¤${huds.yellow}`, inline: true },
+				]);
 
 		const hudAnimeEmbed = new MessageEmbed(hudEmbed)
-			.setTitle('Loja - HUD (Anime)')
-			.spliceFields(0, 10, [
-				{ name: 'Giorno', value: `¤${huds.giorno}`, inline: true },
-				{ name: 'Jojo4', value: `¤${huds.jojo4}`, inline: true },
-				{ name: 'L', value: `¤${huds.l}`, inline: true },
-				{ name: 'Lelouch', value: `¤${huds.lelouch}`, inline: true },
-			]);
+				.setTitle('Loja - HUDs (Anime)')
+				.spliceFields(0, 3, [
+					{ name: 'Giorno', value: `¤${huds.giorno}`, inline: true },
+					{ name: 'Jojo_Part4', value: `¤${huds.jojo_part4}`, inline: true },
+					{ name: 'L', value: `¤${huds.l}`, inline: true },
+					{ name: 'Lelouch1', value: `¤${huds.lelouch}`, inline: true },
+					{ name: 'Lelouch2', value: `¤${huds.lelouch2}`, inline: true },
+				]),
+
+			hudGamesEmbed = new MessageEmbed(hudEmbed)
+				.setTitle('Loja - HUDs (Anime)')
+				.spliceFields(0, 3, [
+					{ name: 'KDA_Akali', value: `¤${huds.kda_akali}`, inline: true },
+				]);
 
 		switch (option) {
 		case 'buy':
@@ -96,79 +111,24 @@ module.exports = {
 				break;
 			}
 			break;
+		case 'huds':
+			switch (args [1]) {
+			case 'cores':
+				message.channel.send(hudColorsEmbed);
+				break;
+			case 'anime':
+				message.channel.send(hudAnimeEmbed);
+				break;
+			case 'jogos':
+				message.channel.send(hudGamesEmbed);
+				break;
+			default:
+				message.channel.send(hudEmbed);
+				break;
+			}
+			break;
 		default:
-			message.channel.send(mainEmbed).then(async msg => {
-				try {
-					msg.react('🇦');
-				}
-				catch {
-					return;
-				}
-
-				const hudF = (reaction, member) => reaction.emoji.name == '🇦' && member.id === message.author.id,
-					PrevF = (reaction, member) => reaction.emoji.name == ('⬅️') && member.id === message.author.id,
-					NextF = (reaction, member) => reaction.emoji.name == ('➡️') && member.id === message.author.id,
-					mainF = (reaction, member) => reaction.emoji.name == '↩️' && member.id === message.author.id;
-
-				let page = 0;
-
-				const main = msg.createReactionCollector(mainF, { time: 60000 }),
-					hud = msg.createReactionCollector(hudF, { time: 60000 }),
-					PrevPage = msg.createReactionCollector(PrevF, { time: 60000 }),
-					NextPage = msg.createReactionCollector(NextF, { time: 60000 });
-
-				let onMain = true,
-					onHud = false;
-
-				main.on('collect', async () => {
-					if (onMain == true) return;
-					onMain = true;
-					msg.reactions.removeAll();
-					msg.edit(mainEmbed);
-					msg.react('🇦');
-				});
-
-				hud.on('collect', async () => {
-					if (onMain == false) return;
-					onMain = false;
-					onHud = true;
-					msg.reactions.removeAll();
-					msg.edit(hudEmbed);
-					msg.react('⬅️');
-					await msg.react('➡️');
-					await msg.react('↩️');
-				});
-
-				PrevPage.on('collect', async () => {
-					if (onHud == true) {
-						if ((page--) < 0) {
-							return;
-						}
-						else {
-							page--;
-							msg.edit(hudEmbed);
-						}
-					}
-					else {
-						return;
-					}
-				});
-
-				NextPage.on('collect', async () => {
-					if (onHud == true) {
-						if ((page++) > 1) {
-							return;
-						}
-						else {
-							page++;
-							msg.edit(hudAnimeEmbed);
-						}
-					}
-					else {
-						return;
-					}
-				});
-			});
+			message.channel.send(mainEmbed);
 			break;
 		}
 	},
