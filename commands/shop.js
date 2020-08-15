@@ -31,6 +31,7 @@ module.exports = {
 					{ name: 'Cores', value: '\u200B', inline: true },
 					{ name: 'Anime', value: '\u200B', inline: true },
 					{ name: 'Jogos', value: '\u200B', inline: true },
+					{ name: 'Cartoons', value: '\u200B', inline: true },
 				]),
 
 			hudColorsEmbed = new MessageEmbed(hudEmbed)
@@ -65,7 +66,14 @@ module.exports = {
 				.setDescription('`+shop buy hud [item]` para comprar.')
 				.spliceFields(0, 3, [
 					{ name: 'KDA_Akali', value: `¤${huds.kda_akali}`, inline: true },
-				]);
+				]),
+				
+			hudCartoonsEmbed = new MessageEmbed(hudEmbed)
+				.setTitle('Loja - HUDs (Cartoons)')
+				.setDescription('`+shop buy hud [item]` para comprar.')
+				.spliceFields(0, 3, [
+					{ name: 'Gumball1', value: `¤${huds.gumball1}`, inline: true },
+				]),;
 
 		switch (option) {
 		case 'buy':
@@ -123,6 +131,9 @@ module.exports = {
 				break;
 			case 'jogos':
 				message.channel.send(hudGamesEmbed);
+				break;
+			case 'cartoons':
+				message.channel.send(hudCartoonsEmbed);
 				break;
 			default:
 				message.channel.send(hudEmbed);
