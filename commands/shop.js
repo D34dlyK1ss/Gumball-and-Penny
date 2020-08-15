@@ -51,16 +51,18 @@ module.exports = {
 
 		const hudAnimeEmbed = new MessageEmbed(hudEmbed)
 				.setTitle('Loja - HUDs (Anime)')
+				.setDescription('`+shop buy hud [item]` para comprar.')
 				.spliceFields(0, 3, [
 					{ name: 'Giorno', value: `¤${huds.giorno}`, inline: true },
 					{ name: 'Jojo_Part4', value: `¤${huds.jojo_part4}`, inline: true },
 					{ name: 'L', value: `¤${huds.l}`, inline: true },
-					{ name: 'Lelouch1', value: `¤${huds.lelouch}`, inline: true },
+					{ name: 'Lelouch1', value: `¤${huds.lelouch1}`, inline: true },
 					{ name: 'Lelouch2', value: `¤${huds.lelouch2}`, inline: true },
 				]),
 
 			hudGamesEmbed = new MessageEmbed(hudEmbed)
-				.setTitle('Loja - HUDs (Anime)')
+				.setTitle('Loja - HUDs (Jogos)')
+				.setDescription('`+shop buy hud [item]` para comprar.')
 				.spliceFields(0, 3, [
 					{ name: 'KDA_Akali', value: `¤${huds.kda_akali}`, inline: true },
 				]);
