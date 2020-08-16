@@ -9,15 +9,15 @@ module.exports = {
 			ref = db.collection('perfis').doc(user.id);
 
 		ref.get().then(doc => {
+			const money = parseInt(args[1]);
 			if (!doc.exists) {
 				message.reply('ainda não criaste um perfil! Para criares um perfil usa `+profile create`!');
 			}
-			else if (args[1] == null || args[1] == '' || (args[0] != 'cara' && args[0] != 'coroa')) {
+			else if (!Number.isInteger(money) || (args[0] != 'cara' && args[0] != 'coroa')) {
 				message.channel.send('Sintaxe errada! Como usar: `+coinflip [cara/coroa] [quantidade]`');
 			}
 			else {
-				const bal = doc.get('balance'),
-					money = args[1];
+				const bal = doc.get('balance');
 
 				if ((bal + money) > 999999999) {
 					message.reply('não podes ganhar mais dinheiro! 😧');

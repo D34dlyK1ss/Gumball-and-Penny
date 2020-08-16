@@ -9,6 +9,9 @@ module.exports = {
 		if (args == '') {
 			rnd = Math.floor(Math.random() * 100) + 1;
 		}
+		else if (!Number.isInteger(rnd)) {
+			message.reply('isso não é um número!');
+		}
 		else {
 			rnd = Math.floor(Math.random() * args) + 1;
 		}

@@ -14,17 +14,22 @@ module.exports = {
 		}
 		else {
 			let number = parseInt(args);
-			if (number > 100) {
-				number = 100;
+			if (Number.isInteger(number)) {
+				if (number > 100) {
+					number = 100;
+				}
+				message.channel.bulkDelete(number, true).then(deleted => {
+					if (number == 1) {
+						message.channel.send('Apagámos `1` mensagem!').then(msg => msg.delete({ timeout: 5000 }));
+					}
+					else {
+						message.channel.send('Apagámos `' + deleted.size + '` mensagens!').then(msg => msg.delete({ timeout: 5000 }));
+					}
+				});
 			}
-			message.channel.bulkDelete(number, true).then(deleted => {
-				if (number == 1) {
-					message.channel.send('Apagámos `1` mensagem!').then(msg => msg.delete({ timeout: 5000 }));
-				}
-				else {
-					message.channel.send('Apagámos `' + deleted.size + '` mensagens!').then(msg => msg.delete({ timeout: 5000 }));
-				}
-			});
+			else {
+				return;
+			}
 		}
 	},
 };

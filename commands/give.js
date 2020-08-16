@@ -5,18 +5,31 @@ module.exports = {
 	usage: '`+give [@membro] [quantia]`',
 
 	execute(bot, message, command, args, db) {
-		const donor = message.author;
-		const refD = db.collection('perfis').doc(donor.id);
+
+		function getUserFromMention(mention) {
+
+			const matches = mention.match(/^<@!?(\d+)>$/);
+
+			if (!matches) return;
+
+			const id = matches[1];
+
+			return bot.users.cache.get(id);
+		}
+
+		const donor = message.author,
+			user = getUserFromMention(args [0]);
+		const refD = db.collection('perfis').doc(donor.id),
+			amount = parseInt(args[1]);
 
 		refD.get().then(docD => {
 			if (!docD.exists) {
 				message.reply('ainda não criaste um perfil! Para criares um perfil usa `+profile create`!');
 			}
-			else if (args == null || args == '') {
-				message.reply('não mencionaste ninguém!');
+			else if (user == null || !Number.isInteger(amount)) {
+				message.reply('Sintaxe errada! Como usar: +give [@membro] [quantia]');
 			}
 			else {
-				const user = message.mentions.users.first();
 				const refU = db.collection('perfis').doc(user.id);
 
 				refU.get().then(docU => {
@@ -34,8 +47,7 @@ module.exports = {
 					}
 					else {
 						const balD = docD.get('balance'),
-							balU = docU.get('balance'),
-							amount = parseInt(args[1]);
+							balU = docU.get('balance');
 
 						if (amount > balD) {
 							message.reply('não tens dinheiro suficiente!');
