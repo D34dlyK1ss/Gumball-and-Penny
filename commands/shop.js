@@ -24,67 +24,12 @@ module.exports = {
 					{ name: 'HUDs', value: '\u200B' },
 				);
 
-		const hudEmbed = new MessageEmbed(mainEmbed)
-				.setTitle('Loja - HUDs')
-				.setDescription('`+shop huds [sub-categoria]` para selecionares uma sub-categoria.')
-				.spliceFields(0, 2, [
-					{ name: 'Cores', value: '\u200B', inline: true },
-					{ name: 'Jogos', value: '\u200B', inline: true },
-					{ name: 'Anime', value: '\u200B', inline: true },
-					{ name: 'Cartoons', value: '\u200B', inline: true },
-					{ name: 'Vocaloids', value: '\u200B', inline: true },
-				]),
-
-			hudColorsEmbed = new MessageEmbed(hudEmbed)
-				.setTitle('Loja - HUDs (Cores)')
-				.setDescription('`+shop buy hud [item]` para comprar.')
-				.spliceFields(0, 3, [
-					{ name: 'Black', value: `¤${items.huds.black.price}`, inline: true },
-					{ name: 'Blue', value: `¤${items.huds.blue.price}`, inline: true },
-					{ name: 'Brown', value: `¤${items.huds.brown.price}`, inline: true },
-					{ name: 'Green', value: `¤${items.huds.green.price}`, inline: true },
-					{ name: 'Orange', value: `¤${items.huds.orange.price}`, inline: true },
-					{ name: 'Pink', value: `¤${items.huds.pink.price}`, inline: true },
-					{ name: 'Purple', value: `¤${items.huds.purple.price}`, inline: true },
-					{ name: 'Red', value: `¤${items.huds.red.price}`, inline: true },
-					{ name: 'Yellow', value: `¤${items.huds.yellow.price}`, inline: true },
-				]);
-
-		const hudAnimeEmbed = new MessageEmbed(hudEmbed)
-				.setTitle('Loja - HUDs (Anime)')
-				.setDescription('`+shop buy hud [item]` para comprar.')
-				.spliceFields(0, 3, [
-					{ name: 'Giorno', value: `¤${items.huds.giorno.price}`, inline: true },
-					{ name: 'Jojo_Part4', value: `¤${items.huds.jojo_part4.price}`, inline: true },
-					{ name: 'L', value: `¤${items.huds.l.price}`, inline: true },
-					{ name: 'Lelouch1', value: `¤${items.huds.lelouch1.price}`, inline: true },
-					{ name: 'Lelouch2', value: `¤${items.huds.lelouch2.price}`, inline: true },
-				]),
-
-			hudGamesEmbed = new MessageEmbed(hudEmbed)
-				.setTitle('Loja - HUDs (Jogos)')
-				.setDescription('`+shop buy hud [item]` para comprar.')
-				.spliceFields(0, 3, [
-					{ name: 'Eclipse_Leona', value: `¤${items.huds.eclipse_leona.price}`, inline: true },
-					{ name: 'Ditto', value: `¤${items.huds.ditto.price}`, inline: true },
-					{ name: 'KDA_Akali', value: `¤${items.huds.kda_akali.price}`, inline: true },
-					{ name: 'Kirby1', value: `¤${items.huds.kirby1.price}`, inline: true },
-					{ name: 'Kirby2', value: `¤${items.huds.kirby2.price}`, inline: true },
-				]),
-
-			hudCartoonsEmbed = new MessageEmbed(hudEmbed)
-				.setTitle('Loja - HUDs (Cartoons)')
-				.setDescription('`+shop buy hud [item]` para comprar.')
-				.spliceFields(0, 3, [
-					{ name: 'Gumball1', value: `¤${items.huds.gumball1.price}`, inline: true },
-				]),
-
-			hudVocaloidsEmbed = new MessageEmbed(hudEmbed)
-				.setTitle('Loja - HUDs (Cartoons)')
-				.setDescription('`+shop buy hud [item]` para comprar.')
-				.spliceFields(0, 3, [
-					{ name: 'Miku', value: `¤${items.huds.miku.price}`, inline: true },
-				]);
+		let hudEmbed,
+			hudColorsEmbed,
+			hudGamesEmbed,
+			hudAnimeEmbed,
+			hudCartoonsEmbed,
+			hudVocaloidsEmbed;
 
 		switch (option) {
 		case 'buy':
@@ -135,21 +80,77 @@ module.exports = {
 		case 'huds':
 			switch (args [1]) {
 			case 'cores':
+				hudColorsEmbed = new MessageEmbed(mainEmbed)
+					.setTitle('Loja - HUDs (Cores)')
+					.setDescription('`+shop buy hud [item]` para comprar.')
+					.spliceFields(0, 1, [
+						{ name: 'Black', value: `¤${items.huds.black.price}`, inline: true },
+						{ name: 'Blue', value: `¤${items.huds.blue.price}`, inline: true },
+						{ name: 'Brown', value: `¤${items.huds.brown.price}`, inline: true },
+						{ name: 'Green', value: `¤${items.huds.green.price}`, inline: true },
+						{ name: 'Orange', value: `¤${items.huds.orange.price}`, inline: true },
+						{ name: 'Pink', value: `¤${items.huds.pink.price}`, inline: true },
+						{ name: 'Purple', value: `¤${items.huds.purple.price}`, inline: true },
+						{ name: 'Red', value: `¤${items.huds.red.price}`, inline: true },
+						{ name: 'Yellow', value: `¤${items.huds.yellow.price}`, inline: true },
+					]);
 				message.channel.send(hudColorsEmbed);
 				break;
 			case 'jogos':
+				hudGamesEmbed = new MessageEmbed(mainEmbed)
+					.setTitle('Loja - HUDs (Jogos)')
+					.setDescription('`+shop buy hud [item]` para comprar.')
+					.spliceFields(0, 1, [
+						{ name: 'Eclipse_Leona', value: `¤${items.huds.eclipse_leona.price}`, inline: true },
+						{ name: 'Ditto', value: `¤${items.huds.ditto.price}`, inline: true },
+						{ name: 'KDA_Akali', value: `¤${items.huds.kda_akali.price}`, inline: true },
+						{ name: 'Kirby1', value: `¤${items.huds.kirby1.price}`, inline: true },
+						{ name: 'Kirby2', value: `¤${items.huds.kirby2.price}`, inline: true },
+					]);
 				message.channel.send(hudGamesEmbed);
 				break;
 			case 'anime':
+				hudAnimeEmbed = new MessageEmbed(mainEmbed)
+					.setTitle('Loja - HUDs (Anime)')
+					.setDescription('`+shop buy hud [item]` para comprar.')
+					.spliceFields(0, 1, [
+						{ name: 'Giorno', value: `¤${items.huds.giorno.price}`, inline: true },
+						{ name: 'Jojo_Part4', value: `¤${items.huds.jojo_part4.price}`, inline: true },
+						{ name: 'L', value: `¤${items.huds.l.price}`, inline: true },
+						{ name: 'Lelouch1', value: `¤${items.huds.lelouch1.price}`, inline: true },
+						{ name: 'Lelouch2', value: `¤${items.huds.lelouch2.price}`, inline: true },
+					]);
 				message.channel.send(hudAnimeEmbed);
 				break;
 			case 'cartoons':
+				hudCartoonsEmbed = new MessageEmbed(mainEmbed)
+					.setTitle('Loja - HUDs (Cartoons)')
+					.setDescription('`+shop buy hud [item]` para comprar.')
+					.spliceFields(0, 1, [
+						{ name: 'Gumball1', value: `¤${items.huds.gumball1.price}`, inline: true },
+					]);
 				message.channel.send(hudCartoonsEmbed);
 				break;
 			case 'Vocaloids':
+				hudVocaloidsEmbed = new MessageEmbed(mainEmbed)
+					.setTitle('Loja - HUDs (Cartoons)')
+					.setDescription('`+shop buy hud [item]` para comprar.')
+					.spliceFields(0, 1, [
+						{ name: 'Miku', value: `¤${items.huds.miku.price}`, inline: true },
+					]);
 				message.channel.send(hudVocaloidsEmbed);
 				break;
 			default:
+				hudEmbed = new MessageEmbed(mainEmbed)
+					.setTitle('Loja - HUDs')
+					.setDescription('`+shop huds [sub-categoria]` para selecionares uma sub-categoria.')
+					.spliceFields(0, 1, [
+						{ name: 'Cores', value: '\u200B', inline: true },
+						{ name: 'Jogos', value: '\u200B', inline: true },
+						{ name: 'Anime', value: '\u200B', inline: true },
+						{ name: 'Cartoons', value: '\u200B', inline: true },
+						{ name: 'Vocaloids', value: '\u200B', inline: true },
+					]);
 				message.channel.send(hudEmbed);
 				break;
 			}
