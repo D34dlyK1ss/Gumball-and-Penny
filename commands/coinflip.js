@@ -12,7 +12,7 @@ module.exports = {
 			if (!doc.exists) {
 				message.reply('ainda não criaste um perfil! Para criares um perfil usa `+profile create`!');
 			}
-			else if (args[1] == '' || (args[0] != 'cara' && args[0] != 'coroa')) {
+			else if (args[1] == null || args[1] == '' || (args[0] != 'cara' && args[0] != 'coroa')) {
 				message.channel.send('Sintaxe errada! Como usar: `+coinflip [cara/coroa] [quantidade]`');
 			}
 			else {
