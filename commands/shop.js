@@ -5,7 +5,7 @@ module.exports = {
 	name: 'shop',
 	aliases: ['s'],
 	category: 'Economia e Perfil',
-	description: 'Vai às compras!',
+	description: 'Faz compras na Loja Incrível!',
 	usage: '`+shop`',
 
 	execute(bot, message, command, args, db) {
@@ -15,11 +15,12 @@ module.exports = {
 			mainEmbed = new MessageEmbed()
 				.setAuthor(`${bot.user.tag}`, `${bot.user.displayAvatarURL()}`)
 				.setColor('#8000ff')
-				.setTitle('Loja')
-				.setDescription(`Bem vindo à nossa loja!
+				.setTitle('Loja Incrível')
+				.attachFiles(['./images/shop.gif'])
+				.setImage('attachment://shop.gif')
+				.setDescription(`Bem vindo à Loja Incrível!
 			Aqui poderás comprar algumas coisas com o dinheiro que acumulaste até agora.
 			Usa \`+shop [categoria]\` para selecionares uma categoria.`)
-				.setFooter(`${message.author.tag}`, `${message.author.displayAvatarURL()}`)
 				.addFields(
 					{ name: 'HUDs', value: '\u200B' },
 				);
@@ -30,8 +31,6 @@ module.exports = {
 			hudAnimeEmbed,
 			hudCartoonsEmbed,
 			hudVocaloidsEmbed;
-
-		mainEmbed.fields = [];
 
 		switch (option) {
 		case 'buy':
@@ -82,8 +81,9 @@ module.exports = {
 		case 'huds':
 			switch (args [1]) {
 			case 'cores':
+				mainEmbed.fields = [];
 				hudColorsEmbed = new MessageEmbed(mainEmbed)
-					.setTitle('Loja - HUDs (Cores)')
+					.setTitle('Loja Incrível - HUDs (Cores)')
 					.setDescription('`+shop buy hud [item]` para comprar.')
 					.addFields(
 						{ name: 'Black', value: `¤${items.huds.black.price}`, inline: true },
@@ -99,8 +99,9 @@ module.exports = {
 				message.channel.send(hudColorsEmbed);
 				break;
 			case 'jogos':
+				mainEmbed.fields = [];
 				hudGamesEmbed = new MessageEmbed(mainEmbed)
-					.setTitle('Loja - HUDs (Jogos)')
+					.setTitle('Loja Incrível - HUDs (Jogos)')
 					.setDescription('`+shop buy hud [item]` para comprar.')
 					.addFields(
 						{ name: 'Eclipse_Leona', value: `¤${items.huds.eclipse_leona.price}`, inline: true },
@@ -112,8 +113,9 @@ module.exports = {
 				message.channel.send(hudGamesEmbed);
 				break;
 			case 'anime':
+				mainEmbed.fields = [];
 				hudAnimeEmbed = new MessageEmbed(mainEmbed)
-					.setTitle('Loja - HUDs (Anime)')
+					.setTitle('Loja Incrível - HUDs (Anime)')
 					.setDescription('`+shop buy hud [item]` para comprar.')
 					.addFields(
 						{ name: 'Giorno', value: `¤${items.huds.giorno.price}`, inline: true },
@@ -125,8 +127,9 @@ module.exports = {
 				message.channel.send(hudAnimeEmbed);
 				break;
 			case 'cartoons':
+				mainEmbed.fields = [];
 				hudCartoonsEmbed = new MessageEmbed(mainEmbed)
-					.setTitle('Loja - HUDs (Cartoons)')
+					.setTitle('Loja Incrível - HUDs (Cartoons)')
 					.setDescription('`+shop buy hud [item]` para comprar.')
 					.addFields(
 						{ name: 'Gumball1', value: `¤${items.huds.gumball1.price}`, inline: true },
@@ -134,8 +137,9 @@ module.exports = {
 				message.channel.send(hudCartoonsEmbed);
 				break;
 			case 'Vocaloids':
+				mainEmbed.fields = [];
 				hudVocaloidsEmbed = new MessageEmbed(mainEmbed)
-					.setTitle('Loja - HUDs (Cartoons)')
+					.setTitle('Loja Incrível - HUDs (Cartoons)')
 					.setDescription('`+shop buy hud [item]` para comprar.')
 					.addFields(
 						{ name: 'Miku', value: `¤${items.huds.miku.price}`, inline: true },
@@ -143,8 +147,9 @@ module.exports = {
 				message.channel.send(hudVocaloidsEmbed);
 				break;
 			default:
+				mainEmbed.fields = [];
 				hudEmbed = new MessageEmbed(mainEmbed)
-					.setTitle('Loja - HUDs')
+					.setTitle('Loja Incrível - HUDs')
 					.setDescription('`+shop huds [sub-categoria]` para selecionares uma sub-categoria.')
 					.addFields(
 						{ name: 'Cores', value: '\u200B', inline: true },
