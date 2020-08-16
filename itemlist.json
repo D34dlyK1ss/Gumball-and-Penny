@@ -70,6 +70,11 @@
 			"price": 8000,
 			"hex": "#0000e0"
 		},
+		
+		"gumball_penny": {
+			"price": 8000,
+			"hex": "#0040e0"
+		},
 
 		"jojo_part4": {
 			"price": 8000,
