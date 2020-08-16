@@ -45,11 +45,6 @@
 			"hex": "#ff0000"
 		},
 
-		"white": {
-			"price": 1500,
-			"hex": "#ffffff"
-		},
-
 		"yellow": {
 			"price": 1500,
 			"hex": "#e0e000"

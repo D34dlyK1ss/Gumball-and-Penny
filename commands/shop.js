@@ -39,52 +39,51 @@ module.exports = {
 				.setTitle('Loja - HUDs (Cores)')
 				.setDescription('`+shop buy hud [item]` para comprar.')
 				.spliceFields(0, 3, [
-					{ name: 'Black', value: `¤${items.black.price}`, inline: true },
-					{ name: 'Blue', value: `¤${items.blue.price}`, inline: true },
-					{ name: 'Brown', value: `¤${items.brown.price}`, inline: true },
-					{ name: 'Green', value: `¤${items.green.price}`, inline: true },
-					{ name: 'Orange', value: `¤${items.orange.price}`, inline: true },
-					{ name: 'Pink', value: `¤${items.pink.price}`, inline: true },
-					{ name: 'Purple', value: `¤${items.purple.price}`, inline: true },
-					{ name: 'Red', value: `¤${items.red.price}`, inline: true },
-					{ name: 'White', value: `¤${items.white.price}`, inline: true },
-					{ name: 'Yellow', value: `¤${items.yellow.price}`, inline: true },
+					{ name: 'Black', value: `¤${items.huds.black.price}`, inline: true },
+					{ name: 'Blue', value: `¤${items.huds.blue.price}`, inline: true },
+					{ name: 'Brown', value: `¤${items.huds.brown.price}`, inline: true },
+					{ name: 'Green', value: `¤${items.huds.green.price}`, inline: true },
+					{ name: 'Orange', value: `¤${items.huds.orange.price}`, inline: true },
+					{ name: 'Pink', value: `¤${items.huds.pink.price}`, inline: true },
+					{ name: 'Purple', value: `¤${items.huds.purple.price}`, inline: true },
+					{ name: 'Red', value: `¤${items.huds.red.price}`, inline: true },
+					{ name: 'Yellow', value: `¤${items.huds.yellow.price}`, inline: true },
 				]);
 
 		const hudAnimeEmbed = new MessageEmbed(hudEmbed)
 				.setTitle('Loja - HUDs (Anime)')
 				.setDescription('`+shop buy hud [item]` para comprar.')
 				.spliceFields(0, 3, [
-					{ name: 'Giorno', value: `¤${items.giorno.price}`, inline: true },
-					{ name: 'Jojo_Part4', value: `¤${items.jojo_part4.price}`, inline: true },
-					{ name: 'L', value: `¤${items.l.price}`, inline: true },
-					{ name: 'Lelouch1', value: `¤${items.lelouch1.price}`, inline: true },
-					{ name: 'Lelouch2', value: `¤${items.lelouch2.price}`, inline: true },
+					{ name: 'Giorno', value: `¤${items.huds.giorno.price}`, inline: true },
+					{ name: 'Jojo_Part4', value: `¤${items.huds.jojo_part4.price}`, inline: true },
+					{ name: 'L', value: `¤${items.huds.l.price}`, inline: true },
+					{ name: 'Lelouch1', value: `¤${items.huds.lelouch1.price}`, inline: true },
+					{ name: 'Lelouch2', value: `¤${items.huds.lelouch2.price}`, inline: true },
 				]),
 
 			hudGamesEmbed = new MessageEmbed(hudEmbed)
 				.setTitle('Loja - HUDs (Jogos)')
 				.setDescription('`+shop buy hud [item]` para comprar.')
 				.spliceFields(0, 3, [
-					{ name: 'Eclipse_Leona', value: `¤${items.eclipse_leona.price}`, inline: true },
-					{ name: 'Ditto', value: `¤${items.ditto.price}`, inline: true },
-					{ name: 'KDA_Akali', value: `¤${items.kda_akali.price}`, inline: true },
-					{ name: 'Kirby1', value: `¤${items.kirby1.price}`, inline: true },
-					{ name: 'Kirby2', value: `¤${items.kirby2.price}`, inline: true },
+					{ name: 'Eclipse_Leona', value: `¤${items.huds.eclipse_leona.price}`, inline: true },
+					{ name: 'Ditto', value: `¤${items.huds.ditto.price}`, inline: true },
+					{ name: 'KDA_Akali', value: `¤${items.huds.kda_akali.price}`, inline: true },
+					{ name: 'Kirby1', value: `¤${items.huds.kirby1.price}`, inline: true },
+					{ name: 'Kirby2', value: `¤${items.huds.kirby2.price}`, inline: true },
 				]),
 
 			hudCartoonsEmbed = new MessageEmbed(hudEmbed)
 				.setTitle('Loja - HUDs (Cartoons)')
 				.setDescription('`+shop buy hud [item]` para comprar.')
 				.spliceFields(0, 3, [
-					{ name: 'Gumball1', value: `¤${items.gumball1.price}`, inline: true },
+					{ name: 'Gumball1', value: `¤${items.huds.gumball1.price}`, inline: true },
 				]),
 
 			hudVocaloidsEmbed = new MessageEmbed(hudEmbed)
 				.setTitle('Loja - HUDs (Cartoons)')
 				.setDescription('`+shop buy hud [item]` para comprar.')
 				.spliceFields(0, 3, [
-					{ name: 'Miku', value: `¤${items.miku.price}`, inline: true },
+					{ name: 'Miku', value: `¤${items.huds.miku.price}`, inline: true },
 				]);
 
 		switch (option) {

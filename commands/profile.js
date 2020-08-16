@@ -171,7 +171,7 @@ module.exports = {
 					ctx.fill();
 
 					ctx.globalAlpha = 0.7;
-					ctx.fillStyle = items[hud].hex;
+					ctx.fillStyle = items.huds[hud].hex;
 					ctx.fillRect(160, 172, ((100 / (nextLevel - prevLevel)) * (xp - prevLevel) * 4.25), 30);
 					ctx.fill();
 					ctx.globalAlpha = 1;
