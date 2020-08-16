@@ -11,7 +11,7 @@ module.exports = {
 		const last = message.member.id.slice(-1);
 		let char = [];
 
-		if (!args || args == '') {
+		if (args == null || args == '') {
 			message.reply('tens de mencionar um anime!');
 		}
 		else {

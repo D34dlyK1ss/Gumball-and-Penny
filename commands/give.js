@@ -12,7 +12,7 @@ module.exports = {
 			if (!docD.exists) {
 				message.reply('ainda não criaste um perfil! Para criares um perfil usa `+profile create`!');
 			}
-			else if (!args || args == '') {
+			else if (args == null || args == '') {
 				message.reply('não mencionaste ninguém!');
 			}
 			else {
@@ -26,7 +26,7 @@ module.exports = {
 					else if (user.bot) {
 						message.reply('os bots não têm perfis!');
 					}
-					else if (!args[1] || args[1] == '' || args == user) {
+					else if (args[1] == null || args[1] == '' || args == user) {
 						message.reply('Sintaxe errada! Como usar: `+give [@membro] [quantidade]`');
 					}
 					else if (!docU.exists) {

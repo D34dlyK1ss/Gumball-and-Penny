@@ -30,7 +30,7 @@ module.exports = {
 				{ name: '🛠️ Utilidade', value: '`avatar`, `invite`, `ping`, `support`', inline: true },
 			);
 
-		if (!args || args == '') {
+		if (args == null || args == '') {
 			message.channel.send(helpEmbed);
 		}
 		else {
