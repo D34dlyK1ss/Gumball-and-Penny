@@ -1,5 +1,6 @@
 const { MessageAttachment } = require('discord.js');
 const { registerFont, createCanvas, loadImage } = require('canvas');
+const items = require('../itemlist.json');
 registerFont('./fonts/comic.ttf', { family: 'Comic Sans MS' });
 registerFont('./fonts/comicb.ttf', { family: 'bold Comic Sans MS' });
 registerFont('./fonts/comici.ttf', { family: 'italic Comic Sans MS' });
@@ -13,57 +14,6 @@ function convert(value) {
 		value = (value / 1000) + 'k';
 	}
 	return value;
-}
-
-function toHex(hud) {
-	let hex;
-
-	switch (hud) {
-	case 'black':
-		hex = '#202020';
-		break;
-	case 'blue':
-		hex = '#0080ff';
-		break;
-	case 'brown':
-		hex = '#800000';
-		break;
-	case 'green':
-		hex = '#00ff00';
-		break;
-	case 'giorno':
-		hex = '#e0c000';
-		break;
-	case 'grey':
-		hex = '#808080';
-		break;
-	case 'l':
-		hex = '#101010';
-		break;
-	case 'lux':
-		hex = '#500090';
-		break;
-	case 'lelouch':
-		hex = '#400080';
-		break;
-	case 'orange':
-		hex = '#ff8000';
-		break;
-	case 'pink':
-		hex = '#ff00ff';
-		break;
-	case 'purple':
-		hex = '#8000ff';
-		break;
-	case 'red':
-		hex = '#ff0000';
-		break;
-	case 'yellow':
-		hex = '#ffff00';
-		break;
-	}
-
-	return hex;
 }
 
 module.exports = {
@@ -221,7 +171,7 @@ module.exports = {
 					ctx.fill();
 
 					ctx.globalAlpha = 0.7;
-					ctx.fillStyle = toHex(hud);
+					ctx.fillStyle = items[hud].hex;
 					ctx.fillRect(160, 172, ((100 / (nextLevel - prevLevel)) * (xp - prevLevel) * 4.25), 30);
 					ctx.fill();
 					ctx.globalAlpha = 1;
