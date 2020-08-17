@@ -152,13 +152,12 @@ module.exports = {
 						xp = doc.get('xp');
 
 					const level = Math.floor(Math.sqrt(xp / 2000000) * 100),
+						prevLevel = Math.round(Math.pow((level - 1) / 100, 2) * 2000000),
 						nextLevel = Math.round(Math.pow((level + 1) / 100, 2) * 2000000);
+					const xpNeeded = nextLevel - prevLevel;
+					let xpToNext = xp - prevLevel;
 
-					let prevLevel = Math.round(Math.pow((level - 1) / 100, 2) * 2000000);
-					if (prevLevel < 0) prevLevel = 0;
-
-					const xpNeeded = nextLevel - prevLevel,
-						xpToNext = xp - prevLevel;
+					if (xpToNext < 0) xpToNext = 0;
 
 					const canvas = createCanvas(640, 360),
 						ctx = canvas.getContext('2d');
