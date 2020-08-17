@@ -82,6 +82,7 @@ module.exports = {
 			switch (args [1]) {
 			case 'cores':
 				mainEmbed.fields = [];
+				mainEmbed.image = [];
 				hudColorsEmbed = new MessageEmbed(mainEmbed)
 					.setTitle('Loja Incrível - HUDs (Cores)')
 					.setDescription('`+shop buy hud [item]` para comprar.')
@@ -100,6 +101,7 @@ module.exports = {
 				break;
 			case 'jogos':
 				mainEmbed.fields = [];
+				mainEmbed.image = [];
 				hudGamesEmbed = new MessageEmbed(mainEmbed)
 					.setTitle('Loja Incrível - HUDs (Jogos)')
 					.setDescription('`+shop buy hud [item]` para comprar.')
@@ -114,6 +116,7 @@ module.exports = {
 				break;
 			case 'anime':
 				mainEmbed.fields = [];
+				mainEmbed.image = [];
 				hudAnimeEmbed = new MessageEmbed(mainEmbed)
 					.setTitle('Loja Incrível - HUDs (Anime)')
 					.setDescription('`+shop buy hud [item]` para comprar.')
@@ -130,6 +133,7 @@ module.exports = {
 				break;
 			case 'cartoons':
 				mainEmbed.fields = [];
+				mainEmbed.image = [];
 				hudCartoonsEmbed = new MessageEmbed(mainEmbed)
 					.setTitle('Loja Incrível - HUDs (Cartoons)')
 					.setDescription('`+shop buy hud [item]` para comprar.')
@@ -140,6 +144,7 @@ module.exports = {
 				break;
 			case 'Vocaloids':
 				mainEmbed.fields = [];
+				mainEmbed.image = [];
 				hudVocaloidsEmbed = new MessageEmbed(mainEmbed)
 					.setTitle('Loja Incrível - HUDs (Cartoons)')
 					.setDescription('`+shop buy hud [item]` para comprar.')
@@ -150,6 +155,7 @@ module.exports = {
 				break;
 			default:
 				mainEmbed.fields = [];
+				mainEmbed.image = [];
 				hudEmbed = new MessageEmbed(mainEmbed)
 					.setTitle('Loja Incrível - HUDs')
 					.setDescription('`+shop huds [sub-categoria]` para selecionares uma sub-categoria.')
