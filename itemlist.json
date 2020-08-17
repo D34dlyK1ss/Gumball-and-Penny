@@ -82,6 +82,11 @@
 			"hex": "#00a0c0"
 		},
 
+		"kakashi": {
+			"price": 8000,
+			"hex": "#101010"
+		},
+
 		"kda_akali": {
 			"price": 8000,
 			"hex": "#c000a0"
