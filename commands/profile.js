@@ -157,6 +157,8 @@ module.exports = {
 					const xpNeeded = nextLevel - prevLevel,
 						xpToNext = xp - prevLevel;
 
+					if (prevLevel < 0) prevLevel = 0;
+
 					const canvas = createCanvas(640, 360),
 						ctx = canvas.getContext('2d');
 
