@@ -123,6 +123,7 @@ module.exports = {
 						{ name: 'L', value: `¤${items.huds.l.price}`, inline: true },
 						{ name: 'Lelouch1', value: `¤${items.huds.lelouch1.price}`, inline: true },
 						{ name: 'Lelouch2', value: `¤${items.huds.lelouch2.price}`, inline: true },
+						{ name: 'Mirai_Nikki', value: `¤${items.huds.mirai_nikki.price}`, inline: true },
 					);
 				message.channel.send(hudAnimeEmbed);
 				break;
