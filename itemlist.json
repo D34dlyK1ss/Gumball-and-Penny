@@ -67,7 +67,7 @@
 			"hex": "#e0c000"
 		},
 
-		"gumball1": {
+		"gumball_darwin": {
 			"price": 8000,
 			"hex": "#e0c0a0"
 		},
@@ -122,7 +122,7 @@
 			"hex": "#00c0ff"
 		},
 
-		"mirai_nikki": {
+		"yukiteru_yuno": {
 			"price": 8000,
 			"hex": "#e0a0a0"
 		}

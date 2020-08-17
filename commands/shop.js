@@ -123,7 +123,7 @@ module.exports = {
 						{ name: 'L', value: `¤${items.huds.l.price}`, inline: true },
 						{ name: 'Lelouch1', value: `¤${items.huds.lelouch1.price}`, inline: true },
 						{ name: 'Lelouch2', value: `¤${items.huds.lelouch2.price}`, inline: true },
-						{ name: 'Mirai_Nikki', value: `¤${items.huds.mirai_nikki.price}`, inline: true },
+						{ name: 'Yukiteru_Yuno', value: `¤${items.huds.yukiteru_yuno.price}`, inline: true },
 					);
 				message.channel.send(hudAnimeEmbed);
 				break;
@@ -133,7 +133,7 @@ module.exports = {
 					.setTitle('Loja Incrível - HUDs (Cartoons)')
 					.setDescription('`+shop buy hud [item]` para comprar.')
 					.addFields(
-						{ name: 'Gumball1', value: `¤${items.huds.gumball1.price}`, inline: true },
+						{ name: 'Gumball_Darwin', value: `¤${items.huds.gumball_darwin.price}`, inline: true },
 					);
 				message.channel.send(hudCartoonsEmbed);
 				break;
