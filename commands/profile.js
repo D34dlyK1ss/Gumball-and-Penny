@@ -157,10 +157,8 @@ module.exports = {
 					let xpNeeded = nextLevel - prevLevel,
 						xpToNext = xp - prevLevel;
 
-					if (xp == 0) {
-						xpNeeded = 200;
-						xpToNext = 0;
-					}
+					if (xpNeeded <= 0) xpNeeded = 200;
+					if (xpToNext <= 0) xpToNext = xp;
 
 					const canvas = createCanvas(640, 360),
 						ctx = canvas.getContext('2d');
