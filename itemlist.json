@@ -51,9 +51,10 @@
 		},
 
 
+
 		"ditto": {
 			"price": 8000,
-			"hex": "#ffffff"
+			"hex": "#e0a0e0"
 		},
 
 		"eclipse_leona": {
@@ -68,27 +69,32 @@
 
 		"gumball1": {
 			"price": 8000,
-			"hex": "#0000e0"
+			"hex": "#e0c0a0"
+		},
+
+		"gumball_penny": {
+			"price": 999999,
+			"hex": "#00c0c8"
 		},
 
 		"jojo_part4": {
 			"price": 8000,
-			"hex": "#ffffff"
+			"hex": "#00a0c0"
 		},
 
 		"kda_akali": {
 			"price": 8000,
-			"hex": "#ffffff"
+			"hex": "#c000a0"
 		},
 
 		"kirby1": {
 			"price": 8000,
-			"hex": "#ffffff"
+			"hex": "#ffa0c0"
 		},
 
 		"kirby2": {
 			"price": 8000,
-			"hex": "#ffffff"
+			"hex": "#e0a0c0"
 		},
 
 		"l": {
@@ -103,7 +109,7 @@
 
 		"lelouch2": {
 			"price": 8000,
-			"hex": "#ffffff"
+			"hex": "#600080"
 		},
 
 		"lux": {
@@ -113,7 +119,12 @@
 
 		"miku": {
 			"price": 8000,
-			"hex": "#0080e0"
+			"hex": "#00c0ff"
+		},
+
+		"mirai_nikki": {
+			"price": 8000,
+			"hex": "#e0a0a0"
 		}
 	}
 }
