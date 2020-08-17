@@ -123,6 +123,8 @@ module.exports = {
 					.addFields(
 						{ name: 'Giorno', value: `¤${items.huds.giorno.price}`, inline: true },
 						{ name: 'Jojo_Part4', value: `¤${items.huds.jojo_part4.price}`, inline: true },
+						{ name: 'Jake1', value: `¤${items.huds.jake1.price}`, inline: true },
+						{ name: 'Jake2', value: `¤${items.huds.jake2.price}`, inline: true },
 						{ name: 'Kakashi', value: `¤${items.huds.kakashi.price}`, inline: true },
 						{ name: 'L', value: `¤${items.huds.l.price}`, inline: true },
 						{ name: 'Lelouch1', value: `¤${items.huds.lelouch1.price}`, inline: true },
