@@ -77,6 +77,11 @@
 			"hex": "#00c0c8"
 		},
 
+		"isaac": {
+			"price": 8000,
+			"hex": "#101010"
+		},
+
 		"jojo_part4": {
 			"price": 8000,
 			"hex": "#00a0c0"
@@ -94,6 +99,11 @@
 		"kakashi": {
 			"price": 8000,
 			"hex": "#101010"
+		},
+
+		"kaneki": {
+			"price": 8000,
+			"hex": "#404040"
 		},
 
 		"kda_akali": {

@@ -114,8 +114,10 @@ module.exports = {
 					.setDescription('`+shop buy hud [item]` para comprar.')
 					.spliceFields(0, mainEmbed.fields.length, [
 						{ name: 'Giorno', value: `¤${items.huds.giorno.price}`, inline: true },
+						{ name: 'Isaac', value: `¤${items.huds.isaac.price}`, inline: true },
 						{ name: 'Jojo_Part4', value: `¤${items.huds.jojo_part4.price}`, inline: true },
 						{ name: 'Kakashi', value: `¤${items.huds.kakashi.price}`, inline: true },
+						{ name: 'Kaneki', value: `¤${items.huds.kaneki.price}`, inline: true },
 						{ name: 'L', value: `¤${items.huds.l.price}`, inline: true },
 						{ name: 'Lelouch1', value: `¤${items.huds.lelouch1.price}`, inline: true },
 						{ name: 'Lelouch2', value: `¤${items.huds.lelouch2.price}`, inline: true },
