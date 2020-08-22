@@ -67,6 +67,11 @@
 			"hex": "#e0c000"
 		},
 
+		"glitchtrap": {
+			"price": 8000,
+			"hex": "#8000e0"
+		},
+
 		"gumball_darwin": {
 			"price": 8000,
 			"hex": "#e0c0a0"
@@ -144,6 +149,21 @@
 		"miku": {
 			"price": 8000,
 			"hex": "#00c0ff"
+		},
+
+		"nightmare_chica": {
+			"price": 8000,
+			"hex": "#e0c000"
+		},
+
+		"nightmare_foxy": {
+			"price": 8000,
+			"hex": "#101010"
+		},
+
+		"springtrap": {
+			"price": 8000,
+			"hex": "#808000"
 		},
 
 		"yukiteru_yuno": {

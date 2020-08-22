@@ -102,9 +102,13 @@ module.exports = {
 					.spliceFields(0, mainEmbed.fields.length, [
 						{ name: 'Eclipse_Leona', value: `¤${items.huds.eclipse_leona.price}`, inline: true },
 						{ name: 'Ditto', value: `¤${items.huds.ditto.price}`, inline: true },
+						{ name: 'Glitchtrap', value: `¤${items.huds.glitchtrap.price}`, inline: true },
 						{ name: 'KDA_Akali', value: `¤${items.huds.kda_akali.price}`, inline: true },
 						{ name: 'Kirby1', value: `¤${items.huds.kirby1.price}`, inline: true },
 						{ name: 'Kirby2', value: `¤${items.huds.kirby2.price}`, inline: true },
+						{ name: 'Nightmare_Chica', value: `¤${items.huds.nightmare_chica.price}`, inline: true },
+						{ name: 'Nightmare_Foxy', value: `¤${items.huds.nightmare_foxy.price}`, inline: true },
+						{ name: 'Springtrap', value: `¤${items.huds.springtrap.price}`, inline: true },
 					]);
 				message.channel.send(hudGamesEmbed);
 				break;
