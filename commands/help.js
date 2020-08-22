@@ -9,8 +9,7 @@ module.exports = {
 
 	execute(bot, message, command, args) {
 		const { commands } = message.client,
-			update = `**Update:** Loja adicionada!
-			Agora pode-se comprar HUDs para o perfil, por enquanto.`;
+			update = '**Update:** Foram adicionadas novas ações!\n`angry`, `cry` e `dance`.';
 		const helpEmbed = new Discord.MessageEmbed()
 			.setColor('#8000ff')
 			.setTitle('Ajuda')
