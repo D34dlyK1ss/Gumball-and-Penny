@@ -20,7 +20,7 @@ module.exports = {
 			Em caso de dúvida nalgum comando usa \`+help [nome do comando]\`
 			${update}`)
 			.addFields(
-				{ name: '🎭 Ações', value: '`hug`, `kiss`, `laugh`, `pat`, `run`, `slap`', inline: true },
+				{ name: '🎭 Ações', value: '`angry`, `cry`, `dance`, `hug`, `kiss`, `laugh`, `pat`, `run`, `slap`', inline: true },
 				{ name: '🎰 Casino', value: '`coinflip`', inline: true },
 				{ name: '😁 Diversão', value: '`fact`, `match`, `random`, `say`, `which`', inline: true },
 				{ name: '🛠️ Doações', value: '`donate`', inline: true },
