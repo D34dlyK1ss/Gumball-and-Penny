@@ -41,7 +41,7 @@ module.exports = {
 					else {
 						const bal = docP.get('balance'),
 							itemName = args[2].toLowerCase(),
-							cost = items[itemName];
+							cost = items.huds[itemName].price;
 
 						if (!cost) {
 							message.reply('esse item não está à venda!');
