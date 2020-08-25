@@ -134,7 +134,7 @@ bot.on('message', async message => {
 					if (newLevel > level) {
 						const bal = doc.get('balance'),
 							stringLevel = newLevel.toString(),
-							reward = rewards[`Level ${level}`];
+							reward = rewards[`Level ${level + 1}`];
 
 						if (rewardsArray.includes(stringLevel)) {
 							db.collection('perfis').doc(message.author.id).update({
