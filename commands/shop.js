@@ -124,6 +124,7 @@ module.exports = {
 						{ name: 'Kakashi', value: `¤${items.huds.kakashi.price}`, inline: true },
 						{ name: 'Kaneki1', value: `¤${items.huds.kaneki1.price}`, inline: true },
 						{ name: 'Kaneki2', value: `¤${items.huds.kaneki2.price}`, inline: true },
+						{ name: 'Naruto1', value: `¤${items.huds.naruto1.price}`, inline: true },
 						{ name: 'L', value: `¤${items.huds.l.price}`, inline: true },
 						{ name: 'Lelouch1', value: `¤${items.huds.lelouch1.price}`, inline: true },
 						{ name: 'Lelouch2', value: `¤${items.huds.lelouch2.price}`, inline: true },

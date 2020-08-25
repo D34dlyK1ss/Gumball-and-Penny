@@ -161,6 +161,11 @@
 			"hex": "#00c0ff"
 		},
 
+		"naruto1": {
+			"price": 8000,
+			"hex": "#e0c000"
+		},
+
 		"nightmare_chica": {
 			"price": 8000,
 			"hex": "#e0c000"
