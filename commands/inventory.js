@@ -22,7 +22,7 @@ module.exports = {
 			else {
 				refI.get().then(docI => {
 					if (!docI.exists) {
-						message.reply('ainda não criaste um perfil! Para criares um perfil usa `+profile create`!');
+						message.reply('não conseguimos encontrar o teu inventário!');
 					}
 					else {
 						const iHuds = docI.get('huds');
