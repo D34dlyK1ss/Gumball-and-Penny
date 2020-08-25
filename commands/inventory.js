@@ -21,13 +21,12 @@ module.exports = {
 			}
 			else {
 				refI.get().then(docI => {
-					let iHuds = docI.get('huds');
-
-					iHuds = `\`${iHuds.join('`, `')}\``;
+					const iHuds = docI.get('huds');
+					const allHuds = `\`${iHuds.join('`, `')}\``;
 
 					const newIEmbed = new MessageEmbed (iEmbed)
 						.addfields(
-							{ name: 'HUDs', value: `${iHuds}`, inline: true },
+							{ name: 'HUDs', value: `${allHuds}`, inline: true },
 						);
 					message.channel.send(newIEmbed);
 				});
