@@ -121,11 +121,13 @@ module.exports = {
 						{ name: 'Isaac', value: `¤${items.huds.isaac.price}`, inline: true },
 						{ name: 'Jojo_Part4', value: `¤${items.huds.jojo_part4.price}`, inline: true },
 						{ name: 'Kakashi', value: `¤${items.huds.kakashi.price}`, inline: true },
-						{ name: 'Kaneki', value: `¤${items.huds.kaneki.price}`, inline: true },
+						{ name: 'Kaneki1', value: `¤${items.huds.kaneki1.price}`, inline: true },
+						{ name: 'Kaneki2', value: `¤${items.huds.kaneki2.price}`, inline: true },
 						{ name: 'L', value: `¤${items.huds.l.price}`, inline: true },
 						{ name: 'Lelouch1', value: `¤${items.huds.lelouch1.price}`, inline: true },
 						{ name: 'Lelouch2', value: `¤${items.huds.lelouch2.price}`, inline: true },
 						{ name: 'Yukiteru_Yuno', value: `¤${items.huds.yukiteru_yuno.price}`, inline: true },
+						{ name: 'Yuno', value: `¤${items.huds.yukiteru_yuno.price}`, inline: true },
 					]);
 				message.channel.send(hudAnimeEmbed);
 				break;
