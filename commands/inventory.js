@@ -13,10 +13,7 @@ module.exports = {
 			iEmbed = new MessageEmbed()
 				.setColor('#8000ff')
 				.setTitle(`Inventário de ${message.author.tag}`)
-				.setThumbnail(`${message.author.displayAvatarURL()}`)
-				.addFields(
-					{ name: 'HUDs', value: 'Nenhum', inline: true },
-				);
+				.setThumbnail(`${message.author.displayAvatarURL()}`);
 
 		refP.get().then(docP => {
 			if (!docP.exists) {
@@ -26,17 +23,12 @@ module.exports = {
 				refI.get().then(docI => {
 					let iHuds = docI.get('huds');
 
-					if (!iHuds || iHuds == '')	{
-						iHuds = 'Nenhum';
-					}
-					else {
-						iHuds = `\`${iHuds.join('`, `')}\``;
-					}
+					iHuds = `\`${iHuds.join('`, `')}\``;
 
 					const newIEmbed = new MessageEmbed (iEmbed)
-						.spliceFields(0, 1, [
+						.addfields(
 							{ name: 'HUDs', value: `${iHuds}`, inline: true },
-						]);
+						);
 					message.channel.send(newIEmbed);
 				});
 			}
