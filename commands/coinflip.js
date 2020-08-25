@@ -50,7 +50,7 @@ module.exports = {
 						db.collection('perfis').doc(user.id).update({
 							balance: (bal + won),
 						}).then(() => {
-							message.reply(`ganhaste ¤${won + 50}!`);
+							message.reply(`ganhaste ¤${won}!`);
 						}).catch(err => { console.error(err); });
 					}
 				}
