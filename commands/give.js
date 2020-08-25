@@ -19,8 +19,8 @@ module.exports = {
 
 		const donor = message.author,
 			user = getUserFromMention(args [0]);
-		const refD = db.collection('perfis').doc(donor.id),
-			amount = parseInt(args[1]);
+		const refD = db.collection('perfis').doc(donor.id);
+		let amount = parseInt(args[1]);
 
 		refD.get().then(docD => {
 			if (!docD.exists) {
@@ -52,12 +52,20 @@ module.exports = {
 						if (amount > balD) {
 							message.reply('não tens dinheiro suficiente!');
 						}
-						else if ((balU + amount) > 999999999) {
+						else if (balU == 999999999) {
 							message.reply(`não podes dar dinheiro a ${user.tag}! 😧`);
 						}
 						else {
+
+							let newBalU;
+
+							if ((balU + amount) > 999999999) {
+								newBalU = 999999999;
+								amount = newBalU - balU;
+							}
+
 							refU.update({
-								balance: balU + amount,
+								balance: newBalU,
 							}).then(() => {
 								refD.update({
 									balance: balD - amount,

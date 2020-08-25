@@ -23,17 +23,24 @@ module.exports = {
 				switch (args[0]) {
 				case 'add':
 					if (user.id == botOwner || user.id == lilly) {
-						const amount = parseInt(args[1]);
+						let amount = parseInt(args[1]);
 
 						if (!amount) {
 							message.reply('não indicaste uma quantia!');
 						}
-						else if ((bal + amount) > 999999999) {
+						else if (bal == 999999999) {
 							message.reply('não podes adicionar mais dinheiro à tua conta bancária! 😧');
 						}
 						else {
+							let newBal;
+
+							if ((bal + amount) > 999999999) {
+								newBal = 999999999;
+								amount = newBal - bal;
+							}
+
 							ref.update({
-								balance: bal + amount,
+								balance: newBal,
 							}).then(() => {
 								message.reply(`**¤${amount}** foram adicionados à tua conta bancária!`);
 							}).catch(err => { console.error(err); });
