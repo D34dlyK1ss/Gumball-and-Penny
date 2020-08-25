@@ -152,7 +152,7 @@ module.exports = {
 						xp = doc.get('xp');
 
 					const level = Math.floor(Math.sqrt(xp / 2000000) * 100),
-						prevLevel = Math.round(Math.pow((level - 1) / 100, 2) * 2000000),
+						prevLevel = Math.round(Math.pow((level) / 100, 2) * 2000000),
 						nextLevel = Math.round(Math.pow((level + 1) / 100, 2) * 2000000);
 					let xpNeeded = nextLevel - prevLevel,
 						xpToNext = xp - prevLevel;
