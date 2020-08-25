@@ -21,14 +21,19 @@ module.exports = {
 			}
 			else {
 				refI.get().then(docI => {
-					const iHuds = docI.get('huds');
-					const allHuds = `\`${iHuds.join('`, `')}\``;
+					if (!docP.exists) {
+						message.reply('ainda não criaste um perfil! Para criares um perfil usa `+profile create`!');
+					}
+					else {
+						const iHuds = docI.get('huds');
+						const allHuds = `\`${iHuds.join('`, `')}\``;
 
-					const newIEmbed = new MessageEmbed (iEmbed)
-						.addfields(
-							{ name: 'HUDs', value: `${allHuds}`, inline: true },
-						);
-					message.channel.send(newIEmbed);
+						const newIEmbed = new MessageEmbed (iEmbed)
+							.addfields(
+								{ name: 'HUDs', value: `${allHuds}`, inline: true },
+							);
+						message.channel.send(newIEmbed);
+					}
 				});
 			}
 		});
