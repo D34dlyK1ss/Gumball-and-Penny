@@ -29,9 +29,9 @@ module.exports = {
 						const allHuds = `\`${iHuds.join('`, `')}\``;
 
 						const newIEmbed = new MessageEmbed (iEmbed)
-							.addfields(
+							.splicefields(0, 0, [
 								{ name: 'HUDs', value: `${allHuds}`, inline: true },
-							);
+							]);
 						message.channel.send(newIEmbed);
 					}
 				});
