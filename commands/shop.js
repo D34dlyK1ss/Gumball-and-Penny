@@ -119,6 +119,7 @@ module.exports = {
 					.spliceFields(0, mainEmbed.fields.length, [
 						{ name: 'Giorno', value: `¤${items.huds.giorno.price}`, inline: true },
 						{ name: 'Isaac', value: `¤${items.huds.isaac.price}`, inline: true },
+						{ name: 'Itachi', value: `¤${items.huds.itachi.price}`, inline: true },
 						{ name: 'Jojo_Part4', value: `¤${items.huds.jojo_part4.price}`, inline: true },
 						{ name: 'Kakashi', value: `¤${items.huds.kakashi.price}`, inline: true },
 						{ name: 'Kaneki1', value: `¤${items.huds.kaneki1.price}`, inline: true },
