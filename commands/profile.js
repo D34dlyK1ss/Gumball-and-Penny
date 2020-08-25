@@ -227,7 +227,7 @@ module.exports = {
 					ctx.shadowOffsetY = 4;
 					ctx.textAlign = 'center';
 					ctx.fillStyle = 'white';
-					ctx.fillText(`${convert(xpToNext)} / ${convert(xpNeeded)}`, 370, 192);
+					ctx.fillText(`${xpToNext} / ${convert(xpNeeded)}`, 370, 192);
 
 					ctx.closePath();
 
