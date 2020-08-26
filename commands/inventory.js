@@ -4,15 +4,15 @@ module.exports = {
 	name: 'inventory',
 	aliases: ['i'],
 	category: 'Perfil',
-	description: 'Verifica o teu inventário',
+	description: 'Verifica o teu inventario',
 	usage: '`+inventory`',
 
 	execute(bot, message, command, args, db) {
 		const refP = db.collection('perfis').doc(message.author.id),
-			refI = db.collection('inventário').doc(message.author.id),
+			refI = db.collection('inventario').doc(message.author.id),
 			iEmbed = new MessageEmbed()
 				.setColor('#8000ff')
-				.setTitle(`Inventário de ${message.author.tag}`)
+				.setTitle(`inventario de ${message.author.tag}`)
 				.setThumbnail(`${message.author.displayAvatarURL()}`);
 
 		refP.get().then(docP => {
@@ -22,7 +22,7 @@ module.exports = {
 			else {
 				refI.get().then(docI => {
 					if (!docI.exists) {
-						message.reply('não conseguimos encontrar o teu inventário!');
+						message.reply('não conseguimos encontrar o teu inventario!');
 					}
 					else {
 						const iHuds = docI.get('huds');

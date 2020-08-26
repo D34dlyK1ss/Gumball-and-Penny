@@ -26,7 +26,7 @@ module.exports = {
 	execute(bot, message, command, args, db) {
 		const user = message.mentions.users.first() || message.author,
 			refP = db.collection('perfis').doc(user.id),
-			refI = db.collection('inventário').doc(message.author.id),
+			refI = db.collection('inventario').doc(message.author.id),
 			option = args[0];
 		args = args.slice(1);
 		args = args.join(' ');

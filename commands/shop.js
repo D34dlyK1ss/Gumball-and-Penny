@@ -11,7 +11,7 @@ module.exports = {
 	execute(bot, message, command, args, db) {
 		const option = args[0],
 			refP = db.collection('perfis').doc(message.author.id),
-			refI = db.collection('inventário').doc(message.author.id);
+			refI = db.collection('inventario').doc(message.author.id);
 		let mainEmbed = new MessageEmbed()
 			.setAuthor(`${bot.user.tag}`, `${bot.user.displayAvatarURL()}`)
 			.setColor('#8000ff')
