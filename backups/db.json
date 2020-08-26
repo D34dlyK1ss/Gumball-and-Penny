@@ -1,7 +1,7 @@
 {
   "__collections__": {
     "inventario": {
-      "  234238475593973762 ": {
+      "234238475593973762": {
         "huds": [
           "grey",
           "naruto1",
@@ -44,7 +44,7 @@
         ],
         "__collections__": {}
       },
-      "354017020632629248 ": {
+      "354017020632629248": {
         "huds": [
           "grey",
           "itachi"
@@ -208,7 +208,7 @@
         "guildName": "BaNanáDAH",
         "guildOwner": "TheSuicideFrog#6340",
         "prefix": "+",
-        " guildID": "505317663271288853",
+        "guildID": "505317663271288853",
         "guildOwnerID": "503009296267608066",
         "__collections__": {}
       },
