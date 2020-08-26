@@ -26,12 +26,13 @@ module.exports = {
 					}
 					else {
 						const iHuds = docI.get('huds');
-						const allHuds = `\`${iHuds.join('`, `')}\``;
+						iHuds.sort();
 
-						const newIEmbed = new MessageEmbed (iEmbed)
-							.addFields(
-								{ name: 'HUDs', value: `${allHuds}`, inline: true },
-							);
+						const allHuds = `\`${iHuds.join('`, `')}\``,
+							newIEmbed = new MessageEmbed (iEmbed)
+								.addFields(
+									{ name: 'HUDs', value: `${allHuds}`, inline: true },
+								);
 						message.channel.send(newIEmbed);
 					}
 				});
