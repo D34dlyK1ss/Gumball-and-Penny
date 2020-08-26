@@ -4,7 +4,7 @@ module.exports = {
 	name: 'inventory',
 	aliases: ['i'],
 	category: 'Perfil',
-	description: 'Verifica o teu inventario',
+	description: 'Verifica o teu inventário',
 	usage: '`+inventory`',
 
 	execute(bot, message, command, args, db) {
@@ -12,7 +12,7 @@ module.exports = {
 			refI = db.collection('inventario').doc(message.author.id),
 			iEmbed = new MessageEmbed()
 				.setColor('#8000ff')
-				.setTitle(`inventario de ${message.author.tag}`)
+				.setTitle(`Inventário de ${message.author.tag}`)
 				.setThumbnail(`${message.author.displayAvatarURL()}`);
 
 		refP.get().then(docP => {

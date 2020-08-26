@@ -51,6 +51,10 @@
 		},
 
 
+		"courage": {
+			"price": 8000,
+			"hex": "#e0a0e0"
+		},
 
 		"ditto": {
 			"price": 8000,
