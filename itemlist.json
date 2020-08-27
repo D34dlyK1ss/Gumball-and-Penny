@@ -66,6 +66,11 @@
 			"hex": "#e0c000"
 		},
 
+		"flappy_bird": {
+			"price": 8000,
+			"hex": "#e0c000"
+		},
+
 		"giorno": {
 			"price": 8000,
 			"hex": "#e0c000"
