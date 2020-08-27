@@ -1,5 +1,5 @@
 node_modules/
+backups/
 .vscode/
 .eslintrc.*
 commands/tester.js
-backups/
