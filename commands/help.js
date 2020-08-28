@@ -7,7 +7,8 @@ module.exports = {
 	description: 'Se não sabes, soubesses! :unamused:',
 	usage: 'help',
 
-	execute(bot, message, command, args, prefix) {
+	execute(bot, message, command, args, db, prefix) {
+		console.log(prefix);
 		const { commands } = message.client,
 			update = '**Update:** Foram adicionadas novas ações!\n`angry`, `cry` e `dance`.';
 		const helpEmbed = new Discord.MessageEmbed()
@@ -40,6 +41,7 @@ module.exports = {
 				return message.reply('esse comando não existe!');
 			}
 			else {
+				message.channel.send(prefix);
 				const commandEmbed = new Discord.MessageEmbed()
 					.setColor('#8000ff')
 					.addFields(

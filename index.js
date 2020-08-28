@@ -148,23 +148,24 @@ bot.on('message', async message => {
 					}
 				}
 			}
-		}).then (() => {
-			if (!xpCooldown.has(message.author.id)) {
-
-				xpCooldown.add(message.author.id);
-				setTimeout(() => {
-					xpCooldown.delete(message.author.id);
-				}, 60000);
-			}
-
-			try {
-				command.execute(bot, message, command, args, db, prefix);
-			}
-			catch (err) {
-				console.error(err);
-				message.reply('ocorreu um erro ao tentar executar esse comando!');
-			}
 		});
+
+		if (!xpCooldown.has(message.author.id)) {
+
+			xpCooldown.add(message.author.id);
+			setTimeout(() => {
+				xpCooldown.delete(message.author.id);
+			}, 60000);
+		}
+
+		try {
+			command.execute(bot, message, command, args, db, prefix);
+			console.log(prefix);
+		}
+		catch (err) {
+			console.error(err);
+			message.reply('ocorreu um erro ao tentar executar esse comando!');
+		}
 	});
 
 	const pic = new Discord.MessageAttachment(`images/${message.content}.png`);
