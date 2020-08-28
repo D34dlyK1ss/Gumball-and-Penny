@@ -2,7 +2,7 @@ module.exports = {
 	name: 'ping',
 	category: 'Utilidade',
 	description: 'Uhm... pong?',
-	usage: '`+ping`',
+	usage: 'ping',
 
 	execute(bot, message) {
 		message.reply('Pong!');

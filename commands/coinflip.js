@@ -2,19 +2,19 @@ module.exports = {
 	name: 'coinflip',
 	category: 'Casino',
 	description: 'Roda a moeda e aposta no que vai calhar!',
-	usage: '`+coinflip [cara/coroa] [quantidade]`',
+	usage: 'coinflip [cara/coroa] [quantidade]',
 
-	execute(bot, message, command, args, db) {
+	execute(bot, message, command, args, db, prefix) {
 		const user = message.author,
 			ref = db.collection('perfis').doc(user.id);
 
 		ref.get().then(doc => {
 			const money = parseInt(args[1]);
 			if (!doc.exists) {
-				message.reply('ainda não criaste um perfil! Para criares um perfil usa `+profile create`!');
+				message.reply(`ainda não criaste um perfil! Para criares um perfil usa \`${prefix}profile create\`!`);
 			}
 			else if (!Number.isInteger(money) || (args[0] != 'cara' && args[0] != 'coroa')) {
-				message.channel.send('Sintaxe errada! Como usar: `+coinflip [cara/coroa] [quantidade]`');
+				message.channel.send(`Sintaxe errada! Como usar: \`${prefix}coinflip [cara/coroa] [quantidade]\``);
 			}
 			else {
 				const bal = doc.get('balance');

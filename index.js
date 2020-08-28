@@ -158,7 +158,7 @@ bot.on('message', async message => {
 			}
 
 			try {
-				command.execute(bot, message, command, args, db);
+				command.execute(bot, message, command, args, db, prefix);
 			}
 			catch (err) {
 				console.error(err);

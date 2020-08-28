@@ -2,9 +2,9 @@ module.exports = {
 	name: 'give',
 	category: 'Economia e Perfil',
 	description: 'Dá dinheiro a alguém!',
-	usage: '`+give [@membro] [quantia]`',
+	usage: 'give [@membro] [quantia]',
 
-	execute(bot, message, command, args, db) {
+	execute(bot, message, command, args, db, prefix) {
 
 		function getUserFromMention(mention) {
 
@@ -24,7 +24,7 @@ module.exports = {
 
 		refD.get().then(docD => {
 			if (!docD.exists) {
-				message.reply('ainda não criaste um perfil! Para criares um perfil usa `+profile create`!');
+				message.reply(`ainda não criaste um perfil! Para criares um perfil usa \`${prefix}profile create\`!`);
 			}
 			else if (user == null || !Number.isInteger(amount)) {
 				message.reply('Sintaxe errada! Como usar: +give [@membro] [quantia]');
@@ -40,7 +40,7 @@ module.exports = {
 						message.reply('os bots não têm perfis!');
 					}
 					else if (args[1] == null || args[1] == '' || args == user) {
-						message.reply('Sintaxe errada! Como usar: `+give [@membro] [quantidade]`');
+						message.reply(`Sintaxe errada! Como usar: \`${prefix}give [@membro] [quantidade]\``);
 					}
 					else if (!docU.exists) {
 						message.reply(`${user.tag} ainda não criou um perfil!`);

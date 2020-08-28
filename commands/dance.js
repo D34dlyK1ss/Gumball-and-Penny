@@ -2,7 +2,7 @@ module.exports = {
 	name: 'dance',
 	category: 'Ações',
 	description: 'Dança!',
-	usage: '`+dance [opcional - @membro]`',
+	usage: 'dance [opcional - @membro]',
 
 	execute(bot, message, command) {
 		const user = message.mentions.users.first();

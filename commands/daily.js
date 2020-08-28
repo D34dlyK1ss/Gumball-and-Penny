@@ -6,9 +6,9 @@ module.exports = {
 	aliases: ['d'],
 	category: 'Economia e Perfil',
 	description: 'Receberás ¤250 a cada dia!',
-	usage: '`+daily`',
+	usage: 'daily',
 
-	execute(bot, message, command, args, db) {
+	execute(bot, message, command, args, db, prefix) {
 		const user = message.author,
 			ref = db.collection('perfis').doc(user.id),
 			daily = 250;
@@ -17,7 +17,7 @@ module.exports = {
 			const today = moment().format('L'),
 				lastDaily = doc.get('lastDaily');
 			if (!doc.exists) {
-				message.reply('ainda não criaste um perfil! Para criares um perfil usa `+profile create`!');
+				message.reply(`ainda não criaste um perfil! Para criares um perfil usa \`${prefix}profile create\`!`);
 			}
 			else if (today == lastDaily) {
 				message.reply(`poderás receber o teu montante diário outra vez ${moment().endOf('day').fromNow()}.`);

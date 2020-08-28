@@ -3,7 +3,7 @@ module.exports = {
 	aliases: ['w'],
 	category: 'Diversão',
 	description: 'Com este comando podes saber que personagem de anime és!\nAnimes disponíveis: `akame ga kill`, `code geass`, `death note`, `higurashi` , `jojo`, `kakegurui`, `mirai nikki`, `noragami`, `one punch man`, `psycho-pass`, `steins;gate`',
-	usage: '`+which [anime]`',
+	usage: 'which [anime]',
 
 	execute(bot, message, command, args) {
 		args = args.join(' ');

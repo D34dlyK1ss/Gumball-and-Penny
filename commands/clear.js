@@ -2,7 +2,7 @@ module.exports = {
 	name: 'clear',
 	category: 'Moderação',
 	description: 'Limpa o chat',
-	usage: '`+clear [número]`',
+	usage: 'clear [número]',
 
 	execute(bot, message, command, args) {
 		message.delete();

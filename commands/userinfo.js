@@ -6,7 +6,7 @@ module.exports = {
 	aliases: ['uinfo'],
 	category: 'Servidor',
 	description: 'Com este comando serás informado sobre algum membro mencionado!',
-	usage: '`+userinfo [opcional - @membro]`',
+	usage: 'userinfo [opcional - @membro]',
 
 	execute(bot, message) {
 		const user = message.mentions.users.first() || message.author;

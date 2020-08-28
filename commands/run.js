@@ -2,7 +2,7 @@ module.exports = {
 	name: 'run',
 	category: 'Ações',
 	description: 'Foge!',
-	usage: '`+run [opcional - @membro]`',
+	usage: 'run [opcional - @membro]',
 
 	execute(bot, message, command) {
 		const user = message.mentions.users.first();

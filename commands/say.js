@@ -2,7 +2,7 @@ module.exports = {
 	name: 'say',
 	category: 'Diversão',
 	description: 'Isso faz um de nós dizer o que quiseres! :slight_smile:',
-	usage: '`+say [mensagem]`',
+	usage: 'say [mensagem]',
 
 	execute(bot, message, command, args) {
 		message.delete();

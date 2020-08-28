@@ -4,7 +4,7 @@ module.exports = {
 	name: 'ban',
 	category: 'Moderação',
 	description: 'Baniremos um membro do servidor!',
-	usage: '`+ban [@utilizador] [opcional - razão]`',
+	usage: 'ban [@utilizador] [opcional - razão]',
 
 	execute(bot, message, command, args) {
 

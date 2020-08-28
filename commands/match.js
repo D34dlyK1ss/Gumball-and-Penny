@@ -9,7 +9,7 @@ module.exports = {
 	name: 'match',
 	category: 'Diversão',
 	description: 'Verifica se és compatível com alguém!',
-	usage: '`+match [@membro]`',
+	usage: 'match [@membro]',
 
 	execute(bot, message, command, args, db) {
 		const other = message.mentions.users.first();

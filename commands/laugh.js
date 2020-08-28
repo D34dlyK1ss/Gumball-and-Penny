@@ -2,7 +2,7 @@ module.exports = {
 	name: 'laugh',
 	category: 'Ações',
 	description: 'Ri-te!',
-	usage: '`+laugh [opcional - @membro]`',
+	usage: 'laugh [opcional - @membro]',
 
 	execute(bot, message, command) {
 		const user = message.mentions.users.first();

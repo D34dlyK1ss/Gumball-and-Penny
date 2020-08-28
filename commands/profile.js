@@ -21,9 +21,9 @@ module.exports = {
 	aliases: ['p'],
 	category: 'Economia e Perfil',
 	description: 'Vê o teu perfil ou o de alguém!\nOpções disponíveis: `create`, `sethud`, `setnickname`, `setdescription`',
-	usage: '`+profile [opcional - opção | @membro]`',
+	usage: 'profile [opcional - opção | @membro]',
 
-	execute(bot, message, command, args, db) {
+	execute(bot, message, command, args, db, prefix) {
 		const user = message.mentions.users.first() || message.author,
 			refP = db.collection('perfis').doc(user.id),
 			refI = db.collection('inventario').doc(message.author.id),
@@ -54,7 +54,7 @@ module.exports = {
 						refI.set({
 							huds: ['grey'],
 						}).then(() => {
-							message.reply('o teu perfil foi criado! Adiciona uma descricão com `+profile setdescription [descrição]`!');
+							message.reply(`o teu perfil foi criado! Adiciona uma descricão com \`${prefix}profile setdescription [descrição]\`!`);
 						});
 					}).catch(err => { console.error(err); });
 				}
@@ -65,7 +65,7 @@ module.exports = {
 			refP.get().then(doc => {
 				if (!doc.exists) {
 					if (user == message.author) {
-						message.reply('ainda não criaste um perfil! Para criares um perfil usa `+profile create`!');
+						message.reply(`ainda não criaste um perfil! Para criares um perfil usa \`${prefix}profile create\`!`);
 					}
 				}
 				else if (args.length > 32) {
@@ -84,7 +84,7 @@ module.exports = {
 			refP.get().then(doc => {
 				if (!doc.exists) {
 					if (user == message.author) {
-						message.reply('ainda não criaste um perfil! Para criares um perfil usa `+profile create`!');
+						message.reply(`ainda não criaste um perfil! Para criares um perfil usa \`${prefix}profile create\`!`);
 					}
 				}
 				else if (args.length > 44) {
@@ -103,7 +103,7 @@ module.exports = {
 			refP.get().then(docP => {
 				if (!docP.exists) {
 					if (user == message.author) {
-						message.reply('ainda não criaste um perfil! Para criares um perfil usa `+profile create`!');
+						message.reply(`ainda não criaste um perfil! Para criares um perfil usa \`${prefix}profile create\`!`);
 					}
 				}
 				else {
@@ -132,7 +132,7 @@ module.exports = {
 			refP.get().then(async doc => {
 				if (!doc.exists) {
 					if (user == message.author) {
-						message.reply('ainda não criaste um perfil! Para criares um perfil usa `+profile create`!');
+						message.reply(`ainda não criaste um perfil! Para criares um perfil usa \`${prefix}profile create\`!`);
 					}
 					else if (user == bot.user) {
 						message.reply('nós não precisamos de ter um perfil!');

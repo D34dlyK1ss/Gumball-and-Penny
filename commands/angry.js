@@ -2,7 +2,7 @@ module.exports = {
 	name: 'angry',
 	category: 'Ações',
 	description: 'Fica chateado!',
-	usage: '`+angry [opcional - @membro]`',
+	usage: 'angry [opcional - @membro]',
 
 	execute(bot, message, command) {
 		const user = message.mentions.users.first();

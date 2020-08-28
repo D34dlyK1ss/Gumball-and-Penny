@@ -2,7 +2,7 @@ module.exports = {
 	name: 'fact',
 	category: 'Diversão',
 	description: '**Factos**',
-	usage: '`+fact`',
+	usage: 'fact',
 
 	execute(bot, message) {
 		const rnd = Math.round(Math.random() * 16);

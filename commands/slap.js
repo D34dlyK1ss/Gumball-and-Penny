@@ -2,7 +2,7 @@ module.exports = {
 	name: 'slap',
 	category: 'Ações',
 	description: 'Dá uma chapada!',
-	usage: '`+slap [opcional - @membro]`',
+	usage: 'slap [opcional - @membro]',
 
 	execute(bot, message, command) {
 		const user = message.mentions.users.first();

@@ -2,7 +2,7 @@ module.exports = {
 	name: 'setprefix',
 	category: 'Servidor',
 	description: 'Muda o nosso prefixo para este servidor',
-	usage: '`+setprefix [prefixo]`',
+	usage: 'setprefix [prefixo]',
 
 	execute(bot, message, command, args, db) {
 		if (!message.member.hasPermission('MANAGE_GUILD')) {

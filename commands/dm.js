@@ -2,7 +2,7 @@ module.exports = {
 	name: 'dm',
 	category: 'Secretos',
 	description: 'Enviamos uma mensagem privada ao utilizador mencionado',
-	usage: '`+dm [@utilizador] [mensagem]`',
+	usage: 'dm [@utilizador] [mensagem]',
 
 	execute(bot, message, command, args) {
 		function getUserFromMention(mention) {

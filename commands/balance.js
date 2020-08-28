@@ -5,9 +5,9 @@ module.exports = {
 	aliases: ['bal'],
 	category: 'Economia e Perfil',
 	description: 'Verifica o teu capital!',
-	usage: '`+balance`',
+	usage: 'balance',
 
-	execute(bot, message, command, args, db) {
+	execute(bot, message, command, args, db, prefix) {
 		const user = message.author,
 			ref = db.collection('perfis').doc(user.id),
 			botOwner = config.botOwner,
@@ -15,7 +15,7 @@ module.exports = {
 
 		ref.get().then(doc => {
 			if (!doc.exists) {
-				message.reply('ainda não criaste um perfil! Para criares um perfil usa `+profile create`!');
+				message.reply(`ainda não criaste um perfil! Para criares um perfil usa \`${prefix}profile create\`!`);
 			}
 			else {
 				const bal = doc.get('balance');

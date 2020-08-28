@@ -6,9 +6,9 @@ module.exports = {
 	aliases: ['s'],
 	category: 'Economia e Perfil',
 	description: 'Faz compras na Loja Incrível!',
-	usage: '`+shop`',
+	usage: 'shop',
 
-	execute(bot, message, command, args, db) {
+	execute(bot, message, command, args, db, prefix) {
 		const option = args[0],
 			refP = db.collection('perfis').doc(message.author.id),
 			refI = db.collection('inventario').doc(message.author.id);
@@ -18,7 +18,7 @@ module.exports = {
 			.setTitle('Loja Incrível')
 			.setDescription(`Bem vindo à Loja Incrível!
 			Aqui poderás comprar algumas coisas com o dinheiro que acumulaste até agora.
-			Usa \`+shop [categoria]\` para selecionares uma categoria.`)
+			Usa \`${prefix}shop [categoria]\` para selecionares uma categoria.`)
 			.addFields(
 				{ name: 'HUDs', value: '\u200B' },
 			);
@@ -36,7 +36,7 @@ module.exports = {
 			case 'hud':
 				refP.get().then(docP => {
 					if (!docP.exists) {
-						message.reply('ainda não criaste um perfil! Para criares um perfil usa `+profile create`!');
+						message.reply(`ainda não criaste um perfil! Para criares um perfil usa \`${prefix}profile create\`!`);
 					}
 					else {
 						const bal = docP.get('balance'),
@@ -81,7 +81,7 @@ module.exports = {
 			case 'cores':
 				hudColorsEmbed = new MessageEmbed(mainEmbed)
 					.setTitle('Loja Incrível - HUDs (Cores)')
-					.setDescription('`+shop buy hud [item]` para comprar.')
+					.setDescription(`\`${prefix}shop buy hud [item]\` para comprar.`)
 					.spliceFields(0, mainEmbed.fields.length, [
 						{ name: 'Black', value: `¤${items.huds.black.price}`, inline: true },
 						{ name: 'Blue', value: `¤${items.huds.blue.price}`, inline: true },
@@ -98,7 +98,7 @@ module.exports = {
 			case 'jogos':
 				hudGamesEmbed = new MessageEmbed(mainEmbed)
 					.setTitle('Loja Incrível - HUDs (Jogos)')
-					.setDescription('`+shop buy hud [item]` para comprar.')
+					.setDescription(`\`${prefix}shop buy hud [item]\` para comprar.`)
 					.spliceFields(0, mainEmbed.fields.length, [
 						{ name: 'Ditto', value: `¤${items.huds.ditto.price}`, inline: true },
 						{ name: 'Eclipse_Leona', value: `¤${items.huds.eclipse_leona.price}`, inline: true },
@@ -116,7 +116,7 @@ module.exports = {
 			case 'anime':
 				hudAnimeEmbed = new MessageEmbed(mainEmbed)
 					.setTitle('Loja Incrível - HUDs (Anime)')
-					.setDescription('`+shop buy hud [item]` para comprar.')
+					.setDescription(`\`${prefix}shop buy hud [item]\` para comprar.`)
 					.spliceFields(0, mainEmbed.fields.length, [
 						{ name: 'Giorno', value: `¤${items.huds.giorno.price}`, inline: true },
 						{ name: 'Isaac', value: `¤${items.huds.isaac.price}`, inline: true },
@@ -137,7 +137,7 @@ module.exports = {
 			case 'cartoons':
 				hudCartoonsEmbed = new MessageEmbed(mainEmbed)
 					.setTitle('Loja Incrível - HUDs (Cartoons)')
-					.setDescription('`+shop buy hud [item]` para comprar.')
+					.setDescription(`\`${prefix}shop buy hud [item]\` para comprar.`)
 					.spliceFields(0, mainEmbed.fields.length, [
 						{ name: 'Courage', value: `¤${items.huds.courage.price}`, inline: true },
 						{ name: 'Jake1', value: `¤${items.huds.jake1.price}`, inline: true },
@@ -149,7 +149,7 @@ module.exports = {
 			case 'Vocaloids':
 				hudVocaloidsEmbed = new MessageEmbed(mainEmbed)
 					.setTitle('Loja Incrível - HUDs (Cartoons)')
-					.setDescription('`+shop buy hud [item]` para comprar.')
+					.setDescription(`\`${prefix}shop buy hud [item]\` para comprar.`)
 					.spliceFields(0, mainEmbed.fields.length, [
 						{ name: 'Miku', value: `¤${items.huds.miku.price}`, inline: true },
 					]);
@@ -158,7 +158,7 @@ module.exports = {
 			default:
 				hudEmbed = new MessageEmbed(mainEmbed)
 					.setTitle('Loja Incrível - HUDs')
-					.setDescription('`+shop huds [sub-categoria]` para selecionares uma sub-categoria.')
+					.setDescription(`\`${prefix}shop huds [sub-categoria]\` para selecionares uma sub-categoria.`)
 					.spliceFields(0, mainEmbed.fields.length, [
 						{ name: 'Cores', value: '\u200B', inline: true },
 						{ name: 'Jogos', value: '\u200B', inline: true },

@@ -5,9 +5,9 @@ module.exports = {
 	aliases: ['h'],
 	category: 'Ajuda',
 	description: 'Se não sabes, soubesses! :unamused:',
-	usage: '`+help`',
+	usage: 'help',
 
-	execute(bot, message, command, args) {
+	execute(bot, message, command, args, prefix) {
 		const { commands } = message.client,
 			update = '**Update:** Foram adicionadas novas ações!\n`angry`, `cry` e `dance`.';
 		const helpEmbed = new Discord.MessageEmbed()
@@ -16,7 +16,7 @@ module.exports = {
 			.setAuthor(`${bot.user.tag}`, `${bot.user.displayAvatarURL()}`)
 			.setThumbnail(`${bot.user.displayAvatarURL()}`)
 			.setDescription(`Nós somos o Gumball e a Penny e temos como objetivo tornar qualquer servidor em que estamos num lugar divertido!
-			Em caso de dúvida nalgum comando usa \`+help [nome do comando]\`
+			Em caso de dúvida nalgum comando usa \`${prefix}help [nome do comando]\`
 			${update}`)
 			.addFields(
 				{ name: '🎭 Ações', value: '`angry`, `cry`, `dance`, `hug`, `kiss`, `laugh`, `pat`, `run`, `slap`', inline: true },
@@ -45,7 +45,7 @@ module.exports = {
 					.addFields(
 						{ name: 'Nome', value: `${command.name}` },
 						{ name: 'Categoria', value: `${command.category}` },
-						{ name: 'Como usar', value: `${command.usage}` },
+						{ name: 'Como usar', value: `\`${prefix}${command.usage}\`` },
 						{ name: 'Descrição', value: `${command.description}` },
 					);
 
