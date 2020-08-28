@@ -95,6 +95,12 @@ bot.on('message', async message => {
 		// Obter o prefixo definido para o servidor
 		prefix = doc.get('prefix');
 	}).then(() => {
+		const botMention = message.mentions.users.first();
+
+		if (botMention == bot.user) {
+			message.channel.send(`O nosso prefixo para este servidor é **${prefix}**`);
+		}
+
 		// Ignorar mensagens que não começam com o prefixo
 		if (!message.content.startsWith(prefix)) return;
 
