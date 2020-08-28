@@ -160,7 +160,6 @@ bot.on('message', async message => {
 
 		try {
 			command.execute(bot, message, command, args, db, prefix);
-			console.log(prefix);
 		}
 		catch (err) {
 			console.error(err);
