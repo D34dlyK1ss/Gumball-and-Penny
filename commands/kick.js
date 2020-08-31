@@ -8,7 +8,6 @@ module.exports = {
 
 	execute(bot, message, command, args) {
 		function getUserFromMention(mention) {
-
 			const matches = mention.match(/^<@!?(\d+)>$/);
 
 			if (!matches) return;
@@ -18,16 +17,18 @@ module.exports = {
 			return bot.users.cache.get(id);
 		}
 
-		message.delete();
 		args.shift();
+
 		const mention = getUserFromMention(args[0]);
 		const member = message.guild.member(mention);
 		let	reason = args.join(' ');
 
+		message.delete();
+
 		if (!message.member.hasPermission('KICK_MEMBERS')) {
 			message.reply('não tens permissão para usar este comando! 💢').then(msg => msg.delete({ timeout: 5000 })).catch(err => { console.error(err); });
 		}
-		else if (!mention || mention == null) {
+		else if (!mention) {
 			message.reply('tens de mencionar quem queres expulsar!').then(msg => msg.delete({ timeout: 5000 })).catch(err => { console.error(err); });
 		}
 		else {
