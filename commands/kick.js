@@ -21,16 +21,16 @@ module.exports = {
 			return bot.users.cache.get(id);
 		}
 
-		message.delete();
-
-		const mention = getUserFromMention(args[0]);
-		const member = message.guild.member(mention);
-		let	reason = args.join(' ');
-
 		if (!message.member.hasPermission('KICK_MEMBERS')) {
 			message.reply('não tens permissão para usar este comando! 💢').then(msg => msg.delete({ timeout: 5000 })).catch(err => { console.error(err); });
 		}
 		else {
+			message.delete();
+
+			const mention = getUserFromMention(args[0]);
+			const member = message.guild.member(mention);
+			let	reason = args.join(' ');
+
 			member.kick({ reason: reason }).then(() => {
 				if (reason == '') reason = '_Não indicada_';
 				const embed = new Discord.MessageEmbed()
