@@ -7,9 +7,9 @@ module.exports = {
 	usage: 'ban [@utilizador] [opcional - razão]',
 
 	execute(bot, message, command, args) {
-		function getUserFromMention(mention) {
+		function getUserFromMention(mentioned) {
 
-			const matches = mention.match(/^<@!?(\d+)>$/);
+			const matches = mentioned.match(/^<@!?(\d+)>$/);
 
 			if (!matches) return;
 
