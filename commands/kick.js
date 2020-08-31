@@ -31,7 +31,7 @@ module.exports = {
 			message.reply('tens de mencionar quem queres expulsar!').then(msg => msg.delete({ timeout: 5000 })).catch(err => { console.error(err); });
 		}
 		else {
-			member.kick(reason).then(() => {
+			member.kick({ reason: reason }).then(() => {
 				if (reason == '') reason = '_Não indicada_';
 				const embed = new Discord.MessageEmbed()
 					.setColor('#8000ff')

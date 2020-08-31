@@ -7,7 +7,6 @@ module.exports = {
 	usage: 'ban [@utilizador] [opcional - razão]',
 
 	execute(bot, message, command, args) {
-
 		function getUserFromMention(mention) {
 
 			const matches = mention.match(/^<@!?(\d+)>$/);
@@ -21,7 +20,7 @@ module.exports = {
 
 		message.delete();
 		args.shift();
-		const mention = getUserFromMention(args [0]);
+		const mention = getUserFromMention(args[0]);
 		const member = message.guild.member(mention);
 		let reason = args.join(' ');
 

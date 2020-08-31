@@ -101,6 +101,7 @@ module.exports = {
 					.setDescription(`\`${prefix}shop buy hud [item]\` para comprar.`)
 					.spliceFields(0, mainEmbed.fields.length, [
 						{ name: 'Ditto', value: `¤${items.huds.ditto.price}`, inline: true },
+						{ name: 'Diamonds', value: `¤${items.huds.diamonds.price}`, inline: true },
 						{ name: 'Eclipse_Leona', value: `¤${items.huds.eclipse_leona.price}`, inline: true },
 						{ name: 'Flappy_Bird', value: `¤${items.huds.flappy_bird.price}`, inline: true },
 						{ name: 'Glitchtrap', value: `¤${items.huds.glitchtrap.price}`, inline: true },
@@ -129,6 +130,7 @@ module.exports = {
 						{ name: 'L', value: `¤${items.huds.l.price}`, inline: true },
 						{ name: 'Lelouch1', value: `¤${items.huds.lelouch1.price}`, inline: true },
 						{ name: 'Lelouch2', value: `¤${items.huds.lelouch2.price}`, inline: true },
+						{ name: 'Sora_Shiro', value: `¤${items.huds.sora_shiro.price}`, inline: true },
 						{ name: 'Yukiteru_Yuno', value: `¤${items.huds.yukiteru_yuno.price}`, inline: true },
 						{ name: 'Yuno', value: `¤${items.huds.yukiteru_yuno.price}`, inline: true },
 					]);
