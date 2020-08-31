@@ -17,7 +17,7 @@ module.exports = {
 			return bot.users.cache.get(id);
 		}
 
-		message.shift();
+		message.substring(1);
 
 		const mention = getUserFromMention(args[0]);
 		const member = message.guild.member(mention);
