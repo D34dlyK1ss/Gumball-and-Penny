@@ -17,13 +17,11 @@ module.exports = {
 			return bot.users.cache.get(id);
 		}
 
-		args.shift();
-
+		message.delete();
+		message.shift();
 		const mention = getUserFromMention(args[0]);
 		const member = message.guild.member(mention);
 		let	reason = args.join(' ');
-
-		message.delete();
 
 		if (!message.member.hasPermission('KICK_MEMBERS')) {
 			message.reply('não tens permissão para usar este comando! 💢').then(msg => msg.delete({ timeout: 5000 })).catch(err => { console.error(err); });
