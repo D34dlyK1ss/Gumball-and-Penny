@@ -27,7 +27,7 @@ module.exports = {
 		if (!message.member.hasPermission('BAN_MEMBERS')) {
 			message.reply('não tens permissão para usar este comando! 💢').then(msg => msg.delete({ timeout: 5000 })).catch(err => { console.error(err); });
 		}
-		else if (!mention) {
+		else if (!mention || mention == null) {
 			message.reply('tens de mencionar quem queres banir!').then(msg => msg.delete({ timeout: 5000 })).catch(err => { console.error(err); });
 		}
 		else {

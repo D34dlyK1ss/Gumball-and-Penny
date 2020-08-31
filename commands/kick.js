@@ -7,9 +7,9 @@ module.exports = {
 	usage: 'kick [@membro] [opcional - razão]',
 
 	execute(bot, message, command, args) {
-		function getUserFromMention(mentioned) {
+		function getUserFromMention(mention) {
 
-			const matches = mentioned.match(/^<@!?(\d+)>$/);
+			const matches = mention.match(/^<@!?(\d+)>$/);
 
 			if (!matches) return;
 
@@ -27,7 +27,7 @@ module.exports = {
 		if (!message.member.hasPermission('KICK_MEMBERS')) {
 			message.reply('não tens permissão para usar este comando! 💢').then(msg => msg.delete({ timeout: 5000 })).catch(err => { console.error(err); });
 		}
-		else if (!mention) {
+		else if (!mention || mention == null) {
 			message.reply('tens de mencionar quem queres expulsar!').then(msg => msg.delete({ timeout: 5000 })).catch(err => { console.error(err); });
 		}
 		else {
