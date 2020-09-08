@@ -1,4 +1,5 @@
-const { MessageEmbed } = require('discord.js');
+const { MessageEmbed, MessageAttachment } = require('discord.js');
+const { createCanvas, loadImage } = require('canvas');
 const items = require('../itemlist.json');
 
 module.exports = {
@@ -9,6 +10,21 @@ module.exports = {
 	usage: 'shop',
 
 	execute(bot, message, command, args, db, prefix) {
+		async function sendPreview(hud) {
+			const hudCanvas = createCanvas(700, 400),
+				ctx = hudCanvas.getContext('2d');
+			if (hud == null || hud == '') return message.reply('esse HUD não existe!');
+			const bg = await loadImage(`images/profile/hud (${hud}).png`),
+				watermark = await loadImage('images/hud_watermark.png');
+			ctx.drawImage(bg, 0, 0, hudCanvas.width, hudCanvas.height);
+			ctx.drawImage(watermark, 0, 0, hudCanvas.width, hudCanvas.height);
+
+
+			const attachment = new MessageAttachment(hudCanvas.toBuffer(), `${hud}_preview.png`);
+
+			message.channel.send(attachment);
+		}
+
 		const option = args[0],
 			refP = db.collection('perfis').doc(message.author.id),
 			refI = db.collection('inventario').doc(message.author.id);
@@ -76,12 +92,19 @@ module.exports = {
 				break;
 			}
 			break;
+		case 'view':
+			switch (args[1]) {
+			case 'hud':
+				sendPreview(args[2]);
+				break;
+			}
+			break;
 		case 'huds':
 			switch (args [1]) {
 			case 'cores':
 				hudColorsEmbed = new MessageEmbed(mainEmbed)
 					.setTitle('Loja Incrível - HUDs (Cores)')
-					.setDescription(`\`${prefix}shop buy hud [item]\` para comprar.`)
+					.setDescription(`\`${prefix}shop buy hud [item]\` para comprar ou \`${prefix}shop view hud [item]\` para ver.`)
 					.spliceFields(0, mainEmbed.fields.length, [
 						{ name: 'Black', value: `¤${items.huds.black.price}`, inline: true },
 						{ name: 'Blue', value: `¤${items.huds.blue.price}`, inline: true },
