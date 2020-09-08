@@ -195,6 +195,11 @@
 			"hex": "#e0c000"
 		},
 
+		"scorpion2": {
+			"price": 8000,
+			"hex": "#e0c000"
+		},
+
 		"springtrap": {
 			"price": 8000,
 			"hex": "#808000"

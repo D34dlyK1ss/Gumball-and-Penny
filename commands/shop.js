@@ -138,6 +138,7 @@ module.exports = {
 						{ name: 'Nightmare_Chica', value: `¤${items.huds.nightmare_chica.price}`, inline: true },
 						{ name: 'Nightmare_Foxy', value: `¤${items.huds.nightmare_foxy.price}`, inline: true },
 						{ name: 'Scorpion1', value: `¤${items.huds.scorpion1.price}`, inline: true },
+						{ name: 'Scorpion2', value: `¤${items.huds.scorpion1.price}`, inline: true },
 						{ name: 'Springtrap', value: `¤${items.huds.springtrap.price}`, inline: true },
 					]);
 				message.channel.send(hudGamesEmbed);
