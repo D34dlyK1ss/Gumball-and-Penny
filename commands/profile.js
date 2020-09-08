@@ -214,7 +214,7 @@ module.exports = {
 					ctx.closePath();
 
 					ctx.beginPath();
-					ctx.arc(96, 70, 58, 0, Math.PI * 2, true);
+					ctx.arc(97, 70, 58, 0, Math.PI * 2, true);
 					ctx.lineWidth = 6;
 					ctx.strokeStyle = 'white';
 					ctx.stroke();
