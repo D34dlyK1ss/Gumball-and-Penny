@@ -170,71 +170,60 @@ module.exports = {
 
 					ctx.globalAlpha = 0.4;
 					ctx.fillStyle = 'white';
-					ctx.fillRect(160, 172, 425, 30);
+					ctx.fillRect(175, 192, 465, 30);
 					ctx.fill();
 
 					ctx.globalAlpha = 0.7;
 					ctx.fillStyle = items.huds[hud].hex;
-					ctx.fillRect(160, 172, ((100 / (xpNeeded)) * (xpToNext) * 4.25), 30);
+					ctx.fillRect(175, 192, ((100 / (xpNeeded)) * (xpToNext) * 4.25), 30);
 					ctx.fill();
 					ctx.globalAlpha = 1;
 
+					ctx.save();
 					ctx.font = '20px bold Comic Sans MS';
 					ctx.shadowColor = 'black';
 					ctx.shadowBlur = 4;
 					ctx.shadowOffsetX = 4;
 					ctx.shadowOffsetY = 4;
-					ctx.textAlign = 'center';
 					ctx.fillStyle = 'white';
-					ctx.fillText(`${user.tag}`, 375, 60);
+					ctx.textAlign = 'center';
+					ctx.fillText(`${user.tag}`, 410, 65);
 
 					ctx.font = '16px Comic Sans MS';
-					ctx.fillStyle = 'white';
-					ctx.fillText(`${nick}`, 375, 80);
+					ctx.fillText(`${nick}`, 410, 90);
 
 					ctx.font = '18px Comic Sans MS';
 					ctx.textAlign = 'left';
-					ctx.fillText(`XP Total: ${xp}`, 160, 125);
-					ctx.fillText(`Nível: ${level}`, 160, 155);
+					ctx.fillText(`XP Total: ${xp}`, 175, 140);
+					ctx.fillText(`Nível: ${level}`, 175, 175);
 
 					ctx.fillStyle = 'gold';
 					ctx.textAlign = 'right';
-					ctx.fillText(`Capital: ¤${bal}`, 585, 140);
+					ctx.fillText(`Capital: ¤${bal}`, 640, 155);
 
 					ctx.font = '18px Comic Sans MS';
 					ctx.fillStyle = 'white';
 					ctx.textAlign = 'left';
-					ctx.fillText('Descrição:', 160, 245);
-					ctx.fillText(`${desc}`, 160, 285);
+					ctx.fillText('Descrição:', 175, 270);
+					ctx.fillText(`${desc}`, 175, 320);
+
+					ctx.font = '18px Comic Sans MS';
+					ctx.fillText(`${xpToNext} / ${convert(xpNeeded)}`, 370, 214);
+					ctx.restore();
 
 					ctx.closePath();
 
 					ctx.beginPath();
-
-					ctx.arc(88, 62, 50, 0, Math.PI * 2, true);
-					ctx.lineWidth = 4;
-					ctx.shadowColor = 'black';
-					ctx.shadowBlur = 8;
-					ctx.shadowOffsetX = 4;
-					ctx.shadowOffsetY = 4;
+					ctx.arc(96, 70, 58, 0, Math.PI * 2, true);
+					ctx.lineWidth = 6;
 					ctx.strokeStyle = 'white';
 					ctx.stroke();
-
-					ctx.font = '18px Comic Sans MS';
-					ctx.shadowColor = 'black';
-					ctx.shadowBlur = 4;
-					ctx.shadowOffsetX = 4;
-					ctx.shadowOffsetY = 4;
-					ctx.textAlign = 'center';
-					ctx.fillStyle = 'white';
-					ctx.fillText(`${xpToNext} / ${convert(xpNeeded)}`, 370, 192);
-
 					ctx.closePath();
 
 					ctx.clip();
 
 					const avatar = await loadImage(user.displayAvatarURL({ format: 'jpg' }));
-					ctx.drawImage (avatar, 34, 10, 110, 110);
+					ctx.drawImage (avatar, 36, 10, 120, 120);
 
 					const attachment = new MessageAttachment(canvas.toBuffer(), 'profile.png');
 
