@@ -9,7 +9,7 @@ module.exports = {
 
 	execute(bot, message, command, args, db, prefix) {
 		const { commands } = message.client,
-			update = '**Update:** Foram adicionadas novas ações!\n`angry`, `cry` e `dance`.';
+			update = '**Update:** Foi adicionado uma nova opção na Loja Incrível! Agora podem usar `+shop view hud [nome do hud]` para visualizarem um HUD.';
 		const helpEmbed = new Discord.MessageEmbed()
 			.setColor('#8000ff')
 			.setTitle('Ajuda')
