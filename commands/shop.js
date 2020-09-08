@@ -13,16 +13,20 @@ module.exports = {
 		async function sendPreview(hud) {
 			const hudCanvas = createCanvas(700, 400),
 				ctx = hudCanvas.getContext('2d');
-			if (hud == null || hud == '') return message.reply('esse HUD não existe!');
-			const bg = await loadImage(`images/profile/hud (${hud}).png`),
-				watermark = await loadImage('images/hud_watermark.png');
-			ctx.drawImage(bg, 0, 0, hudCanvas.width, hudCanvas.height);
-			ctx.drawImage(watermark, 0, 0, hudCanvas.width, hudCanvas.height);
+			try {
+				const bg = await loadImage(`images/profile/hud (${hud}).png`);
+				const watermark = await loadImage('images/hud_watermark.png');
+				ctx.drawImage(bg, 0, 0, hudCanvas.width, hudCanvas.height);
+				ctx.drawImage(watermark, 0, 0, hudCanvas.width, hudCanvas.height);
 
+				const attachment = new MessageAttachment(hudCanvas.toBuffer(), `${hud}_preview.png`);
 
-			const attachment = new MessageAttachment(hudCanvas.toBuffer(), `${hud}_preview.png`);
+				message.channel.send(attachment);
+			}
+			catch {
+				message.reply('esse HUD não existe!');
+			}
 
-			message.channel.send(attachment);
 		}
 
 		const option = args[0],
