@@ -208,7 +208,8 @@ module.exports = {
 					ctx.fillText(`${desc}`, 175, 320);
 
 					ctx.font = '18px Comic Sans MS';
-					ctx.fillText(`${xpToNext} / ${convert(xpNeeded)}`, 368, 212);
+					ctx.textAlign = 'center';
+					ctx.fillText(`${xpToNext} / ${convert(xpNeeded)}`, 410, 214);
 					ctx.restore();
 
 					ctx.closePath();
