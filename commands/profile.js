@@ -223,7 +223,7 @@ module.exports = {
 					ctx.clip();
 
 					const avatar = await loadImage(user.displayAvatarURL({ format: 'jpg' }));
-					ctx.drawImage (avatar, 36, 10, 120, 120);
+					ctx.drawImage (avatar, 37, 10, 120, 120);
 
 					const attachment = new MessageAttachment(canvas.toBuffer(), 'profile.png');
 
