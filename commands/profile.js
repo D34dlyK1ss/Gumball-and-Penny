@@ -160,7 +160,7 @@ module.exports = {
 					if (xpNeeded <= 0) xpNeeded = 200;
 					if (xpToNext <= 0) xpToNext = xp;
 
-					const canvas = createCanvas(640, 360),
+					const canvas = createCanvas(700, 400),
 						ctx = canvas.getContext('2d');
 
 					const bg = await loadImage(`images/profile/hud (${hud}).png`);
