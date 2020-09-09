@@ -57,7 +57,7 @@ module.exports = {
 						}
 						else {
 
-							let newBalU;
+							let newBalU = balU + amount;
 
 							if ((balU + amount) > 999999999) {
 								newBalU = 999999999;
