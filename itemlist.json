@@ -76,6 +76,11 @@
 			"hex": "#e0c000"
 		},
 
+		"funtime_foxy": {
+			"price": 8000,
+			"hex": "#e00080"
+		},
+
 		"giorno": {
 			"price": 8000,
 			"hex": "#e0c000"

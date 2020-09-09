@@ -131,6 +131,7 @@ module.exports = {
 						{ name: 'Diamonds', value: `¤${items.huds.diamonds.price}`, inline: true },
 						{ name: 'Eclipse_Leona', value: `¤${items.huds.eclipse_leona.price}`, inline: true },
 						{ name: 'Flappy_Bird', value: `¤${items.huds.flappy_bird.price}`, inline: true },
+						{ name: 'Funtime_Foxy', value: `¤${items.huds.funtime_foxy.price}`, inline: true },
 						{ name: 'Glitchtrap', value: `¤${items.huds.glitchtrap.price}`, inline: true },
 						{ name: 'KDA_Akali', value: `¤${items.huds.kda_akali.price}`, inline: true },
 						{ name: 'Kirby1', value: `¤${items.huds.kirby1.price}`, inline: true },
