@@ -4,7 +4,7 @@ module.exports = {
 	description: 'Muda o nosso prefixo para este servidor',
 	usage: 'setprefix [prefixo]',
 
-	execute(bot, message, command, args, db) {
+	execute(bot, message, command, args, db, prefixes) {
 		if (!message.member.hasPermission('MANAGE_GUILD')) {
 			message.delete();
 			message.reply('não tens permissão para usar este comando! 💢').then(msg => { msg.delete({ timeout: 3000 }); });
@@ -14,6 +14,7 @@ module.exports = {
 		}
 		else {
 			const newPrefix = args[0];
+			prefixes[message.guild.id] = newPrefix;
 			db.collection('servidores').doc(message.guild.id).update({
 				prefix: newPrefix,
 			}).then(() => {

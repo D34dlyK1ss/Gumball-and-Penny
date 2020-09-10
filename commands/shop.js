@@ -125,22 +125,24 @@ module.exports = {
 			case 'jogos':
 				hudGamesEmbed = new MessageEmbed(mainEmbed)
 					.setTitle('Loja Incrível - HUDs (Jogos)')
-					.setDescription(`\`${prefix}shop buy hud [item]\` para comprar.`)
+					.setDescription(`\`${prefix}shop buy hud [nome_do_item]\` para comprar.`)
 					.spliceFields(0, mainEmbed.fields.length, [
 						{ name: 'Ditto', value: `¤${items.huds.ditto.price}`, inline: true },
 						{ name: 'Diamonds', value: `¤${items.huds.diamonds.price}`, inline: true },
-						{ name: 'Eclipse_Leona', value: `¤${items.huds.eclipse_leona.price}`, inline: true },
-						{ name: 'Flappy_Bird', value: `¤${items.huds.flappy_bird.price}`, inline: true },
-						{ name: 'Funtime_Foxy', value: `¤${items.huds.funtime_foxy.price}`, inline: true },
+						{ name: 'Eclipse Leona', value: `¤${items.huds.eclipse_leona.price}`, inline: true },
+						{ name: 'Flappy Bird', value: `¤${items.huds.flappy_bird.price}`, inline: true },
+						{ name: 'Funtime Foxy', value: `¤${items.huds.funtime_foxy.price}`, inline: true },
 						{ name: 'Glitchtrap', value: `¤${items.huds.glitchtrap.price}`, inline: true },
-						{ name: 'KDA_Akali', value: `¤${items.huds.kda_akali.price}`, inline: true },
+						{ name: 'KDA Akali', value: `¤${items.huds.kda_akali.price}`, inline: true },
 						{ name: 'Kirby1', value: `¤${items.huds.kirby1.price}`, inline: true },
 						{ name: 'Kirby2', value: `¤${items.huds.kirby2.price}`, inline: true },
-						{ name: 'Nightmare_Chica', value: `¤${items.huds.nightmare_chica.price}`, inline: true },
-						{ name: 'Nightmare_Foxy', value: `¤${items.huds.nightmare_foxy.price}`, inline: true },
+						{ name: 'Nightmare Chica', value: `¤${items.huds.nightmare_chica.price}`, inline: true },
+						{ name: 'Nightmare Foxy', value: `¤${items.huds.nightmare_foxy.price}`, inline: true },
+						{ name: 'Nunu and Willump', value: `¤${items.huds.nightmare_foxy.price}`, inline: true },
 						{ name: 'Scorpion1', value: `¤${items.huds.scorpion1.price}`, inline: true },
 						{ name: 'Scorpion2', value: `¤${items.huds.scorpion1.price}`, inline: true },
 						{ name: 'Springtrap', value: `¤${items.huds.springtrap.price}`, inline: true },
+						{ name: 'SubZero', value: `¤${items.huds.subzero.price}`, inline: true },
 					]);
 				message.channel.send(hudGamesEmbed);
 				break;
@@ -152,7 +154,7 @@ module.exports = {
 						{ name: 'Giorno', value: `¤${items.huds.giorno.price}`, inline: true },
 						{ name: 'Isaac', value: `¤${items.huds.isaac.price}`, inline: true },
 						{ name: 'Itachi', value: `¤${items.huds.itachi.price}`, inline: true },
-						{ name: 'Jojo_Part4', value: `¤${items.huds.jojo_part4.price}`, inline: true },
+						{ name: 'Jojo Part4', value: `¤${items.huds.jojo_part4.price}`, inline: true },
 						{ name: 'Kakashi', value: `¤${items.huds.kakashi.price}`, inline: true },
 						{ name: 'Kaneki1', value: `¤${items.huds.kaneki1.price}`, inline: true },
 						{ name: 'Kaneki2', value: `¤${items.huds.kaneki2.price}`, inline: true },
@@ -160,8 +162,8 @@ module.exports = {
 						{ name: 'L', value: `¤${items.huds.l.price}`, inline: true },
 						{ name: 'Lelouch1', value: `¤${items.huds.lelouch1.price}`, inline: true },
 						{ name: 'Lelouch2', value: `¤${items.huds.lelouch2.price}`, inline: true },
-						{ name: 'Sora_Shiro', value: `¤${items.huds.sora_shiro.price}`, inline: true },
-						{ name: 'Yukiteru_Yuno', value: `¤${items.huds.yukiteru_yuno.price}`, inline: true },
+						{ name: 'Sora Shiro', value: `¤${items.huds.sora_shiro.price}`, inline: true },
+						{ name: 'Yukiteru Yuno', value: `¤${items.huds.yukiteru_yuno.price}`, inline: true },
 						{ name: 'Yuno', value: `¤${items.huds.yukiteru_yuno.price}`, inline: true },
 					]);
 				message.channel.send(hudAnimeEmbed);
@@ -174,7 +176,7 @@ module.exports = {
 						{ name: 'Courage', value: `¤${items.huds.courage.price}`, inline: true },
 						{ name: 'Jake1', value: `¤${items.huds.jake1.price}`, inline: true },
 						{ name: 'Jake2', value: `¤${items.huds.jake2.price}`, inline: true },
-						{ name: 'Gumball_Darwin', value: `¤${items.huds.gumball_darwin.price}`, inline: true },
+						{ name: 'Gumball Darwin', value: `¤${items.huds.gumball_darwin.price}`, inline: true },
 					]);
 				message.channel.send(hudCartoonsEmbed);
 				break;

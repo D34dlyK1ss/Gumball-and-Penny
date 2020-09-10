@@ -44,7 +44,6 @@ module.exports = {
 						balance: 0,
 						hud: 'grey',
 						description: 'N/A',
-						id: user.id,
 						lastDaily: '01/01/1970',
 						level: 0,
 						name: user.tag,

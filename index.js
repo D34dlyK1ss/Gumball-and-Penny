@@ -48,7 +48,7 @@ for (const file of commandFiles) {
 bot.once('ready', async () => {
 	console.log(`Preparados! (${moment().format('LL')} ${moment().format('LTS')})`);
 
-	bot.user.setActivity('+help');
+	bot.user.setActivity(`+help || Em ${bot.guilds.size} servidores!`);
 
 	const currentdate = new Date(),
 		relationship = new Date(2019, 11, 28),
@@ -64,7 +64,6 @@ bot.once('ready', async () => {
 	});
 });
 
-
 const xpCooldown = new Set();
 
 // Ações para quando o bot receber uma mensagem
@@ -73,105 +72,93 @@ bot.on('message', async message => {
 	// Ignorar mensagens privadas e mensagens de outros bots
 	if (message.channel.type === 'dm' || message.author.bot) return;
 
+	// Obter o prefixo definido para o servidor
+	const ref = db.collection('servidores').doc(message.guild.id);
+
+	let prefixes = new Object();
+
+	prefixes = { 'guildID': '+' };
+
+	if (!prefixes[message.guild.id]) prefixes[message.guild.id] = await ref.get('prefix');
+
+	const prefix = prefixes[message.guild.id];
+
+	const botMention = message.mentions.users.first();
+
+	if (botMention == bot.user) {
+		message.channel.send(`O nosso prefixo para este servidor é **${prefix}**`);
+	}
+
+	// Ignorar mensagens que não começam com o prefixo
+	if (!message.content.startsWith(prefix)) return;
+
+	const array = message.content.split(' '),
+		commandName = array[0].slice(prefix.length).toLowerCase(),
+		args = array.slice(1);
+	const command = bot.commands.get(commandName) || bot.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
+
+	// Ignorar mensagem se o bot não tiver tal comando
+	if (!command) return;
+
+	// Adicionar XP ao perfil do utilizador
 	db.collection('perfis').doc(message.author.id).get().then(doc => {
 		if (!doc.exists) {
 			return;
 		}
 		else {
-			const name = db.collection('perfis').doc(message.author.id).get('name');
+			const rewardsArray = ['10', '20', '30', '40', '50', '60', '70', '80', '90', '100'],
+				level = doc.get('level'),
+				xp = doc.get('xp'),
+				add = Math.floor(Math.random() * 11) + 50;
+			const newXP = xp + add;
 
-			if (message.author.tag != name) {
+			if (newXP > 2000000) return;
+
+			const newLevel = Math.floor(Math.sqrt(newXP / 2000000) * 100);
+
+			db.collection('perfis').doc(message.author.id).update({
+				xp: newXP,
+			});
+
+			if (newLevel != level) {
 				db.collection('perfis').doc(message.author.id).update({
-					name: message.author.tag,
-				});
-			}
-		}
-	});
-
-	let prefix;
-	const ref = db.collection('servidores').doc(message.guild.id);
-
-	ref.get().then(doc => {
-		// Obter o prefixo definido para o servidor
-		prefix = doc.get('prefix');
-	}).then(() => {
-		const botMention = message.mentions.users.first();
-
-		if (botMention == bot.user) {
-			message.channel.send(`O nosso prefixo para este servidor é **${prefix}**`);
-		}
-
-		// Ignorar mensagens que não começam com o prefixo
-		if (!message.content.startsWith(prefix)) return;
-
-		const array = message.content.split(' '),
-			commandName = array[0].slice(prefix.length).toLowerCase(),
-			args = array.slice(1);
-		const command = bot.commands.get(commandName) || bot.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
-
-		// Ignorar mensagem se o bot não tiver tal comando
-		if (!command) return;
-
-		// Adicionar XP ao perfil do utilizador
-		db.collection('perfis').doc(message.author.id).get().then(doc => {
-			if (!doc.exists) {
-				return;
-			}
-			else {
-				const rewardsArray = ['10', '20', '30', '40', '50', '60', '70', '80', '90', '100'],
-					level = doc.get('level'),
-					xp = doc.get('xp'),
-					add = Math.floor(Math.random() * 11) + 50;
-				const newXP = xp + add;
-
-				if (newXP > 2000000) return;
-
-				const newLevel = Math.floor(Math.sqrt(newXP / 2000000) * 100);
-
-				db.collection('perfis').doc(message.author.id).update({
-					xp: newXP,
+					level: newLevel,
 				});
 
-				if (newLevel != level) {
-					db.collection('perfis').doc(message.author.id).update({
-						level: newLevel,
-					});
+				if (newLevel > level) {
+					const bal = doc.get('balance'),
+						stringLevel = newLevel.toString(),
+						reward = rewards[`Level ${level + 1}`];
 
-					if (newLevel > level) {
-						const bal = doc.get('balance'),
-							stringLevel = newLevel.toString(),
-							reward = rewards[`Level ${level + 1}`];
-
-						if (rewardsArray.includes(stringLevel)) {
-							db.collection('perfis').doc(message.author.id).update({
-								balance: bal + reward,
-							});
-							message.channel.send(`🎉 Parabéns ${message.author}, subiste para o nível ${newLevel} e recebeste ¤${reward} 🆙💰`);
-						}
-						else {
-							message.channel.send(`🎉 Parabéns ${message.author}, subiste para o nível ${newLevel}! 🆙`);
-						}
+					if (rewardsArray.includes(stringLevel)) {
+						db.collection('perfis').doc(message.author.id).update({
+							balance: bal + reward,
+						});
+						message.channel.send(`🎉 Parabéns ${message.author}, subiste para o nível ${newLevel} e recebeste ¤${reward} 🆙💰`);
+					}
+					else {
+						message.channel.send(`🎉 Parabéns ${message.author}, subiste para o nível ${newLevel}! 🆙`);
 					}
 				}
 			}
-		});
-
-		if (!xpCooldown.has(message.author.id)) {
-
-			xpCooldown.add(message.author.id);
-			setTimeout(() => {
-				xpCooldown.delete(message.author.id);
-			}, 60000);
-		}
-
-		try {
-			command.execute(bot, message, command, args, db, prefix);
-		}
-		catch (err) {
-			console.error(err);
-			message.reply('ocorreu um erro ao tentar executar esse comando!');
 		}
 	});
+
+	if (!xpCooldown.has(message.author.id)) {
+
+		xpCooldown.add(message.author.id);
+		setTimeout(() => {
+			xpCooldown.delete(message.author.id);
+		}, 60000);
+	}
+
+	try {
+		command.execute(bot, message, command, args, db, prefix, prefixes);
+	}
+	catch (err) {
+		console.error(err);
+		message.reply('ocorreu um erro ao tentar executar esse comando!');
+	}
 
 	const pic = new Discord.MessageAttachment(`images/${message.content}.png`);
 
@@ -200,36 +187,12 @@ bot.on('message', async message => {
 		break;
 	}
 
-	const gName = ref.get('guildName'),
-		oName = ref.get('guildOwner'),
-		oID = ref.get('guildOwnerID'),
-		mCount = ref.get('memberCount');
-
-	// Atualizar o nome do servidor
-	if (message.guild.name != gName) {
-		ref.update({
-			guildName: message.guild.name,
-		});
-	}
-
-	// Atualizar o nome do proprietário do servidor
-	if (message.guild.owner.user.username != oName) {
-		ref.update({
-			guildOwner: message.guild.owner.user.tag,
-		});
-	}
+	const oID = ref.get('guildOwnerID');
 
 	// Atualizar o ID do proprietário do servidor
 	if (message.guild.owner.user.id != oID) {
 		ref.update({
 			guildOwnerID: message.guild.owner.user.id,
-		});
-	}
-
-	// Atualizar o número de membros do servidor
-	if (message.guild.members != mCount) {
-		ref.update({
-			memberCount: message.guild.memberCount,
 		});
 	}
 });
@@ -238,12 +201,14 @@ bot.on('message', async message => {
 bot.on('guildCreate', async guildData => {
 	db.collection('servidores').doc(guildData.id).set({
 		'guildID': guildData.id,
-		'guildName': guildData.name,
-		'guildOwner': guildData.owner.user.tag,
 		'guildOwnerID': guildData.owner.user.id,
-		'memberCount': guildData.memberCount,
 		'prefix': '+',
 	});
+	bot.user.setActivity(`+help || Em ${bot.guilds.size} servidores!`);
+});
+
+bot.on('guildDelete', () => {
+	bot.user.setActivity(`+help || Em ${bot.guilds.size} servidores!`);
 });
 
 // Autenticação do bot

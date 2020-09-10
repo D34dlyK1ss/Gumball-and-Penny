@@ -195,6 +195,11 @@
 			"hex": "#101010"
 		},
 
+		"nunu_and_willump": {
+			"price": 8000,
+			"hex": "#00c0ff"
+		},
+
 		"scorpion1": {
 			"price": 8000,
 			"hex": "#e0c000"
@@ -213,6 +218,11 @@
 		"sora_shiro": {
 			"price": 8000,
 			"hex": "#800000"
+		},
+
+		"subzero": {
+			"price": 8000,
+			"hex": "#00c0ff"
 		},
 
 		"yukiteru_yuno": {
