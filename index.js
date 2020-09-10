@@ -213,7 +213,7 @@ bot.on('message', async message => {
 	}
 
 	// Atualizar o nome do proprietário do servidor
-	if (message.guild.owner.user.tag != oName) {
+	if (message.guild.owner.user.username != oName) {
 		ref.update({
 			guildOwner: message.guild.owner.user.tag,
 		});
