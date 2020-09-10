@@ -48,7 +48,7 @@ for (const file of commandFiles) {
 bot.once('ready', async () => {
 	console.log(`Preparados! (${moment().format('LL')} ${moment().format('LTS')})`);
 
-	bot.user.setActivity(`+help || Em ${bot.guilds.size} servidores!`);
+	bot.user.setActivity(`+help || Em ${bot.guilds.cache.size} servidores!`);
 
 	const currentdate = new Date(),
 		relationship = new Date(2019, 11, 28),
@@ -77,9 +77,13 @@ bot.on('message', async message => {
 
 	let prefixes = new Object();
 
-	prefixes = { 'guildID': '+' };
+	prefixes = { guildID: String };
 
-	if (!prefixes[message.guild.id]) prefixes[message.guild.id] = await ref.get('prefix');
+	if (prefixes[message.guild.id] == null) {
+		ref.get().then(doc => {
+			prefixes[message.guild.id] = doc.get('prefix');
+		});
+	}
 
 	const prefix = prefixes[message.guild.id];
 
@@ -89,75 +93,77 @@ bot.on('message', async message => {
 		message.channel.send(`O nosso prefixo para este servidor é **${prefix}**`);
 	}
 
-	// Ignorar mensagens que não começam com o prefixo
-	if (!message.content.startsWith(prefix)) return;
+	if (prefix) {
+		// Ignorar mensagens que não começam com o prefixo
+		if (!message.content.startsWith(prefix)) return;
 
-	const array = message.content.split(' '),
-		commandName = array[0].slice(prefix.length).toLowerCase(),
-		args = array.slice(1);
-	const command = bot.commands.get(commandName) || bot.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
+		const array = message.content.split(' '),
+			commandName = array[0].slice(prefix.length).toLowerCase(),
+			args = array.slice(1);
+		const command = bot.commands.get(commandName) || bot.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
 
-	// Ignorar mensagem se o bot não tiver tal comando
-	if (!command) return;
+		// Ignorar mensagem se o bot não tiver tal comando
+		if (!command) return;
 
-	// Adicionar XP ao perfil do utilizador
-	db.collection('perfis').doc(message.author.id).get().then(doc => {
-		if (!doc.exists) {
-			return;
-		}
-		else {
-			const rewardsArray = ['10', '20', '30', '40', '50', '60', '70', '80', '90', '100'],
-				level = doc.get('level'),
-				xp = doc.get('xp'),
-				add = Math.floor(Math.random() * 11) + 50;
-			const newXP = xp + add;
+		// Adicionar XP ao perfil do utilizador
+		db.collection('perfis').doc(message.author.id).get().then(doc => {
+			if (!doc.exists) {
+				return;
+			}
+			else {
+				const rewardsArray = ['10', '20', '30', '40', '50', '60', '70', '80', '90', '100'],
+					level = doc.get('level'),
+					xp = doc.get('xp'),
+					add = Math.floor(Math.random() * 11) + 50;
+				const newXP = xp + add;
 
-			if (newXP > 2000000) return;
+				if (newXP > 2000000) return;
 
-			const newLevel = Math.floor(Math.sqrt(newXP / 2000000) * 100);
+				const newLevel = Math.floor(Math.sqrt(newXP / 2000000) * 100);
 
-			db.collection('perfis').doc(message.author.id).update({
-				xp: newXP,
-			});
-
-			if (newLevel != level) {
 				db.collection('perfis').doc(message.author.id).update({
-					level: newLevel,
+					xp: newXP,
 				});
 
-				if (newLevel > level) {
-					const bal = doc.get('balance'),
-						stringLevel = newLevel.toString(),
-						reward = rewards[`Level ${level + 1}`];
+				if (newLevel != level) {
+					db.collection('perfis').doc(message.author.id).update({
+						level: newLevel,
+					});
 
-					if (rewardsArray.includes(stringLevel)) {
-						db.collection('perfis').doc(message.author.id).update({
-							balance: bal + reward,
-						});
-						message.channel.send(`🎉 Parabéns ${message.author}, subiste para o nível ${newLevel} e recebeste ¤${reward} 🆙💰`);
-					}
-					else {
-						message.channel.send(`🎉 Parabéns ${message.author}, subiste para o nível ${newLevel}! 🆙`);
+					if (newLevel > level) {
+						const bal = doc.get('balance'),
+							stringLevel = newLevel.toString(),
+							reward = rewards[`Level ${level + 1}`];
+
+						if (rewardsArray.includes(stringLevel)) {
+							db.collection('perfis').doc(message.author.id).update({
+								balance: bal + reward,
+							});
+							message.channel.send(`🎉 Parabéns ${message.author}, subiste para o nível ${newLevel} e recebeste ¤${reward} 🆙💰`);
+						}
+						else {
+							message.channel.send(`🎉 Parabéns ${message.author}, subiste para o nível ${newLevel}! 🆙`);
+						}
 					}
 				}
 			}
+		});
+
+		if (!xpCooldown.has(message.author.id)) {
+
+			xpCooldown.add(message.author.id);
+			setTimeout(() => {
+				xpCooldown.delete(message.author.id);
+			}, 60000);
 		}
-	});
 
-	if (!xpCooldown.has(message.author.id)) {
-
-		xpCooldown.add(message.author.id);
-		setTimeout(() => {
-			xpCooldown.delete(message.author.id);
-		}, 60000);
-	}
-
-	try {
-		command.execute(bot, message, command, args, db, prefix, prefixes);
-	}
-	catch (err) {
-		console.error(err);
-		message.reply('ocorreu um erro ao tentar executar esse comando!');
+		try {
+			command.execute(bot, message, command, args, db, prefix, prefixes);
+		}
+		catch (err) {
+			console.error(err);
+			message.reply('ocorreu um erro ao tentar executar esse comando!');
+		}
 	}
 
 	const pic = new Discord.MessageAttachment(`images/${message.content}.png`);
@@ -200,15 +206,25 @@ bot.on('message', async message => {
 // Quando o bot for adicionado a um novo servidor, são armazenados dados do mesmo
 bot.on('guildCreate', async guildData => {
 	db.collection('servidores').doc(guildData.id).set({
-		'guildID': guildData.id,
 		'guildOwnerID': guildData.owner.user.id,
 		'prefix': '+',
 	});
-	bot.user.setActivity(`+help || Em ${bot.guilds.size} servidores!`);
+	bot.user.setActivity(`+help || Em ${bot.guilds.cache.size} servidores!`);
 });
 
-bot.on('guildDelete', () => {
-	bot.user.setActivity(`+help || Em ${bot.guilds.size} servidores!`);
+// Quando o bot for expulso de um servidor, o bot apagará os dados respetivos
+bot.on('guildDelete', async guildData => {
+	db.collection('servidores').doc(guildData.id).delete();
+	bot.user.setActivity(`+help || Em ${bot.guilds.cache.size} servidores!`);
+});
+
+// Quando os dados de um servidor forem atualizados, o bot substituirá dados anteriores
+bot.on('guildUpdate', async (oldGuild, newGuild) => {
+	if (oldGuild.ownerID != newGuild.ownerID) {
+		db.collection('servidores').doc(newGuild.id).set({
+			'guildOwnerID': newGuild.owner.user.id,
+		});
+	}
 });
 
 // Autenticação do bot
