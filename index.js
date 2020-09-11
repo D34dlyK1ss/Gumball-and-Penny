@@ -84,12 +84,6 @@ bot.on('message', async message => {
 
 	const prefix = prefixes[message.guild.id];
 
-	const botMention = message.mentions.users.first();
-
-	if (botMention == bot.user) {
-		message.channel.send(`O nosso prefixo para este servidor é **${prefix}**`);
-	}
-
 	if (prefix) {
 		// Ignorar mensagens que não começam com o prefixo
 		if (!message.content.startsWith(prefix)) return;
@@ -163,6 +157,12 @@ bot.on('message', async message => {
 		}
 	}
 
+	const botMention = message.mentions.users.first();
+
+	if (botMention == bot.user) {
+		message.channel.send(`O nosso prefixo para este servidor é **${prefix}**`);
+	}
+
 	const pic = new Discord.MessageAttachment(`images/${message.content}.png`);
 
 	// Responder de acordo com o conteúdo da mensagem lida
@@ -214,6 +214,6 @@ bot.on('guildUpdate', async (oldGuild, newGuild) => {
 		});
 	}
 });
-
+s
 // Autenticação do bot
 bot.login(config.token);

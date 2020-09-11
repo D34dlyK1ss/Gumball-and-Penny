@@ -1,3 +1,5 @@
+const { MessageAttachment } = require('discord.js');
+
 module.exports = {
 	name: 'coinflip',
 	category: 'Casino',
@@ -33,26 +35,30 @@ module.exports = {
 						guess = args[0].toLowerCase();
 					let res;
 
-					if (value == 0) res = 'cara';
-					if (value == 1) res = 'coroa';
+					const attachment = new MessageAttachment('../images/coinflip/animation.gif');
 
-					message.channel.send(`${res.charAt(0).toUpperCase() + res.slice(1)}!`);
+					message.channel.send(attachment).then(msg => msg.delete({ timeout: 2000 }).then(() => {
+						if (value == 0) res = 'cara';
+						if (value == 1) res = 'coroa';
 
-					if (res != guess) {
-						db.collection('perfis').doc(user.id).update({
-							balance: (bal - money),
-						}).then(() => {
-							message.reply(`perdeste ¤${money}!`);
-						}).catch(err => { console.error(err); });
-					}
-					else if (res == guess) {
-						const won = money * 2;
-						db.collection('perfis').doc(user.id).update({
-							balance: (bal + won),
-						}).then(() => {
-							message.reply(`ganhaste ¤${won}!`);
-						}).catch(err => { console.error(err); });
-					}
+						message.channel.send(`${res.charAt(0).toUpperCase() + res.slice(1)}!`, { file: `../images/coinflip/${res}.gif` });
+
+						if (res != guess) {
+							db.collection('perfis').doc(user.id).update({
+								balance: (bal - money),
+							}).then(() => {
+								message.reply(`perdeste ¤${money}!`);
+							}).catch(err => { console.error(err); });
+						}
+						else if (res == guess) {
+							const won = money * 2;
+							db.collection('perfis').doc(user.id).update({
+								balance: (bal + won),
+							}).then(() => {
+								message.reply(`ganhaste ¤${won}!`);
+							}).catch(err => { console.error(err); });
+						}
+					}));
 				}
 			}
 		}).catch(err => { console.error(err); });
