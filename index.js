@@ -84,8 +84,6 @@ bot.on('message', async message => {
 
 	const prefix = prefixes[message.guild.id];
 
-	console.log(prefixes);
-
 	const botMention = message.mentions.users.first();
 
 	if (botMention == bot.user) {
