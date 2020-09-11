@@ -41,7 +41,7 @@ module.exports = {
 						if (value == 0) res = 'cara';
 						if (value == 1) res = 'coroa';
 
-						message.channel.send(`${res.charAt(0).toUpperCase() + res.slice(1)}!`, { file: `images/coinflip/${res}.gif` });
+						message.channel.send(`${res.charAt(0).toUpperCase() + res.slice(1)}!`, { files: [`images/coinflip/${res}.gif`] });
 
 						if (res != guess) {
 							db.collection('perfis').doc(user.id).update({
