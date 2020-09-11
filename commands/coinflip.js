@@ -35,13 +35,13 @@ module.exports = {
 						guess = args[0].toLowerCase();
 					let res;
 
-					const attachment = new MessageAttachment('../images/coinflip/animation.gif');
+					const attachment = new MessageAttachment('/images/coinflip/animation.gif');
 
 					message.channel.send(attachment).then(msg => msg.delete({ timeout: 2000 }).then(() => {
 						if (value == 0) res = 'cara';
 						if (value == 1) res = 'coroa';
 
-						message.channel.send(`${res.charAt(0).toUpperCase() + res.slice(1)}!`, { file: `../images/coinflip/${res}.gif` });
+						message.channel.send(`${res.charAt(0).toUpperCase() + res.slice(1)}!`, { file: `./images/coinflip/${res}.gif` });
 
 						if (res != guess) {
 							db.collection('perfis').doc(user.id).update({
