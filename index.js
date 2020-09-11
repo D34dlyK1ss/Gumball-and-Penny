@@ -44,6 +44,8 @@ for (const file of commandFiles) {
 	bot.commands.set(props.name, props);
 }
 
+const prefixes = new Object();
+
 // Uma vez que o bot está ativo:
 bot.once('ready', async () => {
 	console.log(`Preparados! (${moment().format('LL')} ${moment().format('LTS')})`);
@@ -75,17 +77,14 @@ bot.on('message', async message => {
 	// Obter o prefixo definido para o servidor
 	const ref = db.collection('servidores').doc(message.guild.id);
 
-	let prefixes = new Object();
-
-	prefixes = { guildID: String };
-
-	if (prefixes[message.guild.id] == null) {
-		ref.get().then(doc => {
-			prefixes[message.guild.id] = doc.get('prefix');
-		});
+	if (!prefixes[message.guild.id]) {
+		const doc = await ref.get();
+		prefixes[message.guild.id] = doc.get('prefix');
 	}
 
 	const prefix = prefixes[message.guild.id];
+
+	console.log(prefixes);
 
 	const botMention = message.mentions.users.first();
 
@@ -191,15 +190,6 @@ bot.on('message', async message => {
 	case 'noice':
 		message.channel.send(pic);
 		break;
-	}
-
-	const oID = ref.get('guildOwnerID');
-
-	// Atualizar o ID do proprietário do servidor
-	if (message.guild.owner.user.id != oID) {
-		ref.update({
-			guildOwnerID: message.guild.owner.user.id,
-		});
 	}
 });
 
