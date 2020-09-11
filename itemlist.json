@@ -56,6 +56,11 @@
 			"hex": "#e0a0e0"
 		},
 
+		"dark_deception1": {
+			"price": 8000,
+			"hex": "#601020"
+		},
+
 		"diamonds": {
 			"price": 8000,
 			"hex": "#00e0e0"
@@ -198,6 +203,11 @@
 		"nunu_and_willump": {
 			"price": 8000,
 			"hex": "#00c0ff"
+		},
+
+		"reaper_soraka": {
+			"price": 8000,
+			"hex": "#a080e0"
 		},
 
 		"scorpion1": {

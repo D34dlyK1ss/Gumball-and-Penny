@@ -44,7 +44,13 @@ for (const file of commandFiles) {
 	bot.commands.set(props.name, props);
 }
 
-const prefixes = new Object();
+const currentdate = new Date(),
+	relationship = new Date(2019, 11, 28);
+const mili = currentdate - relationship;
+
+const months = Math.round(mili / 2629746000),
+	// eslint-disable-next-line no-unused-vars
+	years = Math.round(mili / 31536000000);
 
 // Uma vez que o bot está ativo:
 bot.once('ready', async () => {
@@ -52,21 +58,14 @@ bot.once('ready', async () => {
 
 	bot.user.setActivity(`+help em ${bot.guilds.cache.size} servidores!`);
 
-	const currentdate = new Date(),
-		relationship = new Date(2019, 11, 28),
-		mili = currentdate - relationship;
-
-	const months = Math.round(mili / 2629746000),
-		// eslint-disable-next-line no-unused-vars
-		years = Math.round(mili / 31536000000);
-
 	schedule.scheduleJob('0 14 28 * *', function() {
 		bot.users.resolve(config.lilly).send(`:tada: Parabéns Lilly! Completaste ${months} meses com o teu Ruru! :purple_heart:\nhttps://i.imgur.com/clrwrEk.gif`);
 		bot.users.resolve(config.botOwner).send(`:tada: Parabéns Ruru! Completaste ${months} meses com a tua Lilly! :purple_heart:\nhttps://i.imgur.com/clrwrEk.gif`);
 	});
 });
 
-const xpCooldown = new Set();
+const prefixes = new Object(),
+	xpCooldown = new Set();
 
 // Ações para quando o bot receber uma mensagem
 bot.on('message', async message => {
