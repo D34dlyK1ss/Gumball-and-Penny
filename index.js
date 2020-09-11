@@ -214,6 +214,6 @@ bot.on('guildUpdate', async (oldGuild, newGuild) => {
 		});
 	}
 });
-s
+
 // Autenticação do bot
 bot.login(config.token);
