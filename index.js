@@ -50,7 +50,7 @@ const prefixes = new Object();
 bot.once('ready', async () => {
 	console.log(`Preparados! (${moment().format('LL')} ${moment().format('LTS')})`);
 
-	bot.user.setActivity(`+help || Em ${bot.guilds.cache.size} servidores!`);
+	bot.user.setActivity(`+help em ${bot.guilds.cache.size} servidores!`);
 
 	const currentdate = new Date(),
 		relationship = new Date(2019, 11, 28),
@@ -197,13 +197,13 @@ bot.on('guildCreate', async guildData => {
 		'guildOwnerID': guildData.owner.user.id,
 		'prefix': '+',
 	});
-	bot.user.setActivity(`+help || Em ${bot.guilds.cache.size} servidores!`);
+	bot.user.setActivity(`+help em ${bot.guilds.cache.size} servidores!`);
 });
 
 // Quando o bot for expulso de um servidor, o bot apagará os dados respetivos
 bot.on('guildDelete', async guildData => {
 	db.collection('servidores').doc(guildData.id).delete();
-	bot.user.setActivity(`+help || Em ${bot.guilds.cache.size} servidores!`);
+	bot.user.setActivity(`+help em ${bot.guilds.cache.size} servidores!`);
 });
 
 // Quando os dados de um servidor forem atualizados, o bot substituirá dados anteriores
