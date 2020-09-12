@@ -226,10 +226,10 @@ module.exports = {
 					ctx.drawImage (avatar, 37, 10, 120, 120);
 
 
-					const vip = doc.get('vip');
+					const vip = doc.get('vip') || false;
 					if (vip == true) {
 						const crown = await loadImage(user.displayAvatarURL({ format: 'jpg' }));
-						ctx.drawImage (crown, 10, 10, 50, 50);
+						ctx.drawImage (crown, 41, 48, 50, 50);
 					}
 
 					const attachment = new MessageAttachment(canvas.toBuffer(), 'profile.png');
