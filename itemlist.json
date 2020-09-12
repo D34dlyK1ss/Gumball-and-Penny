@@ -50,6 +50,10 @@
 			"hex": "#e0e000"
 		},
 
+		"among_us": {
+			"price": 8000,
+			"hex": "#e00000"
+		},
 
 		"courage": {
 			"price": 8000,
@@ -59,6 +63,11 @@
 		"dark_deception1": {
 			"price": 8000,
 			"hex": "#601020"
+		},
+
+		"dark_deception6": {
+			"price": 8000,
+			"hex": "#e0e0e0"
 		},
 
 		"diamonds": {

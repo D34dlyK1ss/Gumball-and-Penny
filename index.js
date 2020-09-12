@@ -64,6 +64,20 @@ bot.once('ready', async () => {
 	});
 });
 
+const DBL = require('dblapi.js');
+const dbl = new DBL(config.dblToken, { webhookPort: 5000, webhookAuth: 'password' });
+dbl.webhook.on('ready', hook => {
+	console.log(`O webhook do DBL está em http://${hook.hostname}:${hook.port}${hook.path}`);
+});
+dbl.webhook.on('vote', vote => {
+	vote.user.send('Obrigado por teres votado! Aqui tens ¤150.');
+	const ref = db.collection('servidores').doc(vote.user);
+	const bal = ref.get('balance');
+	ref.update({
+		balance: bal + 150,
+	}).catch(err => { console.error(err); });
+});
+
 const prefixes = new Object(),
 	xpCooldown = new Set();
 

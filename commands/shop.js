@@ -127,7 +127,9 @@ module.exports = {
 					.setTitle('Loja Incrível - HUDs (Jogos)')
 					.setDescription(`\`${prefix}shop buy hud [nome_do_item]\` para comprar.`)
 					.spliceFields(0, mainEmbed.fields.length, [
+						{ name: 'Among Us', value: `¤${items.huds.among_us.price}`, inline: true },
 						{ name: 'Dark Deception1', value: `¤${items.huds.dark_deception1.price}`, inline: true },
+						{ name: 'Dark Deception6', value: `¤${items.huds.dark_deception6.price}`, inline: true },
 						{ name: 'Ditto', value: `¤${items.huds.ditto.price}`, inline: true },
 						{ name: 'Diamonds', value: `¤${items.huds.diamonds.price}`, inline: true },
 						{ name: 'Eclipse Leona', value: `¤${items.huds.eclipse_leona.price}`, inline: true },
