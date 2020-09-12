@@ -3,7 +3,7 @@ const Discord = require('discord.js');
 module.exports = {
 	name: 'mute',
 	category: 'Moderação',
-	description: 'Baniremos um membro do servidor!',
+	description: 'Calaremos um membro do servidor!',
 	usage: 'mute [@membro] [opcional - razão]',
 
 	execute(bot, message, command, args) {
@@ -21,7 +21,10 @@ module.exports = {
 			return bot.users.cache.get(id);
 		}
 
-		if (!message.member.hasPermission('MUTE_MEMBERS')) {
+		if (!bot.member.hasPermission('MANAGE_ROLES')) {
+			return message.reply ('não temos permissão para fazer isso!');
+		}
+		else if (!message.member.hasPermission('MUTE_MEMBERS')) {
 			return message.reply('não tens permissão para usar este comando! 💢').then(msg => msg.delete({ timeout: 5000 })).catch(err => { console.error(err); });
 		}
 		else {
@@ -33,12 +36,11 @@ module.exports = {
 			let reason = args.join(' ');
 
 			if(!muteRole) {
-				message.guild.roles.create({
+				message.channel.guild.roles.create({
 					data: {
 						name: 'Muted',
 						color: '#404040',
 					},
-					permissions: [],
 				}).then(async role => {
 					message.guild.channels.forEach(async (channel) => {
 						await channel.overwritePermissions(role, {
