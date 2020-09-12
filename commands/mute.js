@@ -32,10 +32,10 @@ module.exports = {
 
 			const mention = getUserFromMention(args[0]);
 			const member = message.guild.member(mention),
-				role = message.guild.roles.cache.find(() => role.name === 'Muted');
+				muteRole = message.guild.roles.cache.find(role => role.name === 'Muted');
 			let reason = args.join(' ');
 
-			if(!role) {
+			if(!muteRole) {
 				message.channel.guild.roles.create({
 					data: {
 						name: 'Muted',
@@ -43,7 +43,7 @@ module.exports = {
 					},
 				}).then(async () => {
 					message.guild.cache.channels.forEach(async channel => {
-						await channel.overwritePermissions(role, {
+						await channel.overwritePermissions(muteRole, {
 							SEND_MESSAGES: false,
 							ADD_REACTIONS: false,
 							CONNECT: false,
@@ -53,7 +53,7 @@ module.exports = {
 				}).catch(err => { console.error(err); });
 			}
 
-			member.roles.add(role).then(() => {
+			member.roles.add(muteRole).then(() => {
 				if (reason == '') reason = '_Não indicada_';
 				const embed = new Discord.MessageEmbed()
 					.setColor('#8000ff')
