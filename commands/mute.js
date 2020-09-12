@@ -30,8 +30,9 @@ module.exports = {
 		else {
 			const mention = getUserFromMention(args[0]);
 			const memberToMute = message.guild.member(mention);
-			let muteRole = message.guild.roles.cache.find(role => role.name === 'Muted'),
-				reason = args.join(' ');
+			args.shift();
+			const reason = args.join(' ') || '_Não indicada_';
+			let muteRole = message.guild.roles.cache.find(role => role.name === 'Muted');
 
 			if(!muteRole) {
 				message.guild.roles.create({
@@ -43,19 +44,16 @@ module.exports = {
 				muteRole = message.guild.roles.cache.find(role => role.name === 'Muted');
 			}
 
-			console.log(typeof muteRole);
-
 			message.guild.channels.cache.forEach(async channel => {
-				await channel.overwritePermissions(muteRole, {
+				await channel.updateOverwrite(muteRole, {
 					SEND_MESSAGES: false,
 					ADD_REACTIONS: false,
 					CONNECT: false,
 					CHANGE_NICKNAME: false,
-				}).catch(err => { console.error(err); });
+				});
 			});
 
 			memberToMute.roles.add(muteRole).then(() => {
-				if (reason == '') reason = '_Não indicada_';
 				const embed = new Discord.MessageEmbed()
 					.setColor('#8000ff')
 					.setTitle(`${memberToMute.user.tag} foi mutado! 🔇`)

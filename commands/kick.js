@@ -29,17 +29,17 @@ module.exports = {
 
 			const mention = getUserFromMention(args[0]);
 			const member = message.guild.member(mention);
-			let	reason = args.join(' ');
+			args.shift();
+			const reason = args.join(' ') || '_Não indicada_';
 
 			member.kick({ reason: reason }).then(() => {
-				if (reason == '') reason = '_Não indicada_';
 				const embed = new Discord.MessageEmbed()
 					.setColor('#8000ff')
 					.setTitle(`${member.user.tag} foi expulso! 👋`)
 					.setThumbnail(`${member.user.displayAvatarURL()}`)
 					.setDescription(`por ${message.member.user.tag}`)
 					.addFields(
-						{ name: 'Razão', value: `${reason}` },
+						{ name: 'Razão:', value: `${reason}` },
 					);
 
 				message.channel.send(embed);
