@@ -14,7 +14,11 @@ module.exports = {
 		}
 		else {
 			let number = parseInt(args);
-			if (Number.isInteger(number)) {
+
+			if (!Number.isInteger(number)) {
+				return;
+			}
+			else {
 				if (number > 100) {
 					number = 100;
 				}
@@ -26,9 +30,6 @@ module.exports = {
 						message.channel.send(`Apagámos \`${deleted.size}\` mensagens!`).then(msg => msg.delete({ timeout: 5000 }));
 					}
 				});
-			}
-			else {
-				return;
 			}
 		}
 	},
