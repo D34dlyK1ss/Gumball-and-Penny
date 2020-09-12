@@ -43,7 +43,7 @@ module.exports = {
 			}
 
 			message.guild.channels.cache.forEach(async channel => {
-				await channel.overwritePermissions(muteRole, {
+				await channel.overwritePermissions(`${muteRole.id}`, {
 					SEND_MESSAGES: false,
 					ADD_REACTIONS: false,
 					CONNECT: false,
@@ -51,7 +51,7 @@ module.exports = {
 				});
 			}).catch(err => { console.error(err); });
 
-			memberToMute.roles.add(muteRole).then(() => {
+			memberToMute.roles.add(`${muteRole.id}`).then(() => {
 				if (reason == '') reason = '_Não indicada_';
 				const embed = new Discord.MessageEmbed()
 					.setColor('#8000ff')

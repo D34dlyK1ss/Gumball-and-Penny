@@ -223,7 +223,7 @@ module.exports = {
 					const vip = doc.get('vip') || false;
 					if (vip == true) {
 						const crown = await loadImage('./images/profile/crown.png');
-						ctx.drawImage (crown, 7, 11, 50, 50);
+						ctx.drawImage (crown, 7, 12, 50, 50);
 					}
 
 					const avatar = await loadImage(user.displayAvatarURL({ format: 'jpg' }));
