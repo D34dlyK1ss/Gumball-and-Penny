@@ -70,12 +70,20 @@ dbl.webhook.on('ready', () => {
 	console.log('O webhook do DBL está ativo');
 });
 dbl.webhook.on('vote', vote => {
-	vote.user.send('Obrigado por teres votado! Aqui tens ¤150.');
-	const ref = db.collection('servidores').doc(vote.user);
-	const bal = ref.get('balance');
-	ref.update({
-		balance: bal + 150,
-	}).catch(err => { console.error(err); });
+	if (bot.guild.member(vote.user.id).exists) {
+		vote.user.send('Obrigado por teres votado!');
+
+		const ref = db.collection('servidores').doc(vote.user);
+
+		ref.get().then(doc => {
+			if (!doc.exists) return;
+
+			const bal = ref.get('balance');
+			ref.update({
+				balance: bal + 150,
+			}).catch(err => { console.error(err); });
+		});
+	}
 });
 
 const prefixes = new Object(),
