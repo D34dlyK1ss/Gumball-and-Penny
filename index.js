@@ -65,7 +65,7 @@ bot.once('ready', async () => {
 });
 
 const DBL = require('dblapi.js');
-const dbl = new DBL(config.dblToken, { webhookPort: 5000, webhookAuth: 'password' });
+const dbl = new DBL(config.dblToken, { webhookPort: 5000, webhookAuth: 'gumballandpenny' });
 dbl.webhook.on('ready', () => {
 	console.log('O webhook do DBL está ativo');
 });

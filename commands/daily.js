@@ -33,7 +33,7 @@ module.exports = {
 						balance: (bal + daily),
 						lastDaily: today,
 					}).then(() => {
-						message.reply(`recebeste os teus ¤250 diários! Para receberes mais dinheiro usa ${prefix}vote`);
+						message.reply(`recebeste os teus ¤250 diários! Para receberes mais dinheiro usa \`${prefix}vote\``);
 					}).catch(err => { console.error(err); });
 				}
 			}
