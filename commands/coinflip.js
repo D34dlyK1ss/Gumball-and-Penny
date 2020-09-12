@@ -30,6 +30,9 @@ module.exports = {
 				else if (money < 50) {
 					message.reply('tens de apostar no mínimo ¤50!');
 				}
+				else if (money > 1000) {
+					message.reply('não podes apostar mais que ¤1000!');
+				}
 				else {
 					const value = Math.round(Math.random()),
 						guess = args[0].toLowerCase();
