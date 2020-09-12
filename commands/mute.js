@@ -21,7 +21,7 @@ module.exports = {
 			return bot.users.cache.get(id);
 		}
 
-		if (!bot.user.hasPermission('MANAGE_ROLES')) {
+		if (!message.channel.guild.me.hasPermission('MANAGE_ROLES')) {
 			return message.reply ('não temos permissão para fazer isso!');
 		}
 		else if (!message.member.hasPermission('MUTE_MEMBERS')) {
