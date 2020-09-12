@@ -229,7 +229,7 @@ module.exports = {
 					const vip = doc.get('vip') || false;
 					if (vip == true) {
 						const crown = await loadImage('./images/profile/crown.png');
-						ctx.drawImage (crown, 41, 48, 50, 50);
+						ctx.drawImage (crown, 20, 0, 50, 50);
 					}
 
 					const attachment = new MessageAttachment(canvas.toBuffer(), 'profile.png');
