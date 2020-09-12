@@ -12,10 +12,10 @@ module.exports = {
 			return;
 		}
 		else if (user == message.author) {
-			message.channel.send(`${message.author} beijou-se a si mesmo?`, { files: [`images/actions/${command.name} (${rnd}).gif`] });
+			return message.channel.send(`${message.author} beijou-se a si mesmo?`, { files: [`images/actions/${command.name} (${rnd}).gif`] });
 		}
 		else if (user == bot.user) {
-			message.channel.send(`${message.author} beijou-nos! 😳`, { files: [`images/actions/${command.name} (${rnd}).gif`] });
+			return message.channel.send(`${message.author} beijou-nos! 😳`, { files: [`images/actions/${command.name} (${rnd}).gif`] });
 		}
 		else {
 			message.channel.send(`${message.author} beijou ${user}!`, { files: [`images/actions/${command.name} (${rnd}).gif`] });

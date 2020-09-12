@@ -17,10 +17,10 @@ module.exports = {
 			const today = moment().format('L'),
 				lastDaily = doc.get('lastDaily');
 			if (!doc.exists) {
-				message.reply(`ainda não criaste um perfil! Para criares um perfil usa \`${prefix}profile create\`!`);
+				return message.reply(`ainda não criaste um perfil! Para criares um perfil usa \`${prefix}profile create\`!`);
 			}
 			else if (today == lastDaily) {
-				message.reply(`poderás receber o teu montante diário outra vez ${moment().endOf('day').fromNow()}.`);
+				return message.reply(`poderás receber o teu montante diário outra vez ${moment().endOf('day').fromNow()}.`);
 			}
 			else {
 				const bal = doc.get('balance');

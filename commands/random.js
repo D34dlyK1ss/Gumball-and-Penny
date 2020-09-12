@@ -7,10 +7,10 @@ module.exports = {
 	execute(bot, message, command, args) {
 		let rnd;
 		if (args == '') {
-			rnd = Math.floor(Math.random() * 100) + 1;
+			return rnd = Math.floor(Math.random() * 100) + 1;
 		}
 		else if (!Number.isInteger(rnd)) {
-			message.reply('isso não é um número!');
+			return message.reply('isso não é um número!');
 		}
 		else {
 			rnd = Math.floor(Math.random() * args) + 1;

@@ -30,7 +30,7 @@ module.exports = {
 			);
 
 		if (args == null || args == '') {
-			message.channel.send(helpEmbed);
+			return message.channel.send(helpEmbed);
 		}
 		else {
 			args = args.toString();
@@ -50,7 +50,7 @@ module.exports = {
 					);
 
 				if (!command.aliases) {
-					message.channel.send(commandEmbed);
+					return message.channel.send(commandEmbed);
 				}
 				else {
 					const lastEmbed = commandEmbed;

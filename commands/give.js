@@ -34,16 +34,16 @@ module.exports = {
 
 				refU.get().then(docU => {
 					if (user == bot.user) {
-						message.reply('Obrigado, mas vais precisar mais desse dinheiro do que nós! 😁');
+						return message.reply('Obrigado, mas vais precisar mais desse dinheiro do que nós! 😁');
 					}
 					else if (user.bot) {
-						message.reply('os bots não têm perfis!');
+						return message.reply('os bots não têm perfis!');
 					}
 					else if (args[1] == null || args[1] == '' || args == user) {
-						message.reply(`Sintaxe errada! Como usar: \`${prefix}give [@membro] [quantidade]\``);
+						return message.reply(`Sintaxe errada! Como usar: \`${prefix}give [@membro] [quantidade]\``);
 					}
 					else if (!docU.exists) {
-						message.reply(`${user.tag} ainda não criou um perfil!`);
+						return message.reply(`${user.tag} ainda não criou um perfil!`);
 					}
 					else {
 						const balD = docD.get('balance'),

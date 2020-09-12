@@ -15,7 +15,7 @@ module.exports = {
 
 		ref.get().then(doc => {
 			if (!doc.exists) {
-				message.reply(`ainda não criaste um perfil! Para criares um perfil usa \`${prefix}profile create\`!`);
+				return message.reply(`ainda não criaste um perfil! Para criares um perfil usa \`${prefix}profile create\`!`);
 			}
 			else {
 				const bal = doc.get('balance');
@@ -26,10 +26,10 @@ module.exports = {
 						let amount = parseInt(args[1]);
 
 						if (!amount) {
-							message.reply('não indicaste uma quantia!');
+							return message.reply('não indicaste uma quantia!');
 						}
 						else if (bal == 999999999) {
-							message.reply('não podes adicionar mais dinheiro à tua conta bancária! 😧');
+							return message.reply('não podes adicionar mais dinheiro à tua conta bancária! 😧');
 						}
 						else {
 							let newBal;

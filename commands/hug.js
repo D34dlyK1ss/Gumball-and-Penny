@@ -12,13 +12,13 @@ module.exports = {
 			return;
 		}
 		else if (user == message.author) {
-			message.channel.send(`${message.author} abraçou-se?`, { files: [`images/actions/${command.name} (${rnd}).gif`] });
+			return message.channel.send(`${message.author} abraçou-se?`, { files: [`images/actions/${command.name} (${rnd}).gif`] });
 		}
 		else if (user == bot.user) {
-			message.channel.send(`${message.author} abraçou-nos!`, { files: [`images/actions/${command.name} (${rnd}).gif`] });
+			return message.channel.send(`${message.author} abraçou-nos!`, { files: [`images/actions/${command.name} (${rnd}).gif`] });
 		}
 		else {
-			message.channel.send(`${message.author} abraçou ${user}!`, { files: [`images/actions/${command.name} (${rnd}).gif`] });
+			return message.channel.send(`${message.author} abraçou ${user}!`, { files: [`images/actions/${command.name} (${rnd}).gif`] });
 		}
 	},
 };

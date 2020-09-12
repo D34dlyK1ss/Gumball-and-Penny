@@ -12,10 +12,10 @@ module.exports = {
 			return;
 		}
 		else if (user == message.author) {
-			message.channel.send(`${message.author} deu uma chapada a si mesmo?`, { files: [`images/actions/${command.name} (${rnd}).gif`] });
+			return message.channel.send(`${message.author} deu uma chapada a si mesmo?`, { files: [`images/actions/${command.name} (${rnd}).gif`] });
 		}
 		else if (user == bot.user) {
-			message.channel.send(`${message.author} deu-nos uma chapada! 😠`, { files: [`images/actions/${command.name} (${rnd}).gif`] });
+			return message.channel.send(`${message.author} deu-nos uma chapada! 😠`, { files: [`images/actions/${command.name} (${rnd}).gif`] });
 		}
 		else {
 			message.channel.send(`${message.author} deu uma chapada a ${user}!`, { files: [`images/actions/${command.name} (${rnd}).gif`] });

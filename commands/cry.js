@@ -9,13 +9,13 @@ module.exports = {
 		const rnd = Math.round(Math.random() * 5);
 
 		if (!user) {
-			message.channel.send(`${message.author} está chorar!`, { files: [`images/actions/${command.name} (${rnd}).gif`] });
+			return message.channel.send(`${message.author} está chorar!`, { files: [`images/actions/${command.name} (${rnd}).gif`] });
 		}
 		else if (user == message.author) {
-			message.channel.send(`${message.author} está chorar!`, { files: [`images/actions/${command.name} (${rnd}).gif`] });
+			return message.channel.send(`${message.author} está chorar!`, { files: [`images/actions/${command.name} (${rnd}).gif`] });
 		}
 		else if (user == bot.user) {
-			message.channel.send(`${message.author} está a chorar por cause de nós! 😦`, { files: [`images/actions/${command.name} (${rnd}).gif`] });
+			return message.channel.send(`${message.author} está a chorar por cause de nós! 😦`, { files: [`images/actions/${command.name} (${rnd}).gif`] });
 		}
 		else {
 			message.channel.send(`${user} fez ${message.author} chorar!`, { files: [`images/actions/${command.name} (${rnd}).gif`] });

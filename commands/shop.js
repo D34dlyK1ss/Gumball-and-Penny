@@ -24,7 +24,7 @@ module.exports = {
 				message.channel.send(attachment);
 			}
 			catch {
-				message.reply('esse HUD não existe!');
+				return message.reply('esse HUD não existe!');
 			}
 
 		}
@@ -56,7 +56,7 @@ module.exports = {
 			case 'hud':
 				refP.get().then(docP => {
 					if (!docP.exists) {
-						message.reply(`ainda não criaste um perfil! Para criares um perfil usa \`${prefix}profile create\`!`);
+						return message.reply(`ainda não criaste um perfil! Para criares um perfil usa \`${prefix}profile create\`!`);
 					}
 					else {
 						const bal = docP.get('balance'),
@@ -64,17 +64,17 @@ module.exports = {
 							cost = items.huds[itemName].price;
 
 						if (!cost) {
-							message.reply('esse item não está à venda!');
+							return message.reply('esse item não está à venda!');
 						}
 						else {
 							refI.get().then(docI => {
 								const iHuds = docI.get('huds');
 
 								if (iHuds.includes(itemName)) {
-									message.reply('já tens este HUD!');
+									return message.reply('já tens este HUD!');
 								}
 								else if (cost > bal) {
-									message.reply('não tens dinheiro suficiente!');
+									return message.reply('não tens dinheiro suficiente!');
 								}
 								else {
 									iHuds.push(itemName);

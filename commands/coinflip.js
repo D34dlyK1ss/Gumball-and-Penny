@@ -13,25 +13,25 @@ module.exports = {
 		ref.get().then(doc => {
 			const money = parseInt(args[1]);
 			if (!doc.exists) {
-				message.reply(`ainda não criaste um perfil! Para criares um perfil usa \`${prefix}profile create\`!`);
+				return message.reply(`ainda não criaste um perfil! Para criares um perfil usa \`${prefix}profile create\`!`);
 			}
 			else if (!Number.isInteger(money) || (args[0] != 'cara' && args[0] != 'coroa')) {
-				message.channel.send(`Sintaxe errada! Como usar: \`${prefix}coinflip [cara/coroa] [quantidade]\``);
+				return message.channel.send(`Sintaxe errada! Como usar: \`${prefix}coinflip [cara/coroa] [quantidade]\``);
 			}
 			else {
 				const bal = doc.get('balance');
 
 				if ((bal + money) > 999999999) {
-					message.reply('não podes ganhar mais dinheiro! 😧');
+					return message.reply('não podes ganhar mais dinheiro! 😧');
 				}
 				else if (money > bal) {
-					message.reply('não tens dinheiro suficiente!');
+					return message.reply('não tens dinheiro suficiente!');
 				}
 				else if (money < 50) {
-					message.reply('tens de apostar no mínimo ¤50!');
+					return message.reply('tens de apostar no mínimo ¤50!');
 				}
 				else if (money > 1000) {
-					message.reply('não podes apostar mais que ¤1000!');
+					return message.reply('não podes apostar mais que ¤1000!');
 				}
 				else {
 					const value = Math.round(Math.random()),
@@ -50,7 +50,7 @@ module.exports = {
 							db.collection('perfis').doc(user.id).update({
 								balance: (bal - money),
 							}).then(() => {
-								message.reply(`perdeste ¤${money}!`);
+								return message.reply(`perdeste ¤${money}!`);
 							}).catch(err => { console.error(err); });
 						}
 						else if (res == guess) {

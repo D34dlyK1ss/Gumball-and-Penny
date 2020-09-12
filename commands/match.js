@@ -15,7 +15,7 @@ module.exports = {
 		const other = message.mentions.users.first();
 
 		if (!other) {
-			message.reply('não mencionaste ninguém!');
+			return message.reply('não mencionaste ninguém!');
 		}
 		else {
 			const last = parseInt(message.member.id.slice(-1)),
@@ -25,13 +25,13 @@ module.exports = {
 			if (number > 100) number = number.substr(1);
 
 			if (other == message.author) {
-				message.reply('não podes usar este comando em ti!');
+				return message.reply('não podes usar este comando em ti!');
 			}
 			else if (other == bot.user) {
-				message.channel.send('Hey, nós já somos um par! 😠');
+				return message.channel.send('Hey, nós já somos um par! 😠');
 			}
 			else if (other.bot) {
-				message.reply('isso não vai funcionar com um bot! 😂');
+				return message.reply('isso não vai funcionar com um bot! 😂');
 			}
 			else {
 				message.reply(`tu és **${number}%** compatível com ${other}!`);

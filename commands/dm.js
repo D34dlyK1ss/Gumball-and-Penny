@@ -22,13 +22,13 @@ module.exports = {
 		message.delete();
 
 		if (!message.member.hasPermission('MANAGE_GUILD')) {
-			message.reply('não tens permissão para usar este comando! 💢').then(msg => { msg.delete({ timeout: 5000 }); });
+			return message.reply('não tens permissão para usar este comando! 💢').then(msg => { msg.delete({ timeout: 5000 }); });
 		}
 		else if (!mention || mention == '') {
-			message.reply('não mencionaste ninguém!').then(msg => { msg.delete({ timeout: 5000 }); });
+			return message.reply('não mencionaste ninguém!').then(msg => { msg.delete({ timeout: 5000 }); });
 		}
 		else if (!mentionMessage || mentionMessage == '') {
-			message.reply('não escreveste nenhuma mensagem!').then(msg => { msg.delete({ timeout: 5000 }); });
+			return message.reply('não escreveste nenhuma mensagem!').then(msg => { msg.delete({ timeout: 5000 }); });
 		}
 		else {
 			mention.send(mentionMessage);

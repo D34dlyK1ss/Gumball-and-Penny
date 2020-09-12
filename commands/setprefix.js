@@ -7,10 +7,10 @@ module.exports = {
 	execute(bot, message, command, args, db, prefix, prefixes) {
 		if (!message.member.hasPermission('MANAGE_GUILD')) {
 			message.delete();
-			message.reply('não tens permissão para usar este comando! 💢').then(msg => { msg.delete({ timeout: 3000 }); });
+			return message.reply('não tens permissão para usar este comando! 💢').then(msg => { msg.delete({ timeout: 3000 }); });
 		}
 		else if (args.length === 0) {
-			message.reply('precisamos de saber qual é o prefixo desejado!');
+			return message.reply('precisamos de saber qual é o prefixo desejado!');
 		}
 		else {
 			const newPrefix = args[0];

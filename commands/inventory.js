@@ -17,12 +17,12 @@ module.exports = {
 
 		refP.get().then(docP => {
 			if (!docP.exists) {
-				message.reply(`ainda não criaste um perfil! Para criares um perfil usa \`${prefix}profile create\`!`);
+				return message.reply(`ainda não criaste um perfil! Para criares um perfil usa \`${prefix}profile create\`!`);
 			}
 			else {
 				refI.get().then(docI => {
 					if (!docI.exists) {
-						message.reply('não conseguimos encontrar o teu inventario!');
+						return message.reply('não conseguimos encontrar o teu inventario!');
 					}
 					else {
 						const iHuds = docI.get('huds');

@@ -36,7 +36,7 @@ module.exports = {
 			refP.get().then(doc => {
 				if (doc.exists) {
 					if (user == message.author) {
-						message.channel.send('Já tens um perfil criado, não podes criar outro! 💢');
+						return message.channel.send('Já tens um perfil criado, não podes criar outro! 💢');
 					}
 				}
 				else {
@@ -64,11 +64,11 @@ module.exports = {
 			refP.get().then(doc => {
 				if (!doc.exists) {
 					if (user == message.author) {
-						message.reply(`ainda não criaste um perfil! Para criares um perfil usa \`${prefix}profile create\`!`);
+						return message.reply(`ainda não criaste um perfil! Para criares um perfil usa \`${prefix}profile create\`!`);
 					}
 				}
 				else if (args.length > 32) {
-					message.reply(`o limite máximo de caracteres para a alcunha é de 32!\nEssa alcunha tem ${args.length}.`);
+					return message.reply(`o limite máximo de caracteres para a alcunha é de 32!\nEssa alcunha tem ${args.length}.`);
 				}
 				else {
 					db.collection('perfis').doc(message.author.id).update({
@@ -83,11 +83,11 @@ module.exports = {
 			refP.get().then(doc => {
 				if (!doc.exists) {
 					if (user == message.author) {
-						message.reply(`ainda não criaste um perfil! Para criares um perfil usa \`${prefix}profile create\`!`);
+						return message.reply(`ainda não criaste um perfil! Para criares um perfil usa \`${prefix}profile create\`!`);
 					}
 				}
 				else if (args.length > 44) {
-					message.reply(`o limite máximo de caracteres para a descrição é de 44!\nEssa descrição tem ${args.length}.`);
+					return message.reply(`o limite máximo de caracteres para a descrição é de 44!\nEssa descrição tem ${args.length}.`);
 				}
 				else {
 					db.collection('perfis').doc(message.author.id).update({
@@ -102,7 +102,7 @@ module.exports = {
 			refP.get().then(docP => {
 				if (!docP.exists) {
 					if (user == message.author) {
-						message.reply(`ainda não criaste um perfil! Para criares um perfil usa \`${prefix}profile create\`!`);
+						return message.reply(`ainda não criaste um perfil! Para criares um perfil usa \`${prefix}profile create\`!`);
 					}
 				}
 				else {
@@ -111,10 +111,10 @@ module.exports = {
 							newHud = args;
 
 						if (!newHud || newHud == '') {
-							message.reply('não escolheste um HUD!');
+							return message.reply('não escolheste um HUD!');
 						}
 						else if (!huds.includes(`${newHud}`)) {
-							message.reply('não tens esse HUD!');
+							return message.reply('não tens esse HUD!');
 						}
 						else {
 							db.collection('perfis').doc(message.author.id).update({
@@ -131,16 +131,16 @@ module.exports = {
 			refP.get().then(async doc => {
 				if (!doc.exists) {
 					if (user == message.author) {
-						message.reply(`ainda não criaste um perfil! Para criares um perfil usa \`${prefix}profile create\`!`);
+						return message.reply(`ainda não criaste um perfil! Para criares um perfil usa \`${prefix}profile create\`!`);
 					}
 					else if (user == bot.user) {
-						message.reply('nós não precisamos de ter um perfil!');
+						return message.reply('nós não precisamos de ter um perfil!');
 					}
 					else if (user.bot) {
-						message.reply('os bots não criam perfis! 😂 ');
+						return message.reply('os bots não criam perfis! 😂 ');
 					}
 					else {
-						message.reply(`${user.tag} ainda não criou um perfil!`);
+						return message.reply(`${user.tag} ainda não criou um perfil!`);
 					}
 				}
 				else {
