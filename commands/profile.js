@@ -228,7 +228,7 @@ module.exports = {
 
 					const vip = doc.get('vip') || false;
 					if (vip == true) {
-						const crown = await loadImage(user.displayAvatarURL({ format: 'jpg' }));
+						const crown = await loadImage('./images/profile/crown.png');
 						ctx.drawImage (crown, 41, 48, 50, 50);
 					}
 

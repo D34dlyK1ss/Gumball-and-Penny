@@ -130,6 +130,7 @@ module.exports = {
 						{ name: 'Among Us', value: `¤${items.huds.among_us.price}`, inline: true },
 						{ name: 'Dark Deception1', value: `¤${items.huds.dark_deception1.price}`, inline: true },
 						{ name: 'Dark Deception6', value: `¤${items.huds.dark_deception6.price}`, inline: true },
+						{ name: 'DBD1', value: `¤${items.huds.dbd1.price}`, inline: true },
 						{ name: 'Ditto', value: `¤${items.huds.ditto.price}`, inline: true },
 						{ name: 'Diamonds', value: `¤${items.huds.diamonds.price}`, inline: true },
 						{ name: 'Eclipse Leona', value: `¤${items.huds.eclipse_leona.price}`, inline: true },
