@@ -21,7 +21,7 @@ module.exports = {
 			return bot.users.cache.get(id);
 		}
 
-		if (!message.channel.guild.me.hasPermission('MANAGE_ROLES') || !message.channel.guild.me.hasPermission('MANAGE_CHANNELS') ) {
+		if (!message.channel.guild.me.hasPermission('MANAGE_ROLES') || !message.channel.guild.me.hasPermission('MANAGE_CHANNELS')) {
 			return message.reply ('não temos permissão para manusear roles/canais!');
 		}
 		else if (!message.member.hasPermission('MUTE_MEMBERS')) {
@@ -39,17 +39,17 @@ module.exports = {
 						name: 'Muted',
 						color: '#404040',
 					},
-				}).then(async () => {
-					message.guild.channels.cache.forEach(async channel => {
-						await channel.overwritePermissions(muteRole, {
-							SEND_MESSAGES: false,
-							ADD_REACTIONS: false,
-							CONNECT: false,
-							CHANGE_NICKNAME: false,
-						});
-					});
 				}).catch(err => { console.error(err); });
 			}
+
+			message.guild.channels.cache.forEach(async channel => {
+				await channel.overwritePermissions(muteRole, {
+					SEND_MESSAGES: false,
+					ADD_REACTIONS: false,
+					CONNECT: false,
+					CHANGE_NICKNAME: false,
+				});
+			}).catch(err => { console.error(err); });
 
 			memberToMute.roles.add(muteRole).then(() => {
 				if (reason == '') reason = '_Não indicada_';
