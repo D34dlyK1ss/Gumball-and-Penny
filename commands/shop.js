@@ -108,7 +108,7 @@ module.exports = {
 			case 'cores':
 				hudColorsEmbed = new MessageEmbed(mainEmbed)
 					.setTitle('Loja Incrível - HUDs (Cores)')
-					.setDescription(`\`${prefix}shop buy hud [item]\` para comprar ou \`${prefix}shop view hud [item]\` para ver.`)
+					.setDescription(`\`${prefix}shop buy hud [nome_do_item]\` para comprar ou \`${prefix}shop view hud [item]\` para ver.`)
 					.spliceFields(0, mainEmbed.fields.length, [
 						{ name: 'Black', value: `¤${items.huds.black.price}`, inline: true },
 						{ name: 'Blue', value: `¤${items.huds.blue.price}`, inline: true },
@@ -125,7 +125,7 @@ module.exports = {
 			case 'jogos':
 				hudGamesEmbed = new MessageEmbed(mainEmbed)
 					.setTitle('Loja Incrível - HUDs (Jogos)')
-					.setDescription(`\`${prefix}shop buy hud [nome_do_item]\` para comprar.`)
+					.setDescription(`\`${prefix}shop buy hud [nome_do_item]\` para comprar ou \`${prefix}shop view hud [item]\` para ver.`)
 					.spliceFields(0, mainEmbed.fields.length, [
 						{ name: 'Among Us', value: `¤${items.huds.among_us.price}`, inline: true },
 						{ name: 'Dark Deception1', value: `¤${items.huds.dark_deception1.price}`, inline: true },
@@ -153,7 +153,7 @@ module.exports = {
 			case 'anime':
 				hudAnimeEmbed = new MessageEmbed(mainEmbed)
 					.setTitle('Loja Incrível - HUDs (Anime)')
-					.setDescription(`\`${prefix}shop buy hud [item]\` para comprar.`)
+					.setDescription(`\`${prefix}shop buy hud [nome_do_item]\` para comprar ou \`${prefix}shop view hud [item]\` para ver.`)
 					.spliceFields(0, mainEmbed.fields.length, [
 						{ name: 'Giorno', value: `¤${items.huds.giorno.price}`, inline: true },
 						{ name: 'Isaac', value: `¤${items.huds.isaac.price}`, inline: true },
@@ -175,7 +175,7 @@ module.exports = {
 			case 'cartoons':
 				hudCartoonsEmbed = new MessageEmbed(mainEmbed)
 					.setTitle('Loja Incrível - HUDs (Cartoons)')
-					.setDescription(`\`${prefix}shop buy hud [item]\` para comprar.`)
+					.setDescription(`\`${prefix}shop buy hud [nome_do_item]\` para comprar ou \`${prefix}shop view hud [item]\` para ver.`)
 					.spliceFields(0, mainEmbed.fields.length, [
 						{ name: 'Courage', value: `¤${items.huds.courage.price}`, inline: true },
 						{ name: 'Jake1', value: `¤${items.huds.jake1.price}`, inline: true },
@@ -187,7 +187,7 @@ module.exports = {
 			case 'Vocaloids':
 				hudVocaloidsEmbed = new MessageEmbed(mainEmbed)
 					.setTitle('Loja Incrível - HUDs (Cartoons)')
-					.setDescription(`\`${prefix}shop buy hud [item]\` para comprar.`)
+					.setDescription(`\`${prefix}shop buy hud [nome_do_item]\` para comprar ou \`${prefix}shop view hud [item]\` para ver.`)
 					.spliceFields(0, mainEmbed.fields.length, [
 						{ name: 'Miku', value: `¤${items.huds.miku.price}`, inline: true },
 					]);
