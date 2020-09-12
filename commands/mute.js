@@ -29,9 +29,9 @@ module.exports = {
 		}
 		else {
 			const mention = getUserFromMention(args[0]);
-			const memberToMute = message.guild.member(mention),
-				muteRole = message.guild.roles.cache.find(role => role.name === 'muted');
-			let reason = args.join(' ');
+			const memberToMute = message.guild.member(mention);
+			let muteRole = message.guild.roles.cache.find(role => role.name === 'Muted'),
+				reason = args.join(' ');
 
 			if(!muteRole) {
 				message.guild.roles.create({
@@ -40,6 +40,7 @@ module.exports = {
 						color: '#404040',
 					},
 				}).catch(err => { console.error(err); });
+				muteRole = message.guild.roles.cache.find(role => role.name === 'Muted');
 			}
 
 			message.guild.channels.cache.forEach(async channel => {
@@ -48,8 +49,8 @@ module.exports = {
 					ADD_REACTIONS: false,
 					CONNECT: false,
 					CHANGE_NICKNAME: false,
-				});
-			}).catch(err => { console.error(err); });
+				}).catch(err => { console.error(err); });
+			});
 
 			memberToMute.roles.add(`${muteRole}`).then(() => {
 				if (reason == '') reason = '_Não indicada_';
