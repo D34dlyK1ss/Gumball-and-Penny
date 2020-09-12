@@ -43,6 +43,8 @@ module.exports = {
 				muteRole = message.guild.roles.cache.find(role => role.name === 'Muted');
 			}
 
+			console.log(typeof muteRole);
+
 			message.guild.channels.cache.forEach(async channel => {
 				await channel.overwritePermissions(muteRole, {
 					SEND_MESSAGES: false,
