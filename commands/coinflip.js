@@ -37,7 +37,7 @@ module.exports = {
 
 					const attachment = new MessageAttachment('images/coinflip/animation.gif');
 
-					message.channel.send(attachment).then(msg => msg.delete({ timeout: 4000 }).then(() => {
+					message.channel.send(attachment).then(msg => msg.delete({ timeout: 3000 }).then(() => {
 						if (value == 0) res = 'cara';
 						if (value == 1) res = 'coroa';
 

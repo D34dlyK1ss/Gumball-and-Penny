@@ -1,112 +1,112 @@
 {
 	"huds": {
 		"black": {
-			"price": 1500,
+			"price": 3000,
 			"hex": "#202020"
 		},
 
 		"blue": {
-			"price": 1500,
+			"price": 3000,
 			"hex": "#0040e0"
 		},
 
 		"brown": {
-			"price": 1500,
+			"price": 3000,
 			"hex": "#802000"
 		},
 
 		"green": {
-			"price": 1500,
+			"price": 3000,
 			"hex": "#00e000"
 		},
 
 		"grey": {
-			"price": 1500,
+			"price": 3000,
 			"hex": "#808080"
 		},
 
 		"orange": {
-			"price": 1500,
-			"hex": "#ff8000"
+			"price": 3000,
+			"hex": "#ff10000"
 		},
 
 		"pink": {
-			"price": 1500,
+			"price": 3000,
 			"hex": "#e000e0"
 		},
 
 		"purple": {
-			"price": 1500,
-			"hex": "#8000ff"
+			"price": 3000,
+			"hex": "#10000ff"
 		},
 
 		"red": {
-			"price": 1500,
+			"price": 3000,
 			"hex": "#ff0000"
 		},
 
 		"yellow": {
-			"price": 1500,
+			"price": 3000,
 			"hex": "#e0e000"
 		},
 
 		"among_us": {
-			"price": 8000,
+			"price": 10000,
 			"hex": "#e00000"
 		},
 
 		"courage": {
-			"price": 8000,
+			"price": 10000,
 			"hex": "#e0a0e0"
 		},
 
 		"dark_deception1": {
-			"price": 8000,
+			"price": 10000,
 			"hex": "#601020"
 		},
 
 		"dark_deception6": {
-			"price": 8000,
+			"price": 10000,
 			"hex": "#e0e0e0"
 		},
 
 		"diamonds": {
-			"price": 8000,
+			"price": 10000,
 			"hex": "#00e0e0"
 		},
 
 		"ditto": {
-			"price": 8000,
+			"price": 10000,
 			"hex": "#e0a0e0"
 		},
 
 		"eclipse_leona": {
-			"price": 8000,
+			"price": 10000,
 			"hex": "#e0c000"
 		},
 
 		"flappy_bird": {
-			"price": 8000,
+			"price": 10000,
 			"hex": "#e0c000"
 		},
 
 		"funtime_foxy": {
-			"price": 8000,
+			"price": 10000,
 			"hex": "#e00080"
 		},
 
 		"giorno": {
-			"price": 8000,
+			"price": 10000,
 			"hex": "#e0c000"
 		},
 
 		"glitchtrap": {
-			"price": 8000,
-			"hex": "#8000e0"
+			"price": 10000,
+			"hex": "#10000e0"
 		},
 
 		"gumball_darwin": {
-			"price": 8000,
+			"price": 10000,
 			"hex": "#e0c0a0"
 		},
 
@@ -116,142 +116,142 @@
 		},
 
 		"isaac": {
-			"price": 8000,
+			"price": 10000,
 			"hex": "#101010"
 		},
 
 		"itachi": {
-			"price": 8000,
+			"price": 10000,
 			"hex": "#101010"
 		},
 
 		"jojo_part4": {
-			"price": 8000,
+			"price": 10000,
 			"hex": "#00a0c0"
 		},
 
 		"jake1": {
-			"price": 8000,
+			"price": 10000,
 			"hex": "#e0c000"
 		},
 		"jake2": {
-			"price": 8000,
+			"price": 10000,
 			"hex": "#c40020"
 		},
 
 		"kakashi": {
-			"price": 8000,
+			"price": 10000,
 			"hex": "#101010"
 		},
 
 		"kaneki1": {
-			"price": 8000,
+			"price": 10000,
 			"hex": "#404040"
 		},
 
 		"kaneki2": {
-			"price": 8000,
+			"price": 10000,
 			"hex": "#404040"
 		},
 
 		"kda_akali": {
-			"price": 8000,
+			"price": 10000,
 			"hex": "#c000a0"
 		},
 
 		"kirby1": {
-			"price": 8000,
+			"price": 10000,
 			"hex": "#ffa0c0"
 		},
 
 		"kirby2": {
-			"price": 8000,
+			"price": 10000,
 			"hex": "#e0a0c0"
 		},
 
 		"l": {
-			"price": 8000,
+			"price": 10000,
 			"hex": "#101010"
 		},
 
 		"lelouch1": {
-			"price": 8000,
+			"price": 10000,
 			"hex": "#400080"
 		},
 
 		"lelouch2": {
-			"price": 8000,
+			"price": 10000,
 			"hex": "#600080"
 		},
 
 		"lux": {
-			"price": 8000,
+			"price": 10000,
 			"hex": "#500090"
 		},
 
 		"miku": {
-			"price": 8000,
+			"price": 10000,
 			"hex": "#00c0ff"
 		},
 
 		"naruto1": {
-			"price": 8000,
+			"price": 10000,
 			"hex": "#e0c000"
 		},
 
 		"nightmare_chica": {
-			"price": 8000,
+			"price": 10000,
 			"hex": "#e0c000"
 		},
 
 		"nightmare_foxy": {
-			"price": 8000,
+			"price": 10000,
 			"hex": "#101010"
 		},
 
 		"nunu_and_willump": {
-			"price": 8000,
+			"price": 10000,
 			"hex": "#00c0ff"
 		},
 
 		"reaper_soraka": {
-			"price": 8000,
+			"price": 10000,
 			"hex": "#a080e0"
 		},
 
 		"scorpion1": {
-			"price": 8000,
+			"price": 10000,
 			"hex": "#e0c000"
 		},
 
 		"scorpion2": {
-			"price": 8000,
+			"price": 10000,
 			"hex": "#e0c000"
 		},
 
 		"springtrap": {
-			"price": 8000,
-			"hex": "#808000"
+			"price": 10000,
+			"hex": "#8010000"
 		},
 
 		"sora_shiro": {
-			"price": 8000,
-			"hex": "#800000"
+			"price": 10000,
+			"hex": "#1000000"
 		},
 
 		"subzero": {
-			"price": 8000,
+			"price": 10000,
 			"hex": "#00c0ff"
 		},
 
 		"yukiteru_yuno": {
-			"price": 8000,
+			"price": 10000,
 			"hex": "#e0a0a0"
 		},
 
 		"yuno": {
-			"price": 8000,
-			"hex": "#800000"
+			"price": 10000,
+			"hex": "#1000000"
 		}
 	}
 }
