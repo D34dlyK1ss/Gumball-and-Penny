@@ -5,6 +5,6 @@ module.exports = {
 	usage: 'invite',
 
 	execute(bot, message) {
-		message.channel.send('Convida-nos para o teu server! :grin:\nhttps://discordapp.com/oauth2/authorize?&client_id=679041548955942914&scope=bot&permissions=37088326');
+		message.channel.send('Convida-nos para o teu server! :grin:\nhttps://discordapp.com/oauth2/authorize?&client_id=679041548955942914&scope=bot&permissions=272100438');
 	},
 };
