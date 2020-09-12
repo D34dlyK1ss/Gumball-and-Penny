@@ -29,7 +29,7 @@ module.exports = {
 
 			const mention = getUserFromMention(args[0]);
 			const member = message.guild.member(mention),
-				muteRole = message.guild.roles.find(muterole => muterole.name === 'Muted');
+				muteRole = message.guild.roles.cache.find(muterole => muterole.name === 'Muted');
 			let reason = args.join(' ');
 
 			if(!muteRole) {

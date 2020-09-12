@@ -69,6 +69,7 @@ const dbl = new DBL(config.dblToken, { webhookPort: 5000, webhookAuth: 'gumballa
 dbl.webhook.on('ready', () => {
 	console.log('O webhook do DBL está ativo');
 });
+
 dbl.webhook.on('vote', vote => {
 	if (bot.guild.member(vote.user.id).exists) {
 		vote.user.send('Obrigado por teres votado!');
