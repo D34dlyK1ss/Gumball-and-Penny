@@ -225,6 +225,13 @@ module.exports = {
 					const avatar = await loadImage(user.displayAvatarURL({ format: 'jpg' }));
 					ctx.drawImage (avatar, 37, 10, 120, 120);
 
+
+					const vip = doc.get('vip');
+					if (vip == true) {
+						const crown = await loadImage(user.displayAvatarURL({ format: 'jpg' }));
+						ctx.drawImage (crown, 10, 10, 50, 50);
+					}
+
 					const attachment = new MessageAttachment(canvas.toBuffer(), 'profile.png');
 
 					message.channel.send(attachment);

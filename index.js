@@ -151,10 +151,10 @@ bot.on('message', async message => {
 							db.collection('perfis').doc(message.author.id).update({
 								balance: bal + reward,
 							});
-							message.channel.send(`🎉 Parabéns ${message.author}, subiste para o nível ${newLevel} e recebeste ¤${reward} 🆙💰`);
+							return message.channel.send(`🎉 Parabéns ${message.author}, subiste para o nível ${newLevel} e recebeste ¤${reward} 🆙💰`);
 						}
 						else {
-							message.channel.send(`🎉 Parabéns ${message.author}, subiste para o nível ${newLevel}! 🆙`);
+							return message.channel.send(`🎉 Parabéns ${message.author}, subiste para o nível ${newLevel}! 🆙`);
 						}
 					}
 				}
@@ -174,14 +174,14 @@ bot.on('message', async message => {
 		}
 		catch (err) {
 			console.error(err);
-			message.reply('ocorreu um erro ao tentar executar esse comando!');
+			return message.reply('ocorreu um erro ao tentar executar esse comando!');
 		}
 	}
 
-	const botMention = message.mentions.users.first();
+	const mention = message.mentions.users.first();
 
-	if (botMention == bot.user) {
-		message.channel.send(`O nosso prefixo para este servidor é **${prefix}**`);
+	if (message.content === mention && mention === bot.user) {
+		return message.channel.send(`O nosso prefixo para este servidor é **${prefix}**`);
 	}
 
 	const pic = new Discord.MessageAttachment(`images/${message.content}.png`);
