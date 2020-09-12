@@ -28,21 +28,19 @@ module.exports = {
 			return message.reply('não tens permissão para usar este comando! 💢').then(msg => msg.delete({ timeout: 5000 })).catch(err => { console.error(err); });
 		}
 		else {
-			message.delete();
-
 			const mention = getUserFromMention(args[0]);
-			const member = message.guild.member(mention),
+			const memberToMute = message.guild.member(mention),
 				muteRole = message.guild.roles.cache.find(role => role.name === 'Muted');
 			let reason = args.join(' ');
 
 			if(!muteRole) {
-				message.channel.guild.roles.create({
+				message.guild.roles.create({
 					data: {
 						name: 'Muted',
 						color: '#404040',
 					},
 				}).then(async () => {
-					message.guild.cache.channels.forEach(async channel => {
+					message.guild.channels.cache.forEach(async channel => {
 						await channel.overwritePermissions(muteRole, {
 							SEND_MESSAGES: false,
 							ADD_REACTIONS: false,
@@ -53,12 +51,12 @@ module.exports = {
 				}).catch(err => { console.error(err); });
 			}
 
-			member.roles.add(muteRole).then(() => {
+			memberToMute.roles.add(muteRole).then(() => {
 				if (reason == '') reason = '_Não indicada_';
 				const embed = new Discord.MessageEmbed()
 					.setColor('#8000ff')
-					.setTitle(`${member.user.tag} foi mutado! 🔇`)
-					.setThumbnail(`${member.user.displayAvatarURL()}`)
+					.setTitle(`${memberToMute.user.tag} foi mutado! 🔇`)
+					.setThumbnail(`${memberToMute.user.displayAvatarURL()}`)
 					.setDescription(`por ${message.member.user.tag}`)
 					.addFields(
 						{ name: 'Razão', value: `${reason}` },
