@@ -1,4 +1,4 @@
-const config = require('./config.json');
+const config = require('../config.json');
 const FieldValue = require('firebase-admin').firestore.FieldValue;
 
 module.exports = {
