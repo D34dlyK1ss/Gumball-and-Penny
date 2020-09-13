@@ -97,7 +97,7 @@ bot.on('message', async message => {
 
 	if (!prefixes[message.guild.id]) {
 		const doc = await ref.get();
-		prefixes[message.guild.id] = doc.get('prefix');
+		prefixes[message.guild.id] = doc.get('prefix') || config.prefix;
 	}
 
 	const prefix = prefixes[message.guild.id];

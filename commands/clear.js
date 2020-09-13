@@ -9,6 +9,9 @@ module.exports = {
 			if (!message.member.hasPermission('MANAGE_MESSAGES')) {
 				return message.reply('não tens permissão para usar este comando! 💢').then(msg => { msg.delete({ timeout: 5000 }); });
 			}
+			else if (!message.channel.guild.me.hasPermission('MANAGE_MESSAGES')) {
+				return message.reply('nós não temos permissão para gerir mensagens!');
+			}
 			else if (args == '' || args == '0') {
 				return message.reply('tens de definir o número de mensagens que queres apagar!').then(msg => msg.delete({ timeout: 5000 }));
 			}

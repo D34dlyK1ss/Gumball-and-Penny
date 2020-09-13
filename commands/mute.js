@@ -21,11 +21,15 @@ module.exports = {
 			return bot.users.cache.get(id);
 		}
 
-		if (!message.channel.guild.me.hasPermission('MANAGE_ROLES') || !message.channel.guild.me.hasPermission('MANAGE_CHANNELS')) {
-			return message.reply ('não temos permissão para manusear roles/canais!');
-		}
-		else if (!message.member.hasPermission('MUTE_MEMBERS')) {
+		message.delete();
+		if (!message.member.hasPermission('MANAGE_ROLES') || !message.member.hasPermission('MANAGE_CHANNELS')) {
 			return message.reply('não tens permissão para usar este comando! 💢').then(msg => msg.delete({ timeout: 5000 })).catch(err => { console.error(err); });
+		}
+		else if (!message.channel.guild.me.hasPermission('MANAGE_ROLES')) {
+			return message.reply ('não temos permissão para gerir roles!').then(msg => msg.delete({ timeout: 5000 })).catch(err => { console.error(err); });
+		}
+		else if (!message.channel.guild.me.hasPermission('MANAGE_CHANNELS')) {
+			return message.reply ('não temos permissão para gerir canais!').then(msg => msg.delete({ timeout: 5000 })).catch(err => { console.error(err); });
 		}
 		else {
 			const mention = getUserFromMention(args[0]);
