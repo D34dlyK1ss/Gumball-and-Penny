@@ -42,8 +42,8 @@ module.exports = {
 							ref.update({
 								balance: newBal,
 							}).then(() => {
-								message.reply(`**¤${amount}** foram adicionados à tua conta bancária!`);
-							}).catch(err => { console.error(err); });
+								return message.reply(`**¤${amount}** foram adicionados à tua conta bancária!`);
+							});
 						}
 					}
 					else {

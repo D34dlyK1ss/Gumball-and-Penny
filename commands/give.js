@@ -50,10 +50,10 @@ module.exports = {
 							balU = docU.get('balance');
 
 						if (amount > balD) {
-							message.reply('não tens dinheiro suficiente!');
+							return message.reply('não tens dinheiro suficiente!');
 						}
 						else if (balU == 999999999) {
-							message.reply(`não podes dar dinheiro a ${user.tag}! 😧`);
+							return message.reply(`não podes dar dinheiro a ${user.tag}! 😧`);
 						}
 						else {
 
@@ -71,12 +71,12 @@ module.exports = {
 									balance: balD - amount,
 								}).then(() => {
 									message.reply(`deste **¤${amount}** a ${user}!`);
-								}).catch(err => { console.error(err); });
-							}).catch(err => { console.error(err); });
+								});
+							});
 						}
 					}
 				});
 			}
-		});
+		}).catch(err => { console.error(err); });
 	},
 };

@@ -47,19 +47,15 @@ module.exports = {
 						message.channel.send(`${res.charAt(0).toUpperCase() + res.slice(1)}!`, { files: [`images/coinflip/${res}.gif`] });
 
 						if (res != guess) {
-							db.collection('perfis').doc(user.id).update({
+							ref.update({
 								balance: (bal - money),
-							}).then(() => {
-								return message.reply(`perdeste ¤${money}!`);
-							}).catch(err => { console.error(err); });
+							}).then(() => { return message.reply(`perdeste ¤${money}!`); });
 						}
 						else if (res == guess) {
 							const won = money * 2;
-							db.collection('perfis').doc(user.id).update({
+							ref.update({
 								balance: (bal + won),
-							}).then(() => {
-								message.reply(`ganhaste ¤${won}!`);
-							}).catch(err => { console.error(err); });
+							}).then(() => { message.reply(`ganhaste ¤${won}!`); });
 						}
 					}));
 				}
