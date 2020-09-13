@@ -1,3 +1,6 @@
+const config = require('./config.json');
+const FieldValue = require('firebase-admin').firestore.FieldValue;
+
 module.exports = {
 	name: 'setprefix',
 	category: 'Servidor',
@@ -13,13 +16,21 @@ module.exports = {
 			return message.reply('precisamos de saber qual é o prefixo desejado!');
 		}
 		else {
-			const newPrefix = args[0];
-			prefixes[message.guild.id] = newPrefix;
-			db.collection('servidores').doc(message.guild.id).update({
-				prefix: newPrefix,
-			}).then(() => {
-				message.channel.send('O prefixo para este servidor agora é `' + newPrefix + '`');
-			}).catch(err => { console.error(err); });
+			const newPrefix = args[0],
+				ref = db.collection('servidores').doc(message.guild.id);
+			if (newPrefix == config.prefix) {
+				prefixes[message.guild.id] = config.prefix;
+				ref.update({
+					prefix: FieldValue.delete(),
+				}).catch(err => { console.error(err); });
+			}
+			else {
+				prefixes[message.guild.id] = newPrefix;
+				ref.update({
+					prefix: newPrefix,
+				}).catch(err => { console.error(err); });
+			}
+			message.channel.send('O prefixo para este servidor agora é `' + newPrefix + '`');
 		}
 	},
 };
