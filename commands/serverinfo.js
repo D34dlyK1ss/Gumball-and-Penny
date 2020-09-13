@@ -25,7 +25,7 @@ module.exports = {
 		case 'HIGH':
 			server.verificationLevel = 'Alto';
 			break;
-		case 'HIGHEST':
+		case 'VERY_HIGH':
 			server.verificationLevel = 'Muito Alto';
 			break;
 		}
