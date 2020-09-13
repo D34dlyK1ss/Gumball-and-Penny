@@ -1,8 +1,8 @@
 module.exports = {
-	name: 'mute',
+	name: 'unmute',
 	category: 'Moderação',
-	description: 'Calaremos um membro do servidor!',
-	usage: 'mute [@membro] [opcional - razão]',
+	description: 'Põe qualquer membro a falar outra vez!',
+	usage: 'unmute [@membro]',
 
 	execute(bot, message, command, args) {
 		function getUserFromMention(mention) {

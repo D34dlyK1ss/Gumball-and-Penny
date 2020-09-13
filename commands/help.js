@@ -9,7 +9,7 @@ module.exports = {
 
 	execute(bot, message, command, args, db, prefix) {
 		const { commands } = message.client,
-			update = '**Update:** Agora já podem votar pelo bot no Discord Bot List para receberem dinheiro extra no vosso perfil!';
+			update = '';
 		const helpEmbed = new Discord.MessageEmbed()
 			.setColor('#8000ff')
 			.setTitle('Ajuda')
