@@ -24,7 +24,7 @@ module.exports = {
 				{ name: '😁 Diversão', value: '`fact`, `match`, `random`, `say`, `which`', inline: true },
 				{ name: '💸 Doações', value: '`donate`', inline: true },
 				{ name: '💰 Economia e Perfil', value: '`balance`, `daily`, `give`, `shop`, `profile`, `vote`', inline: true },
-				{ name: '⚠️ Moderação', value: '`ban`, `clear`, `kick`, `mute`, `unmute`,', inline: true },
+				{ name: '⚠️ Moderação', value: '`ban`, `clear`, `kick`, `mute`, `tempmute`, `unmute`', inline: true },
 				{ name: '🌐 Servidor', value: '`members`, `serverinfo`, `setprefix`, `userinfo`', inline: true },
 				{ name: '🛠️ Utilidade', value: '`avatar`, `invite`, `ping`, `support`', inline: true },
 			);
