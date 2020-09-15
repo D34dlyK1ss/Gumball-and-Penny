@@ -37,10 +37,12 @@ module.exports = {
 			const mention = getUserFromMention(args[0]);
 			const memberToMute = message.guild.member(mention);
 			args.shift();
-			const seconds = parseInt(args[0]);
+			let seconds = parseInt(args[0]);
 			args.shift();
 			const reason = args.join(' ') || '_Não indicada_';
 			let muteRole = message.guild.roles.cache.find(role => role.name === 'Muted');
+
+			if(seconds > 86400) seconds = 86400;
 
 			if(!muteRole) {
 				message.guild.roles.create({
