@@ -144,6 +144,7 @@ module.exports = {
 						{ name: 'Nightmare Foxy', value: `¤${items.huds.nightmare_foxy.price}`, inline: true },
 						{ name: 'Nunu and Willump', value: `¤${items.huds.nightmare_foxy.price}`, inline: true },
 						{ name: 'Reaper Soraka', value: `¤${items.huds.reaper_soraka.price}`, inline: true },
+						{ name: 'Sans', value: `¤${items.huds.sans.price}`, inline: true },
 						{ name: 'Scorpion1', value: `¤${items.huds.scorpion1.price}`, inline: true },
 						{ name: 'Scorpion2', value: `¤${items.huds.scorpion1.price}`, inline: true },
 						{ name: 'Springtrap', value: `¤${items.huds.springtrap.price}`, inline: true },

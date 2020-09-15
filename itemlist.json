@@ -224,6 +224,11 @@
 			"hex": "#a080e0"
 		},
 
+		"sans": {
+			"price": 10000,
+			"hex": "#ffffff"
+		},
+
 		"scorpion1": {
 			"price": 10000,
 			"hex": "#e0c000"
