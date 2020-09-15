@@ -22,7 +22,7 @@ module.exports = {
 			else {
 				refI.get().then(docI => {
 					if (!docI.exists) {
-						return message.reply('não conseguimos encontrar o teu inventario!');
+						return message.reply('não tens nenhum inventário!');
 					}
 					else {
 						const iHuds = docI.get('huds');
