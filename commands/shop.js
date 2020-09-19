@@ -50,6 +50,8 @@ module.exports = {
 			hudCartoonsEmbed,
 			hudVocaloidsEmbed;
 
+		const page = args[2] || 1;
+
 		switch (option) {
 		case 'buy':
 			switch (args[1]) {
@@ -109,6 +111,7 @@ module.exports = {
 				hudColorsEmbed = new MessageEmbed(mainEmbed)
 					.setTitle('Loja Incrível - HUDs (Cores)')
 					.setDescription(`\`${prefix}shop buy hud [nome_do_item]\` para comprar ou \`${prefix}shop view hud [item]\` para ver.`)
+					.setFooter(`Página ${page} de 1`)
 					.spliceFields(0, mainEmbed.fields.length, [
 						{ name: 'Black', value: `¤${items.huds.black.price}`, inline: true },
 						{ name: 'Blue', value: `¤${items.huds.blue.price}`, inline: true },
@@ -123,55 +126,82 @@ module.exports = {
 				message.channel.send(hudColorsEmbed);
 				break;
 			case 'jogos':
-				hudGamesEmbed = new MessageEmbed(mainEmbed)
-					.setTitle('Loja Incrível - HUDs (Jogos)')
-					.setDescription(`\`${prefix}shop buy hud [nome_do_item]\` para comprar ou \`${prefix}shop view hud [item]\` para ver.`)
-					.spliceFields(0, mainEmbed.fields.length, [
-						{ name: 'Among Us', value: `¤${items.huds.among_us.price}`, inline: true },
-						{ name: 'Dark Deception1', value: `¤${items.huds.dark_deception1.price}`, inline: true },
-						{ name: 'Dark Deception6', value: `¤${items.huds.dark_deception6.price}`, inline: true },
-						{ name: 'DBD1', value: `¤${items.huds.dbd1.price}`, inline: true },
-						{ name: 'Ditto', value: `¤${items.huds.ditto.price}`, inline: true },
-						{ name: 'Diamonds', value: `¤${items.huds.diamonds.price}`, inline: true },
-						{ name: 'Eclipse Leona', value: `¤${items.huds.eclipse_leona.price}`, inline: true },
-						{ name: 'Flappy Bird', value: `¤${items.huds.flappy_bird.price}`, inline: true },
-						{ name: 'Funtime Foxy', value: `¤${items.huds.funtime_foxy.price}`, inline: true },
-						{ name: 'Glitchtrap', value: `¤${items.huds.glitchtrap.price}`, inline: true },
-						{ name: 'KDA Akali', value: `¤${items.huds.kda_akali.price}`, inline: true },
-						{ name: 'Kirby1', value: `¤${items.huds.kirby1.price}`, inline: true },
-						{ name: 'Kirby2', value: `¤${items.huds.kirby2.price}`, inline: true },
-						{ name: 'Nightmare Chica', value: `¤${items.huds.nightmare_chica.price}`, inline: true },
-						{ name: 'Nightmare Foxy', value: `¤${items.huds.nightmare_foxy.price}`, inline: true },
-						{ name: 'Nunu and Willump', value: `¤${items.huds.nightmare_foxy.price}`, inline: true },
-						{ name: 'Reaper Soraka', value: `¤${items.huds.reaper_soraka.price}`, inline: true },
-						{ name: 'Sans', value: `¤${items.huds.sans.price}`, inline: true },
-						{ name: 'Scorpion1', value: `¤${items.huds.scorpion1.price}`, inline: true },
-						{ name: 'Scorpion2', value: `¤${items.huds.scorpion1.price}`, inline: true },
-						{ name: 'Springtrap', value: `¤${items.huds.springtrap.price}`, inline: true },
-						{ name: 'SubZero', value: `¤${items.huds.subzero.price}`, inline: true },
-					]);
+				switch (page) {
+				case 2:
+					hudGamesEmbed = new MessageEmbed(mainEmbed)
+						.setTitle('Loja Incrível - HUDs (Jogos)')
+						.setDescription(`\`${prefix}shop buy hud [nome_do_item]\` para comprar ou \`${prefix}shop view hud [item]\` para ver.`)
+						.setFooter(`Página ${page} de 2`)
+						.spliceFields(0, mainEmbed.fields.length, [
+							{ name: 'KDA Akali', value: `¤${items.huds.kda_akali.price}`, inline: true },
+							{ name: 'Kirby1', value: `¤${items.huds.kirby1.price}`, inline: true },
+							{ name: 'Kirby2', value: `¤${items.huds.kirby2.price}`, inline: true },
+							{ name: 'Nightmare Chica', value: `¤${items.huds.nightmare_chica.price}`, inline: true },
+							{ name: 'Nightmare Foxy', value: `¤${items.huds.nightmare_foxy.price}`, inline: true },
+							{ name: 'Nunu and Willump', value: `¤${items.huds.nightmare_foxy.price}`, inline: true },
+							{ name: 'Reaper Soraka', value: `¤${items.huds.reaper_soraka.price}`, inline: true },
+							{ name: 'Sans', value: `¤${items.huds.sans.price}`, inline: true },
+							{ name: 'Scorpion1', value: `¤${items.huds.scorpion1.price}`, inline: true },
+							{ name: 'Scorpion2', value: `¤${items.huds.scorpion1.price}`, inline: true },
+							{ name: 'Springtrap', value: `¤${items.huds.springtrap.price}`, inline: true },
+							{ name: 'SubZero', value: `¤${items.huds.subzero.price}`, inline: true },
+						]);
+					break;
+				default:
+					hudGamesEmbed = new MessageEmbed(mainEmbed)
+						.setTitle('Loja Incrível - HUDs (Jogos)')
+						.setDescription(`\`${prefix}shop buy hud [nome_do_item]\` para comprar ou \`${prefix}shop view hud [item]\` para ver.`)
+						.setFooter(`Página ${page} de 2`)
+						.spliceFields(0, mainEmbed.fields.length, [
+							{ name: 'Among Us', value: `¤${items.huds.among_us.price}`, inline: true },
+							{ name: 'Dark Deception1', value: `¤${items.huds.dark_deception1.price}`, inline: true },
+							{ name: 'Dark Deception6', value: `¤${items.huds.dark_deception6.price}`, inline: true },
+							{ name: 'DBD1', value: `¤${items.huds.dbd1.price}`, inline: true },
+							{ name: 'Ditto', value: `¤${items.huds.ditto.price}`, inline: true },
+							{ name: 'Diamonds', value: `¤${items.huds.diamonds.price}`, inline: true },
+							{ name: 'Eclipse Leona', value: `¤${items.huds.eclipse_leona.price}`, inline: true },
+							{ name: 'Flappy Bird', value: `¤${items.huds.flappy_bird.price}`, inline: true },
+							{ name: 'Funtime Foxy', value: `¤${items.huds.funtime_foxy.price}`, inline: true },
+							{ name: 'Glitchtrap', value: `¤${items.huds.glitchtrap.price}`, inline: true },
+						]);
+					break;
+				}
 				message.channel.send(hudGamesEmbed);
 				break;
 			case 'anime':
-				hudAnimeEmbed = new MessageEmbed(mainEmbed)
-					.setTitle('Loja Incrível - HUDs (Anime)')
-					.setDescription(`\`${prefix}shop buy hud [nome_do_item]\` para comprar ou \`${prefix}shop view hud [item]\` para ver.`)
-					.spliceFields(0, mainEmbed.fields.length, [
-						{ name: 'Giorno', value: `¤${items.huds.giorno.price}`, inline: true },
-						{ name: 'Isaac', value: `¤${items.huds.isaac.price}`, inline: true },
-						{ name: 'Itachi', value: `¤${items.huds.itachi.price}`, inline: true },
-						{ name: 'Jojo Part4', value: `¤${items.huds.jojo_part4.price}`, inline: true },
-						{ name: 'Kakashi', value: `¤${items.huds.kakashi.price}`, inline: true },
-						{ name: 'Kaneki1', value: `¤${items.huds.kaneki1.price}`, inline: true },
-						{ name: 'Kaneki2', value: `¤${items.huds.kaneki2.price}`, inline: true },
-						{ name: 'Naruto1', value: `¤${items.huds.naruto1.price}`, inline: true },
-						{ name: 'L', value: `¤${items.huds.l.price}`, inline: true },
-						{ name: 'Lelouch1', value: `¤${items.huds.lelouch1.price}`, inline: true },
-						{ name: 'Lelouch2', value: `¤${items.huds.lelouch2.price}`, inline: true },
-						{ name: 'Sora Shiro', value: `¤${items.huds.sora_shiro.price}`, inline: true },
-						{ name: 'Yukiteru Yuno', value: `¤${items.huds.yukiteru_yuno.price}`, inline: true },
-						{ name: 'Yuno', value: `¤${items.huds.yukiteru_yuno.price}`, inline: true },
-					]);
+				switch (page) {
+				case 2:
+					hudAnimeEmbed = new MessageEmbed(mainEmbed)
+						.setTitle('Loja Incrível - HUDs (Anime)')
+						.setDescription(`\`${prefix}shop buy hud [nome_do_item]\` para comprar ou \`${prefix}shop view hud [item]\` para ver.`)
+						.setFooter(`Página ${page} de 2`)
+						.spliceFields(0, mainEmbed.fields.length, [
+							{ name: 'Lelouch2', value: `¤${items.huds.lelouch2.price}`, inline: true },
+							{ name: 'Shiro', value: `¤${items.huds.sora_shiro.price}`, inline: true },
+							{ name: 'Sora Shiro', value: `¤${items.huds.sora_shiro.price}`, inline: true },
+							{ name: 'Yukiteru Yuno', value: `¤${items.huds.yukiteru_yuno.price}`, inline: true },
+							{ name: 'Yuno', value: `¤${items.huds.yukiteru_yuno.price}`, inline: true },
+						]);
+					break;
+				default:
+					hudAnimeEmbed = new MessageEmbed(mainEmbed)
+						.setTitle('Loja Incrível - HUDs (Anime)')
+						.setDescription(`\`${prefix}shop buy hud [nome_do_item]\` para comprar ou \`${prefix}shop view hud [item]\` para ver.`)
+						.setFooter(`Página ${page} de 2`)
+						.spliceFields(0, mainEmbed.fields.length, [
+							{ name: 'Giorno', value: `¤${items.huds.giorno.price}`, inline: true },
+							{ name: 'Isaac', value: `¤${items.huds.isaac.price}`, inline: true },
+							{ name: 'Itachi', value: `¤${items.huds.itachi.price}`, inline: true },
+							{ name: 'Jojo Part4', value: `¤${items.huds.jojo_part4.price}`, inline: true },
+							{ name: 'Kakashi', value: `¤${items.huds.kakashi.price}`, inline: true },
+							{ name: 'Kaneki1', value: `¤${items.huds.kaneki1.price}`, inline: true },
+							{ name: 'Kaneki2', value: `¤${items.huds.kaneki2.price}`, inline: true },
+							{ name: 'Naruto1', value: `¤${items.huds.naruto1.price}`, inline: true },
+							{ name: 'L', value: `¤${items.huds.l.price}`, inline: true },
+							{ name: 'Lelouch1', value: `¤${items.huds.lelouch1.price}`, inline: true },
+						]);
+					break;
+				}
 				message.channel.send(hudAnimeEmbed);
 				break;
 			case 'cartoons':
