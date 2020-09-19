@@ -23,6 +23,11 @@ const fs = require('fs');
 // Classe de utilidade 'Collection' do Discord.js
 bot.commands = new Discord.Collection();
 
+// WebSocket para requests
+const { Server } = require('ws');
+// eslint-disable-next-line no-unused-vars
+const wss = new Server('wss://gumball-and-penny.herokuapp.com/');
+
 // Acesso de administrador à BD
 const admin = require('firebase-admin');
 
