@@ -113,15 +113,15 @@ module.exports = {
 					.setDescription(`\`${prefix}shop buy hud [nome_do_item]\` para comprar ou \`${prefix}shop view hud [item]\` para ver.`)
 					.setFooter(`Página ${page} de 1`)
 					.spliceFields(0, mainEmbed.fields.length, [
-						{ name: 'Black', value: `¤${items.huds.black.price}`, inline: true },
-						{ name: 'Blue', value: `¤${items.huds.blue.price}`, inline: true },
-						{ name: 'Brown', value: `¤${items.huds.brown.price}`, inline: true },
-						{ name: 'Green', value: `¤${items.huds.green.price}`, inline: true },
-						{ name: 'Orange', value: `¤${items.huds.orange.price}`, inline: true },
-						{ name: 'Pink', value: `¤${items.huds.pink.price}`, inline: true },
-						{ name: 'Purple', value: `¤${items.huds.purple.price}`, inline: true },
-						{ name: 'Red', value: `¤${items.huds.red.price}`, inline: true },
-						{ name: 'Yellow', value: `¤${items.huds.yellow.price}`, inline: true },
+						{ name: 'Black', value: `Preço ¤${items.huds.black.price}`, inline: true },
+						{ name: 'Blue', value: `Preço ¤${items.huds.blue.price}`, inline: true },
+						{ name: 'Brown', value: `Preço ¤${items.huds.brown.price}`, inline: true },
+						{ name: 'Green', value: `Preço ¤${items.huds.green.price}`, inline: true },
+						{ name: 'Orange', value: `Preço ¤${items.huds.orange.price}`, inline: true },
+						{ name: 'Pink', value: `Preço ¤${items.huds.pink.price}`, inline: true },
+						{ name: 'Purple', value: `Preço ¤${items.huds.purple.price}`, inline: true },
+						{ name: 'Red', value: `Preço ¤${items.huds.red.price}`, inline: true },
+						{ name: 'Yellow', value: `Preço ¤${items.huds.yellow.price}`, inline: true },
 					]);
 				message.channel.send(hudColorsEmbed);
 				break;
@@ -133,18 +133,18 @@ module.exports = {
 						.setDescription(`\`${prefix}shop buy hud [nome_do_item]\` para comprar ou \`${prefix}shop view hud [item]\` para ver.`)
 						.setFooter(`Página ${page} de 2`)
 						.spliceFields(0, mainEmbed.fields.length, [
-							{ name: 'KDA Akali', value: `¤${items.huds.kda_akali.price}`, inline: true },
-							{ name: 'Kirby1', value: `¤${items.huds.kirby1.price}`, inline: true },
-							{ name: 'Kirby2', value: `¤${items.huds.kirby2.price}`, inline: true },
-							{ name: 'Nightmare Chica', value: `¤${items.huds.nightmare_chica.price}`, inline: true },
-							{ name: 'Nightmare Foxy', value: `¤${items.huds.nightmare_foxy.price}`, inline: true },
-							{ name: 'Nunu and Willump', value: `¤${items.huds.nightmare_foxy.price}`, inline: true },
-							{ name: 'Reaper Soraka', value: `¤${items.huds.reaper_soraka.price}`, inline: true },
-							{ name: 'Sans', value: `¤${items.huds.sans.price}`, inline: true },
-							{ name: 'Scorpion1', value: `¤${items.huds.scorpion1.price}`, inline: true },
-							{ name: 'Scorpion2', value: `¤${items.huds.scorpion1.price}`, inline: true },
-							{ name: 'Springtrap', value: `¤${items.huds.springtrap.price}`, inline: true },
-							{ name: 'SubZero', value: `¤${items.huds.subzero.price}`, inline: true },
+							{ name: 'KDA Akali', value: `League of Legends\nPreço ¤${items.huds.kda_akali.price}`, inline: true },
+							{ name: 'Kirby1', value: `Nintendo\nPreço ¤${items.huds.kirby1.price}`, inline: true },
+							{ name: 'Kirby2', value: `Nintendo\nPreço ¤${items.huds.kirby2.price}`, inline: true },
+							{ name: 'Nightmare Chica', value: `Five Nights at Freddy's\nPreço ¤${items.huds.nightmare_chica.price}`, inline: true },
+							{ name: 'Nightmare Foxy', value: `Five Nights at Freddy's\nPreço ¤${items.huds.nightmare_foxy.price}`, inline: true },
+							{ name: 'Nunu and Willump', value: `League of Legends\nPreço ¤${items.huds.nightmare_foxy.price}`, inline: true },
+							{ name: 'Reaper Soraka', value: `League of Legends\nPreço ¤${items.huds.reaper_soraka.price}`, inline: true },
+							{ name: 'Sans', value: `Undertale\nPreço ¤${items.huds.sans.price}`, inline: true },
+							{ name: 'Scorpion1', value: `Mortal Kombat\nPreço ¤${items.huds.scorpion1.price}`, inline: true },
+							{ name: 'Scorpion2', value: `Mortal Kombat\nPreço ¤${items.huds.scorpion1.price}`, inline: true },
+							{ name: 'Springtrap', value: `Five Nights at Freddy's\nPreço ¤${items.huds.springtrap.price}`, inline: true },
+							{ name: 'SubZero', value: `Mortal Kombat\nPreço ¤${items.huds.subzero.price}`, inline: true },
 						]);
 					break;
 				default:
@@ -153,16 +153,16 @@ module.exports = {
 						.setDescription(`\`${prefix}shop buy hud [nome_do_item]\` para comprar ou \`${prefix}shop view hud [item]\` para ver.`)
 						.setFooter(`Página ${page} de 2`)
 						.spliceFields(0, mainEmbed.fields.length, [
-							{ name: 'Among Us', value: `¤${items.huds.among_us.price}`, inline: true },
-							{ name: 'Dark Deception1', value: `¤${items.huds.dark_deception1.price}`, inline: true },
-							{ name: 'Dark Deception6', value: `¤${items.huds.dark_deception6.price}`, inline: true },
-							{ name: 'DBD1', value: `¤${items.huds.dbd1.price}`, inline: true },
-							{ name: 'Ditto', value: `¤${items.huds.ditto.price}`, inline: true },
-							{ name: 'Diamonds', value: `¤${items.huds.diamonds.price}`, inline: true },
-							{ name: 'Eclipse Leona', value: `¤${items.huds.eclipse_leona.price}`, inline: true },
-							{ name: 'Flappy Bird', value: `¤${items.huds.flappy_bird.price}`, inline: true },
-							{ name: 'Funtime Foxy', value: `¤${items.huds.funtime_foxy.price}`, inline: true },
-							{ name: 'Glitchtrap', value: `¤${items.huds.glitchtrap.price}`, inline: true },
+							{ name: 'Among Us', value: `\nPreço ¤${items.huds.among_us.price}`, inline: true },
+							{ name: 'Dark Deception1', value: `\nPreço ¤${items.huds.dark_deception1.price}`, inline: true },
+							{ name: 'Dark Deception6', value: `\nPreço ¤${items.huds.dark_deception6.price}`, inline: true },
+							{ name: 'DBD1', value: `\nPreço ¤${items.huds.dbd1.price}`, inline: true },
+							{ name: 'Ditto', value: `Pokémon\nPreço ¤${items.huds.ditto.price}`, inline: true },
+							{ name: 'Diamonds', value: `Minecraft\nPreço ¤${items.huds.diamonds.price}`, inline: true },
+							{ name: 'Eclipse Leona', value: `League of Legends\nPreço ¤${items.huds.eclipse_leona.price}`, inline: true },
+							{ name: 'Flappy Bird', value: `\nPreço ¤${items.huds.flappy_bird.price}`, inline: true },
+							{ name: 'Funtime Foxy', value: `Five Nights at Freddy's\nPreço ¤${items.huds.funtime_foxy.price}`, inline: true },
+							{ name: 'Glitchtrap', value: `Five Nights at Freddy's\nPreço ¤${items.huds.glitchtrap.price}`, inline: true },
 						]);
 					break;
 				}
@@ -176,11 +176,11 @@ module.exports = {
 						.setDescription(`\`${prefix}shop buy hud [nome_do_item]\` para comprar ou \`${prefix}shop view hud [item]\` para ver.`)
 						.setFooter(`Página ${page} de 2`)
 						.spliceFields(0, mainEmbed.fields.length, [
-							{ name: 'Lelouch2', value: `¤${items.huds.lelouch2.price}`, inline: true },
-							{ name: 'Shiro', value: `¤${items.huds.sora_shiro.price}`, inline: true },
-							{ name: 'Sora Shiro', value: `¤${items.huds.sora_shiro.price}`, inline: true },
-							{ name: 'Yukiteru Yuno', value: `¤${items.huds.yukiteru_yuno.price}`, inline: true },
-							{ name: 'Yuno', value: `¤${items.huds.yukiteru_yuno.price}`, inline: true },
+							{ name: 'Lelouch2', value: `Code Geass\nPreço ¤${items.huds.lelouch2.price}`, inline: true },
+							{ name: 'Shiro', value: `No Game No Life\nPreço ¤${items.huds.sora_shiro.price}`, inline: true },
+							{ name: 'Sora Shiro', value: `No Game No Life\nPreço ¤${items.huds.sora_shiro.price}`, inline: true },
+							{ name: 'Yukiteru Yuno', value: `Mirai Nikki\nPreço ¤${items.huds.yukiteru_yuno.price}`, inline: true },
+							{ name: 'Yuno', value: `Mirai Nikki\nPreço ¤${items.huds.yukiteru_yuno.price}`, inline: true },
 						]);
 					break;
 				default:
@@ -189,16 +189,16 @@ module.exports = {
 						.setDescription(`\`${prefix}shop buy hud [nome_do_item]\` para comprar ou \`${prefix}shop view hud [item]\` para ver.`)
 						.setFooter(`Página ${page} de 2`)
 						.spliceFields(0, mainEmbed.fields.length, [
-							{ name: 'Giorno', value: `¤${items.huds.giorno.price}`, inline: true },
-							{ name: 'Isaac', value: `¤${items.huds.isaac.price}`, inline: true },
-							{ name: 'Itachi', value: `¤${items.huds.itachi.price}`, inline: true },
-							{ name: 'Jojo Part4', value: `¤${items.huds.jojo_part4.price}`, inline: true },
-							{ name: 'Kakashi', value: `¤${items.huds.kakashi.price}`, inline: true },
-							{ name: 'Kaneki1', value: `¤${items.huds.kaneki1.price}`, inline: true },
-							{ name: 'Kaneki2', value: `¤${items.huds.kaneki2.price}`, inline: true },
-							{ name: 'Naruto1', value: `¤${items.huds.naruto1.price}`, inline: true },
-							{ name: 'L', value: `¤${items.huds.l.price}`, inline: true },
-							{ name: 'Lelouch1', value: `¤${items.huds.lelouch1.price}`, inline: true },
+							{ name: 'Giorno', value: `Jojo's Bizarre Adventure\nPreço ¤${items.huds.giorno.price}`, inline: true },
+							{ name: 'Isaac', value: `Angel's of Death\nPreço ¤${items.huds.isaac.price}`, inline: true },
+							{ name: 'Itachi', value: `Naruto\nPreço ¤${items.huds.itachi.price}`, inline: true },
+							{ name: 'Jojo Part4', value: `Jojo's Bizarre Adventure\nPreço ¤${items.huds.jojo_part4.price}`, inline: true },
+							{ name: 'Kakashi', value: `Naruto\nPreço ¤${items.huds.kakashi.price}`, inline: true },
+							{ name: 'Kaneki1', value: `Tokyo Ghoul\nPreço ¤${items.huds.kaneki1.price}`, inline: true },
+							{ name: 'Kaneki2', value: `Tokyo Ghoul\nPreço ¤${items.huds.kaneki2.price}`, inline: true },
+							{ name: 'Naruto1', value: `Naruto\nPreço ¤${items.huds.naruto1.price}`, inline: true },
+							{ name: 'L', value: `Death Note\nPreço ¤${items.huds.l.price}`, inline: true },
+							{ name: 'Lelouch1', value: `Code Geass\nPreço ¤${items.huds.lelouch1.price}`, inline: true },
 						]);
 					break;
 				}
@@ -209,10 +209,10 @@ module.exports = {
 					.setTitle('Loja Incrível - HUDs (Cartoons)')
 					.setDescription(`\`${prefix}shop buy hud [nome_do_item]\` para comprar ou \`${prefix}shop view hud [item]\` para ver.`)
 					.spliceFields(0, mainEmbed.fields.length, [
-						{ name: 'Courage', value: `¤${items.huds.courage.price}`, inline: true },
-						{ name: 'Jake1', value: `¤${items.huds.jake1.price}`, inline: true },
-						{ name: 'Jake2', value: `¤${items.huds.jake2.price}`, inline: true },
-						{ name: 'Gumball Darwin', value: `¤${items.huds.gumball_darwin.price}`, inline: true },
+						{ name: 'Courage', value: `Courage the Cowardly Dog\nPreço ¤${items.huds.courage.price}`, inline: true },
+						{ name: 'Jake1', value: `Adventure Time\nPreço ¤${items.huds.jake1.price}`, inline: true },
+						{ name: 'Jake2', value: `Adventure Time\nPreço ¤${items.huds.jake2.price}`, inline: true },
+						{ name: 'Gumball Darwin', value: `The Amazing World of Gumball\nPreço ¤${items.huds.gumball_darwin.price}`, inline: true },
 					]);
 				message.channel.send(hudCartoonsEmbed);
 				break;
@@ -221,7 +221,7 @@ module.exports = {
 					.setTitle('Loja Incrível - HUDs (Cartoons)')
 					.setDescription(`\`${prefix}shop buy hud [nome_do_item]\` para comprar ou \`${prefix}shop view hud [item]\` para ver.`)
 					.spliceFields(0, mainEmbed.fields.length, [
-						{ name: 'Miku', value: `¤${items.huds.miku.price}`, inline: true },
+						{ name: 'Miku', value: `Preço ¤${items.huds.miku.price}`, inline: true },
 					]);
 				message.channel.send(hudVocaloidsEmbed);
 				break;
