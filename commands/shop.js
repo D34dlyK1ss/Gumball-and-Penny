@@ -150,10 +150,10 @@ module.exports = {
 						.setDescription(`\`${prefix}shop buy hud [nome_do_item]\` para comprar ou \`${prefix}shop view hud [item]\` para ver.`)
 						.setFooter('Página 3 de 3')
 						.spliceFields(0, mainEmbed.fields.length, [
-							{ name: 'Scorpion1', value: `Mortal Kombat\nPreço ¤${items.huds.scorpion1.price}`, inline: true },
 							{ name: 'Scorpion2', value: `Mortal Kombat\nPreço ¤${items.huds.scorpion1.price}`, inline: true },
 							{ name: 'Springtrap', value: `Five Nights at Freddy's\nPreço ¤${items.huds.springtrap.price}`, inline: true },
 							{ name: 'SubZero', value: `Mortal Kombat\nPreço ¤${items.huds.subzero.price}`, inline: true },
+							{ name: 'The Hillbilly', value: `Dead by Daylight\nPreço ¤${items.huds.dbd1.price}`, inline: true },
 						]);
 					break;
 				default:
@@ -163,14 +163,14 @@ module.exports = {
 						.setFooter('Página 1 de 3')
 						.spliceFields(0, mainEmbed.fields.length, [
 							{ name: 'Among Us', value: `\nPreço ¤${items.huds.among_us.price}`, inline: true },
-							{ name: 'Dark Deception1', value: `\nPreço ¤${items.huds.dark_deception1.price}`, inline: true },
-							{ name: 'Dark Deception6', value: `\nPreço ¤${items.huds.dark_deception6.price}`, inline: true },
-							{ name: 'DBD1', value: `\nPreço ¤${items.huds.dbd1.price}`, inline: true },
+							{ name: 'Clown Gremlins', value: `Dark Deception\nPreço ¤${items.huds.dark_deception6.price}`, inline: true },
 							{ name: 'Ditto', value: `Pokémon\nPreço ¤${items.huds.ditto.price}`, inline: true },
 							{ name: 'Diamonds', value: `Minecraft\nPreço ¤${items.huds.diamonds.price}`, inline: true },
 							{ name: 'Eclipse Leona', value: `League of Legends\nPreço ¤${items.huds.eclipse_leona.price}`, inline: true },
 							{ name: 'Flappy Bird', value: `\nPreço ¤${items.huds.flappy_bird.price}`, inline: true },
 							{ name: 'Funtime Foxy', value: `Five Nights at Freddy's\nPreço ¤${items.huds.funtime_foxy.price}`, inline: true },
+							{ name: 'Murder Monkeys', value: `Dark Deception\nPreço ¤${items.huds.dark_deception1.price}`, inline: true },
+							{ name: 'Scorpion1', value: `Mortal Kombat\nPreço ¤${items.huds.scorpion1.price}`, inline: true },
 						]);
 					break;
 				}
