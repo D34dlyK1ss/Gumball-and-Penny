@@ -89,9 +89,13 @@ server.listen(port, function() {
 const DBL = require('dblapi.js');
 const dbl = new DBL(config.dblToken, { webhookPort: 5000, webhookAuth: 'gumballandpenny' });
 dbl.webhook.on('vote', vote => {
-	vote.user.send('Obrigado por teres votado!');
+	const user = bot.users.cache.get(vote.user);
 
-	const ref = db.collection('servidores').doc(vote.user);
+	if (!user) return;
+
+	user.send('Obrigado por teres votado!');
+
+	const ref = db.collection('servidores').doc(user);
 
 	ref.get().then(doc => {
 		if (!doc.exists) return;
