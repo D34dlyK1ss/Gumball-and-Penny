@@ -89,20 +89,18 @@ server.listen(port, function() {
 const DBL = require('dblapi.js');
 const dbl = new DBL(config.dblToken, { webhookPort: 5000, webhookAuth: 'gumballandpenny' });
 dbl.webhook.on('vote', vote => {
-	if (bot.guild.member(vote.user.id).exists) {
-		vote.user.send('Obrigado por teres votado!');
+	vote.user.send('Obrigado por teres votado!');
 
-		const ref = db.collection('servidores').doc(vote.user);
+	const ref = db.collection('servidores').doc(vote.user);
 
-		ref.get().then(doc => {
-			if (!doc.exists) return;
+	ref.get().then(doc => {
+		if (!doc.exists) return;
 
-			const bal = ref.get('balance');
-			ref.update({
-				balance: bal + 150,
-			}).catch(err => { console.error(err); });
-		});
-	}
+		const bal = ref.get('balance');
+		ref.update({
+			balance: bal + 150,
+		}).catch(err => { console.error(err); });
+	});
 });
 
 const prefixes = new Object(),
