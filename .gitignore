@@ -3,4 +3,3 @@ commands/tester.js
 node_modules/
 backups/
 .vscode/
-website/
