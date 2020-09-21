@@ -74,7 +74,8 @@ es.readyState = () => {
 };
 
 es.onmessage = event => {
-	if (event.type != 'upvote') return;
+	const type = event.type;
+	if (type != 'upvote') return;
 
 	const userID = event.user;
 	const user = bot.users.cache.get(userID);
