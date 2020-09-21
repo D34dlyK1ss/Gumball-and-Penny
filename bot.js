@@ -64,48 +64,30 @@ bot.once('ready', async () => {
 	});
 });
 
-const express = require('express');
-const http = require('http');
-const WebSocket = require('ws');
+const EventSource = require('eventsource');
 
-const port = 6969;
-const server = http.createServer(express);
-const wss = new WebSocket.Server({ server });
+const eventSourceInit = { headers: { 'Authorization': 'Bearer 14aee8db11a152ed7f2d4ed23a839d58' } };
+const es = new EventSource('https://api.pipedream.com/sources/dc_OLuY0W/sse', eventSourceInit);
 
-wss.on('connection', function connection(ws) {
-	ws.on('message', function incoming(data) {
-		wss.clients.forEach(function each(client) {
-			if (client !== ws && client.readyState === WebSocket.OPEN) {
-				client.send(data);
-			}
-		});
-	});
-});
+es.onmessage = event => {
+	if (event.data.type != 'vote') return;
 
-server.listen(port, function() {
-	console.log(`Servidor está ativo na porta ${port}!`);
-});
-
-const DBL = require('dblapi.js');
-const dbl = new DBL(config.dblToken, { webhookPort: 5000, webhookAuth: 'gumballandpenny' });
-dbl.webhook.on('vote', vote => {
-	const user = bot.users.cache.get(vote.user);
+	const userID = event.data.user;
+	const user = bot.users.cache.get(userID);
 
 	if (!user) return;
 
-	user.send('Obrigado por teres votado!');
+	user.send('Obrigado por votares!');
 
-	const ref = db.collection('servidores').doc(user);
-
+	const ref = db.collection('servidores').doc(userID);
 	ref.get().then(doc => {
 		if (!doc.exists) return;
-
-		const bal = ref.get('balance');
+		const bal = doc.get('balance');
 		ref.update({
 			balance: bal + 150,
-		}).catch(err => { console.error(err); });
+		});
 	});
-});
+};
 
 const prefixes = new Object(),
 	xpCooldown = new Set();
