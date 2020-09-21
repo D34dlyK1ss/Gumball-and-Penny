@@ -69,11 +69,14 @@ const EventSource = require('eventsource');
 const eventSourceInit = { headers: { 'Authorization': 'Bearer 14aee8db11a152ed7f2d4ed23a839d58' } };
 const es = new EventSource('https://api.pipedream.com/sources/dc_OLuY0W/sse', eventSourceInit);
 
-es.onmessage = event => {
-	const data = event.data;
-	if (data.type != 'upvote') return;
+es.readyState = () => {
+	console.log('Estamos atentos ao fluxo SSE em https://api.pipedream.com/sources/dc_OLuY0W/sse');
+};
 
-	const userID = event.data.user;
+es.onmessage = event => {
+	if (event.type != 'upvote') return;
+
+	const userID = event.user;
 	const user = bot.users.cache.get(userID);
 
 	if (!user) return;
