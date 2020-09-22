@@ -69,7 +69,7 @@ const EventSource = require('eventsource');
 const eventSourceInit = { headers: { 'Authorization': 'Bearer 14aee8db11a152ed7f2d4ed23a839d58' } };
 const es = new EventSource('https://api.pipedream.com/sources/dc_OLuY0W/sse', eventSourceInit);
 
-es.onmessage(event => {
+es.onmessage = event => {
 	const type = event.body.type;
 	if (type != 'upvote') return;
 
@@ -88,7 +88,7 @@ es.onmessage(event => {
 			balance: bal + 150,
 		});
 	});
-});
+};
 
 const prefixes = new Object(),
 	xpCooldown = new Set();
