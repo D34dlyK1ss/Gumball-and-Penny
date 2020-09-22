@@ -69,15 +69,11 @@ const EventSource = require('eventsource');
 const eventSourceInit = { headers: { 'Authorization': 'Bearer 14aee8db11a152ed7f2d4ed23a839d58' } };
 const es = new EventSource('https://api.pipedream.com/sources/dc_OLuY0W/sse', eventSourceInit);
 
-es.readyState = () => {
-	console.log('Estamos atentos ao fluxo SSE em https://api.pipedream.com/sources/dc_OLuY0W/sse');
-};
-
-es.onmessage = event => {
-	const type = event.type;
+es.onmessage(event => {
+	const type = event.body.type;
 	if (type != 'upvote') return;
 
-	const userID = event.user;
+	const userID = event.body.user;
 	const user = bot.users.cache.get(userID);
 
 	if (!user) return;
@@ -92,7 +88,7 @@ es.onmessage = event => {
 			balance: bal + 150,
 		});
 	});
-};
+});
 
 const prefixes = new Object(),
 	xpCooldown = new Set();
