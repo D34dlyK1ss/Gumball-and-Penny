@@ -70,10 +70,10 @@ const eventSourceInit = { headers: { 'Authorization': 'Bearer 14aee8db11a152ed7f
 const es = new EventSource('https://api.pipedream.com/sources/dc_OLuY0W/sse', eventSourceInit);
 
 es.onmessage = event => {
-	const type = event.body.type;
+	const type = event.type;
 	if (type != 'upvote') return;
 
-	const userID = event.body.user;
+	const userID = event.user;
 	const user = bot.users.cache.get(userID);
 
 	if (!user) return;
