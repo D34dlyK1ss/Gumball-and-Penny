@@ -70,7 +70,7 @@ const eventSourceInit = { headers: { 'Authorization': 'Bearer 14aee8db11a152ed7f
 const es = new EventSource('https://api.pipedream.com/sources/dc_OLuY0W/sse', eventSourceInit);
 
 es.onopen = () => {
-	console.log('Atentos ao fluxo SSE em https://api.pipedream.com/sources/dc_OLuY0W/sse\n');
+	console.log('Atentos ao fluxo SSE em https://api.pipedream.com/sources/dc_OLuY0W/sse');
 };
 
 es.onmessage = messageEvent => {
