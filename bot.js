@@ -153,6 +153,7 @@ es.onmessage = messageEvent => {
 };
 
 const prefixes = new Object(),
+	languages = new Object(),
 	xpCooldown = new Set();
 
 // Ações para quando o bot receber uma mensagem
@@ -161,11 +162,21 @@ bot.on('message', async message => {
 	// Ignorar mensagens privadas e mensagens de outros bots
 	if (message.channel.type === 'dm' || message.author.bot) return;
 
+	// Obter a linguagem a para o servidor
+	const refL = db.collection('servidores').doc(message.guild.id);
+
+	if (!languages[message.guild.id]) {
+		const doc = await refL.get();
+		languages[message.guild.id] = doc.get('language') || config.languages;
+	}
+
+	const language = languages[message.guild.id];
+
 	// Obter o prefixo definido para o servidor
-	const ref = db.collection('servidores').doc(message.guild.id);
+	const refP = db.collection('servidores').doc(message.guild.id);
 
 	if (!prefixes[message.guild.id]) {
-		const doc = await ref.get();
+		const doc = await refP.get();
 		prefixes[message.guild.id] = doc.get('prefix') || config.prefix;
 	}
 
@@ -236,7 +247,7 @@ bot.on('message', async message => {
 		}
 
 		try {
-			command.execute(bot, message, command, args, db, prefix, prefixes);
+			command.execute(bot, message, command, args, db, language, languages, prefix, prefixes);
 		}
 		catch (err) {
 			console.error(err);
@@ -282,7 +293,6 @@ bot.on('message', async message => {
 bot.on('guildCreate', async guildData => {
 	db.collection('servidores').doc(guildData.id).set({
 		'guildOwnerID': guildData.owner.user.id,
-		'prefix': '+',
 	});
 	bot.user.setActivity(`+help em ${bot.guilds.cache.size} servidores!`);
 });
