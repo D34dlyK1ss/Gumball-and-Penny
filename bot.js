@@ -159,8 +159,6 @@ bot.on('message', async message => {
 
 	const language = languages[message.guild.id] || config.language;
 
-	console.log(language);
-
 	// Leitura dos ficheiros de comandos
 	const commandFiles = fs.readdirSync(`./commands-${language}`).filter(file => file.endsWith('.js'));
 	if (commandFiles.length === 0) return;
