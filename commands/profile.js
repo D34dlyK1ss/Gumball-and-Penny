@@ -220,7 +220,14 @@ module.exports = {
 					ctx.stroke();
 					ctx.closePath();
 
-					const vip = doc.get('vip') || false;
+					const refVIP = db.collection('vip').doc(message.author.id);
+					let vip = false;
+
+					refVIP.get().then(docVIP => {
+						if (!docVIP.exists) return;
+						vip = doc.get('vip');
+					});
+
 					if (vip == true) {
 						const crown = await loadImage('./images/profile/crown.png');
 						ctx.drawImage (crown, 7, 12, 50, 50);

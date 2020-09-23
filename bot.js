@@ -75,26 +75,81 @@ es.onopen = () => {
 
 es.onmessage = messageEvent => {
 	const data = JSON.parse(messageEvent.data);
-	const type = data.event.body.type;
+	const type = data.event.body.type,
+		authorization = data.event.headers.authorization;
+	let userID;
 
-	if (type != 'upvote') return;
+	if (authorization === 'Gumball&PennyDBL') {
+		if (type != 'upvote') return;
 
-	const userID = data.event.body.user;
-	const user = bot.users.cache.get(userID);
+		userID = data.event.body.user;
+		const user = bot.users.cache.get(userID);
 
-	if (!user) return;
+		if (!user) return;
 
-	user.send('Obrigado por votares!');
+		user.send('Obrigado por votares!');
 
-	const ref = db.collection('servidores').doc(userID);
+		const ref = db.collection('servidores').doc(userID);
 
-	ref.get().then(doc => {
-		if (!doc.exists) return;
-		const bal = doc.get('balance');
-		ref.update({
-			balance: bal + 150,
+		ref.get().then(doc => {
+			if (!doc.exists) return;
+			const bal = doc.get('balance');
+			ref.update({
+				balance: bal + 150,
+			});
 		});
-	});
+	}
+	else if (authorization === 'Gumball&PennyDonations') {
+		userID = data.event.body.buyer_id;
+		const ref = db.collection('vip').doc(userID),
+			productID = data.event.body.txn_id,
+			today = new Date();
+		let date = 'forever';
+
+		switch (productID) {
+		case 'PiFQ9lClYG':
+			today.setDate(today.getDate() + 30);
+			date = moment(today).format('LL');
+			break;
+		case 'Jj-eRfAYxe':
+			today.setDate(today.getDate() + 90);
+			date = moment(today).format('LL');
+			break;
+		case '5rg_BbHarz':
+			today.setDate(today.getDate() + 180);
+			date = moment(today).format('LL');
+			break;
+		case '1_sR4NkivY':
+			today.setDate(today.getDate() + 365);
+			date = moment(today).format('LL');
+			break;
+		}
+
+		ref.get().then(doc => {
+			const guild = bot.guilds.cache.get('738540548305977366');
+			const vipRole = guild.roles.cache.find(role => role.name === 'VIP');
+			const member = guild.member(userID);
+
+			if (!doc.exists) {
+				db.collection('vip').doc(userID).set({
+					vip: true,
+					until: date,
+				}).then(() => {
+					if (!member) return;
+					member.roles.add(vipRole);
+				});
+			}
+			else {
+				db.collection('vip').doc(userID).update({
+					vip: true,
+					until: date,
+				}).then(() => {
+					if (!member) return;
+					member.roles.add(vipRole);
+				});
+			}
+		});
+	}
 };
 
 const prefixes = new Object(),
