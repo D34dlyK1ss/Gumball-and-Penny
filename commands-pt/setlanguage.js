@@ -19,7 +19,7 @@ module.exports = {
 			const newLanguage = args[0],
 				ref = db.collection('servidores').doc(message.guild.id);
 			if (newLanguage == config.language) {
-				languages[message.guild.id] = config.prefix;
+				languages[message.guild.id] = config.language;
 				ref.update({
 					language: FieldValue.delete(),
 				}).catch(err => { console.error(err); });
@@ -27,7 +27,7 @@ module.exports = {
 			else {
 				languages[message.guild.id] = newLanguage;
 				ref.update({
-					prefix: newLanguage,
+					language: newLanguage,
 				}).catch(err => { console.error(err); });
 			}
 			switch (newLanguage) {
