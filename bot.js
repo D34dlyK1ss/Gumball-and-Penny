@@ -154,7 +154,7 @@ bot.on('message', async message => {
 
 	if (!languages[message.guild.id]) {
 		const doc = await refL.get();
-		languages[message.guild.id] = doc.get('language') || config.languages;
+		languages[message.guild.id] = doc.get('language') || config.language;
 	}
 
 	const language = languages[message.guild.id] || config.language;
