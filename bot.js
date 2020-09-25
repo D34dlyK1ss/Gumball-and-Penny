@@ -157,7 +157,7 @@ bot.on('message', async message => {
 		languages[message.guild.id] = doc.get('language') || config.language;
 	}
 
-	const language = languages[message.guild.id] || config.language;
+	const language = languages[message.guild.id];
 
 	// Leitura dos ficheiros de comandos
 	const commandFiles = fs.readdirSync(`./commands-${language}`).filter(file => file.endsWith('.js'));
