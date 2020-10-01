@@ -16,7 +16,8 @@ module.exports = {
 				return message.reply('tens de definir o número de mensagens que queres apagar!').then(msg => msg.delete({ timeout: 5000 }));
 			}
 			else {
-				let number = parseInt(args);
+				let number = parseInt(args),
+					plural = 'm';
 
 				if (!Number.isInteger(number)) {
 					return;
@@ -26,12 +27,8 @@ module.exports = {
 						number = 100;
 					}
 					message.channel.bulkDelete(number, true).then(deleted => {
-						if (deleted.size == 1) {
-							return message.channel.send('Apagámos `1` mensagem!').then(msg => msg.delete({ timeout: 5000 }));
-						}
-						else {
-							message.channel.send(`Apagámos \`${deleted.size}\` mensagens!`).then(msg => msg.delete({ timeout: 5000 }));
-						}
+						if (deleted.size != 1) plural = 'ns';
+						message.channel.send(`Apagámos \`${deleted.size}\` mensage${plural}!`).then(msg => msg.delete({ timeout: 5000 }));
 					});
 				}
 			}
