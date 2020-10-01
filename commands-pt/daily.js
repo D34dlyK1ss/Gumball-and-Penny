@@ -20,7 +20,7 @@ module.exports = {
 				return message.reply(`ainda não criaste um perfil! Para criares um perfil usa \`${prefix}profile create\`!`);
 			}
 			else if (today == lastDaily) {
-				return message.reply(`poderás receber o teu montante diário outra vez ${moment().endOf('day').fromNow()}.`);
+				return message.reply(`poderás receber dinheiro outra vez ${moment().endOf('day').fromNow()}.`);
 			}
 			else {
 				const bal = doc.get('balance');
