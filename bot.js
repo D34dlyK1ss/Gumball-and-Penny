@@ -149,15 +149,15 @@ bot.on('message', async message => {
 	// Ignorar mensagens privadas e mensagens de outros bots
 	if (message.channel.type === 'dm' || message.author.bot) return;
 
+	const ref = db.collection('servidores').doc(message.guild.id);
 	// Obter a linguagem a para o servidor
-	const refL = db.collection('servidores').doc(message.guild.id);
 
 	if (!languages[message.guild.id]) {
-		const doc = await refL.get();
+		const doc = await ref.get();
 		languages[message.guild.id] = doc.get('language') || config.language;
 	}
 
-	const language = languages[message.guild.id];
+	const language = await languages[message.guild.id];
 
 	// Leitura dos ficheiros de comandos
 	const commandFiles = fs.readdirSync(`./commands-${language}`).filter(file => file.endsWith('.js'));
@@ -168,19 +168,15 @@ bot.on('message', async message => {
 	}
 
 	// Obter o prefixo definido para o servidor
-	const refP = db.collection('servidores').doc(message.guild.id);
 
 	if (!prefixes[message.guild.id]) {
-		const doc = await refP.get();
+		const doc = await ref.get();
 		prefixes[message.guild.id] = doc.get('prefix') || config.prefix;
 	}
 
-	const prefix = prefixes[message.guild.id];
+	const prefix = await prefixes[message.guild.id];
 
-	if (prefix) {
-		// Ignorar mensagens que não começam com o prefixo
-		if (!message.content.startsWith(prefix)) return;
-
+	if (message.content.startsWith(prefix)) {
 		const array = message.content.split(' '),
 			commandName = array[0].slice(prefix.length).toLowerCase(),
 			args = array.slice(1);
@@ -254,9 +250,8 @@ bot.on('message', async message => {
 				xpCooldown.delete(message.author.id);
 			}, 60000);
 		}
-
 		try {
-			command.execute(bot, message, command, args, db, language, languages, prefix, prefixes);
+			command.execute(bot, message, command, args, db, await prefix, prefixes, await language, languages);
 		}
 		catch (err) {
 			console.error(err);
@@ -270,38 +265,43 @@ bot.on('message', async message => {
 			}
 		}
 	}
+	else {
+		const pic = new Discord.MessageAttachment(`images/${message.content}.png`);
 
-	const mention = message.mentions.users.first();
-
-	if (message.content === mention && mention === bot.user) {
-		return message.channel.send(`O nosso prefixo para este servidor é **${prefix}**`);
-	}
-
-	const pic = new Discord.MessageAttachment(`images/${message.content}.png`);
-
-	// Responder de acordo com o conteúdo da mensagem lida
-	switch (message.content) {
-	case 'shine':
-		message.channel.send(pic);
-		break;
-	case 'boi':
-		message.channel.send(pic);
-		break;
-	case 'just monika':
-		message.channel.send(pic);
-		break;
-	case 'no u':
-		message.channel.send(pic);
-		break;
-	case 'E':
-		message.channel.send(pic);
-		break;
-	case 'hmm':
-		message.channel.send(pic);
-		break;
-	case 'noice':
-		message.channel.send(pic);
-		break;
+		// Responder de acordo com o conteúdo da mensagem lida
+		switch (message.content) {
+		case `<@!${bot.user.id}>`:
+			switch (language) {
+			case 'en':
+				message.channel.send(`Our prefix for this server is **${prefix}**`);
+				break;
+			default:
+				message.channel.send(`O nosso prefixo para este servidor é **${prefix}**`);
+				break;
+			}
+			break;
+		case 'shine':
+			message.channel.send(pic);
+			break;
+		case 'boi':
+			message.channel.send(pic);
+			break;
+		case 'just monika':
+			message.channel.send(pic);
+			break;
+		case 'no u':
+			message.channel.send(pic);
+			break;
+		case 'E':
+			message.channel.send(pic);
+			break;
+		case 'hmm':
+			message.channel.send(pic);
+			break;
+		case 'noice':
+			message.channel.send(pic);
+			break;
+		}
 	}
 });
 
