@@ -185,6 +185,7 @@ module.exports = {
 						.setDescription(`\`${prefix}shop buy hud [nome_do_item]\` para comprar ou \`${prefix}shop view hud [item]\` para ver.\nPara mudar de página usa \`shop huds anime [página]\``)
 						.setFooter('Página 2 de 2')
 						.spliceFields(0, mainEmbed.fields.length, [
+							{ name: 'L', value: `Death Note\nPreço ¤${items.huds.l.price}`, inline: true },
 							{ name: 'Lelouch1', value: `Code Geass\nPreço ¤${items.huds.lelouch1.price}`, inline: true },
 							{ name: 'Lelouch2', value: `Code Geass\nPreço ¤${items.huds.lelouch2.price}`, inline: true },
 							{ name: 'Shiro', value: `No Game No Life\nPreço ¤${items.huds.sora_shiro.price}`, inline: true },
@@ -207,7 +208,7 @@ module.exports = {
 							{ name: 'Kaneki1', value: `Tokyo Ghoul\nPreço ¤${items.huds.kaneki1.price}`, inline: true },
 							{ name: 'Kaneki2', value: `Tokyo Ghoul\nPreço ¤${items.huds.kaneki2.price}`, inline: true },
 							{ name: 'Naruto1', value: `Naruto\nPreço ¤${items.huds.naruto1.price}`, inline: true },
-							{ name: 'L', value: `Death Note\nPreço ¤${items.huds.l.price}`, inline: true },
+							{ name: 'Nezuko Kamado', value: `Naruto\nPreço ¤${items.huds.naruto1.price}`, inline: true },
 						]);
 					break;
 				}
@@ -226,7 +227,7 @@ module.exports = {
 					]);
 				message.channel.send(hudCartoonsEmbed);
 				break;
-			case 'Vocaloids':
+			case 'vocaloids':
 				hudVocaloidsEmbed = new MessageEmbed(mainEmbed)
 					.setTitle('Loja Incrível - HUDs (Cartoons)')
 					.setDescription(`\`${prefix}shop buy hud [nome_do_item]\` para comprar ou \`${prefix}shop view hud [item]\` para ver.`)
