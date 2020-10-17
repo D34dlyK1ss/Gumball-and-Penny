@@ -137,11 +137,11 @@ module.exports = {
 							{ name: 'KDA Akali', value: `League of Legends\nPreço ¤${items.huds.kda_akali.price}`, inline: true },
 							{ name: 'Kirby1', value: `Nintendo\nPreço ¤${items.huds.kirby1.price}`, inline: true },
 							{ name: 'Kirby2', value: `Nintendo\nPreço ¤${items.huds.kirby2.price}`, inline: true },
+							{ name: 'Nathan Drake', value: `Uncharted\nPreço ¤${items.huds.nightmare_chica.price}`, inline: true },
 							{ name: 'Nightmare Chica', value: `Five Nights at Freddy's\nPreço ¤${items.huds.nightmare_chica.price}`, inline: true },
 							{ name: 'Nightmare Foxy', value: `Five Nights at Freddy's\nPreço ¤${items.huds.nightmare_foxy.price}`, inline: true },
 							{ name: 'Nunu and Willump', value: `League of Legends\nPreço ¤${items.huds.nightmare_foxy.price}`, inline: true },
 							{ name: 'Reaper Soraka', value: `League of Legends\nPreço ¤${items.huds.reaper_soraka.price}`, inline: true },
-							{ name: 'Sans', value: `Undertale\nPreço ¤${items.huds.sans.price}`, inline: true },
 						]);
 					break;
 				case 3:
@@ -150,6 +150,7 @@ module.exports = {
 						.setDescription(`\`${prefix}shop buy hud [nome_do_item]\` para comprar ou \`${prefix}shop view hud [item]\` para ver.\nPara mudar de página usa \`shop huds jogos [página]\``)
 						.setFooter('Página 3 de 3')
 						.spliceFields(0, mainEmbed.fields.length, [
+							{ name: 'Sans', value: `Undertale\nPreço ¤${items.huds.sans.price}`, inline: true },
 							{ name: 'Scorpion2', value: `Mortal Kombat\nPreço ¤${items.huds.scorpion1.price}`, inline: true },
 							{ name: 'Springtrap', value: `Five Nights at Freddy's\nPreço ¤${items.huds.springtrap.price}`, inline: true },
 							{ name: 'SubZero', value: `Mortal Kombat\nPreço ¤${items.huds.subzero.price}`, inline: true },

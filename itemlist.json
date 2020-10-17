@@ -204,6 +204,11 @@
 			"hex": "#e0c000"
 		},
 
+		"nathan_drake": {
+			"price": 10000,
+			"hex": "#000040"
+		},
+
 		"nightmare_chica": {
 			"price": 10000,
 			"hex": "#e0c000"
