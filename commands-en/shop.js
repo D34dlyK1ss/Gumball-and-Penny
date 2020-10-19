@@ -103,7 +103,8 @@ module.exports = {
 		case 'view':
 			switch (args[1]) {
 			case 'hud':
-				hud = args[2].toLowerCase().replace(/[ ]/g, '_')
+				let hud = '';
+				hud = hud.concat(args.slice(2)).toLowerCase().replace(/[,]/g, '_');
 				sendPreview(hud);
 				break;
 			}
