@@ -57,7 +57,7 @@ module.exports = {
 			switch (args[1]) {
 			case 'hud':
 				args[2] = args[2].toLowerCase().replace(/[ ]/g, '_');
-				await refP.get().then(docP => {
+				refP.get().then(docP => {
 					if (!docP.exists) {
 						return message.reply(`you haven't created a profile yet! To create one use \`${prefix}profile create\`!`);
 					}
@@ -90,7 +90,7 @@ module.exports = {
 										huds: iHuds,
 									}).then(() => {
 										let name = itemName.toLowerCase().replace(/[_]/g, ' ');
-										await message.reply(`you bought the **${titleCase(name)}** HUD!`);
+										message.reply(`you bought the **${titleCase(name)}** HUD!`);
 									});
 								}
 							});
