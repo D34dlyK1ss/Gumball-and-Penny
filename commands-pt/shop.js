@@ -122,7 +122,7 @@ module.exports = {
 			case 'cores':
 				hudColorsEmbed = new MessageEmbed(mainEmbed)
 					.setTitle('Loja Incrível - HUDs (Cores)')
-					.setDescription(`\`${prefix}shop buy hud [nome_do_item]\` para comprar ou \`${prefix}shop view hud [item]\` para ver.`)
+					.setDescription(`\`${prefix}shop buy hud [Nome do Item]\` para comprar ou \`${prefix}shop view hud [item]\` para ver.`)
 					.setFooter('Página 1 de 1')
 					.spliceFields(0, mainEmbed.fields.length, [
 						{ name: 'Black', value: `Preço ¤${items.huds.black.price}`, inline: true },
@@ -142,7 +142,7 @@ module.exports = {
 				case 2:
 					hudGamesEmbed = new MessageEmbed(mainEmbed)
 						.setTitle('Loja Incrível - HUDs (Jogos)')
-						.setDescription(`\`${prefix}shop buy hud [nome_do_item]\` para comprar ou \`${prefix}shop view hud [item]\` para ver.\nPara mudar de página usa \`shop huds jogos [página]\``)
+						.setDescription(`\`${prefix}shop buy hud [Nome do Item]\` para comprar ou \`${prefix}shop view hud [item]\` para ver.\nPara mudar de página usa \`shop huds jogos [página]\``)
 						.setFooter('Página 2 de 3')
 						.spliceFields(0, mainEmbed.fields.length, [
 							{ name: 'Glitchtrap', value: `Five Nights at Freddy's\nPreço ¤${items.huds.glitchtrap.price}`, inline: true },
@@ -159,7 +159,7 @@ module.exports = {
 				case 3:
 					hudGamesEmbed = new MessageEmbed(mainEmbed)
 						.setTitle('Loja Incrível - HUDs (Jogos)')
-						.setDescription(`\`${prefix}shop buy hud [nome_do_item]\` para comprar ou \`${prefix}shop view hud [item]\` para ver.\nPara mudar de página usa \`shop huds jogos [página]\``)
+						.setDescription(`\`${prefix}shop buy hud [Nome do Item]\` para comprar ou \`${prefix}shop view hud [item]\` para ver.\nPara mudar de página usa \`shop huds jogos [página]\``)
 						.setFooter('Página 3 de 3')
 						.spliceFields(0, mainEmbed.fields.length, [
 							{ name: 'Sans', value: `Undertale\nPreço ¤${items.huds.sans.price}`, inline: true },
@@ -172,7 +172,7 @@ module.exports = {
 				default:
 					hudGamesEmbed = new MessageEmbed(mainEmbed)
 						.setTitle('Loja Incrível - HUDs (Jogos)')
-						.setDescription(`\`${prefix}shop buy hud [nome_do_item]\` para comprar ou \`${prefix}shop view hud [item]\` para ver.\nPara mudar de página usa \`shop huds jogos [página]\``)
+						.setDescription(`\`${prefix}shop buy hud [Nome do Item]\` para comprar ou \`${prefix}shop view hud [item]\` para ver.\nPara mudar de página usa \`shop huds jogos [página]\``)
 						.setFooter('Página 1 de 3')
 						.spliceFields(0, mainEmbed.fields.length, [
 							{ name: 'Among Us', value: `\nPreço ¤${items.huds.among_us.price}`, inline: true },
@@ -194,7 +194,7 @@ module.exports = {
 				case 2:
 					hudAnimeEmbed = new MessageEmbed(mainEmbed)
 						.setTitle('Loja Incrível - HUDs (Anime)')
-						.setDescription(`\`${prefix}shop buy hud [nome_do_item]\` para comprar ou \`${prefix}shop view hud [item]\` para ver.\nPara mudar de página usa \`shop huds anime [página]\``)
+						.setDescription(`\`${prefix}shop buy hud [Nome do Item]\` para comprar ou \`${prefix}shop view hud [item]\` para ver.\nPara mudar de página usa \`shop huds anime [página]\``)
 						.setFooter('Página 2 de 2')
 						.spliceFields(0, mainEmbed.fields.length, [
 							{ name: 'L', value: `Death Note\nPreço ¤${items.huds.l.price}`, inline: true },
@@ -209,7 +209,7 @@ module.exports = {
 				default:
 					hudAnimeEmbed = new MessageEmbed(mainEmbed)
 						.setTitle('Loja Incrível - HUDs (Anime)')
-						.setDescription(`\`${prefix}shop buy hud [nome_do_item]\` para comprar ou \`${prefix}shop view hud [item]\` para ver.\nPara mudar de página usa \`shop huds anime [página]\``)
+						.setDescription(`\`${prefix}shop buy hud [Nome do Item]\` para comprar ou \`${prefix}shop view hud [item]\` para ver.\nPara mudar de página usa \`shop huds anime [página]\``)
 						.setFooter('Página 1 de 2')
 						.spliceFields(0, mainEmbed.fields.length, [
 							{ name: 'Giorno', value: `Jojo's Bizarre Adventure\nPreço ¤${items.huds.giorno.price}`, inline: true },
@@ -229,7 +229,7 @@ module.exports = {
 			case 'cartoons':
 				hudCartoonsEmbed = new MessageEmbed(mainEmbed)
 					.setTitle('Loja Incrível - HUDs (Cartoons)')
-					.setDescription(`\`${prefix}shop buy hud [nome_do_item]\` para comprar ou \`${prefix}shop view hud [item]\` para ver.`)
+					.setDescription(`\`${prefix}shop buy hud [Nome do Item]\` para comprar ou \`${prefix}shop view hud [item]\` para ver.`)
 					.setFooter('Página 1 de 1')
 					.spliceFields(0, mainEmbed.fields.length, [
 						{ name: 'Courage', value: `Courage the Cowardly Dog\nPreço ¤${items.huds.courage.price}`, inline: true },
@@ -242,7 +242,7 @@ module.exports = {
 			case 'vocaloids':
 				hudVocaloidsEmbed = new MessageEmbed(mainEmbed)
 					.setTitle('Loja Incrível - HUDs (Cartoons)')
-					.setDescription(`\`${prefix}shop buy hud [nome_do_item]\` para comprar ou \`${prefix}shop view hud [item]\` para ver.`)
+					.setDescription(`\`${prefix}shop buy hud [Nome do Item]\` para comprar ou \`${prefix}shop view hud [item]\` para ver.`)
 					.setFooter('Página 1 de 1')
 					.spliceFields(0, mainEmbed.fields.length, [
 						{ name: 'Miku', value: `Preço ¤${items.huds.miku.price}`, inline: true },
