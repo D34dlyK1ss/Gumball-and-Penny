@@ -114,6 +114,7 @@ module.exports = {
 			case 'hud':
 				hud = args[2].toLowerCase().replace(/[ ]/g, '_');
 				sendPreview(hud);
+				console.log(hud)
 				break;
 			}
 			break;
