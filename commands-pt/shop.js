@@ -10,6 +10,15 @@ module.exports = {
 	usage: 'shop',
 
 	execute(bot, message, command, args, db, prefix) {
+
+		function titleCase(str) {
+			var splitStr = str.toLowerCase().split(' ');
+			for (var i = 0; i < splitStr.length; i++) {
+				splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);     
+			}
+			return splitStr.join(' '); 
+		 }
+
 		async function sendPreview(hud) {
 			const hudCanvas = createCanvas(700, 400),
 				ctx = hudCanvas.getContext('2d');
@@ -56,6 +65,7 @@ module.exports = {
 		case 'buy':
 			switch (args[1]) {
 			case 'hud':
+				args[2] = args[2].toLowerCase().replace(/[ ]/g, '_');
 				refP.get().then(docP => {
 					if (!docP.exists) {
 						return message.reply(`ainda não criaste um perfil! Para criares um perfil usa \`${prefix}profile create\`!`);
@@ -88,7 +98,8 @@ module.exports = {
 									refI.update({
 										huds: iHuds,
 									}).then(() => {
-										message.reply(`compraste o HUD **${itemName.charAt(0).toUpperCase() + itemName.slice(1)}**`);
+										let name = itemName.toLowerCase().replace(/[_]/g, ' ');
+										message.reply(`compraste o HUD **${titleCase(name)}**!`);
 									});
 								}
 							});
@@ -101,6 +112,7 @@ module.exports = {
 		case 'view':
 			switch (args[1]) {
 			case 'hud':
+				args[2] = args[2].toLowerCase().replace(/[ ]/g, '_');
 				sendPreview(args[2]);
 				break;
 			}

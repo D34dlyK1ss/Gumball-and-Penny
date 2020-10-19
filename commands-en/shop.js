@@ -56,6 +56,7 @@ module.exports = {
 		case 'buy':
 			switch (args[1]) {
 			case 'hud':
+				args[2] = args[2].toLowerCase().replace(/[ ]/g, '_');
 				refP.get().then(docP => {
 					if (!docP.exists) {
 						return message.reply(`you haven't created a profile yet! To create one use \`${prefix}profile create\`!`);
@@ -88,7 +89,8 @@ module.exports = {
 									refI.update({
 										huds: iHuds,
 									}).then(() => {
-										message.reply(`you bought **${itemName.charAt(0).toUpperCase() + itemName.slice(1)}**`);
+										let name = itemName.toLowerCase().replace(/[_]/g, ' ');
+										message.reply(`you bought the **${titleCase(name)}** HUD!`);
 									});
 								}
 							});
@@ -101,6 +103,7 @@ module.exports = {
 		case 'view':
 			switch (args[1]) {
 			case 'hud':
+				args[2] = args[2].toLowerCase().replace(/[ ]/g, '_');
 				sendPreview(args[2]);
 				break;
 			}
