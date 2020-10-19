@@ -113,7 +113,7 @@ module.exports = {
 			switch (args[1]) {
 			case 'hud':
 				args[2] = args[2].toLowerCase().replace(/[ ]/g, '_');
-				await sendPreview(args[2]);
+				sendPreview(args[2]);
 				break;
 			}
 			break;
