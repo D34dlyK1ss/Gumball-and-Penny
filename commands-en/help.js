@@ -22,7 +22,7 @@ module.exports = {
 				{ name: '🎭 Actions', value: '`angry`, `cry`, `dance`, `hug`, `kiss`, `laugh`, `pat`, `run`, `slap`', inline: true },
 				{ name: '🎰 Casino', value: '`coinflip`', inline: true },
 				{ name: '💸 Donations', value: '`donate`', inline: true },
-				{ name: '💰 Economy and Profile', value: '`balance`, `daily`, `give`, `shop`, `profile`, `vote`', inline: true },
+				{ name: '💰 Economy and Profile', value: '`balance`, `daily`, `give`, `inventory`, `shop`, `profile`, `vote`', inline: true },
 				{ name: '😁 Fun', value: '`fact`, `match`, `random`, `say`, `which`', inline: true },
 				{ name: '⚠️ Moderation', value: '`ban`, `clear`, `kick`, `mute`, `tempmute`, `unmute`', inline: true },
 				{ name: '🌐 Server', value: '`members`, `serverinfo`, `setprefix`, `userinfo`', inline: true },
