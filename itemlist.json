@@ -75,11 +75,6 @@
 			"hex": "#e0e0e0"
 		},
 
-		"dbd1": {
-			"price": 10000,
-			"hex": "#806020"
-		},
-
 		"diamonds": {
 			"price": 10000,
 			"hex": "#00e0e0"
@@ -277,6 +272,11 @@
 		"subzero": {
 			"price": 10000,
 			"hex": "#00c0ff"
+		},
+
+		"the_hillbilly": {
+			"price": 10000,
+			"hex": "#806020"
 		},
 
 		"yukiteru_yuno": {
