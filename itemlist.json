@@ -55,6 +55,11 @@
 			"hex": "#e00000"
 		},
 
+		"akuma": {
+			"price": 10000,
+			"hex": "#e00000"
+		},
+
 		"courage": {
 			"price": 10000,
 			"hex": "#e0a0e0"
@@ -232,6 +237,11 @@
 		"reaper_soraka": {
 			"price": 10000,
 			"hex": "#a080e0"
+		},
+
+		"saitama": {
+			"price": 10000,
+			"hex": "#e00000"
 		},
 
 		"sans": {

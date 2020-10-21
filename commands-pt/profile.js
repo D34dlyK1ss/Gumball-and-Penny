@@ -16,6 +16,14 @@ function convert(value) {
 	return value;
 }
 
+function titleCase(str) {
+	var splitStr = str.toLowerCase().split(' ');
+	for (var i = 0; i < splitStr.length; i++) {
+		splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);     
+	}
+	return splitStr.join(' '); 
+ }
+
 module.exports = {
 	name: 'profile',
 	aliases: ['p'],
@@ -107,8 +115,10 @@ module.exports = {
 				}
 				else {
 					refI.get().then(docI => {
-						const huds = docI.get('huds'),
-							newHud = args;
+						const huds = docI.get('huds');
+						let newHud = '';
+
+						newHud = newHud.concat(args.slice(2)).toLowerCase().replace(/[,]/g, '_');
 
 						if (!newHud || newHud == '') {
 							return message.reply('não escolheste um HUD!');

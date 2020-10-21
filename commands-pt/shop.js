@@ -2,6 +2,14 @@ const { MessageEmbed, MessageAttachment } = require('discord.js');
 const { createCanvas, loadImage } = require('canvas');
 const items = require('../itemlist.json');
 
+function titleCase(str) {
+	var splitStr = str.toLowerCase().split(' ');
+	for (var i = 0; i < splitStr.length; i++) {
+		splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);     
+	}
+	return splitStr.join(' '); 
+ }
+
 module.exports = {
 	name: 'shop',
 	aliases: ['s'],
@@ -10,15 +18,6 @@ module.exports = {
 	usage: 'shop',
 
 	execute(bot, message, command, args, db, prefix) {
-
-		function titleCase(str) {
-			var splitStr = str.toLowerCase().split(' ');
-			for (var i = 0; i < splitStr.length; i++) {
-				splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);     
-			}
-			return splitStr.join(' '); 
-		 }
-
 		async function sendPreview(hud) {
 			const hudCanvas = createCanvas(700, 400),
 				ctx = hudCanvas.getContext('2d');
@@ -65,14 +64,15 @@ module.exports = {
 		case 'buy':
 			switch (args[1]) {
 			case 'hud':
-				args[2] = args[2].toLowerCase().replace(/[ ]/g, '_');
+				let hud = '';
+				hud = hud.concat(args.slice(2)).toLowerCase().replace(/[,]/g, '_');
 				refP.get().then(docP => {
 					if (!docP.exists) {
 						return message.reply(`ainda não criaste um perfil! Para criares um perfil usa \`${prefix}profile create\`!`);
 					}
 					else {
 						const bal = docP.get('balance'),
-							itemName = args[2].toLowerCase(),
+							itemName = hud.toLowerCase(),
 							cost = items.huds[itemName].price;
 
 						if (!cost) {
