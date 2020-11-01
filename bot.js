@@ -140,7 +140,6 @@ es.onmessage = messageEvent => {
 };
 
 const prefixes = new Object(),
-	languages = new Object(),
 	xpCooldown = new Set();
 
 // Ações para quando o bot receber uma mensagem
@@ -152,18 +151,11 @@ bot.on('message', async message => {
 	const ref = db.collection('servidores').doc(message.guild.id);
 	// Obter a linguagem a para o servidor
 
-	if (!languages[message.guild.id]) {
-		const doc = await ref.get();
-		languages[message.guild.id] = doc.get('language') || config.language;
-	}
-
-	const language = await languages[message.guild.id];
-
 	// Leitura dos ficheiros de comandos
-	const commandFiles = fs.readdirSync(`./commands-${language}`).filter(file => file.endsWith('.js'));
+	const commandFiles = fs.readdirSync(`./commands`).filter(file => file.endsWith('.js'));
 	if (commandFiles.length === 0) return;
 	for (const file of commandFiles) {
-		const props = require(`./commands-${language}/${file}`);
+		const props = require(`./commands/${file}`);
 		bot.commands.set(props.name, props);
 	}
 
@@ -218,25 +210,10 @@ bot.on('message', async message => {
 						if (rewardsArray.includes(stringLevel)) {
 							db.collection('perfis').doc(message.author.id).update({
 								balance: bal + reward,
-							});
-							switch (language) {
-							case 'en':
-								message.channel.send(`🎉 Congratulations ${message.author}, you leveled up to ${newLevel} and received ¤${reward}! 🆙💰`);
-								break;
-							default:
-								message.channel.send(`🎉 Parabéns ${message.author}, subiste para o nível ${newLevel} e recebeste ¤${reward}! 🆙💰`);
-								break;
-							}
+							}).then(() => message.channel.send(`🎉 Parabéns ${message.author}, subiste para o nível ${newLevel} e recebeste ¤${reward}! 🆙💰`));
 						}
 						else {
-							switch (language) {
-							case 'en':
-								message.channel.send(`🎉 Congratulations ${message.author}, you leveled up to ${newLevel}! 🆙`);
-								break;
-							default:
-								message.channel.send(`🎉 Parabéns ${message.author}, subiste para o nível ${newLevel}! 🆙`);
-								break;
-							}
+							message.channel.send(`🎉 Parabéns ${message.author}, subiste para o nível ${newLevel}! 🆙`);
 						}
 					}
 				}
@@ -251,18 +228,11 @@ bot.on('message', async message => {
 			}, 60000);
 		}
 		try {
-			command.execute(bot, message, command, args, db, await prefix, prefixes, await language, languages);
+			command.execute(bot, message, command, args, db, await prefix, prefixes);
 		}
 		catch (err) {
 			console.error(err);
-			switch (language) {
-			case 'en':
-				message.reply('there was an error when trying to execute that command!');
-				break;
-			default:
-				message.reply('ocorreu um erro ao tentar executar esse comando!');
-				break;
-			}
+			message.reply('ocorreu um erro ao tentar executar esse comando!');
 		}
 	}
 	else {
@@ -271,14 +241,7 @@ bot.on('message', async message => {
 		// Responder de acordo com o conteúdo da mensagem lida
 		switch (message.content) {
 		case `<@!${bot.user.id}>`:
-			switch (language) {
-			case 'en':
-				message.channel.send(`Our prefix for this server is **${prefix}**`);
-				break;
-			default:
-				message.channel.send(`O nosso prefixo para este servidor é **${prefix}**`);
-				break;
-			}
+			message.channel.send(`O nosso prefixo para este servidor é **${prefix}**`);
 			break;
 		case 'shine':
 			message.channel.send(pic);
