@@ -86,58 +86,7 @@ es.onmessage = messageEvent => {
 			});
 		});
 	}
-	else if (authorization === 'Gumball&PennyDonations') {
-		userID = data.event.body.buyer_id;
-		const ref = db.collection('vip').doc(userID),
-			productID = data.event.body.txn_id,
-			today = new Date();
-		let date = 'forever';
-
-		switch (productID) {
-		case 'PiFQ9lClYG':
-			today.setDate(today.getDate() + 30);
-			date = moment(today).format('LL');
-			break;
-		case 'Jj-eRfAYxe':
-			today.setDate(today.getDate() + 90);
-			date = moment(today).format('LL');
-			break;
-		case '5rg_BbHarz':
-			today.setDate(today.getDate() + 180);
-			date = moment(today).format('LL');
-			break;
-		case '1_sR4NkivY':
-			today.setDate(today.getDate() + 365);
-			date = moment(today).format('LL');
-			break;
-		}
-
-		ref.get().then(doc => {
-			const guild = bot.guilds.cache.get('738540548305977366');
-			const vipRole = guild.roles.cache.find(role => role.name === 'VIP');
-			const member = guild.member(userID);
-
-			if (!doc.exists) {
-				db.collection('vip').doc(userID).set({
-					vip: true,
-					until: date,
-				}).then(() => {
-					if (!member) return;
-					member.roles.add(vipRole);
-				});
-			}
-			else {
-				db.collection('vip').doc(userID).update({
-					vip: true,
-					until: date,
-				}).then(() => {
-					if (!member) return;
-					member.roles.add(vipRole);
-				});
-			}
-		});
-	}
-};
+}
 
 const prefixes = new Object(),
 	xpCooldown = new Set();
