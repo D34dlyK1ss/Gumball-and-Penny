@@ -234,7 +234,7 @@ module.exports = {
 
 					refVIP.get().then(async docVIP => {
 						if (!docVIP.exists) return;
-						const vip = docVIP.get('vip');
+						let vip = docVIP.get('vip');
 
 						if (vip == true){
 							const crown = await loadImage('./images/profile/crown.png');
