@@ -230,7 +230,7 @@ module.exports = {
 					ctx.stroke();
 					ctx.closePath();
 
-					const refVIP = db.collection('vip').doc(message.author.id);
+					const refVIP = db.collection('vip').doc(user.id);
 					let vip = false;
 
 					refVIP.get().then(docVIP => {
