@@ -230,17 +230,12 @@ module.exports = {
 					ctx.stroke();
 					ctx.closePath();
 
-					const refVIP = db.collection('vip').doc(user.id);
+					const vip = (await db.collection('vip').doc(user.id).get()).data().vip;
 
-					refVIP.get().then(async docVIP => {
-						if (!docVIP.exists) return;
-						let vip = docVIP.get('vip');
-
-						if (vip == true){
-							const crown = await loadImage('./images/profile/crown.png');
-							ctx.drawImage (crown, 7, 12, 50, 50);
-						}
-					});
+					if (vip == true){
+						const crown = await loadImage('./images/profile/crown.png');
+						ctx.drawImage (crown, 7, 12, 50, 50);
+					}
 
 					const avatar = await loadImage(user.displayAvatarURL({ format: 'jpg' }));
 					ctx.clip();
