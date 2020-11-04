@@ -231,17 +231,16 @@ module.exports = {
 					ctx.closePath();
 
 					const refVIP = db.collection('vip').doc(user.id);
-					let vip = false;
 
-					refVIP.get().then(docVIP => {
+					refVIP.get().then(async docVIP => {
 						if (!docVIP.exists) return;
-						vip = doc.get('vip');
-					});
+						const vip = docVIP.get('vip');
 
-					if (vip == true) {
-						const crown = await loadImage('./images/profile/crown.png');
-						ctx.drawImage (crown, 7, 12, 50, 50);
-					}
+						if (vip == true){
+							const crown = await loadImage('./images/profile/crown.png');
+							ctx.drawImage (crown, 7, 12, 50, 50);
+						}
+					});
 
 					const avatar = await loadImage(user.displayAvatarURL({ format: 'jpg' }));
 					ctx.clip();
