@@ -236,21 +236,21 @@ module.exports = {
 					refVIP.get().then(docVIP => {
 						if (!docVIP.exists) return;
 						vip = doc.get('vip');
-
-						if (vip == true) {
-							const crown = await loadImage('./images/profile/crown.png');
-							ctx.drawImage (crown, 7, 12, 50, 50);
-						}
-
-						const avatar = await loadImage(user.displayAvatarURL({ format: 'jpg' }));
-						ctx.clip();
-						ctx.drawImage (avatar, 37, 10, 120, 120);
-
-
-						const attachment = new MessageAttachment(canvas.toBuffer(), 'profile.png');
-
-						message.channel.send(attachment);
 					});
+
+					if (vip == true) {
+						const crown = await loadImage('./images/profile/crown.png');
+						ctx.drawImage (crown, 7, 12, 50, 50);
+					}
+
+					const avatar = await loadImage(user.displayAvatarURL({ format: 'jpg' }));
+					ctx.clip();
+					ctx.drawImage (avatar, 37, 10, 120, 120);
+
+
+					const attachment = new MessageAttachment(canvas.toBuffer(), 'profile.png');
+
+					message.channel.send(attachment);
 				}
 			});
 			break;
