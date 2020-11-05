@@ -186,7 +186,7 @@ bot.on('message', async message => {
 	}
 	else {
 		const pic = new Discord.MessageAttachment(`images/${message.content}.png`),
-			webp = new Discord.MessageAttachment(`images/${message.content}.webp`);
+			gif = new Discord.MessageAttachment(`images/${message.content}.gif`);
 
 		// Responder de acordo com o conteúdo da mensagem lida
 		switch (message.content) {
@@ -215,7 +215,7 @@ bot.on('message', async message => {
 			message.channel.send(pic);
 			break;
 		case 'distraction dance':
-			message.channel.send(webp);
+			message.channel.send(gif);
 			break;
 		case 'nice plan':
 			message.channel.send(pic);
