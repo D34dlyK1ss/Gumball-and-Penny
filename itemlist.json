@@ -37,7 +37,7 @@
 
 		"purple": {
 			"price": 3000,
-			"hex": "#10000ff"
+			"hex": "#80000ff"
 		},
 
 		"red": {
@@ -52,12 +52,27 @@
 
 		"among_us": {
 			"price": 10000,
-			"hex": "#e00000"
+			"hex": "#c00000"
 		},
 
 		"akuma": {
 			"price": 10000,
-			"hex": "#e00000"
+			"hex": "#c00000"
+		},
+
+		"batman": {
+			"price": 10000,
+			"hex": "#101010"
+		},
+
+		"captain_america": {
+			"price": 10000,
+			"hex": "#c00000"
+		},
+
+		"chaos_king": {
+			"price": 10000,
+			"hex": "#400080"
 		},
 
 		"courage": {
@@ -65,12 +80,7 @@
 			"hex": "#e0a0e0"
 		},
 
-		"dark_deception1": {
-			"price": 10000,
-			"hex": "#601020"
-		},
-
-		"dark_deception6": {
+		"clown_gremlins": {
 			"price": 10000,
 			"hex": "#e0e0e0"
 		},
@@ -110,14 +120,24 @@
 			"hex": "#10000e0"
 		},
 
-		"gumball_darwin": {
+		"green_goblin": {
+			"price": 10000,
+			"hex": "#008000"
+		},
+
+		"gumball_&_darwin": {
 			"price": 10000,
 			"hex": "#e0c0a0"
 		},
 
-		"gumball_penny": {
+		"gumball_&_penny": {
 			"price": 999999,
 			"hex": "#00c0e0"
+		},
+
+		"iron_man": {
+			"price": 10000,
+			"hex": "#c00000"
 		},
 
 		"isaac": {
@@ -129,13 +149,19 @@
 			"price": 10000,
 			"hex": "#101010"
 		},
+		
 
-		"jojo_part4": {
+		"jojo_part_4": {
 			"price": 10000,
 			"hex": "#00a0c0"
 		},
 
-		"jake1": {
+		"joker": {
+			"price": 10000,
+			"hex": "#101010"
+		},
+
+		"jake": {
 			"price": 10000,
 			"hex": "#e0c000"
 		},
@@ -149,7 +175,7 @@
 			"hex": "#101010"
 		},
 
-		"kaneki1": {
+		"kaneki": {
 			"price": 10000,
 			"hex": "#404040"
 		},
@@ -164,7 +190,7 @@
 			"hex": "#c000a0"
 		},
 
-		"kirby1": {
+		"kirby": {
 			"price": 10000,
 			"hex": "#ffa0c0"
 		},
@@ -179,7 +205,7 @@
 			"hex": "#101010"
 		},
 
-		"lelouch1": {
+		"lelouch": {
 			"price": 10000,
 			"hex": "#400080"
 		},
@@ -194,12 +220,17 @@
 			"hex": "#500090"
 		},
 
-		"miku": {
+		"miku_hatsune": {
 			"price": 10000,
 			"hex": "#00c0ff"
 		},
 
-		"naruto1": {
+		"murder_monkeys": {
+			"price": 10000,
+			"hex": "#601020"
+		},
+
+		"naruto": {
 			"price": 10000,
 			"hex": "#e0c000"
 		},
@@ -236,15 +267,15 @@
 
 		"saitama": {
 			"price": 10000,
-			"hex": "#e00000"
+			"hex": "#c00000"
 		},
 
 		"sans": {
 			"price": 10000,
-			"hex": "#ffffff"
+			"hex": "#0080ff"
 		},
 
-		"scorpion1": {
+		"scorpion": {
 			"price": 10000,
 			"hex": "#e0c000"
 		},
@@ -259,17 +290,27 @@
 			"hex": "#1000000"
 		},
 
+		"spider-man": {
+			"price": 10000,
+			"hex": "#c00000"
+		},
+
+		"superman": {
+			"price": 10000,
+			"hex": "#000080"
+		},
+
 		"springtrap": {
 			"price": 10000,
 			"hex": "#8010000"
 		},
 
-		"sora_shiro": {
+		"sora_&_shiro": {
 			"price": 10000,
 			"hex": "#1000000"
 		},
 
-		"subzero": {
+		"sub-zero": {
 			"price": 10000,
 			"hex": "#00c0ff"
 		},
@@ -279,7 +320,7 @@
 			"hex": "#806020"
 		},
 
-		"yukiteru_yuno": {
+		"yukiteru_and_yuno": {
 			"price": 10000,
 			"hex": "#e0a0a0"
 		},
