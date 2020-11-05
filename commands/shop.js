@@ -240,6 +240,34 @@ module.exports = {
 					]);
 				message.channel.send(hudCartoonsEmbed);
 				break;
+			case 'marvel':
+				hudMarvelEmbed = new MessageEmbed(mainEmbed)
+					.setTitle('Loja Incrível - HUDs (Marvel)')
+					.setDescription(`\`${prefix}shop buy hud [Nome do Item]\` para comprar ou \`${prefix}shop view hud [item]\` para ver.`)
+					.setFooter('Página 1 de 1')
+					.spliceFields(0, mainEmbed.fields.length, [
+						{ name: 'Captain America', value: `Herói\nPreço ¤${items.huds.captain_america.price}`, inline: true },
+						{ name: 'Chaos King', value: `Vilão\nPreço ¤${items.huds.chaos_king.price}`, inline: true },
+						{ name: 'Green Goblin', value: `Vilão\nPreço ¤${items.huds.green_goblin.price}`, inline: true },
+						{ name: 'Iron Man', value: `Herói\nPreço ¤${items.huds.iron_man.price}`, inline: true },
+						{ name: 'Onslaught', value: `Vilão\nPreço ¤${items.huds.onslaught.price}`, inline: true },
+						{ name: 'Spider-Man', value: `Herói\nPreço ¤${items.huds['spider-man'].price}`, inline: true },
+						{ name: 'Thanos', value: `Vilão\nPreço ¤${items.huds.thanos.price}`, inline: true },
+					]);
+				message.channel.send(hudMarvelEmbed);
+				break;
+			case 'dc':
+			hudDCEmbed = new MessageEmbed(mainEmbed)
+				.setTitle('Loja Incrível - HUDs (DC)')
+				.setDescription(`\`${prefix}shop buy hud [Nome do Item]\` para comprar ou \`${prefix}shop view hud [item]\` para ver.`)
+				.setFooter('Página 1 de 1')
+				.spliceFields(0, mainEmbed.fields.length, [
+					{ name: 'Batman', value: `Herói\nPreço ¤${items.huds.batman.price}`, inline: true },
+					{ name: 'Joker', value: `Vilão\nPreço ¤${items.huds.joker.price}`, inline: true },
+					{ name: 'Superman', value: `Herói\nPreço ¤${items.huds.superman.price}`, inline: true },
+				]);
+			message.channel.send(hudDCEmbed);
+			break;
 			case 'vocaloids':
 				hudVocaloidsEmbed = new MessageEmbed(mainEmbed)
 					.setTitle('Loja Incrível - HUDs (Cartoons)')
@@ -259,6 +287,8 @@ module.exports = {
 						{ name: 'Jogos', value: '\u200B', inline: true },
 						{ name: 'Anime', value: '\u200B', inline: true },
 						{ name: 'Cartoons', value: '\u200B', inline: true },
+						{ name: 'Marvel', value: '\u200B', inline: true },
+						{ name: 'DC', value: '\u200B', inline: true },
 						{ name: 'Vocaloids', value: '\u200B', inline: true },
 					]);
 				message.channel.send(hudEmbed);

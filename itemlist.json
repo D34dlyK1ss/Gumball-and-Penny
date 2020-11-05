@@ -260,6 +260,11 @@
 			"hex": "#00c0ff"
 		},
 
+		"onslaught": {
+			"price": 10000,
+			"hex": "#c00000"
+		},
+
 		"reaper_soraka": {
 			"price": 10000,
 			"hex": "#a080e0"
@@ -295,11 +300,6 @@
 			"hex": "#c00000"
 		},
 
-		"superman": {
-			"price": 10000,
-			"hex": "#000080"
-		},
-
 		"springtrap": {
 			"price": 10000,
 			"hex": "#8010000"
@@ -313,6 +313,16 @@
 		"sub-zero": {
 			"price": 10000,
 			"hex": "#00c0ff"
+		},
+
+		"superman": {
+			"price": 10000,
+			"hex": "#000080"
+		},
+
+		"thanos": {
+			"price": 10000,
+			"hex": "#606080"
 		},
 
 		"the_hillbilly": {
