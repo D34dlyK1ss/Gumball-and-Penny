@@ -185,7 +185,8 @@ bot.on('message', async message => {
 		}
 	}
 	else {
-		const pic = new Discord.MessageAttachment(`images/${message.content}.png`);
+		const pic = new Discord.MessageAttachment(`images/${message.content}.png`),
+			webp = new Discord.MessageAttachment(`images/${message.content}.webp`);
 
 		// Responder de acordo com o conteúdo da mensagem lida
 		switch (message.content) {
@@ -213,12 +214,12 @@ bot.on('message', async message => {
 		case 'noice':
 			message.channel.send(pic);
 			break;
-		case 'distract':
-			message.channel.send(pic);
+		case 'distraction dance':
+			message.channel.send(webp);
 			break;
 		case 'nice plan':
-				message.channel.send(pic);
-				break;
+			message.channel.send(pic);
+			break;
 		}
 	}
 });
