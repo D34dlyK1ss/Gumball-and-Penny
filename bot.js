@@ -213,6 +213,12 @@ bot.on('message', async message => {
 		case 'noice':
 			message.channel.send(pic);
 			break;
+		case 'distract':
+			message.channel.send(pic);
+			break;
+		case 'nice plan':
+				message.channel.send(pic);
+				break;
 		}
 	}
 });
