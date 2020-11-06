@@ -60,9 +60,9 @@ module.exports = {
 
 		const page = parseInt(args[2]) || 1;
 
-		switch (option) {
+		switch (option.toLowerCase()) {
 		case 'buy':
-			switch (args[1]) {
+			switch (args[1].toLowerCase()) {
 			case 'hud':
 				let hud = '';
 				hud = hud.concat(args.slice(2)).toLowerCase().replace(/[,]/g, '_');
@@ -110,7 +110,7 @@ module.exports = {
 			}
 			break;
 		case 'view':
-			switch (args[1]) {
+			switch (args[1].toLowerCase()) {
 			case 'hud':
 				let hud = '';
 				hud = hud.concat(args.slice(2)).toLowerCase().replace(/[,]/g, '_');
@@ -119,7 +119,7 @@ module.exports = {
 			}
 			break;
 		case 'huds':
-			switch (args [1]) {
+			switch (args [1].toLowerCase()) {
 			case 'cores':
 				hudColorsEmbed = new MessageEmbed(mainEmbed)
 					.setTitle('Loja Incrível - HUDs (Cores)')
