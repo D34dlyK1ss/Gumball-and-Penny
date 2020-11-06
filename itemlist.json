@@ -149,12 +149,6 @@
 			"price": 10000,
 			"hex": "#101010"
 		},
-		
-
-		"jojo_part_4": {
-			"price": 10000,
-			"hex": "#00a0c0"
-		},
 
 		"joker": {
 			"price": 10000,
@@ -223,6 +217,11 @@
 		"miku_hatsune": {
 			"price": 10000,
 			"hex": "#00c0ff"
+		},
+
+		"morioh_gang": {
+			"price": 10000,
+			"hex": "#00a0c0"
 		},
 
 		"murder_monkeys": {
