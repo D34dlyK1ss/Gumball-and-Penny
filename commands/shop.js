@@ -3,12 +3,12 @@ const { createCanvas, loadImage } = require('canvas');
 const items = require('../itemlist.json');
 
 function titleCase(str) {
-	var splitStr = str.toLowerCase().split(' ');
-	for (var i = 0; i < splitStr.length; i++) {
-		splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);     
+	const splitStr = str.toLowerCase().split(' ');
+	for (let i = 0; i < splitStr.length; i++) {
+		splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);
 	}
-	return splitStr.join(' '); 
- }
+	return splitStr.join(' ');
+}
 
 module.exports = {
 	name: 'shop',
@@ -56,15 +56,17 @@ module.exports = {
 			hudGamesEmbed,
 			hudAnimeEmbed,
 			hudCartoonsEmbed,
+			hudMarvelEmbed,
+			hudDCEmbed,
 			hudVocaloidsEmbed;
 
 		const page = parseInt(args[2]) || 1;
+		let hud = '';
 
 		switch (option) {
 		case 'buy':
 			switch (args[1]) {
 			case 'hud':
-				let hud = '';
 				hud = hud.concat(args.slice(2)).toLowerCase().replace(/[,]/g, '_');
 				refP.get().then(docP => {
 					if (!docP.exists) {
@@ -98,7 +100,7 @@ module.exports = {
 									refI.update({
 										huds: iHuds,
 									}).then(() => {
-										let name = itemName.toLowerCase().replace(/[_]/g, ' ');
+										const name = itemName.toLowerCase().replace(/[_]/g, ' ');
 										message.reply(`compraste o HUD **${titleCase(name)}**!`);
 									});
 								}
@@ -112,7 +114,6 @@ module.exports = {
 		case 'view':
 			switch (args[1]) {
 			case 'hud':
-				let hud = '';
 				hud = hud.concat(args.slice(2)).toLowerCase().replace(/[,]/g, '_');
 				sendPreview(hud);
 				break;
@@ -166,7 +167,7 @@ module.exports = {
 							{ name: 'Sans', value: `Undertale\nPreço ¤${items.huds.sans.price}`, inline: true },
 							{ name: 'Scorpion2', value: `Mortal Kombat\nPreço ¤${items.huds.scorpion1.price}`, inline: true },
 							{ name: 'Springtrap', value: `Five Nights at Freddy's\nPreço ¤${items.huds.springtrap.price}`, inline: true },
-							{ name: 'Sub-Zero', value: `Mortal Kombat\nPreço ¤${items.huds.sub-zero.price}`, inline: true },
+							{ name: 'Sub-Zero', value: `Mortal Kombat\nPreço ¤${items.huds['sub-zero'].price}`, inline: true },
 							{ name: 'The Hillbilly', value: `Dead by Daylight\nPreço ¤${items.huds.dbd1.price}`, inline: true },
 						]);
 					break;
@@ -257,17 +258,17 @@ module.exports = {
 				message.channel.send(hudMarvelEmbed);
 				break;
 			case 'dc':
-			hudDCEmbed = new MessageEmbed(mainEmbed)
-				.setTitle('Loja Incrível - HUDs (DC)')
-				.setDescription(`\`${prefix}shop buy hud [Nome do Item]\` para comprar ou \`${prefix}shop view hud [item]\` para ver.`)
-				.setFooter('Página 1 de 1')
-				.spliceFields(0, mainEmbed.fields.length, [
-					{ name: 'Batman', value: `Herói\nPreço ¤${items.huds.batman.price}`, inline: true },
-					{ name: 'Joker', value: `Vilão\nPreço ¤${items.huds.joker.price}`, inline: true },
-					{ name: 'Superman', value: `Herói\nPreço ¤${items.huds.superman.price}`, inline: true },
-				]);
-			message.channel.send(hudDCEmbed);
-			break;
+				hudDCEmbed = new MessageEmbed(mainEmbed)
+					.setTitle('Loja Incrível - HUDs (DC)')
+					.setDescription(`\`${prefix}shop buy hud [Nome do Item]\` para comprar ou \`${prefix}shop view hud [item]\` para ver.`)
+					.setFooter('Página 1 de 1')
+					.spliceFields(0, mainEmbed.fields.length, [
+						{ name: 'Batman', value: `Herói\nPreço ¤${items.huds.batman.price}`, inline: true },
+						{ name: 'Joker', value: `Vilão\nPreço ¤${items.huds.joker.price}`, inline: true },
+						{ name: 'Superman', value: `Herói\nPreço ¤${items.huds.superman.price}`, inline: true },
+					]);
+				message.channel.send(hudDCEmbed);
+				break;
 			case 'vocaloids':
 				hudVocaloidsEmbed = new MessageEmbed(mainEmbed)
 					.setTitle('Loja Incrível - HUDs (Cartoons)')
