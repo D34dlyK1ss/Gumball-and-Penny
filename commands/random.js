@@ -5,7 +5,7 @@ module.exports = {
 	usage: 'random [opcional - número]',
 
 	execute(bot, message, command, args) {
-		let rnd = Number(args);
+		let rnd;
 		if (args == null || args == '') {
 			rnd = Math.floor(Math.random() * 100) + 1;
 		}
