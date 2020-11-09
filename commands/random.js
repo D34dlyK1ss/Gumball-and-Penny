@@ -5,9 +5,9 @@ module.exports = {
 	usage: 'random [opcional - número]',
 
 	execute(bot, message, command, args) {
-		let rnd;
-		if (args == '') {
-			return rnd = Math.floor(Math.random() * 100) + 1;
+		let rnd = Number(args);
+		if (args == null || args == '') {
+			rnd = Math.floor(Math.random() * 100) + 1;
 		}
 		else if (!Number.isInteger(rnd)) {
 			return message.reply('isso não é um número!');
