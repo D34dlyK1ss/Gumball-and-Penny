@@ -106,7 +106,6 @@ bot.on('message', async message => {
 	if (message.channel.type === 'dm' || message.author.bot) return;
 
 	const ref = db.collection('servidores').doc(message.guild.id);
-	// Obter a linguagem a para o servidor
 
 	// Leitura dos ficheiros de comandos
 	const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
@@ -117,7 +116,6 @@ bot.on('message', async message => {
 	}
 
 	// Obter o prefixo definido para o servidor
-
 	if (!prefixes[message.guild.id]) {
 		const doc = await ref.get();
 		prefixes[message.guild.id] = doc.get('prefix') || config.prefix;
