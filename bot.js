@@ -86,7 +86,7 @@ es.onmessage = messageEvent => {
 			});
 		});
 	}
-}
+};
 
 const prefixes = new Object(),
 	xpCooldown = new Set();
@@ -101,7 +101,7 @@ bot.on('message', async message => {
 	// Obter a linguagem a para o servidor
 
 	// Leitura dos ficheiros de comandos
-	const commandFiles = fs.readdirSync(`./commands`).filter(file => file.endsWith('.js'));
+	const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
 	if (commandFiles.length === 0) return;
 	for (const file of commandFiles) {
 		const props = require(`./commands/${file}`);
