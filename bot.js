@@ -20,6 +20,10 @@ moment.locale('pt');
 // Biblioteca para sistema de ficheiros
 const fs = require('fs');
 
+// API do Discord Bot List
+const DBL = require('dblapi.js');
+const dbl = new DBL(config.dblToken, bot);
+
 // Classe de utilidade 'Collection' do Discord.js
 bot.commands = new Discord.Collection();
 
@@ -49,6 +53,10 @@ bot.once('ready', async () => {
 	console.log(`Preparados! (${moment().format('LL')} ${moment().format('LTS')})`);
 
 	bot.user.setActivity(`+help em ${bot.guilds.cache.size} servidores!`);
+
+	setInterval(() => {
+		dbl.postStats(bot.guilds.cache.size);
+	}, 1800000);
 
 	schedule.scheduleJob('0 14 28 * *', function() {
 		bot.users.resolve(config.lilly).send(`:tada: Parabéns Lilly! Completaste ${months} meses com o teu Ruru! :purple_heart:\nhttps://i.imgur.com/clrwrEk.gif`);
