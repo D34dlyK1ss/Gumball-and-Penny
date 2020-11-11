@@ -110,7 +110,7 @@ module.exports = {
 						const huds = docI.get('huds');
 						let newHud = '';
 
-						newHud = newHud.concat(args.slice(2)).toLowerCase().replace(/[,]/g, '_');
+						newHud = newHud.concat(args.slice(0)).toLowerCase().replace(/[,]/g, '_');
 
 						if (!newHud || newHud == '') {
 							return message.reply('não escolheste um HUD!');
