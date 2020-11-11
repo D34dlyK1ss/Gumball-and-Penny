@@ -52,7 +52,9 @@ const months = Math.round(mili / 2629746000),
 bot.once('ready', async () => {
 	console.log(`Preparados! (${moment().format('LL')} ${moment().format('LTS')})`);
 
-	bot.user.setActivity(`+help em ${bot.guilds.cache.size} servidores!`);
+	let plural = '';
+	if (bot.guilds.cache.size != 1) plural = 'es';
+	bot.user.setActivity(`+help em ${bot.guilds.cache.size} servidor${plural}!`);
 
 	setInterval(() => {
 		dbl.postStats(bot.guilds.cache.size);
