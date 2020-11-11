@@ -215,14 +215,14 @@ module.exports = {
 
 					ctx.closePath();
 
+					const vip = (await db.collection('vip').doc(user.id).get()).data().vip;
+
 					ctx.beginPath();
 					ctx.arc(97, 70, 58, 0, Math.PI * 2, true);
 					ctx.lineWidth = 6;
-					ctx.strokeStyle = 'white';
+					vip ? ctx.strokeStyle = '#e0c000' : ctx.strokeStyle = 'white';
 					ctx.stroke();
 					ctx.closePath();
-
-					const vip = (await db.collection('vip').doc(user.id).get()).data().vip;
 
 					if (vip == true) {
 						const crown = await loadImage('./images/profile/crown.png');
