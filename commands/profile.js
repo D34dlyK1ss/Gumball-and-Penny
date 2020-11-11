@@ -220,7 +220,7 @@ module.exports = {
 					ctx.beginPath();
 					ctx.arc(97, 70, 58, 0, Math.PI * 2, true);
 					ctx.lineWidth = 6;
-					vip ? ctx.strokeStyle = '#e0c000' : ctx.strokeStyle = 'white';
+					ctx.strokeStyle = 'white';
 					ctx.stroke();
 					ctx.closePath();
 
