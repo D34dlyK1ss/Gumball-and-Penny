@@ -16,6 +16,14 @@ function convert(value) {
 	return value;
 }
 
+function titleCase(str) {
+	const splitStr = str.toLowerCase().split(' ');
+	for (let i = 0; i < splitStr.length; i++) {
+		splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);
+	}
+	return splitStr.join(' ');
+}
+
 module.exports = {
 	name: 'profile',
 	aliases: ['p'],
@@ -33,11 +41,9 @@ module.exports = {
 
 		switch (option) {
 		case 'create':
-			refP.get().then(doc => {
+			db.collection('perfis').doc(message.author.id).get().then(async doc => {
 				if (doc.exists) {
-					if (user == message.author) {
-						return message.channel.send('Já tens um perfil criado, não podes criar outro! 💢');
-					}
+					return message.channel.send('Já tens um perfil criado, não podes criar outro! 💢');
 				}
 				else {
 					db.collection('perfis').doc(message.author.id).set({
@@ -49,19 +55,18 @@ module.exports = {
 						name: user.tag,
 						nickname: 'N/A',
 						xp: 0,
+					});
+					await refI.set({
+						huds: ['grey'],
 					}).then(() => {
-						refI.set({
-							huds: ['grey'],
-						}).then(() => {
-							message.reply(`o teu perfil foi criado! Adiciona uma descricão com \`${prefix}profile setdescription [descrição]\`!`);
-						});
+						message.reply(`o teu perfil foi criado! Adiciona uma descricão com \`${prefix}profile setdescription [descrição]\`!`);
 					}).catch(err => { console.error(err); });
 				}
 			});
 			break;
 		case 'setnickname':
 			if (args == '') args = 'N/A';
-			refP.get().then(doc => {
+			db.collection('perfis').doc(message.author.id).get().then(doc => {
 				if (!doc.exists) {
 					if (user == message.author) {
 						return message.reply(`ainda não criaste um perfil! Para criares um perfil usa \`${prefix}profile create\`!`);
@@ -71,16 +76,18 @@ module.exports = {
 					return message.reply(`o limite máximo de caracteres para a alcunha é de 32!\nEssa alcunha tem ${args.length}.`);
 				}
 				else {
+					const newNickname = titleCase(args);
+
 					db.collection('perfis').doc(message.author.id).update({
-						nickname: args,
+						nickname: newNickname,
 					}).then(() => {
-						message.reply('a tua alcunha foi alterada!');
+						message.reply(`a tua alcunha foi alterada para ${newNickname}!`);
 					}).catch(err => { console.error(err); });
 				}
 			});
 			break;
 		case 'setdescription':
-			refP.get().then(doc => {
+			db.collection('perfis').doc(message.author.id).get().then(doc => {
 				if (!doc.exists) {
 					if (user == message.author) {
 						return message.reply(`ainda não criaste um perfil! Para criares um perfil usa \`${prefix}profile create\`!`);
@@ -93,13 +100,13 @@ module.exports = {
 					db.collection('perfis').doc(message.author.id).update({
 						description: args,
 					}).then(() => {
-						message.reply('a tua descrição foi alterada!');
+						message.reply(`a tua descrição foi alterada para ${args}!`);
 					}).catch(err => { console.error(err); });
 				}
 			});
 			break;
 		case 'sethud':
-			refP.get().then(docP => {
+			db.collection('perfis').doc(message.author.id).get().then(docP => {
 				if (!docP.exists) {
 					if (user == message.author) {
 						return message.reply(`ainda não criaste um perfil! Para criares um perfil usa \`${prefix}profile create\`!`);
@@ -110,7 +117,7 @@ module.exports = {
 						const huds = docI.get('huds');
 						let newHud = '';
 
-						newHud = newHud.concat(args.slice(0)).toLowerCase().replace(/[,]/g, '_');
+						newHud = newHud.concat(args.slice(0)).toLowerCase().replace(/[ ]/g, '_');
 
 						if (!newHud || newHud == '') {
 							return message.reply('não escolheste um HUD!');
@@ -122,7 +129,7 @@ module.exports = {
 							db.collection('perfis').doc(message.author.id).update({
 								hud: newHud,
 							}).then(() => {
-								message.reply(`alteraste o teu HUD para **${newHud.charAt(0).toUpperCase() + newHud.slice(1)}**`);
+								message.reply(`alteraste o teu HUD para **${titleCase(args)}**`);
 							}).catch(err => { console.error(err); });
 						}
 					});
@@ -183,9 +190,9 @@ module.exports = {
 					ctx.save();
 					ctx.font = '20px bold Comic Sans MS';
 					ctx.shadowColor = 'black';
-					ctx.shadowBlur = 4;
-					ctx.shadowOffsetX = 4;
-					ctx.shadowOffsetY = 4;
+					ctx.shadowBlur = 3;
+					ctx.shadowOffsetX = 3;
+					ctx.shadowOffsetY = 3;
 					ctx.fillStyle = 'white';
 					ctx.textAlign = 'center';
 					ctx.fillText(`${user.tag}`, 410, 65);
@@ -215,7 +222,7 @@ module.exports = {
 
 					ctx.closePath();
 
-					const vip = (await db.collection('vip').doc(user.id).get()).data().vip;
+					const vip = (await db.collection('vip').doc(user.id).get()).data();
 
 					ctx.beginPath();
 					ctx.arc(97, 70, 58, 0, Math.PI * 2, true);
@@ -224,7 +231,7 @@ module.exports = {
 					ctx.stroke();
 					ctx.closePath();
 
-					if (vip == true) {
+					if (vip) {
 						const crown = await loadImage('./images/profile/crown.png');
 						ctx.drawImage (crown, 7, 12, 50, 50);
 					}
