@@ -18,7 +18,7 @@ module.exports = {
 		}
 
 		const donor = message.author;
-		if (!getUserFromMention(args [0])) return message.reply('não mencionaste ninguém!');
+		if (!args || args == '') return message.reply('não mencionaste ninguém!');
 		const user = getUserFromMention(args [0]),
 			refD = db.collection('perfis').doc(donor.id);
 		let amount = parseInt(args[1]);
