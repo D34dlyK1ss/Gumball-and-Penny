@@ -1,6 +1,6 @@
 const { MessageEmbed, MessageAttachment } = require('discord.js');
 const { createCanvas, loadImage } = require('canvas');
-const items = require('../itemlist.json');
+const items = require('../itemList.json');
 
 function titleCase(str) {
 	const splitStr = str.toLowerCase().split(' ');
@@ -154,7 +154,7 @@ module.exports = {
 							{ name: 'Nathan Drake', value: `Uncharted\nPreço ¤${items.huds.nightmare_chica.price}`, inline: true },
 							{ name: 'Nightmare Chica', value: `Five Nights at Freddy's\nPreço ¤${items.huds.nightmare_chica.price}`, inline: true },
 							{ name: 'Nightmare Foxy', value: `Five Nights at Freddy's\nPreço ¤${items.huds.nightmare_foxy.price}`, inline: true },
-							{ name: 'Nunu and Willump', value: `League of Legends\nPreço ¤${items.huds.nightmare_foxy.price}`, inline: true },
+							{ name: 'Nunu & Willump', value: `League of Legends\nPreço ¤${items.huds['nunu_&_willump'].price}`, inline: true },
 							{ name: 'Reaper Soraka', value: `League of Legends\nPreço ¤${items.huds.reaper_soraka.price}`, inline: true },
 						]);
 					break;
