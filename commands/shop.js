@@ -1,6 +1,6 @@
 const { MessageEmbed, MessageAttachment } = require('discord.js');
 const { createCanvas, loadImage } = require('canvas');
-const items = require('../itemList.json');
+const items = require('../itemlist.json');
 
 function titleCase(str) {
 	const splitStr = str.toLowerCase().split(' ');
