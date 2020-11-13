@@ -17,9 +17,10 @@ module.exports = {
 			return bot.users.cache.get(id);
 		}
 
-		const donor = message.author,
-			user = getUserFromMention(args [0]);
-		const refD = db.collection('perfis').doc(donor.id);
+		const donor = message.author;
+		if (!getUserFromMention(args [0])) return message.reply('não mencionaste ninguém!');
+		const user = getUserFromMention(args [0]),
+			refD = db.collection('perfis').doc(donor.id);
 		let amount = parseInt(args[1]);
 
 		refD.get().then(docD => {
