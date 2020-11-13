@@ -37,7 +37,7 @@
 
 		"purple": {
 			"price": 3000,
-			"hex": "#80000ff"
+			"hex": "#8000ff"
 		},
 
 		"red": {
@@ -254,7 +254,7 @@
 			"hex": "#101010"
 		},
 
-		"nunu_and_willump": {
+		"nunu_&_willump": {
 			"price": 10000,
 			"hex": "#00c0ff"
 		},
@@ -329,7 +329,7 @@
 			"hex": "#806020"
 		},
 
-		"yukiteru_and_yuno": {
+		"yukiteru_&_yuno": {
 			"price": 10000,
 			"hex": "#e0a0a0"
 		},
@@ -338,5 +338,100 @@
 			"price": 10000,
 			"hex": "#1000000"
 		}
+	},
+
+	"petHuds": {
+		"black": {
+			"price": 3000
+		},
+
+		"blue": {
+			"price": 3000
+		},
+
+		"brown": {
+			"price": 3000
+		},
+
+		"green": {
+			"price": 3000
+		},
+
+		"grey": {
+			"price": 3000
+		},
+
+		"orange": {
+			"price": 3000
+		},
+
+		"pink": {
+			"price": 3000
+		},
+
+		"purple": {
+			"price": 3000
+		},
+		
+
+		"red": {
+			"price": 3000
+		},
+
+		"akamaru": {
+			"price": 8000
+		},
+
+		"foxes": {
+			"price": 8000
+		},
+
+		"pokemon": {
+			"price": 8000
+		},
+
+		"undertale": {
+			"price": 8000
+		},
+
+		"winter": {
+			"price": 8000
+		}
+	},
+
+	"pets": {
+		"cao": {
+			"vip": false
+		},
+
+		"formiga": {
+			"vip": false
+		},
+
+		"galinha": {
+			"vip": false
+		},
+
+		"gato": {
+			"vip": false
+		},
+
+		"akamaru": {
+			"vip": true
+		},
+
+		"iggy": {
+			"vip": true
+		}
+	},
+
+	"items": {
+		"name_license": {
+			"price": 5000
+		}
+	},
+
+	"food": {
+
 	}
 }
