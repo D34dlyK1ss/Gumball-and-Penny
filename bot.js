@@ -54,7 +54,7 @@ bot.once('ready', async () => {
 
 	let plural = '';
 	if (bot.guilds.cache.size != 1) plural = 'es';
-	bot.user.setActivity(`+help em ${bot.guilds.cache.size} servidor${plural}!`);
+	bot.user.setActivity(`${config.prefix}help em ${bot.guilds.cache.size} servidor${plural}!`);
 
 	setInterval(() => {
 		dbl.postStats(bot.guilds.cache.size);
