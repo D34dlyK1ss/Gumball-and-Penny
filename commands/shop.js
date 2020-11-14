@@ -323,6 +323,7 @@ module.exports = {
 						{ name: 'Gato', value: `Preço ¤${items.pets.gato.price}`, inline: true },
 						{ name: 'Golfinho', value: `Preço ¤${items.pets.golfinho.price}`, inline: true },
 						{ name: 'Pónei', value: `Preço ¤${items.pets.ponei.price}`, inline: true },
+						{ name: 'Sapo', value: `Preço ¤${items.pets.sapo.price}`, inline: true },
 					]);
 				message.channel.send(petsCommonEmbed);
 				break;

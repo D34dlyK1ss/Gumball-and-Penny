@@ -476,6 +476,14 @@
 			"vip": false
 		},
 
+		"sapo": {
+			"species": "Sapo",
+			"gender": "random",
+			"pronoun": "um",
+			"price": 15000,
+			"vip": false
+		},
+
 
 		"akamaru": {
 			"name": "Akamaru",
