@@ -88,10 +88,10 @@ module.exports = {
 			Aqui poderás comprar algumas coisas com o dinheiro que acumulaste até agora.
 			Usa \`${prefix}shop [categoria]\` para selecionares uma categoria.`)
 			.addFields(
-				{ name: 'HUDs', value: '\u200B' },
-				{ name: 'PetHUDs', value: '\u200B' },
-				{ name: 'Pets', value: '\u200B' },
-				{ name: 'Items', value: '\u200B' },
+				{ name: 'HUDs', value: '\u200B', inline: true },
+				{ name: 'PetHUDs', value: '\u200B', inline: true },
+				{ name: 'Pets', value: '\u200B', inline: true },
+				{ name: 'Items', value: '\u200B', inline: true },
 			);
 
 		let hudEmbed,
