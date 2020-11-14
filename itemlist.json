@@ -342,85 +342,147 @@
 
 	"petHuds": {
 		"black": {
-			"price": 3000
+			"price": 2500,
+			"vip": false
 		},
 
 		"blue": {
-			"price": 3000
+			"price": 2500,
+			"vip": false
 		},
 
 		"brown": {
-			"price": 3000
+			"price": 2500,
+			"vip": false
 		},
 
 		"green": {
-			"price": 3000
+			"price": 2500,
+			"vip": false
 		},
 
 		"grey": {
-			"price": 3000
+			"price": 2500,
+			"vip": false
 		},
 
 		"orange": {
-			"price": 3000
+			"price": 2500,
+			"vip": false
 		},
 
 		"pink": {
-			"price": 3000
+			"price": 2500,
+			"vip": false
 		},
 
 		"purple": {
-			"price": 3000
+			"price": 2500,
+			"vip": false
 		},
 		
-
 		"red": {
-			"price": 3000
+			"price": 2500,
+			"vip": false
 		},
 
-		"akamaru": {
-			"price": 8000
+		"yellow": {
+			"price": 2500,
+			"vip": false
+		},
+
+
+		"bones": {
+			"price": 8000,
+			"vip": true
 		},
 
 		"foxes": {
-			"price": 8000
+			"price": 8000,
+			"vip": true
 		},
 
 		"pokemon": {
-			"price": 8000
+			"price": 8000,
+			"vip": true
 		},
 
 		"undertale": {
-			"price": 8000
+			"price": 8000,
+			"vip": true
 		},
 
 		"winter": {
-			"price": 8000
+			"price": 8000,
+			"vip": true
 		}
 	},
 
 	"pets": {
+		"cabra": {
+			"species": "Cabra",
+			"gender": "random",
+			"price": 15000,
+			"vip": false
+		},
+
 		"cao": {
+			"species": "Cão",
+			"gender": "random",
+			"price": 15000,
 			"vip": false
 		},
 
 		"formiga": {
+			"species": "Formiga",
+			"gender": "random",
+			"price": 15000,
 			"vip": false
+			
 		},
 
 		"galinha": {
+			"species": "Galinha",
+			"gender": "♀️",
+			"price": 15000,
 			"vip": false
 		},
 
 		"gato": {
+			"species": "Gato",
+			"gender": "random",
+			"price": 15000,
 			"vip": false
 		},
 
+		"golfinho": {
+			"species": "Golfinho",
+			"gender": "random",
+			"price": 15000,
+			"vip": false
+		},
+
+		"ponei": {
+			"species": "Cavalo (Pónei)",
+			"gender": "random",
+			"price": 15000,
+			"vip": false
+		},
+
+
 		"akamaru": {
+			"name": "Akamaru",
+			"species": "Cão",
+			"gender": "♂️",
+			"price": 20000,
 			"vip": true
 		},
 
 		"iggy": {
+			"name": "Iggy",
+			"species": "Cão",
+			"gender": "♂️",
+			"price": 20000,
 			"vip": true
 		}
 	},

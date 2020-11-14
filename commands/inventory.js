@@ -25,9 +25,9 @@ module.exports = {
 						return message.reply('não tens nenhum inventário!');
 					}
 					else {
-						const iHuds = docI.get('huds');
+						let iHuds = docI.get('huds');
 						iHuds.sort();
-
+						iHuds = iHuds.map(s => s.replace(/[_]/g, ' '));
 						const allHuds = `\`${iHuds.join('`, `')}\``,
 							newIEmbed = new MessageEmbed (iEmbed)
 								.addFields(

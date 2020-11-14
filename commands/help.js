@@ -9,7 +9,9 @@ module.exports = {
 
 	execute(bot, message, command, args, db, prefix) {
 		const { commands } = message.client,
-			update = '';
+			update = `GRANDE UPDATE: Agora temos um sistema de 'Pets'!
+			Podes agora comprar um animal de estimação de até dar-lhe um nome!
+			Explora a Loja Incrível e usa \`${prefix}pet\` para saberes mais`;
 		const helpEmbed = new Discord.MessageEmbed()
 			.setColor('#8000ff')
 			.setTitle('Ajuda')
@@ -23,7 +25,7 @@ module.exports = {
 				{ name: '🎰 Casino', value: '`coinflip`', inline: true },
 				{ name: '😁 Diversão', value: '`fact`, `match`, `random`, `say`, `which`', inline: true },
 				{ name: '💸 Doações', value: '`donate`', inline: true },
-				{ name: '💰 Economia e Perfil', value: '`balance`, `daily`, `give`, `inventory`, `shop`, `profile`, `vote`', inline: true },
+				{ name: '💰 Economia e Perfil', value: '`balance`, `daily`, `give`, `inventory`, `pet`, `profile`, `shop`, `vote`', inline: true },
 				{ name: '⚠️ Moderação', value: '`ban`, `clear`, `kick`, `mute`, `tempmute`, `unmute`', inline: true },
 				{ name: '🌐 Servidor', value: '`members`, `serverinfo`, `setprefix`, `userinfo`', inline: true },
 				{ name: '🛠️ Utilidade', value: '`avatar`, `invite`, `ping`, `support`', inline: true },
