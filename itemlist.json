@@ -494,6 +494,15 @@
 			"vip": true
 		},
 
+		"happy": {
+			"name": "Happy",
+			"species": "Gato",
+			"gender": "♂️",
+			"pronoun": "o",
+			"price": 20000,
+			"vip": true
+		},
+
 		"iggy": {
 			"name": "Iggy",
 			"species": "Cão",

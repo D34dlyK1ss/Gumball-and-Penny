@@ -42,6 +42,13 @@ module.exports = {
 					refI.get().then(docI => {
 						const invItems = docI.get('items'),
 							newName = titleCase(args);
+
+						if (!invItems) {
+							refI.update({
+								'items': [],
+							});
+						}
+
 						if (!invItems.includes('name_license')) {
 							return message.reply('não tens uma **Licença de Nome**!');
 						}
