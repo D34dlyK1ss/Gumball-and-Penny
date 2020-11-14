@@ -436,7 +436,7 @@
 		"formiga": {
 			"species": "Formiga",
 			"gender": "random",
-			"price": 15000,
+			"price": 1,
 			"vip": false
 			
 		},

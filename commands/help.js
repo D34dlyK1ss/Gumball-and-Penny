@@ -9,7 +9,7 @@ module.exports = {
 
 	execute(bot, message, command, args, db, prefix) {
 		const { commands } = message.client,
-			update = `GRANDE UPDATE: Agora temos um sistema de 'Pets'!
+			update = `**GRANDE UPDATE:** Agora temos um sistema de 'Pets'!
 			Podes agora comprar um animal de estimação de até dar-lhe um nome!
 			Explora a Loja Incrível e usa \`${prefix}pet\` para saberes mais`;
 		const helpEmbed = new Discord.MessageEmbed()
