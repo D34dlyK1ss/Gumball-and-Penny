@@ -1,10 +1,10 @@
 const { MessageAttachment } = require('discord.js');
 const { registerFont, createCanvas, loadImage } = require('canvas');
 const items = require('../itemlist.json');
-registerFont('./fonts/comic.ttf', { family: 'CSMS' });
-registerFont('./fonts/comicb.ttf', { family: 'bold CSMS' });
-registerFont('./fonts/comici.ttf', { family: 'italic CSMS' });
-registerFont('./fonts/comicz.ttf', { family: 'bold-italic CSMS' });
+registerFont('./fonts/comic.ttf', { family: 'Comic Sans MS' });
+registerFont('./fonts/comicb.ttf', { family: 'bold Comic Sans MS' });
+registerFont('./fonts/comici.ttf', { family: 'italic Comic Sans MS' });
+registerFont('./fonts/comicz.ttf', { family: 'bold-italic Sans MS' });
 
 function titleCase(str) {
 	const splitStr = str.toLowerCase().split(' ');
@@ -172,7 +172,7 @@ module.exports = {
 
 					ctx.save();
 
-					ctx.font = '18px CSMS';
+					ctx.font = '18px Comic Sans MS';
 					ctx.shadowColor = 'black';
 					ctx.shadowBlur = 3;
 					ctx.shadowOffsetX = 3;
