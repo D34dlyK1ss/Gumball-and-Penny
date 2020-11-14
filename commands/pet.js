@@ -173,10 +173,10 @@ module.exports = {
 					ctx.fillStyle = 'white';
 
 					const extra = 40;
-					ctx.fillText(`Nome: ${petName}`, 330, 115 + extra);
-					ctx.fillText(`Espécie: ${petSpecies}`, 330, 145 + extra);
-					ctx.fillText(`Género: ${petGender}`, 330, 175 + extra);
-					ctx.fillText(`Natureza: ${petNature}`, 330, 205 + extra);
+					ctx.fillText(`Nome: ${petName}`, 330, 105 + extra);
+					ctx.fillText(`Espécie: ${petSpecies}`, 330, 135 + extra);
+					ctx.fillText(`Género: ${petGender}`, 330, 165 + extra);
+					ctx.fillText(`Natureza: ${petNature}`, 330, 195 + extra);
 
 					ctx.restore();
 

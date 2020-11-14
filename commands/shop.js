@@ -91,6 +91,7 @@ module.exports = {
 				{ name: 'HUDs', value: '\u200B' },
 				{ name: 'PetHUDs', value: '\u200B' },
 				{ name: 'Pets', value: '\u200B' },
+				{ name: 'Items', value: '\u200B' },
 			);
 
 		let hudEmbed,
