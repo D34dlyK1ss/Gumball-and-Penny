@@ -5,14 +5,14 @@ module.exports = {
 	description: 'Com este comando podes saber que personagem de anime és!\nAnimes disponíveis: `akame ga kill`, `code geass`, `death note`, `higurashi` , `jojo`, `kakegurui`, `mirai nikki`, `noragami`, `one punch man`, `psycho-pass`, `steins;gate`',
 	usage: 'which [anime]',
 
-	execute(bot, message, command, args) {
+	execute(bot, message, command, args, prefix) {
 		args = args.join(' ');
 		args = args.toLowerCase();
 		const last = message.member.id.slice(-1);
 		let char = [];
 
 		if (args == null || args == '') {
-			return message.reply('tens de mencionar um anime! Usa `+help which` para mais informação.');
+			return message.reply(`tens de mencionar um anime! Usa \`${prefix}help which\` para mais informação.`);
 		}
 		else {
 			switch (last) {
