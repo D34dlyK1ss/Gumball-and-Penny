@@ -32,11 +32,12 @@ module.exports = {
 		switch (option) {
 		case 'setname':
 			db.collection('pet').doc(message.author.id).get().then(doc => {
+				const pet = doc.get('pet');
 				if (!doc.exists) {
 					return message.reply(`ainda não compraste um pet! Para comprares um vai à Loja Incrível usando \`${prefix}shop pets\`!`);
 				}
-				else if (items.pets[doc.get('pet')].vip) {
-					return message.reply(`não podes mudar o nome de **${titleCase(doc.get('pet'))}**!`);
+				else if (items.pets[pet].vip) {
+					return message.reply(`não podes mudar o nome d${items.pets[pet].pronoun} **${titleCase(doc.get('pet'))}**!`);
 				}
 				else {
 					refI.get().then(docI => {
