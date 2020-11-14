@@ -22,6 +22,7 @@ module.exports = {
 
 	execute(bot, message, command, args, db, prefix) {
 		const user = message.mentions.users.first() || message.author,
+			refV = db.collection('vip').doc(user.id),
 			refP = db.collection('pet').doc(user.id),
 			refI = db.collection('inventario').doc(message.author.id),
 			option = args[0];
@@ -183,8 +184,6 @@ module.exports = {
 					const petPic = await loadImage(`./images/pet/${pet}.png`);
 					ctx.drawImage (petPic, 160, 120);
 
-					const vip = (await db.collection('vip').doc(user.id).get()).data().vip;
-
 					ctx.beginPath();
 					ctx.arc(97, 70, 58, 0, Math.PI * 2, true);
 					ctx.lineWidth = 6;
@@ -192,18 +191,21 @@ module.exports = {
 					ctx.stroke();
 					ctx.closePath();
 
-					if (vip == true) {
-						const crown = await loadImage('./images/profile/crown.png');
-						ctx.drawImage (crown, 7, 12, 50, 50);
-					}
+					refV.get().then(async docV => {
 
-					const avatar = await loadImage(user.displayAvatarURL({ format: 'jpg' }));
-					ctx.clip();
-					ctx.drawImage (avatar, 37, 10, 120, 120);
+						if (docV.exists) {
+							const crown = await loadImage('./images/profile/crown.png');
+							ctx.drawImage (crown, 7, 12, 50, 50);
+						}
 
-					const attachment = new MessageAttachment(canvas.toBuffer(), 'pet.png');
+						const avatar = await loadImage(user.displayAvatarURL({ format: 'jpg' }));
+						ctx.clip();
+						ctx.drawImage (avatar, 37, 10, 120, 120);
 
-					message.channel.send(attachment);
+						const attachment = new MessageAttachment(canvas.toBuffer(), 'pet.png');
+
+						await message.channel.send(attachment);
+					});
 				}
 			});
 			break;

@@ -422,6 +422,7 @@
 		"cabra": {
 			"species": "Cabra",
 			"gender": "random",
+			"pronoun": "uma",
 			"price": 15000,
 			"vip": false
 		},
@@ -429,6 +430,7 @@
 		"cao": {
 			"species": "Cão",
 			"gender": "random",
+			"pronoun": "um",
 			"price": 15000,
 			"vip": false
 		},
@@ -436,6 +438,7 @@
 		"formiga": {
 			"species": "Formiga",
 			"gender": "random",
+			"pronoun": "uma",
 			"price": 1,
 			"vip": false
 			
@@ -444,6 +447,7 @@
 		"galinha": {
 			"species": "Galinha",
 			"gender": "♀️",
+			"pronoun": "uma",
 			"price": 15000,
 			"vip": false
 		},
@@ -451,6 +455,7 @@
 		"gato": {
 			"species": "Gato",
 			"gender": "random",
+			"pronoun": "um",
 			"price": 15000,
 			"vip": false
 		},
@@ -458,6 +463,7 @@
 		"golfinho": {
 			"species": "Golfinho",
 			"gender": "random",
+			"pronoun": "um",
 			"price": 15000,
 			"vip": false
 		},
@@ -465,6 +471,7 @@
 		"ponei": {
 			"species": "Cavalo (Pónei)",
 			"gender": "random",
+			"pronoun": "um",
 			"price": 15000,
 			"vip": false
 		},
@@ -474,6 +481,7 @@
 			"name": "Akamaru",
 			"species": "Cão",
 			"gender": "♂️",
+			"pronoun": "o",
 			"price": 20000,
 			"vip": true
 		},
@@ -482,6 +490,7 @@
 			"name": "Iggy",
 			"species": "Cão",
 			"gender": "♂️",
+			"pronoun": "o",
 			"price": 20000,
 			"vip": true
 		}

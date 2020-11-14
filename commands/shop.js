@@ -270,14 +270,11 @@ module.exports = {
 											balance: (bal - cost),
 										});
 
-										let petName = species.toLowerCase().replace(/[_]/g, ' '), pronoun = 'um';
+										let petName = species.toLowerCase().replace(/[_]/g, ' ');
 										const vip = items.pets[pet].vip;
 
 										if (vip) petName = name;
-										if (items.pets[pet].gender == '♀️' && vip) pronoun = 'a';
-										else if (items.pets[pet].gender == '♀️' && !vip) pronoun = 'uma';
-										else if (items.pets[pet].gender == '♂️' && vip) pronoun = 'o';
-										message.reply(`compraste ${pronoun} **${petName}**!`);
+										message.reply(`compraste ${items.pets[pet].pronoun} **${petName}**!`);
 									});
 								}
 							});
