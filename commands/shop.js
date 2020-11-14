@@ -227,7 +227,7 @@ module.exports = {
 									return message.reply('não tens dinheiro suficiente!');
 								}
 								else {
-									const rndN = Math.floor(Math.random() * 10),
+									const rndN = Math.floor(Math.random() * 11),
 										rndG = Math.floor(Math.random() * 1),
 										vipPet = items.pets[pet].vip,
 										userVIP = docP.get('vip');
