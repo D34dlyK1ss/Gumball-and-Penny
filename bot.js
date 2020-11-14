@@ -86,7 +86,7 @@ es.onmessage = messageEvent => {
 
 		userID = data.event.body.user;
 
-		const ref = db.collection('servidores').doc(userID);
+		const ref = db.collection('perfis').doc(userID);
 
 		ref.get().then(doc => {
 			if (!doc.exists) return;
