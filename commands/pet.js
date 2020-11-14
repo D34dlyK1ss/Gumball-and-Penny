@@ -149,6 +149,7 @@ module.exports = {
 					const pet = doc.get('pet'),
 						petName = doc.get('name'),
 						petSpecies = doc.get('species'),
+						petGender = doc.get('gender'),
 						petNature = doc.get('nature'),
 						petHud = doc.get('hud');
 
@@ -172,9 +173,10 @@ module.exports = {
 					ctx.fillStyle = 'white';
 
 					const extra = 40;
-					ctx.fillText(`Nome: ${petName}`, 330, 125 + extra);
-					ctx.fillText(`Espécie: ${petSpecies}`, 330, 155 + extra);
-					ctx.fillText(`Natureza: ${petNature}`, 330, 185 + extra);
+					ctx.fillText(`Nome: ${petName}`, 330, 115 + extra);
+					ctx.fillText(`Espécie: ${petSpecies}`, 330, 145 + extra);
+					ctx.fillText(`Género: ${petGender}`, 330, 175 + extra);
+					ctx.fillText(`Natureza: ${petNature}`, 330, 205 + extra);
 
 					ctx.restore();
 
