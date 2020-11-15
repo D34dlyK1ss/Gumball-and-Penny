@@ -50,11 +50,11 @@ const months = Math.round(mili / 2629746000),
 
 // Uma vez que o bot está ativo:
 bot.once('ready', async () => {
-	console.log(`Preparados! (${moment().format('LL')} ${moment().format('LTS')})`);
+	console.log(`Hora de programar! (${moment().format('LL')} ${moment().format('LTS')})`);
 
 	let plural = '';
 	if (bot.guilds.cache.size != 1) plural = 'es';
-	bot.user.setActivity(`${config.prefix}help em ${bot.guilds.cache.size} servidor${plural}!`);
+	bot.user.setActivity(`${config.prefixDev}help em ${bot.guilds.cache.size} servidor${plural}!`);
 
 	setInterval(() => {
 		dbl.postStats(bot.guilds.cache.size);
@@ -86,7 +86,7 @@ es.onmessage = messageEvent => {
 
 		userID = data.event.body.user;
 
-		const ref = db.collection('perfis').doc(userID);
+		const ref = db.collection('perfiss').doc(userID);
 
 		ref.get().then(doc => {
 			if (!doc.exists) return;
@@ -103,7 +103,6 @@ const prefixes = new Object(),
 
 // Ações para quando o bot receber uma mensagem
 bot.on('message', async message => {
-
 	// Ignorar mensagens privadas e mensagens de outros bots
 	if (message.channel.type === 'dm' || message.author.bot) return;
 
@@ -120,10 +119,12 @@ bot.on('message', async message => {
 	// Obter o prefixo definido para o servidor
 	if (!prefixes[message.guild.id]) {
 		const doc = await ref.get();
-		prefixes[message.guild.id] = doc.get('prefix') || config.prefix;
+		prefixes[message.guild.id] = doc.get('prefix') || config.prefixDev;
 	}
-
 	const prefix = await prefixes[message.guild.id];
+
+	// Coleção de emojis do Servidor de Suporte
+	const supportServer = bot.guilds.cache.get('738540548305977366');
 
 	if (message.content.startsWith(prefix)) {
 		const array = message.content.split(' '),
@@ -185,7 +186,7 @@ bot.on('message', async message => {
 			}, 60000);
 		}
 		try {
-			command.execute(bot, message, command, args, db, await prefix, prefixes);
+			command.execute(bot, message, command, args, db, await prefix, prefixes, supportServer);
 		}
 		catch (err) {
 			console.error(err);
@@ -227,6 +228,9 @@ bot.on('message', async message => {
 			break;
 		case 'nice plan':
 			message.channel.send(pic);
+			break;
+		case 'yare yare':
+			message.channel.send(`${supportServer.emojis.cache.find(emoji => emoji.name === 'yareyare')}`);
 			break;
 		}
 	}
