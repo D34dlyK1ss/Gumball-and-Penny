@@ -229,9 +229,6 @@ bot.on('message', async message => {
 		case 'nice plan':
 			message.channel.send(pic);
 			break;
-		case 'yare yare':
-			message.channel.send(`${supportServer.emojis.cache.find(emoji => emoji.name === 'yareyare')}`);
-			break;
 		}
 	}
 });
