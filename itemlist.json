@@ -494,6 +494,15 @@
 			"vip": true
 		},
 
+		"frosch": {
+			"name": "Frosch",
+			"species": "Gato",
+			"gender": "♀️",
+			"pronoun": "a",
+			"price": 20000,
+			"vip": true
+		},
+
 		"happy": {
 			"name": "Happy",
 			"species": "Gato",

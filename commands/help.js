@@ -24,11 +24,11 @@ module.exports = {
 				{ name: '🎭 Ações', value: '`angry`, `cry`, `dance`, `hug`, `kiss`, `laugh`, `pat`, `run`, `slap`', inline: true },
 				{ name: '🎰 Casino', value: '`coinflip`', inline: true },
 				{ name: '😁 Diversão', value: '`fact`, `match`, `random`, `say`, `which`', inline: true },
-				{ name: '💸 Doações', value: '`donate`', inline: true },
 				{ name: '💰 Economia e Perfil', value: '`balance`, `daily`, `give`, `inventory`, `pet`, `profile`, `shop`, `vote`', inline: true },
 				{ name: '⚠️ Moderação', value: '`ban`, `clear`, `kick`, `mute`, `tempmute`, `unmute`', inline: true },
 				{ name: '🌐 Servidor', value: '`members`, `serverinfo`, `setprefix`, `userinfo`', inline: true },
-				{ name: '🛠️ Utilidade', value: '`avatar`, `invite`, `ping`, `support`', inline: true },
+				{ name: '🛠️ Utilidade', value: '`avatar`, `invite`, `ping`', inline: true },
+				{ name: '\u200B', value: '**Links: [Support Server](https://discord.com/invite/r249y37), [Donate](https://ko-fi.com/d34dlyk1ss)**' },
 			);
 
 		if (args == null || args == '') {
