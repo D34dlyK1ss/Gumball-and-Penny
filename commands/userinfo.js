@@ -31,6 +31,14 @@ module.exports = {
 			break;
 		}
 
+		let roles = `<@&${member._roles.join('>, <@&')}>`;
+
+		switch (roles) {
+		case '<@>':
+			roles = 'none';
+			break;
+		}
+
 		const embed = new Discord.MessageEmbed()
 			.setColor('#8000ff')
 			.setAuthor(`${user.tag}`, `${user.displayAvatarURL()}`)
@@ -40,7 +48,7 @@ module.exports = {
 				{ name: 'Status', value: `${user.presence.status}`, inline: true },
 				{ name: 'Menção', value: `${user}`, inline: true },
 				{ name: 'Entrada', value: `Entrou ${joined} atrás (${joinedDate.format('LLLL')})` },
-				{ name: 'Roles', value: `<@&${member._roles.join('>, <@&')}>`, inline: true },
+				{ name: 'Roles', value: `${roles}`, inline: true },
 			)
 			.setFooter(`Criado ${created} atrás (${createdDate.format('LLLL')})`);
 
