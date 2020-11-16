@@ -122,8 +122,10 @@ bot.on('message', async message => {
 		const doc = await ref.get();
 		prefixes[message.guild.id] = doc.get('prefix') || config.prefix;
 	}
-
 	const prefix = await prefixes[message.guild.id];
+
+	// Coleção de emojis do Servidor de Suporte
+	const supportServer = bot.guilds.cache.get('738540548305977366');
 
 	if (message.content.startsWith(prefix)) {
 		const array = message.content.split(' '),
@@ -185,7 +187,7 @@ bot.on('message', async message => {
 			}, 60000);
 		}
 		try {
-			command.execute(bot, message, command, args, db, await prefix, prefixes);
+			command.execute(bot, message, command, args, db, await prefix, prefixes, supportServer);
 		}
 		catch (err) {
 			console.error(err);
