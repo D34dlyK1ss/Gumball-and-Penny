@@ -194,13 +194,8 @@ bot.on('message', async message => {
 			message.reply('ocorreu um erro ao tentar executar esse comando!');
 		}
 	}
-	else {
-		// Responder de acordo com o conteúdo da mensagem lida
-		switch (message.content) {
-		case `<@!${bot.user.id}>`:
-			message.channel.send(`O nosso prefixo para este servidor é **${prefix}**`);
-			break;
-		}
+	else if (message.content == `<@!${bot.user.id}>`) {
+		message.channel.send(`O nosso prefixo para este servidor é **${prefix}**`);
 	}
 });
 
