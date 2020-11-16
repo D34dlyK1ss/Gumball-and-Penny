@@ -127,7 +127,7 @@ bot.on('message', async message => {
 	// Coleção de emojis do Servidor de Suporte
 	const supportServer = bot.guilds.cache.get('738540548305977366');
 
-	if (message.content.startsWith(prefix)) {
+	if (message.content.toLowerCase().startsWith(prefix)) {
 		const array = message.content.split(' '),
 			commandName = array[0].slice(prefix.length).toLowerCase(),
 			args = array.slice(1);

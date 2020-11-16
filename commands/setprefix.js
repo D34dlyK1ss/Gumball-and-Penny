@@ -16,7 +16,7 @@ module.exports = {
 			return message.reply('precisamos de saber qual é o prefixo desejado!');
 		}
 		else {
-			const newPrefix = args[0],
+			const newPrefix = args[0].toLowerCase(),
 				ref = db.collection('servidores').doc(message.guild.id);
 			if (newPrefix == config.prefix) {
 				prefixes[message.guild.id] = config.prefix;
