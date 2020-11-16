@@ -195,40 +195,10 @@ bot.on('message', async message => {
 		}
 	}
 	else {
-		const pic = new Discord.MessageAttachment(`images/${message.content}.png`),
-			gif = new Discord.MessageAttachment(`images/${message.content}.gif`);
-
 		// Responder de acordo com o conteúdo da mensagem lida
 		switch (message.content) {
 		case `<@!${bot.user.id}>`:
 			message.channel.send(`O nosso prefixo para este servidor é **${prefix}**`);
-			break;
-		case 'shine':
-			message.channel.send(pic);
-			break;
-		case 'boi':
-			message.channel.send(pic);
-			break;
-		case 'just monika':
-			message.channel.send(pic);
-			break;
-		case 'no u':
-			message.channel.send(pic);
-			break;
-		case 'E':
-			message.channel.send(pic);
-			break;
-		case 'hmm':
-			message.channel.send(pic);
-			break;
-		case 'noice':
-			message.channel.send(pic);
-			break;
-		case 'distraction dance':
-			message.channel.send(gif);
-			break;
-		case 'nice plan':
-			message.channel.send(pic);
 			break;
 		}
 	}
