@@ -204,20 +204,20 @@ bot.on('guildCreate', async guildData => {
 	db.collection('servidores').doc(guildData.id).set({
 		'guildOwnerID': guildData.owner.user.id,
 	});
-	bot.user.setActivity(`+help em ${bot.guilds.cache.size} servidores!`);
+	bot.user.setActivity(`${config.prefix}help em ${bot.guilds.cache.size} servidores!`);
 });
 
 // Quando o bot for expulso de um servidor, o bot apagará os dados respetivos
 bot.on('guildDelete', async guildData => {
 	db.collection('servidores').doc(guildData.id).delete();
-	bot.user.setActivity(`+help em ${bot.guilds.cache.size} servidores!`);
+	bot.user.setActivity(`${config.prefix}help em ${bot.guilds.cache.size} servidores!`);
 });
 
 // Quando os dados de um servidor forem atualizados, o bot substituirá dados anteriores
-bot.on('guildUpdate', async (oldGuild, newGuild) => {
-	if (oldGuild.ownerID != newGuild.ownerID) {
-		db.collection('servidores').doc(newGuild.id).set({
-			'guildOwnerID': newGuild.owner.user.id,
+bot.on('guildUpdate', async (oldGuildData, newGuildData) => {
+	if (oldGuildData.ownerID != newGuildData.ownerID) {
+		db.collection('servidores').doc(newGuildData.id).set({
+			'guildOwnerID': newGuildData.owner.user.id,
 		});
 	}
 });
