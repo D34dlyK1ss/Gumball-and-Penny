@@ -10,6 +10,11 @@ const config = require('./config.json');
 // Recompensas de nível
 const rewards = require('./rewards.json');
 
+// Descrição do bot na plataforma
+let plural = '';
+if (bot.guilds.cache.size != 1) plural = 'es';
+const botActivity = `${config.prefix}help em ${bot.guilds.cache.size} servidor${plural}!`;
+
 // Biblioteca para horários
 const schedule = require('node-schedule');
 
@@ -52,9 +57,7 @@ const months = Math.round(mili / 2629746000),
 bot.once('ready', async () => {
 	console.log(`Preparados! (${moment().format('LL')} ${moment().format('LTS')})`);
 
-	let plural = '';
-	if (bot.guilds.cache.size != 1) plural = 'es';
-	bot.user.setActivity(`gp!help em ${bot.guilds.cache.size} servidor${plural}!`);
+	bot.user.setActivity(botActivity);
 
 	setInterval(() => {
 		dbl.postStats(bot.guilds.cache.size);
@@ -204,13 +207,13 @@ bot.on('guildCreate', async guildData => {
 	db.collection('servidores').doc(guildData.id).set({
 		'guildOwnerID': guildData.owner.user.id,
 	});
-	bot.user.setActivity(`${config.prefix}help em ${bot.guilds.cache.size} servidores!`);
+	bot.user.setActivity(botActivity);
 });
 
 // Quando o bot for expulso de um servidor, o bot apagará os dados respetivos
 bot.on('guildDelete', async guildData => {
 	db.collection('servidores').doc(guildData.id).delete();
-	bot.user.setActivity(`${config.prefix}help em ${bot.guilds.cache.size} servidores!`);
+	bot.user.setActivity(botActivity);
 });
 
 // Quando os dados de um servidor forem atualizados, o bot substituirá dados anteriores
