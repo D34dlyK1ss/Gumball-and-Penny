@@ -20,21 +20,41 @@ module.exports = {
 				return message.reply(`ainda não criaste um perfil! Para criares um perfil usa \`${prefix}profile create\`!`);
 			}
 			else {
-				refI.get().then(docI => {
+				refI.get().then(async docI => {
+					let iHuds = docI.get('huds'),
+						iPetHuds = docI.get('petHuds'),
+						iItems = docI.get('items');
+					iHuds.sort();
+					iHuds = iHuds.map(s => s.replace(/[_]/g, ' '));
+					const allHuds = `\`${iHuds.join('`, `')}\``,
+						newIEmbed = new MessageEmbed (iEmbed)
+							.addFields(
+								{ name: 'HUDs', value: `${allHuds}`, inline: true },
+							);
+
 					if (!docI.exists) {
 						return message.reply('não tens nenhum inventário!');
 					}
-					else {
-						let iHuds = docI.get('huds');
-						iHuds.sort();
-						iHuds = iHuds.map(s => s.replace(/[_]/g, ' '));
-						const allHuds = `\`${iHuds.join('`, `')}\``,
-							newIEmbed = new MessageEmbed (iEmbed)
-								.addFields(
-									{ name: 'HUDs', value: `${allHuds}`, inline: true },
-								);
-						message.channel.send(newIEmbed);
+
+					if (iPetHuds) {
+						iPetHuds.sort();
+						iPetHuds = iPetHuds.map(s => s.replace(/[_]/g, ' '));
+						const allPetHuds = `\`${iPetHuds.join('`, `')}\``;
+						allPetHuds.addFields(
+							{ name: 'Pet HUDs', value: `${iPetHuds}` },
+						);
 					}
+
+					if (iItems) {
+						iItems.sort();
+						iItems = iItems.map(s => s.replace(/[_]/g, ' '));
+						const allItems = `\`${iItems.join('`, `')}\``;
+						allItems.addFields(
+							{ name: 'Items', value: `${iItems}` },
+						);
+					}
+
+					await message.channel.send(newIEmbed);
 				});
 			}
 		});

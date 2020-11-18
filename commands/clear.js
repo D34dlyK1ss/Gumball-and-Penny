@@ -23,9 +23,7 @@ module.exports = {
 					return;
 				}
 				else {
-					if (number > 100) {
-						number = 100;
-					}
+					if (number > 100) number = 100;
 					message.channel.bulkDelete(number, true).then(deleted => {
 						if (deleted.size != 1) plural = 'ns';
 						message.channel.send(`Apagámos \`${deleted.size}\` mensage${plural}!`).then(msg => msg.delete({ timeout: 5000 }));
