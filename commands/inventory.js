@@ -26,11 +26,11 @@ module.exports = {
 						iItems = docI.get('items');
 					iHuds.sort();
 					iHuds = iHuds.map(s => s.replace(/[_]/g, ' '));
-					const allHuds = `\`${iHuds.join('`, `')}\``,
-						newIEmbed = new MessageEmbed (iEmbed)
-							.addFields(
-								{ name: 'HUDs', value: `${allHuds}`, inline: true },
-							);
+					const allHuds = `\`${iHuds.join('`, `')}\``;
+					let newIEmbed = new MessageEmbed (iEmbed)
+						.addFields(
+							{ name: 'HUDs', value: `${allHuds}`, inline: true },
+						);
 
 					if (!docI.exists) {
 						return message.reply('não tens nenhum inventário!');
@@ -40,18 +40,20 @@ module.exports = {
 						iPetHuds.sort();
 						iPetHuds = iPetHuds.map(s => s.replace(/[_]/g, ' '));
 						const allPetHuds = `\`${iPetHuds.join('`, `')}\``;
-						allPetHuds.addFields(
-							{ name: 'Pet HUDs', value: `${iPetHuds}` },
-						);
+						newIEmbed = new MessageEmbed (iEmbed)
+							.addFields(
+								{ name: 'Pet HUDs', value: `${allPetHuds}` },
+							);
 					}
 
 					if (iItems) {
 						iItems.sort();
 						iItems = iItems.map(s => s.replace(/[_]/g, ' '));
 						const allItems = `\`${iItems.join('`, `')}\``;
-						allItems.addFields(
-							{ name: 'Items', value: `${iItems}` },
-						);
+						newIEmbed = new MessageEmbed (iEmbed)
+							.addFields(
+								{ name: 'Items', value: `${allItems}` },
+							);
 					}
 
 					await message.channel.send(newIEmbed);
