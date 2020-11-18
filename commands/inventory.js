@@ -9,11 +9,11 @@ module.exports = {
 
 	execute(bot, message, command, args, db, prefix) {
 		const refP = db.collection('perfis').doc(message.author.id),
-			refI = db.collection('inventario').doc(message.author.id),
-			iEmbed = new MessageEmbed()
-				.setColor('#8000ff')
-				.setTitle(`Inventário de ${message.author.tag}`)
-				.setThumbnail(`${message.author.displayAvatarURL()}`);
+			refI = db.collection('inventario').doc(message.author.id);
+		let iEmbed = new MessageEmbed()
+			.setColor('#8000ff')
+			.setTitle(`Inventário de ${message.author.tag}`)
+			.setThumbnail(`${message.author.displayAvatarURL()}`);
 
 		refP.get().then(docP => {
 			if (!docP.exists) {
@@ -27,7 +27,7 @@ module.exports = {
 					iHuds.sort();
 					iHuds = iHuds.map(s => s.replace(/[_]/g, ' '));
 					const allHuds = `\`${iHuds.join('`, `')}\``;
-					let newIEmbed = new MessageEmbed (iEmbed)
+					iEmbed = new MessageEmbed (iEmbed)
 						.addFields(
 							{ name: 'HUDs', value: `${allHuds}`, inline: true },
 						);
@@ -40,7 +40,7 @@ module.exports = {
 						iPetHuds.sort();
 						iPetHuds = iPetHuds.map(s => s.replace(/[_]/g, ' '));
 						const allPetHuds = `\`${iPetHuds.join('`, `')}\``;
-						newIEmbed = new MessageEmbed (iEmbed)
+						iEmbed = new MessageEmbed (iEmbed)
 							.addFields(
 								{ name: 'Pet HUDs', value: `${allPetHuds}` },
 							);
@@ -50,13 +50,13 @@ module.exports = {
 						iItems.sort();
 						iItems = iItems.map(s => s.replace(/[_]/g, ' '));
 						const allItems = `\`${iItems.join('`, `')}\``;
-						newIEmbed = new MessageEmbed (iEmbed)
+						iEmbed = new MessageEmbed (iEmbed)
 							.addFields(
 								{ name: 'Items', value: `${allItems}` },
 							);
 					}
 
-					await message.channel.send(newIEmbed);
+					await message.channel.send(iEmbed);
 				});
 			}
 		});
