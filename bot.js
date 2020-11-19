@@ -146,40 +146,44 @@ bot.on('message', async message => {
 				return;
 			}
 			else {
-				const rewardsArray = ['10', '20', '30', '40', '50', '60', '70', '80', '90', '100'],
-					level = doc.get('level'),
-					xp = doc.get('xp'),
-					add = Math.floor(Math.random() * 11) + 50;
-				const newXP = xp + add;
+				const level = doc.get('level'),
+					xp = doc.get('xp');
+				let add = Math.floor(Math.random() * 11) + 50,
+					newXP;
 
-				if (newXP > 2000000) return;
+				refV.get().then(docV => {
+					if (docV.exists) add *= 2;
+				});
 
-				const newLevel = Math.floor(Math.sqrt(newXP / 2000000) * 100);
+				newXP = xp + add;
+
+				if (newXP > 2000000) newXP = 2000000;
+
+				const newLevel = Math.floor(Math.sqrt(newXP / 2000000) * 100),
+					refV = db.collection('vip').doc(message.author.id);
 
 				db.collection('perfis').doc(message.author.id).update({
 					xp: newXP,
-				});
+				}).then(() => {
+					if (newLevel != level) {
+						db.collection('perfis').doc(message.author.id).update({
+							level: newLevel,
+						});
 
-				if (newLevel != level) {
-					db.collection('perfis').doc(message.author.id).update({
-						level: newLevel,
-					});
-
-					if (newLevel > level) {
-						const bal = doc.get('balance'),
-							stringLevel = newLevel.toString(),
-							reward = rewards[`Level ${level + 1}`];
-
-						if (rewardsArray.includes(stringLevel)) {
-							db.collection('perfis').doc(message.author.id).update({
-								balance: bal + reward,
-							}).then(() => message.channel.send(`🎉 Parabéns ${message.author}, subiste para o nível ${newLevel} e recebeste ¤${reward}! 🆙💰`));
-						}
-						else {
-							message.channel.send(`🎉 Parabéns ${message.author}, subiste para o nível ${newLevel}! 🆙`);
+						if (newLevel > level) {
+							const bal = doc.get('balance'),
+								reward = rewards[`${level + 1}`];
+							if (rewards.levels.includes(newLevel)) {
+								db.collection('perfis').doc(message.author.id).update({
+									balance: bal + reward,
+								}).then(() => message.channel.send(`🎉 Parabéns ${message.author}, subiste para o nível ${newLevel} e recebeste ¤${reward}! 🆙💰`));
+							}
+							else {
+								message.channel.send(`🎉 Parabéns ${message.author}, subiste para o nível ${newLevel}! 🆙`);
+							}
 						}
 					}
-				}
+				});
 			}
 		});
 
