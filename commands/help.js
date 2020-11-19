@@ -28,7 +28,7 @@ module.exports = {
 				{ name: '⚠️ Moderação', value: '`ban`, `clear`, `kick`, `mute`, `tempmute`, `unmute`', inline: true },
 				{ name: '🌐 Servidor', value: '`members`, `serverinfo`, `setprefix`, `userinfo`', inline: true },
 				{ name: '🛠️ Utilidade', value: '`avatar`, `invite`, `ping`', inline: true },
-				{ name: '**Links**', value: '**[Servidor de Suporte](https://discord.com/invite/r249y37) - [Doar](https://ko-fi.com/d34dlyk1ss) - [Convida-nos!](https://discordapp.com/oauth2/authorize?&client_id=679041548955942914&scope=bot&permissions=272100438)**' },
+				{ name: '**Links**', value: '**[Servidor de Suporte](https://discord.com/invite/r249y37) - [Doar](https://www.patreon.com/officialgumballandpenny) - [Convida-nos!](https://discordapp.com/oauth2/authorize?&client_id=679041548955942914&scope=bot&permissions=272100438)**' },
 			);
 
 		if (args == null || args == '') {
