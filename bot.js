@@ -146,7 +146,8 @@ bot.on('message', async message => {
 			}
 			else {
 				const level = doc.get('level'),
-					xp = doc.get('xp');
+					xp = doc.get('xp'),
+					refV = db.collection('vip').doc(message.author.id);
 				let add = Math.floor(Math.random() * 11) + 50,
 					newXP;
 
@@ -158,8 +159,7 @@ bot.on('message', async message => {
 
 				if (newXP > 2000000) newXP = 2000000;
 
-				const newLevel = Math.floor(Math.sqrt(newXP / 2000000) * 100),
-					refV = db.collection('vip').doc(message.author.id);
+				const newLevel = Math.floor(Math.sqrt(newXP / 2000000) * 100);
 
 				db.collection('perfis').doc(message.author.id).update({
 					xp: newXP,

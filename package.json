@@ -5,6 +5,7 @@
   "main": "bot.js",
   "author": "D34dlyK!$$",
   "dependencies": {
+    "@discordjs/opus": "^0.3.3",
     "canvas": "^2.6.1",
     "common-tags": "^1.8.0",
     "dblapi.js": "^2.4.1",
