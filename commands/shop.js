@@ -332,7 +332,7 @@ module.exports = {
 			default:
 				petsEmbed = new MessageEmbed(mainEmbed)
 					.setTitle('Loja Incrível - Pets')
-					.setDescription(`\`${prefix}shop pets [Categoria]\` para comprar.`)
+					.setDescription(`\`${prefix}shop pets [categoria]\` para comprar.`)
 					.setFooter('Página 1 de 1')
 					.spliceFields(0, mainEmbed.fields.length, [
 						{ name: 'Comuns', value: '\u200B', inline: true },
@@ -445,7 +445,8 @@ module.exports = {
 						.setFooter('Página 3 de 3')
 						.spliceFields(0, mainEmbed.fields.length, [
 							{ name: 'Sans', value: `Undertale\n**${items.huds.sans.price}¤**`, inline: true },
-							{ name: 'Scorpion2', value: `Mortal Kombat\n**${items.huds.scorpion.price}¤**`, inline: true },
+							{ name: 'Scorpion', value: `Mortal Kombat\n**${items.huds.scorpion.price}¤**`, inline: true },
+							{ name: 'Scorpion2', value: `Mortal Kombat\n**${items.huds.scorpion2.price}¤**`, inline: true },
 							{ name: 'Springtrap', value: `Five Nights at Freddy's\n**${items.huds.springtrap.price}¤**`, inline: true },
 							{ name: 'Sub-Zero', value: `Mortal Kombat\n**${items.huds['sub-zero'].price}¤**`, inline: true },
 							{ name: 'The Hillbilly', value: `Dead by Daylight\n**${items.huds['the_hillbilly'].price}¤**`, inline: true },
@@ -465,7 +466,6 @@ module.exports = {
 							{ name: 'Flappy Bird', value: `\n**${items.huds.flappy_bird.price}¤**`, inline: true },
 							{ name: 'Funtime Foxy', value: `Five Nights at Freddy's\n**${items.huds.funtime_foxy.price}¤**`, inline: true },
 							{ name: 'Murder Monkeys', value: `Dark Deception\n**${items.huds.murder_monkeys.price}¤**`, inline: true },
-							{ name: 'Scorpion', value: `Mortal Kombat\n**${items.huds.scorpion.price}¤**`, inline: true },
 						]);
 					break;
 				}
