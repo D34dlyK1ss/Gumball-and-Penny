@@ -149,7 +149,7 @@ module.exports = {
 						return message.reply('os bots não criam perfis! 😂 ');
 					}
 					else {
-						return message.reply(`${user.tag} ainda não criou um perfil!`);
+						return message.reply(`**${user.tag}** ainda não criou um perfil!`);
 					}
 				}
 				else {
