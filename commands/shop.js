@@ -480,7 +480,7 @@ module.exports = {
 						.setFooter('Página 2 de 2')
 						.spliceFields(0, mainEmbed.fields.length, [
 							{ name: 'L', value: `Death Note\n${items.huds.l.price}`, inline: true },
-							{ name: 'Lelouch', value: `Code Geass\n${items.huds.lelouch1.price}`, inline: true },
+							{ name: 'Lelouch', value: `Code Geass\n${items.huds.lelouch.price}`, inline: true },
 							{ name: 'Lelouch2', value: `Code Geass\n${items.huds.lelouch2.price}`, inline: true },
 							{ name: 'Shiro', value: `No Game No Life\n${items.huds.shiro.price}`, inline: true },
 							{ name: 'Sora & Shiro', value: `No Game No Life\n${items.huds['sora_&_shiro'].price}`, inline: true },
