@@ -82,13 +82,12 @@ es.onopen = () => {
 es.onmessage = messageEvent => {
 	const data = JSON.parse(messageEvent.data);
 	const type = data.event.body.type,
-		authorization = data.event.headers.authorization;
-	let userID;
-
-	if (authorization === 'Gumball&PennyDBL') {
-		if (type != 'upvote') return;
-
+		agent = data.event.headers['user-agent'],
+		authorization = data.event.headers.authorization,
 		userID = data.event.body.user;
+
+	if (agent == 'DBL' && authorization === 'Gumball&PennyDBL') {
+		if (type != 'upvote') return;
 
 		const ref = db.collection('perfis').doc(userID);
 
