@@ -332,7 +332,7 @@ module.exports = {
 			default:
 				petsEmbed = new MessageEmbed(mainEmbed)
 					.setTitle('Loja Incrível - Pets')
-					.setDescription(`\`${prefix}shop buy pet [Nome do Animal]\` para comprar.`)
+					.setDescription(`\`${prefix}shop pets [Categoria]\` para comprar.`)
 					.setFooter('Página 1 de 1')
 					.spliceFields(0, mainEmbed.fields.length, [
 						{ name: 'Comuns', value: '\u200B', inline: true },
@@ -502,7 +502,7 @@ module.exports = {
 							{ name: 'Kaneki2', value: `Tokyo Ghoul\n${items.huds.kaneki2.price}`, inline: true },
 							{ name: 'Morioh Gang', value: `Jojo's Bizarre Adventure Part 4\n${items.huds.morioh_gang.price}`, inline: true },
 							{ name: 'Naruto', value: `Naruto\n${items.huds.naruto.price}`, inline: true },
-							{ name: 'Nezuko Kamado', value: `Naruto\n${items.huds.nezuko_kamado.price}`, inline: true },
+							{ name: 'Nezuko Kamado', value: `Demon Slayer\n${items.huds.nezuko_kamado.price}`, inline: true },
 						]);
 					break;
 				}
