@@ -28,7 +28,7 @@ module.exports = {
 				{ name: '⚠️ Moderação', value: '`ban`, `clear`, `kick`, `mute`, `tempmute`, `unmute`', inline: true },
 				{ name: '🌐 Servidor', value: '`members`, `serverinfo`, `setprefix`, `userinfo`', inline: true },
 				{ name: '🛠️ Utilidade', value: '`avatar`, `invite`, `ping`', inline: true },
-				{ name: '**Links**', value: '**[Convida-nos!](https://discordapp.com/oauth2/authorize?&client_id=679041548955942914&scope=bot&permissions=272100438) - [Servidor de Suporte](https://discord.com/invite/r249y37) - [Doar](https://ko-fi.com/officialgumballandpenny/commissions)**' },
+				{ name: '**Links**', value: '**[Convida-nos!](https://discordapp.com/oauth2/authorize?&client_id=679041548955942914&scope=bot&permissions=272100438) - [Servidor de Suporte](https://discord.gg/FaUGnB25hF) - [Doar](https://ko-fi.com/officialgumballandpenny/commissions)**' },
 			);
 
 		if (args == null || args == '') {
