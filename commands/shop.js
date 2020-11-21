@@ -360,15 +360,15 @@ module.exports = {
 					.setDescription(`\`${prefix}shop buy pethud [Nome do Item]\` para comprar ou \`${prefix}shop view pethud [item]\` para ver.`)
 					.setFooter('Página 1 de 1')
 					.spliceFields(0, mainEmbed.fields.length, [
-						{ name: 'Black', value: `${items.petHuds.black.price}¤**`, inline: true },
-						{ name: 'Blue', value: `${items.petHuds.blue.price}¤**`, inline: true },
-						{ name: 'Brown', value: `${items.petHuds.brown.price}¤**`, inline: true },
-						{ name: 'Green', value: `${items.petHuds.green.price}¤**`, inline: true },
-						{ name: 'Orange', value: `${items.petHuds.orange.price}¤**`, inline: true },
-						{ name: 'Pink', value: `${items.petHuds.pink.price}¤**`, inline: true },
-						{ name: 'Purple', value: `${items.petHuds.purple.price}¤**`, inline: true },
-						{ name: 'Red', value: `${items.petHuds.red.price}¤**`, inline: true },
-						{ name: 'Yellow', value: `${items.petHuds.yellow.price}¤**`, inline: true },
+						{ name: 'Black', value: `**${items.petHuds.black.price}¤**`, inline: true },
+						{ name: 'Blue', value: `**${items.petHuds.blue.price}¤**`, inline: true },
+						{ name: 'Brown', value: `**${items.petHuds.brown.price}¤**`, inline: true },
+						{ name: 'Green', value: `**${items.petHuds.green.price}¤**`, inline: true },
+						{ name: 'Orange', value: `**${items.petHuds.orange.price}¤**`, inline: true },
+						{ name: 'Pink', value: `**${items.petHuds.pink.price}¤**`, inline: true },
+						{ name: 'Purple', value: `**${items.petHuds.purple.price}¤**`, inline: true },
+						{ name: 'Red', value: `**${items.petHuds.red.price}¤**`, inline: true },
+						{ name: 'Yellow', value: `**${items.petHuds.yellow.price}¤**`, inline: true },
 					]);
 				message.channel.send(petHudColorsEmbed);
 				break;
@@ -378,11 +378,11 @@ module.exports = {
 					.setDescription(`\`${prefix}shop buy pethud [Nome do Item]\` para comprar ou \`${prefix}shop view hud [item]\` para ver.`)
 					.setFooter('Página 1 de 1')
 					.spliceFields(0, mainEmbed.fields.length, [
-						{ name: 'Bones', value: `${items.petHuds.bones.price}¤**`, inline: true },
-						{ name: 'Foxes', value: `${items.petHuds.foxes.price}¤**`, inline: true },
-						{ name: 'Pokemon', value: `${items.petHuds.pokemon.price}¤**`, inline: true },
-						{ name: 'Undertale', value: `${items.petHuds.undertale.price}¤**`, inline: true },
-						{ name: 'Winter', value: `${items.petHuds.winter.price}¤**`, inline: true },
+						{ name: 'Bones', value: `**${items.petHuds.bones.price}¤**`, inline: true },
+						{ name: 'Foxes', value: `**${items.petHuds.foxes.price}¤**`, inline: true },
+						{ name: 'Pokemon', value: `**${items.petHuds.pokemon.price}¤**`, inline: true },
+						{ name: 'Undertale', value: `**${items.petHuds.undertale.price}¤**`, inline: true },
+						{ name: 'Winter', value: `**${items.petHuds.winter.price}¤**`, inline: true },
 					]);
 				message.channel.send(petHudVIPEmbed);
 				break;
