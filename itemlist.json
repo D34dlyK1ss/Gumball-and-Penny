@@ -423,7 +423,7 @@
 			"species": "Cabra",
 			"gender": "random",
 			"pronoun": "uma",
-			"price": 15000,
+			"price": 8000,
 			"vip": false
 		},
 
@@ -431,7 +431,7 @@
 			"species": "Cão",
 			"gender": "random",
 			"pronoun": "um",
-			"price": 15000,
+			"price": 10000,
 			"vip": false
 		},
 
@@ -448,7 +448,7 @@
 			"species": "Galinha",
 			"gender": "♀️",
 			"pronoun": "uma",
-			"price": 15000,
+			"price": 8000,
 			"vip": false
 		},
 
@@ -456,7 +456,7 @@
 			"species": "Gato",
 			"gender": "random",
 			"pronoun": "um",
-			"price": 15000,
+			"price": 10000,
 			"vip": false
 		},
 
@@ -524,7 +524,7 @@
 
 	"items": {
 		"name_license": {
-			"price": 5000
+			"price": 2000
 		}
 	},
 
