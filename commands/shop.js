@@ -247,7 +247,7 @@ module.exports = {
 										gender: `${gender}`,
 										hud: 'grey',
 										name: name,
-										nature: natures[rndN],
+										nature: natures[gender][rndN],
 										pet: pet,
 										species: titleCase(species),
 									}).then(() => {

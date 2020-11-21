@@ -1,1 +1,4 @@
-["Solitário", "Corajoso", "Dócil", "Preguiçoso", "Tímido", "Sério", "Alegre", "Ingénuo", "Calmo", "Peculiar", "Suicida"]
+{
+	"♂️": ["Solitário", "Corajoso", "Dócil", "Preguiçoso", "Tímido", "Sério", "Alegre", "Ingénuo", "Calmo", "Peculiar", "Suicida"],
+	"♀️": ["Solitária", "Corajosa", "Dócil", "Preguiçosa", "Tímida", "Séria", "Alegre", "Ingénua", "Calma", "Peculiar", "Suicida"]
+}
