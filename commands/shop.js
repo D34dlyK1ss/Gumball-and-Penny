@@ -375,7 +375,7 @@ module.exports = {
 			case 'vip':
 				petHudVIPEmbed = new MessageEmbed(mainEmbed)
 					.setTitle('Loja Incrível - PetHUDs (VIP)')
-					.setDescription(`\`${prefix}shop buy pethud [Nome do Item]\` para comprar ou \`${prefix}shop view hud [item]\` para ver.`)
+					.setDescription(`\`${prefix}shop buy pethud [Nome do Item]\` para comprar ou \`${prefix}shop view pethud [item]\` para ver.`)
 					.setFooter('Página 1 de 1')
 					.spliceFields(0, mainEmbed.fields.length, [
 						{ name: 'Bones', value: `**${items.petHuds.bones.price}¤**`, inline: true },
