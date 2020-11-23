@@ -380,7 +380,11 @@ module.exports = {
 					.spliceFields(0, mainEmbed.fields.length, [
 						{ name: 'Bones', value: `**${items.petHuds.bones.price}¤**`, inline: true },
 						{ name: 'Foxes', value: `**${items.petHuds.foxes.price}¤**`, inline: true },
+						{ name: 'Ghost-Type', value: `Pokémon\n**${items.petHuds['ghost-type'].price}¤**`, inline: true },
+						{ name: 'Luna', value: `Sailor Moon**${items.petHuds.luna.price}¤**`, inline: true },
 						{ name: 'Pokemon', value: `**${items.petHuds.pokemon.price}¤**`, inline: true },
+						{ name: 'Saitama', value: `One Punch Man**${items.petHuds.saitama.price}¤**`, inline: true },
+						{ name: 'Totoro', value: `My Neighbor Totoro**${items.petHuds.totoro.price}¤**`, inline: true },
 						{ name: 'Undertale', value: `**${items.petHuds.undertale.price}¤**`, inline: true },
 						{ name: 'Winter', value: `**${items.petHuds.winter.price}¤**`, inline: true },
 					]);
