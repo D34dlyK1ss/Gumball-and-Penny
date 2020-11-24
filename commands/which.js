@@ -12,10 +12,10 @@ module.exports = {
 			which = require('../which.json');
 
 		if (args == null || args == '' || !which[args]) {
-			return message.reply(`tens de mencionar um anime disponível! Usa \`${prefix}help which\` para mais informação.`);
+			return message.reply(`tens de mencionar um anime disponível! Usa \`${prefix}help which\` para mais informação.`).catch();
 		}
 		else {
-			message.channel.send(`És ${which[args][last]}!`, { files: [`images/which/${args} (${last}).jpg`] });
+			message.channel.send(`És ${which[args][last]}!`, { files: [`images/which/${args} (${last}).jpg`] }).catch();
 		}
 	},
 };

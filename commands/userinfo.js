@@ -52,6 +52,6 @@ module.exports = {
 			)
 			.setFooter(`Criado ${created} atrás (${createdDate.format('LLLL')})`);
 
-		message.channel.send(embed);
+		message.channel.send(embed).catch();
 	},
 };

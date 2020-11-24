@@ -10,10 +10,10 @@ module.exports = {
 	execute(bot, message, command, args, db, prefix, prefixes) {
 		if (!message.member.hasPermission('MANAGE_GUILD')) {
 			message.delete();
-			return message.reply('não tens permissão para usar este comando! 💢').then(msg => { msg.delete({ timeout: 3000 }); });
+			return message.reply('não tens permissão para usar este comando! 💢').then(msg => { msg.delete({ timeout: 3000 }); }).catch();
 		}
 		else if (args.length === 0) {
-			return message.reply('precisamos de saber qual é o prefixo desejado!');
+			return message.reply('precisamos de saber qual é o prefixo desejado!').catch();
 		}
 		else {
 			const newPrefix = args[0].toLowerCase(),
@@ -30,7 +30,7 @@ module.exports = {
 					prefix: newPrefix,
 				}).catch(err => { console.error(err); });
 			}
-			message.channel.send('O prefixo para este servidor agora é `' + newPrefix + '`');
+			message.channel.send('O prefixo para este servidor agora é `' + newPrefix + '`').catch();
 		}
 	},
 };

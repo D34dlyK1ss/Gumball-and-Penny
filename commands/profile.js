@@ -43,7 +43,7 @@ module.exports = {
 		case 'create':
 			db.collection('perfis').doc(message.author.id).get().then(async doc => {
 				if (doc.exists) {
-					return message.channel.send('Já tens um perfil criado, não podes criar outro! 💢');
+					return message.channel.send('Já tens um perfil criado, não podes criar outro! 💢').catch();
 				}
 				else {
 					db.collection('perfis').doc(message.author.id).set({
@@ -140,16 +140,16 @@ module.exports = {
 			refP.get().then(async doc => {
 				if (!doc.exists) {
 					if (user == message.author) {
-						return message.reply(`ainda não criaste um perfil! Para criares um perfil usa \`${prefix}profile create\`!`);
+						return message.reply(`ainda não criaste um perfil! Para criares um perfil usa \`${prefix}profile create\`!`).catch();
 					}
 					else if (user == bot.user) {
-						return message.reply('nós não precisamos de ter um perfil!');
+						return message.reply('nós não precisamos de ter um perfil!').catch();
 					}
 					else if (user.bot) {
-						return message.reply('os bots não criam perfis! 😂 ');
+						return message.reply('os bots não criam perfis! 😂 ').catch();
 					}
 					else {
-						return message.reply(`**${user.tag}** ainda não criou um perfil!`);
+						return message.reply(`**${user.tag}** ainda não criou um perfil!`).catch();
 					}
 				}
 				else {
@@ -243,7 +243,7 @@ module.exports = {
 
 					const attachment = new MessageAttachment(canvas.toBuffer(), 'profile.png');
 
-					message.channel.send(attachment);
+					message.channel.send(attachment).catch();
 				}
 			});
 			break;

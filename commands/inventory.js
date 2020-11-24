@@ -17,7 +17,7 @@ module.exports = {
 
 		refP.get().then(docP => {
 			if (!docP.exists) {
-				return message.reply(`ainda não criaste um perfil! Para criares um perfil usa \`${prefix}profile create\`!`);
+				return message.reply(`ainda não criaste um perfil! Para criares um perfil usa \`${prefix}profile create\`!`).catch();
 			}
 			else {
 				refI.get().then(async docI => {
@@ -33,7 +33,7 @@ module.exports = {
 						);
 
 					if (!docI.exists) {
-						return message.reply('não tens nenhum inventário!');
+						return message.reply('não tens nenhum inventário!').catch();
 					}
 
 					if (iPetHuds) {
@@ -56,7 +56,7 @@ module.exports = {
 							);
 					}
 
-					await message.channel.send(iEmbed);
+					await message.channel.send(iEmbed).catch();
 				});
 			}
 		});

@@ -34,10 +34,10 @@ module.exports = {
 			db.collection('pet').doc(message.author.id).get().then(doc => {
 				const pet = doc.get('pet');
 				if (!doc.exists) {
-					return message.reply(`ainda não compraste um pet! Para comprares um vai à Loja Incrível usando \`${prefix}shop pets\`!`);
+					return message.reply(`ainda não compraste um pet! Para comprares um vai à Loja Incrível usando \`${prefix}shop pets\`!`).catch();
 				}
 				else if (items.pets[pet].vip) {
-					return message.reply(`não podes mudar o nome d${items.pets[pet].pronoun} **${titleCase(doc.get('pet'))}**!`);
+					return message.reply(`não podes mudar o nome d${items.pets[pet].pronoun} **${titleCase(doc.get('pet'))}**!`).catch();
 				}
 				else {
 					refI.get().then(docI => {
@@ -51,16 +51,16 @@ module.exports = {
 						}
 
 						if (!invItems.includes('name_license')) {
-							return message.reply('não tens uma **Licença de Nome**!');
+							return message.reply('não tens uma **Licença de Nome**!').catch();
 						}
 						else if (!newName || newName == '') {
-							return message.reply('não escolheste nome nenhum!');
+							return message.reply('não escolheste nome nenhum!').catch();
 						}
 						else if (newName == doc.get('name')) {
-							return message.reply('o teu pet já tem esse nome!');
+							return message.reply('o teu pet já tem esse nome!').catch();
 						}
 						else if (args.length > 24) {
-							return message.reply(`o limite máximo de caracteres para o nome é de 24!\nEssa alcunha tem ${args.length}.`);
+							return message.reply(`o limite máximo de caracteres para o nome é de 24!\nEssa alcunha tem ${args.length}.`).catch();
 						}
 						else {
 							invItems.splice(invItems.findIndex(item => item == 'name_license'), 1);
@@ -71,7 +71,7 @@ module.exports = {
 							db.collection('pet').doc(message.author.id).update({
 								name: newName,
 							}).then(() => {
-								message.reply(`o nome do teu pet foi alterado para ${newName}!`);
+								message.reply(`o nome do teu pet foi alterado para ${newName}!`).catch();
 							}).catch(err => { console.error(err); });
 						}
 					});
@@ -82,7 +82,7 @@ module.exports = {
 			db.collection('pet').doc(message.author.id).get().then(docP => {
 				if (!docP.exists) {
 					if (user == message.author) {
-						return message.reply(`ainda não compraste um pet! Para comprares um vai à Loja Incrível usando \`${prefix}shop pets\`!`);
+						return message.reply(`ainda não compraste um pet! Para comprares um vai à Loja Incrível usando \`${prefix}shop pets\`!`).catch();
 					}
 				}
 				else {
@@ -93,16 +93,16 @@ module.exports = {
 						newHud = newHud.concat(args.slice(0)).toLowerCase().replace(/[ ]/g, '_');
 
 						if (!newHud || newHud == '') {
-							return message.reply('não escolheste um HUD!');
+							return message.reply('não escolheste um HUD!').catch();
 						}
 						else if (!petHuds.includes(`${newHud}`)) {
-							return message.reply('não tens esse HUD!');
+							return message.reply('não tens esse HUD!').catch();
 						}
 						else {
 							db.collection('pet').doc(message.author.id).update({
 								hud: newHud,
 							}).then(() => {
-								message.reply(`alteraste o teu HUD para **${titleCase(args)}**`);
+								message.reply(`alteraste o teu HUD para **${titleCase(args)}**`).catch();
 							}).catch(err => { console.error(err); });
 						}
 					});
@@ -113,7 +113,7 @@ module.exports = {
 			db.collection('pet').doc(message.author.id).get().then(docP => {
 				if (!docP.exists) {
 					if (user == message.author) {
-						return message.reply('não tens pet nenhum para dar para adoção!');
+						return message.reply('não tens pet nenhum para dar para adoção!').catch();
 					}
 				}
 				else {
@@ -132,7 +132,7 @@ module.exports = {
 								iPetHUDs.splice(iPetHUDs.findIndex(petHud => petHud == `${pet}`), 1);
 							});
 						}
-						await message.reply(`${pronoun} **${petName}** foi dad${gender} para adoção!`);
+						await message.reply(`${pronoun} **${petName}** foi dad${gender} para adoção!`).catch();
 					});
 				}
 			});
@@ -141,16 +141,16 @@ module.exports = {
 			refP.get().then(async doc => {
 				if (!doc.exists) {
 					if (user == message.author) {
-						return message.reply(`ainda não compraste um pet! Para comprares um vai à Loja Incrível usando \`${prefix}shop pets\`!`);
+						return message.reply(`ainda não compraste um pet! Para comprares um vai à Loja Incrível usando \`${prefix}shop pets\`!`).catch();
 					}
 					else if (user == bot.user) {
-						return message.reply('nós não temos um pet!');
+						return message.reply('nós não temos um pet!').catch();
 					}
 					else if (user.bot) {
-						return message.reply('os bots não têm pets! 😂 ');
+						return message.reply('os bots não têm pets! 😂 ').catch();
 					}
 					else {
-						return message.reply(`${user.tag} ainda não comprou um pet!`);
+						return message.reply(`${user.tag} ainda não comprou um pet!`).catch();
 					}
 				}
 				else {
@@ -214,7 +214,7 @@ module.exports = {
 
 						const attachment = new MessageAttachment(canvas.toBuffer(), 'pet.png');
 
-						await message.channel.send(attachment);
+						await message.channel.send(attachment).catch();
 					});
 				}
 			});

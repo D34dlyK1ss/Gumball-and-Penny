@@ -5,6 +5,6 @@ module.exports = {
 	usage: 'members',
 
 	execute(bot, message) {
-		message.channel.send(`**${message.guild.name}** tem **${message.guild.memberCount}** membros!`);
+		message.channel.send(`**${message.guild.name}** tem **${message.guild.memberCount}** membros!`).catch();
 	},
 };

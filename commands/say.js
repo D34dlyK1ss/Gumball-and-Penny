@@ -7,13 +7,13 @@ module.exports = {
 	execute(bot, message, command, args) {
 		message.delete();
 		if (args == null || args == '') {
-			return message.reply('não escreveste nada!').then(msg => msg.delete({ timeout: 5000 }));
+			return message.reply('não escreveste nada!').then(msg => msg.delete({ timeout: 5000 })).catch();
 		}
 		else if (args[0].startsWith('http')) {
-			return message.reply('não podemos escrever links!').then(msg => msg.delete({ timeout: 5000 })).catch(err => { console.error(err); });
+			return message.reply('não podemos escrever links!').then(msg => msg.delete({ timeout: 5000 })).catch();
 		}
 		else {
-			message.channel.send(args.join(' '));
+			message.channel.send(args.join(' ')).catch();
 		}
 	},
 };

@@ -49,10 +49,10 @@ module.exports = {
 
 				const attachment = new MessageAttachment(hudCanvas.toBuffer(), `${hud}_preview.png`);
 
-				message.channel.send(attachment);
+				message.channel.send(attachment).catch();
 			}
 			catch {
-				return message.reply('esse HUD não existe!');
+				return message.reply('esse HUD não existe!').catch();
 			}
 
 		}
@@ -68,10 +68,10 @@ module.exports = {
 
 				const attachment = new MessageAttachment(hudCanvas.toBuffer(), `${petHud}_preview.png`);
 
-				message.channel.send(attachment);
+				message.channel.send(attachment).catch();
 			}
 			catch {
-				return message.reply('esse HUD não existe!');
+				return message.reply('esse HUD não existe!').catch();
 			}
 
 		}
@@ -120,7 +120,7 @@ module.exports = {
 				hud = hud.concat(args).toLowerCase().replace(/[,]/g, '_');
 				refP.get().then(docP => {
 					if (!docP.exists) {
-						return message.reply(`ainda não criaste um perfil! Para criares um perfil usa \`${prefix}profile create\`!`);
+						return message.reply(`ainda não criaste um perfil! Para criares um perfil usa \`${prefix}profile create\`!`).catch();
 					}
 					else {
 						const bal = docP.get('balance'),
@@ -128,17 +128,17 @@ module.exports = {
 							cost = items.huds[itemName].price;
 
 						if (!cost) {
-							return message.reply('esse hud não está à venda!');
+							return message.reply('esse hud não está à venda!').catch();
 						}
 						else {
 							refI.get().then(docI => {
 								const iHuds = docI.get('huds');
 
 								if (iHuds.includes(itemName)) {
-									return message.reply('já tens este HUD!');
+									return message.reply('já tens este HUD!').catch();
 								}
 								else if (cost > bal) {
-									return message.reply('não tens dinheiro suficiente!');
+									return message.reply('não tens dinheiro suficiente!').catch();
 								}
 								else {
 									iHuds.push(itemName);
@@ -151,7 +151,7 @@ module.exports = {
 										huds: iHuds,
 									}).then(() => {
 										const name = itemName.toLowerCase().replace(/[_]/g, ' ');
-										message.reply(`compraste o HUD **${titleCase(name)}**!`);
+										message.reply(`compraste o HUD **${titleCase(name)}**!`).catch();
 									});
 								}
 							});
@@ -163,7 +163,7 @@ module.exports = {
 				petHud = petHud.concat(args[2]).toLowerCase().replace(/[,]/g, '_');
 				refP.get().then(docP => {
 					if (!docP.exists) {
-						return message.reply(`ainda não criaste um perfil! Para criares um perfil usa \`${prefix}profile create\`!`);
+						return message.reply(`ainda não criaste um perfil! Para criares um perfil usa \`${prefix}profile create\`!`).catch();
 					}
 					else {
 						const bal = docP.get('balance'),
@@ -172,20 +172,20 @@ module.exports = {
 							vipPetHUD = items.petHuds[itemName].vip;
 						const userVIP = docP.get('vip');
 
-						if (!userVIP && vipPetHUD) return message.reply('precisas de ser VIP para comprares este HUD para pets!');
+						if (!userVIP && vipPetHUD) return message.reply('precisas de ser VIP para comprares este HUD para pets!').catch();
 
 						if (!cost) {
-							return message.reply('esse HUD para pets não está à venda!');
+							return message.reply('esse HUD para pets não está à venda!').catch();
 						}
 						else {
 							refI.get().then(docI => {
 								const iPetHUDs = docI.get('petHuds');
 
 								if (iPetHUDs.includes(itemName)) {
-									return message.reply('já tens este HUD para pets!');
+									return message.reply('já tens este HUD para pets!').catch();
 								}
 								else if (cost > bal) {
-									return message.reply('não tens dinheiro suficiente!');
+									return message.reply('não tens dinheiro suficiente!').catch();
 								}
 								else {
 									iPetHUDs.push(itemName);
@@ -199,7 +199,7 @@ module.exports = {
 
 										const name = itemName.toLowerCase().replace(/[_]/g, ' ');
 
-										message.reply(`compraste o HUD **${titleCase(name)}** para pets!`);
+										message.reply(`compraste o HUD **${titleCase(name)}** para pets!`).catch();
 									});
 								}
 							});
@@ -211,36 +211,36 @@ module.exports = {
 				pet = pet.concat(slugify(args[2])).toLowerCase().replace(/[,]/g, '_');
 				refPet.get().then(async docPet => {
 					if (docPet.exists) {
-						return message.reply(`já tens um pet! Se quiseres outro tens de dar o que tens para adoção usando \`${prefix}sendtoadoption\`!`);
+						return message.reply(`já tens um pet! Se quiseres outro tens de dar o que tens para adoção usando \`${prefix}sendtoadoption\`!`).catch();
 					}
 					else {
 						const itemName = pet.toLowerCase();
 						const cost = items.pets[itemName].price;
 
 						if (!cost) {
-							return message.reply('esse item não está à venda!');
+							return message.reply('esse item não está à venda!').catch();
 						}
 						else {
 							refP.get().then(docP => {
 								const bal = docP.get('balance');
 								if (cost > bal) {
-									return message.reply('não tens dinheiro suficiente!');
+									return message.reply('não tens dinheiro suficiente!').catch();
 								}
 								else {
-									const rndN = Math.floor(Math.random() * 11),
-										rndG = Math.floor(Math.random() * 1),
+									const rndN = Math.floor(Math.random() * 12),
+										rndG = Math.random(),
 										vipPet = items.pets[pet].vip,
 										userVIP = docP.get('vip');
 									let gender = items.pets[pet].gender,
 										species = items.pets[pet].species,
 										name = '';
 
-									if (!userVIP && vipPet) return message.reply('precisas de ser VIP para comprares este pet!');
+									if (!userVIP && vipPet) return message.reply('precisas de ser VIP para comprares este pet!').catch();
 
 									if (species == 'cao') species = 'cão';
 									else if (species == 'ponei') species = 'pónei';
 
-									if (gender == 'random') rndG == 0 ? gender = '♂️' : gender = '♀️';
+									if (gender == 'random') rndG < 0.5 ? gender = '♂️' : gender = '♀️';
 									if (vipPet) name = `${items.pets[pet].name}`;
 
 									refPet.set({
@@ -275,7 +275,7 @@ module.exports = {
 										const vip = items.pets[pet].vip;
 
 										if (vip) petName = name;
-										message.reply(`compraste ${items.pets[pet].pronoun} **${petName}**!`);
+										message.reply(`compraste ${items.pets[pet].pronoun} **${petName}**!`).catch();
 									});
 								}
 							});
@@ -310,7 +310,7 @@ module.exports = {
 						{ name: 'Happy', value: `Fairy Tail\n**${items.pets.happy.price}¤**`, inline: true },
 						{ name: 'Iggy', value: `Jojo's Bizzare Adventure\n**${items.pets.iggy.price}¤**`, inline: true },
 					]);
-				message.channel.send(petsVIPEmbed);
+				message.channel.send(petsVIPEmbed).catch();
 				break;
 			case 'comuns':
 				petsCommonEmbed = new MessageEmbed(mainEmbed)
@@ -327,7 +327,7 @@ module.exports = {
 						{ name: 'Pónei', value: `${items.pets.ponei.price}¤**`, inline: true },
 						{ name: 'Sapo', value: `${items.pets.sapo.price}¤**`, inline: true },
 					]);
-				message.channel.send(petsCommonEmbed);
+				message.channel.send(petsCommonEmbed).catch();
 				break;
 			default:
 				petsEmbed = new MessageEmbed(mainEmbed)
@@ -338,7 +338,7 @@ module.exports = {
 						{ name: 'Comuns', value: '\u200B', inline: true },
 						{ name: 'VIP', value: '\u200B', inline: true },
 					]);
-				message.channel.send(petsEmbed);
+				message.channel.send(petsEmbed).catch();
 				break;
 			}
 			break;
@@ -350,7 +350,7 @@ module.exports = {
 				.spliceFields(0, mainEmbed.fields.length, [
 					{ name: 'Name License', value: `Licença de Nome\n**${items.items.name_license.price}¤**`, inline: true },
 				]);
-			message.channel.send(itemsEmbed);
+			message.channel.send(itemsEmbed.catch());
 			break;
 		case 'pethuds':
 			switch (args[1]) {
@@ -370,7 +370,7 @@ module.exports = {
 						{ name: 'Red', value: `**${items.petHuds.red.price}¤**`, inline: true },
 						{ name: 'Yellow', value: `**${items.petHuds.yellow.price}¤**`, inline: true },
 					]);
-				message.channel.send(petHudColorsEmbed);
+				message.channel.send(petHudColorsEmbed).catch();
 				break;
 			case 'vip':
 				petHudVIPEmbed = new MessageEmbed(mainEmbed)
@@ -388,7 +388,7 @@ module.exports = {
 						{ name: 'Undertale', value: `**${items.petHuds.undertale.price}¤**`, inline: true },
 						{ name: 'Winter', value: `**${items.petHuds.winter.price}¤**`, inline: true },
 					]);
-				message.channel.send(petHudVIPEmbed);
+				message.channel.send(petHudVIPEmbed).catch();
 				break;
 			default:
 				petHudEmbed = new MessageEmbed(mainEmbed)
@@ -399,7 +399,7 @@ module.exports = {
 						{ name: 'Cores', value: '\u200B', inline: true },
 						{ name: 'VIP', value: '\u200B', inline: true },
 					]);
-				message.channel.send(petHudEmbed);
+				message.channel.send(petHudEmbed).catch();
 				break;
 			}
 			break;
@@ -421,7 +421,7 @@ module.exports = {
 						{ name: 'Red', value: `${items.huds.red.price}¤**`, inline: true },
 						{ name: 'Yellow', value: `${items.huds.yellow.price}¤**`, inline: true },
 					]);
-				message.channel.send(hudColorsEmbed);
+				message.channel.send(hudColorsEmbed).catch();
 				break;
 			case 'jogos':
 				switch (page) {
@@ -473,7 +473,7 @@ module.exports = {
 						]);
 					break;
 				}
-				message.channel.send(hudGamesEmbed);
+				message.channel.send(hudGamesEmbed).catch();
 				break;
 			case 'anime':
 				switch (page) {
@@ -510,7 +510,7 @@ module.exports = {
 						]);
 					break;
 				}
-				message.channel.send(hudAnimeEmbed);
+				message.channel.send(hudAnimeEmbed).catch();
 				break;
 			case 'cartoons':
 				hudCartoonsEmbed = new MessageEmbed(mainEmbed)
@@ -523,7 +523,7 @@ module.exports = {
 						{ name: 'Jake2', value: `Adventure Time\n**${items.huds.jake2.price}¤**`, inline: true },
 						{ name: 'Gumball & Darwin', value: `The Amazing World of Gumball\n**${items.huds['gumball_&_darwin'].price}¤**`, inline: true },
 					]);
-				message.channel.send(hudCartoonsEmbed);
+				message.channel.send(hudCartoonsEmbed).catch();
 				break;
 			case 'marvel':
 				hudMarvelEmbed = new MessageEmbed(mainEmbed)
@@ -539,7 +539,7 @@ module.exports = {
 						{ name: 'Spider-Man', value: `Herói\n**${items.huds['spider-man'].price}¤**`, inline: true },
 						{ name: 'Thanos', value: `Vilão\n**${items.huds.thanos.price}¤**`, inline: true },
 					]);
-				message.channel.send(hudMarvelEmbed);
+				message.channel.send(hudMarvelEmbed).catch();
 				break;
 			case 'dc':
 				hudDCEmbed = new MessageEmbed(mainEmbed)
@@ -551,7 +551,7 @@ module.exports = {
 						{ name: 'Joker', value: `Vilão\n**${items.huds.joker.price}¤**`, inline: true },
 						{ name: 'Superman', value: `Herói\n**${items.huds.superman.price}¤**`, inline: true },
 					]);
-				message.channel.send(hudDCEmbed);
+				message.channel.send(hudDCEmbed).catch();
 				break;
 			case 'vocaloids':
 				hudVocaloidsEmbed = new MessageEmbed(mainEmbed)
@@ -561,7 +561,7 @@ module.exports = {
 					.spliceFields(0, mainEmbed.fields.length, [
 						{ name: 'Miku Hatsune', value: `${items.huds.miku_hatsune.price}¤**`, inline: true },
 					]);
-				message.channel.send(hudVocaloidsEmbed);
+				message.channel.send(hudVocaloidsEmbed).catch();
 				break;
 			default:
 				hudEmbed = new MessageEmbed(mainEmbed)
@@ -576,7 +576,7 @@ module.exports = {
 						{ name: 'DC', value: '\u200B', inline: true },
 						{ name: 'Vocaloids', value: '\u200B', inline: true },
 					]);
-				message.channel.send(hudEmbed);
+				message.channel.send(hudEmbed).catch();
 				break;
 			}
 			break;
@@ -584,7 +584,7 @@ module.exports = {
 			mainEmbed = new MessageEmbed(mainEmbed)
 				.attachFiles(['./images/shop.gif'])
 				.setImage('attachment://shop.gif');
-			message.channel.send(mainEmbed);
+			message.channel.send(mainEmbed).catch();
 			break;
 		}
 	},

@@ -10,11 +10,11 @@ module.exports = {
 			rnd = Math.floor(Math.random() * 100) + 1;
 		}
 		else if (!Number.isInteger(rnd)) {
-			return message.reply('isso não é um número!');
+			return message.reply('isso não é um número!').catch();
 		}
 		else {
 			rnd = Math.floor(Math.random() * args) + 1;
 		}
-		message.channel.send(`${rnd}!`);
+		message.channel.send(`${rnd}!`).catch();
 	},
 };

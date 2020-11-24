@@ -15,7 +15,7 @@ module.exports = {
 
 		ref.get().then(doc => {
 			if (!doc.exists) {
-				return message.reply(`ainda não criaste um perfil! Para criares um perfil usa \`${prefix}profile create\`!`);
+				return message.reply(`ainda não criaste um perfil! Para criares um perfil usa \`${prefix}profile create\`!`).catch();
 			}
 			else {
 				const bal = doc.get('balance');
@@ -26,10 +26,10 @@ module.exports = {
 						let amount = parseInt(args[1]);
 
 						if (!amount) {
-							return message.reply('não indicaste uma quantia!');
+							return message.reply('não indicaste uma quantia!').catch();
 						}
 						else if (bal == 999999999) {
-							return message.reply('não podes adicionar mais dinheiro à tua conta bancária! 😧');
+							return message.reply('não podes adicionar mais dinheiro à tua conta bancária! 😧').catch();
 						}
 						else {
 							let newBal;
@@ -42,19 +42,19 @@ module.exports = {
 							ref.update({
 								balance: newBal,
 							}).then(() => {
-								return message.reply(`**¤${amount}** foram adicionados à tua conta bancária!`);
+								return message.reply(`**¤${amount}** foram adicionados à tua conta bancária!`).catch();
 							});
 						}
 					}
 					else {
-						message.reply('não tens permissão para usar este comando! 💢');
+						message.reply('não tens permissão para usar este comando! 💢').catch();
 					}
 					break;
 				default:
-					message.reply(`tens **¤${bal}**`);
+					message.reply(`tens **¤${bal}**`).catch();
 					break;
 				}
 			}
-		}).catch(err => { console.error(err); });
+		});
 	},
 };

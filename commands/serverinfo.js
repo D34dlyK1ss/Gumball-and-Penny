@@ -99,10 +99,10 @@ module.exports = {
 			const newEmbed = new Discord.MessageEmbed(lastEmbed)
 				.setAuthor(`${server.name}`)
 				.setThumbnail();
-			return message.channel.send(newEmbed);
+			return message.channel.send(newEmbed).catch();
 		}
 		else {
-			message.channel.send(embed);
+			message.channel.send(embed).catch();
 		}
 	},
 };

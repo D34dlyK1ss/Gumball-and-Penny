@@ -32,14 +32,14 @@ module.exports = {
 			);
 
 		if (args == null || args == '') {
-			return message.channel.send(helpEmbed);
+			return message.channel.send(helpEmbed).catch();
 		}
 		else {
 			args = args.toString();
 			const name = args.toLowerCase();
 			command = commands.get(name) || commands.find(c => c.aliases && c.aliases.includes(name));
 			if (!command) {
-				return message.reply('esse comando não existe!');
+				return message.reply('esse comando não existe!').catch();
 			}
 			else {
 				const commandEmbed = new Discord.MessageEmbed()
@@ -52,7 +52,7 @@ module.exports = {
 					);
 
 				if (!command.aliases) {
-					return message.channel.send(commandEmbed);
+					return message.channel.send(commandEmbed).catch();
 				}
 				else {
 					const lastEmbed = commandEmbed;
@@ -61,7 +61,7 @@ module.exports = {
 							{ name: 'Abreviações', value: `${command.aliases.join(', ')}` },
 						);
 
-					message.channel.send(newEmbed);
+					message.channel.send(newEmbed).catch();
 				}
 			}
 		}

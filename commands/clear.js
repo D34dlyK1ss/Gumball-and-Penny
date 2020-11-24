@@ -7,13 +7,13 @@ module.exports = {
 	execute(bot, message, command, args) {
 		message.delete().then(() => {
 			if (!message.member.hasPermission('MANAGE_MESSAGES')) {
-				return message.reply('não tens permissão para usar este comando! 💢').then(msg => { msg.delete({ timeout: 5000 }); });
+				return message.reply('não tens permissão para usar este comando! 💢').then(msg => { msg.delete({ timeout: 5000 }); }).catch();
 			}
 			else if (!message.channel.guild.me.hasPermission('MANAGE_MESSAGES')) {
-				return message.reply('nós não temos permissão para gerir mensagens!');
+				return message.reply('nós não temos permissão para gerir mensagens!').catch();
 			}
 			else if (args == '' || args == '0') {
-				return message.reply('tens de definir o número de mensagens que queres apagar!').then(msg => msg.delete({ timeout: 5000 }));
+				return message.reply('tens de definir o número de mensagens que queres apagar!').then(msg => msg.delete({ timeout: 5000 })).catch();
 			}
 			else {
 				let number = parseInt(args),
@@ -26,7 +26,7 @@ module.exports = {
 					if (number > 100) number = 100;
 					message.channel.bulkDelete(number, true).then(deleted => {
 						if (deleted.size != 1) plural = 'ns';
-						message.channel.send(`Apagámos \`${deleted.size}\` mensage${plural}!`).then(msg => msg.delete({ timeout: 5000 }));
+						message.channel.send(`Apagámos \`${deleted.size}\` mensage${plural}!`).then(msg => msg.delete({ timeout: 5000 })).catch();
 					});
 				}
 			}

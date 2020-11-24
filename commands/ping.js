@@ -15,6 +15,6 @@ module.exports = {
 				.setColor('#8000ff');
 
 			msg.edit(embed);
-		});
+		}).catch();
 	},
 };

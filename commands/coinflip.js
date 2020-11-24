@@ -13,25 +13,25 @@ module.exports = {
 		ref.get().then(doc => {
 			const money = parseInt(args[1]);
 			if (!doc.exists) {
-				return message.reply(`ainda não criaste um perfil! Para criares um perfil usa \`${prefix}profile create\`!`);
+				return message.reply(`ainda não criaste um perfil! Para criares um perfil usa \`${prefix}profile create\`!`).catch();
 			}
 			else if (!Number.isInteger(money) || (args[0] != 'cara' && args[0] != 'coroa')) {
-				return message.channel.send(`Sintaxe errada! Como usar: \`${prefix}coinflip [cara/coroa] [quantidade]\``);
+				return message.channel.send(`Sintaxe errada! Como usar: \`${prefix}coinflip [cara/coroa] [quantidade]\``).catch();
 			}
 			else {
 				const bal = doc.get('balance');
 
 				if ((bal + money) > 999999999) {
-					return message.reply('não podes ganhar mais dinheiro! 😧');
+					return message.reply('não podes ganhar mais dinheiro! 😧').catch();
 				}
 				else if (money > bal) {
-					return message.reply('não tens dinheiro suficiente!');
+					return message.reply('não tens dinheiro suficiente!').catch();
 				}
 				else if (money < 50) {
-					return message.reply('tens de apostar no mínimo ¤50!');
+					return message.reply('tens de apostar no mínimo ¤50!').catch();
 				}
 				else if (money > 1000) {
-					return message.reply('não podes apostar mais que ¤1000!');
+					return message.reply('não podes apostar mais que ¤1000!').catch();
 				}
 				else {
 					const value = Math.round(Math.random()),
@@ -49,17 +49,17 @@ module.exports = {
 						if (res != guess) {
 							ref.update({
 								balance: (bal - money),
-							}).then(() => { return message.reply(`perdeste ¤${money}!`); });
+							}).then(() => { return message.reply(`perdeste ¤${money}!`); }).catch();
 						}
 						else if (res == guess) {
 							const won = money * 2;
 							ref.update({
 								balance: (bal + won),
-							}).then(() => { message.reply(`ganhaste ¤${won}!`); });
+							}).then(() => { message.reply(`ganhaste ¤${won}!`); }).catch();
 						}
 					}));
 				}
 			}
-		}).catch(err => { console.error(err); });
+		});
 	},
 };

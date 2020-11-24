@@ -17,26 +17,26 @@ module.exports = {
 			const today = moment().format('L'),
 				lastDaily = doc.get('lastDaily');
 			if (!doc.exists) {
-				return message.reply(`ainda não criaste um perfil! Para criares um perfil usa \`${prefix}profile create\`!`);
+				return message.reply(`ainda não criaste um perfil! Para criares um perfil usa \`${prefix}profile create\`!`).catch();
 			}
 			else if (today == lastDaily) {
-				return message.reply(`poderás receber dinheiro outra vez ${moment().endOf('day').fromNow()}.`);
+				return message.reply(`poderás receber dinheiro outra vez ${moment().endOf('day').fromNow()}.`).catch();
 			}
 			else {
 				const bal = doc.get('balance');
 
 				if ((bal + daily) > 999999999) {
-					message.reply('não podes receber mais dinheiro! 😧');
+					message.reply('não podes receber mais dinheiro! 😧').catch();
 				}
 				else {
 					ref.update({
 						balance: (bal + daily),
 						lastDaily: today,
 					}).then(() => {
-						message.reply(`recebeste os teus ¤250 diários! Para receberes mais dinheiro usa \`${prefix}vote\``);
+						message.reply(`recebeste os teus ¤250 diários! Para receberes mais dinheiro usa \`${prefix}vote\``).catch();
 					}).catch(err => { console.error(err); });
 				}
 			}
-		}).catch(err => { console.error(err); });
+		});
 	},
 };

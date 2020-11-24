@@ -5,6 +5,6 @@ module.exports = {
 	usage: 'vote',
 
 	execute(bot, message) {
-		message.channel.send('Vota pelo bot a cada 12h para receberes ¤150!\nhttps://top.gg/bot/679041548955942914/vote');
+		message.channel.send('Vota pelo bot a cada 12h para receberes ¤150!\nhttps://top.gg/bot/679041548955942914/vote').catch();
 	},
 };

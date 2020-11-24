@@ -43,11 +43,11 @@ module.exports = {
 			}
 
 			if (!memberToUnmute.roles.cache.find(role => role.name === 'Muted')) {
-				return message.reply('esse membro não está muted!');
+				return message.reply('esse membro não está muted!').catch();
 			}
 			else {
 				memberToUnmute.roles.remove(muteRole);
-				message.channel.send(`${memberToUnmute} foi unmuted!`);
+				message.channel.send(`${memberToUnmute} foi unmuted!`).catch();
 			}
 		}
 	},
