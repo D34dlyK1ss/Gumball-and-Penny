@@ -15,11 +15,12 @@ module.exports = {
 		else {
 			const newLanguage = args[0].toLowerCase(),
 				ref = db.collection('servidores').doc(message.guild.id);
-			const oldLanguage = ref.get('language');
+			const oldLanguage = ref.get('language') || config.language;
 
-			if (newLanguage == config.language && newLanguage == oldLanguage) return message.reply(lang.error.sameLanguage).catch();
-
-			if (newLanguage == config.language && newLanguage != oldLanguage) {
+			if (newLanguage == oldLanguage) {
+				return message.reply(lang.error.sameLanguage).catch();
+			}
+			else if (newLanguage == config.language) {
 				languages[message.guild.id] = config.language;
 				ref.update({
 					language: FieldValue.delete(),
