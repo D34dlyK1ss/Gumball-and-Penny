@@ -27,7 +27,7 @@ module.exports = {
 					language: newLanguage,
 				}).catch(err => { console.error(err); });
 			}
-			message.channel.send(`${lang.language.isNow}\`${newLanguage}\``).catch();
+			message.channel.send(`${lang.setlanguage.isNow}\`${newLanguage}\``).catch();
 		}
 	},
 };
