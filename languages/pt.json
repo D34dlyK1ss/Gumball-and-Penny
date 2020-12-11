@@ -50,6 +50,7 @@
 	"nameLicense": "Licensa de Nome",
 	"page": "Página",
 	"toChangePage": "Para mudar de página usa ",
+	"forMoreInfo": " para mais informação.",
 
 	"error": {
 		"cmd": "ocorreu um erro ao tentar executar esse comando!",
@@ -262,6 +263,7 @@
 	},
 
 	"setlanguage": {
+		"noLanguage": "tens de selecionar uma linguagem disponível! Usa ",
 		"isNow": "Agora falaremos em Português 🇵🇹 neste servidor"
 	},
 
@@ -317,8 +319,7 @@
 	},
 
 	"which": {
-		"noSelect": "tens de selecionar um anime disponível! Usa ",
-		"forMoreInfo": " para mais informação."
+		"noSelect": "tens de selecionar um anime disponível! Usa "
 	},
 
 
@@ -505,7 +506,7 @@
 
 		"setlanguage": {
 			"category": "Servidor",
-			"description": "Muda a nossa linguagem para este servidor",
+			"description": "Muda a nossa linguagem para este servidor\nLinguagens disponíveis: `pt`, `en`",
 			"usage": "setlanguage [linguagem]"
 		},
 

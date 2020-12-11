@@ -8,7 +8,7 @@ module.exports = {
 			which = require('../which.json');
 
 		if (args == null || args == '' || !which[args]) {
-			return message.reply(`${lang.which.noSelect}\`${prefix}help which\`${lang.which.forMoreInfo}`).catch();
+			return message.reply(`${lang.which.noSelect}\`${prefix}help which\`${lang.forMoreInfo}`).catch();
 		}
 		else {
 			message.channel.send(`${which[args][last]}!`, { files: [`images/which/${args} (${last}).jpg`] }).catch();

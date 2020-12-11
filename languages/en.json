@@ -50,6 +50,7 @@
 	"nameLicense": "Name License",
 	"page": "Page",
 	"toChangePage": "To change page use ",
+	"forMoreInfo": " for more information.",
 
 	"error": {
 		"cmd": "there was an error when trying to execute that command!",
@@ -262,6 +263,7 @@
 	},
 
 	"setlanguage": {
+		"noLanguage": "you have to select an available language! Use ",
 		"isNow": "Now we'll speak in English 🇺🇸 in this server"
 	},
 
@@ -317,8 +319,7 @@
 	},
 
 	"which": {
-		"noSelect": "you have to select an available anime! Use ",
-		"forMoreInfo": " for more information."
+		"noSelect": "you have to select an available anime! Use "
 	},
 
 
@@ -505,7 +506,7 @@
 
 		"setlanguage": {
 			"category": "Server",
-			"description": "Change our language for this server",
+			"description": "Change our language for this server\nAvailable languages: `pt`, `en`",
 			"usage": "setlanguage [language]"
 		},
 

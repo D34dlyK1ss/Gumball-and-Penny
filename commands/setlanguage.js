@@ -13,8 +13,11 @@ module.exports = {
 			return message.reply(lang.error.noLangChosen).catch();
 		}
 		else {
-			const newLanguage = args[0].toLowerCase(),
+			const availableLangs = ['pt', 'en'],
+				newLanguage = args[0].toLowerCase(),
 				ref = db.collection('servidores').doc(message.guild.id);
+
+			if (!availableLangs.includes(newLanguage)) return message.reply(`${lang.setlanguage.noLanguage}\`${prefix}help setlanguage\`${lang.forMoreInfo}`).catch();
 
 			ref.get().then(doc => {
 				const oldLanguage = doc.get('language') || config.language;
