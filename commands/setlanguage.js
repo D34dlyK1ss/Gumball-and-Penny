@@ -32,8 +32,9 @@ module.exports = {
 					language: newLanguage,
 				}).catch(err => { console.error(err); });
 			}
-			lang = require(`../languages/${language}.json`);
-			message.channel.send(`${lang.setlanguage.isNow}`).catch();
+			require(`../languages/${language}.json`).then(async newLang => {
+				await message.channel.send(`${newLang.setlanguage.isNow}`).catch();
+			});
 		}
 	},
 };
