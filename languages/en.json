@@ -203,10 +203,6 @@
 		"yourPingIs": "Your ping is "
 	},
 
-	"prefix": {
-		"isNow": "Our prefix for this server is now "
-	},
-
 	"profile": {
 		"wasCreated": "you profile was created! Add a description with ",
 		"description": "description",
@@ -252,6 +248,14 @@
 			"us-south": "US South",
 			"us-west": "US West"
 		}
+	},
+
+	"setlanguage": {
+		"isNow": "Now we'll speak in English 🇺🇸 in this server "
+	},
+
+	"setprefix": {
+		"isNow": "Our prefix for this server is now "
 	},
 
 	"shop": {

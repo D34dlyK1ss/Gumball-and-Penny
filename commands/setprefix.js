@@ -27,7 +27,7 @@ module.exports = {
 					prefix: newPrefix,
 				}).catch(err => { console.error(err); });
 			}
-			message.channel.send(`${lang.prefix.isNow}\`${newPrefix}\``).catch();
+			message.channel.send(`${lang.setprefix.isNow}\`${newPrefix}\``).catch();
 		}
 	},
 };

@@ -95,7 +95,8 @@
 		"noVIPForPetHUD": "precisas de ser VIP para comprares este HUD para pets!",
 		"alreadyHasPet": "já tens um pet! Se quiseres outro tens de dar o que tens para adoção usando ",
 		"noItem": "esse item não existe!",
-		"noVIPForPet": "precisas de ser VIP para comprares este pet!"
+		"noVIPForPet": "precisas de ser VIP para comprares este pet!",
+		"noLangChosen": "precisamos de saber qual é a linguagem desejada!"
 	},
 	
 	"levelUp": {
@@ -211,10 +212,6 @@
 		"yourPingIs": "O teu ping é de "
 	},
 
-	"prefix": {
-		"isNow": "O nosso prefixo para este servidor agora é "
-	},
-
 	"profile": {
 		"wasCreated": "o teu perfil foi criado! Adiciona uma descricão com ",
 		"description": "descrição",
@@ -260,6 +257,14 @@
 			"us-south": "EUA Sul",
 			"us-west": "EUA Oeste"
 		}
+	},
+
+	"setlanguage": {
+		"isNow": "Agora falaremos em Português 🇵🇹 neste servidor "
+	},
+
+	"setprefix": {
+		"isNow": "O nosso prefixo para este servidor agora é "
 	},
 
 	"shop": {

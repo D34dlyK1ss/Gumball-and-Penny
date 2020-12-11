@@ -10,7 +10,7 @@ module.exports = {
 			return message.reply(lang.error.noPerm).then(msg => { msg.delete({ timeout: 3000 }); }).catch();
 		}
 		else if (!args) {
-			return message.reply(lang.error.noPrefixChosen).catch();
+			return message.reply(lang.error.noLangChosen).catch();
 		}
 		else {
 			const newLanguage = args[0].toLowerCase(),
