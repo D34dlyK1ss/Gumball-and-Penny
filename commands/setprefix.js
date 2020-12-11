@@ -17,7 +17,7 @@ module.exports = {
 				ref = db.collection('servidores').doc(message.guild.id);
 			const oldPrefix = ref.get('prefix');
 
-			if (newPrefix == config.prefix || newPrefix == oldPrefix) return message.reply(lang.error.samePrefix).catch();
+			if (newPrefix == config.prefix && newPrefix == oldPrefix) return message.reply(lang.error.samePrefix).catch();
 
 			if (newPrefix == config.prefix && newPrefix != oldPrefix) {
 				prefixes[message.guild.id] = config.prefix;

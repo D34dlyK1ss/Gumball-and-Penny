@@ -17,7 +17,7 @@ module.exports = {
 				ref = db.collection('servidores').doc(message.guild.id);
 			const oldLanguage = ref.get('language');
 
-			if (newLanguage == config.language || newLanguage == oldLanguage) return message.reply(lang.error.sameLanguage).catch();
+			if (newLanguage == config.language && newLanguage == oldLanguage) return message.reply(lang.error.sameLanguage).catch();
 
 			if (newLanguage == config.language && newLanguage != oldLanguage) {
 				languages[message.guild.id] = config.language;
