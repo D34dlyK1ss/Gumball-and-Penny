@@ -9,7 +9,7 @@ module.exports = {
 			message.delete();
 			return message.reply(lang.error.noPerm).then(msg => { msg.delete({ timeout: 3000 }); }).catch();
 		}
-		else if (!args) {
+		else if (!args || args == '') {
 			return message.reply(lang.error.noLangChosen).catch();
 		}
 		else {
