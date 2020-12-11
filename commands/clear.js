@@ -1,15 +1,15 @@
 module.exports = {
 	name: 'clear',
 
-	execute(bot, message, command, db, lang, supportServer, prefix, args) {
+	execute(bot, message, command, db, lang, language, supportServer, prefix, args) {
 		message.delete().then(() => {
 			if (!message.member.hasPermission('MANAGE_MESSAGES')) {
-				return message.reply(lang.userNoPerm).then(msg => { msg.delete({ timeout: 5000 }); }).catch();
+				return message.reply(lang.userNoPerm).catch();
 			}
 			else if (!message.channel.guild.me.hasPermission('MANAGE_MESSAGES')) {
-				return message.reply(lang.error.botNoManageMsgs).catch();
+				return message.reply(lang.error.botNoManageMsgs).then(msg => msg.delete({ timeout: 5000 })).catch();
 			}
-			else if (args == '' || args == '0') {
+			else if (!args || args == '0') {
 				return message.reply(lang.error.noNumberToDelete).then(msg => msg.delete({ timeout: 5000 })).catch();
 			}
 			else {
