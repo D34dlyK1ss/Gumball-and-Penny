@@ -17,14 +17,14 @@ module.exports = {
 				ref = db.collection('servidores').doc(message.guild.id);
 			const oldPrefix = ref.get('prefix');
 
-			if (oldPrefix == newPrefix) {
-				return message.reply(lang.error.samePrefix).catch();
-			}
-			else if (newPrefix == config.prefix) {
+			if (newPrefix == config.prefix && newPrefix != oldPrefix) {
 				prefixes[message.guild.id] = config.prefix;
 				ref.update({
 					prefix: FieldValue.delete(),
 				}).catch(err => { console.error(err); });
+			}
+			else if (newPrefix == config.prefix || newPrefix == oldPrefix) {
+				return message.reply(lang.error.samePrefix).catch();
 			}
 			else {
 				prefixes[message.guild.id] = newPrefix;
