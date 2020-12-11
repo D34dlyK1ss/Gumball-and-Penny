@@ -15,7 +15,12 @@ module.exports = {
 		else {
 			const newPrefix = args[0].toLowerCase(),
 				ref = db.collection('servidores').doc(message.guild.id);
-			if (newPrefix == config.prefix) {
+			const oldPrefix = ref.get('prefix');
+
+			if (oldPrefix == newPrefix) {
+				return message.reply(lang.error.samePrefix).catch();
+			}
+			else if (newPrefix == config.prefix) {
 				prefixes[message.guild.id] = config.prefix;
 				ref.update({
 					prefix: FieldValue.delete(),

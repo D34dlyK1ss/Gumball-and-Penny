@@ -85,9 +85,20 @@
 		"noPrefixChosen": "we need to know the desired prefix!",
 		"noLinks": "we can't write any links!",
 		"memberNotMuted": "that member isn't muted!",
-		"hasProfileAlready": "Já tens um perfil criado, não podes criar outro! 💢",
-		"noHUDChosen": "não escolheste um HUD!",
-		"noHaveHUD": "não tens esse HUD!"
+		"hasProfileAlready": "you already have a profile created, you can't create another! 💢",
+		"noHUDChosen": "you didn't choose a HUD!",
+		"noHaveHUD": "you don't have that HUD!",
+		"noHUD": "that HUD doesn't exist!",
+		"noPetHUD": "that Pet HUD doesn't exist!",
+		"alreadyHasHUD": "you already have HUD!",
+		"alreadyHasPetHUD": "you already have HUD!",
+		"noVIPForPetHUD": "you need to be VIP to buy this Pet HUD!",
+		"alreadyHasPet": "you already have a pet! If you want another one you have to give yours to adoption using",
+		"noItem": "that items doesn't exist!",
+		"noVIPForPet": "you need to be VIP to buy this pet!",
+		"noLangChosen": "we need to know the desired language!",
+		"samePrefix": "that's the same prefix we're using!",
+		"sameLanguage": "that's the same language we're speaking!"
 	},
 	
 	"levelUp": {
@@ -490,6 +501,12 @@
 			"category": "Server",
 			"description": "All server's info!",
 			"usage": "serverinfo"
+		},
+
+		"setlanguage": {
+			"category": "Server",
+			"description": "Change our language for this server",
+			"usage": "setlanguage [language]"
 		},
 
 		"setprefix": {

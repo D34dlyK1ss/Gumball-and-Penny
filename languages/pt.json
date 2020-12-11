@@ -92,11 +92,13 @@
 		"noPetHUD": "esse Pet HUD não existe!",
 		"alreadyHasHUD": "já tens este HUD!",
 		"alreadyHasPetHUD": "já tens este Pet HUD!",
-		"noVIPForPetHUD": "precisas de ser VIP para comprares este HUD para pets!",
+		"noVIPForPetHUD": "precisas de ser VIP para comprares este Pet HUD!",
 		"alreadyHasPet": "já tens um pet! Se quiseres outro tens de dar o que tens para adoção usando ",
 		"noItem": "esse item não existe!",
 		"noVIPForPet": "precisas de ser VIP para comprares este pet!",
-		"noLangChosen": "precisamos de saber qual é a linguagem desejada!"
+		"noLangChosen": "precisamos de saber qual é a linguagem desejada!",
+		"samePrefix": "esse prefixo é igual ao que usamos!",
+		"sameLanguage": "essa linguagem é igual à que falamos!"
 	},
 	
 	"levelUp": {
@@ -499,6 +501,12 @@
 			"category": "Servidor",
 			"description": "Todas as informações do servidor!",
 			"usage": "serverinfo"
+		},
+
+		"setlanguage": {
+			"category": "Servidor",
+			"description": "Muda a nossa linguagem para este servidor",
+			"usage": "setlanguage [linguagem]"
 		},
 
 		"setprefix": {
