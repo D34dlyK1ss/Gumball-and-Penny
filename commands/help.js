@@ -3,32 +3,24 @@ const Discord = require('discord.js');
 module.exports = {
 	name: 'help',
 	aliases: ['h'],
-	category: 'Ajuda',
-	description: 'Se não sabes, soubesses! :unamused:',
-	usage: 'help',
 
-	execute(bot, message, command, args, db, prefix) {
-		const { commands } = message.client,
-			update = `**GRANDE UPDATE:** Agora temos um sistema de 'Pets'!
-			Podes agora comprar um animal de estimação e até dar-lhe um nome!
-			Explora a Loja Incrível e usa \`${prefix}pet\` para saberes mais`;
+	execute(bot, message, command, db, lang, language, supportServer, prefix, args) {
+		const { commands } = message.client;
 		const helpEmbed = new Discord.MessageEmbed()
 			.setColor('#8000ff')
-			.setTitle('Ajuda')
+			.setTitle(lang.help)
 			.setAuthor(`${bot.user.tag}`, `${bot.user.displayAvatarURL()}`)
 			.setThumbnail(`${bot.user.displayAvatarURL()}`)
-			.setDescription(`Nós somos o Gumball e a Penny e temos como objetivo tornar qualquer servidor em que estamos num lugar divertido!
-			Em caso de dúvida nalgum comando usa \`${prefix}help [nome do comando]\`
-			${update}`)
+			.setDescription(`${lang.botDescription}\`${prefix}help [${lang.commandName}]\``)
 			.addFields(
-				{ name: '🎭 Ações', value: '`angry`, `cry`, `dance`, `hug`, `kiss`, `laugh`, `pat`, `run`, `slap`', inline: true },
-				{ name: '🎰 Casino', value: '`coinflip`', inline: true },
-				{ name: '😁 Diversão', value: '`fact`, `match`, `random`, `say`, `which`', inline: true },
-				{ name: '💰 Economia e Perfil', value: '`balance`, `daily`, `give`, `inventory`, `pet`, `profile`, `shop`, `vote`', inline: true },
-				{ name: '⚠️ Moderação', value: '`ban`, `clear`, `kick`, `mute`, `tempmute`, `unmute`', inline: true },
-				{ name: '🌐 Servidor', value: '`members`, `serverinfo`, `setprefix`, `userinfo`', inline: true },
-				{ name: '🛠️ Utilidade', value: '`avatar`, `invite`, `ping`', inline: true },
-				{ name: '**Links**', value: '**[Convida-nos!](https://discordapp.com/oauth2/authorize?&client_id=679041548955942914&scope=bot&permissions=272100438) - [Servidor de Suporte](https://discord.gg/FaUGnB25hF) - [Doar](https://ko-fi.com/officialgumballandpenny/commissions)**' },
+				{ name: `🎭 ${lang.actions}`, value: '`angry`, `cry`, `dance`, `hug`, `kiss`, `laugh`, `pat`, `run`, `slap`', inline: true },
+				{ name: `🎰 ${lang.casino}`, value: '`coinflip`', inline: true },
+				{ name: `😁 ${lang.fun}`, value: '`fact`, `match`, `random`, `say`, `which`', inline: true },
+				{ name: `💰 ${lang.economyAndProfile}`, value: '`balance`, `daily`, `give`, `inventory`, `pet`, `profile`, `shop`, `vote`', inline: true },
+				{ name: `⚠️ ${lang.moderation}`, value: '`ban`, `clear`, `kick`, `mute`, `tempmute`, `unmute`', inline: true },
+				{ name: `🌐 ${lang.server}`, value: '`members`, `serverinfo`, `setprefix`, `userinfo`', inline: true },
+				{ name: `🛠️ ${lang.moderation}`, value: '`avatar`, `invite`, `ping`', inline: true },
+				{ name: '**Links**', value: `**[${lang.inviteUs}](https://discordapp.com/oauth2/authorize?&client_id=679041548955942914&scope=bot&permissions=272100438) - [${lang.supportServer}](https://discord.gg/FaUGnB25hF) - [${lang.donate}](https://ko-fi.com/officialgumballandpenny/commissions)**` },
 			);
 
 		if (args == null || args == '') {
@@ -39,26 +31,26 @@ module.exports = {
 			const name = args.toLowerCase();
 			command = commands.get(name) || commands.find(c => c.aliases && c.aliases.includes(name));
 			if (!command) {
-				return message.reply('esse comando não existe!').catch();
+				return message.reply(lang.error.noCommand).catch();
 			}
 			else {
 				const commandEmbed = new Discord.MessageEmbed()
 					.setColor('#8000ff')
 					.addFields(
-						{ name: 'Nome', value: `${command.name}` },
-						{ name: 'Categoria', value: `${command.category}` },
-						{ name: 'Como usar', value: `\`${prefix}${command.usage}\`` },
-						{ name: 'Descrição', value: `${command.description}` },
+						{ name: `${lang.name}`, value: `${command.name}` },
+						{ name: `${lang.category}`, value: `${lang.command[command.name].category}` },
+						{ name: `${lang.howToUse}`, value: `\`${prefix}${lang.command[command.name].usage}\`` },
+						{ name: `${lang.description}`, value: `${lang.command[command.name].description}` },
 					);
 
-				if (!command.aliases) {
+				if (!lang.command[command.name].aliases) {
 					return message.channel.send(commandEmbed).catch();
 				}
 				else {
 					const lastEmbed = commandEmbed;
 					const newEmbed = new Discord.MessageEmbed(lastEmbed)
 						.addFields(
-							{ name: 'Abreviações', value: `${command.aliases.join(', ')}` },
+							{ name: `${lang.aliases}`, value: `${command.aliases.join(', ')}` },
 						);
 
 					message.channel.send(newEmbed).catch();

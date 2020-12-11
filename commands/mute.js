@@ -2,14 +2,11 @@ const Discord = require('discord.js');
 
 module.exports = {
 	name: 'mute',
-	category: 'Moderação',
-	description: 'Calaremos um membro do servidor!',
-	usage: 'mute [@membro] [opcional - razão]',
 
-	execute(bot, message, command, args) {
+	execute(bot, message, command, db, lang, language, supportServer, prefix, args) {
 		function getUserFromMention(mention) {
 			if (!mention) {
-				return message.reply('tens de mencionar quem queres expulsar!').then(msg => msg.delete({ timeout: 5000 })).catch();
+				return message.reply(lang.error.noMention).then(msg => msg.delete({ timeout: 5000 })).catch();
 			}
 
 			const matches = mention.match(/^<@!?(\d+)>$/);
@@ -23,19 +20,19 @@ module.exports = {
 
 		message.delete();
 		if (!message.member.hasPermission('MANAGE_ROLES') || !message.member.hasPermission('MANAGE_CHANNELS')) {
-			return message.reply('não tens permissão para usar este comando! 💢').then(msg => msg.delete({ timeout: 5000 })).catch();
+			return message.reply(lang.error.noPerm).then(msg => msg.delete({ timeout: 5000 })).catch();
 		}
 		else if (!message.channel.guild.me.hasPermission('MANAGE_ROLES')) {
-			return message.reply ('não temos permissão para gerir roles!').then(msg => msg.delete({ timeout: 5000 })).catch();
+			return message.reply (lang.error.botNoManageRoles).then(msg => msg.delete({ timeout: 5000 })).catch();
 		}
 		else if (!message.channel.guild.me.hasPermission('MANAGE_CHANNELS')) {
-			return message.reply ('não temos permissão para gerir canais!').then(msg => msg.delete({ timeout: 5000 })).catch();
+			return message.reply (lang.error.botNoManageChannels).then(msg => msg.delete({ timeout: 5000 })).catch();
 		}
 		else {
 			const mention = getUserFromMention(args[0]);
 			const memberToMute = message.guild.member(mention);
 			args.shift();
-			const reason = args.join(' ') || '_Não indicada_';
+			const reason = args.join(' ') || lang.notIndicated;
 			let muteRole = message.guild.roles.cache.find(role => role.name === 'Muted');
 
 			if(!muteRole) {
@@ -60,11 +57,11 @@ module.exports = {
 			memberToMute.roles.add(muteRole).then(() => {
 				const embed = new Discord.MessageEmbed()
 					.setColor('#8000ff')
-					.setTitle(`${memberToMute.user.tag} foi mutado! 🔇`)
+					.setTitle(`${memberToMute.user.tag}${lang.mute.isNowMuted} 🔇`)
 					.setThumbnail(`${memberToMute.user.displayAvatarURL()}`)
-					.setDescription(`por ${message.member.user.tag}`)
+					.setDescription(`${lang.by}${message.member.user.tag}`)
 					.addFields(
-						{ name: 'Razão', value: `${reason}` },
+						{ name: `${lang.reason}`, value: `${reason}` },
 					);
 
 				message.channel.send(embed).catch();

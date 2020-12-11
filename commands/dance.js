@@ -1,24 +1,18 @@
 module.exports = {
 	name: 'dance',
-	category: 'Ações',
-	description: 'Dança!',
-	usage: 'dance [opcional - @membro]',
 
-	execute(bot, message, command) {
+	execute(bot, message, command, db, lang) {
 		const user = message.mentions.users.first();
 		const rnd = Math.floor(Math.random() * 6);
 
-		if (!user) {
-			return message.channel.send(`${message.author} está a dançar!`, { files: [`images/actions/${command.name} (${rnd}).gif`] }).catch();
-		}
-		else if (user == message.author) {
-			return message.channel.send(`${message.author} está a dançar!`, { files: [`images/actions/${command.name} (${rnd}).gif`] }).catch();
+		if (!user || user == message.author) {
+			return message.channel.send(`${message.author}${lang.dance.isDancing}`, { files: [`images/actions/${command.name} (${rnd}).gif`] }).catch();
 		}
 		else if (user == bot.user) {
-			return message.channel.send(`${message.author} está a dançar para nós!`, { files: [`images/actions/${command.name} (${rnd}).gif`] }).catch();
+			return message.channel.send(`${message.author}${lang.dance.isDancingForUs}😯`, { files: [`images/actions/${command.name} (${rnd}).gif`] }).catch();
 		}
 		else {
-			message.channel.send(`${message.author} está a dançar para ${user}!`, { files: [`images/actions/${command.name} (${rnd}).gif`] }).catch();
+			message.channel.send(`${message.author}${lang.dance.isDancingFor}${user}!`, { files: [`images/actions/${command.name} (${rnd}).gif`] }).catch();
 		}
 	},
 };

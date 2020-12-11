@@ -1,13 +1,10 @@
 module.exports = {
 	name: 'fact',
-	category: 'Diversão',
-	description: '**Factos**',
-	usage: 'fact',
 
-	execute(bot, message) {
+	execute(bot, message, command, db, lang, language) {
 		const rnd = Math.floor(Math.random() * 17),
 			facts = require('../facts.json');
 
-		message.channel.send(facts[rnd]).catch();
+		message.channel.send(facts[language][rnd]).catch();
 	},
 };

@@ -2,9 +2,9 @@ const config = require('../config.json');
 const FieldValue = require('firebase-admin').firestore.FieldValue;
 
 module.exports = {
-	name: 'setprefix',
+	name: 'setlanguage',
 
-	execute(bot, message, command, db, lang, language, supportServer, prefix, args, prefixes) {
+	execute(bot, message, command, db, lang, language, supportServer, prefix, args, prefixes, languages) {
 		if (!message.member.hasPermission('MANAGE_GUILD')) {
 			message.delete();
 			return message.reply(lang.error.noPerm).then(msg => { msg.delete({ timeout: 3000 }); }).catch();
@@ -13,21 +13,21 @@ module.exports = {
 			return message.reply(lang.error.noPrefixChosen).catch();
 		}
 		else {
-			const newPrefix = args[0].toLowerCase(),
+			const newLanguage = args[0].toLowerCase(),
 				ref = db.collection('servidores').doc(message.guild.id);
-			if (newPrefix == config.prefix) {
-				prefixes[message.guild.id] = config.prefix;
+			if (newLanguage == config.language) {
+				languages[message.guild.id] = config.language;
 				ref.update({
-					prefix: FieldValue.delete(),
+					language: FieldValue.delete(),
 				}).catch(err => { console.error(err); });
 			}
 			else {
-				prefixes[message.guild.id] = newPrefix;
+				languages[message.guild.id] = newLanguage;
 				ref.update({
-					prefix: newPrefix,
+					language: newLanguage,
 				}).catch(err => { console.error(err); });
 			}
-			message.channel.send(`${lang.prefix.isNow}\`${newPrefix}\``).catch();
+			message.channel.send(`${lang.language.isNow}\`${newLanguage}\``).catch();
 		}
 	},
 };

@@ -33,11 +33,8 @@ function slugify(str) {
 module.exports = {
 	name: 'shop',
 	aliases: ['s'],
-	category: 'Economia e Perfil',
-	description: 'Faz compras na Loja Incrível!\nOpções disponíveis: `buy`, `huds`, `view`',
-	usage: 'shop',
 
-	execute(bot, message, command, args, db, prefix) {
+	execute(bot, message, command, db, lang, language, supportServer, prefix, args) {
 		async function sendPreview(hud) {
 			const hudCanvas = createCanvas(700, 400),
 				ctx = hudCanvas.getContext('2d');
@@ -52,7 +49,7 @@ module.exports = {
 				message.channel.send(attachment).catch();
 			}
 			catch {
-				return message.reply('esse HUD não existe!').catch();
+				return message.reply(lang.error.noHUD).catch();
 			}
 
 		}
@@ -71,7 +68,7 @@ module.exports = {
 				message.channel.send(attachment).catch();
 			}
 			catch {
-				return message.reply('esse HUD não existe!').catch();
+				return message.reply(lang.error.noPetHUD).catch();
 			}
 
 		}
@@ -83,10 +80,8 @@ module.exports = {
 		let mainEmbed = new MessageEmbed()
 			.setAuthor(`${bot.user.tag}`, `${bot.user.displayAvatarURL()}`)
 			.setColor('#8000ff')
-			.setTitle('Loja Incrível')
-			.setDescription(`Bem vindo à Loja Incrível!
-			Aqui poderás comprar algumas coisas com o dinheiro que acumulaste até agora.
-			Usa \`${prefix}shop [categoria]\` para selecionares uma categoria.`)
+			.setTitle(lang.awesomeStore)
+			.setDescription(`${lang.shop.welcome}\`${prefix}shop [${lang.shop.category}]\`${lang.shop.toSelect}`)
 			.addFields(
 				{ name: 'HUDs', value: '\u200B', inline: true },
 				{ name: 'PetHUDs', value: '\u200B', inline: true },
@@ -120,7 +115,7 @@ module.exports = {
 				hud = hud.concat(args).toLowerCase().replace(/[,]/g, '_');
 				refP.get().then(docP => {
 					if (!docP.exists) {
-						return message.reply(`ainda não criaste um perfil! Para criares um perfil usa \`${prefix}profile create\`!`).catch();
+						return message.reply(`${lang.error.noProfile}\`${prefix}profile create\`!`).catch();
 					}
 					else {
 						const bal = docP.get('balance'),
@@ -128,17 +123,17 @@ module.exports = {
 							cost = items.huds[itemName].price;
 
 						if (!cost) {
-							return message.reply('esse hud não está à venda!').catch();
+							return message.reply(lang.error.noHUD).catch();
 						}
 						else {
 							refI.get().then(docI => {
 								const iHuds = docI.get('huds');
 
 								if (iHuds.includes(itemName)) {
-									return message.reply('já tens este HUD!').catch();
+									return message.reply(lang.error.alreadyHasHUD).catch();
 								}
 								else if (cost > bal) {
-									return message.reply('não tens dinheiro suficiente!').catch();
+									return message.reply(lang.error.noMoney).catch();
 								}
 								else {
 									iHuds.push(itemName);
@@ -151,7 +146,7 @@ module.exports = {
 										huds: iHuds,
 									}).then(() => {
 										const name = itemName.toLowerCase().replace(/[_]/g, ' ');
-										message.reply(`compraste o HUD **${titleCase(name)}**!`).catch();
+										message.reply(`${lang.shop.boughtHUD}**${titleCase(name)}**!`).catch();
 									});
 								}
 							});
@@ -163,7 +158,7 @@ module.exports = {
 				petHud = petHud.concat(args[2]).toLowerCase().replace(/[,]/g, '_');
 				refP.get().then(docP => {
 					if (!docP.exists) {
-						return message.reply(`ainda não criaste um perfil! Para criares um perfil usa \`${prefix}profile create\`!`).catch();
+						return message.reply(`${lang.error.noProfile}\`${prefix}profile create\`!`).catch();
 					}
 					else {
 						const bal = docP.get('balance'),
@@ -172,20 +167,20 @@ module.exports = {
 							vipPetHUD = items.petHuds[itemName].vip;
 						const userVIP = docP.get('vip');
 
-						if (!userVIP && vipPetHUD) return message.reply('precisas de ser VIP para comprares este HUD para pets!').catch();
+						if (!userVIP && vipPetHUD) return message.reply(lang.error.noVIPForPetHUD).catch();
 
 						if (!cost) {
-							return message.reply('esse HUD para pets não está à venda!').catch();
+							return message.reply(lang.error.noPetHUD).catch();
 						}
 						else {
 							refI.get().then(docI => {
 								const iPetHUDs = docI.get('petHuds');
 
 								if (iPetHUDs.includes(itemName)) {
-									return message.reply('já tens este HUD para pets!').catch();
+									return message.reply(lang.error.alreadyHasPetHUD).catch();
 								}
 								else if (cost > bal) {
-									return message.reply('não tens dinheiro suficiente!').catch();
+									return message.reply(lang.error.noMoney).catch();
 								}
 								else {
 									iPetHUDs.push(itemName);
@@ -199,7 +194,7 @@ module.exports = {
 
 										const name = itemName.toLowerCase().replace(/[_]/g, ' ');
 
-										message.reply(`compraste o HUD **${titleCase(name)}** para pets!`).catch();
+										message.reply(`${lang.shop.boughtPetHUD}**${titleCase(name)}**!`).catch();
 									});
 								}
 							});
@@ -211,34 +206,31 @@ module.exports = {
 				pet = pet.concat(slugify(args[2])).toLowerCase().replace(/[,]/g, '_');
 				refPet.get().then(async docPet => {
 					if (docPet.exists) {
-						return message.reply(`já tens um pet! Se quiseres outro tens de dar o que tens para adoção usando \`${prefix}sendtoadoption\`!`).catch();
+						return message.reply(`${lang.error.alreadyHasPet}\`${prefix}sendtoadoption\`!`).catch();
 					}
 					else {
 						const itemName = pet.toLowerCase();
 						const cost = items.pets[itemName].price;
 
 						if (!cost) {
-							return message.reply('esse item não está à venda!').catch();
+							return message.reply(lang.error.noItem).catch();
 						}
 						else {
 							refP.get().then(docP => {
 								const bal = docP.get('balance');
 								if (cost > bal) {
-									return message.reply('não tens dinheiro suficiente!').catch();
+									return message.reply(lang.error.noMoney).catch();
 								}
 								else {
 									const rndN = Math.floor(Math.random() * 12),
 										rndG = Math.random(),
 										vipPet = items.pets[pet].vip,
-										userVIP = docP.get('vip');
+										userVIP = docP.get('vip'),
+										species = items.pets[pet].species;
 									let gender = items.pets[pet].gender,
-										species = items.pets[pet].species,
 										name = '';
 
-									if (!userVIP && vipPet) return message.reply('precisas de ser VIP para comprares este pet!').catch();
-
-									if (species == 'cao') species = 'cão';
-									else if (species == 'ponei') species = 'pónei';
+									if (!userVIP && vipPet) return message.reply(lang.error.noVIPForPet).catch();
 
 									if (gender == 'random') rndG < 0.5 ? gender = '♂️' : gender = '♀️';
 									if (vipPet) name = `${items.pets[pet].name}`;
@@ -275,7 +267,7 @@ module.exports = {
 										const vip = items.pets[pet].vip;
 
 										if (vip) petName = name;
-										message.reply(`compraste ${items.pets[pet].pronoun} **${petName}**!`).catch();
+										message.reply(`${lang.youBought}**${petName}**!`).catch();
 									});
 								}
 							});
@@ -301,9 +293,9 @@ module.exports = {
 			switch (args[1]) {
 			case 'vip':
 				petsVIPEmbed = new MessageEmbed(mainEmbed)
-					.setTitle('Loja Incrível - Pets (VIP)')
-					.setDescription(`\`${prefix}shop buy pet [Nome do Animal]\` para comprar.`)
-					.setFooter('Página 1 de 1')
+					.setTitle(`${lang.awesomeStore} - Pets (VIP)`)
+					.setDescription(`\`${prefix}shop buy pet [${lang.shop.animalName}]\`${lang.shop.toBuy}`)
+					.setFooter(`${lang.page} 1 de 1`)
 					.spliceFields(0, mainEmbed.fields.length, [
 						{ name: 'Akamaru', value: `Naruto\n**${items.pets.akamaru.price}¤**`, inline: true },
 						{ name: 'Frosch', value: `Fairy Tail\n**${items.pets.frosch.price}¤**`, inline: true },
@@ -312,11 +304,11 @@ module.exports = {
 					]);
 				message.channel.send(petsVIPEmbed).catch();
 				break;
-			case 'comuns':
+			case 'common':
 				petsCommonEmbed = new MessageEmbed(mainEmbed)
-					.setTitle('Loja Incrível - Pets (Comuns)')
-					.setDescription(`\`${prefix}shop buy pet [Nome do Animal]\` para comprar.`)
-					.setFooter('Página 1 de 1')
+					.setTitle(`${lang.awesomeStore} - Pets (Common)`)
+					.setDescription(`\`${prefix}shop buy pet [${lang.shop.animalName}]\`${lang.shop.toBuy}`)
+					.setFooter(`${lang.page} 1 de 1`)
 					.spliceFields(0, mainEmbed.fields.length, [
 						{ name: 'Cabra', value: `${items.pets.cabra.price}¤**`, inline: true },
 						{ name: 'Cão', value: `${items.pets.cao.price}¤**`, inline: true },
@@ -331,11 +323,11 @@ module.exports = {
 				break;
 			default:
 				petsEmbed = new MessageEmbed(mainEmbed)
-					.setTitle('Loja Incrível - Pets')
-					.setDescription(`\`${prefix}shop pets [categoria]\` para comprar.`)
-					.setFooter('Página 1 de 1')
+					.setTitle(`${lang.awesomeStore} - Pets`)
+					.setDescription(`\`${prefix}shop pets [${lang.shop.category}]\`${lang.shop.toBuy}`)
+					.setFooter(`${lang.page} 1 de 1`)
 					.spliceFields(0, mainEmbed.fields.length, [
-						{ name: 'Comuns', value: '\u200B', inline: true },
+						{ name: 'Common', value: '\u200B', inline: true },
 						{ name: 'VIP', value: '\u200B', inline: true },
 					]);
 				message.channel.send(petsEmbed).catch();
@@ -344,21 +336,21 @@ module.exports = {
 			break;
 		case 'items':
 			itemsEmbed = new MessageEmbed(mainEmbed)
-				.setTitle('Loja Incrível - Items')
-				.setDescription(`\`${prefix}shop buy item [Nome do Item]\` para comprar.`)
-				.setFooter('Página 1 de 1')
+				.setTitle(`${lang.awesomeStore} - Items`)
+				.setDescription(`\`${prefix}shop buy item [Nome do Item]\`${lang.shop.toBuy}`)
+				.setFooter(`${lang.page} 1 de 1`)
 				.spliceFields(0, mainEmbed.fields.length, [
-					{ name: 'Name License', value: `Licença de Nome\n**${items.items.name_license.price}¤**`, inline: true },
+					{ name: 'Name License', value: `${lang.nameLicense}\n**${items.items.name_license.price}¤**`, inline: true },
 				]);
 			message.channel.send(itemsEmbed.catch());
 			break;
 		case 'pethuds':
 			switch (args[1]) {
-			case 'cores':
+			case 'colors':
 				petHudColorsEmbed = new MessageEmbed(mainEmbed)
-					.setTitle('Loja Incrível - PetHUDs (Cores)')
-					.setDescription(`\`${prefix}shop buy pethud [Nome do Item]\` para comprar ou \`${prefix}shop view pethud [item]\` para ver.`)
-					.setFooter('Página 1 de 1')
+					.setTitle(`${lang.awesomeStore} - PetHUDs (Colors)`)
+					.setDescription(`\`${prefix}shop buy pethud [${lang.shop.petHUDName}]\`${lang.shop.toBuyOr}\`${prefix}shop view pethud [${lang.shop.petHUDName}]\`${lang.shop.toSee}`)
+					.setFooter(`${lang.page} 1 de 1`)
 					.spliceFields(0, mainEmbed.fields.length, [
 						{ name: 'Black', value: `**${items.petHuds.black.price}¤**`, inline: true },
 						{ name: 'Blue', value: `**${items.petHuds.blue.price}¤**`, inline: true },
@@ -374,17 +366,17 @@ module.exports = {
 				break;
 			case 'vip':
 				petHudVIPEmbed = new MessageEmbed(mainEmbed)
-					.setTitle('Loja Incrível - PetHUDs (VIP)')
-					.setDescription(`\`${prefix}shop buy pethud [Nome do Item]\` para comprar ou \`${prefix}shop view pethud [item]\` para ver.`)
-					.setFooter('Página 1 de 1')
+					.setTitle(`${lang.awesomeStore} - PetHUDs (VIP)`)
+					.setDescription(`\`${prefix}shop buy pethud [${lang.shop.petHUDName}]\`${lang.shop.toBuyOr}\`${prefix}shop view pethud [${lang.shop.petHUDName}]\`${lang.shop.toSee}`)
+					.setFooter(`${lang.page} 1 de 1`)
 					.spliceFields(0, mainEmbed.fields.length, [
 						{ name: 'Bones', value: `**${items.petHuds.bones.price}¤**`, inline: true },
 						{ name: 'Foxes', value: `**${items.petHuds.foxes.price}¤**`, inline: true },
 						{ name: 'Ghost-Type', value: `Pokémon\n**${items.petHuds['ghost-type'].price}¤**`, inline: true },
-						{ name: 'Luna', value: `Sailor Moon**${items.petHuds.luna.price}¤**`, inline: true },
+						{ name: 'Luna', value: `Sailor Moon\n**${items.petHuds.luna.price}¤**`, inline: true },
 						{ name: 'Pokemon', value: `**${items.petHuds.pokemon.price}¤**`, inline: true },
-						{ name: 'Saitama', value: `One Punch Man**${items.petHuds.saitama.price}¤**`, inline: true },
-						{ name: 'Totoro', value: `My Neighbor Totoro**${items.petHuds.totoro.price}¤**`, inline: true },
+						{ name: 'Saitama', value: `One Punch Man\n**${items.petHuds.saitama.price}¤**`, inline: true },
+						{ name: 'Totoro', value: `My Neighbor Totoro\n**${items.petHuds.totoro.price}¤**`, inline: true },
 						{ name: 'Undertale', value: `**${items.petHuds.undertale.price}¤**`, inline: true },
 						{ name: 'Winter', value: `**${items.petHuds.winter.price}¤**`, inline: true },
 					]);
@@ -392,11 +384,11 @@ module.exports = {
 				break;
 			default:
 				petHudEmbed = new MessageEmbed(mainEmbed)
-					.setTitle('Loja Incrível - PetHUDs (Cores)')
-					.setDescription(`\`${prefix}shop pethuds [sub-categoria]\` para selecionares uma sub-categoria.`)
-					.setFooter('Página 1 de 1')
+					.setTitle(`${lang.awesomeStore} - PetHUDs (Colors)`)
+					.setDescription(`\`${prefix}shop pethuds [${lang.shop.subCategory}]\`${lang.shop.toSelectASubCat}`)
+					.setFooter(`${lang.page} 1 de 1`)
 					.spliceFields(0, mainEmbed.fields.length, [
-						{ name: 'Cores', value: '\u200B', inline: true },
+						{ name: 'Colors', value: '\u200B', inline: true },
 						{ name: 'VIP', value: '\u200B', inline: true },
 					]);
 				message.channel.send(petHudEmbed).catch();
@@ -405,11 +397,11 @@ module.exports = {
 			break;
 		case 'huds':
 			switch (args[1]) {
-			case 'cores':
+			case 'colors':
 				hudColorsEmbed = new MessageEmbed(mainEmbed)
-					.setTitle('Loja Incrível - HUDs (Cores)')
-					.setDescription(`\`${prefix}shop buy hud [Nome do Item]\` para comprar ou \`${prefix}shop view hud [item]\` para ver.`)
-					.setFooter('Página 1 de 1')
+					.setTitle(`${lang.awesomeStore} - HUDs (Colors)`)
+					.setDescription(`\`${prefix}shop buy hud [${lang.shop.hudName}]\`${lang.shop.toBuyOr}\`${prefix}shop view hud [${lang.shop.hudName}]\`${lang.shop.toSee}`)
+					.setFooter(`${lang.page} 1 de 1`)
 					.spliceFields(0, mainEmbed.fields.length, [
 						{ name: 'Black', value: `${items.huds.black.price}¤**`, inline: true },
 						{ name: 'Blue', value: `${items.huds.blue.price}¤**`, inline: true },
@@ -423,13 +415,13 @@ module.exports = {
 					]);
 				message.channel.send(hudColorsEmbed).catch();
 				break;
-			case 'jogos':
+			case 'games':
 				switch (page) {
 				case 2:
 					hudGamesEmbed = new MessageEmbed(mainEmbed)
-						.setTitle('Loja Incrível - HUDs (Jogos)')
-						.setDescription(`\`${prefix}shop buy hud [Nome do Item]\` para comprar ou \`${prefix}shop view hud [item]\` para ver.\nPara mudar de página usa \`${prefix}shop huds jogos [página]\``)
-						.setFooter('Página 2 de 3')
+						.setTitle(`${lang.awesomeStore} - HUDs (Games)`)
+						.setDescription(`\`${prefix}shop buy hud [${lang.shop.hudName}]\`${lang.shop.toBuyOr}\`${prefix}shop view hud [${lang.shop.hudName}]\`${lang.shop.toSee}\n${lang.toChangePage}\`${prefix}shop huds games [${lang.shop.page}]\``)
+						.setFooter(`${lang.page} 2 de 3`)
 						.spliceFields(0, mainEmbed.fields.length, [
 							{ name: 'Glitchtrap', value: `Five Nights at Freddy's\n**${items.huds.glitchtrap.price}¤**`, inline: true },
 							{ name: 'KDA Akali', value: `League of Legends\n**${items.huds.kda_akali.price}¤**`, inline: true },
@@ -444,9 +436,9 @@ module.exports = {
 					break;
 				case 3:
 					hudGamesEmbed = new MessageEmbed(mainEmbed)
-						.setTitle('Loja Incrível - HUDs (Jogos)')
-						.setDescription(`\`${prefix}shop buy hud [Nome do Item]\` para comprar ou \`${prefix}shop view hud [item]\` para ver.\nPara mudar de página usa \`${prefix}shop huds jogos [página]\``)
-						.setFooter('Página 3 de 3')
+						.setTitle(`${lang.awesomeStore} - HUDs (Games)`)
+						.setDescription(`\`${prefix}shop buy hud [${lang.shop.hudName}]\`${lang.shop.toBuyOr}\`${prefix}shop view hud [${lang.shop.hudName}]\`${lang.shop.toSee}\n${lang.toChangePage}\`${prefix}shop huds games [${lang.shop.page}]\``)
+						.setFooter(`${lang.page} 3 de 3`)
 						.spliceFields(0, mainEmbed.fields.length, [
 							{ name: 'Sans', value: `Undertale\n**${items.huds.sans.price}¤**`, inline: true },
 							{ name: 'Scorpion', value: `Mortal Kombat\n**${items.huds.scorpion.price}¤**`, inline: true },
@@ -458,9 +450,9 @@ module.exports = {
 					break;
 				default:
 					hudGamesEmbed = new MessageEmbed(mainEmbed)
-						.setTitle('Loja Incrível - HUDs (Jogos)')
-						.setDescription(`\`${prefix}shop buy hud [Nome do Item]\` para comprar ou \`${prefix}shop view hud [item]\` para ver.\nPara mudar de página usa \`${prefix}shop huds jogos [página]\``)
-						.setFooter('Página 1 de 3')
+						.setTitle(`${lang.awesomeStore} - HUDs (Games)`)
+						.setDescription(`\`${prefix}shop buy hud [${lang.shop.hudName}]\`${lang.shop.toBuyOr}\`${prefix}shop view hud [${lang.shop.hudName}]\`${lang.shop.toSee}\n${lang.toChangePage}\`${prefix}shop huds games [${lang.shop.page}]\``)
+						.setFooter(`${lang.page} 1 de 3`)
 						.spliceFields(0, mainEmbed.fields.length, [
 							{ name: 'Among Us', value: `\n**${items.huds.among_us.price}¤**`, inline: true },
 							{ name: 'Clown Gremlins', value: `Dark Deception\n**${items.huds.clown_gremlins.price}¤**`, inline: true },
@@ -479,9 +471,9 @@ module.exports = {
 				switch (page) {
 				case 2:
 					hudAnimeEmbed = new MessageEmbed(mainEmbed)
-						.setTitle('Loja Incrível - HUDs (Anime)')
-						.setDescription(`\`${prefix}shop buy hud [Nome do Item]\` para comprar ou \`${prefix}shop view hud [item]\` para ver.\nPara mudar de página usa \`${prefix}shop huds anime [página]\``)
-						.setFooter('Página 2 de 2')
+						.setTitle(`${lang.awesomeStore} - HUDs (Anime)`)
+						.setDescription(`\`${prefix}shop buy hud [${lang.shop.hudName}]\`${lang.shop.toBuyOr}\`${prefix}shop view hud [${lang.shop.hudName}]\`${lang.shop.toSee}\n${lang.toChangePage}\`${prefix}shop huds anime [${lang.shop.page}]\``)
+						.setFooter(`${lang.page} 2 de 2`)
 						.spliceFields(0, mainEmbed.fields.length, [
 							{ name: 'L', value: `Death Note\n**${items.huds.l.price}¤**`, inline: true },
 							{ name: 'Lelouch', value: `Code Geass\n**${items.huds.lelouch.price}¤**`, inline: true },
@@ -494,9 +486,9 @@ module.exports = {
 					break;
 				default:
 					hudAnimeEmbed = new MessageEmbed(mainEmbed)
-						.setTitle('Loja Incrível - HUDs (Anime)')
-						.setDescription(`\`${prefix}shop buy hud [Nome do Item]\` para comprar ou \`${prefix}shop view hud [item]\` para ver.\nPara mudar de página usa \`${prefix}shop huds anime [página]\``)
-						.setFooter('Página 1 de 2')
+						.setTitle(`${lang.awesomeStore} - HUDs (Anime)`)
+						.setDescription(`\`${prefix}shop buy hud [${lang.shop.hudName}]\`${lang.shop.toBuyOr}\`${prefix}shop view hud [${lang.shop.hudName}]\`${lang.shop.toSee}\n${lang.toChangePage}\`${prefix}shop huds anime [${lang.shop.page}]\``)
+						.setFooter(`${lang.page} 1 de 2`)
 						.spliceFields(0, mainEmbed.fields.length, [
 							{ name: 'Giorno', value: `Jojo's Bizarre Adventure\n**${items.huds.giorno.price}¤**`, inline: true },
 							{ name: 'Isaac', value: `Angel's of Death\n**${items.huds.isaac.price}¤**`, inline: true },
@@ -514,9 +506,9 @@ module.exports = {
 				break;
 			case 'cartoons':
 				hudCartoonsEmbed = new MessageEmbed(mainEmbed)
-					.setTitle('Loja Incrível - HUDs (Cartoons)')
-					.setDescription(`\`${prefix}shop buy hud [Nome do Item]\` para comprar ou \`${prefix}shop view hud [item]\` para ver.`)
-					.setFooter('Página 1 de 1')
+					.setTitle(`${lang.awesomeStore} - HUDs (Cartoons)`)
+					.setDescription(`\`${prefix}shop buy hud [${lang.shop.hudName}]\`${lang.shop.toBuyOr}\`${prefix}shop view hud [${lang.shop.hudName}]\`${lang.shop.toSee}`)
+					.setFooter(`${lang.page} 1 de 1`)
 					.spliceFields(0, mainEmbed.fields.length, [
 						{ name: 'Courage', value: `Courage the Cowardly Dog\n**${items.huds.courage.price}¤**`, inline: true },
 						{ name: 'Jake', value: `Adventure Time\n**${items.huds.jake.price}¤**`, inline: true },
@@ -527,37 +519,37 @@ module.exports = {
 				break;
 			case 'marvel':
 				hudMarvelEmbed = new MessageEmbed(mainEmbed)
-					.setTitle('Loja Incrível - HUDs (Marvel)')
-					.setDescription(`\`${prefix}shop buy hud [Nome do Item]\` para comprar ou \`${prefix}shop view hud [item]\` para ver.`)
-					.setFooter('Página 1 de 1')
+					.setTitle(`${lang.awesomeStore} - HUDs (Marvel)`)
+					.setDescription(`\`${prefix}shop buy hud [${lang.shop.hudName}]\`${lang.shop.toBuyOr}\`${prefix}shop view hud [${lang.shop.hudName}]\`${lang.shop.toSee}`)
+					.setFooter(`${lang.page} 1 de 1`)
 					.spliceFields(0, mainEmbed.fields.length, [
-						{ name: 'Captain America', value: `Herói\n**${items.huds.captain_america.price}¤**`, inline: true },
-						{ name: 'Chaos King', value: `Vilão\n**${items.huds.chaos_king.price}¤**`, inline: true },
-						{ name: 'Green Goblin', value: `Vilão\n**${items.huds.green_goblin.price}¤**`, inline: true },
-						{ name: 'Iron Man', value: `Herói\n**${items.huds.iron_man.price}¤**`, inline: true },
-						{ name: 'Onslaught', value: `Vilão\n**${items.huds.onslaught.price}¤**`, inline: true },
-						{ name: 'Spider-Man', value: `Herói\n**${items.huds['spider-man'].price}¤**`, inline: true },
-						{ name: 'Thanos', value: `Vilão\n**${items.huds.thanos.price}¤**`, inline: true },
+						{ name: 'Captain America', value: `${lang.shop.hero}\n**${items.huds.captain_america.price}¤**`, inline: true },
+						{ name: 'Chaos King', value: `${lang.shop.villain}\n**${items.huds.chaos_king.price}¤**`, inline: true },
+						{ name: 'Green Goblin', value: `${lang.shop.villain}\n**${items.huds.green_goblin.price}¤**`, inline: true },
+						{ name: 'Iron Man', value: `${lang.shop.hero}\n**${items.huds.iron_man.price}¤**`, inline: true },
+						{ name: 'Onslaught', value: `${lang.shop.villain}\n**${items.huds.onslaught.price}¤**`, inline: true },
+						{ name: 'Spider-Man', value: `${lang.shop.hero}\n**${items.huds['spider-man'].price}¤**`, inline: true },
+						{ name: 'Thanos', value: `${lang.shop.villain}\n**${items.huds.thanos.price}¤**`, inline: true },
 					]);
 				message.channel.send(hudMarvelEmbed).catch();
 				break;
 			case 'dc':
 				hudDCEmbed = new MessageEmbed(mainEmbed)
-					.setTitle('Loja Incrível - HUDs (DC)')
-					.setDescription(`\`${prefix}shop buy hud [Nome do Item]\` para comprar ou \`${prefix}shop view hud [item]\` para ver.`)
-					.setFooter('Página 1 de 1')
+					.setTitle(`${lang.awesomeStore} - HUDs (DC)`)
+					.setDescription(`\`${prefix}shop buy hud [${lang.shop.hudName}]\`${lang.shop.toBuyOr}\`${prefix}shop view hud [${lang.shop.hudName}]\`${lang.shop.toSee}`)
+					.setFooter(`${lang.page} 1 de 1`)
 					.spliceFields(0, mainEmbed.fields.length, [
-						{ name: 'Batman', value: `Herói\n**${items.huds.batman.price}¤**`, inline: true },
-						{ name: 'Joker', value: `Vilão\n**${items.huds.joker.price}¤**`, inline: true },
-						{ name: 'Superman', value: `Herói\n**${items.huds.superman.price}¤**`, inline: true },
+						{ name: 'Batman', value: `${lang.shop.hero}\n**${items.huds.batman.price}¤**`, inline: true },
+						{ name: 'Joker', value: `${lang.shop.villain}\n**${items.huds.joker.price}¤**`, inline: true },
+						{ name: 'Superman', value: `${lang.shop.hero}\n**${items.huds.superman.price}¤**`, inline: true },
 					]);
 				message.channel.send(hudDCEmbed).catch();
 				break;
 			case 'vocaloids':
 				hudVocaloidsEmbed = new MessageEmbed(mainEmbed)
-					.setTitle('Loja Incrível - HUDs (Cartoons)')
-					.setDescription(`\`${prefix}shop buy hud [Nome do Item]\` para comprar ou \`${prefix}shop view hud [item]\` para ver.`)
-					.setFooter('Página 1 de 1')
+					.setTitle(`${lang.awesomeStore} - HUDs (Cartoons)`)
+					.setDescription(`\`${prefix}shop buy hud [${lang.shop.hudName}]\`${lang.shop.toBuyOr}\`${prefix}shop view hud [${lang.shop.hudName}]\`${lang.shop.toSee}`)
+					.setFooter(`${lang.page} 1 de 1`)
 					.spliceFields(0, mainEmbed.fields.length, [
 						{ name: 'Miku Hatsune', value: `${items.huds.miku_hatsune.price}¤**`, inline: true },
 					]);
@@ -565,11 +557,11 @@ module.exports = {
 				break;
 			default:
 				hudEmbed = new MessageEmbed(mainEmbed)
-					.setTitle('Loja Incrível - HUDs')
-					.setDescription(`\`${prefix}shop huds [sub-categoria]\` para selecionares uma sub-categoria.`)
+					.setTitle(`${lang.awesomeStore} - HUDs`)
+					.setDescription(`\`${prefix}shop huds [${lang.shop.subCategory}]\`${lang.shop.toSelectASubCat}`)
 					.spliceFields(0, mainEmbed.fields.length, [
-						{ name: 'Cores', value: '\u200B', inline: true },
-						{ name: 'Jogos', value: '\u200B', inline: true },
+						{ name: 'Colors', value: '\u200B', inline: true },
+						{ name: 'Games', value: '\u200B', inline: true },
 						{ name: 'Anime', value: '\u200B', inline: true },
 						{ name: 'Cartoons', value: '\u200B', inline: true },
 						{ name: 'Marvel', value: '\u200B', inline: true },
@@ -582,8 +574,7 @@ module.exports = {
 			break;
 		default:
 			mainEmbed = new MessageEmbed(mainEmbed)
-				.attachFiles(['./images/shop.gif'])
-				.setImage('attachment://shop.gif');
+				.setImage('https://i.imgur.com/Ed2AqAr.gif');
 			message.channel.send(mainEmbed).catch();
 			break;
 		}

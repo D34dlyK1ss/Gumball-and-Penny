@@ -2,16 +2,13 @@ const { MessageEmbed } = require('discord.js');
 
 module.exports = {
 	name: 'ping',
-	category: 'Utilidade',
-	description: 'Uhm... pong?',
-	usage: 'ping',
 
-	execute(bot, message) {
+	execute(bot, message, command, db, lang) {
 		message.channel.send('Pong!').then(msg =>{
 			const ping = msg.createdTimestamp - message.createdTimestamp;
 
 			const embed = new MessageEmbed()
-				.setAuthor(`O teu ping é de ${ping}ms`)
+				.setAuthor(`${lang.ping.yourPingIs}**${ping}ms**`)
 				.setColor('#8000ff');
 
 			msg.edit(embed);

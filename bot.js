@@ -7,14 +7,14 @@ const bot = new Discord.Client();
 // Propriedades default do bot
 const config = require('./config.json');
 
-// Recompensas de nível
-const rewards = require('./rewards.json');
-
 // Descrição do bot na plataforma
-let plural = '';
-if (bot.guilds.cache.size != 1) plural = 'es';
-const botActivity1 = `${config.prefix}help em`,
-	botActivity2 = `servidor${plural}!`;
+function setActivity() {
+	let plural = '';
+	if (bot.guilds.cache.size != 1) plural = 'es';
+	const botActivity1 = `${config.prefix}help em `,
+		botActivity2 = ` servidor${plural}!`;
+	bot.user.setActivity(`${botActivity1 + bot.guilds.cache.size + botActivity2}`);
+}
 
 // Biblioteca para horários
 const schedule = require('node-schedule');
@@ -25,6 +25,9 @@ moment.locale('pt');
 
 // Biblioteca para sistema de ficheiros
 const fs = require('fs');
+
+// Recompensas de nível
+const rewards = require('./rewards.json');
 
 // API do Discord Bot List
 const DBL = require('dblapi.js');
@@ -58,7 +61,7 @@ const months = Math.round(mili / 2629746000),
 bot.once('ready', async () => {
 	console.log(`Preparados! (${moment().format('LL')} ${moment().format('LTS')})`);
 
-	bot.user.setActivity(`${botActivity1} ${bot.guilds.cache.size} ${botActivity2}`);
+	setActivity();
 
 	setInterval(() => {
 		dbl.postStats(bot.guilds.cache.size);
@@ -108,18 +111,19 @@ es.onmessage = async messageEvent => {
 			message = dataKF.message;
 		if (type == 'Commision') {
 			await bot.users.fetch(config.botOwner).then(botOwner => {
-				botOwner.send(`**Nova compra!**\n**Nome:** ${name}\n**Quantia:** ${amount}${currency}\n**Mensagem:** ${message}\n**ID:** ${id}\n**URL:** ${dataKF.url}`);
+				botOwner.send(`**Nova compra!**\n**Nome:** ${name}\n**Quantia:** ${amount + currency}\n**Mensagem:** ${message}\n**ID:** ${id}\n**URL:** ${dataKF.url}`);
 			});
 		}
 		else {
 			await bot.users.fetch(config.botOwner).then(botOwner => {
-				botOwner.send(`**${name} doou ${amount}${currency}**\n**Mensagem:** ${message}\n**URL:** ${dataKF.url}`);
+				botOwner.send(`**${name} doou ${amount + currency}**\n**Mensagem:** ${message}\n**URL:** ${dataKF.url}`);
 			});
 		}
 	}
 };
 
 const prefixes = new Object(),
+	languages = new Object(),
 	xpCooldown = new Set();
 
 // Ações para quando o bot receber uma mensagem
@@ -127,8 +131,6 @@ bot.on('message', async message => {
 
 	// Ignorar mensagens privadas e mensagens de outros bots
 	if (message.channel.type === 'dm' || message.author.bot) return;
-
-	const ref = db.collection('servidores').doc(message.guild.id);
 
 	// Leitura dos ficheiros de comandos
 	const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
@@ -138,6 +140,8 @@ bot.on('message', async message => {
 		bot.commands.set(props.name, props);
 	}
 
+	const ref = db.collection('servidores').doc(message.guild.id);
+
 	// Obter o prefixo definido para o servidor
 	if (!prefixes[message.guild.id]) {
 		const doc = await ref.get();
@@ -145,7 +149,15 @@ bot.on('message', async message => {
 	}
 	const prefix = await prefixes[message.guild.id];
 
-	// Coleção de emojis do Servidor de Suporte
+	// Seleção da linguagem
+	if (!languages[message.guild.id]) {
+		const doc = await ref.get();
+		languages[message.guild.id] = doc.get('language') || config.language;
+	}
+	const language = await languages[message.guild.id];
+	const lang = require(`./languages/${language}.json`);
+
+	// Servidor de Suporte
 	const supportServer = bot.guilds.cache.get('738540548305977366');
 
 	if (message.content.toLowerCase().startsWith(prefix)) {
@@ -193,10 +205,10 @@ bot.on('message', async message => {
 							if (rewards.levels.includes(newLevel)) {
 								db.collection('perfis').doc(message.author.id).update({
 									balance: bal + reward,
-								}).then(() => message.channel.send(`🎉 Parabéns ${message.author}, subiste para o nível ${newLevel} e recebeste ¤${reward}! 🆙💰`));
+								}).then(() => message.channel.send(`🎉 ${lang.levelUp.congrats + message.author + lang.lvlUp.levelTo + newLevel + lang.levelUp.received + reward}! 🆙💰`));
 							}
 							else {
-								message.channel.send(`🎉 Parabéns ${message.author}, subiste para o nível ${newLevel}! 🆙`);
+								message.channel.send(`🎉 ${lang.lvlUp.congrats + message.author + lang.lvlUp.levelTo + newLevel}! 🆙`);
 							}
 						}
 					}
@@ -212,30 +224,30 @@ bot.on('message', async message => {
 			}, 60000);
 		}
 		try {
-			command.execute(bot, message, command, args, db, await prefix, prefixes, supportServer);
+			command.execute(bot, message, command, db, lang, language, supportServer, prefix, args, prefixes, languages);
 		}
 		catch (err) {
 			console.error(err);
-			message.reply('ocorreu um erro ao tentar executar esse comando!');
+			message.reply(lang.error.cmd);
 		}
 	}
 	else if (message.content == `<@!${bot.user.id}>`) {
-		message.channel.send(`O nosso prefixo para este servidor é **${prefix}**`);
+		message.channel.send(`${lang.prefixMsg} \`${prefix}\``);
 	}
 });
 
 // Quando o bot for adicionado a um novo servidor, são armazenados dados do mesmo
 bot.on('guildCreate', async guildData => {
+	setActivity();
 	db.collection('servidores').doc(guildData.id).set({
 		'guildOwnerID': guildData.owner.user.id,
 	});
-	bot.user.setActivity(`${botActivity1} ${bot.guilds.cache.size} ${botActivity2}`);
 });
 
 // Quando o bot for expulso de um servidor, o bot apagará os dados respetivos
 bot.on('guildDelete', async guildData => {
+	setActivity();
 	db.collection('servidores').doc(guildData.id).delete();
-	bot.user.setActivity(`${botActivity1} ${bot.guilds.cache.size} ${botActivity2}`);
 });
 
 // Quando os dados de um servidor forem atualizados, o bot substituirá dados anteriores

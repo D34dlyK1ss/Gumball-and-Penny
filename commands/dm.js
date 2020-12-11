@@ -1,10 +1,7 @@
 module.exports = {
 	name: 'dm',
-	category: 'Secretos',
-	description: 'Enviamos uma mensagem privada ao utilizador mencionado',
-	usage: 'dm [@utilizador] [mensagem]',
 
-	execute(bot, message, command, args) {
+	execute(bot, message, command, db, lang, supportServer, prefix, args) {
 		function getUserFromMention(mention) {
 
 			const matches = mention.match(/^<@!?(\d+)>$/);
@@ -22,17 +19,17 @@ module.exports = {
 		message.delete();
 
 		if (!message.member.hasPermission('MANAGE_GUILD')) {
-			return message.reply('não tens permissão para usar este comando! 💢').then(msg => { msg.delete({ timeout: 5000 }); }).catch();
+			return message.reply(lang.error.noPerm).then(msg => { msg.delete({ timeout: 5000 }); }).catch();
 		}
 		else if (!mention || mention == '') {
-			return message.reply('não mencionaste ninguém!').then(msg => { msg.delete({ timeout: 5000 }); }).catch();
+			return message.reply(lang.error.noMention).then(msg => { msg.delete({ timeout: 5000 }); }).catch();
 		}
 		else if (!mentionMessage || mentionMessage == '') {
-			return message.reply('não escreveste nenhuma mensagem!').then(msg => { msg.delete({ timeout: 5000 }); }).catch();
+			return message.reply(lang.error.noMessage).then(msg => { msg.delete({ timeout: 5000 }); }).catch();
 		}
 		else {
 			mention.send(mentionMessage);
-			message.reply('enviado!').then(msg => { msg.delete({ timeout: 5000 }); }).catch();
+			message.reply(lang.sent).then(msg => { msg.delete({ timeout: 5000 }); }).catch();
 		}
 	},
 };

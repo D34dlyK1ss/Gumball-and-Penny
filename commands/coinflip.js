@@ -2,36 +2,35 @@ const { MessageAttachment } = require('discord.js');
 
 module.exports = {
 	name: 'coinflip',
-	category: 'Casino',
-	description: 'Roda a moeda e aposta no que vai calhar!',
-	usage: 'coinflip [cara/coroa] [quantidade]',
 
-	execute(bot, message, command, args, db, prefix) {
+	execute(bot, message, command, db, lang, supportServer, prefix, args) {
 		const user = message.author,
 			ref = db.collection('perfis').doc(user.id);
 
 		ref.get().then(doc => {
 			const money = parseInt(args[1]);
 			if (!doc.exists) {
-				return message.reply(`ainda não criaste um perfil! Para criares um perfil usa \`${prefix}profile create\`!`).catch();
+				return message.reply(`${lang.error.noProfile}\`${prefix}profile create\`!`).catch();
 			}
-			else if (!Number.isInteger(money) || (args[0] != 'cara' && args[0] != 'coroa')) {
-				return message.channel.send(`Sintaxe errada! Como usar: \`${prefix}coinflip [cara/coroa] [quantidade]\``).catch();
+			else if (!Number.isInteger(money) || (args[0] != lang.coinflip.heads && args[0] != lang.coinflip.tails)) {
+				return message.channel.send(`${lang.error.wrongSyntax}\`${prefix + lang.command[command].usage}\``).catch();
 			}
 			else {
-				const bal = doc.get('balance');
+				const bal = doc.get('balance'),
+					least = 50,
+					most = 1000;
 
 				if ((bal + money) > 999999999) {
-					return message.reply('não podes ganhar mais dinheiro! 😧').catch();
+					return message.reply(lang.error.noAdd).catch();
 				}
 				else if (money > bal) {
-					return message.reply('não tens dinheiro suficiente!').catch();
+					return message.reply(lang.error.noMoney).catch();
 				}
-				else if (money < 50) {
-					return message.reply('tens de apostar no mínimo ¤50!').catch();
+				else if (money < least) {
+					return message.reply(`${lang.coinflip.betAtLeast + least}!`).catch();
 				}
-				else if (money > 1000) {
-					return message.reply('não podes apostar mais que ¤1000!').catch();
+				else if (money > most) {
+					return message.reply(`${lang.coinflip.betAtMost + most}!`).catch();
 				}
 				else {
 					const value = Math.round(Math.random()),
@@ -41,21 +40,21 @@ module.exports = {
 					const attachment = new MessageAttachment('images/coinflip/animation.gif');
 
 					message.channel.send(attachment).then(msg => msg.delete({ timeout: 3000 }).then(() => {
-						if (value == 0) res = 'cara';
-						if (value == 1) res = 'coroa';
+						if (value == 0) res = lang.coinflip.heads;
+						if (value == 1) res = lang.coinflip.tails;
 
 						message.channel.send(`${res.charAt(0).toUpperCase() + res.slice(1)}!`, { files: [`images/coinflip/${res}.gif`] });
 
 						if (res != guess) {
 							ref.update({
 								balance: (bal - money),
-							}).then(() => { return message.reply(`perdeste ¤${money}!`); }).catch();
+							}).then(() => { return message.reply(`${lang.coinflip.lost + money}!`); }).catch();
 						}
 						else if (res == guess) {
 							const won = money * 2;
 							ref.update({
 								balance: (bal + won),
-							}).then(() => { message.reply(`ganhaste ¤${won}!`); }).catch();
+							}).then(() => { message.reply(`${lang.coinflip.won + won}!`); }).catch();
 						}
 					}));
 				}

@@ -1,0 +1,573 @@
+{
+	"prefixMsg": "Our prefix for this server is ",
+	"notIndicated": "_Not indicated_",
+	"by": "by ",
+	"reason": "Reason:",
+	"sent": "sent!",
+	"botsNoProfile": "bots have no profiles!",
+	"help": "Help",
+	"botDescription": "We are Gumball and Penny and we aim to make any server on which we are in a fun place!\nWhen in doubt on any command use ",
+	"commandName": "command name",
+	"actions": "Actions",
+	"casino": "Casino",
+	"fun": "Fun",
+	"economyAndProfile": "Economy and Profile",
+	"moderation": "Moderation",
+	"server": "Server",
+	"utility": "Utility",
+	"inviteUs": "Invite Us!",
+	"supportServer": "Support Server",
+	"donate": "Donate",
+	"name": "Name",
+	"category": "Category",
+	"howToUse": "How to use",
+	"description": "Description",
+	"aliases": "Aliases",
+	"inviteUsToYourServer": "Invite us to your server!",
+	"has": " has ",
+	"members": " members",
+	"species": "Species",
+	"gender": "Gender",
+	"nature": "Nature",
+	"id": "ID",
+	"verificationLevel": "Verification Level",
+	"region": "Region",
+	"membersServerInfo": "Members",
+	"creation": "Creation",
+	"owner": "Owner",
+	"created": "Created ",
+	"status": "Status",
+	"mention": "Mention",
+	"joined": "Joined",
+	"roles": "Roles",
+	"ago": " ",
+	"botNoProfile": "we don't have a profile!",
+	"totalXP": "Total XP",
+	"level": "Level",
+	"balanceProfile": "Balance",
+	"awesomeStore": "Awesome Store",
+	"youBought": "you bought ",
+	"nameLicense": "Name License",
+	"page": "Page",
+	"toChangePage": "To change page use ",
+
+	"error": {
+		"cmd": "there was an error when trying to execute that command!",
+		"noProfile": "you haven't created a profile yet! To create a profile use ",
+		"userNoProfile": " hasn't yet created a profile!",
+		"noMention": "you have to mention someone!",
+		"noPerm": "you have no permisison to use this command! 💢",
+		"botNoBan": "we don't have permission to ban members!",
+		"botNoManageMsgs": "we don't have permission to manage messages!",
+		"noNumberToDelete": "you have to define how many messages you want to delete!",
+		"wrongSyntax": "Wrong syntax! How to use: ",
+		"noAdd": "you can't get any more money! 😧",
+		"noMoney": "you don't have enough money!",
+		"noMessage": "you didn't write any message!",
+		"noGive": "you can't give money to ",
+		"noCommand": "that command doesn't exist!",
+		"noInventory": "you have no inventory!",
+		"botNoKick": "we don't have permission to kick members!",
+		"noSelf": "you can't use this command on you!",
+		"wontWorkOnBot": "isso não vai funcionar com um bot! 😂",
+		"botNoManageRoles": "we don't have permission to manage roles!",
+		"botNoManageChannels": "we don't have permission to manage channels!",
+		"noPet": "you haven't bought a pet yet! To buy one go to the Awesome Store using ",
+		"noChangePetName": "you can't change your pet's name!",
+		"noNameLicense": "you don't have a **Name License**!",
+		"noName": "you didn't choose any name!",
+		"petAlreadyHasName": "your pet has that name already!",
+		"noPetHUDChosen": "you didn't choose a Pet HUD!",
+		"noHavePetHUD": "you don't have that Pet HUD!",
+		"noPetToAdoption": "you have no pet to send to adoption!",
+		"userNoPet": "hasn't bought a pet yet!",
+		"notANumber": "that's not a number!",
+		"noPrefixChosen": "we need to know the desired prefix!",
+		"noLinks": "we can't write any links!",
+		"memberNotMuted": "that member isn't muted!",
+		"hasProfileAlready": "Já tens um perfil criado, não podes criar outro! 💢",
+		"noHUDChosen": "não escolheste um HUD!",
+		"noHaveHUD": "não tens esse HUD!"
+	},
+	
+	"levelUp": {
+		"congrats": "Congratulations ",
+		"levelTo": ", you leveled up to level ",
+		"received": " and received ¤"
+	},
+
+	"angry": {
+		"gotAngry": " got angry!",
+		"gotAngryWithUs": " got angry with us!",
+		"gotAngryWith": " got angry with "
+	},
+
+	"balance": {
+		"have": "you have "
+	},
+
+	"ban": {
+		"wasBanned": " was banned!"
+	},
+
+	"clear": {
+		"weDeleted": "We have deleted ",
+		"messsage": " messsage",
+		"messages": " messsages"
+	},
+
+	"coinflip": {
+		"betAtLeast": "you have to bet at least ¤",
+		"betAtMost": "you can't bet over ¤",
+		"heads": "heads",
+		"tails": "tails",
+		"lost": "you lost ¤",
+		"won": "you won ¤"
+	},
+
+	"cry": {
+		"isCrying": " is crying!",
+		"isCryingBecauseOfUs": " is crying because of us!",
+		"made": " made ",
+		"cry": " cry!"
+	},
+
+	"daily": {
+		"againIn": "you can get money again ",
+		"received": "you received your ¤",
+		"toGetMore": " of today! To get more money use "
+	},
+
+	"dance": {
+		"isDancing": "  is dancing!",
+		"isDancingForUs": " is dancing for us!",
+		"isDancingFor": " is dancing for "
+	},
+
+	"give": {
+		"thanksBut": "Thanks, but you'll need that money more than us!",
+		"youGave": "you gave ",
+		"to": " to "
+	},
+
+	"hug": {
+		"huggedSelf": " hugged themselves?",
+		"huggedUs": " hugged us!",
+		"hugged": " hugged "
+	},
+
+	"kick": {
+		"wasKicked": " was kicked!"
+	},
+
+	"kiss": {
+		"kissedSelf": " kissed themselves?",
+		"kissedUs": " kissed us!",
+		"kissed": " kissed "
+	},
+
+	"laugh": {
+		"isLaughing": " is laughing!",
+		"isLaughingFromSelf": " is laughing from themselves!",
+		"isLaughingFromUs": " is laughing from us!",
+		"isLaughingFrom": " is laughing from "
+	},
+
+	"match": {
+		"alreadyAPair": "Hey, we're already a pair! 😠",
+		"youAre": "you are ",
+		"compatibleWith": " compatible with "
+	},
+
+	"mute": {
+		"isNowMuted": " is now muted!"
+	},
+
+	"pat": {
+		"pattedSelf": " patted themsleves?",
+		"pattedUs": " patted us!",
+		"patted": " patted "
+	},
+
+	"pet": {
+		"nameMaxIs": "the name's maximum character limit is ",
+		"nameHas": "That name has ",
+		"nameChangedTo": "you pet's name was changed to ",
+		"petHUDChangedTo": "your Pet HUD was changed to ",
+		"wasSentToAdoption": " was sent to adoption!",
+		"botNoPet": "we don't have a pet! Yet...",
+		"botsNoPets": "bots have no pets! 😂"
+	},
+
+	"ping": {
+		"yourPingIs": "Your ping is "
+	},
+
+	"prefix": {
+		"isNow": "Our prefix for this server is now "
+	},
+
+	"profile": {
+		"wasCreated": "you profile was created! Add a description with ",
+		"description": "description",
+		"nicknameMaxIs": "the nickname's maximum character limit is ",
+		"nicknameHas": "That nickname has ",
+		"nicknameChangedTo": "your nickname was changed to ",
+		"descMaxIs": "the description's maximum character limit is ",
+		"descHas": "That description has ",
+		"descChangedTo": "your description was changed to ",
+		"hudChangedTo": "your HUD was changed to "
+	},
+
+	"run": {
+		"ranAway": " ran away!",
+		"ranAwayFromUs": " ran away form us!",
+		"ranAwayFrom": " ran away from "
+	},
+
+	"serverinfo": {
+		"verificationLevel": {
+			"NONE": "None",
+			"LOW": "Low",
+			"MEDIUM": "Medium",	
+			"HIGH": "High",			
+			"VERY_HIGH": "Very High"
+		},
+
+		"region": {
+			"brazil": "Brazil",
+			"europe": "Europe",
+			"eu-central": "Europe Central",
+			"eu-east": "Europe East",
+			"eu-west": "Europe West",
+			"hongkong": "Hong Kong",
+			"india": "india",
+			"japan": "Japan",
+			"russia": "Russia",
+			"singapore": "Singapore",
+			"southafrica": "South Africa",
+			"sydney": "Sydney",
+			"us-central": "US Central",
+			"us-east": "US East",
+			"us-south": "US South",
+			"us-west": "US West"
+		}
+	},
+
+	"shop": {
+		"welcome": "Welcome to the Awesome Store!\nHere you can buy some stuff with the money you have saved so far.\nUse ",
+		"category": "category",
+		"toSelect": " to select a category.",
+		"boughtHUD": "you bought the HUD ",
+		"boughtPetHUD": "you bought the Pet HUD ",
+		"hero": "Hero",
+		"villain": "Villain",
+		"toBuyOr": " to buy or ",
+		"hudName": "HUD Name",
+		"toSee": " to see.",
+		"toSelectASubCat": " to select a sub-category.",
+		"animalName": "Animal Name",
+		"toBuy": " to buy.",
+		"page": "page"
+	},
+
+	"slap": {
+		"slappedSelf": " slapped themselves?",
+		"slappedUs": " slapped us!",
+		"slapped": " slapped "
+	},
+
+	"tempmute": {
+		"isMutedFor": " is muted for ",
+		"seconds": " seconds!"
+	},
+
+	"unmute": {
+		"isNowUnmuted": " is now unmuted!"
+	},
+
+	"userinfo": {
+		"status": {
+			"online": "Online",
+			"idle":	"Idle",
+			"dnd": "Do not Disturb",
+			"offline": "Offline"
+		},
+
+		"joined": "Joined "
+	},
+
+	"vote": {
+		"vote": "Vote for the bot each 12h to receive ¤150!"
+	},
+
+	"which": {
+		"noSelect": "you have to select an available anime! Use ",
+		"forMoreInfo": " for more information."
+	},
+
+
+	"command": {
+		"angry": {
+			"category": "Actions",
+			"description": "Get angry!",
+			"usage": "angry [optional - @member]"
+		},
+
+		"avatar": {
+			"category": "Utility",
+			"description": "Look at your avatar or at a server member's!",
+			"usage": "avatar [optional - @user]"
+		},
+
+		"balance": {
+			"category": "Economy and Profile",
+			"description": "Check your balance!",
+			"usage": "balance"
+		},
+
+		"ban": {
+			"category": "Moderation",
+			"description": "We'll ban a server member!",
+			"usage": "ban [@member] [optional - reason]"
+		},
+
+		"clear": {
+			"category": "Moderation",
+			"description": "Clean the chat",
+			"usage": "clear [number]"
+		},
+
+		"coinflip": {
+			"category": "Casino",
+			"description": "Flip the coin and place your bets!",
+			"usage": "coinflip [heads/tails] [quantity]"
+		},
+
+		"cry": {
+			"category": "Actions",
+			"description": "Cry!",
+			"usage": "cry [optional - @member]"
+		},
+
+		"daily": {
+			"category": "Economy and Profile",
+			"description": "You will receive ¤250 each day!",
+			"usage": "daily"
+		},
+
+		"dance": {
+			"category": "Actions",
+			"description": "Dance!",
+			"usage": "dance [optional - @member]"
+		},
+
+		"dm": {
+			"category": "Secrets",
+			"description": "We'll send a private message to the tagged user",
+			"usage": "dm [@user] [message]"
+		},
+
+		"fact": {
+			"category": "Fun",
+			"description": "**Facts**",
+			"usage": "fact"
+		},
+
+		"give": {
+			"category": "Economy and Profile",
+			"description": "Give money to someone!",
+			"usage": "give [@member] [quantity]"
+		},
+
+		"help": {
+			"category": "Help",
+			"description": "If you don't know, your problem! :unamused:",
+			"usage": "help [optional - command name]"
+		},
+
+		"hug": {
+			"category": "Actions",
+			"description": "Hug!",
+			"usage": "hug [@member]"
+		},
+
+		"inventory": {
+			"category": "Profile",
+			"description": "Check your inventory",
+			"usage": "inventory"
+		},
+
+		"invite": {
+			"category": "Utility",
+			"description": "We'll send our invite link!",
+			"usage": "invite"
+		},
+
+		"kick": {
+			"category": "Moderation",
+			"description": "We'll kick a server member!",
+			"usage": "kick [@member] [optional - reason]"
+		},
+
+		"kiss": {
+			"category": "Actions",
+			"description": "Kiss!",
+			"usage": "kiss [@member]"
+		},
+
+		"laugh": {
+			"category": "Actions",
+			"description": "Laugh!",
+			"usage": "laugh [optional - @member]"
+		},
+
+		"match": {
+			"category": "Fun",
+			"description": "Check if you're compatible with somebody!",
+			"usage": "match [@member]"
+		},
+
+		"members": {
+			"category": "Server",
+			"description": "We'll show the server's member count!",
+			"usage": "members"
+		},
+
+		"mute": {
+			"category": "Moderation",
+			"description": "We'll mute a server member!",
+			"usage": "mute [@member] [optional - reason]"
+		},
+
+		"pat": {
+			"category": "Actions",
+			"description": "Pat!",
+			"usage": "pat [@member]"
+		},
+
+		"pet": {
+			"category": "Economy and Profile",
+			"description": "Check your pet or someone's!\nAvailable options: `sendtoadoption`, `sethud`, `setname`",
+			"usage": "pet [optional - option | @member]"
+		},
+
+		"ping": {
+			"category": "Utility",
+			"description": "Uhm... pong?",
+			"usage": "ping"
+		},
+
+		"profile": {
+			"category": "Economy and Profile",
+			"description": "Check your profile or someone's!\nAvailable options: `create`, `sethud`, `setnickname`, `setdescription`",
+			"usage": "profile [optional - option | @member]"
+		},
+
+		"random": {
+			"category": "Fun",
+			"description": "We'll tell a number between 1 and the indicated number. The default is 100",
+			"usage": "random [optional - number]"
+		},
+
+		"run": {
+			"category": "Actions",
+			"description": "Run!",
+			"usage": "run [optional - @member]"
+		},
+
+		"say": {
+			"category": "Fun",
+			"description": "We'll say whatever you want! :slight_smile:",
+			"usage": "say [message]"
+		},
+
+		"serverinfo": {
+			"category": "Server",
+			"description": "All server's info!",
+			"usage": "serverinfo"
+		},
+
+		"setprefix": {
+			"category": "Server",
+			"description": "Change our prefix for this server",
+			"usage": "setprefix [prefix]"
+		},
+
+		"shop": {
+			"category": "Economy and Profile",
+			"description": "Go shopping on the Awesome Store!\nAvailable options: `buy`, `huds`, `view`",
+			"usage": "shop"
+		},
+		
+		"slap": {
+			"category": "Actions",
+			"description": "Slap someone!",
+			"usage": "slap [optional - @member]"
+		},
+
+		"tempmute": {
+			"category": "Moderation",
+			"description": "We'll mute a server member, but for a determined time!",
+			"usage": "tempmute [@member] [seconds] [optional - reason]"
+		},
+
+		"unmute": {
+			"category": "Moderation",
+			"description": "Unmute anyone!",
+			"usage": "unmute [@member]"
+		},
+
+		"userinfo": {
+			"category": "Server",
+			"description": "All info from a server member!",
+			"usage": "userinfo [optional - @member]"
+		},
+
+		"vote": {
+			"category": "Economy and Profile",
+			"description": "Vote for us!",
+			"usage": "vote"
+		},
+		
+		"which": {
+			"category": "Fun",
+			"description": "Which anime character are you?\nAvailable anime: `akame ga kill`, `code geass`, `death note`, `higurashi` , `jojo`, `kakegurui`, `mirai nikki`, `noragami`, `one punch man`, `psycho-pass`, `steins;gate`",
+			"usage": "which [anime]"
+		}
+	},
+
+	"pets": {
+		"species": {
+			"Cabra": "Goat",
+			"Cão": "Dog",
+			"Formiga": "Ant",
+			"Galinha": "Chicken",
+			"Gato": "Cat",
+			"Golfinho": "Dolphin",
+			"Cavalo (Pónei)": "Horse (Pony)",
+			"Sapo": "Frog"
+		},
+
+		"natures": {
+			"Solitário": "Lonely",
+			"Solitária": "Lonely",
+			"Corajoso": "Brave",
+			"Corajosa": "Brave",
+			"Dócil": "Docile",
+			"Preguiçoso": "Lazy",
+			"Preguiçosa": "Lazy",
+			"Tímido": "Timid",
+			"Tímida": "Timid",
+			"Sério": "Serious",
+			"Séria": "Serious",
+			"Alegre": "Jolly",
+			"Ingénuo": "Naive",
+			"Ingénua": "Naive",
+			"Calmo": "Calm",
+			"Calma": "Calm",
+			"Peculiar": "Quirky",
+			"Suicida": "Suicidal"
+		}
+	}
+}

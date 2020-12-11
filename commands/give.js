@@ -1,10 +1,7 @@
 module.exports = {
 	name: 'give',
-	category: 'Economia e Perfil',
-	description: 'Dá dinheiro a alguém!',
-	usage: 'give [@membro] [quantia]',
 
-	execute(bot, message, command, args, db, prefix) {
+	execute(bot, message, command, db, lang, language, supportServer, prefix, args) {
 
 		function getUserFromMention(mention) {
 
@@ -18,43 +15,43 @@ module.exports = {
 		}
 
 		const donor = message.author;
-		if (!args || args == '') return message.reply('não mencionaste ninguém!').catch();
+		if (!args || args == '') return message.reply(lang.error.noMention).catch();
 		const user = getUserFromMention(args [0]),
 			refD = db.collection('perfis').doc(donor.id);
 		let amount = parseInt(args[1]);
 
 		refD.get().then(docD => {
 			if (!docD.exists) {
-				message.reply(`ainda não criaste um perfil! Para criares um perfil usa \`${prefix}profile create\`!`).catch();
+				message.reply(`${lang.error.noProfile}\`${prefix}profile create\`!`).catch();
 			}
 			else if (user == null || !Number.isInteger(amount)) {
-				message.reply('Sintaxe errada! Como usar: +give [@membro] [quantia]').catch();
+				message.reply(`${lang.error.wrongSyntax}\`${prefix + lang.command[command].usage}\``).catch();
 			}
 			else {
 				const refU = db.collection('perfis').doc(user.id);
 
 				refU.get().then(docU => {
 					if (user == bot.user) {
-						return message.reply('Obrigado, mas vais precisar mais desse dinheiro do que nós! 😁').catch();
+						return message.reply(`${lang.give.thanksBut} 😁`).catch();
 					}
 					else if (user.bot) {
-						return message.reply('os bots não têm perfis!').catch();
+						return message.reply(lang.botsNoProfile).catch();
 					}
 					else if (args[1] == null || args[1] == '' || args == user) {
-						return message.reply(`Sintaxe errada! Como usar: \`${prefix}give [@membro] [quantidade]\``).catch();
+						return message.reply(`${lang.error.wrongSyntax}\`${prefix + lang.command[command].usage}\``).catch();
 					}
 					else if (!docU.exists) {
-						return message.reply(`${user.tag} ainda não criou um perfil!`).catch();
+						return message.reply(`${user.tag}${lang.error.userNoProfile}`).catch();
 					}
 					else {
 						const balD = docD.get('balance'),
 							balU = docU.get('balance');
 
 						if (amount > balD) {
-							return message.reply('não tens dinheiro suficiente!').catch();
+							return message.reply(lang.error.noMoney).catch();
 						}
 						else if (balU == 999999999) {
-							return message.reply(`não podes dar dinheiro a ${user.tag}! 😧`).catch();
+							return message.reply(`${lang.error.noGive}${user.tag}! 😧`).catch();
 						}
 						else {
 
@@ -71,7 +68,7 @@ module.exports = {
 								refD.update({
 									balance: balD - amount,
 								}).then(() => {
-									message.reply(`deste **¤${amount}** a ${user}!`).catch();
+									message.reply(`${lang.give.youGave}**¤${amount}**${lang.give.to}${user}!`).catch();
 								});
 							});
 						}

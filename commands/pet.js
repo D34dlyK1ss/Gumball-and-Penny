@@ -16,11 +16,8 @@ function titleCase(str) {
 
 module.exports = {
 	name: 'pet',
-	category: 'Economia e Perfil',
-	description: 'Vê o teu pet ou o de alguém!\nOpções disponíveis: `sendtoadoption`, `sethud`, `setname`',
-	usage: 'pet [opcional - opção | @membro]',
 
-	execute(bot, message, command, args, db, prefix) {
+	execute(bot, message, command, db, lang, language, supportServer, prefix, args) {
 		const user = message.mentions.users.first() || message.author,
 			refV = db.collection('vip').doc(user.id),
 			refP = db.collection('pet').doc(user.id),
@@ -34,12 +31,14 @@ module.exports = {
 			db.collection('pet').doc(message.author.id).get().then(doc => {
 				const pet = doc.get('pet');
 				if (!doc.exists) {
-					return message.reply(`ainda não compraste um pet! Para comprares um vai à Loja Incrível usando \`${prefix}shop pets\`!`).catch();
+					return message.reply(`${lang.error.noPet}\`${prefix}shop pets\`!`).catch();
 				}
 				else if (items.pets[pet].vip) {
-					return message.reply(`não podes mudar o nome d${items.pets[pet].pronoun} **${titleCase(doc.get('pet'))}**!`).catch();
+					return message.reply(lang.error.noChangePetName).catch();
 				}
 				else {
+					const max = 25;
+
 					refI.get().then(docI => {
 						const invItems = docI.get('items'),
 							newName = titleCase(args);
@@ -51,16 +50,16 @@ module.exports = {
 						}
 
 						if (!invItems.includes('name_license')) {
-							return message.reply('não tens uma **Licença de Nome**!').catch();
+							return message.reply(lang.error.noNameLicense).catch();
 						}
 						else if (!newName || newName == '') {
-							return message.reply('não escolheste nome nenhum!').catch();
+							return message.reply(lang.error.noName).catch();
 						}
 						else if (newName == doc.get('name')) {
-							return message.reply('o teu pet já tem esse nome!').catch();
+							return message.reply(lang.error.petAlreadyHasName).catch();
 						}
-						else if (args.length > 24) {
-							return message.reply(`o limite máximo de caracteres para o nome é de 24!\nEssa alcunha tem ${args.length}.`).catch();
+						else if (args.length > max) {
+							return message.reply(`${lang.pet.nameMaxIs + max}!\n${lang.pet.nameHas + args.length}.`).catch();
 						}
 						else {
 							invItems.splice(invItems.findIndex(item => item == 'name_license'), 1);
@@ -71,7 +70,7 @@ module.exports = {
 							db.collection('pet').doc(message.author.id).update({
 								name: newName,
 							}).then(() => {
-								message.reply(`o nome do teu pet foi alterado para ${newName}!`).catch();
+								message.reply(`${lang.pet.nameChangedTo}**${newName}**!`).catch();
 							}).catch(err => { console.error(err); });
 						}
 					});
@@ -82,7 +81,7 @@ module.exports = {
 			db.collection('pet').doc(message.author.id).get().then(docP => {
 				if (!docP.exists) {
 					if (user == message.author) {
-						return message.reply(`ainda não compraste um pet! Para comprares um vai à Loja Incrível usando \`${prefix}shop pets\`!`).catch();
+						return message.reply(`${lang.error.noPet}\`${prefix}shop pets\`!`).catch();
 					}
 				}
 				else {
@@ -93,16 +92,16 @@ module.exports = {
 						newHud = newHud.concat(args.slice(0)).toLowerCase().replace(/[ ]/g, '_');
 
 						if (!newHud || newHud == '') {
-							return message.reply('não escolheste um HUD!').catch();
+							return message.reply(lang.error.noPetHUDChosen).catch();
 						}
 						else if (!petHuds.includes(`${newHud}`)) {
-							return message.reply('não tens esse HUD!').catch();
+							return message.reply(lang.error.noHavePetHUD).catch();
 						}
 						else {
 							db.collection('pet').doc(message.author.id).update({
 								hud: newHud,
 							}).then(() => {
-								message.reply(`alteraste o teu HUD para **${titleCase(args)}**`).catch();
+								message.reply(`${lang.pet.petHUDChangedTo}**${titleCase(args)}**`).catch();
 							}).catch(err => { console.error(err); });
 						}
 					});
@@ -113,18 +112,14 @@ module.exports = {
 			db.collection('pet').doc(message.author.id).get().then(docP => {
 				if (!docP.exists) {
 					if (user == message.author) {
-						return message.reply('não tens pet nenhum para dar para adoção!').catch();
+						return message.reply(lang.error.noPetToAdoption).catch();
 					}
 				}
 				else {
-					let petName = docP.get('name'),
-						gender = docP.get('gender'),
-						pronoun;
+					let petName = docP.get('name');
 					const pet = docP.get('pet');
 					const petVIP = items.pets[pet].vip;
 					if (petName == '') petName = `${(docP.get('species')).toLowerCase()}`;
-					gender == '♂️' ? (petVIP ? pronoun = 'o' : pronoun = 'o teu') : (petVIP ? pronoun = 'a' : pronoun = 'a tua');
-					gender == '♂️' ? gender = 'o' : gender = 'a';
 					db.collection('pet').doc(message.author.id).delete().then(async () => {
 						if (petVIP) {
 							refI.get().then(docI => {
@@ -132,7 +127,7 @@ module.exports = {
 								iPetHUDs.splice(iPetHUDs.findIndex(petHud => petHud == `${pet}`), 1);
 							});
 						}
-						await message.reply(`${pronoun} **${petName}** foi dad${gender} para adoção!`).catch();
+						await message.reply(`**${petName}**${lang.pet.wasSentToAdoption}`).catch();
 					});
 				}
 			});
@@ -141,16 +136,16 @@ module.exports = {
 			refP.get().then(async doc => {
 				if (!doc.exists) {
 					if (user == message.author) {
-						return message.reply(`ainda não compraste um pet! Para comprares um vai à Loja Incrível usando \`${prefix}shop pets\`!`).catch();
+						return message.reply(`${lang.error.noPet}\`${prefix}shop pets\`!`).catch();
 					}
 					else if (user == bot.user) {
-						return message.reply('nós não temos um pet!').catch();
+						return message.reply(lang.pet.botNoPet).catch();
 					}
 					else if (user.bot) {
-						return message.reply('os bots não têm pets! 😂 ').catch();
+						return message.reply(lang.pet.botsNoPets).catch();
 					}
 					else {
-						return message.reply(`${user.tag} ainda não comprou um pet!`).catch();
+						return message.reply(`${user.tag}${lang.error.userNoPet}`).catch();
 					}
 				}
 				else {
@@ -181,10 +176,10 @@ module.exports = {
 					ctx.fillStyle = 'white';
 
 					const extra = 40;
-					ctx.fillText(`Nome: ${petName}`, 330, 105 + extra);
-					ctx.fillText(`Espécie: ${petSpecies}`, 330, 135 + extra);
-					ctx.fillText(`Género: ${petGender}`, 330, 165 + extra);
-					ctx.fillText(`Natureza: ${petNature}`, 330, 195 + extra);
+					ctx.fillText(`${lang.name}: ${petName}`, 330, 105 + extra);
+					ctx.fillText(`${lang.species}: ${lang.pets.species[petSpecies]}`, 330, 135 + extra);
+					ctx.fillText(`${lang.gender}: ${petGender}`, 330, 165 + extra);
+					ctx.fillText(`${lang.nature}: ${lang.pets.natures[petNature]}`, 330, 195 + extra);
 
 					ctx.restore();
 

@@ -27,11 +27,8 @@ function titleCase(str) {
 module.exports = {
 	name: 'profile',
 	aliases: ['p'],
-	category: 'Economia e Perfil',
-	description: 'Vê o teu perfil ou o de alguém!\nOpções disponíveis: `create`, `sethud`, `setnickname`, `setdescription`',
-	usage: 'profile [opcional - opção | @membro]',
 
-	execute(bot, message, command, args, db, prefix) {
+	execute(bot, message, command, db, lang, language, supportServer, prefix, args) {
 		const user = message.mentions.users.first() || message.author,
 			refP = db.collection('perfis').doc(user.id),
 			refI = db.collection('inventario').doc(message.author.id),
@@ -43,7 +40,7 @@ module.exports = {
 		case 'create':
 			db.collection('perfis').doc(message.author.id).get().then(async doc => {
 				if (doc.exists) {
-					return message.channel.send('Já tens um perfil criado, não podes criar outro! 💢').catch();
+					return message.channel.send(lang.error.hasProfileAlready).catch();
 				}
 				else {
 					db.collection('perfis').doc(message.author.id).set({
@@ -59,7 +56,7 @@ module.exports = {
 					await refI.set({
 						huds: ['grey'],
 					}).then(() => {
-						message.reply(`o teu perfil foi criado! Adiciona uma descricão com \`${prefix}profile setdescription [descrição]\`!`);
+						message.reply(`${lang.profile.wasCreated}\`${prefix}profile setdescription [${lang.profile.description}]\`!`);
 					}).catch(err => { console.error(err); });
 				}
 			});
@@ -67,13 +64,14 @@ module.exports = {
 		case 'setnickname':
 			if (args == '') args = 'N/A';
 			db.collection('perfis').doc(message.author.id).get().then(doc => {
+				const nicknameMax = 32;
 				if (!doc.exists) {
 					if (user == message.author) {
-						return message.reply(`ainda não criaste um perfil! Para criares um perfil usa \`${prefix}profile create\`!`);
+						return message.reply(`${lang.error.noProfile}\`${prefix}profile create\`!`);
 					}
 				}
-				else if (args.length > 32) {
-					return message.reply(`o limite máximo de caracteres para a alcunha é de 32!\nEssa alcunha tem ${args.length}.`);
+				else if (args.length > nicknameMax) {
+					return message.reply(`${lang.profile.nicknameMaxIs + nicknameMax}!\n${lang.profile.nicknameHas + args.length}.`);
 				}
 				else {
 					const newNickname = titleCase(args);
@@ -81,26 +79,27 @@ module.exports = {
 					db.collection('perfis').doc(message.author.id).update({
 						nickname: newNickname,
 					}).then(() => {
-						message.reply(`a tua alcunha foi alterada para ${newNickname}!`);
+						message.reply(`${lang.profile.nicknameChangedTo}**${newNickname}**!`);
 					}).catch(err => { console.error(err); });
 				}
 			});
 			break;
 		case 'setdescription':
 			db.collection('perfis').doc(message.author.id).get().then(doc => {
+				const descMax = 44;
 				if (!doc.exists) {
 					if (user == message.author) {
-						return message.reply(`ainda não criaste um perfil! Para criares um perfil usa \`${prefix}profile create\`!`);
+						return message.reply(`${lang.error.noProfile}\`${prefix}profile create\`!`);
 					}
 				}
-				else if (args.length > 44) {
-					return message.reply(`o limite máximo de caracteres para a descrição é de 44!\nEssa descrição tem ${args.length}.`);
+				else if (args.length > descMax) {
+					return message.reply(`${lang.profile.descMaxIs + descMax}!\n${lang.profile.descHas + args.length}.`);
 				}
 				else {
 					db.collection('perfis').doc(message.author.id).update({
 						description: args,
 					}).then(() => {
-						message.reply(`a tua descrição foi alterada para ${args}!`);
+						message.reply(`${lang.profile.descChangedTo}**${args}**!`);
 					}).catch(err => { console.error(err); });
 				}
 			});
@@ -109,7 +108,7 @@ module.exports = {
 			db.collection('perfis').doc(message.author.id).get().then(docP => {
 				if (!docP.exists) {
 					if (user == message.author) {
-						return message.reply(`ainda não criaste um perfil! Para criares um perfil usa \`${prefix}profile create\`!`);
+						return message.reply(`${lang.error.noProfile}\`${prefix}profile create\`!`);
 					}
 				}
 				else {
@@ -120,16 +119,16 @@ module.exports = {
 						newHud = newHud.concat(args.slice(0)).toLowerCase().replace(/[ ]/g, '_');
 
 						if (!newHud || newHud == '') {
-							return message.reply('não escolheste um HUD!');
+							return message.reply(lang.error.noHUDChosen);
 						}
 						else if (!huds.includes(`${newHud}`)) {
-							return message.reply('não tens esse HUD!');
+							return message.reply(lang.error.noHaveHUD);
 						}
 						else {
 							db.collection('perfis').doc(message.author.id).update({
 								hud: newHud,
 							}).then(() => {
-								message.reply(`alteraste o teu HUD para **${titleCase(args)}**`);
+								message.reply(`${lang.profile.hudChangedTo}**${titleCase(args)}**`);
 							}).catch(err => { console.error(err); });
 						}
 					});
@@ -140,16 +139,16 @@ module.exports = {
 			refP.get().then(async doc => {
 				if (!doc.exists) {
 					if (user == message.author) {
-						return message.reply(`ainda não criaste um perfil! Para criares um perfil usa \`${prefix}profile create\`!`).catch();
+						return message.reply(`${lang.error.noProfile}\`${prefix}profile create\`!`).catch();
 					}
 					else if (user == bot.user) {
-						return message.reply('nós não precisamos de ter um perfil!').catch();
+						return message.reply(lang.botNoProfile).catch();
 					}
 					else if (user.bot) {
-						return message.reply('os bots não criam perfis! 😂 ').catch();
+						return message.reply(lang.botsNoProfile).catch();
 					}
 					else {
-						return message.reply(`**${user.tag}** ainda não criou um perfil!`).catch();
+						return message.reply(`**${user.tag}**${lang.error.userNoProfile}`).catch();
 					}
 				}
 				else {
@@ -202,17 +201,17 @@ module.exports = {
 
 					ctx.font = '18px Comic Sans MS';
 					ctx.textAlign = 'left';
-					ctx.fillText(`XP Total: ${xp}`, 175, 140);
-					ctx.fillText(`Nível: ${level}`, 175, 175);
+					ctx.fillText(`${lang.totalXP}: ${xp}`, 175, 140);
+					ctx.fillText(`${lang.level}: ${level}`, 175, 175);
 
 					ctx.fillStyle = 'gold';
 					ctx.textAlign = 'right';
-					ctx.fillText(`Capital: ¤${bal}`, 640, 155);
+					ctx.fillText(`${lang.balanceProfile}: ¤${bal}`, 640, 155);
 
 					ctx.font = '18px Comic Sans MS';
 					ctx.fillStyle = 'white';
 					ctx.textAlign = 'left';
-					ctx.fillText('Descrição:', 175, 270);
+					ctx.fillText(`${lang.description}:`, 175, 270);
 					ctx.fillText(`${desc}`, 175, 320);
 
 					ctx.font = '18px Comic Sans MS';

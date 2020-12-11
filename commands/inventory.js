@@ -3,11 +3,8 @@ const { MessageEmbed } = require('discord.js');
 module.exports = {
 	name: 'inventory',
 	aliases: ['i'],
-	category: 'Perfil',
-	description: 'Verifica o teu inventário',
-	usage: 'inventory',
 
-	execute(bot, message, command, args, db, prefix) {
+	execute(bot, message, command, db, lang, language, supportServer, prefix) {
 		const refP = db.collection('perfis').doc(message.author.id),
 			refI = db.collection('inventario').doc(message.author.id);
 		let iEmbed = new MessageEmbed()
@@ -17,7 +14,7 @@ module.exports = {
 
 		refP.get().then(docP => {
 			if (!docP.exists) {
-				return message.reply(`ainda não criaste um perfil! Para criares um perfil usa \`${prefix}profile create\`!`).catch();
+				return message.reply(`${lang.error.noProfile}\`${prefix}profile create\`!`).catch();
 			}
 			else {
 				refI.get().then(async docI => {
@@ -33,7 +30,7 @@ module.exports = {
 						);
 
 					if (!docI.exists) {
-						return message.reply('não tens nenhum inventário!').catch();
+						return message.reply(lang.error.noInventory).catch();
 					}
 
 					if (iPetHuds) {
