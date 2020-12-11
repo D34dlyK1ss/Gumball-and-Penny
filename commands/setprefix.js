@@ -15,24 +15,27 @@ module.exports = {
 		else {
 			const newPrefix = args[0].toLowerCase(),
 				ref = db.collection('servidores').doc(message.guild.id);
-			const oldPrefix = ref.get('prefix') || config.prefix;
 
-			if (newPrefix == oldPrefix) {
-				return message.reply(lang.error.samePrefix).catch();
-			}
-			else if (newPrefix == config.prefix) {
-				prefixes[message.guild.id] = config.prefix;
-				ref.update({
-					prefix: FieldValue.delete(),
-				}).catch(err => { console.error(err); });
-			}
-			else {
-				prefixes[message.guild.id] = newPrefix;
-				ref.update({
-					prefix: newPrefix,
-				}).catch(err => { console.error(err); });
-			}
-			message.channel.send(`${lang.setprefix.isNow}\`${newPrefix}\``).catch();
+			ref.get().then(doc => {
+				const oldPrefix = doc.get('prefix') || config.prefix;
+
+				if (newPrefix == oldPrefix) {
+					return message.reply(lang.error.samePrefix).catch();
+				}
+				else if (newPrefix == config.prefix) {
+					prefixes[message.guild.id] = config.prefix;
+					ref.update({
+						prefix: FieldValue.delete(),
+					}).catch(err => { console.error(err); });
+				}
+				else {
+					prefixes[message.guild.id] = newPrefix;
+					ref.update({
+						prefix: newPrefix,
+					}).catch(err => { console.error(err); });
+				}
+				message.channel.send(`${lang.setprefix.isNow}\`${newPrefix}\``).catch();
+			});
 		}
 	},
 };
