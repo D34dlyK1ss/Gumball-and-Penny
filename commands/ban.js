@@ -3,7 +3,7 @@ const Discord = require('discord.js');
 module.exports = {
 	name: 'ban',
 
-	execute(bot, message, command, db, lang, supportServer, prefix, args) {
+	execute(bot, message, command, db, lang, language, supportServer, prefix, args) {
 		function getUserFromMention(mention) {
 			if (!mention) {
 				return message.reply(lang.error.noMention).then(msg => msg.delete({ timeout: 5000 })).catch();
