@@ -155,7 +155,7 @@ bot.on('message', async message => {
 		languages[message.guild.id] = doc.get('language') || config.language;
 	}
 	let language;
-	message.channel.id == '787661396652589077' ? 'en' : language = await languages[message.guild.id];
+	message.channel.id == '787661396652589077' ? language = 'en' : language = await languages[message.guild.id];
 	const lang = require(`./languages/${language}.json`);
 
 	// Servidor de Suporte
