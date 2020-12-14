@@ -18,7 +18,7 @@ module.exports = {
 				{ name: `${lang.region}`, value: `${lang.serverinfo.region[server.region]}`, inline: true },
 				{ name: `${lang.membersServerInfo}`, value: `${server.memberCount}`, inline: true },
 				{ name: `${lang.creation}`, value: `${lang.created + createdDate.format('LLL')}` },
-				{ name: `${lang.owner}`, value: `${server.owner.user}`, inline: true },
+				{ name: `${lang.owner}`, value: `${server.owner}`, inline: true },
 			);
 
 		if (!server.iconURL()) {
