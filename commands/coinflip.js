@@ -13,7 +13,7 @@ module.exports = {
 				return message.reply(`${lang.error.noProfile}\`${prefix}profile create\`!`).catch();
 			}
 			else if (!Number.isInteger(money) || (args[0] != lang.coinflip.heads && args[0] != lang.coinflip.tails)) {
-				return message.channel.send(`${lang.error.wrongSyntax}\`${prefix + lang.command[command].usage}\``).catch();
+				return message.channel.send(`${lang.error.wrongSyntax}\`${prefix + lang.command[command.name].usage}\``).catch();
 			}
 			else {
 				const bal = doc.get('balance'),

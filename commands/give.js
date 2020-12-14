@@ -25,7 +25,7 @@ module.exports = {
 				message.reply(`${lang.error.noProfile}\`${prefix}profile create\`!`).catch();
 			}
 			else if (user == null || !Number.isInteger(amount)) {
-				message.reply(`${lang.error.wrongSyntax}\`${prefix + lang.command[command].usage}\``).catch();
+				message.reply(`${lang.error.wrongSyntax}\`${prefix + lang.command[command.name].usage}\``).catch();
 			}
 			else {
 				const refU = db.collection('perfis').doc(user.id);
@@ -38,7 +38,7 @@ module.exports = {
 						return message.reply(lang.botsNoProfile).catch();
 					}
 					else if (args[1] == null || args[1] == '' || args == user) {
-						return message.reply(`${lang.error.wrongSyntax}\`${prefix + lang.command[command].usage}\``).catch();
+						return message.reply(`${lang.error.wrongSyntax}\`${prefix + lang.command[command.name].usage}\``).catch();
 					}
 					else if (!docU.exists) {
 						return message.reply(`${user.tag}${lang.error.userNoProfile}`).catch();
