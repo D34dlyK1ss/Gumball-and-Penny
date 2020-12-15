@@ -285,7 +285,8 @@
 		"toSelectASubCat": " to select a sub-category.",
 		"animalName": "Animal Name",
 		"toBuy": " to buy.",
-		"page": "page"
+		"page": "page",
+		"subCategory": "Sub-Category"
 	},
 
 	"slap": {
