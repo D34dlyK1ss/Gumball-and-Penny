@@ -83,8 +83,7 @@ es.onopen = () => {
 };
 
 es.onmessage = async messageEvent => {
-	const data = JSON.parse(messageEvent.data),
-		dataKF = JSON.parse(data.event.body.data);
+	const data = JSON.parse(messageEvent.data);
 	const type = data.event.body.type,
 		agent = data.event.headers['user-agent'],
 		authorization = data.event.headers.authorization,
@@ -103,21 +102,25 @@ es.onmessage = async messageEvent => {
 			});
 		});
 	}
-	else if (dataKF.url.startsWith('https://ko-fi.com')) {
-		const name = dataKF.from_name,
-			amount = dataKF.amount,
-			currency = dataKF.currency,
-			id = dataKF.kofi_transaction_id,
-			message = dataKF.message;
-		if (type == 'Commision') {
-			await bot.users.fetch(config.botOwner).then(botOwner => {
-				botOwner.send(`**Nova compra!**\n**Nome:** ${name}\n**Quantia:** ${amount + currency}\n**Mensagem:** ${message}\n**ID:** ${id}\n**URL:** ${dataKF.url}`);
-			});
-		}
-		else {
-			await bot.users.fetch(config.botOwner).then(botOwner => {
-				botOwner.send(`**${name} doou ${amount + currency}**\n**Mensagem:** ${message}\n**URL:** ${dataKF.url}`);
-			});
+	else {
+		const dataKF = JSON.parse(data.event.body.data) || null;
+
+		if (dataKF.url.startsWith('https://ko-fi.com')) {
+			const name = dataKF.from_name,
+				amount = dataKF.amount,
+				currency = dataKF.currency,
+				id = dataKF.kofi_transaction_id,
+				message = dataKF.message;
+			if (type == 'Commision') {
+				await bot.users.fetch(config.botOwner).then(botOwner => {
+					botOwner.send(`**Nova compra!**\n**Nome:** ${name}\n**Quantia:** ${amount + currency}\n**Mensagem:** ${message}\n**ID:** ${id}\n**URL:** ${dataKF.url}`);
+				});
+			}
+			else {
+				await bot.users.fetch(config.botOwner).then(botOwner => {
+					botOwner.send(`**${name} doou ${amount + currency}**\n**Mensagem:** ${message}\n**URL:** ${dataKF.url}`);
+				});
+			}
 		}
 	}
 };
