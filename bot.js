@@ -4,6 +4,9 @@ const Discord = require('discord.js');
 // Cliente
 const bot = new Discord.Client();
 
+// Tokens
+require('dotenv').config();
+
 // Propriedades default do bot
 const config = require('./config.json');
 
@@ -31,7 +34,7 @@ const rewards = require('./source/rewards.json');
 
 // API do Discord Bot List
 const DBL = require('dblapi.js');
-const dbl = new DBL(config.dblToken, bot);
+const dbl = new DBL(process.env.DBLTOKEN, bot);
 
 // Classe de utilidade 'Collection' do Discord.js
 bot.commands = new Discord.Collection();
@@ -263,4 +266,4 @@ bot.on('guildUpdate', async (oldGuildData, newGuildData) => {
 });
 
 // Autenticação do bot
-bot.login(config.token);
+bot.login(process.env.TOKEN);

@@ -1,3 +1,4 @@
-.eslintrc.*
+.env
+.eslintrc.json
 node_modules/
 botDev.js
