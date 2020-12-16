@@ -112,7 +112,7 @@ module.exports = {
 		case 'buy':
 			switch (args[1]) {
 			case 'hud':
-				hud = hud.concat(args).toLowerCase().replace(/[,]/g, '_');
+				hud = slugify(hud.concat(args.slice(2)).toLowerCase().replace(/[,]/g, '_'));
 				refP.get().then(docP => {
 					if (!docP.exists) {
 						return message.reply(`${lang.error.noProfile}\`${prefix}profile create\`!`).catch();
@@ -155,7 +155,7 @@ module.exports = {
 				});
 				break;
 			case 'pethud':
-				petHud = petHud.concat(args[2]).toLowerCase().replace(/[,]/g, '_');
+				petHud = slugify(petHud.concat(args.slice(2)).toLowerCase().replace(/[,]/g, '_'));
 				refP.get().then(docP => {
 					if (!docP.exists) {
 						return message.reply(`${lang.error.noProfile}\`${prefix}profile create\`!`).catch();
@@ -203,7 +203,7 @@ module.exports = {
 				});
 				break;
 			case 'pet':
-				pet = pet.concat(slugify(args[2])).toLowerCase().replace(/[,]/g, '_');
+				pet = slugify(pet.concat(args.slice(2)).toLowerCase().replace(/[,]/g, '_'));
 				refPet.get().then(async docPet => {
 					if (docPet.exists) {
 						return message.reply(`${lang.error.alreadyHasPet}\`${prefix}sendtoadoption\`!`).catch();
