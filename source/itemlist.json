@@ -407,22 +407,12 @@
 			"vip": true
 		},
 
-		"luna": {
-			"price": 8000,
-			"vip": true
-		},
-
 		"pokemon": {
 			"price": 8000,
 			"vip": true
 		},
 
 		"saitama": {
-			"price": 8000,
-			"vip": true
-		},
-
-		"totoro": {
 			"price": 8000,
 			"vip": true
 		},

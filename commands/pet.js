@@ -118,16 +118,13 @@ module.exports = {
 				else {
 					let petName = docP.get('name');
 					const pet = docP.get('pet');
-					const petVIP = items.pets[pet].vip;
-					if (petName == '') petName = `${(docP.get('species')).toLowerCase()}`;
 					db.collection('pet').doc(message.author.id).delete().then(async () => {
-						if (petVIP) {
-							refI.get().then(docI => {
-								const iPetHUDs = docI.get('petHuds');
-								iPetHUDs.splice(iPetHUDs.findIndex(petHud => petHud == `${pet}`), 1);
-							});
-						}
-						await message.reply(`**${petName}**${lang.pet.wasSentToAdoption}`).catch();
+						refI.get().then(docI => {
+							const iPetHUDs = docI.get('petHuds');
+							if (iPetHUDs.includes(pet)) iPetHUDs.splice(iPetHUDs.findIndex(petHud => petHud === pet), 1);
+						});
+						if (petName == '') petName = `${(docP.get('species')).toLowerCase()}`;
+						message.reply(`**${petName}**${lang.pet.wasSentToAdoption}`).catch();
 					});
 				}
 			});
