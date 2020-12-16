@@ -453,6 +453,13 @@
 			"vip": false
 		},
 
+		"escorpiao": {
+			"species": "Escorpião",
+			"gender": "random",
+			"price": 13000,
+			"vip": false
+		},
+
 		"formiga": {
 			"species": "Formiga",
 			"gender": "random",
@@ -479,6 +486,13 @@
 			"species": "Golfinho",
 			"gender": "random",
 			"price": 15000,
+			"vip": false
+		},
+
+		"hamster": {
+			"species": "Hamster",
+			"gender": "random",
+			"price": 10000,
 			"vip": false
 		},
 

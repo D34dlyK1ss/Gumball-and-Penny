@@ -569,7 +569,9 @@
 			"Gato": "Cat",
 			"Golfinho": "Dolphin",
 			"Cavalo (Pónei)": "Horse (Pony)",
-			"Sapo": "Frog"
+			"Sapo": "Frog",
+			"Escorpião": "Scorpion",
+			"Hamster": "Hamster"
 		},
 
 		"natures": {

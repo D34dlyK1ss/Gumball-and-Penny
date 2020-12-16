@@ -312,10 +312,12 @@ module.exports = {
 					.spliceFields(0, mainEmbed.fields.length, [
 						{ name: 'Cabra', value: `${items.pets.cabra.price}¤**`, inline: true },
 						{ name: 'Cão', value: `${items.pets.cao.price}¤**`, inline: true },
+						{ name: 'Escorpião', value: `${items.pets.escorpiao.price}¤**`, inline: true },
 						{ name: 'Formiga', value: `${items.pets.formiga.price}¤**`, inline: true },
 						{ name: 'Galinha', value: `${items.pets.galinha.price}¤**`, inline: true },
 						{ name: 'Gato', value: `${items.pets.gato.price}¤**`, inline: true },
 						{ name: 'Golfinho', value: `${items.pets.golfinho.price}¤**`, inline: true },
+						{ name: 'Hamster', value: `${items.pets.hamster.price}¤**`, inline: true },
 						{ name: 'Pónei', value: `${items.pets.ponei.price}¤**`, inline: true },
 						{ name: 'Sapo', value: `${items.pets.sapo.price}¤**`, inline: true },
 					]);
