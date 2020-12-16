@@ -150,15 +150,14 @@ bot.on('message', async message => {
 		const doc = await ref.get();
 		prefixes[message.guild.id] = doc.get('prefix') || config.prefix;
 	}
-	const prefix = await prefixes[message.guild.id];
+	const prefix = prefixes[message.guild.id];
 
 	// Seleção da linguagem
 	if (!languages[message.guild.id]) {
 		const doc = await ref.get();
 		languages[message.guild.id] = doc.get('language') || config.language;
 	}
-	let language;
-	message.channel.id == '787661396652589077' ? language = 'en' : language = await languages[message.guild.id];
+	const language = message.channel.id == '787661396652589077' ? 'en' : languages[message.guild.id];
 	const lang = require(`./languages/${language}.json`);
 
 	// Servidor de Suporte

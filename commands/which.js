@@ -5,7 +5,7 @@ module.exports = {
 		args = args.join(' ');
 		args = args.toLowerCase();
 		const last = message.member.id.slice(-1),
-			which = require('../which.json');
+			which = require('../source/which.json');
 
 		if (args == null || args == '' || !which[args]) {
 			return message.reply(`${lang.which.noSelect}\`${prefix}help which\`${lang.forMoreInfo}`).catch();
