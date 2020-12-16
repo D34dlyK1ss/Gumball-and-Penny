@@ -27,7 +27,7 @@ moment.locale('pt');
 const fs = require('fs');
 
 // Recompensas de nível
-const rewards = require('./rewards.json');
+const rewards = require('./source/rewards.json');
 
 // API do Discord Bot List
 const DBL = require('dblapi.js');
