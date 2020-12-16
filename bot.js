@@ -89,7 +89,7 @@ es.onmessage = async messageEvent => {
 		authorization = data.event.headers.authorization,
 		userID = data.event.body.user;
 
-	if (agent == 'DBL' && authorization === 'Gumball&PennyDBL') {
+	if (agent === 'DBL' && authorization === 'Gumball&PennyDBL') {
 		if (type != 'upvote') return;
 
 		const ref = db.collection('perfis').doc(userID);
@@ -111,7 +111,7 @@ es.onmessage = async messageEvent => {
 				currency = dataKF.currency,
 				id = dataKF.kofi_transaction_id,
 				message = dataKF.message;
-			if (type == 'Commision') {
+			if (type === 'Commision') {
 				await bot.users.fetch(config.botOwner).then(botOwner => {
 					botOwner.send(`**Nova compra!**\n**Nome:** ${name}\n**Quantia:** ${amount + currency}\n**Mensagem:** ${message}\n**ID:** ${id}\n**URL:** ${dataKF.url}`);
 				});
@@ -234,7 +234,7 @@ bot.on('message', async message => {
 			message.reply(lang.error.cmd);
 		}
 	}
-	else if (message.content == `<@!${bot.user.id}>`) {
+	else if (message.content === `<@!${bot.user.id}>`) {
 		message.channel.send(`${lang.prefixMsg} \`${prefix}\``);
 	}
 });
