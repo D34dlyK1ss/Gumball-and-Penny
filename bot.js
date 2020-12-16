@@ -212,7 +212,7 @@ bot.on('message', async message => {
 								}).then(() => message.channel.send(`🎉 ${lang.levelUp.congrats + message.author + lang.lvlUp.levelTo + newLevel + lang.levelUp.received + reward}! 🆙💰`));
 							}
 							else {
-								message.channel.send(`🎉 ${lang.lvlUp.congrats + message.author + lang.lvlUp.levelTo + newLevel}! 🆙`);
+								message.channel.send(`🎉 ${lang.levelUp.congrats + message.author + lang.lvlUp.levelTo + newLevel}! 🆙`);
 							}
 						}
 					}
