@@ -30,7 +30,7 @@ module.exports = {
 						balance: (bal + daily),
 						lastDaily: today,
 					}).then(() => {
-						message.reply(`${lang.daily.received + daily + lang.daily.toGetMore}\`${prefix}vote\``).catch();
+						message.reply(`${lang.daily.received}**${daily}**${lang.daily.toGetMore}\`${prefix}vote\``).catch();
 					}).catch(err => { console.error(err); });
 				}
 			}
