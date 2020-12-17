@@ -26,10 +26,10 @@ module.exports = {
 			const newEmbed = new Discord.MessageEmbed(lastEmbed)
 				.setAuthor(`${server.name}`)
 				.setThumbnail();
-			return message.channel.send(newEmbed).catch();
+			return message.channel.send(newEmbed).catch(err => { console.error(err); });
 		}
 		else {
-			message.channel.send(embed).catch();
+			message.channel.send(embed).catch(err => { console.error(err); });
 		}
 	},
 };

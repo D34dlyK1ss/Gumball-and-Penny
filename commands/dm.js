@@ -19,17 +19,17 @@ module.exports = {
 		message.delete();
 
 		if (!message.member.hasPermission('MANAGE_GUILD')) {
-			return message.reply(lang.error.noPerm).then(msg => { msg.delete({ timeout: 5000 }); }).catch();
+			return message.reply(lang.error.noPerm).then(msg => { msg.delete({ timeout: 5000 }); }).catch(err => { console.error(err); });
 		}
 		else if (!mention || mention == '') {
-			return message.reply(lang.error.noMention).then(msg => { msg.delete({ timeout: 5000 }); }).catch();
+			return message.reply(lang.error.noMention).then(msg => { msg.delete({ timeout: 5000 }); }).catch(err => { console.error(err); });
 		}
 		else if (!mentionMessage || mentionMessage == '') {
-			return message.reply(lang.error.noMessage).then(msg => { msg.delete({ timeout: 5000 }); }).catch();
+			return message.reply(lang.error.noMessage).then(msg => { msg.delete({ timeout: 5000 }); }).catch(err => { console.error(err); });
 		}
 		else {
 			mention.send(mentionMessage);
-			message.reply(lang.sent).then(msg => { msg.delete({ timeout: 5000 }); }).catch();
+			message.reply(lang.sent).then(msg => { msg.delete({ timeout: 5000 }); }).catch(err => { console.error(err); });
 		}
 	},
 };

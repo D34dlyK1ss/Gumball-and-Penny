@@ -14,23 +14,23 @@ module.exports = {
 			const today = moment().format('L'),
 				lastDaily = doc.get('lastDaily');
 			if (!doc.exists) {
-				return message.reply(`${lang.error.noProfile}\`${prefix}profile create\`!`).catch();
+				return message.reply(`${lang.error.noProfile}\`${prefix}profile create\`!`).catch(err => { console.error(err); });
 			}
 			else if (today == lastDaily) {
-				return message.reply(`${lang.daily.againIn + moment().endOf('day').fromNow()}.`).catch();
+				return message.reply(`${lang.daily.againIn + moment().endOf('day').fromNow()}.`).catch(err => { console.error(err); });
 			}
 			else {
 				const bal = doc.get('balance');
 
 				if ((bal + daily) > 999999999) {
-					message.reply(lang.error.noAdd).catch();
+					message.reply(lang.error.noAdd).catch(err => { console.error(err); });
 				}
 				else {
 					ref.update({
 						balance: (bal + daily),
 						lastDaily: today,
 					}).then(() => {
-						message.reply(`${lang.daily.received}**${daily}**${lang.daily.toGetMore}\`${prefix}vote\``).catch();
+						message.reply(`${lang.daily.received}**${daily}**${lang.daily.toGetMore}\`${prefix}vote\``).catch(err => { console.error(err); });
 					}).catch(err => { console.error(err); });
 				}
 			}

@@ -24,10 +24,10 @@ module.exports = {
 			db.collection('pet').doc(message.author.id).get().then(doc => {
 				const pet = doc.get('pet');
 				if (!doc.exists) {
-					return message.reply(`${lang.error.noPet}\`${prefix}shop pets\`!`).catch();
+					return message.reply(`${lang.error.noPet}\`${prefix}shop pets\`!`).catch(err => { console.error(err); });
 				}
 				else if (items.pets[pet].vip) {
-					return message.reply(lang.error.noChangePetName).catch();
+					return message.reply(lang.error.noChangePetName).catch(err => { console.error(err); });
 				}
 				else {
 					const max = 25;
@@ -43,16 +43,16 @@ module.exports = {
 						}
 
 						if (!invItems.includes('name_license')) {
-							return message.reply(lang.error.noNameLicense).catch();
+							return message.reply(lang.error.noNameLicense).catch(err => { console.error(err); });
 						}
 						else if (!newName || newName == '') {
-							return message.reply(lang.error.noName).catch();
+							return message.reply(lang.error.noName).catch(err => { console.error(err); });
 						}
 						else if (newName == doc.get('name')) {
-							return message.reply(lang.error.petAlreadyHasName).catch();
+							return message.reply(lang.error.petAlreadyHasName).catch(err => { console.error(err); });
 						}
 						else if (args.length > max) {
-							return message.reply(`${lang.pet.nameMaxIs + max}!\n${lang.pet.nameHas + args.length}.`).catch();
+							return message.reply(`${lang.pet.nameMaxIs + max}!\n${lang.pet.nameHas + args.length}.`).catch(err => { console.error(err); });
 						}
 						else {
 							invItems.splice(invItems.findIndex(item => item == 'name_license'), 1);
@@ -63,7 +63,7 @@ module.exports = {
 							db.collection('pet').doc(message.author.id).update({
 								name: newName,
 							}).then(() => {
-								message.reply(`${lang.pet.nameChangedTo}**${newName}**!`).catch();
+								message.reply(`${lang.pet.nameChangedTo}**${newName}**!`).catch(err => { console.error(err); });
 							}).catch(err => { console.error(err); });
 						}
 					});
@@ -74,7 +74,7 @@ module.exports = {
 			db.collection('pet').doc(message.author.id).get().then(docP => {
 				if (!docP.exists) {
 					if (user == message.author) {
-						return message.reply(`${lang.error.noPet}\`${prefix}shop pets\`!`).catch();
+						return message.reply(`${lang.error.noPet}\`${prefix}shop pets\`!`).catch(err => { console.error(err); });
 					}
 				}
 				else {
@@ -85,16 +85,16 @@ module.exports = {
 						newHud = newHud.concat(args.slice(0)).toLowerCase().replace(/[ ]/g, '_');
 
 						if (!newHud || newHud == '') {
-							return message.reply(lang.error.noPetHUDChosen).catch();
+							return message.reply(lang.error.noPetHUDChosen).catch(err => { console.error(err); });
 						}
 						else if (!petHuds.includes(`${newHud}`)) {
-							return message.reply(lang.error.noHavePetHUD).catch();
+							return message.reply(lang.error.noHavePetHUD).catch(err => { console.error(err); });
 						}
 						else {
 							db.collection('pet').doc(message.author.id).update({
 								hud: newHud,
 							}).then(() => {
-								message.reply(`${lang.pet.petHUDChangedTo}**${titleCase(args)}**`).catch();
+								message.reply(`${lang.pet.petHUDChangedTo}**${titleCase(args)}**`).catch(err => { console.error(err); });
 							}).catch(err => { console.error(err); });
 						}
 					});
@@ -105,7 +105,7 @@ module.exports = {
 			db.collection('pet').doc(message.author.id).get().then(docP => {
 				if (!docP.exists) {
 					if (user == message.author) {
-						return message.reply(lang.error.noPetToAdoption).catch();
+						return message.reply(lang.error.noPetToAdoption).catch(err => { console.error(err); });
 					}
 				}
 				else {
@@ -117,7 +117,7 @@ module.exports = {
 							if (iPetHUDs.includes(pet)) iPetHUDs.splice(iPetHUDs.findIndex(petHud => petHud === pet), 1);
 						});
 						if (petName == '') petName = `${(docP.get('species')).toLowerCase()}`;
-						message.reply(`**${petName}**${lang.pet.wasSentToAdoption}`).catch();
+						message.reply(`**${petName}**${lang.pet.wasSentToAdoption}`).catch(err => { console.error(err); });
 					});
 				}
 			});
@@ -126,16 +126,16 @@ module.exports = {
 			refP.get().then(async doc => {
 				if (!doc.exists) {
 					if (user == message.author) {
-						return message.reply(`${lang.error.noPet}\`${prefix}shop pets\`!`).catch();
+						return message.reply(`${lang.error.noPet}\`${prefix}shop pets\`!`).catch(err => { console.error(err); });
 					}
 					else if (user == bot.user) {
-						return message.reply(lang.pet.botNoPet).catch();
+						return message.reply(lang.pet.botNoPet).catch(err => { console.error(err); });
 					}
 					else if (user.bot) {
-						return message.reply(lang.pet.botsNoPets).catch();
+						return message.reply(lang.pet.botsNoPets).catch(err => { console.error(err); });
 					}
 					else {
-						return message.reply(`${user.tag}${lang.error.userNoPet}`).catch();
+						return message.reply(`${user.tag}${lang.error.userNoPet}`).catch(err => { console.error(err); });
 					}
 				}
 				else {
@@ -199,7 +199,7 @@ module.exports = {
 
 						const attachment = new MessageAttachment(canvas.toBuffer(), 'pet.png');
 
-						await message.channel.send(attachment).catch();
+						await message.channel.send(attachment).catch(err => { console.error(err); });
 					});
 				}
 			});

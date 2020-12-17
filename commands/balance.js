@@ -8,11 +8,11 @@ module.exports = {
 
 		ref.get().then(doc => {
 			if (!doc.exists) {
-				return message.reply(`${lang.error.noProfile}\`${prefix}profile create\`!`).catch();
+				return message.reply(`${lang.error.noProfile}\`${prefix}profile create\`!`).catch(err => { console.error(err); });
 			}
 			else {
 				const bal = doc.get('balance');
-				message.reply(`${lang.balance.have}**¤${bal}**.`).catch();
+				message.reply(`${lang.balance.have}**¤${bal}**.`).catch(err => { console.error(err); });
 			}
 		});
 	},

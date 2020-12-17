@@ -21,10 +21,10 @@ module.exports = {
 
 				const attachment = new MessageAttachment(hudCanvas.toBuffer(), `${hud}_preview.png`);
 
-				message.channel.send(attachment).catch();
+				message.channel.send(attachment).catch(err => { console.error(err); });
 			}
 			catch {
-				return message.reply(lang.error.noHUD).catch();
+				return message.reply(lang.error.noHUD).catch(err => { console.error(err); });
 			}
 
 		}
@@ -40,10 +40,10 @@ module.exports = {
 
 				const attachment = new MessageAttachment(hudCanvas.toBuffer(), `${petHud}_preview.png`);
 
-				message.channel.send(attachment).catch();
+				message.channel.send(attachment).catch(err => { console.error(err); });
 			}
 			catch {
-				return message.reply(lang.error.noPetHUD).catch();
+				return message.reply(lang.error.noPetHUD).catch(err => { console.error(err); });
 			}
 		}
 
@@ -89,7 +89,7 @@ module.exports = {
 				hud = slugify(hud.concat(args.slice(2)).toLowerCase().replace(/[,]/g, '_'));
 				refP.get().then(docP => {
 					if (!docP.exists) {
-						return message.reply(`${lang.error.noProfile}\`${prefix}profile create\`!`).catch();
+						return message.reply(`${lang.error.noProfile}\`${prefix}profile create\`!`).catch(err => { console.error(err); });
 					}
 					else {
 						const bal = docP.get('balance'),
@@ -97,17 +97,17 @@ module.exports = {
 							cost = items.huds[itemName].price;
 
 						if (!cost) {
-							return message.reply(lang.error.noHUD).catch();
+							return message.reply(lang.error.noHUD).catch(err => { console.error(err); });
 						}
 						else {
 							refI.get().then(docI => {
 								const iHuds = docI.get('huds');
 
 								if (iHuds.includes(itemName)) {
-									return message.reply(lang.error.alreadyHasHUD).catch();
+									return message.reply(lang.error.alreadyHasHUD).catch(err => { console.error(err); });
 								}
 								else if (cost > bal) {
-									return message.reply(lang.error.noMoney).catch();
+									return message.reply(lang.error.noMoney).catch(err => { console.error(err); });
 								}
 								else {
 									iHuds.push(itemName);
@@ -120,7 +120,7 @@ module.exports = {
 										huds: iHuds,
 									}).then(() => {
 										const name = itemName.toLowerCase().replace(/[_]/g, ' ');
-										message.reply(`${lang.shop.boughtHUD}**${titleCase(name)}**!${lang.shop.toEquip}\`${prefix}profile sethud\``).catch();
+										message.reply(`${lang.shop.boughtHUD}**${titleCase(name)}**!${lang.shop.toEquip}\`${prefix}profile sethud\``).catch(err => { console.error(err); });
 									});
 								}
 							});
@@ -132,7 +132,7 @@ module.exports = {
 				petHud = slugify(petHud.concat(args.slice(2)).toLowerCase().replace(/[,]/g, '_'));
 				refP.get().then(docP => {
 					if (!docP.exists) {
-						return message.reply(`${lang.error.noProfile}\`${prefix}profile create\`!`).catch();
+						return message.reply(`${lang.error.noProfile}\`${prefix}profile create\`!`).catch(err => { console.error(err); });
 					}
 					else {
 						const bal = docP.get('balance'),
@@ -141,20 +141,20 @@ module.exports = {
 							vipPetHUD = items.petHuds[itemName].vip;
 						const userVIP = docP.get('vip');
 
-						if (!userVIP && vipPetHUD) return message.reply(lang.error.noVIPForPetHUD).catch();
+						if (!userVIP && vipPetHUD) return message.reply(lang.error.noVIPForPetHUD).catch(err => { console.error(err); });
 
 						if (!cost) {
-							return message.reply(lang.error.noPetHUD).catch();
+							return message.reply(lang.error.noPetHUD).catch(err => { console.error(err); });
 						}
 						else {
 							refI.get().then(docI => {
 								const iPetHUDs = docI.get('petHuds');
 
 								if (iPetHUDs.includes(itemName)) {
-									return message.reply(lang.error.alreadyHasPetHUD).catch();
+									return message.reply(lang.error.alreadyHasPetHUD).catch(err => { console.error(err); });
 								}
 								else if (cost > bal) {
-									return message.reply(lang.error.noMoney).catch();
+									return message.reply(lang.error.noMoney).catch(err => { console.error(err); });
 								}
 								else {
 									iPetHUDs.push(itemName);
@@ -168,7 +168,7 @@ module.exports = {
 
 										const name = itemName.toLowerCase().replace(/[_]/g, ' ');
 
-										message.reply(`${lang.shop.boughtPetHUD}**${titleCase(name)}**!${lang.shop.toEquip}\`${prefix}pet sethud\``).catch();
+										message.reply(`${lang.shop.boughtPetHUD}**${titleCase(name)}**!${lang.shop.toEquip}\`${prefix}pet sethud\``).catch(err => { console.error(err); });
 									});
 								}
 							});
@@ -180,20 +180,20 @@ module.exports = {
 				pet = slugify(pet.concat(args.slice(2)).toLowerCase().replace(/[,]/g, '_'));
 				refPet.get().then(async docPet => {
 					if (docPet.exists) {
-						return message.reply(`${lang.error.alreadyHasPet}\`${prefix}sendtoadoption\`!`).catch();
+						return message.reply(`${lang.error.alreadyHasPet}\`${prefix}sendtoadoption\`!`).catch(err => { console.error(err); });
 					}
 					else {
 						const itemName = pet.toLowerCase();
 						const cost = items.pets[itemName].price;
 
 						if (!cost) {
-							return message.reply(lang.error.noItem).catch();
+							return message.reply(lang.error.noItem).catch(err => { console.error(err); });
 						}
 						else {
 							refP.get().then(docP => {
 								const bal = docP.get('balance');
 								if (cost > bal) {
-									return message.reply(lang.error.noMoney).catch();
+									return message.reply(lang.error.noMoney).catch(err => { console.error(err); });
 								}
 								else {
 									const rndN = Math.floor(Math.random() * 12),
@@ -204,7 +204,7 @@ module.exports = {
 									let gender = items.pets[pet].gender,
 										name = '';
 
-									if (!userVIP && vipPet) return message.reply(lang.error.noVIPForPet).catch();
+									if (!userVIP && vipPet) return message.reply(lang.error.noVIPForPet).catch(err => { console.error(err); });
 
 									if (gender == 'random') rndG < 0.5 ? gender = '♂️' : gender = '♀️';
 									if (vipPet) name = `${items.pets[pet].name}`;
@@ -241,7 +241,7 @@ module.exports = {
 										const vip = items.pets[pet].vip;
 
 										if (vip) petName = name;
-										message.reply(`${lang.youBought}**${titleCase(petName)}**!`).catch();
+										message.reply(`${lang.youBought}**${titleCase(petName)}**!`).catch(err => { console.error(err); });
 									});
 								}
 							});
@@ -276,7 +276,7 @@ module.exports = {
 						{ name: 'Happy', value: `Fairy Tail\n¤${items.pets.happy.price}`, inline: true },
 						{ name: 'Iggy', value: `Jojo's Bizzare Adventure\n¤${items.pets.iggy.price}`, inline: true },
 					]);
-				message.channel.send(petsVIPEmbed).catch();
+				message.channel.send(petsVIPEmbed).catch(err => { console.error(err); });
 				break;
 			case 'common':
 				petsCommonEmbed = new MessageEmbed(mainEmbed)
@@ -295,7 +295,7 @@ module.exports = {
 						{ name: 'Pónei', value: `¤${items.pets.ponei.price}`, inline: true },
 						{ name: 'Sapo', value: `¤${items.pets.sapo.price}`, inline: true },
 					]);
-				message.channel.send(petsCommonEmbed).catch();
+				message.channel.send(petsCommonEmbed).catch(err => { console.error(err); });
 				break;
 			default:
 				petsEmbed = new MessageEmbed(mainEmbed)
@@ -306,7 +306,7 @@ module.exports = {
 						{ name: 'Common', value: '\u200B', inline: true },
 						{ name: 'VIP', value: '\u200B', inline: true },
 					]);
-				message.channel.send(petsEmbed).catch();
+				message.channel.send(petsEmbed).catch(err => { console.error(err); });
 				break;
 			}
 			break;
@@ -318,7 +318,7 @@ module.exports = {
 				.spliceFields(0, mainEmbed.fields.length, [
 					{ name: 'Name License', value: `${lang.nameLicense}\n¤${items.items.name_license.price}`, inline: true },
 				]);
-			message.channel.send(itemsEmbed).catch();
+			message.channel.send(itemsEmbed).catch(err => { console.error(err); });
 			break;
 		case 'pethuds':
 			switch (args[1]) {
@@ -338,7 +338,7 @@ module.exports = {
 						{ name: 'Red', value: `¤${items.petHuds.red.price}`, inline: true },
 						{ name: 'Yellow', value: `¤${items.petHuds.yellow.price}`, inline: true },
 					]);
-				message.channel.send(petHudColorsEmbed).catch();
+				message.channel.send(petHudColorsEmbed).catch(err => { console.error(err); });
 				break;
 			case 'vip':
 				petHudVIPEmbed = new MessageEmbed(mainEmbed)
@@ -354,7 +354,7 @@ module.exports = {
 						{ name: 'Undertale', value: `¤${items.petHuds.undertale.price}`, inline: true },
 						{ name: 'Winter', value: `¤${items.petHuds.winter.price}`, inline: true },
 					]);
-				message.channel.send(petHudVIPEmbed).catch();
+				message.channel.send(petHudVIPEmbed).catch(err => { console.error(err); });
 				break;
 			default:
 				petHudEmbed = new MessageEmbed(mainEmbed)
@@ -365,7 +365,7 @@ module.exports = {
 						{ name: 'Colors', value: '\u200B', inline: true },
 						{ name: 'VIP', value: '\u200B', inline: true },
 					]);
-				message.channel.send(petHudEmbed).catch();
+				message.channel.send(petHudEmbed).catch(err => { console.error(err); });
 				break;
 			}
 			break;
@@ -387,7 +387,7 @@ module.exports = {
 						{ name: 'Red', value: `¤${items.huds.red.price}`, inline: true },
 						{ name: 'Yellow', value: `¤${items.huds.yellow.price}`, inline: true },
 					]);
-				message.channel.send(hudColorsEmbed).catch();
+				message.channel.send(hudColorsEmbed).catch(err => { console.error(err); });
 				break;
 			case 'games':
 				switch (page) {
@@ -439,7 +439,7 @@ module.exports = {
 						]);
 					break;
 				}
-				message.channel.send(hudGamesEmbed).catch();
+				message.channel.send(hudGamesEmbed).catch(err => { console.error(err); });
 				break;
 			case 'anime':
 				switch (page) {
@@ -476,7 +476,7 @@ module.exports = {
 						]);
 					break;
 				}
-				message.channel.send(hudAnimeEmbed).catch();
+				message.channel.send(hudAnimeEmbed).catch(err => { console.error(err); });
 				break;
 			case 'cartoons':
 				hudCartoonsEmbed = new MessageEmbed(mainEmbed)
@@ -489,7 +489,7 @@ module.exports = {
 						{ name: 'Jake2', value: `Adventure Time\n¤${items.huds.jake2.price}`, inline: true },
 						{ name: 'Gumball & Darwin', value: `The Amazing World of Gumball\n¤${items.huds['gumball_&_darwin'].price}`, inline: true },
 					]);
-				message.channel.send(hudCartoonsEmbed).catch();
+				message.channel.send(hudCartoonsEmbed).catch(err => { console.error(err); });
 				break;
 			case 'marvel':
 				hudMarvelEmbed = new MessageEmbed(mainEmbed)
@@ -505,7 +505,7 @@ module.exports = {
 						{ name: 'Spider-Man', value: `${lang.shop.hero}\n¤${items.huds['spider-man'].price}`, inline: true },
 						{ name: 'Thanos', value: `${lang.shop.villain}\n¤${items.huds.thanos.price}`, inline: true },
 					]);
-				message.channel.send(hudMarvelEmbed).catch();
+				message.channel.send(hudMarvelEmbed).catch(err => { console.error(err); });
 				break;
 			case 'dc':
 				hudDCEmbed = new MessageEmbed(mainEmbed)
@@ -517,7 +517,7 @@ module.exports = {
 						{ name: 'Joker', value: `${lang.shop.villain}\n¤${items.huds.joker.price}`, inline: true },
 						{ name: 'Superman', value: `${lang.shop.hero}\n¤${items.huds.superman.price}`, inline: true },
 					]);
-				message.channel.send(hudDCEmbed).catch();
+				message.channel.send(hudDCEmbed).catch(err => { console.error(err); });
 				break;
 			case 'vocaloids':
 				hudVocaloidsEmbed = new MessageEmbed(mainEmbed)
@@ -527,7 +527,7 @@ module.exports = {
 					.spliceFields(0, mainEmbed.fields.length, [
 						{ name: 'Miku Hatsune', value: `¤${items.huds.miku_hatsune.price}`, inline: true },
 					]);
-				message.channel.send(hudVocaloidsEmbed).catch();
+				message.channel.send(hudVocaloidsEmbed).catch(err => { console.error(err); });
 				break;
 			default:
 				hudEmbed = new MessageEmbed(mainEmbed)
@@ -542,14 +542,14 @@ module.exports = {
 						{ name: 'DC', value: '\u200B', inline: true },
 						{ name: 'Vocaloids', value: '\u200B', inline: true },
 					]);
-				message.channel.send(hudEmbed).catch();
+				message.channel.send(hudEmbed).catch(err => { console.error(err); });
 				break;
 			}
 			break;
 		default:
 			mainEmbed = new MessageEmbed(mainEmbed)
 				.setImage('https://i.imgur.com/Ed2AqAr.gif');
-			message.channel.send(mainEmbed).catch();
+			message.channel.send(mainEmbed).catch(err => { console.error(err); });
 			break;
 		}
 	},

@@ -5,6 +5,6 @@ module.exports = {
 		const rnd = Math.floor(Math.random() * 17),
 			facts = require('../src/data/facts.json');
 
-		message.channel.send(facts[language][rnd]).catch();
+		message.channel.send(facts[language][rnd]).catch(err => { console.error(err); });
 	},
 };

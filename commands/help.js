@@ -24,14 +24,14 @@ module.exports = {
 			);
 
 		if (args == null || args == '') {
-			return message.channel.send(helpEmbed).catch();
+			return message.channel.send(helpEmbed).catch(err => { console.error(err); });
 		}
 		else {
 			args = args.toString();
 			const name = args.toLowerCase();
 			command = commands.get(name) || commands.find(c => c.aliases && c.aliases.includes(name));
 			if (!command) {
-				return message.reply(lang.error.noCommand).catch();
+				return message.reply(lang.error.noCommand).catch(err => { console.error(err); });
 			}
 			else {
 				const commandEmbed = new Discord.MessageEmbed()
@@ -44,7 +44,7 @@ module.exports = {
 					);
 
 				if (!lang.command[command.name].aliases) {
-					return message.channel.send(commandEmbed).catch();
+					return message.channel.send(commandEmbed).catch(err => { console.error(err); });
 				}
 				else {
 					const lastEmbed = commandEmbed;
@@ -53,7 +53,7 @@ module.exports = {
 							{ name: `${lang.aliases}`, value: `${command.aliases.join(', ')}` },
 						);
 
-					message.channel.send(newEmbed).catch();
+					message.channel.send(newEmbed).catch(err => { console.error(err); });
 				}
 			}
 		}

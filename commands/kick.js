@@ -6,7 +6,7 @@ module.exports = {
 	execute(bot, message, command, db, lang, language, supportServer, prefix, args) {
 		function getUserFromMention(mention) {
 			if (!mention) {
-				return message.reply(lang.error.noMention).then(msg => msg.delete({ timeout: 5000 })).catch();
+				return message.reply(lang.error.noMention).then(msg => msg.delete({ timeout: 5000 })).catch(err => { console.error(err); });
 			}
 
 			const matches = mention.match(/^<@!?(\d+)>$/);
@@ -20,10 +20,10 @@ module.exports = {
 
 		message.delete();
 		if (!message.member.hasPermission('KICK_MEMBERS')) {
-			return message.reply(lang.error.noPerm).then(msg => msg.delete({ timeout: 5000 })).catch();
+			return message.reply(lang.error.noPerm).then(msg => msg.delete({ timeout: 5000 })).catch(err => { console.error(err); });
 		}
 		else if (!message.channel.guild.me.hasPermission('KICK_MEMBERS')) {
-			return message.reply(lang.error.botNoKick).then(msg => msg.delete({ timeout: 5000 })).catch();
+			return message.reply(lang.error.botNoKick).then(msg => msg.delete({ timeout: 5000 })).catch(err => { console.error(err); });
 		}
 		else {
 			const mention = getUserFromMention(args[0]);
@@ -41,7 +41,7 @@ module.exports = {
 						{ name: `${lang.reason}`, value: `${reason}` },
 					);
 
-				message.channel.send(embed).catch();
+				message.channel.send(embed).catch(err => { console.error(err); });
 			});
 		}
 	},

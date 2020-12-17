@@ -9,10 +9,10 @@ module.exports = {
 		const last = message.member.id.slice(-1);
 
 		if (args == null || args == '' || !which[args]) {
-			return message.reply(`${lang.which.noSelect}\`${prefix}help which\`${lang.forMoreInfo}`).catch();
+			return message.reply(`${lang.which.noSelect}\`${prefix}help which\`${lang.forMoreInfo}`).catch(err => { console.error(err); });
 		}
 		else {
-			message.channel.send(`${which[args][last]}!`, { files: [`img/which/${args} (${last}).jpg`] }).catch();
+			message.channel.send(`${which[args][last]}!`, { files: [`img/which/${args} (${last}).jpg`] }).catch(err => { console.error(err); });
 		}
 	},
 };

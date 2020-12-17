@@ -24,7 +24,7 @@ module.exports = {
 		case 'create':
 			db.collection('perfis').doc(message.author.id).get().then(async doc => {
 				if (doc.exists) {
-					return message.channel.send(lang.error.hasProfileAlready).catch();
+					return message.channel.send(lang.error.hasProfileAlready).catch(err => { console.error(err); });
 				}
 				else {
 					db.collection('perfis').doc(message.author.id).set({
@@ -123,16 +123,16 @@ module.exports = {
 			refP.get().then(async doc => {
 				if (!doc.exists) {
 					if (user == message.author) {
-						return message.reply(`${lang.error.noProfile}\`${prefix}profile create\`!`).catch();
+						return message.reply(`${lang.error.noProfile}\`${prefix}profile create\`!`).catch(err => { console.error(err); });
 					}
 					else if (user == bot.user) {
-						return message.reply(lang.botNoProfile).catch();
+						return message.reply(lang.botNoProfile).catch(err => { console.error(err); });
 					}
 					else if (user.bot) {
-						return message.reply(lang.botsNoProfile).catch();
+						return message.reply(lang.botsNoProfile).catch(err => { console.error(err); });
 					}
 					else {
-						return message.reply(`**${user.tag}**${lang.error.userNoProfile}`).catch();
+						return message.reply(`**${user.tag}**${lang.error.userNoProfile}`).catch(err => { console.error(err); });
 					}
 				}
 				else {
@@ -226,7 +226,7 @@ module.exports = {
 
 					const attachment = new MessageAttachment(canvas.toBuffer(), 'profile.png');
 
-					message.channel.send(attachment).catch();
+					message.channel.send(attachment).catch(err => { console.error(err); });
 				}
 			});
 			break;

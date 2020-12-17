@@ -14,7 +14,7 @@ module.exports = {
 
 		refP.get().then(docP => {
 			if (!docP.exists) {
-				return message.reply(`${lang.error.noProfile}\`${prefix}profile create\`!`).catch();
+				return message.reply(`${lang.error.noProfile}\`${prefix}profile create\`!`).catch(err => { console.error(err); });
 			}
 			else {
 				refI.get().then(async docI => {
@@ -30,7 +30,7 @@ module.exports = {
 						);
 
 					if (!docI.exists) {
-						return message.reply(lang.error.noInventory).catch();
+						return message.reply(lang.error.noInventory).catch(err => { console.error(err); });
 					}
 
 					if (iPetHuds) {
@@ -53,7 +53,7 @@ module.exports = {
 							);
 					}
 
-					await message.channel.send(iEmbed).catch();
+					await message.channel.send(iEmbed).catch(err => { console.error(err); });
 				});
 			}
 		});

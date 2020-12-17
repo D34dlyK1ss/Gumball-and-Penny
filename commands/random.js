@@ -7,11 +7,11 @@ module.exports = {
 			rnd = Math.floor(Math.random() * 100) + 1;
 		}
 		else if (!Number.isInteger(rnd)) {
-			return message.reply(lang.error.notANumber).catch();
+			return message.reply(lang.error.notANumber).catch(err => { console.error(err); });
 		}
 		else {
 			rnd = Math.floor(Math.random() * args) + 1;
 		}
-		message.channel.send(`${rnd}!`).catch();
+		message.channel.send(`${rnd}!`).catch(err => { console.error(err); });
 	},
 };

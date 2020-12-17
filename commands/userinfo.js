@@ -33,6 +33,6 @@ module.exports = {
 			)
 			.setFooter(`${lang.created + created + lang.ago}(${createdDate.format('LLLL')})`);
 
-		message.channel.send(embed).catch();
+		message.channel.send(embed).catch(err => { console.error(err); });
 	},
 };

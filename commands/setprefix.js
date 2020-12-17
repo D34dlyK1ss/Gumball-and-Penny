@@ -7,10 +7,10 @@ module.exports = {
 	execute(bot, message, command, db, lang, language, supportServer, prefix, args, prefixes) {
 		if (!message.member.hasPermission('MANAGE_GUILD')) {
 			message.delete();
-			return message.reply(lang.error.noPerm).then(msg => { msg.delete({ timeout: 3000 }); }).catch();
+			return message.reply(lang.error.noPerm).then(msg => { msg.delete({ timeout: 3000 }); }).catch(err => { console.error(err); });
 		}
 		else if (!args || args == '') {
-			return message.reply(lang.error.noPrefixChosen).catch();
+			return message.reply(lang.error.noPrefixChosen).catch(err => { console.error(err); });
 		}
 		else {
 			const newPrefix = args[0].toLowerCase(),
@@ -20,7 +20,7 @@ module.exports = {
 				const oldPrefix = doc.get('prefix') || config.prefix;
 
 				if (newPrefix == oldPrefix) {
-					return message.reply(lang.error.samePrefix).catch();
+					return message.reply(lang.error.samePrefix).catch(err => { console.error(err); });
 				}
 				else if (newPrefix == config.prefix) {
 					prefixes[message.guild.id] = config.prefix;
@@ -34,7 +34,7 @@ module.exports = {
 						prefix: newPrefix,
 					}).catch(err => { console.error(err); });
 				}
-				message.channel.send(`${lang.setprefix.isNow}\`${newPrefix}\``).catch();
+				message.channel.send(`${lang.setprefix.isNow}\`${newPrefix}\``).catch(err => { console.error(err); });
 			});
 		}
 	},

@@ -10,10 +10,10 @@ module.exports = {
 		ref.get().then(doc => {
 			const money = parseInt(args[1]);
 			if (!doc.exists) {
-				return message.reply(`${lang.error.noProfile}\`${prefix}profile create\`!`).catch();
+				return message.reply(`${lang.error.noProfile}\`${prefix}profile create\`!`).catch(err => { console.error(err); });
 			}
 			else if (!Number.isInteger(money) || (args[0] != lang.coinflip.heads && args[0] != lang.coinflip.tails)) {
-				return message.channel.send(`${lang.error.wrongSyntax}\`${prefix + lang.command[command.name].usage}\``).catch();
+				return message.channel.send(`${lang.error.wrongSyntax}\`${prefix + lang.command[command.name].usage}\``).catch(err => { console.error(err); });
 			}
 			else {
 				const bal = doc.get('balance'),
@@ -21,16 +21,16 @@ module.exports = {
 					most = 1000;
 
 				if ((bal + money) > 999999999) {
-					return message.reply(lang.error.noAdd).catch();
+					return message.reply(lang.error.noAdd).catch(err => { console.error(err); });
 				}
 				else if (money > bal) {
-					return message.reply(lang.error.noMoney).catch();
+					return message.reply(lang.error.noMoney).catch(err => { console.error(err); });
 				}
 				else if (money < least) {
-					return message.reply(`${lang.coinflip.betAtLeast + least}!`).catch();
+					return message.reply(`${lang.coinflip.betAtLeast + least}!`).catch(err => { console.error(err); });
 				}
 				else if (money > most) {
-					return message.reply(`${lang.coinflip.betAtMost + most}!`).catch();
+					return message.reply(`${lang.coinflip.betAtMost + most}!`).catch(err => { console.error(err); });
 				}
 				else {
 					const value = Math.round(Math.random()),
@@ -48,13 +48,13 @@ module.exports = {
 						if (res != guess) {
 							ref.update({
 								balance: (bal - money),
-							}).then(() => { return message.reply(`${lang.coinflip.lost + money}!`); }).catch();
+							}).then(() => { return message.reply(`${lang.coinflip.lost + money}!`); }).catch(err => { console.error(err); });
 						}
 						else if (res == guess) {
 							const won = money * 2;
 							ref.update({
 								balance: (bal + won),
-							}).then(() => { message.reply(`${lang.coinflip.won + won}!`); }).catch();
+							}).then(() => { message.reply(`${lang.coinflip.won + won}!`); }).catch(err => { console.error(err); });
 						}
 					}));
 				}
