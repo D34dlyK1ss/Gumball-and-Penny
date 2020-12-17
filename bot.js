@@ -30,7 +30,7 @@ moment.locale('pt');
 const fs = require('fs');
 
 // Recompensas de nível
-const rewards = require('./source/rewards.json');
+const rewards = require('./src/rewards.json');
 
 // API do Discord Bot List
 const DBL = require('dblapi.js');
@@ -161,7 +161,7 @@ bot.on('message', async message => {
 		languages[message.guild.id] = doc.get('language') || config.language;
 	}
 	const language = message.channel.id === '787661396652589077' ? 'en' : languages[message.guild.id];
-	const lang = require(`./languages/${language}.json`);
+	const lang = require(`./lang/${language}.json`);
 
 	// Servidor de Suporte
 	const supportServer = bot.guilds.cache.get('738540548305977366');

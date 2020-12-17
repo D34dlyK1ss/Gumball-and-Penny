@@ -9,13 +9,13 @@ module.exports = {
 			return;
 		}
 		else if (user == message.author) {
-			return message.channel.send(`${message.author}${lang.slap.slappedSelf}`, { files: [`images/actions/${command.name} (${rnd}).gif`] }).catch();
+			return message.channel.send(`${message.author}${lang.slap.slappedSelf}`, { files: [`img/actions/${command.name} (${rnd}).gif`] }).catch();
 		}
 		else if (user == bot.user) {
-			return message.channel.send(`${message.author}${lang.slap.slappedUs} 😠`, { files: [`images/actions/${command.name} (${rnd}).gif`] }).catch();
+			return message.channel.send(`${message.author}${lang.slap.slappedUs} 😠`, { files: [`img/actions/${command.name} (${rnd}).gif`] }).catch();
 		}
 		else {
-			message.channel.send(`${message.author}${lang.slap.slapped}${user}!`, { files: [`images/actions/${command.name} (${rnd}).gif`] }).catch();
+			message.channel.send(`${message.author}${lang.slap.slapped}${user}!`, { files: [`img/actions/${command.name} (${rnd}).gif`] }).catch();
 		}
 	},
 };

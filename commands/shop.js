@@ -1,9 +1,9 @@
 const { MessageEmbed, MessageAttachment } = require('discord.js');
 const { createCanvas, loadImage } = require('canvas');
-const items = require('../source/itemlist.json'),
-	natures = require('../source/natures.json'),
-	{ slugify } = require('../source/slugify.js'),
-	{ titleCase } = require('../source/titleCase.js');
+const items = require('../src/itemlist.json'),
+	natures = require('../src/natures.json'),
+	{ slugify } = require('../src/slugify.js'),
+	{ titleCase } = require('../src/titleCase.js');
 
 module.exports = {
 	name: 'shop',
@@ -14,8 +14,8 @@ module.exports = {
 			const hudCanvas = createCanvas(700, 400),
 				ctx = hudCanvas.getContext('2d');
 			try {
-				const bg = await loadImage(`images/profile/hud (${hud}).png`);
-				const watermark = await loadImage('images/hud_watermark.png');
+				const bg = await loadImage(`img/profile/hud (${hud}).png`);
+				const watermark = await loadImage('img/hud_watermark.png');
 				ctx.drawImage(bg, 0, 0, hudCanvas.width, hudCanvas.height);
 				ctx.drawImage(watermark, 0, 0, hudCanvas.width, hudCanvas.height);
 
@@ -33,8 +33,8 @@ module.exports = {
 			const hudCanvas = createCanvas(617, 327),
 				ctx = hudCanvas.getContext('2d');
 			try {
-				const bg = await loadImage(`images/pet/hud_pet (${petHud}).png`);
-				const watermark = await loadImage('images/hud_watermark.png');
+				const bg = await loadImage(`img/pet/hud_pet (${petHud}).png`);
+				const watermark = await loadImage('img/hud_watermark.png');
 				ctx.drawImage(bg, 0, 0, hudCanvas.width, hudCanvas.height);
 				ctx.drawImage(watermark, 0, 0, hudCanvas.width, hudCanvas.height);
 

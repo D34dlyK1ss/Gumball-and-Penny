@@ -37,13 +37,13 @@ module.exports = {
 						guess = args[0].toLowerCase();
 					let res;
 
-					const attachment = new MessageAttachment('images/coinflip/animation.gif');
+					const attachment = new MessageAttachment('img/coinflip/animation.gif');
 
 					message.channel.send(attachment).then(msg => msg.delete({ timeout: 3000 }).then(() => {
 						if (value == 0) res = lang.coinflip.heads;
 						if (value == 1) res = lang.coinflip.tails;
 
-						message.channel.send(`${res.charAt(0).toUpperCase() + res.slice(1)}!`, { files: [`images/coinflip/${res}.gif`] });
+						message.channel.send(`${res.charAt(0).toUpperCase() + res.slice(1)}!`, { files: [`img/coinflip/${res}.gif`] });
 
 						if (res != guess) {
 							ref.update({

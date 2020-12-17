@@ -1,8 +1,8 @@
 const { MessageAttachment } = require('discord.js');
 const { registerFont, createCanvas, loadImage } = require('canvas');
-const items = require('../source/itemlist.json'),
-	{ titleCase } = require('../source/titleCase.js'),
-	{ convert } = require('../source/convert.js');
+const items = require('../src/itemlist.json'),
+	{ titleCase } = require('../src/titleCase.js'),
+	{ convert } = require('../src/convert.js');
 registerFont('./fonts/comic.ttf', { family: 'Comic Sans MS' });
 registerFont('./fonts/comicb.ttf', { family: 'bold Comic Sans MS' });
 registerFont('./fonts/comici.ttf', { family: 'italic Comic Sans MS' });
@@ -154,7 +154,7 @@ module.exports = {
 					const canvas = createCanvas(700, 400),
 						ctx = canvas.getContext('2d');
 
-					const bg = await loadImage(`images/profile/hud (${hud}).png`);
+					const bg = await loadImage(`img/profile/hud (${hud}).png`);
 					ctx.drawImage(bg, 0, 0, canvas.width, canvas.height);
 
 					ctx.beginPath();
@@ -215,7 +215,7 @@ module.exports = {
 					ctx.closePath();
 
 					if (vip) {
-						const crown = await loadImage('./images/profile/crown.png');
+						const crown = await loadImage('./img/profile/crown.png');
 						ctx.drawImage (crown, 7, 12, 50, 50);
 					}
 

@@ -1,7 +1,7 @@
 const { MessageAttachment } = require('discord.js');
 const { registerFont, createCanvas, loadImage } = require('canvas');
-const items = require('../source/itemlist.json'),
-	{ titleCase } = require('../source/titleCase.js');
+const items = require('../src/itemlist.json'),
+	{ titleCase } = require('../src/titleCase.js');
 registerFont('./fonts/comic.ttf', { family: 'Comic Sans MS' });
 registerFont('./fonts/comicb.ttf', { family: 'bold Comic Sans MS' });
 registerFont('./fonts/comici.ttf', { family: 'italic Comic Sans MS' });
@@ -149,7 +149,7 @@ module.exports = {
 					const canvas = createCanvas(617, 327),
 						ctx = canvas.getContext('2d');
 
-					const bg = await loadImage(`images/pet/hud_pet (${petHud}).png`);
+					const bg = await loadImage(`img/pet/hud_pet (${petHud}).png`);
 					ctx.drawImage(bg, 0, 0, canvas.width, canvas.height);
 
 					ctx.beginPath();
@@ -176,7 +176,7 @@ module.exports = {
 					ctx.closePath();
 
 
-					const petPic = await loadImage(`./images/pet/${pet}.png`);
+					const petPic = await loadImage(`./img/pet/${pet}.png`);
 					ctx.drawImage (petPic, 160, 120);
 
 					ctx.beginPath();
@@ -189,7 +189,7 @@ module.exports = {
 					refV.get().then(async docV => {
 
 						if (docV.exists) {
-							const crown = await loadImage('./images/profile/crown.png');
+							const crown = await loadImage('./img/profile/crown.png');
 							ctx.drawImage (crown, 7, 12, 50, 50);
 						}
 

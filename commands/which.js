@@ -1,4 +1,4 @@
-const which = require('../source/which.json');
+const which = require('../src/which.json');
 
 module.exports = {
 	name: 'which',
@@ -12,7 +12,7 @@ module.exports = {
 			return message.reply(`${lang.which.noSelect}\`${prefix}help which\`${lang.forMoreInfo}`).catch();
 		}
 		else {
-			message.channel.send(`${which[args][last]}!`, { files: [`images/which/${args} (${last}).jpg`] }).catch();
+			message.channel.send(`${which[args][last]}!`, { files: [`img/which/${args} (${last}).jpg`] }).catch();
 		}
 	},
 };
