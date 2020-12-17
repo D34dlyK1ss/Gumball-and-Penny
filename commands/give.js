@@ -2,21 +2,9 @@ module.exports = {
 	name: 'give',
 
 	execute(bot, message, command, db, lang, language, supportServer, prefix, args) {
-
-		function getUserFromMention(mention) {
-
-			const matches = mention.match(/^<@!?(\d+)>$/);
-
-			if (!matches) return;
-
-			const id = matches[1];
-
-			return bot.users.cache.get(id);
-		}
-
 		const donor = message.author;
 		if (!args || args == '') return message.reply(lang.error.noMention).catch();
-		const user = getUserFromMention(args [0]),
+		const user = message.mentions.users.first(),
 			refD = db.collection('perfis').doc(donor.id);
 		let amount = Math.abs(parseInt(args[1]));
 
