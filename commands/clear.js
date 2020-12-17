@@ -4,7 +4,7 @@ module.exports = {
 	execute(bot, message, command, db, lang, language, supportServer, prefix, args) {
 		message.delete().then(() => {
 			if (!message.member.hasPermission('MANAGE_MESSAGES')) {
-				return message.reply(lang.noPerm).catch();
+				return message.reply(lang.error.noPerm).catch();
 			}
 			else if (!message.channel.guild.me.hasPermission('MANAGE_MESSAGES')) {
 				return message.reply(lang.error.botNoManageMsgs).then(msg => msg.delete({ timeout: 5000 })).catch();
