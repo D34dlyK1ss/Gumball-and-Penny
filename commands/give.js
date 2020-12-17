@@ -18,7 +18,7 @@ module.exports = {
 		if (!args || args == '') return message.reply(lang.error.noMention).catch();
 		const user = getUserFromMention(args [0]),
 			refD = db.collection('perfis').doc(donor.id);
-		let amount = parseInt(args[1]);
+		let amount = Math.abs(parseInt(args[1]));
 
 		refD.get().then(docD => {
 			if (!docD.exists) {

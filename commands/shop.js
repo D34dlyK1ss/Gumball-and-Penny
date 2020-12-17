@@ -2,8 +2,8 @@ const { MessageEmbed, MessageAttachment } = require('discord.js');
 const { createCanvas, loadImage } = require('canvas');
 const items = require('../src/data/itemlist.json'),
 	natures = require('../src/data/natures.json'),
-	{ slugify } = require('../src/functions/slugify.js'),
-	{ titleCase } = require('../src/functions/titleCase.js');
+	slugify = require('../src/functions/slugify.js'),
+	titleCase = require('../src/functions/titleCase.js');
 
 module.exports = {
 	name: 'shop',
