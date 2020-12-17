@@ -20,7 +20,7 @@ module.exports = {
 
 		message.delete();
 		if (!message.member.hasPermission('BAN_MEMBERS')) {
-			return message.reply(lang.error.userNoPerm).then(msg => msg.delete({ timeout: 5000 })).catch();
+			return message.reply(lang.error.noPerm).then(msg => msg.delete({ timeout: 5000 })).catch();
 		}
 		else if (!message.channel.guild.me.hasPermission('BAN_MEMBERS')) {
 			return message.reply(lang.error.botNoBan).then(msg => msg.delete({ timeout: 5000 })).catch();
