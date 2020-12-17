@@ -83,7 +83,7 @@ module.exports = {
 					db.collection('perfis').doc(message.author.id).update({
 						description: args,
 					}).then(() => {
-						message.reply(`${lang.profile.descChangedTo}**${args}**!`);
+						message.reply(`${lang.profile.descChangedTo}_**${args}**_`);
 					}).catch(err => { console.error(err); });
 				}
 			});
