@@ -1,8 +1,8 @@
 const { MessageAttachment } = require('discord.js');
 const { registerFont, createCanvas, loadImage } = require('canvas');
-const items = require('../src/itemlist.json'),
-	{ titleCase } = require('../src/titleCase.js'),
-	{ convert } = require('../src/convert.js');
+const items = require('../src/data/itemlist.json'),
+	{ titleCase } = require('../src/functions/titleCase.js'),
+	{ convert } = require('../src/functions/convert.js');
 registerFont('./fonts/comic.ttf', { family: 'Comic Sans MS' });
 registerFont('./fonts/comicb.ttf', { family: 'bold Comic Sans MS' });
 registerFont('./fonts/comici.ttf', { family: 'italic Comic Sans MS' });

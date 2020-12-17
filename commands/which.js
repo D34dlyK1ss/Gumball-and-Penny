@@ -1,4 +1,4 @@
-const which = require('../src/which.json');
+const which = require('../src/data/which.json');
 
 module.exports = {
 	name: 'which',

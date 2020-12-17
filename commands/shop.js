@@ -1,9 +1,9 @@
 const { MessageEmbed, MessageAttachment } = require('discord.js');
 const { createCanvas, loadImage } = require('canvas');
-const items = require('../src/itemlist.json'),
-	natures = require('../src/natures.json'),
-	{ slugify } = require('../src/slugify.js'),
-	{ titleCase } = require('../src/titleCase.js');
+const items = require('../src/data/itemlist.json'),
+	natures = require('../src/data/natures.json'),
+	{ slugify } = require('../src/functions/slugify.js'),
+	{ titleCase } = require('../src/functions/titleCase.js');
 
 module.exports = {
 	name: 'shop',
@@ -87,7 +87,6 @@ module.exports = {
 			switch (args[1]) {
 			case 'hud':
 				hud = slugify(hud.concat(args.slice(2)).toLowerCase().replace(/[,]/g, '_'));
-				return console.log(hud);
 				refP.get().then(docP => {
 					if (!docP.exists) {
 						return message.reply(`${lang.error.noProfile}\`${prefix}profile create\`!`).catch();
