@@ -1,28 +1,12 @@
 const { MessageAttachment } = require('discord.js');
 const { registerFont, createCanvas, loadImage } = require('canvas');
-const items = require('../source/itemlist.json');
+const items = require('../source/itemlist.json'),
+	{ titleCase } = require('../source/titleCase.js'),
+	{ convert } = require('../source/convert.js');
 registerFont('./fonts/comic.ttf', { family: 'Comic Sans MS' });
 registerFont('./fonts/comicb.ttf', { family: 'bold Comic Sans MS' });
 registerFont('./fonts/comici.ttf', { family: 'italic Comic Sans MS' });
 registerFont('./fonts/comicz.ttf', { family: 'bold-italic Sans MS' });
-
-function convert(value) {
-	if (value >= 1000000) {
-		value = (value / 1000000) + 'M';
-	}
-	else if (value >= 1000) {
-		value = (value / 1000) + 'k';
-	}
-	return value;
-}
-
-function titleCase(str) {
-	const splitStr = str.toLowerCase().split(' ');
-	for (let i = 0; i < splitStr.length; i++) {
-		splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);
-	}
-	return splitStr.join(' ');
-}
 
 module.exports = {
 	name: 'profile',

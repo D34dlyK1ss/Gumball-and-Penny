@@ -1,34 +1,9 @@
 const { MessageEmbed, MessageAttachment } = require('discord.js');
 const { createCanvas, loadImage } = require('canvas');
 const items = require('../source/itemlist.json'),
-	natures = require('../source/natures.json');
-
-function titleCase(str) {
-	const splitStr = str.toLowerCase().split(' ');
-	for (let i = 0; i < splitStr.length; i++) {
-		splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);
-	}
-	return splitStr.join(' ');
-}
-
-function slugify(str) {
-	const map = {
-		'-' : ' ',
-		'a' : 'á|à|ã|â|ä|À|Á|Ã|Â|Ä',
-		'e' : 'é|è|ê|ë|É|È|Ê|Ë',
-		'i' : 'í|ì|î|ï|Í|Ì|Î|Ï',
-		'o' : 'ó|ò|ô|õ|ö|Ó|Ò|Ô|Õ|Ö',
-		'u' : 'ú|ù|û|ü|Ú|Ù|Û|Ü',
-		'c' : 'ç|Ç',
-		'n' : 'ñ|Ñ',
-	};
-
-	for (const pattern in map) {
-		str = str.replace(new RegExp(map[pattern], 'g'), pattern);
-	}
-
-	return str;
-}
+	natures = require('../source/natures.json'),
+	{ slugify } = require('../source/slugify.js'),
+	{ titleCase } = require('../source/titleCase.js');
 
 module.exports = {
 	name: 'shop',
@@ -70,7 +45,6 @@ module.exports = {
 			catch {
 				return message.reply(lang.error.noPetHUD).catch();
 			}
-
 		}
 
 		const option = args[0],
@@ -113,6 +87,7 @@ module.exports = {
 			switch (args[1]) {
 			case 'hud':
 				hud = slugify(hud.concat(args.slice(2)).toLowerCase().replace(/[,]/g, '_'));
+				return console.log(hud);
 				refP.get().then(docP => {
 					if (!docP.exists) {
 						return message.reply(`${lang.error.noProfile}\`${prefix}profile create\`!`).catch();
