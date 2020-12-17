@@ -120,7 +120,7 @@ module.exports = {
 										huds: iHuds,
 									}).then(() => {
 										const name = itemName.toLowerCase().replace(/[_]/g, ' ');
-										message.reply(`${lang.shop.boughtHUD}**${titleCase(name)}**!`).catch();
+										message.reply(`${lang.shop.boughtHUD}**${titleCase(name)}**!${lang.shop.toEquip}\`${prefix}profile sethud\``).catch();
 									});
 								}
 							});
@@ -168,7 +168,7 @@ module.exports = {
 
 										const name = itemName.toLowerCase().replace(/[_]/g, ' ');
 
-										message.reply(`${lang.shop.boughtPetHUD}**${titleCase(name)}**!`).catch();
+										message.reply(`${lang.shop.boughtPetHUD}**${titleCase(name)}**!${lang.shop.toEquip}\`${prefix}pet sethud\``).catch();
 									});
 								}
 							});
