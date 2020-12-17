@@ -168,6 +168,10 @@
 		"hugged": " abraçou "
 	},
 
+	"inventory": {
+		"inventoryFrom": "Inventário de "
+	},
+
 	"kick": {
 		"wasKicked": " foi expulso!"
 	},

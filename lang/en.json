@@ -168,6 +168,10 @@
 		"hugged": " hugged "
 	},
 
+	"inventory": {
+		"inventoryFrom": "Inventory from "
+	},
+
 	"kick": {
 		"wasKicked": " was kicked!"
 	},
