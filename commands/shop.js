@@ -313,12 +313,12 @@ module.exports = {
 		case 'items':
 			itemsEmbed = new MessageEmbed(mainEmbed)
 				.setTitle(`${lang.awesomeStore} - Items`)
-				.setDescription(`\`${prefix}shop buy item [Nome do Item]\`${lang.shop.toBuy}`)
+				.setDescription(`\`${prefix}shop buy item [${lang.shop.itemName}]\`${lang.shop.toBuy}`)
 				.setFooter(`${lang.page} 1 de 1`)
 				.spliceFields(0, mainEmbed.fields.length, [
 					{ name: 'Name License', value: `${lang.nameLicense}\n**¤${items.items.name_license.price}**`, inline: true },
 				]);
-			message.channel.send(itemsEmbed.catch());
+			message.channel.send(itemsEmbed).catch();
 			break;
 		case 'pethuds':
 			switch (args[1]) {

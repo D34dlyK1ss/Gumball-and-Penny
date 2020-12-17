@@ -286,7 +286,8 @@
 		"animalName": "Nome do Animal",
 		"toBuy": " para comprar.",
 		"page": "página",
-		"subCategory": "sub-categoria"
+		"subCategory": "sub-categoria",
+		"itemName": "Nome do Item"
 	},
 
 	"slap": {
