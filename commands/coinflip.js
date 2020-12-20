@@ -8,7 +8,7 @@ module.exports = {
 			ref = db.collection('perfis').doc(user.id);
 
 		ref.get().then(doc => {
-			const money = parseInt(args[1]);
+			const money = Math.floor(parseInt(args[1]));
 			if (!doc.exists) {
 				return message.reply(`${lang.error.noProfile}\`${prefix}profile create\`!`).catch(err => { console.error(err); });
 			}
