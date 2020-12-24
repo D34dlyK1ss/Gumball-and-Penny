@@ -284,16 +284,16 @@ module.exports = {
 					.setDescription(`\`${prefix}shop buy pet [${lang.shop.animalName}]\`${lang.shop.toBuy}`)
 					.setFooter(`${lang.page} 1 de 1`)
 					.spliceFields(0, mainEmbed.fields.length, [
-						{ name: 'Cabra', value: `¤${items.pets.cabra.price}`, inline: true },
-						{ name: 'Cão', value: `¤${items.pets.cao.price}`, inline: true },
-						{ name: 'Escorpião', value: `¤${items.pets.escorpiao.price}`, inline: true },
-						{ name: 'Formiga', value: `¤${items.pets.formiga.price}`, inline: true },
-						{ name: 'Galinha', value: `¤${items.pets.galinha.price}`, inline: true },
-						{ name: 'Gato', value: `¤${items.pets.gato.price}`, inline: true },
-						{ name: 'Golfinho', value: `¤${items.pets.golfinho.price}`, inline: true },
-						{ name: 'Hamster', value: `¤${items.pets.hamster.price}`, inline: true },
-						{ name: 'Pónei', value: `¤${items.pets.ponei.price}`, inline: true },
-						{ name: 'Sapo', value: `¤${items.pets.sapo.price}`, inline: true },
+						{ name: `${lang.pets.species.Cabra}`, value: `¤${items.pets.cabra.price}`, inline: true },
+						{ name: `${lang.pets.species.Cão}`, value: `¤${items.pets.cao.price}`, inline: true },
+						{ name: `${lang.pets.species.Escorpião}`, value: `¤${items.pets.escorpiao.price}`, inline: true },
+						{ name: `${lang.pets.species.Formiga}`, value: `¤${items.pets.formiga.price}`, inline: true },
+						{ name: `${lang.pets.species.Galinha}`, value: `¤${items.pets.galinha.price}`, inline: true },
+						{ name: `${lang.pets.species.Gato}`, value: `¤${items.pets.gato.price}`, inline: true },
+						{ name: `${lang.pets.species.Golfinho}`, value: `¤${items.pets.golfinho.price}`, inline: true },
+						{ name: `${lang.pets.species.Hamster}`, value: `¤${items.pets.hamster.price}`, inline: true },
+						{ name: `${lang.pets.species.Pónei}`, value: `¤${items.pets.ponei.price}`, inline: true },
+						{ name: `${lang.pets.species.Sapo}`, value: `¤${items.pets.sapo.price}`, inline: true },
 					]);
 				message.channel.send(petsCommonEmbed).catch(err => { console.error(err); });
 				break;
