@@ -274,7 +274,7 @@ module.exports = {
 						{ name: 'Akamaru', value: `Naruto\n¤${items.pets.akamaru.price}`, inline: true },
 						{ name: 'Frosch', value: `Fairy Tail\n¤${items.pets.frosch.price}`, inline: true },
 						{ name: 'Happy', value: `Fairy Tail\n¤${items.pets.happy.price}`, inline: true },
-						{ name: 'Iggy', value: `Jojo's Bizzare Adventure\n¤${items.pets.iggy.price}`, inline: true },
+						{ name: 'Iggy', value: `Jojo's Bizarre Adventure\n¤${items.pets.iggy.price}`, inline: true },
 					]);
 				message.channel.send(petsVIPEmbed).catch(err => { console.error(err); });
 				break;
