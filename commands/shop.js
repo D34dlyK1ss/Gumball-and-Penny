@@ -80,7 +80,7 @@ module.exports = {
 			itemsEmbed;
 
 		const page = parseInt(args[2]) || 1;
-		let hud = '', petHud = '', pet = '';
+		let hud = '', petHud = '', item = '', pet = '';
 
 		switch (option) {
 		case 'buy':
@@ -120,7 +120,7 @@ module.exports = {
 										huds: iHuds,
 									}).then(() => {
 										const name = itemName.toLowerCase().replace(/[_]/g, ' ');
-										message.reply(`${lang.shop.boughtHUD}**${titleCase(name)}**!${lang.shop.toEquip}\`${prefix}profile sethud\``).catch(err => { console.error(err); });
+										message.reply(`${lang.shop.boughtHUD}**${titleCase(name)}**! ${lang.shop.toEquip}\`${prefix}profile sethud\``).catch(err => { console.error(err); });
 									});
 								}
 							});
@@ -168,7 +168,48 @@ module.exports = {
 
 										const name = itemName.toLowerCase().replace(/[_]/g, ' ');
 
-										message.reply(`${lang.shop.boughtPetHUD}**${titleCase(name)}**!${lang.shop.toEquip}\`${prefix}pet sethud\``).catch(err => { console.error(err); });
+										message.reply(`${lang.shop.boughtPetHUD}**${titleCase(name)}**! ${lang.shop.toEquip}\`${prefix}pet sethud\``).catch(err => { console.error(err); });
+									});
+								}
+							});
+						}
+					}
+				});
+				break;
+			case 'item':
+				item = slugify(item.concat(args.slice(2)).toLowerCase().replace(/[,]/g, '_'));
+				refP.get().then(docP => {
+					if (!docP.exists) {
+						return message.reply(`${lang.error.noProfile}\`${prefix}profile create\`!`).catch(err => { console.error(err); });
+					}
+					else {
+						const bal = docP.get('balance'),
+							itemName = item.toLowerCase(),
+							cost = items.items[itemName].price;
+
+						if (!cost) {
+							return message.reply(lang.error.noItem).catch(err => { console.error(err); });
+						}
+						else {
+							refI.get().then(docI => {
+								const iItems = docI.get('items') || [];
+
+								if (cost > bal) {
+									return message.reply(lang.error.noMoney).catch(err => { console.error(err); });
+								}
+								else {
+									iItems.push(itemName);
+
+									refI.update({
+										items: iItems,
+									}).then(() => {
+										refP.update({
+											balance: (bal - cost),
+										});
+
+										const name = itemName.toLowerCase().replace(/[_]/g, ' ');
+
+										message.reply(`${lang.shop.boughtItem}**${titleCase(name)}**!\`${prefix}pet sethud\``).catch(err => { console.error(err); });
 									});
 								}
 							});
