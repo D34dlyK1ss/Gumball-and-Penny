@@ -220,7 +220,7 @@ bot.on('message', async message => {
 					}
 				});
 			}
-		}).catch(err => { console.error(err); });;
+		});
 
 		if (!xpCooldown.has(message.author.id)) {
 
@@ -240,30 +240,30 @@ bot.on('message', async message => {
 	else if (message.content === `<@!${bot.user.id}>`) {
 		message.channel.send(`${lang.prefixMsg} \`${prefix}\``);
 	}
-}).catch(err => { console.error(err); });;
+});
 
 // Quando o bot for adicionado a um novo servidor, são armazenados dados do mesmo
 bot.on('guildCreate', async guildData => {
 	setActivity();
 	db.collection('servidores').doc(guildData.id).set({
 		'guildOwnerID': guildData.owner.user.id,
-	});
-}).catch(err => { console.error(err); });;
+	}).catch(err => { console.error(err); });
+});
 
 // Quando o bot for expulso de um servidor, o bot apagará os dados respetivos
 bot.on('guildDelete', async guildData => {
 	setActivity();
-	db.collection('servidores').doc(guildData.id).delete();
-}).catch(err => { console.error(err); });;
+	db.collection('servidores').doc(guildData.id).delete().catch(err => { console.error(err); });
+});
 
 // Quando os dados de um servidor forem atualizados, o bot substituirá dados anteriores
 bot.on('guildUpdate', async (oldGuildData, newGuildData) => {
 	if (oldGuildData.ownerID != newGuildData.ownerID) {
 		db.collection('servidores').doc(newGuildData.id).set({
 			'guildOwnerID': newGuildData.owner.user.id,
-		});
+		}).catch(err => { console.error(err); });
 	}
-}).catch(err => { console.error(err); });;
+});
 
 // Autenticação do bot
 bot.login(process.env.TOKEN);
