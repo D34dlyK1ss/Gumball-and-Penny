@@ -246,7 +246,7 @@ bot.on('message', async message => {
 bot.on('guildCreate', async guildData => {
 	setActivity();
 	db.collection('servidores').doc(guildData.id).set({
-		'guildOwnerID': guildData.owner.user.id,
+		'guildOwnerID': guildData.owner.id,
 	}).catch(err => { console.error(err); });
 });
 
@@ -260,7 +260,7 @@ bot.on('guildDelete', async guildData => {
 bot.on('guildUpdate', async (oldGuildData, newGuildData) => {
 	if (oldGuildData.ownerID != newGuildData.ownerID) {
 		db.collection('servidores').doc(newGuildData.id).set({
-			'guildOwnerID': newGuildData.owner.user.id,
+			'guildOwnerID': newGuildData.owner.id,
 		}).catch(err => { console.error(err); });
 	}
 });
