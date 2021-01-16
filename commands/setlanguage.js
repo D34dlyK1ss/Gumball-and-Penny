@@ -27,15 +27,15 @@ module.exports = {
 				}
 				else if (newLanguage == config.language) {
 					languages[message.guild.id] = config.language;
-					ref.update({
+					ref.set({
 						language: FieldValue.delete(),
-					}).catch(err => { console.error(err); });
+					}, { merge: true }).catch(err => { console.error(err); });
 				}
 				else {
 					languages[message.guild.id] = newLanguage;
-					ref.update({
+					ref.set({
 						language: newLanguage,
-					}).catch(err => { console.error(err); });
+					}, { merge: true }).catch(err => { console.error(err); });
 				}
 				lang = require(`../lang/${newLanguage}.json`);
 				message.channel.send(`${lang.setlanguage.isNow}`).catch(err => { console.error(err); });

@@ -24,15 +24,15 @@ module.exports = {
 				}
 				else if (newPrefix == config.prefix) {
 					prefixes[message.guild.id] = config.prefix;
-					ref.update({
+					ref.set({
 						prefix: FieldValue.delete(),
-					}).catch(err => { console.error(err); });
+					}, { merge: true }).catch(err => { console.error(err); });
 				}
 				else {
 					prefixes[message.guild.id] = newPrefix;
-					ref.update({
+					ref.set({
 						prefix: newPrefix,
-					}).catch(err => { console.error(err); });
+					}, { merge: true }).catch(err => { console.error(err); });
 				}
 				message.channel.send(`${lang.setprefix.isNow}\`${newPrefix}\``).catch(err => { console.error(err); });
 			});
