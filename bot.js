@@ -242,5 +242,16 @@ bot.on('message', async message => {
 	}
 });
 
+// Quando o bot for adicionado a um novo servidor, são armazenados dados do mesmo
+bot.on('guildCreate', () => {
+	setActivity();
+});
+
+// Quando o bot for expulso de um servidor, o bot apagará os dados respetivos
+bot.on('guildDelete', async guildData => {
+	setActivity();
+	db.collection('servidores').doc(guildData.id).delete().catch(err => { console.error(err); });
+});
+
 // Autenticação do bot
 bot.login(process.env.TOKEN);
