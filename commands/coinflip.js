@@ -27,10 +27,10 @@ module.exports = {
 					return message.reply(lang.error.noMoney).catch(err => { console.error(err); });
 				}
 				else if (money < least) {
-					return message.reply(`${lang.coinflip.betAtLeast + least}!`).catch(err => { console.error(err); });
+					return message.reply(`${lang.betAtLeast + least}!`).catch(err => { console.error(err); });
 				}
 				else if (money > most) {
-					return message.reply(`${lang.coinflip.betAtMost + most}!`).catch(err => { console.error(err); });
+					return message.reply(`${lang.betAtMost + most}!`).catch(err => { console.error(err); });
 				}
 				else {
 					const value = Math.round(Math.random()),
@@ -39,22 +39,22 @@ module.exports = {
 
 					const attachment = new MessageAttachment('img/coinflip/animation.gif');
 
-					message.channel.send(attachment).then(msg => msg.delete({ timeout: 3000 }).then(() => {
+					message.channel.send(attachment).then(msg => msg.delete({ timeout: 2500 }).then(() => {
 						if (value == 0) res = lang.coinflip.heads;
-						if (value == 1) res = lang.coinflip.tails;
+						else if (value == 1) res = lang.coinflip.tails;
 
 						message.channel.send(`${res.charAt(0).toUpperCase() + res.slice(1)}!`, { files: [`img/coinflip/${res}.gif`] });
 
 						if (res != guess) {
 							ref.update({
 								balance: (bal - money),
-							}).then(() => { return message.reply(`${lang.coinflip.lost + money}!`); }).catch(err => { console.error(err); });
+							}).then(() => { return message.reply(`${lang.lost + money}!`); }).catch(err => { console.error(err); });
 						}
 						else if (res == guess) {
 							const won = money * 2;
 							ref.update({
 								balance: (bal + won),
-							}).then(() => { message.reply(`${lang.coinflip.won + won}!`); }).catch(err => { console.error(err); });
+							}).then(() => { message.reply(`${lang.won + won}!`); }).catch(err => { console.error(err); });
 						}
 					}));
 				}

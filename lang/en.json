@@ -51,6 +51,11 @@
 	"page": "Page",
 	"toChangePage": "To change page use ",
 	"forMoreInfo": " for more information.",
+	"betAtLeast": "you have to bet at least ¤",
+	"betAtMost": "you can't bet over ¤",
+	"lost": "you lost ¤",
+	"won": "you won ¤",
+	"and": "and",
 
 	"error": {
 		"cmd": "there was an error when trying to execute that command!",
@@ -129,12 +134,8 @@
 	},
 
 	"coinflip": {
-		"betAtLeast": "you have to bet at least ¤",
-		"betAtMost": "you can't bet over ¤",
 		"heads": "heads",
-		"tails": "tails",
-		"lost": "you lost ¤",
-		"won": "you won ¤"
+		"tails": "tails"
 	},
 
 	"cry": {
@@ -170,6 +171,14 @@
 
 	"inventory": {
 		"inventoryFrom": "Inventory from "
+	},
+
+	"jankenpon": {
+		"rock": "Rock",
+		"paper": "Paper",
+		"scissors": "Scissors",
+		"threw": "threw",
+		"draw": "It's a draw! You have your money refunded."
 	},
 
 	"kick": {
@@ -426,6 +435,12 @@
 			"category": "Utility",
 			"description": "We'll send our invite link!",
 			"usage": "invite"
+		},
+
+		"jankenpon": {
+			"category": "Casino",
+			"description": "Let us play _Rock, Paper, Scissors_ and place your bet on who wins!",
+			"usage": "jakenpon [gumball/penny] [quantity]"
 		},
 
 		"kick": {

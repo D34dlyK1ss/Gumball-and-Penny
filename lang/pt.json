@@ -51,6 +51,11 @@
 	"page": "Página",
 	"toChangePage": "Para mudar de página usa ",
 	"forMoreInfo": " para mais informação.",
+	"betAtLeast": "tens de apostar no mínimo ¤",
+	"betAtMost": "não podes apostar mais que ¤",
+	"lost": "perdeste ¤",
+	"won": "ganhaste ¤",
+	"and": "e",
 
 	"error": {
 		"cmd": "ocorreu um erro ao tentar executar esse comando!",
@@ -129,12 +134,8 @@
 	},
 
 	"coinflip": {
-		"betAtLeast": "tens de apostar no mínimo ¤",
-		"betAtMost": "não podes apostar mais que ¤",
 		"heads": "cara",
-		"tails": "coroa",
-		"lost": "perdeste ¤",
-		"won": "ganhaste ¤"
+		"tails": "coroa"
 	},
 
 	"cry": {
@@ -170,6 +171,14 @@
 
 	"inventory": {
 		"inventoryFrom": "Inventário de "
+	},
+
+	"jankenpon": {
+		"rock": "Pedra",
+		"paper": "Papel",
+		"scissors": "Tesoura",
+		"threw": "jogou",
+		"draw": "É um empate! Tens o teu dinheiro reembolsado"
 	},
 
 	"kick": {
@@ -426,6 +435,12 @@
 			"category": "Utilidade",
 			"description": "Enviaremos o link para nos convidares para um servidor!",
 			"usage": "invite"
+		},
+
+		"jankenpon": {
+			"category": "Casino",
+			"description": "Deixa-nos jogar _Rock, Paper, Scissors_ e aposta em quem ganha!",
+			"usage": "jakenpon [gumball/penny] [quantidade]"
 		},
 
 		"kick": {
