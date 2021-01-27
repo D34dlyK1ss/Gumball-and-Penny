@@ -163,6 +163,10 @@
 		"to": " to "
 	},
 
+	"happy": {
+		"isHappy": " is happy!"
+	},
+
 	"hug": {
 		"huggedSelf": " hugged themselves?",
 		"huggedUs": " hugged us!",
@@ -413,9 +417,15 @@
 			"usage": "give [@member] [quantity]"
 		},
 
+		"happy": {
+			"category": "Actions",
+			"description": "Get Happy!",
+			"usage": "happy"
+		},
+
 		"help": {
 			"category": "Help",
-			"description": "If you don't know, your problem! :unamused:",
+			"description": "If you don't know, it's your problem! :unamused:",
 			"usage": "help [optional - command name]"
 		},
 

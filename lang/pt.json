@@ -163,6 +163,10 @@
 		"to": " a "
 	},
 
+	"happy": {
+		"isHappy": " está feliz!"
+	},
+
 	"hug": {
 		"huggedSelf": " abraçou-se?",
 		"huggedUs": " abraçou-nos!",
@@ -411,6 +415,12 @@
 			"category": "Economia e Perfil",
 			"description": "Dá dinheiro a alguém!",
 			"usage": "give [@membro] [quantia]"
+		},
+
+		"happy": {
+			"category": "Ações",
+			"description": "Fica feliz!",
+			"usage": "happy"
 		},
 
 		"help": {
