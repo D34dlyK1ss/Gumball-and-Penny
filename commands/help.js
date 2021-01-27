@@ -14,7 +14,7 @@ module.exports = {
 			.setDescription(`${lang.botDescription}\`${prefix}help [${lang.commandName}]\``)
 			.addFields(
 				{ name: `🎭 ${lang.actions}`, value: '`angry`, `cry`, `dance`, `hug`, `kiss`, `laugh`, `pat`, `run`, `slap`', inline: true },
-				{ name: `🎰 ${lang.casino}`, value: '`coinflip`', inline: true },
+				{ name: `🎰 ${lang.casino}`, value: '`coinflip`, `jankenpon`', inline: true },
 				{ name: `😁 ${lang.fun}`, value: '`fact`, `match`, `random`, `say`, `which`', inline: true },
 				{ name: `💰 ${lang.economyAndProfile}`, value: '`balance`, `daily`, `give`, `inventory`, `pet`, `profile`, `shop`, `vote`', inline: true },
 				{ name: `⚠️ ${lang.moderation}`, value: '`ban`, `clear`, `kick`, `mute`, `tempmute`, `unmute`', inline: true },
