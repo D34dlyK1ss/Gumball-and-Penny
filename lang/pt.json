@@ -440,7 +440,7 @@
 		"jankenpon": {
 			"category": "Casino",
 			"description": "Deixa-nos jogar _Rock, Paper, Scissors_ e aposta em quem ganha!",
-			"usage": "jakenpon [gumball/penny] [quantidade]"
+			"usage": "jankenpon [gumball/penny] [quantidade]"
 		},
 
 		"kick": {
