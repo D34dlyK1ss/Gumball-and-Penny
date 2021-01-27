@@ -53,8 +53,10 @@ module.exports = {
 					const attachment2 = new MessageAttachment(canvas.toBuffer(), 'profile.png');
 
 					message.channel.send(attachment).then(msg => msg.delete({ timeout: 2500 }).then(() => {
-						if (g > p || (g === 0 && p === 2)) finalRes = 'gumball';
-						else if (p > g || (p === 0 && g === 2)) finalRes = 'penny';
+						if (g === 0 && p === 2) finalRes = 'gumball';
+						else if (p === 0 && g === 2) finalRes = 'penny';
+						else if (g > p) finalRes = 'gumball';
+						else if (p > g) finalRes = 'penny';
 						else finalRes = 0;
 
 						resG = array[g];
