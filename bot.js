@@ -56,9 +56,8 @@ const currentdate = new Date(),
 	relationship = new Date(2019, 11, 28);
 const mili = currentdate - relationship;
 
-const months = Math.round(mili / 2629746000),
-	// eslint-disable-next-line no-unused-vars
-	years = Math.round(mili / 31536000000);
+const years = Math.round(mili / 31536000000);
+const months = Math.round(mili / 2629746000) - (12 * years);
 
 // Uma vez que o bot está ativo:
 bot.once('ready', async () => {
@@ -71,8 +70,8 @@ bot.once('ready', async () => {
 	}, 1800000);
 
 	schedule.scheduleJob('0 14 28 * *', function() {
-		bot.users.resolve(config.lilly).send(`:tada: Parabéns Lilly! Completaste ${months} meses com o teu Ruru! :purple_heart:\nhttps://i.imgur.com/clrwrEk.gif`);
-		bot.users.resolve(config.botOwner).send(`:tada: Parabéns Ruru! Completaste ${months} meses com a tua Lilly! :purple_heart:\nhttps://i.imgur.com/clrwrEk.gif`);
+		bot.users.resolve(config.lilly).send(`:tada: Parabéns Lilly! Completaste ${years} anos e ${months} meses com o teu Ruru! :purple_heart:\nhttps://i.imgur.com/clrwrEk.gif`);
+		bot.users.resolve(config.botOwner).send(`:tada: Parabéns Ruru! Completaste ${years} anos e ${months} meses com a tua Lilly! :purple_heart:\nhttps://i.imgur.com/clrwrEk.gif`);
 	});
 });
 
