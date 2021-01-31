@@ -13,7 +13,7 @@ module.exports = {
 			.setThumbnail(`${bot.user.displayAvatarURL()}`)
 			.setDescription(`${lang.botDescription}\`${prefix}help [${lang.commandName}]\``)
 			.addFields(
-				{ name: `🎭 ${lang.actions}`, value: '`angry`, `cry`, `dance`, `hug`, `kiss`, `laugh`, `pat`, `run`, `slap`', inline: true },
+				{ name: `🎭 ${lang.actions}`, value: '`angry`, `cry`, `dance`, `happy`, `hug`, `kiss`, `laugh`, `pat`, `run`, `slap`', inline: true },
 				{ name: `🎰 ${lang.casino}`, value: '`coinflip`, `jankenpon`', inline: true },
 				{ name: `😁 ${lang.fun}`, value: '`fact`, `match`, `random`, `say`, `which`', inline: true },
 				{ name: `💰 ${lang.economyAndProfile}`, value: '`balance`, `daily`, `give`, `inventory`, `pet`, `profile`, `shop`, `vote`', inline: true },
