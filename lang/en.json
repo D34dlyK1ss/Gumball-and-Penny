@@ -102,7 +102,6 @@
 		"alreadyHasPet": "you already have a pet! If you want another one you have to give yours to adoption using",
 		"noItem": "that item doesn't exist!",
 		"noVIPForPet": "you need to be VIP to buy this pet!",
-		"noLangChosen": "we need to know the desired language!",
 		"samePrefix": "that's the same prefix we're using!",
 		"sameLanguage": "that's the same language we're speaking!"
 	},

@@ -9,9 +9,6 @@ module.exports = {
 			message.delete();
 			return message.reply(lang.error.noPerm).then(msg => { msg.delete({ timeout: 3000 }); }).catch(err => { console.error(err); });
 		}
-		else if (!args || args == '') {
-			return message.reply(lang.error.noLangChosen).catch(err => { console.error(err); });
-		}
 		else {
 			const availableLangs = ['pt', 'en'],
 				newLanguage = args[0].toLowerCase(),
