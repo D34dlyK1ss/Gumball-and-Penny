@@ -1,6 +1,6 @@
 # Gumball & Penny
 
-Um bot para o Discord!
+A melhor duo do Discord!
 
 ## FAQ
 
