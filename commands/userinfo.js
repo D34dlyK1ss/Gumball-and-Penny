@@ -26,7 +26,6 @@ module.exports = {
 			.setThumbnail(`${user.displayAvatarURL()}`)
 			.addFields(
 				{ name: `${lang.id}`, value: `${user.id}` },
-				{ name: `${lang.status}`, value: `${lang.userinfo.status[user.presence.status]}`, inline: true },
 				{ name: `${lang.mention}`, value: `${user}`, inline: true },
 				{ name: `${lang.joined}`, value: `${lang.userinfo.joined + joined + lang.ago}(${joinedDate.format('LLLL')})` },
 				{ name: `${lang.roles}`, value: `${roles}`, inline: true },

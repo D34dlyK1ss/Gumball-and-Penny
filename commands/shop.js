@@ -441,7 +441,7 @@ module.exports = {
 							{ name: 'Glitchtrap', value: `Five Nights at Freddy's\n¤${items.huds.glitchtrap.price}`, inline: true },
 							{ name: 'KDA Akali', value: `League of Legends\n¤${items.huds.kda_akali.price}`, inline: true },
 							{ name: 'Kirby', value: `Nintendo\n¤${items.huds.kirby.price}`, inline: true },
-							{ name: 'Kirby2', value: `Nintendo\n¤${items.huds.kirby2.price}`, inline: true },
+							{ name: 'Kirby 2', value: `Nintendo\n¤${items.huds.kirby_2.price}`, inline: true },
 							{ name: 'Nathan Drake', value: `Uncharted\n¤${items.huds.nightmare_chica.price}`, inline: true },
 							{ name: 'Nightmare Chica', value: `Five Nights at Freddy's\n¤${items.huds.nightmare_chica.price}`, inline: true },
 							{ name: 'Nightmare Foxy', value: `Five Nights at Freddy's\n¤${items.huds.nightmare_foxy.price}`, inline: true },
@@ -457,10 +457,12 @@ module.exports = {
 						.spliceFields(0, mainEmbed.fields.length, [
 							{ name: 'Sans', value: `Undertale\n¤${items.huds.sans.price}`, inline: true },
 							{ name: 'Scorpion', value: `Mortal Kombat\n¤${items.huds.scorpion.price}`, inline: true },
-							{ name: 'Scorpion2', value: `Mortal Kombat\n¤${items.huds.scorpion2.price}`, inline: true },
+							{ name: 'Scorpion 2', value: `Mortal Kombat\n¤${items.huds.scorpion_2.price}`, inline: true },
 							{ name: 'Springtrap', value: `Five Nights at Freddy's\n¤${items.huds.springtrap.price}`, inline: true },
 							{ name: 'Sub-Zero', value: `Mortal Kombat\n¤${items.huds['sub-zero'].price}`, inline: true },
 							{ name: 'The Hillbilly', value: `Dead by Daylight\n¤${items.huds['the_hillbilly'].price}`, inline: true },
+							{ name: 'Yasuo', value: `League of Legends\n¤${items.huds.yasuo.price}`, inline: true },
+							{ name: 'Yone', value: `League of Legends\n¤${items.huds.yone.price}`, inline: true },
 						]);
 					break;
 				default:
@@ -476,6 +478,7 @@ module.exports = {
 							{ name: 'Eclipse Leona', value: `League of Legends\n¤${items.huds.eclipse_leona.price}`, inline: true },
 							{ name: 'Flappy Bird', value: `\n¤${items.huds.flappy_bird.price}`, inline: true },
 							{ name: 'Funtime Foxy', value: `Five Nights at Freddy's\n¤${items.huds.funtime_foxy.price}`, inline: true },
+							{ name: 'Hollow Knight', value: `Hollow Knight\n¤${items.huds.hollow_knight.price}`, inline: true },
 							{ name: 'Murder Monkeys', value: `Dark Deception\n¤${items.huds.murder_monkeys.price}`, inline: true },
 						]);
 					break;
@@ -492,11 +495,13 @@ module.exports = {
 						.spliceFields(0, mainEmbed.fields.length, [
 							{ name: 'L', value: `Death Note\n¤${items.huds.l.price}`, inline: true },
 							{ name: 'Lelouch', value: `Code Geass\n¤${items.huds.lelouch.price}`, inline: true },
-							{ name: 'Lelouch2', value: `Code Geass\n¤${items.huds.lelouch2.price}`, inline: true },
+							{ name: 'Lelouch 2', value: `Code Geass\n¤${items.huds.lelouch_2.price}`, inline: true },
 							{ name: 'Shiro', value: `No Game No Life\n¤${items.huds.shiro.price}`, inline: true },
 							{ name: 'Sora & Shiro', value: `No Game No Life\n¤${items.huds['sora_&_shiro'].price}`, inline: true },
 							{ name: 'Yukiteru Yuno', value: `Mirai Nikki\n¤${items.huds['yukiteru_&_yuno'].price}`, inline: true },
 							{ name: 'Yuno', value: `Mirai Nikki\n¤${items.huds.yuno.price}`, inline: true },
+							{ name: 'Zero Two', value: `Darling in the FranXX\n¤${items.huds.zero_two.price}`, inline: true },
+							{ name: 'Zero Two 2', value: `Darling in the FranXX\n¤${items.huds.zero_two_2.price}`, inline: true },
 						]);
 					break;
 				default:
@@ -510,7 +515,7 @@ module.exports = {
 							{ name: 'Itachi', value: `Naruto\n¤${items.huds.itachi.price}`, inline: true },
 							{ name: 'Kakashi', value: `Naruto\n¤${items.huds.kakashi.price}`, inline: true },
 							{ name: 'Kaneki', value: `Tokyo Ghoul\n¤${items.huds.kaneki.price}`, inline: true },
-							{ name: 'Kaneki2', value: `Tokyo Ghoul\n¤${items.huds.kaneki2.price}`, inline: true },
+							{ name: 'Kaneki 2', value: `Tokyo Ghoul\n¤${items.huds.kaneki_2.price}`, inline: true },
 							{ name: 'Morioh Gang', value: `Jojo's Bizarre Adventure Part 4\n¤${items.huds.morioh_gang.price}`, inline: true },
 							{ name: 'Naruto', value: `Naruto\n¤${items.huds.naruto.price}`, inline: true },
 							{ name: 'Nezuko Kamado', value: `Demon Slayer\n¤${items.huds.nezuko_kamado.price}`, inline: true },
@@ -527,7 +532,7 @@ module.exports = {
 					.spliceFields(0, mainEmbed.fields.length, [
 						{ name: 'Courage', value: `Courage the Cowardly Dog\n¤${items.huds.courage.price}`, inline: true },
 						{ name: 'Jake', value: `Adventure Time\n¤${items.huds.jake.price}`, inline: true },
-						{ name: 'Jake2', value: `Adventure Time\n¤${items.huds.jake2.price}`, inline: true },
+						{ name: 'Jake 2', value: `Adventure Time\n¤${items.huds.jake_2.price}`, inline: true },
 						{ name: 'Gumball & Darwin', value: `The Amazing World of Gumball\n¤${items.huds['gumball_&_darwin'].price}`, inline: true },
 					]);
 				message.channel.send(hudCartoonsEmbed).catch(err => { console.error(err); });
