@@ -232,7 +232,7 @@
 	},
 
 	"profile": {
-		"wasCreated": "o teu perfil foi criado! Adiciona uma descricão com ",
+		"wasCreated": "o teu perfil foi criado! Adiciona uma descrição com ",
 		"description": "descrição",
 		"nicknameMaxIs": "o limite máximo de caracteres para alcunha é ",
 		"nicknameHas": "Essa alcunha tem ",
