@@ -250,6 +250,17 @@ bot.on('message', async message => {
 			message.reply(lang.error.cmd);
 		}
 	}
+	else if (serverSettings.automessages === true) {
+		const pngs = ['boi', 'E', 'hmm', 'just monika', 'nice plan', 'no u', 'noice', 'shine'],
+			gifs = ['distraction dance'];
+
+		if (pngs.includes(message.content)) {
+			message.channel.send(new Discord.MessageAttachment(`./img/automessages/${message.content}.png`)).catch(err => { console.error(err); });
+		}
+		else if (gifs.includes(message.content)) {
+			message.channel.send(new Discord.MessageAttachment(`./img/automessages/${message.content}.gif`)).catch(err => { console.error(err); });
+		}
+	}
 	else if (message.content === `<@!${bot.user.id}>`) {
 		message.channel.send(`${lang.prefixMsg} \`${prefix}\``);
 	}
