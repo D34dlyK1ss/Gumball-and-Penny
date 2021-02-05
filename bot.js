@@ -133,6 +133,7 @@ es.onmessage = async messageEvent => {
 
 const prefixes = new Object(),
 	languages = new Object(),
+	settings = new Object(),
 	xpCooldown = new Set();
 
 // Ações para quando o bot receber uma mensagem
@@ -149,22 +150,31 @@ bot.on('message', async message => {
 		bot.commands.set(props.name, props);
 	}
 
-	const ref = db.collection('servidores').doc(message.guild.id);
+	const refS = db.collection('servidores').doc(message.guild.id);
 
 	// Obter o prefixo definido para o servidor
 	if (!prefixes[message.guild.id]) {
-		const doc = await ref.get();
+		const doc = await refS.get();
 		prefixes[message.guild.id] = doc.get('prefix') || config.prefix;
 	}
 	const prefix = prefixes[message.guild.id];
 
-	// Seleção da linguagem
+	// Obter a linguagem definida para o servidor
 	if (!languages[message.guild.id]) {
-		const doc = await ref.get();
+		const doc = await refS.get();
 		languages[message.guild.id] = doc.get('language') || config.language;
 	}
 	const language = message.channel.id === '787661396652589077' ? 'en' : languages[message.guild.id];
 	const lang = require(`./lang/${language}.json`);
+
+	//  Obter as definições do bot para o servidor
+	const refD = db.collection('definicoes').doc(message.guild.id);
+
+	if (!settings[message.guild.id]) {
+		const doc = await refD.get();
+		settings[message.guild.id] = doc.get('settings') || config.settings;
+	}
+	const serverSettings = settings[message.guild.id];
 
 	// Servidor de Suporte
 	const supportServer = bot.guilds.cache.get('738540548305977366');
@@ -233,7 +243,7 @@ bot.on('message', async message => {
 			}, 60000);
 		}
 		try {
-			command.execute(bot, message, command, db, lang, language, supportServer, prefix, args, prefixes, languages);
+			command.execute(bot, message, command, db, lang, language, supportServer, prefix, args, prefixes, languages, settings, serverSettings);
 		}
 		catch (err) {
 			console.error(err);

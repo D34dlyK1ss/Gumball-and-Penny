@@ -15,6 +15,8 @@
 	"moderation": "Moderação",
 	"server": "Servidor",
 	"utility": "Utilidade",
+	"settings": "Definições",
+	"links": "Ligações",
 	"inviteUs": "Convida-nos!",
 	"supportServer": "Servidor de Suporte",
 	"donate": "Doar",
@@ -56,6 +58,8 @@
 	"lost": "perdeste ¤",
 	"won": "ganhaste ¤",
 	"and": "e",
+	"enabled": "ativadas",
+	"disabled": "desativadas",
 
 	"error": {
 		"cmd": "ocorreu um erro ao tentar executar esse comando!",
@@ -116,6 +120,10 @@
 		"gotAngry": " chateou-se!",
 		"gotAngryWithUs": " chateou-se connosco!",
 		"gotAngryWith": " chateou-se com "
+	},
+
+	"automessages": {
+		"areNow": "_Mensagens Automáticas_ estão agora "
 	},
 
 	"balance": {
@@ -348,6 +356,12 @@
 			"category": "Ações",
 			"description": "Fica chateado!",
 			"usage": "angry [opcional - @membro]"
+		},
+
+		"automessages": {
+			"category": "Definições",
+			"description": "Ativa/Desativa mensagens automáticas!\nCaso estejam ativas, nós iremos responder coisas engraçadas a certas mensagens.",
+			"usage": "automessages"
 		},
 
 		"avatar": {

@@ -18,9 +18,10 @@ module.exports = {
 				{ name: `😁 ${lang.fun}`, value: '`fact`, `match`, `random`, `say`, `which`', inline: true },
 				{ name: `💰 ${lang.economyAndProfile}`, value: '`balance`, `daily`, `give`, `inventory`, `pet`, `profile`, `shop`, `vote`', inline: true },
 				{ name: `⚠️ ${lang.moderation}`, value: '`ban`, `clear`, `kick`, `mute`, `tempmute`, `unmute`', inline: true },
-				{ name: `🌐 ${lang.server}`, value: '`members`, `serverinfo`, `setprefix`, `userinfo`', inline: true },
+				{ name: `🌐 ${lang.server}`, value: '`members`, `serverinfo`, `userinfo`', inline: true },
 				{ name: `🛠️ ${lang.utility}`, value: '`avatar`, `invite`, `ping`', inline: true },
-				{ name: '**Links**', value: `**[${lang.inviteUs}](https://discordapp.com/oauth2/authorize?&client_id=679041548955942914&scope=bot&permissions=272100438) - [${lang.supportServer}](https://discord.gg/FaUGnB25hF) - [${lang.donate}](https://ko-fi.com/officialgumballandpenny/commissions)**` },
+				{ name: `⚙️ ${lang.settings}`, value: '`setlanguage`, `setprefix`', inline: true },
+				{ name: `${lang.links}`, value: `**[${lang.inviteUs}](https://discordapp.com/oauth2/authorize?&client_id=679041548955942914&scope=bot&permissions=272100438) - [${lang.supportServer}](https://discord.gg/FaUGnB25hF) - [${lang.donate}](https://ko-fi.com/officialgumballandpenny/commissions)**` },
 			);
 
 		if (args == null || args == '') {
