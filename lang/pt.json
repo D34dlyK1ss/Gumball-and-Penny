@@ -111,9 +111,9 @@
 	},
 	
 	"levelUp": {
-		"congrats": "Parabéns ",
-		"levelTo": ", subiste para o nível ",
-		"received": " e recebeste ¤"
+		"congrats": "Parabéns",
+		"levelTo": "subiste para o nível",
+		"received": "e recebeste ¤"
 	},
 
 	"angry": {

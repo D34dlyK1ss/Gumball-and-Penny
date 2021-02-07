@@ -111,9 +111,9 @@
 	},
 	
 	"levelUp": {
-		"congrats": "Congratulations ",
-		"levelTo": ", you leveled up to level ",
-		"received": " and received ¤"
+		"congrats": "Congratulations",
+		"levelTo": "you leveled up to level ",
+		"received": "and received ¤"
 	},
 
 	"angry": {

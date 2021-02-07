@@ -224,10 +224,10 @@ bot.on('message', async message => {
 							if (rewards.levels.includes(newLevel)) {
 								db.collection('perfis').doc(message.author.id).update({
 									balance: bal + reward,
-								}).then(() => message.channel.send(`🎉 ${lang.levelUp.congrats + message.author.tag + lang.levelUp.levelTo + newLevel + lang.levelUp.received + reward}! 🆙💰`));
+								}).then(() => message.channel.send(`🎉 ${lang.levelUp.congrats} **${message.author.tag}**, ${lang.levelUp.levelTo} **${newLevel}** ${lang.levelUp.received + reward}! 🆙💰`));
 							}
 							else {
-								message.channel.send(`🎉 ${lang.levelUp.congrats + message.author.tag + lang.levelUp.levelTo + newLevel}! 🆙`);
+								message.channel.send(`🎉 ${lang.levelUp.congrats} **${message.author.tag}**, ${lang.levelUp.levelTo} **${newLevel}**! 🆙`);
 							}
 						}
 					}
