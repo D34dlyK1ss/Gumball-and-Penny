@@ -310,7 +310,7 @@ module.exports = {
 				petsVIPEmbed = new MessageEmbed(mainEmbed)
 					.setTitle(`${lang.awesomeStore} - Pets (VIP)`)
 					.setDescription(`\`${prefix}shop buy pet [${lang.shop.animalName}]\`${lang.shop.toBuy}`)
-					.setFooter(`${lang.page} 1 de 1`)
+					.setFooter(`${lang.page} 1/1`)
 					.spliceFields(0, mainEmbed.fields.length, [
 						{ name: 'Akamaru', value: `Naruto\n¤${items.pets.akamaru.price}`, inline: true },
 						{ name: 'Frosch', value: `Fairy Tail\n¤${items.pets.frosch.price}`, inline: true },
@@ -323,7 +323,7 @@ module.exports = {
 				petsCommonEmbed = new MessageEmbed(mainEmbed)
 					.setTitle(`${lang.awesomeStore} - Pets (Common)`)
 					.setDescription(`\`${prefix}shop buy pet [${lang.shop.animalName}]\`${lang.shop.toBuy}`)
-					.setFooter(`${lang.page} 1 de 1`)
+					.setFooter(`${lang.page} 1/1`)
 					.spliceFields(0, mainEmbed.fields.length, [
 						{ name: `${lang.pets.species.Cabra}`, value: `¤${items.pets.cabra.price}`, inline: true },
 						{ name: `${lang.pets.species.Cão}`, value: `¤${items.pets.cao.price}`, inline: true },
@@ -342,7 +342,7 @@ module.exports = {
 				petsEmbed = new MessageEmbed(mainEmbed)
 					.setTitle(`${lang.awesomeStore} - Pets`)
 					.setDescription(`\`${prefix}shop pets [${lang.shop.category}]\`${lang.shop.toBuy}`)
-					.setFooter(`${lang.page} 1 de 1`)
+					.setFooter(`${lang.page} 1/1`)
 					.spliceFields(0, mainEmbed.fields.length, [
 						{ name: 'Common', value: '\u200B', inline: true },
 						{ name: 'VIP', value: '\u200B', inline: true },
@@ -355,7 +355,7 @@ module.exports = {
 			itemsEmbed = new MessageEmbed(mainEmbed)
 				.setTitle(`${lang.awesomeStore} - Items`)
 				.setDescription(`\`${prefix}shop buy item [${lang.shop.itemName}]\`${lang.shop.toBuy}`)
-				.setFooter(`${lang.page} 1 de 1`)
+				.setFooter(`${lang.page} 1/1`)
 				.spliceFields(0, mainEmbed.fields.length, [
 					{ name: 'Name License', value: `${lang.nameLicense}\n¤${items.items.name_license.price}`, inline: true },
 				]);
@@ -367,7 +367,7 @@ module.exports = {
 				petHudColorsEmbed = new MessageEmbed(mainEmbed)
 					.setTitle(`${lang.awesomeStore} - PetHUDs (Colors)`)
 					.setDescription(`\`${prefix}shop buy pethud [${lang.shop.petHUDName}]\`${lang.shop.toBuyOr}\`${prefix}shop view pethud [${lang.shop.petHUDName}]\`${lang.shop.toSee}`)
-					.setFooter(`${lang.page} 1 de 1`)
+					.setFooter(`${lang.page} 1/1`)
 					.spliceFields(0, mainEmbed.fields.length, [
 						{ name: 'Black', value: `¤${items.petHuds.black.price}`, inline: true },
 						{ name: 'Blue', value: `¤${items.petHuds.blue.price}`, inline: true },
@@ -385,7 +385,7 @@ module.exports = {
 				petHudVIPEmbed = new MessageEmbed(mainEmbed)
 					.setTitle(`${lang.awesomeStore} - PetHUDs (VIP)`)
 					.setDescription(`\`${prefix}shop buy pethud [${lang.shop.petHUDName}]\`${lang.shop.toBuyOr}\`${prefix}shop view pethud [${lang.shop.petHUDName}]\`${lang.shop.toSee}`)
-					.setFooter(`${lang.page} 1 de 1`)
+					.setFooter(`${lang.page} 1/1`)
 					.spliceFields(0, mainEmbed.fields.length, [
 						{ name: 'Bones', value: `¤${items.petHuds.bones.price}`, inline: true },
 						{ name: 'Foxes', value: `¤${items.petHuds.foxes.price}`, inline: true },
@@ -401,7 +401,7 @@ module.exports = {
 				petHudEmbed = new MessageEmbed(mainEmbed)
 					.setTitle(`${lang.awesomeStore} - PetHUDs (Colors)`)
 					.setDescription(`\`${prefix}shop pethuds [${lang.shop.subCategory}]\`${lang.shop.toSelectASubCat}`)
-					.setFooter(`${lang.page} 1 de 1`)
+					.setFooter(`${lang.page} 1/1`)
 					.spliceFields(0, mainEmbed.fields.length, [
 						{ name: 'Colors', value: '\u200B', inline: true },
 						{ name: 'VIP', value: '\u200B', inline: true },
@@ -416,7 +416,7 @@ module.exports = {
 				hudColorsEmbed = new MessageEmbed(mainEmbed)
 					.setTitle(`${lang.awesomeStore} - HUDs (Colors)`)
 					.setDescription(`\`${prefix}shop buy hud [${lang.shop.hudName}]\`${lang.shop.toBuyOr}\`${prefix}shop view hud [${lang.shop.hudName}]\`${lang.shop.toSee}`)
-					.setFooter(`${lang.page} 1 de 1`)
+					.setFooter(`${lang.page} 1/1`)
 					.spliceFields(0, mainEmbed.fields.length, [
 						{ name: 'Black', value: `¤${items.huds.black.price}`, inline: true },
 						{ name: 'Blue', value: `¤${items.huds.blue.price}`, inline: true },
@@ -436,7 +436,7 @@ module.exports = {
 					hudGamesEmbed = new MessageEmbed(mainEmbed)
 						.setTitle(`${lang.awesomeStore} - HUDs (Games)`)
 						.setDescription(`\`${prefix}shop buy hud [${lang.shop.hudName}]\`${lang.shop.toBuyOr}\`${prefix}shop view hud [${lang.shop.hudName}]\`${lang.shop.toSee}\n${lang.toChangePage}\`${prefix}shop huds games [${lang.shop.page}]\``)
-						.setFooter(`${lang.page} 2 de 3`)
+						.setFooter(`${lang.page} 2/3`)
 						.spliceFields(0, mainEmbed.fields.length, [
 							{ name: 'Glitchtrap', value: `Five Nights at Freddy's\n¤${items.huds.glitchtrap.price}`, inline: true },
 							{ name: 'KDA Akali', value: `League of Legends\n¤${items.huds.kda_akali.price}`, inline: true },
@@ -453,7 +453,7 @@ module.exports = {
 					hudGamesEmbed = new MessageEmbed(mainEmbed)
 						.setTitle(`${lang.awesomeStore} - HUDs (Games)`)
 						.setDescription(`\`${prefix}shop buy hud [${lang.shop.hudName}]\`${lang.shop.toBuyOr}\`${prefix}shop view hud [${lang.shop.hudName}]\`${lang.shop.toSee}\n${lang.toChangePage}\`${prefix}shop huds games [${lang.shop.page}]\``)
-						.setFooter(`${lang.page} 3 de 3`)
+						.setFooter(`${lang.page} 3/3`)
 						.spliceFields(0, mainEmbed.fields.length, [
 							{ name: 'Sans', value: `Undertale\n¤${items.huds.sans.price}`, inline: true },
 							{ name: 'Scorpion', value: `Mortal Kombat\n¤${items.huds.scorpion.price}`, inline: true },
@@ -469,7 +469,7 @@ module.exports = {
 					hudGamesEmbed = new MessageEmbed(mainEmbed)
 						.setTitle(`${lang.awesomeStore} - HUDs (Games)`)
 						.setDescription(`\`${prefix}shop buy hud [${lang.shop.hudName}]\`${lang.shop.toBuyOr}\`${prefix}shop view hud [${lang.shop.hudName}]\`${lang.shop.toSee}\n${lang.toChangePage}\`${prefix}shop huds games [${lang.shop.page}]\``)
-						.setFooter(`${lang.page} 1 de 3`)
+						.setFooter(`${lang.page} 1/3`)
 						.spliceFields(0, mainEmbed.fields.length, [
 							{ name: 'Among Us', value: `\n¤${items.huds.among_us.price}`, inline: true },
 							{ name: 'Clown Gremlins', value: `Dark Deception\n¤${items.huds.clown_gremlins.price}`, inline: true },
@@ -491,11 +491,11 @@ module.exports = {
 					hudAnimeEmbed = new MessageEmbed(mainEmbed)
 						.setTitle(`${lang.awesomeStore} - HUDs (Anime)`)
 						.setDescription(`\`${prefix}shop buy hud [${lang.shop.hudName}]\`${lang.shop.toBuyOr}\`${prefix}shop view hud [${lang.shop.hudName}]\`${lang.shop.toSee}\n${lang.toChangePage}\`${prefix}shop huds anime [${lang.shop.page}]\``)
-						.setFooter(`${lang.page} 2 de 2`)
+						.setFooter(`${lang.page} 2/2`)
 						.spliceFields(0, mainEmbed.fields.length, [
-							{ name: 'L', value: `Death Note\n¤${items.huds.l.price}`, inline: true },
-							{ name: 'Lelouch', value: `Code Geass\n¤${items.huds.lelouch.price}`, inline: true },
-							{ name: 'Lelouch 2', value: `Code Geass\n¤${items.huds.lelouch_2.price}`, inline: true },
+							{ name: 'Morioh Gang', value: `Jojo's Bizarre Adventure Part 4\n¤${items.huds.morioh_gang.price}`, inline: true },
+							{ name: 'Naruto', value: `Naruto\n¤${items.huds.naruto.price}`, inline: true },
+							{ name: 'Nezuko Kamado', value: `Demon Slayer\n¤${items.huds.nezuko_kamado.price}`, inline: true },
 							{ name: 'Shiro', value: `No Game No Life\n¤${items.huds.shiro.price}`, inline: true },
 							{ name: 'Sora & Shiro', value: `No Game No Life\n¤${items.huds['sora_&_shiro'].price}`, inline: true },
 							{ name: 'Yukiteru Yuno', value: `Mirai Nikki\n¤${items.huds['yukiteru_&_yuno'].price}`, inline: true },
@@ -508,7 +508,7 @@ module.exports = {
 					hudAnimeEmbed = new MessageEmbed(mainEmbed)
 						.setTitle(`${lang.awesomeStore} - HUDs (Anime)`)
 						.setDescription(`\`${prefix}shop buy hud [${lang.shop.hudName}]\`${lang.shop.toBuyOr}\`${prefix}shop view hud [${lang.shop.hudName}]\`${lang.shop.toSee}\n${lang.toChangePage}\`${prefix}shop huds anime [${lang.shop.page}]\``)
-						.setFooter(`${lang.page} 1 de 2`)
+						.setFooter(`${lang.page} 1/2`)
 						.spliceFields(0, mainEmbed.fields.length, [
 							{ name: 'Giorno', value: `Jojo's Bizarre Adventure\n¤${items.huds.giorno.price}`, inline: true },
 							{ name: 'Isaac', value: `Angel's of Death\n¤${items.huds.isaac.price}`, inline: true },
@@ -516,9 +516,9 @@ module.exports = {
 							{ name: 'Kakashi', value: `Naruto\n¤${items.huds.kakashi.price}`, inline: true },
 							{ name: 'Kaneki', value: `Tokyo Ghoul\n¤${items.huds.kaneki.price}`, inline: true },
 							{ name: 'Kaneki 2', value: `Tokyo Ghoul\n¤${items.huds.kaneki_2.price}`, inline: true },
-							{ name: 'Morioh Gang', value: `Jojo's Bizarre Adventure Part 4\n¤${items.huds.morioh_gang.price}`, inline: true },
-							{ name: 'Naruto', value: `Naruto\n¤${items.huds.naruto.price}`, inline: true },
-							{ name: 'Nezuko Kamado', value: `Demon Slayer\n¤${items.huds.nezuko_kamado.price}`, inline: true },
+							{ name: 'L', value: `Death Note\n¤${items.huds.l.price}`, inline: true },
+							{ name: 'Lelouch', value: `Code Geass\n¤${items.huds.lelouch.price}`, inline: true },
+							{ name: 'Lelouch 2', value: `Code Geass\n¤${items.huds.lelouch_2.price}`, inline: true },
 						]);
 					break;
 				}
@@ -528,7 +528,7 @@ module.exports = {
 				hudCartoonsEmbed = new MessageEmbed(mainEmbed)
 					.setTitle(`${lang.awesomeStore} - HUDs (Cartoons)`)
 					.setDescription(`\`${prefix}shop buy hud [${lang.shop.hudName}]\`${lang.shop.toBuyOr}\`${prefix}shop view hud [${lang.shop.hudName}]\`${lang.shop.toSee}`)
-					.setFooter(`${lang.page} 1 de 1`)
+					.setFooter(`${lang.page} 1/1`)
 					.spliceFields(0, mainEmbed.fields.length, [
 						{ name: 'Courage', value: `Courage the Cowardly Dog\n¤${items.huds.courage.price}`, inline: true },
 						{ name: 'Jake', value: `Adventure Time\n¤${items.huds.jake.price}`, inline: true },
@@ -541,7 +541,7 @@ module.exports = {
 				hudMarvelEmbed = new MessageEmbed(mainEmbed)
 					.setTitle(`${lang.awesomeStore} - HUDs (Marvel)`)
 					.setDescription(`\`${prefix}shop buy hud [${lang.shop.hudName}]\`${lang.shop.toBuyOr}\`${prefix}shop view hud [${lang.shop.hudName}]\`${lang.shop.toSee}`)
-					.setFooter(`${lang.page} 1 de 1`)
+					.setFooter(`${lang.page} 1/1`)
 					.spliceFields(0, mainEmbed.fields.length, [
 						{ name: 'Captain America', value: `${lang.shop.hero}\n¤${items.huds.captain_america.price}`, inline: true },
 						{ name: 'Chaos King', value: `${lang.shop.villain}\n¤${items.huds.chaos_king.price}`, inline: true },
@@ -557,7 +557,7 @@ module.exports = {
 				hudDCEmbed = new MessageEmbed(mainEmbed)
 					.setTitle(`${lang.awesomeStore} - HUDs (DC)`)
 					.setDescription(`\`${prefix}shop buy hud [${lang.shop.hudName}]\`${lang.shop.toBuyOr}\`${prefix}shop view hud [${lang.shop.hudName}]\`${lang.shop.toSee}`)
-					.setFooter(`${lang.page} 1 de 1`)
+					.setFooter(`${lang.page} 1/1`)
 					.spliceFields(0, mainEmbed.fields.length, [
 						{ name: 'Batman', value: `${lang.shop.hero}\n¤${items.huds.batman.price}`, inline: true },
 						{ name: 'Joker', value: `${lang.shop.villain}\n¤${items.huds.joker.price}`, inline: true },
@@ -569,7 +569,7 @@ module.exports = {
 				hudVocaloidsEmbed = new MessageEmbed(mainEmbed)
 					.setTitle(`${lang.awesomeStore} - HUDs (Cartoons)`)
 					.setDescription(`\`${prefix}shop buy hud [${lang.shop.hudName}]\`${lang.shop.toBuyOr}\`${prefix}shop view hud [${lang.shop.hudName}]\`${lang.shop.toSee}`)
-					.setFooter(`${lang.page} 1 de 1`)
+					.setFooter(`${lang.page} 1/1`)
 					.spliceFields(0, mainEmbed.fields.length, [
 						{ name: 'Miku Hatsune', value: `¤${items.huds.miku_hatsune.price}`, inline: true },
 					]);
