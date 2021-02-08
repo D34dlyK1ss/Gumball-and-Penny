@@ -211,15 +211,17 @@ module.exports = {
 					ctx.arc(97, 70, 58, 0, Math.PI * 2, true);
 					ctx.lineWidth = 6;
 					ctx.strokeStyle = 'white';
+					ctx.fillStyle = 'white';
+					ctx.fill();
 					ctx.stroke();
 					ctx.closePath();
 
 					if (vip) {
 						const crown = await loadImage('./img/profile/crown.png');
-						ctx.drawImage (crown, 7, 12, 50, 50);
+						ctx.drawImage(crown, 7, 12, 50, 50);
 					}
 
-					const avatar = await loadImage(user.displayAvatarURL({ format: 'jpg' }));
+					const avatar = await loadImage(user.displayAvatarURL({ format: 'png' }));
 					ctx.clip();
 					ctx.drawImage (avatar, 37, 10, 120, 120);
 
