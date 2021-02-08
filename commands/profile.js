@@ -219,7 +219,7 @@ module.exports = {
 						ctx.drawImage (crown, 7, 12, 50, 50);
 					}
 
-					const avatar = await loadImage(user.displayAvatarURL({ format: 'png' }));
+					const avatar = await loadImage(user.displayAvatarURL({ format: 'jpg' }));
 					ctx.clip();
 					ctx.drawImage (avatar, 37, 10, 120, 120);
 
