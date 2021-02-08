@@ -112,7 +112,7 @@
 	
 	"levelUp": {
 		"congrats": "Congratulations",
-		"levelTo": "you leveled up to level ",
+		"levelTo": "you leveled up to level",
 		"received": "and received ¤"
 	},
 
