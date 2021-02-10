@@ -155,10 +155,9 @@ bot.on('message', async message => {
 		settings[message.guild.id] = doc.get('settings') || config.settings;
 	}
 	const serverSettings = settings[message.guild.id];
-	return console.log(serverSettings);
 	const prefix = serverSettings.prefix,
-		language = message.channel.id === '787661396652589077' || message.channel.id === '787674033331634196' ? 'en' : serverSettings.language,
-		lang = require(`./lang/${language}.json`);
+		language = message.channel.id === '787661396652589077' || message.channel.id === '787674033331634196' ? 'en' : serverSettings.language;
+	const lang = require(`./lang/${language}.json`);
 
 	// Servidor de Suporte
 	const supportServer = bot.guilds.cache.get('738540548305977366');
