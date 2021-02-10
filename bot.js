@@ -250,14 +250,17 @@ bot.on('message', async message => {
 });
 
 // Quando o bot for adicionado a um novo servidor, são armazenados dados do mesmo
-bot.on('guildCreate', () => {
+bot.on('guildCreate', async guildData => {
 	setActivity();
+	await db.collection('definicoes').doc(guildData.id).set({
+		settings: config.settings,
+	}).catch(err => { console.error(err); });
 });
 
 // Quando o bot for expulso de um servidor, o bot apagará os dados respetivos
 bot.on('guildDelete', async guildData => {
 	setActivity();
-	db.collection('definicoes').doc(guildData.id).delete().catch(err => { console.error(err); });
+	await db.collection('definicoes').doc(guildData.id).delete().catch(err => { console.error(err); });
 });
 
 // Autenticação do bot

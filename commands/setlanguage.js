@@ -20,7 +20,6 @@ module.exports = {
 					ref.set({
 						settings: config.settings,
 					}, { merge: true }).catch(err => { console.error(err); });
-					doc = ref.get();
 				}
 
 				const oldLanguage = doc.get('settings').language || config.settings.language;

@@ -9,7 +9,7 @@ module.exports = {
 	execute(bot, message, command, db, lang, language, supportServer, prefix, args) {
 		let server = message.guild;
 
-		if (args != '' && message.author == config.botOwner) {
+		if (args != '' && message.author == config.botOwner && message.channel.id === '809182965607039007') {
 			server = bot.guilds.cache.get(args[0]);
 		}
 
