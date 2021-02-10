@@ -1,5 +1,4 @@
 const config = require('../config.json');
-const FieldValue = require('firebase-admin').firestore.FieldValue;
 
 module.exports = {
 	name: 'setprefix',
@@ -22,16 +21,10 @@ module.exports = {
 				if (newPrefix == oldPrefix) {
 					return message.reply(lang.error.samePrefix).catch(err => { console.error(err); });
 				}
-				else if (newPrefix == config.prefix) {
-					serverSettings.prefix = config.prefix;
-					ref.set({
-						prefix: FieldValue.delete(),
-					}, { merge: true }).catch(err => { console.error(err); });
-				}
 				else {
 					serverSettings.prefix = newPrefix;
 					ref.set({
-						prefix: newPrefix,
+						settings: { 'prefix': newPrefix },
 					}, { merge: true }).catch(err => { console.error(err); });
 				}
 				message.channel.send(`${lang.setprefix.isNow}\`${newPrefix}\``).catch(err => { console.error(err); });

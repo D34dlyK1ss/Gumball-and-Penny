@@ -1,5 +1,4 @@
 const config = require('../config.json');
-const FieldValue = require('firebase-admin').firestore.FieldValue;
 
 module.exports = {
 	name: 'setlanguage',
@@ -22,16 +21,10 @@ module.exports = {
 				if (newLanguage == oldLanguage) {
 					return message.reply(lang.error.sameLanguage).catch(err => { console.error(err); });
 				}
-				else if (newLanguage == config.language) {
-					serverSettings.language = config.language;
-					ref.set({
-						language: FieldValue.delete(),
-					}, { merge: true }).catch(err => { console.error(err); });
-				}
 				else {
 					serverSettings.language = newLanguage;
 					ref.set({
-						language: newLanguage,
+						settings: { 'language': newLanguage },
 					}, { merge: true }).catch(err => { console.error(err); });
 				}
 				lang = require(`../lang/${newLanguage}.json`);
