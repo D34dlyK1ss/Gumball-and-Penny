@@ -14,7 +14,7 @@ const config = require('./config.json');
 function setActivity() {
 	let plural = '';
 	if (bot.guilds.cache.size != 1) plural = 'es';
-	const botActivity1 = `${config.prefix}help em `,
+	const botActivity1 = `${config.settings.prefix}help em `,
 		botActivity2 = ` servidor${plural}!`;
 	bot.user.setActivity(`${botActivity1 + bot.guilds.cache.size + botActivity2}`);
 }
