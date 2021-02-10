@@ -7,7 +7,6 @@
 	"settings": {
 		"automessages": false,
 		"language": "en",
-		"prefix": "gp!",
-		"prefixDev": "dev!",
+		"prefix": "gp!"
 	}
 }
