@@ -38,15 +38,15 @@ module.exports = {
 						if (amount > balD) {
 							return message.reply(lang.error.noMoney).catch(err => { console.error(err); });
 						}
-						else if (balU == 999999999) {
+						else if (balU == 1000000) {
 							return message.reply(`${lang.error.noGive}${user.tag}! 😧`).catch(err => { console.error(err); });
 						}
 						else {
 
 							let newBalU = balU + amount;
 
-							if ((balU + amount) > 999999999) {
-								newBalU = 999999999;
+							if ((balU + amount) > 1000000) {
+								newBalU = 1000000;
 								amount = newBalU - balU;
 							}
 

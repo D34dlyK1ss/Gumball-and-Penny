@@ -22,7 +22,7 @@ module.exports = {
 			else {
 				const bal = doc.get('balance');
 
-				if ((bal + daily) > 999999999) {
+				if ((bal + daily) > 1000000) {
 					message.reply(lang.error.noAdd).catch(err => { console.error(err); });
 				}
 				else {

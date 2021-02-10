@@ -22,7 +22,7 @@ module.exports = {
 					least = 50,
 					most = 1000;
 
-				if ((bal + money) > 999999999) {
+				if ((bal + money) > 1000000) {
 					return message.reply(lang.error.noAdd).catch(err => { console.error(err); });
 				}
 				else if (money > bal) {
