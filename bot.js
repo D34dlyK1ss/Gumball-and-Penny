@@ -138,7 +138,6 @@ const prefixes = new Object(),
 
 // Ações para quando o bot receber uma mensagem
 bot.on('message', async message => {
-
 	// Ignorar mensagens privadas e mensagens de outros bots
 	if (message.channel.type === 'dm' || message.author.bot) return;
 
@@ -164,7 +163,7 @@ bot.on('message', async message => {
 		const doc = await refS.get();
 		languages[message.guild.id] = doc.get('language') || config.language;
 	}
-	const language = message.channel.id === '787661396652589077' ? 'en' : languages[message.guild.id];
+	const language = message.channel.id === '787661396652589077' || message.channel.id === '787674033331634196' ? 'en' : languages[message.guild.id];
 	const lang = require(`./lang/${language}.json`);
 
 	//  Obter as definições do bot para o servidor
@@ -236,12 +235,12 @@ bot.on('message', async message => {
 		});
 
 		if (!xpCooldown.has(message.author.id)) {
-
 			xpCooldown.add(message.author.id);
 			setTimeout(() => {
 				xpCooldown.delete(message.author.id);
 			}, 60000);
 		}
+
 		try {
 			command.execute(bot, message, command, db, lang, language, supportServer, prefix, args, prefixes, languages, settings, serverSettings);
 		}
