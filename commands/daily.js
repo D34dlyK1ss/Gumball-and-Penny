@@ -5,7 +5,7 @@ module.exports = {
 	aliases: ['d'],
 
 	execute(bot, message, command, db, lang, language, supportServer, prefix) {
-		moment.locale(`${lang}`);
+		moment.locale(`${language}`);
 		const user = message.author,
 			ref = db.collection('perfis').doc(user.id),
 			daily = 250;
