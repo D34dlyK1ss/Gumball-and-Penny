@@ -16,7 +16,13 @@ module.exports = {
 				ref = db.collection('definicoes').doc(message.guild.id);
 
 			ref.get().then(doc => {
-				const oldPrefix = doc.get('prefix') || config.settings.prefix;
+				if (!doc.exists) {
+					ref.set({
+						settings: config.settings,
+					}, { merge: true }).catch(err => { console.error(err); });
+				}
+
+				const oldPrefix = doc.get('settings').prefix || config.settings.prefix;
 
 				if (newPrefix == oldPrefix) {
 					return message.reply(lang.error.samePrefix).catch(err => { console.error(err); });

@@ -155,7 +155,7 @@ bot.on('message', async message => {
 		settings[message.guild.id] = doc.get('settings') || config.settings;
 	}
 	const serverSettings = settings[message.guild.id];
-	const prefix = serverSettings.prefix,
+	const prefix = serverSettings.prefix || config.settings.prefix,
 		language = message.channel.id === '787661396652589077' || message.channel.id === '787674033331634196' ? 'en' : serverSettings.language;
 	const lang = require(`./lang/${language}.json`);
 

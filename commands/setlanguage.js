@@ -16,7 +16,14 @@ module.exports = {
 			if (!availableLangs.includes(newLanguage)) return message.reply(`${lang.setlanguage.noLanguage}\`${prefix}help setlanguage\`${lang.forMoreInfo}`).catch(err => { console.error(err); });
 
 			ref.get().then(doc => {
-				const oldLanguage = doc.get('language') || config.settings.language;
+				if (!doc.exists) {
+					ref.set({
+						settings: config.settings,
+					}, { merge: true }).catch(err => { console.error(err); });
+					doc = ref.get();
+				}
+
+				const oldLanguage = doc.get('settings').language || config.settings.language;
 
 				if (newLanguage == oldLanguage) {
 					return message.reply(lang.error.sameLanguage).catch(err => { console.error(err); });
