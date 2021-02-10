@@ -4,7 +4,7 @@ const FieldValue = require('firebase-admin').firestore.FieldValue;
 module.exports = {
 	name: 'setprefix',
 
-	execute(bot, message, command, db, lang, language, supportServer, prefix, args, prefixes) {
+	execute(bot, message, command, db, lang, language, supportServer, prefix, args, serverSettings) {
 		if (!message.member.hasPermission('MANAGE_GUILD')) {
 			message.delete();
 			return message.reply(lang.error.noPerm).then(msg => { msg.delete({ timeout: 3000 }); }).catch(err => { console.error(err); });
@@ -14,7 +14,7 @@ module.exports = {
 		}
 		else {
 			const newPrefix = args[0].toLowerCase(),
-				ref = db.collection('servidores').doc(message.guild.id);
+				ref = db.collection('definicoes').doc(message.guild.id);
 
 			ref.get().then(doc => {
 				const oldPrefix = doc.get('prefix') || config.prefix;
@@ -23,13 +23,13 @@ module.exports = {
 					return message.reply(lang.error.samePrefix).catch(err => { console.error(err); });
 				}
 				else if (newPrefix == config.prefix) {
-					prefixes[message.guild.id] = config.prefix;
+					serverSettings.prefix = config.prefix;
 					ref.set({
 						prefix: FieldValue.delete(),
 					}, { merge: true }).catch(err => { console.error(err); });
 				}
 				else {
-					prefixes[message.guild.id] = newPrefix;
+					serverSettings.prefix = newPrefix;
 					ref.set({
 						prefix: newPrefix,
 					}, { merge: true }).catch(err => { console.error(err); });

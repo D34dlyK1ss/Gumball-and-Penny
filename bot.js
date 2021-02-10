@@ -98,12 +98,12 @@ es.onmessage = async messageEvent => {
 	if (agent === 'DBL' && authorization === 'Gumball&PennyDBL') {
 		if (type != 'upvote') return;
 
-		const ref = db.collection('perfis').doc(userID);
+		const refP = db.collection('perfis').doc(userID);
 
-		ref.get().then(doc => {
+		refP.get().then(doc => {
 			if (!doc.exists) return;
 			const bal = doc.get('balance');
-			ref.update({
+			refP.update({
 				balance: bal + 150,
 			});
 		});
@@ -131,9 +131,7 @@ es.onmessage = async messageEvent => {
 	}
 };
 
-const prefixes = new Object(),
-	languages = new Object(),
-	settings = new Object(),
+const settings = new Object(),
 	xpCooldown = new Set();
 
 // Ações para quando o bot receber uma mensagem
@@ -149,31 +147,17 @@ bot.on('message', async message => {
 		bot.commands.set(props.name, props);
 	}
 
-	const refS = db.collection('servidores').doc(message.guild.id);
-
-	// Obter o prefixo definido para o servidor
-	if (!prefixes[message.guild.id]) {
-		const doc = await refS.get();
-		prefixes[message.guild.id] = doc.get('prefix') || config.prefix;
-	}
-	const prefix = prefixes[message.guild.id];
-
-	// Obter a linguagem definida para o servidor
-	if (!languages[message.guild.id]) {
-		const doc = await refS.get();
-		languages[message.guild.id] = doc.get('language') || config.language;
-	}
-	const language = message.channel.id === '787661396652589077' || message.channel.id === '787674033331634196' ? 'en' : languages[message.guild.id];
-	const lang = require(`./lang/${language}.json`);
+	const ref = db.collection('definicoes').doc(message.guild.id);
 
 	//  Obter as definições do bot para o servidor
-	const refD = db.collection('definicoes').doc(message.guild.id);
-
 	if (!settings[message.guild.id]) {
-		const doc = await refD.get();
+		const doc = await ref.get();
 		settings[message.guild.id] = doc.get('settings') || config.settings;
 	}
 	const serverSettings = settings[message.guild.id];
+	const prefix = serverSettings.prefix,
+		language = message.channel.id === '787661396652589077' || message.channel.id === '787674033331634196' ? 'en' : serverSettings.language,
+		lang = require(`./lang/${language}.json`);
 
 	// Servidor de Suporte
 	const supportServer = bot.guilds.cache.get('738540548305977366');
@@ -242,7 +226,7 @@ bot.on('message', async message => {
 		}
 
 		try {
-			command.execute(bot, message, command, db, lang, language, supportServer, prefix, args, prefixes, languages, settings, serverSettings);
+			command.execute(bot, message, command, db, lang, language, supportServer, prefix, args, serverSettings);
 		}
 		catch (err) {
 			console.error(err);
@@ -273,7 +257,7 @@ bot.on('guildCreate', () => {
 // Quando o bot for expulso de um servidor, o bot apagará os dados respetivos
 bot.on('guildDelete', async guildData => {
 	setActivity();
-	db.collection('servidores').doc(guildData.id).delete().catch(err => { console.error(err); });
+	db.collection('definicoes').doc(guildData.id).delete().catch(err => { console.error(err); });
 });
 
 // Autenticação do bot

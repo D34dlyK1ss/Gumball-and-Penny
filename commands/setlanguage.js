@@ -4,7 +4,7 @@ const FieldValue = require('firebase-admin').firestore.FieldValue;
 module.exports = {
 	name: 'setlanguage',
 
-	async execute(bot, message, command, db, lang, language, supportServer, prefix, args, prefixes, languages) {
+	async execute(bot, message, command, db, lang, language, supportServer, prefix, args, serverSettings) {
 		if (!message.member.hasPermission('MANAGE_GUILD')) {
 			message.delete();
 			return message.reply(lang.error.noPerm).then(msg => { msg.delete({ timeout: 3000 }); }).catch(err => { console.error(err); });
@@ -12,7 +12,7 @@ module.exports = {
 		else {
 			const availableLangs = ['pt', 'en'],
 				newLanguage = args[0].toLowerCase(),
-				ref = db.collection('servidores').doc(message.guild.id);
+				ref = db.collection('definicoes').doc(message.guild.id);
 
 			if (!availableLangs.includes(newLanguage)) return message.reply(`${lang.setlanguage.noLanguage}\`${prefix}help setlanguage\`${lang.forMoreInfo}`).catch(err => { console.error(err); });
 
@@ -23,13 +23,13 @@ module.exports = {
 					return message.reply(lang.error.sameLanguage).catch(err => { console.error(err); });
 				}
 				else if (newLanguage == config.language) {
-					languages[message.guild.id] = config.language;
+					serverSettings.language = config.language;
 					ref.set({
 						language: FieldValue.delete(),
 					}, { merge: true }).catch(err => { console.error(err); });
 				}
 				else {
-					languages[message.guild.id] = newLanguage;
+					serverSettings.language = newLanguage;
 					ref.set({
 						language: newLanguage,
 					}, { merge: true }).catch(err => { console.error(err); });
