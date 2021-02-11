@@ -1,7 +1,7 @@
 module.exports = {
 	name: 'say',
 
-	execute(bot, message, command, db, lang, language, supportServer, prefix, args) {
+	execute(bot, message, command, db, lang, language, prefix, args) {
 		if (args == null || args == '') {
 			return message.reply(lang.error.noMessage).then(msg => msg.delete({ timeout: 5000 })).catch(err => { console.error(err); });
 		}

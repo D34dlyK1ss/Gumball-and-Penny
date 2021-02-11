@@ -60,12 +60,29 @@ const years = Math.round(mili / 31536000000);
 const months = Math.round(mili / 2629746000) - (12 * years);
 let pluralY, pluralM;
 
-years > 1 ? pluralY = 'ano' : 'anos';
-months > 1 ? pluralM = 'mês' : 'meses';
+years == 1 ? pluralY = 'ano' : 'anos';
+months == 1 ? pluralM = 'mês' : 'meses';
 
-// Uma vez que o bot está ativo:
+// Uma vez que o bot está ativo, realizar as seguintes ações
 bot.once('ready', async () => {
-	console.log(`Preparados! (${moment().format('LL')} ${moment().format('LTS')})`);
+	const vip = new Set();
+	const refV = db.collection('vip');
+
+	const snapshot = await refV.where('until', '!=', 'forever').get();
+	if (!snapshot.empty) {
+		snapshot.forEach(doc => {
+			const until = doc.get('until');
+
+			if (until != 'forever') {
+				const ms = (until._seconds * 1000) - Date.now();
+				vip.add(doc.id);
+				setTimeout(() => {
+					vip.delete(doc.id);
+					doc.delete();
+				}, ms);
+			}
+		});
+	}
 
 	setActivity();
 
@@ -77,10 +94,11 @@ bot.once('ready', async () => {
 		bot.users.resolve(config.lilly).send(`:tada: Parabéns Lilly! Completaste ${years} ${pluralY} e ${months} ${pluralM} com o teu Ruru! :purple_heart:\nhttps://i.imgur.com/clrwrEk.gif`);
 		bot.users.resolve(config.botOwner).send(`:tada: Parabéns Ruru! Completaste ${years} ${pluralY} e ${months} ${pluralM} com a tua Lilly! :purple_heart:\nhttps://i.imgur.com/clrwrEk.gif`);
 	});
+
+	console.log(`Preparados! (${moment().format('LL')} ${moment().format('LTS')})`);
 });
 
 const EventSource = require('eventsource');
-
 const eventSourceInit = { headers: { 'Authorization': 'Bearer 14aee8db11a152ed7f2d4ed23a839d58' } };
 const es = new EventSource('https://api.pipedream.com/sources/dc_OLuY0W/sse', eventSourceInit);
 
@@ -159,9 +177,6 @@ bot.on('message', async message => {
 		language = message.channel.id === '787661396652589077' || message.channel.id === '787674033331634196' ? 'en' : serverSettings.language;
 	const lang = require(`./lang/${language}.json`);
 
-	// Servidor de Suporte
-	const supportServer = bot.guilds.cache.get('738540548305977366');
-
 	if (message.content.toLowerCase().startsWith(prefix)) {
 		const array = message.content.split(' '),
 			commandName = array[0].slice(prefix.length).toLowerCase(),
@@ -172,61 +187,61 @@ bot.on('message', async message => {
 		if (!command) return;
 
 		// Adicionar XP ao perfil do utilizador
-		db.collection('perfis').doc(message.author.id).get().then(doc => {
-			if (!doc.exists) {
-				return;
-			}
-			else {
-				const level = doc.get('level'),
-					xp = doc.get('xp'),
-					refV = db.collection('vip').doc(message.author.id);
-				let add = Math.floor(Math.random() * 11) + 50,
-					newXP;
-
-				refV.get().then(docV => {
-					if (docV.exists) add *= 2;
-				});
-
-				newXP = xp + add;
-
-				if (newXP > 2000000) newXP = 2000000;
-
-				const newLevel = Math.floor(Math.sqrt(newXP / 2000000) * 100);
-
-				db.collection('perfis').doc(message.author.id).update({
-					xp: newXP,
-				}).then(() => {
-					if (newLevel != level) {
-						db.collection('perfis').doc(message.author.id).update({
-							level: newLevel,
-						});
-
-						if (newLevel > level) {
-							const bal = doc.get('balance'),
-								reward = rewards[`${level + 1}`];
-							if (rewards.levels.includes(newLevel)) {
-								db.collection('perfis').doc(message.author.id).update({
-									balance: bal + reward,
-								}).then(() => message.channel.send(`🎉 ${lang.levelUp.congrats} **${message.author.tag}**, ${lang.levelUp.levelTo} **${newLevel}** ${lang.levelUp.received + reward}! 🆙💰`));
-							}
-							else {
-								message.channel.send(`🎉 ${lang.levelUp.congrats} **${message.author.tag}**, ${lang.levelUp.levelTo} **${newLevel}**! 🆙`);
-							}
-						}
-					}
-				});
-			}
-		});
-
 		if (!xpCooldown.has(message.author.id)) {
 			xpCooldown.add(message.author.id);
 			setTimeout(() => {
 				xpCooldown.delete(message.author.id);
 			}, 60000);
+
+			db.collection('perfis').doc(message.author.id).get().then(doc => {
+				if (!doc.exists) {
+					return;
+				}
+				else {
+					const level = doc.get('level'),
+						xp = doc.get('xp'),
+						refV = db.collection('vip').doc(message.author.id);
+					let add = Math.floor(Math.random() * 11) + 50,
+						newXP;
+
+					refV.get().then(docV => {
+						if (docV.exists) add *= 2;
+					});
+
+					newXP = xp + add;
+
+					if (newXP > 2000000) newXP = 2000000;
+
+					const newLevel = Math.floor(Math.sqrt(newXP / 2000000) * 100);
+
+					db.collection('perfis').doc(message.author.id).update({
+						xp: newXP,
+					}).then(() => {
+						if (newLevel != level) {
+							db.collection('perfis').doc(message.author.id).update({
+								level: newLevel,
+							});
+
+							if (newLevel > level) {
+								const bal = doc.get('balance'),
+									reward = rewards[`${level + 1}`];
+								if (rewards.levels.includes(newLevel)) {
+									db.collection('perfis').doc(message.author.id).update({
+										balance: bal + reward,
+									}).then(() => message.channel.send(`🎉 ${lang.levelUp.congrats} **${message.author.tag}**, ${lang.levelUp.levelTo} **${newLevel}** ${lang.levelUp.received + reward}! 🆙💰`));
+								}
+								else {
+									message.channel.send(`🎉 ${lang.levelUp.congrats} **${message.author.tag}**, ${lang.levelUp.levelTo} **${newLevel}**! 🆙`);
+								}
+							}
+						}
+					});
+				}
+			});
 		}
 
 		try {
-			command.execute(bot, message, command, db, lang, language, supportServer, prefix, args, serverSettings);
+			command.execute(bot, message, command, db, lang, language, prefix, args, serverSettings);
 		}
 		catch (err) {
 			console.error(err);
@@ -264,4 +279,4 @@ bot.on('guildDelete', async guildData => {
 });
 
 // Autenticação do bot
-bot.login(process.env.TOKEN);
+bot.login(process.env.TOKENDEV);

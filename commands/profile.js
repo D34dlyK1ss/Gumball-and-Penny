@@ -12,7 +12,7 @@ module.exports = {
 	name: 'profile',
 	aliases: ['p'],
 
-	execute(bot, message, command, db, lang, language, supportServer, prefix, args) {
+	execute(bot, message, command, db, lang, language, prefix, args) {
 		const user = message.mentions.users.first() || message.author,
 			refP = db.collection('perfis').doc(user.id),
 			refI = db.collection('inventario').doc(message.author.id),

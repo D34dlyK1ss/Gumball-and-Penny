@@ -1,7 +1,7 @@
 module.exports = {
 	name: 'give',
 
-	execute(bot, message, command, db, lang, language, supportServer, prefix, args) {
+	execute(bot, message, command, db, lang, language, prefix, args) {
 		const donor = message.author;
 		if (!args || args == '') return message.reply(lang.error.noMention).catch(err => { console.error(err); });
 		const user = message.mentions.users.first(),

@@ -1,7 +1,7 @@
 module.exports = {
 	name: 'clear',
 
-	execute(bot, message, command, db, lang, language, supportServer, prefix, args) {
+	execute(bot, message, command, db, lang, language, prefix, args) {
 		message.delete().then(() => {
 			let number = parseInt(args);
 

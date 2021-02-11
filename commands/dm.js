@@ -1,7 +1,7 @@
 module.exports = {
 	name: 'dm',
 
-	execute(bot, message, command, db, lang, language, supportServer, prefix, args) {
+	execute(bot, message, command, db, lang, language, prefix, args) {
 		function getUserFromMention(mention) {
 
 			const matches = mention.match(/^<@!?(\d+)>$/);

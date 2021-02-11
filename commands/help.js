@@ -4,7 +4,7 @@ module.exports = {
 	name: 'help',
 	aliases: ['h'],
 
-	execute(bot, message, command, db, lang, language, supportServer, prefix, args) {
+	execute(bot, message, command, db, lang, language, prefix, args) {
 		const { commands } = message.client;
 		const helpEmbed = new Discord.MessageEmbed()
 			.setColor('#8000ff')

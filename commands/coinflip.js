@@ -3,7 +3,7 @@ const { MessageAttachment } = require('discord.js');
 module.exports = {
 	name: 'coinflip',
 
-	execute(bot, message, command, db, lang, language, supportServer, prefix, args) {
+	execute(bot, message, command, db, lang, language, prefix, args) {
 		const user = message.author,
 			ref = db.collection('perfis').doc(user.id);
 

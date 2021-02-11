@@ -3,7 +3,7 @@ const config = require('../config.json');
 module.exports = {
 	name: 'setprefix',
 
-	execute(bot, message, command, db, lang, language, supportServer, prefix, args, serverSettings) {
+	execute(bot, message, command, db, lang, language, prefix, args, serverSettings) {
 		if (!message.member.hasPermission('MANAGE_GUILD')) {
 			message.delete();
 			return message.reply(lang.error.noPerm).then(msg => { msg.delete({ timeout: 3000 }); }).catch(err => { console.error(err); });

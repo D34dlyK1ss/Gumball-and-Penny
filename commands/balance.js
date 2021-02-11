@@ -2,7 +2,7 @@ module.exports = {
 	name: 'balance',
 	aliases: ['bal'],
 
-	execute(bot, message, command, db, lang, language, supportServer, prefix) {
+	execute(bot, message, command, db, lang, language, prefix) {
 		const user = message.author,
 			ref = db.collection('perfis').doc(user.id);
 

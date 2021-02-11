@@ -9,7 +9,7 @@ module.exports = {
 	name: 'shop',
 	aliases: ['s'],
 
-	execute(bot, message, command, db, lang, language, supportServer, prefix, args) {
+	execute(bot, message, command, db, lang, language, prefix, args) {
 		async function sendPreview(hud) {
 			const hudCanvas = createCanvas(700, 400),
 				ctx = hudCanvas.getContext('2d');

@@ -3,7 +3,7 @@ const config = require('../config.json');
 module.exports = {
 	name: 'getowner',
 
-	async execute(bot, message, command, db, lang, language, supportServer, prefix, args) {
+	async execute(bot, message, command, db, lang, language, prefix, args) {
 		if(message.author.id !== config.botOwner || message.channel.id !== '809182965607039007') return;
 
 		const server = await bot.guilds.cache.get(args[0]);

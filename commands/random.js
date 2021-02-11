@@ -1,7 +1,7 @@
 module.exports = {
 	name: 'random',
 
-	execute(bot, message, command, db, lang, language, supportServer, prefix, args) {
+	execute(bot, message, command, db, lang, language, prefix, args) {
 		let rnd;
 		if (args == null || args == '') {
 			rnd = Math.floor(Math.random() * 100) + 1;

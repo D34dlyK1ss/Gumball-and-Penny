@@ -4,7 +4,7 @@ module.exports = {
 	name: 'inventory',
 	aliases: ['i'],
 
-	execute(bot, message, command, db, lang, language, supportServer, prefix) {
+	execute(bot, message, command, db, lang, language, prefix) {
 		const refP = db.collection('perfis').doc(message.author.id),
 			refI = db.collection('inventario').doc(message.author.id);
 		let iEmbed = new MessageEmbed()

@@ -10,7 +10,7 @@ registerFont('./fonts/comicz.ttf', { family: 'bold-italic Sans MS' });
 module.exports = {
 	name: 'pet',
 
-	execute(bot, message, command, db, lang, language, supportServer, prefix, args) {
+	execute(bot, message, command, db, lang, language, prefix, args) {
 		const user = message.mentions.users.first() || message.author,
 			refV = db.collection('vip').doc(user.id),
 			refP = db.collection('pet').doc(user.id),

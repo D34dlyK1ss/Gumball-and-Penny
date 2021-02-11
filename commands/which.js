@@ -3,7 +3,7 @@ const which = require('../src/data/which.json');
 module.exports = {
 	name: 'which',
 
-	execute(bot, message, command, db, lang, language, supportServer, prefix, args) {
+	execute(bot, message, command, db, lang, language, prefix, args) {
 		args = args.join(' ');
 		args = args.toLowerCase();
 		const last = message.member.id.slice(-1);
