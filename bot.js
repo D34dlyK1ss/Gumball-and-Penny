@@ -63,7 +63,7 @@ let pluralY, pluralM;
 years == 1 ? pluralY = 'ano' : 'anos';
 months == 1 ? pluralM = 'mês' : 'meses';
 
-const removeVIP = require('src/functions/removeVIP.js');
+const removeVIP = require('./src/functions/removeVIP.js');
 const vips = new Set();
 
 // Uma vez que o bot está ativo, realizar as seguintes ações
