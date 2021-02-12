@@ -1,4 +1,4 @@
-const Discord = require('discord.js');
+const { MessageEmbed } = require('discord.js');
 const moment = require('moment');
 
 module.exports = {
@@ -20,7 +20,7 @@ module.exports = {
 			break;
 		}
 
-		const embed = new Discord.MessageEmbed()
+		const embed = new MessageEmbed()
 			.setColor('#8000ff')
 			.setAuthor(`${user.tag}`, `${user.displayAvatarURL()}`)
 			.setThumbnail(`${user.displayAvatarURL()}`)

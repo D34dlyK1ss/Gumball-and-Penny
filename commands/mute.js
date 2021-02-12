@@ -1,4 +1,4 @@
-const Discord = require('discord.js');
+const { MessageEmbed } = require('discord.js');
 
 module.exports = {
 	name: 'mute',
@@ -55,7 +55,7 @@ module.exports = {
 			});
 
 			memberToMute.roles.add(muteRole).then(() => {
-				const embed = new Discord.MessageEmbed()
+				const embed = new MessageEmbed()
 					.setColor('#8000ff')
 					.setTitle(`${memberToMute.user.tag}${lang.mute.isNowMuted} 🔇`)
 					.setThumbnail(`${memberToMute.user.displayAvatarURL()}`)

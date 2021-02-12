@@ -1,8 +1,8 @@
 // Biblioteca do Discord.js
-const Discord = require('discord.js');
+const { Client, Collection, MessageAttachment } = require('discord.js');
 
 // Cliente
-const bot = new Discord.Client();
+const bot = new Client();
 
 // Tokens
 require('dotenv').config();
@@ -37,7 +37,7 @@ const DBL = require('dblapi.js');
 const dbl = new DBL(process.env.DBLTOKEN, bot);
 
 // Classe de utilidade 'Collection' do Discord.js
-bot.commands = new Discord.Collection();
+bot.commands = new Collection();
 
 // Acesso de administrador à BD
 const admin = require('firebase-admin');
@@ -63,26 +63,29 @@ let pluralY, pluralM;
 years == 1 ? pluralY = 'ano' : 'anos';
 months == 1 ? pluralM = 'mês' : 'meses';
 
+const vip = new Set();
+
 // Uma vez que o bot está ativo, realizar as seguintes ações
 bot.once('ready', async () => {
-	const vip = new Set();
-	const refV = db.collection('vip');
+	setInterval(async () => {
+		const refV = db.collection('vip');
+		const snapshot = await refV.where('until', '!=', 'forever').where('until', '<', Date.now() + 86400000).get();
 
-	const snapshot = await refV.where('until', '!=', 'forever').get();
-	if (!snapshot.empty) {
-		snapshot.forEach(doc => {
-			const until = doc.get('until');
+		if (!snapshot.empty) {
+			snapshot.forEach(doc => {
+				const until = doc.get('until');
 
-			if (until != 'forever') {
-				const ms = (until._seconds * 1000) - Date.now();
-				vip.add(doc.id);
-				setTimeout(() => {
-					vip.delete(doc.id);
-					doc.delete();
-				}, ms);
-			}
-		});
-	}
+				if (until != 'forever') {
+					const ms = (until._seconds * 1000) - Date.now();
+					vip.add(doc.id);
+					setTimeout(() => {
+						vip.delete(doc.id);
+						doc.delete();
+					}, ms);
+				}
+			});
+		}
+	}, 86400000);
 
 	setActivity();
 
@@ -241,7 +244,7 @@ bot.on('message', async message => {
 		}
 
 		try {
-			command.execute(bot, message, command, db, lang, language, prefix, args, serverSettings);
+			command.execute(bot, message, command, db, lang, language, prefix, args, serverSettings, vip);
 		}
 		catch (err) {
 			console.error(err);
@@ -253,10 +256,10 @@ bot.on('message', async message => {
 			gifs = ['distraction dance'];
 
 		if (pngs.includes(message.content)) {
-			message.channel.send(new Discord.MessageAttachment(`./img/automessages/${message.content}.png`)).catch(err => { console.error(err); });
+			message.channel.send(new MessageAttachment(`./img/automessages/${message.content}.png`)).catch(err => { console.error(err); });
 		}
 		else if (gifs.includes(message.content)) {
-			message.channel.send(new Discord.MessageAttachment(`./img/automessages/${message.content}.gif`)).catch(err => { console.error(err); });
+			message.channel.send(new MessageAttachment(`./img/automessages/${message.content}.gif`)).catch(err => { console.error(err); });
 		}
 	}
 	else if (message.content === `<@!${bot.user.id}>`) {
@@ -279,4 +282,4 @@ bot.on('guildDelete', async guildData => {
 });
 
 // Autenticação do bot
-bot.login(process.env.TOKEN);
+bot.login(process.env.TOKENDEV);

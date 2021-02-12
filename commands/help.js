@@ -1,4 +1,4 @@
-const Discord = require('discord.js');
+const { MessageEmbed } = require('discord.js');
 
 module.exports = {
 	name: 'help',
@@ -6,7 +6,7 @@ module.exports = {
 
 	execute(bot, message, command, db, lang, language, prefix, args) {
 		const { commands } = message.client;
-		const helpEmbed = new Discord.MessageEmbed()
+		const helpEmbed = new MessageEmbed()
 			.setColor('#8000ff')
 			.setTitle(lang.help)
 			.setAuthor(`${bot.user.tag}`, `${bot.user.displayAvatarURL()}`)
@@ -15,7 +15,7 @@ module.exports = {
 			.addFields(
 				{ name: `🎭 ${lang.actions}`, value: '`angry`, `cry`, `dance`, `happy`, `hug`, `kiss`, `laugh`, `pat`, `run`, `slap`', inline: true },
 				{ name: `🎰 ${lang.casino}`, value: '`coinflip`, `jankenpon`', inline: true },
-				{ name: `😁 ${lang.fun}`, value: '`fact`, `match`, `random`, `say`, `which`', inline: true },
+				{ name: `😁 ${lang.fun}`, value: '`fact`, `match`, `random`, `which`', inline: true },
 				{ name: `💰 ${lang.economyAndProfile}`, value: '`balance`, `daily`, `give`, `inventory`, `pet`, `profile`, `shop`, `vote`', inline: true },
 				{ name: `⚠️ ${lang.moderation}`, value: '`ban`, `clear`, `kick`, `mute`, `tempmute`, `unmute`', inline: true },
 				{ name: `🌐 ${lang.server}`, value: '`members`, `serverinfo`, `userinfo`', inline: true },
@@ -35,7 +35,7 @@ module.exports = {
 				return message.reply(lang.error.noCommand).catch(err => { console.error(err); });
 			}
 			else {
-				const commandEmbed = new Discord.MessageEmbed()
+				const commandEmbed = new MessageEmbed()
 					.setColor('#8000ff')
 					.addFields(
 						{ name: `${lang.name}`, value: `${command.name}` },
@@ -49,7 +49,7 @@ module.exports = {
 				}
 				else {
 					const lastEmbed = commandEmbed;
-					const newEmbed = new Discord.MessageEmbed(lastEmbed)
+					const newEmbed = new MessageEmbed(lastEmbed)
 						.addFields(
 							{ name: `${lang.aliases}`, value: `${command.aliases.join(', ')}` },
 						);

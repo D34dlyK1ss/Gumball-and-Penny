@@ -1,4 +1,4 @@
-const Discord = require('discord.js');
+const { MessageEmbed } = require('discord.js');
 
 module.exports = {
 	name: 'kick',
@@ -32,7 +32,7 @@ module.exports = {
 			const reason = args.join(' ') || lang.notIndicated;
 
 			member.kick({ reason: reason }).then(() => {
-				const embed = new Discord.MessageEmbed()
+				const embed = new MessageEmbed()
 					.setColor('#8000ff')
 					.setTitle(`${member.user.tag}${lang.kick.wasKicked} 👋`)
 					.setThumbnail(`${member.user.displayAvatarURL()}`)

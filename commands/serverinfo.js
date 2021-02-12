@@ -1,4 +1,4 @@
-const Discord = require('discord.js');
+const { MessageEmbed } = require('discord.js');
 const moment = require('moment');
 
 module.exports = {
@@ -9,7 +9,7 @@ module.exports = {
 		const server = message.guild;
 		const createdDate = moment(server.createdAt).locale(`${language}`);
 
-		const embed = new Discord.MessageEmbed()
+		const embed = new MessageEmbed()
 			.setColor('#8000ff')
 			.setAuthor(`${server.name}`, `${server.iconURL()}`)
 			.setThumbnail(`${server.iconURL()}`)
@@ -24,7 +24,7 @@ module.exports = {
 
 		if (!server.iconURL()) {
 			const lastEmbed = embed;
-			const newEmbed = new Discord.MessageEmbed(lastEmbed)
+			const newEmbed = new MessageEmbed(lastEmbed)
 				.setAuthor(`${server.name}`)
 				.setThumbnail();
 			return message.channel.send(newEmbed).catch(err => { console.error(err); });
