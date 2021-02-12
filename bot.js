@@ -32,6 +32,9 @@ const fs = require('fs');
 // Recompensas de nível
 const rewards = require('./src/data/rewards.json');
 
+// Servidor Oficial
+const officialServer = bot.guilds.cache.get('738540548305977366');
+
 // API do Discord Bot List
 const DBL = require('dblapi.js');
 const dbl = new DBL(process.env.DBLTOKEN, bot);
@@ -63,7 +66,7 @@ let pluralY, pluralM;
 years == 1 ? pluralY = 'ano' : 'anos';
 months == 1 ? pluralM = 'mês' : 'meses';
 
-const vip = new Set();
+const vips = new Set();
 
 // Uma vez que o bot está ativo, realizar as seguintes ações
 bot.once('ready', async () => {
@@ -72,6 +75,17 @@ bot.once('ready', async () => {
 	setInterval(async () => {
 		const refV = db.collection('vip');
 		const snapshot = await refV.where('until', '!=', 'forever').where('until', '<', Date.now() + 86400000).get();
+		let vipRole = officialServer.roles.cache.find(role => role.name === 'VIP');
+
+		if(!vipRole) {
+			officialServer.roles.create({
+				data: {
+					name: 'VIP',
+					color: '#ffff00',
+				},
+			}).catch(err => { console.error(err); });
+			vipRole = officialServer.roles.cache.find(role => role.name === 'VIP');
+		}
 
 		if (!snapshot.empty) {
 			snapshot.forEach(doc => {
@@ -79,9 +93,10 @@ bot.once('ready', async () => {
 
 				if (until != 'forever') {
 					const ms = (until._seconds * 1000) - Date.now();
-					vip.add(doc.id);
+					vips.add(doc.id);
 					setTimeout(() => {
-						vip.delete(doc.id);
+						bot.users.cache.get(doc.id).roles.remove(vipRole);
+						vips.delete(doc.id);
 						doc.delete();
 					}, ms);
 				}
@@ -244,7 +259,7 @@ bot.on('message', async message => {
 		}
 
 		try {
-			command.execute(bot, message, command, db, lang, language, prefix, args, serverSettings, vip);
+			command.execute(bot, message, command, db, lang, language, prefix, args, officialServer, serverSettings);
 		}
 		catch (err) {
 			console.error(err);
