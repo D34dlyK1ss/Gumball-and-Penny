@@ -63,6 +63,7 @@ let pluralY, pluralM;
 years == 1 ? pluralY = 'ano' : 'anos';
 months == 1 ? pluralM = 'mês' : 'meses';
 
+const removeVIP = require('../src/functions/removeVIP.js');
 const vips = new Set();
 
 // Uma vez que o bot está ativo, realizar as seguintes ações
@@ -71,9 +72,6 @@ bot.once('ready', async () => {
 
 	const officialServer = bot.guilds.cache.get('738540548305977366');
 
-	const refV = db.collection('vip');
-	const timestamp = admin.firestore.Timestamp.fromDate(new Date(Date.now() + 86400000));
-	const snapshot = await refV.where('until', '<', timestamp).get();
 	let vipRole = officialServer.roles.cache.find(role => role.name === 'VIP');
 
 	if(!vipRole) {
@@ -86,29 +84,10 @@ bot.once('ready', async () => {
 		vipRole = officialServer.roles.cache.find(role => role.name === 'VIP');
 	}
 
-	function deleteVIP() {
-		if (!snapshot.empty) {
-			snapshot.forEach(doc => {
-				const until = doc.get('until');
-
-				if (until != 'forever') {
-					const ms = (until._seconds * 1000) - Date.now();
-					vips.add(doc.id);
-					setTimeout(async () => {
-						const vipMember = await officialServer.members.fetch(doc.id);
-						vipMember.roles.remove(vipRole);
-						vips.delete(doc.id);
-						refV.doc(doc.id).delete();
-					}, ms);
-				}
-			});
-		}
-	}
-
-	deleteVIP();
+	removeVIP(admin, db, vips, officialServer, vipRole);
 
 	setInterval(() => {
-		deleteVIP();
+		removeVIP(admin, db, vips, officialServer, vipRole);
 	}, 86400000);
 
 	setInterval(() => {
