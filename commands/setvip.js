@@ -26,11 +26,11 @@ module.exports = {
 				vipRole = officialServer.roles.cache.find(role => role.name === 'VIP');
 			}
 
-			args.forEach(id => {
-				const memberToVIP = officialServer.member(id);
+			args.forEach(async id => {
+				const memberToVIP = await officialServer.members.fetch(id);
 				memberToVIP.roles.add(vipRole);
 				db.collection('vip').doc(id).set({
-					until: timestamp,
+					timestamp: timestamp,
 				});
 			});
 

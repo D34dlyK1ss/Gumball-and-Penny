@@ -71,21 +71,22 @@ bot.once('ready', async () => {
 
 	const officialServer = bot.guilds.cache.get('738540548305977366');
 
-	setInterval(async () => {
-		const refV = db.collection('vip');
-		const snapshot = await refV.where('until', '!=', 'forever').where('until', '<', Date.now() + 86400000).get();
-		let vipRole = officialServer.roles.cache.find(role => role.name === 'VIP');
+	const refV = db.collection('vip');
+	const timestamp = admin.firestore.Timestamp.fromDate(new Date(Date.now() + 86400000));
+	const snapshot = await refV.where('until', '<', timestamp).get();
+	let vipRole = officialServer.roles.cache.find(role => role.name === 'VIP');
 
-		if(!vipRole) {
-			officialServer.roles.create({
-				data: {
-					name: 'VIP',
-					color: '#ffff00',
-				},
-			}).catch(err => { console.error(err); });
-			vipRole = officialServer.roles.cache.find(role => role.name === 'VIP');
-		}
+	if(!vipRole) {
+		officialServer.roles.create({
+			data: {
+				name: 'VIP',
+				color: '#ffff00',
+			},
+		}).catch(err => { console.error(err); });
+		vipRole = officialServer.roles.cache.find(role => role.name === 'VIP');
+	}
 
+	function deleteVIP() {
 		if (!snapshot.empty) {
 			snapshot.forEach(doc => {
 				const until = doc.get('until');
@@ -93,15 +94,21 @@ bot.once('ready', async () => {
 				if (until != 'forever') {
 					const ms = (until._seconds * 1000) - Date.now();
 					vips.add(doc.id);
-					setTimeout(() => {
-						const memberToVIP = officialServer.member(doc.id);
-						memberToVIP.roles.remove(vipRole);
+					setTimeout(async () => {
+						const vipMember = await officialServer.members.fetch(doc.id);
+						vipMember.roles.remove(vipRole);
 						vips.delete(doc.id);
-						doc.delete();
+						refV.doc(doc.id).delete();
 					}, ms);
 				}
 			});
 		}
+	}
+
+	deleteVIP();
+
+	setInterval(() => {
+		deleteVIP();
 	}, 86400000);
 
 	setInterval(() => {
