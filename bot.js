@@ -112,10 +112,10 @@ es.onopen = () => {
 
 es.onmessage = async messageEvent => {
 	const data = JSON.parse(messageEvent.data);
-	const type = data.event.body.type,
-		agent = data.event.headers['user-agent'],
+	const agent = data.event.headers['user-agent'],
 		authorization = data.event.headers.authorization,
 		userID = data.event.body.user;
+	let type = data.event.body.type;
 
 	if (agent === 'DBL' && authorization === 'Gumball&PennyDBL') {
 		if (type != 'upvote') return;
@@ -139,12 +139,13 @@ es.onmessage = async messageEvent => {
 				currency = dataKF.currency,
 				id = dataKF.kofi_transaction_id,
 				message = dataKF.message;
+			type = dataKF.type;
 			if (type === 'Commision') {
 				await bot.users.fetch(config.botOwner).then(botOwner => {
 					botOwner.send(`**Nova compra!**\n**Nome:** ${name}\n**Quantia:** ${amount + currency}\n**Mensagem:** ${message}\n**ID:** ${id}\n**URL:** ${dataKF.url}`);
 				});
 			}
-			else {
+			else if (type === 'Donation') {
 				await bot.users.fetch(config.botOwner).then(botOwner => {
 					botOwner.send(`**${name} doou ${amount + currency}**\n**Mensagem:** ${message}\n**URL:** ${dataKF.url}`);
 				});
