@@ -21,7 +21,7 @@ module.exports = {
 				{ name: `🌐 ${lang.server}`, value: '`members`, `serverinfo`, `userinfo`', inline: true },
 				{ name: `🛠️ ${lang.utility}`, value: '`avatar`, `invite`, `ping`', inline: true },
 				{ name: `⚙️ ${lang.settings}`, value: '`automessages`, `setlanguage`, `setprefix`', inline: true },
-				{ name: `${lang.links}`, value: `**[${lang.inviteUs}](https://discordapp.com/oauth2/authorize?&client_id=679041548955942914&scope=bot&permissions=272100438) - [${lang.supportServer}](https://discord.gg/FaUGnB25hF) - [${lang.donate}](https://ko-fi.com/officialgumballandpenny/commissions)**` },
+				{ name: `${lang.links}`, value: `**[${lang.inviteUs}](https://discordapp.com/oauth2/authorize?&client_id=679041548955942914&scope=bot&permissions=272100438) - [${lang.supportServer}](https://discord.gg/FaUGnB25hF) - [${lang.donate}](https://ko-fi.com/T6T02QB99) - [${lang.buyVIP}](https://ko-fi.com/officialgumballandpenny/commissions)**` },
 			);
 
 		if (args == null || args == '') {
