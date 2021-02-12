@@ -32,9 +32,6 @@ const fs = require('fs');
 // Recompensas de nível
 const rewards = require('./src/data/rewards.json');
 
-// Servidor Oficial
-const officialServer = bot.guilds.cache.get('738540548305977366');
-
 // API do Discord Bot List
 const DBL = require('dblapi.js');
 const dbl = new DBL(process.env.DBLTOKEN, bot);
@@ -72,6 +69,8 @@ const vips = new Set();
 bot.once('ready', async () => {
 	setActivity();
 
+	const officialServer = bot.guilds.cache.get('738540548305977366');
+
 	setInterval(async () => {
 		const refV = db.collection('vip');
 		const snapshot = await refV.where('until', '!=', 'forever').where('until', '<', Date.now() + 86400000).get();
@@ -95,7 +94,8 @@ bot.once('ready', async () => {
 					const ms = (until._seconds * 1000) - Date.now();
 					vips.add(doc.id);
 					setTimeout(() => {
-						bot.users.cache.get(doc.id).roles.remove(vipRole);
+						const memberToVIP = officialServer.member(doc.id);
+						memberToVIP.roles.remove(vipRole);
 						vips.delete(doc.id);
 						doc.delete();
 					}, ms);
@@ -259,7 +259,7 @@ bot.on('message', async message => {
 		}
 
 		try {
-			command.execute(bot, message, command, db, lang, language, prefix, args, officialServer, serverSettings);
+			command.execute(bot, message, command, db, lang, language, prefix, args, serverSettings);
 		}
 		catch (err) {
 			console.error(err);
