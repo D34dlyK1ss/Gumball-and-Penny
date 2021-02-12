@@ -67,6 +67,8 @@ const vip = new Set();
 
 // Uma vez que o bot está ativo, realizar as seguintes ações
 bot.once('ready', async () => {
+	setActivity();
+
 	setInterval(async () => {
 		const refV = db.collection('vip');
 		const snapshot = await refV.where('until', '!=', 'forever').where('until', '<', Date.now() + 86400000).get();
@@ -86,8 +88,6 @@ bot.once('ready', async () => {
 			});
 		}
 	}, 86400000);
-
-	setActivity();
 
 	setInterval(() => {
 		dbl.postStats(bot.guilds.cache.size);
