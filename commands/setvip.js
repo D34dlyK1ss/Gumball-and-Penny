@@ -38,6 +38,9 @@ module.exports = {
 			number === 1 ? pluralM = 'mês' : pluralM = 'meses';
 			args.length === 1 ? plural = ' é' : plural = 'es são';
 			return message.channel.send(`${args.length} utilizador${plural} agora VIP por ${number} ${pluralM}!`).catch(err => { console.error(err); });
-		}).catch(() => message.reply('não indicaste o número de meses! Abortando...'));
+		}).catch(err => {
+			if (err) console.error(err);
+			message.reply('não indicaste o número de meses! Abortando...');
+		});
 	},
 };
