@@ -588,16 +588,16 @@
 			"usage": "userinfo [optional - @member]"
 		},
 
-		"vote": {
-			"category": "Economy and Profile",
-			"description": "Vote for us to receive ¤150 (¤300 for VIPs)!",
-			"usage": "vote"
-		},
-
 		"vip": {
 			"category": "Economy and Profile",
 			"description": "Buy VIP to receive perks!",
 			"usage": "vip"
+		},
+
+		"vote": {
+			"category": "Economy and Profile",
+			"description": "Vote for us to receive ¤150 (¤300 for VIPs)!",
+			"usage": "vote"
 		},
 		
 		"which": {

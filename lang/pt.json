@@ -592,6 +592,12 @@
 			"usage": "userinfo [opcional - @membro]"
 		},
 
+		"vip": {
+			"category": "Economia e Perfil",
+			"description": "Compra VIP para receberes vantagens!",
+			"usage": "vip"
+		},
+
 		"vote": {
 			"category": "Economia e Perfil",
 			"description": "Vota por nós!",
