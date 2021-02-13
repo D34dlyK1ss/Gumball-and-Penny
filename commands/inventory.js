@@ -8,7 +8,7 @@ module.exports = {
 		const refP = db.collection('perfis').doc(message.author.id),
 			refI = db.collection('inventario').doc(message.author.id);
 		let iEmbed = new MessageEmbed()
-			.setColor('#8000ff')
+			.setColor('#9900ff')
 			.setTitle(`${lang.inventory.inventoryFrom}${message.author.tag}`)
 			.setThumbnail(`${message.author.displayAvatarURL()}`);
 

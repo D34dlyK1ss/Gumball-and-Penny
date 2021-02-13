@@ -33,7 +33,7 @@ module.exports = {
 
 			member.ban({ reason: reason }).then(() => {
 				const embed = new MessageEmbed()
-					.setColor('#8000ff')
+					.setColor('#9900ff')
 					.setTitle(`${member.user.tag}${lang.ban.wasBanned} 🔨`)
 					.setThumbnail(`${member.user.displayAvatarURL()}`)
 					.setDescription(`${lang.by}${message.member.user.tag}`)

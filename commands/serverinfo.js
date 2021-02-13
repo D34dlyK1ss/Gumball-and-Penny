@@ -10,7 +10,7 @@ module.exports = {
 		const createdDate = moment(server.createdAt).locale(`${language}`);
 
 		const embed = new MessageEmbed()
-			.setColor('#8000ff')
+			.setColor('#9900ff')
 			.setAuthor(`${server.name}`, `${server.iconURL()}`)
 			.setThumbnail(`${server.iconURL()}`)
 			.addFields(

@@ -21,7 +21,7 @@ module.exports = {
 		}
 
 		const embed = new MessageEmbed()
-			.setColor('#8000ff')
+			.setColor('#9900ff')
 			.setAuthor(`${user.tag}`, `${user.displayAvatarURL()}`)
 			.setThumbnail(`${user.displayAvatarURL()}`)
 			.addFields(

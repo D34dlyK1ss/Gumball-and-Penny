@@ -56,7 +56,7 @@ module.exports = {
 
 			memberToMute.roles.add(muteRole).then(() => {
 				const embed = new MessageEmbed()
-					.setColor('#8000ff')
+					.setColor('#9900ff')
 					.setTitle(`${memberToMute.user.tag}${lang.mute.isNowMuted} 🔇`)
 					.setThumbnail(`${memberToMute.user.displayAvatarURL()}`)
 					.setDescription(`${lang.by}${message.member.user.tag}`)

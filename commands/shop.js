@@ -53,7 +53,7 @@ module.exports = {
 			refI = db.collection('inventario').doc(message.author.id);
 		let mainEmbed = new MessageEmbed()
 			.setAuthor(`${bot.user.tag}`, `${bot.user.displayAvatarURL()}`)
-			.setColor('#8000ff')
+			.setColor('#9900ff')
 			.setTitle(lang.awesomeStore)
 			.setDescription(`${lang.shop.welcome}\`${prefix}shop [${lang.shop.category}]\`${lang.shop.toSelect}`)
 			.addFields(
