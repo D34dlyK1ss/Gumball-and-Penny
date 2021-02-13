@@ -9,7 +9,7 @@ module.exports = {
 
 			const embed = new MessageEmbed()
 				.setAuthor(`${lang.ping.yourPingIs}${ping}ms`)
-				.setColor('#8000ff');
+				.setColor('#9900ff');
 
 			msg.edit(embed);
 		}).catch(err => { console.error(err); });

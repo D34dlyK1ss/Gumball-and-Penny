@@ -13,25 +13,8 @@ module.exports = {
 		message.channel.awaitMessages(filter, { max: 1, time: 5000, errors: ['time'] }).then(async collected => {
 			const number = parseInt(collected.first().content);
 			const timestamp = new Date(Date.now() + (number * 2592000000));
-			const officialServer = bot.guilds.cache.get('738540548305977366');
-			let vipRole = officialServer.roles.cache.find(role => role.name === 'VIP');
-
-			if(!vipRole) {
-				officialServer.roles.create({
-					data: {
-						name: 'VIP',
-						color: '#ffff00',
-					},
-				}).catch(err => { console.error(err); });
-				vipRole = officialServer.roles.cache.find(role => role.name === 'VIP');
-			}
 
 			args.forEach(async id => {
-				const memberToVIP = await officialServer.members.fetch(id);
-
-				if (!memberToVIP) return;
-
-				memberToVIP.roles.add(vipRole);
 				db.collection('vip').doc(id).set({
 					timestamp: timestamp,
 				});

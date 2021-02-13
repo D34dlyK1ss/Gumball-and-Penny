@@ -70,24 +70,10 @@ const vips = new Set();
 bot.once('ready', async () => {
 	setActivity();
 
-	const officialServer = bot.guilds.cache.get('738540548305977366');
-
-	let vipRole = officialServer.roles.cache.find(role => role.name === 'VIP');
-
-	if(!vipRole) {
-		officialServer.roles.create({
-			data: {
-				name: 'VIP',
-				color: '#ffff00',
-			},
-		}).catch(err => { console.error(err); });
-		vipRole = officialServer.roles.cache.find(role => role.name === 'VIP');
-	}
-
-	removeVIP(admin, db, vips, officialServer, vipRole);
+	removeVIP(admin, db, vips);
 
 	setInterval(() => {
-		removeVIP(admin, db, vips, officialServer, vipRole);
+		removeVIP(admin, db, vips);
 	}, 86400000);
 
 	setInterval(() => {
@@ -114,8 +100,8 @@ es.onmessage = async messageEvent => {
 	const data = JSON.parse(messageEvent.data);
 	const agent = data.event.headers['user-agent'],
 		authorization = data.event.headers.authorization,
-		userID = data.event.body.user;
-	let type = data.event.body.type;
+		userID = data.event.body.user,
+		type = data.event.body.type;
 
 	if (agent === 'DBL' && authorization === 'Gumball&PennyDBL') {
 		if (type != 'upvote') return;
@@ -125,31 +111,14 @@ es.onmessage = async messageEvent => {
 		refP.get().then(doc => {
 			if (!doc.exists) return;
 			const bal = doc.get('balance');
+			let add = 150;
+
+			if (vips.has(userID) || userID === config.botOwner || userID === config.lilly) add *= 2;
+
 			refP.update({
-				balance: bal + 150,
+				balance: bal + add,
 			});
 		});
-	}
-	else {
-		const dataKF = JSON.parse(data.event.body.data) || null;
-
-		if (dataKF.url.startsWith('https://ko-fi.com')) {
-			const name = dataKF.from_name,
-				amount = dataKF.amount,
-				currency = dataKF.currency,
-				message = dataKF.message;
-			type = dataKF.type;
-			if (type === 'Commision') {
-				await bot.users.fetch(config.botOwner).then(botOwner => {
-					botOwner.send(`**Nova compra!**\n**Nome:** ${name}\n**Quantia:** ${amount + currency}\n**Mensagem:** ${message}\n**ID:** ${dataKF.kofi_transaction_id}\n**URL:** ${dataKF.url}`);
-				});
-			}
-			else if (type === 'Donation') {
-				await bot.users.fetch(config.botOwner).then(botOwner => {
-					botOwner.send(`**${name} doou ${amount + currency}**\n**Mensagem:** ${message}\n**URL:** ${dataKF.url}`);
-				});
-			}
-		}
 	}
 };
 
@@ -203,14 +172,11 @@ bot.on('message', async message => {
 				}
 				else {
 					const level = doc.get('level'),
-						xp = doc.get('xp'),
-						refV = db.collection('vip').doc(message.author.id);
-					let add = Math.floor(Math.random() * 11) + 50,
+						xp = doc.get('xp');
+					let add = Math.floor(Math.random() * 10) + 50,
 						newXP;
 
-					refV.get().then(docV => {
-						if (docV.exists) add *= 2;
-					});
+					if (vips.has(message.author.id) || message.author.id === config.botOwner || message.author.id === config.lilly) add *= 2;
 
 					newXP = xp + add;
 

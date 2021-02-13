@@ -8,7 +8,7 @@ module.exports = {
 		moment.locale(`${language}`);
 		const user = message.author,
 			ref = db.collection('perfis').doc(user.id),
-			daily = 250;
+			daily = 300;
 
 		ref.get().then(doc => {
 			const today = moment().format('L'),
@@ -30,7 +30,7 @@ module.exports = {
 						balance: (bal + daily),
 						lastDaily: today,
 					}).then(() => {
-						message.reply(`${lang.daily.received}**${daily}**${lang.daily.toGetMore}\`${prefix}vote\``).catch(err => { console.error(err); });
+						message.reply(`${lang.daily.received}${daily}${lang.daily.toGetMore}\`${prefix}vote\``).catch(err => { console.error(err); });
 					}).catch(err => { console.error(err); });
 				}
 			}

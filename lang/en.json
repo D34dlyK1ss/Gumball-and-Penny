@@ -19,7 +19,6 @@
 	"links": "Links",
 	"inviteUs": "Invite Us!",
 	"supportServer": "Support Server",
-	"donate": "Donate",
 	"buyVIP": "Buy VIP",
 	"name": "Name",
 	"category": "Category",
@@ -156,7 +155,7 @@
 	"daily": {
 		"againIn": "you can get money again ",
 		"received": "you received your ¤",
-		"toGetMore": " of today! To get more money use "
+		"toGetMore": " of today! To get more ¤150 (¤300 for VIPs) use "
 	},
 
 	"dance": {
@@ -343,10 +342,6 @@
 		"joined": "Joined "
 	},
 
-	"vote": {
-		"vote": "Vote for the bot each 12h to receive ¤150!"
-	},
-
 	"which": {
 		"noSelect": "you have to select an available anime! Use "
 	},
@@ -403,7 +398,7 @@
 
 		"daily": {
 			"category": "Economy and Profile",
-			"description": "You will receive ¤250 each day!",
+			"description": "You will receive ¤300 each day you use this command!",
 			"usage": "daily"
 		},
 
@@ -595,8 +590,14 @@
 
 		"vote": {
 			"category": "Economy and Profile",
-			"description": "Vote for us!",
+			"description": "Vote for us to receive ¤150 (¤300 for VIPs)!",
 			"usage": "vote"
+		},
+
+		"vip": {
+			"category": "Economy and Profile",
+			"description": "Buy VIP to receive perks!",
+			"usage": "vip"
 		},
 		
 		"which": {

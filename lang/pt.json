@@ -19,7 +19,6 @@
 	"links": "Ligações",
 	"inviteUs": "Convida-nos!",
 	"supportServer": "Servidor de Suporte",
-	"donate": "Doar",
 	"buyVIP": "Comprar VIP",
 	"name": "Nome",
 	"category": "Categoria",
@@ -156,7 +155,7 @@
 	"daily": {
 		"againIn": "poderás receber dinheiro outra vez ",
 		"received": "recebeste os teus ¤",
-		"toGetMore": " de hoje! Para receberes mais dinheiro usa "
+		"toGetMore": " de hoje! Para receberes mais ¤150 (¤300 para VIPs) usa "
 	},
 
 	"dance": {
@@ -403,7 +402,7 @@
 
 		"daily": {
 			"category": "Economia e Perfil",
-			"description": "Receberás ¤250 a cada dia!",
+			"description": "Receberás ¤300 a cada dia que usares este comando!",
 			"usage": "daily"
 		},
 
