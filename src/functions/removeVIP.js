@@ -12,6 +12,9 @@ async function removeVIP(admin, db, vips, officialServer, vipRole) {
 				vips.add(doc.id);
 				setTimeout(async () => {
 					const vipMember = await officialServer.members.fetch(doc.id);
+
+					if (!vipMember) return;
+
 					vipMember.roles.remove(vipRole);
 					vips.delete(doc.id);
 					refV.doc(doc.id).delete();

@@ -137,12 +137,11 @@ es.onmessage = async messageEvent => {
 			const name = dataKF.from_name,
 				amount = dataKF.amount,
 				currency = dataKF.currency,
-				id = dataKF.kofi_transaction_id,
 				message = dataKF.message;
 			type = dataKF.type;
 			if (type === 'Commision') {
 				await bot.users.fetch(config.botOwner).then(botOwner => {
-					botOwner.send(`**Nova compra!**\n**Nome:** ${name}\n**Quantia:** ${amount + currency}\n**Mensagem:** ${message}\n**ID:** ${id}\n**URL:** ${dataKF.url}`);
+					botOwner.send(`**Nova compra!**\n**Nome:** ${name}\n**Quantia:** ${amount + currency}\n**Mensagem:** ${message}\n**ID:** ${dataKF.kofi_transaction_id}\n**URL:** ${dataKF.url}`);
 				});
 			}
 			else if (type === 'Donation') {

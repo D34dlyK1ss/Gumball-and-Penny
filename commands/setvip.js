@@ -28,6 +28,9 @@ module.exports = {
 
 			args.forEach(async id => {
 				const memberToVIP = await officialServer.members.fetch(id);
+
+				if (!memberToVIP) return;
+
 				memberToVIP.roles.add(vipRole);
 				db.collection('vip').doc(id).set({
 					timestamp: timestamp,
