@@ -171,8 +171,8 @@ bot.on('message', async message => {
 					return;
 				}
 				else {
-					const level = doc.get('level'),
-						xp = doc.get('xp');
+					const xp = doc.get('xp');
+					const level = Math.floor(Math.sqrt(xp / 2000000) * 99) + 1;
 					let add = Math.floor(Math.random() * 10) + 50,
 						newXP;
 
@@ -182,27 +182,25 @@ bot.on('message', async message => {
 
 					if (newXP > 2000000) newXP = 2000000;
 
-					const newLevel = Math.floor(Math.sqrt(newXP / 2000000) * 100);
+					const newLevel = Math.floor(Math.sqrt(newXP / 2000000) * 99) + 1;
 
 					db.collection('perfis').doc(message.author.id).update({
 						xp: newXP,
 					}).then(() => {
-						if (newLevel != level) {
+						if (newLevel > level) {
 							db.collection('perfis').doc(message.author.id).update({
 								level: newLevel,
 							});
 
-							if (newLevel > level) {
-								const bal = doc.get('balance'),
-									reward = rewards[`${level + 1}`];
-								if (rewards.levels.includes(newLevel)) {
-									db.collection('perfis').doc(message.author.id).update({
-										balance: bal + reward,
-									}).then(() => message.channel.send(`🎉 ${lang.levelUp.congrats} **${message.author.tag}**, ${lang.levelUp.levelTo} **${newLevel}** ${lang.levelUp.received + reward}! 🆙💰`));
-								}
-								else {
-									message.channel.send(`🎉 ${lang.levelUp.congrats} **${message.author.tag}**, ${lang.levelUp.levelTo} **${newLevel}**! 🆙`);
-								}
+							const bal = doc.get('balance'),
+								reward = rewards[`${level + 1}`];
+							if (rewards.levels.includes(newLevel)) {
+								db.collection('perfis').doc(message.author.id).update({
+									balance: bal + reward,
+								}).then(() => message.channel.send(`🎉 ${lang.levelUp.congrats} **${message.author.tag}**, ${lang.levelUp.levelTo} **${newLevel}** ${lang.levelUp.received + reward}! 🆙💰`));
+							}
+							else {
+								message.channel.send(`🎉 ${lang.levelUp.congrats} **${message.author.tag}**, ${lang.levelUp.levelTo} **${newLevel}**! 🆙`);
 							}
 						}
 					});

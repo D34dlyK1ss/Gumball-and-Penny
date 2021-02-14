@@ -142,9 +142,9 @@ module.exports = {
 						hud = doc.get('hud'),
 						xp = doc.get('xp');
 
-					const level = Math.floor(Math.sqrt(xp / 2000000) * 100),
-						prevLevel = Math.round(Math.pow(level / 100, 2) * 2000000),
-						nextLevel = Math.round(Math.pow((level + 1) / 100, 2) * 2000000);
+					const level = Math.floor(Math.sqrt(xp / 2000000) * 99) + 1,
+						prevLevel = Math.round(Math.pow((level - 1) / 99, 2) * 2000000),
+						nextLevel = Math.round(Math.pow(level / 99, 2) * 2000000);
 					let xpNeeded = nextLevel - prevLevel,
 						xpToNext = xp - prevLevel;
 
@@ -166,7 +166,7 @@ module.exports = {
 
 					ctx.globalAlpha = 0.7;
 					ctx.fillStyle = items.huds[hud].hex;
-					ctx.fillRect(175, 192, ((100 / (xpNeeded)) * (xpToNext) * 4.25), 30);
+					ctx.fillRect(175, 192, ((99 / (xpNeeded)) * (xpToNext) * 4.25), 30);
 					ctx.fill();
 					ctx.globalAlpha = 1;
 
