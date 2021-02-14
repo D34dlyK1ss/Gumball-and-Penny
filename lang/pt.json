@@ -216,8 +216,10 @@
 	},
 
 	"mute": {
-		"isNowMuted": " agora está mutado!"
+		"isMutedFor": " estará mutado durante ",
+		"seconds": " segundos!"
 	},
+
 
 	"pat": {
 		"pattedSelf": " acariciou-se?",
@@ -320,11 +322,6 @@
 		"slappedSelf": " deu uma chapada a si mesmo?",
 		"slappedUs": " deu-nos uma chapada!",
 		"slapped": " deu uma chapada a "
-	},
-
-	"tempmute": {
-		"isMutedFor": " estará mutado durante ",
-		"seconds": " segundos!"
 	},
 
 	"unmute": {
@@ -498,8 +495,8 @@
 
 		"mute": {
 			"category": "Moderação",
-			"description": "Calaremos um membro do servidor!",
-			"usage": "mute [@membro] [opcional - razão]"
+			"description": "Calaremos um membro do servidor, mas por um tempo determinado!",
+			"usage": "tempmute [@membro] [segundos] [opcional - razão]"
 		},
 
 		"pat": {
@@ -572,12 +569,6 @@
 			"category": "Ações",
 			"description": "Dá uma chapada!",
 			"usage": "slap [opcional - @membro]"
-		},
-
-		"tempmute": {
-			"category": "Moderação",
-			"description": "Calaremos um membro do servidor, mas por um tempo determinado!",
-			"usage": "tempmute [@membro] [segundos] [opcional - razão]"
 		},
 
 		"unmute": {

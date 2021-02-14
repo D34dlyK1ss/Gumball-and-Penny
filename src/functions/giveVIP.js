@@ -6,6 +6,11 @@ async function giveVIP(db, message, args) {
 		args.forEach(id => {
 			db.collection('vip').doc(id).set({
 				until: timestamp,
+			}).then(() => {
+				const memberToVIP = message.guild.member(id),
+					vipRole = message.guild.roles.cache.find(role => role.name === 'VIP');
+
+				memberToVIP.roles.add(vipRole);
 			});
 		});
 		await message.react('✅').catch(err => { console.error(err); });
@@ -25,7 +30,12 @@ async function giveVIP(db, message, args) {
 				return refV.set({
 					until: timestamp,
 				}).then(() => {
-					message.react('✅').catch(err => { console.error(err); });
+					const memberToVIP = message.guild.member(message.author.id),
+						vipRole = message.guild.roles.cache.find(role => role.name === 'VIP');
+
+					memberToVIP.roles.add(vipRole).then(() => {
+						message.react('✅').catch(err => { console.error(err); });
+					});
 				});
 			}
 		});

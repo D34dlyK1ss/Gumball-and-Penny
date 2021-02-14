@@ -17,8 +17,7 @@ module.exports = {
 			refP = db.collection('perfis').doc(user.id),
 			refI = db.collection('inventario').doc(message.author.id),
 			option = args[0];
-		args = args.slice(1);
-		args = args.join(' ');
+		args = args.slice(1).join(' ');
 
 		switch (option) {
 		case 'create':

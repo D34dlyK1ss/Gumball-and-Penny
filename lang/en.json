@@ -216,7 +216,8 @@
 	},
 
 	"mute": {
-		"isNowMuted": " is now muted!"
+		"isMutedFor": " is muted for ",
+		"seconds": " seconds!"
 	},
 
 	"pat": {
@@ -320,11 +321,6 @@
 		"slappedSelf": " slapped themselves?",
 		"slappedUs": " slapped us!",
 		"slapped": " slapped "
-	},
-
-	"tempmute": {
-		"isMutedFor": " is muted for ",
-		"seconds": " seconds!"
 	},
 
 	"unmute": {
@@ -494,8 +490,8 @@
 
 		"mute": {
 			"category": "Moderation",
-			"description": "We'll mute a server member!",
-			"usage": "mute [@member] [optional - reason]"
+			"description": "We'll mute a server member, but for a determined time!",
+			"usage": "tempmute [@member] [seconds] [optional - reason]"
 		},
 
 		"pat": {
@@ -568,12 +564,6 @@
 			"category": "Actions",
 			"description": "Slap someone!",
 			"usage": "slap [optional - @member]"
-		},
-
-		"tempmute": {
-			"category": "Moderation",
-			"description": "We'll mute a server member, but for a determined time!",
-			"usage": "tempmute [@member] [seconds] [optional - reason]"
 		},
 
 		"unmute": {

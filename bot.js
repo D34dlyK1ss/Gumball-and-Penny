@@ -71,10 +71,10 @@ const vips = new Set();
 bot.once('ready', async () => {
 	setActivity();
 
-	removeVIP(admin, db, vips);
+	removeVIP(admin, bot, db, vips);
 
 	setInterval(() => {
-		removeVIP(admin, db, vips);
+		removeVIP(admin, bot, db, vips);
 	}, 86400000);
 
 	setInterval(() => {
