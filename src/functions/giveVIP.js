@@ -2,7 +2,7 @@ async function giveVIP(db, message, args) {
 	const refV = db.collection('vip').doc(message.author.id),
 		timestamp = new Date(Date.now() + (2592000000));
 
-	if (args != '') {
+	if (args !== undefined) {
 		args.forEach(id => {
 			db.collection('vip').doc(id).set({
 				until: timestamp,

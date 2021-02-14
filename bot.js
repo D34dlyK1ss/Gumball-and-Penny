@@ -267,4 +267,4 @@ bot.on('guildDelete', async guildData => {
 });
 
 // Autenticação do bot
-bot.login(process.env.TOKENDEV);
+bot.login(process.env.TOKEN);
