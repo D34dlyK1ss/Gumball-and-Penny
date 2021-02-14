@@ -63,7 +63,8 @@ let pluralY, pluralM;
 years == 1 ? pluralY = 'ano' : 'anos';
 months == 1 ? pluralM = 'mês' : 'meses';
 
-const removeVIP = require('./src/functions/removeVIP.js');
+const removeVIP = require('./src/functions/removeVIP.js'),
+	giveVIP = require('./src/functions/giveVIP.js');
 const vips = new Set();
 
 // Uma vez que o bot está ativo, realizar as seguintes ações
@@ -113,7 +114,14 @@ es.onmessage = async messageEvent => {
 			const bal = doc.get('balance');
 			let add = 150;
 
-			if (vips.has(userID) || userID === config.botOwner || userID === config.lilly) add *= 2;
+			if (userID === config.botOwner || userID === config.lilly || vips.has(userID)) {
+				add *= 2;
+			}
+			else {
+				refP.get().then(docP => {
+					if (docP.exists) add *= 2;
+				});
+			}
 
 			refP.update({
 				balance: bal + add,
@@ -127,8 +135,20 @@ const settings = new Object(),
 
 // Ações para quando o bot receber uma mensagem
 bot.on('message', async message => {
+	if (message.channel.id === '810529155955032115' && message.content === `${config.settings.prefix}activate`) {
+		return giveVIP(db, message);
+	}
+
+	if (message.channel.id === '809182965607039007' && message.content.startsWith(`${config.settings.prefix}setvip`)) {
+		const array = message.content.split(' ');
+		array[0].slice(config.settings.prefix.length).toLowerCase();
+		const args = array.slice(1);
+
+		return giveVIP(db, message, args);
+	}
+
 	// Ignorar mensagens privadas e mensagens de outros bots
-	if (message.channel.type === 'dm' || message.author.bot) return;
+	if (message.channel.type === 'dm' || message.channel.id === '810529155955032115' || message.author.bot) return;
 
 	// Leitura dos ficheiros de comandos
 	const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
@@ -247,4 +267,4 @@ bot.on('guildDelete', async guildData => {
 });
 
 // Autenticação do bot
-bot.login(process.env.TOKEN);
+bot.login(process.env.TOKENDEV);
