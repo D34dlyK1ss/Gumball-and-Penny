@@ -1,19 +1,20 @@
 async function giveVIP(db, message, args) {
 	const refV = db.collection('vip').doc(message.author.id),
-		timestamp = new Date(Date.now() + (2592000000));
+		timestamp = new Date(Date.now() + (2592000000)),
+		vipRole = message.guild.roles.cache.find(role => role.name === 'VIP'),
+		justPaidRole = message.guild.roles.cache.find(role => role.name === 'I Just Paid VIP');
 
 	if (args !== undefined) {
 		args.forEach(id => {
 			db.collection('vip').doc(id).set({
 				until: timestamp,
-			}).then(() => {
-				const memberToVIP = message.guild.member(id),
-					vipRole = message.guild.roles.cache.find(role => role.name === 'VIP');
-
-				memberToVIP.roles.add(vipRole);
 			});
+
+			const memberToVIP = message.guild.member(id);
+
+			memberToVIP.roles.remove(justPaidRole);
+			memberToVIP.roles.add(vipRole);
 		});
-		await message.react('✅').catch(err => { console.error(err); });
 
 		let plural;
 
@@ -30,12 +31,10 @@ async function giveVIP(db, message, args) {
 				return refV.set({
 					until: timestamp,
 				}).then(() => {
-					const memberToVIP = message.guild.member(message.author.id),
-						vipRole = message.guild.roles.cache.find(role => role.name === 'VIP');
+					const memberToVIP = message.guild.member(message.author.id);
 
-					memberToVIP.roles.add(vipRole).then(() => {
-						message.react('✅').catch(err => { console.error(err); });
-					});
+					memberToVIP.roles.remove(justPaidRole);
+					memberToVIP.roles.add(vipRole).then(() => { message.react('✅'); }).catch(err => { console.error(err); });
 				});
 			}
 		});
