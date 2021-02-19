@@ -156,7 +156,7 @@ bot.on('message', async (message: Message) => {
 		array[0].slice(botConfig.settings.prefix.length).toLowerCase();
 		const args = array.slice(1);
 		
-		if (message.content.startsWith('dev!setvip')) {
+		if (message.content.startsWith(`${botConfig.settings.prefix}setvip`)) {
 			return giveVIP(db, message, args);
 		}
 	}
