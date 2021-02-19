@@ -36,6 +36,8 @@ export function execute(bot: Client, message: Message, command: undefined, db: a
 					});
 					refI.set({
 						huds: ['grey'],
+						items: [],
+						petHuds: []
 					}).then(() => {
 						message.reply(`${lang.profile.wasCreated}\`${prefix}profile setdescription [${lang.profile.description}]\`!`);
 					}).catch((err: Error) => { console.error(err); });

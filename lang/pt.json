@@ -94,7 +94,7 @@
 		"notANumber": "isso não é um número!",
 		"noPrefixChosen": "precisamos de saber qual é o prefixo desejado!",
 		"noLinks": "não podemos escrever links!",
-		"memberNotMuted": "esse membro não está muted!",
+		"memberNotMuted": "esse membro não está silenciado!",
 		"hasProfileAlready": "Já tens um perfil criado, não podes criar outro! 💢",
 		"noHUDChosen": "não escolheste um HUD!",
 		"noHaveHUD": "não tens esse HUD!",
@@ -107,7 +107,8 @@
 		"noItem": "esse item não existe!",
 		"noVIPForPet": "precisas de ser VIP para comprares este pet!",
 		"samePrefix": "esse prefixo é igual ao que usamos!",
-		"sameLanguage": "essa linguagem é igual à que falamos!"
+		"sameLanguage": "essa linguagem é igual à que falamos!",
+		"noDuration": "não indicaste a duração!"
 	},
 	
 	"levelUp": {
@@ -216,7 +217,7 @@
 	},
 
 	"mute": {
-		"isMutedFor": " estará mutado durante ",
+		"isMutedFor": " estará silenciado durante ",
 		"seconds": " segundos!"
 	},
 
@@ -325,7 +326,7 @@
 	},
 
 	"unmute": {
-		"isNowUnmuted": " está agora unmuted!"
+		"isNowUnmuted": " agora não está silenciado!"
 	},
 
 	"userinfo": {
@@ -495,8 +496,8 @@
 
 		"mute": {
 			"category": "Moderação",
-			"description": "Calaremos um membro do servidor, mas por um tempo determinado!",
-			"usage": "tempmute [@membro] [segundos] [opcional - razão]"
+			"description": "Calaremos um membro do servidor, mas por um tempo determinado! 5 minutos por predefinição",
+			"usage": "tempmute [@membro] [opcional - segundos] [opcional - razão]"
 		},
 
 		"pat": {
@@ -507,7 +508,7 @@
 
 		"pet": {
 			"category": "Economia e Perfil",
-			"description": "Vê o teu pet ou o de alguém!\nOpções disponíveis: `sendtoadoption`, `sethud`, `setname`",
+			"description": "Vê o teu pet ou o de alguém!\nOpções disponíveis: `setname`, `sethud`, `sendtoadoption`",
 			"usage": "pet [opcional - opção | @membro]"
 		},
 

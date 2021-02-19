@@ -21,7 +21,7 @@ export function execute(bot: Client, message: Message, command: undefined, db: a
 		switch (option) {
 		case 'setname':
 			db.collection('pet').doc(message.author.id).get().then((doc: any) => {
-				const pet: string = doc.get('pet');
+				const pet = doc.get('pet');
 				if (!doc.exists) {
 					message.reply(`${lang.error.noPet}\`${prefix}shop pets\`!`).catch(err => { console.error(err); });
 				}
@@ -31,12 +31,12 @@ export function execute(bot: Client, message: Message, command: undefined, db: a
 				else {
 					const max = 25;
 
-					refI.get().then((docI: any) => {
+					refI.get().then(async (docI: any) => {
 						const invItems = docI.get('items'),
 							newName = titleCase(argsString);
 
 						if (!invItems) {
-							refI.update({
+							await refI.update({
 								'items': [],
 							});
 						}

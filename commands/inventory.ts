@@ -31,7 +31,7 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 					message.reply(lang.error.noInventory).catch(err => { console.error(err); });
 				}
 
-				if (iPetHuds) {
+				if (iPetHuds[0]) {
 					iPetHuds.sort();
 					iPetHuds = iPetHuds.map((s: string) => s.replace(/[_]/g, ' '));
 					const allPetHuds = `\`${iPetHuds.join('`, `')}\``;
@@ -41,7 +41,7 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 						);
 				}
 
-				if (iItems) {
+				if (iItems[0]) {
 					iItems.sort();
 					iItems = iItems.map((s: string) => s.replace(/[_]/g, ' '));
 					const allItems = `\`${iItems.join('`, `')}\``;

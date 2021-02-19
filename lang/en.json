@@ -107,7 +107,8 @@
 		"noItem": "that item doesn't exist!",
 		"noVIPForPet": "you need to be VIP to buy this pet!",
 		"samePrefix": "that's the same prefix we're using!",
-		"sameLanguage": "that's the same language we're speaking!"
+		"sameLanguage": "that's the same language we're speaking!",
+		"noDuration": "you didn't indicate the duration!"
 	},
 	
 	"levelUp": {
@@ -490,8 +491,8 @@
 
 		"mute": {
 			"category": "Moderation",
-			"description": "We'll mute a server member, but for a determined time!",
-			"usage": "tempmute [@member] [seconds] [optional - reason]"
+			"description": "We'll mute a server member, but for a determined time! 5 minutes for default",
+			"usage": "tempmute [@member] [optional - seconds] [optional - reason]"
 		},
 
 		"pat": {
@@ -502,7 +503,7 @@
 
 		"pet": {
 			"category": "Economy and Profile",
-			"description": "Check your pet or someone's!\nAvailable options: `sendtoadoption`, `sethud`, `setname`",
+			"description": "Check your pet or someone's!\nAvailable options: `setname`, `sethud`, `sendtoadoption`",
 			"usage": "pet [optional - option | @member]"
 		},
 

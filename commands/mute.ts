@@ -16,11 +16,9 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 	else {
 		const mention = message.mentions.users.first();
 		const memberToMute = message.guild.member(mention);
+		let seconds = parseInt(args[1]);
 
 		args.shift();
-
-		let seconds = parseInt(args[0]);
-
 		args.shift();
 		
 		const reason = args.join(' ') || lang.notIndicated;
@@ -28,6 +26,9 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 
 		if (!mention) {
 			message.reply(lang.error.noMention).then(msg => msg.delete({ timeout: 5000 })).catch(err => { console.error(err); });
+		}
+		else if (!seconds) {
+			message.reply(lang.error.noDuration).then(msg => msg.delete({ timeout: 5000 })).catch(err => { console.error(err); });
 		}
 		else {
 			if (!muteRole) {

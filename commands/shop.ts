@@ -208,7 +208,7 @@ export function execute(bot: Client, message: Message, command: undefined, db: a
 
 											const name = itemName.toLowerCase().replace(/[_]/g, ' ');
 
-											message.reply(`${lang.shop.boughtItem}**${titleCase(name)}**!\`${prefix}pet sethud\``).catch(err => { console.error(err); });
+											message.reply(`${lang.shop.boughtItem}**${titleCase(name)}**!`).catch(err => { console.error(err); });
 										});
 									}
 								});
