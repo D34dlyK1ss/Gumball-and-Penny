@@ -1,1 +1,1 @@
-worker: npx ts-node --resolveJsonModule index.ts
+worker: npx ts-node index.ts --resolveJsonModule
