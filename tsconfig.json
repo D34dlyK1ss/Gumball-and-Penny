@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "CommonJS",
+    "moduleResolution": "node",
+    "outDir": "out",
+    "sourceMap": true,
+    "esModuleInterop": true,
+    "importHelpers": true,
+    "resolveJsonModule": true,
+    "experimentalDecorators": true,
+    "noImplicitReturns": true,
+    "noImplicitAny": true,
+    "lib": ["ESNext"],
+    "declaration": true,
+    "watch": true,
+    "baseUrl": "."
+  },
+  "include": ["src/**/*.ts", "commands", "globals"],
+  "exclude": ["node_modules", ".vscode", ".env", ".eslintrc.json"]
+}
