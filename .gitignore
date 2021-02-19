@@ -1,4 +1,6 @@
 .env
 .eslintrc.json
+.vscode
 node_modules/
-botDev.js
+indexDev.ts
+tsconfig.json
