@@ -4,7 +4,6 @@ import moment from 'moment';
 export const name = 'daily';
 export const aliases = ['d'];
 export function execute(bot: undefined, message: Message, command: undefined, db: any, lang: Record<string, string | any>, language: string, prefix: string) {
-	moment.locale(`${language}`);
 	const user = message.author,
 		ref = db.collection('perfis').doc(user.id),
 		daily = 300;
@@ -29,6 +28,7 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 					balance: (bal + daily),
 					lastDaily: today,
 				}).then(() => {
+					moment.locale(`${language}`);
 					message.reply(`${lang.daily.received}${daily}${lang.daily.toGetMore}\`${prefix}vote\``).catch(err => { console.error(err); });
 				}).catch((err: any) => { console.error(err); });
 			}
