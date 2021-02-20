@@ -15,6 +15,7 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 			message.reply(`${lang.error.noProfile}\`${prefix}profile create\`!`).catch(err => { console.error(err); });
 		}
 		else if (today == lastDaily) {
+			moment.locale(`${language}`);
 			message.reply(`${lang.daily.againIn + moment().endOf('day').fromNow()}.`).catch(err => { console.error(err); });
 		}
 		else {
@@ -28,7 +29,6 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 					balance: (bal + daily),
 					lastDaily: today,
 				}).then(() => {
-					moment.locale(`${language}`);
 					message.reply(`${lang.daily.received}${daily}${lang.daily.toGetMore}\`${prefix}vote\``).catch(err => { console.error(err); });
 				}).catch((err: any) => { console.error(err); });
 			}
