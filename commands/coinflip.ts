@@ -1,5 +1,6 @@
 import { Message, MessageAttachment } from 'discord.js';
 import { Cmd } from 'index';
+import titleCase from 'src/functions/titleCase';
 
 export const name = 'coinflip';
 export function execute(bot: undefined, message: Message, command: Cmd, db: any, lang: Record<string, string | any>, language: undefined, prefix: string, args: string[]) {
@@ -39,10 +40,10 @@ export function execute(bot: undefined, message: Message, command: Cmd, db: any,
 				const attachment = new MessageAttachment('img/coinflip/animation.gif');
 
 				message.channel.send(attachment).then(msg => msg.delete({ timeout: 2500 }).then(() => {
-					if (value == 0) res = lang.coinflip.heads;
-					else if (value == 1) res = lang.coinflip.tails;
+					if (value == 0) res = 'heads';
+					else if (value == 1) res = 'tails';
 
-					message.channel.send(`${res.charAt(0).toUpperCase() + res.slice(1)}!`, { files: [`img/coinflip/${lang.coinflip[res]}.gif`] });
+					message.channel.send(`${titleCase(lang.coinflip[res])}!`, { files: [`img/coinflip/${lang.coinflip[res]}.gif`] });
 
 					if (res != guess) {
 						ref.update({
