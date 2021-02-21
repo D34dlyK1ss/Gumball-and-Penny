@@ -40,21 +40,20 @@ export function execute(bot: undefined, message: Message, command: Cmd, db: any,
 				const attachment = new MessageAttachment('img/coinflip/animation.gif');
 
 				message.channel.send(attachment).then(msg => msg.delete({ timeout: 2500 }).then(() => {
-					if (value == 0) res = 'heads';
-					else if (value == 1) res = 'tails';
+					value === 0 ? res = 'heads' : res = 'tails';
 
-					message.channel.send(`${titleCase(lang.coinflip[res])}!`, { files: [`img/coinflip/${lang.coinflip[res]}.gif`] });
+					message.channel.send(`${titleCase(lang.coinflip[res])}!`, { files: [`img/coinflip/${res}.gif`] });
 
 					if (res != guess) {
 						ref.update({
 							balance: (bal - money),
-						}).then(() => { message.reply(`${lang.lost + money}!`); }).catch((err: any) => { console.error(err); });
+						}).then(() => { message.reply(`${lang.lost + money}!`); }).catch((err: Error) => { console.error(err); });
 					}
 					else if (res == guess) {
 						const won = money * 2;
 						ref.update({
 							balance: (bal + won),
-						}).then(() => { message.reply(`${lang.won + won}!`); }).catch((err: any) => { console.error(err); });
+						}).then(() => { message.reply(`${lang.won + won}!`); }).catch((err: Error) => { console.error(err); });
 					}
 				}));
 			}
