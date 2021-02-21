@@ -1,6 +1,6 @@
 import { Message, MessageAttachment } from 'discord.js';
 import { Cmd } from 'index';
-import titleCase from 'src/functions/titleCase';
+import titleCase from '../src/functions/titleCase';
 
 export const name = 'coinflip';
 export function execute(bot: undefined, message: Message, command: Cmd, db: any, lang: Record<string, string | any>, language: undefined, prefix: string, args: string[]) {
