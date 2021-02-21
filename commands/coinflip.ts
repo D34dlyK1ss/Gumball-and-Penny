@@ -42,7 +42,7 @@ export function execute(bot: undefined, message: Message, command: Cmd, db: any,
 					if (value == 0) res = lang.coinflip.heads;
 					else if (value == 1) res = lang.coinflip.tails;
 
-					message.channel.send(`${res.charAt(0).toUpperCase() + res.slice(1)}!`, { files: [`img/coinflip/${res}.gif`] });
+					message.channel.send(`${res.charAt(0).toUpperCase() + res.slice(1)}!`, { files: [`img/coinflip/${lang.coinflip[res]}.gif`] });
 
 					if (res != guess) {
 						ref.update({
