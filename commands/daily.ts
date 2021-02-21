@@ -1,5 +1,5 @@
 import { Message } from 'discord.js';
-import moment from 'moment';
+import ms from 'ms';
 
 export const name = 'daily';
 export const aliases = ['d'];
@@ -9,14 +9,14 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 		daily = 300;
 
 	ref.get().then((doc: any) => {
-		const today = moment().format('L'),
-			lastDaily = doc.get('lastDaily');
+		const today = Date.now(),
+			lastDaily: number = doc.get('lastDaily');
+		const nextDaily = lastDaily + 86400000;
 		if (!doc.exists) {
 			message.reply(`${lang.error.noProfile}\`${prefix}profile create\`!`).catch(err => { console.error(err); });
 		}
-		else if (today == lastDaily) {
-			language === 'en' ? moment.locale('en-gb'): moment.locale(`${language}`);
-			message.reply(`${lang.daily.againIn + moment().endOf('day').fromNow()}.`).catch(err => { console.error(err); });
+		else if (today > lastDaily && lastDaily < nextDaily) {
+			message.reply(`${lang.daily.againIn + ms(nextDaily - today)}.`).catch(err => { console.error(err); });
 		}
 		else {
 			const bal = doc.get('balance');
