@@ -55,8 +55,8 @@
 	"forMoreInfo": " for more information.",
 	"betAtLeast": "you have to bet at least ¤",
 	"betAtMost": "you can't bet over ¤",
-	"lost": "you lost ¤",
-	"won": "you won ¤",
+	"lost": "you lost ",
+	"won": "you won ",
 	"and": "and",
 	"enabled": "enabled",
 	"disabled": "disabled",
@@ -155,7 +155,7 @@
 
 	"daily": {
 		"againIn": "you can get money again in ",
-		"received": "you received your ¤",
+		"received": "you received your ",
 		"toGetMore": " of today! To get more ¤150 (¤300 for VIPs) use "
 	},
 

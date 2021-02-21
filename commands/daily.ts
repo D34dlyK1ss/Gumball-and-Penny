@@ -29,7 +29,7 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 					balance: (bal + daily),
 					lastDaily: today,
 				}).then(() => {
-					message.reply(`${lang.daily.received}${daily}${lang.daily.toGetMore}\`${prefix}vote\``).catch(err => { console.error(err); });
+					message.reply(`${lang.daily.received}**¤${daily}**${lang.daily.toGetMore}\`${prefix}vote\``).catch(err => { console.error(err); });
 				}).catch((err: any) => { console.error(err); });
 			}
 		}

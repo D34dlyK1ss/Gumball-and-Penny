@@ -53,7 +53,7 @@ export function execute(bot: undefined, message: Message, command: Cmd, db: any,
 						const won = money * 2;
 						ref.update({
 							balance: (bal + won),
-						}).then(() => { message.reply(`${lang.won + won}!`); }).catch((err: Error) => { console.error(err); });
+						}).then(() => { message.reply(`${lang.won}**¤${won}**!`); }).catch((err: Error) => { console.error(err); });
 					}
 				}));
 			}
