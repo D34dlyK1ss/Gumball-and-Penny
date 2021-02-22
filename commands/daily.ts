@@ -15,7 +15,7 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 		if (!doc.exists) {
 			message.reply(`${lang.error.noProfile}\`${prefix}profile create\`!`).catch(err => { console.error(err); });
 		}
-		else if (today > lastDaily && lastDaily < nextDaily) {
+		else if (today < nextDaily) {
 			message.reply(`${lang.daily.againIn + ms(nextDaily - today)}.`).catch(err => { console.error(err); });
 		}
 		else {
