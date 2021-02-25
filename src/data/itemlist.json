@@ -1,459 +1,396 @@
 {
 	"huds": {
+		"colorPrice": 3000,
+		"price": 10000,
 		"black": {
-			"price": 3000,
 			"hex": "#202020"
 		},
-
 		"blue": {
-			"price": 3000,
 			"hex": "#0040e0"
 		},
-
 		"brown": {
-			"price": 3000,
 			"hex": "#802000"
 		},
-
 		"green": {
-			"price": 3000,
 			"hex": "#00e000"
 		},
-
 		"grey": {
-			"price": 3000,
 			"hex": "#808080"
 		},
-
 		"orange": {
-			"price": 3000,
 			"hex": "#ff10000"
 		},
-
 		"pink": {
-			"price": 3000,
 			"hex": "#e000e0"
 		},
-
 		"purple": {
-			"price": 3000,
 			"hex": "#8000ff"
 		},
-
 		"red": {
-			"price": 3000,
 			"hex": "#ff0000"
 		},
-
 		"yellow": {
-			"price": 3000,
 			"hex": "#e0e000"
 		},
-
 		"among_us": {
-			"price": 10000,
 			"hex": "#c00000"
 		},
-
 		"akuma": {
-			"price": 10000,
 			"hex": "#c00000"
 		},
-
 		"batman": {
-			"price": 10000,
 			"hex": "#101010"
 		},
-
 		"captain_america": {
-			"price": 10000,
 			"hex": "#c00000"
 		},
-
 		"chaos_king": {
-			"price": 10000,
 			"hex": "#400080"
 		},
-
 		"courage": {
-			"price": 10000,
 			"hex": "#e0a0e0"
 		},
-
 		"clown_gremlins": {
-			"price": 10000,
 			"hex": "#e0e0e0"
 		},
-
+		"cuphead": {
+			"hex": "#400000"
+		},
 		"diamonds": {
-			"price": 10000,
 			"hex": "#00e0e0"
 		},
-
 		"ditto": {
-			"price": 10000,
 			"hex": "#e0a0e0"
 		},
-
 		"eclipse_leona": {
-			"price": 10000,
 			"hex": "#e0c000"
 		},
-
 		"flappy_bird": {
-			"price": 10000,
 			"hex": "#e0c000"
 		},
-
 		"funtime_foxy": {
-			"price": 10000,
 			"hex": "#e00080"
 		},
-
 		"giorno": {
-			"price": 10000,
 			"hex": "#e0c000"
 		},
-
 		"glitchtrap": {
-			"price": 10000,
 			"hex": "#9040b0"
 		},
-
 		"green_goblin": {
-			"price": 10000,
 			"hex": "#008000"
 		},
-
 		"gumball_&_darwin": {
-			"price": 10000,
 			"hex": "#e0c0a0"
 		},
-
 		"gumball_&_penny": {
-			"price": 999999,
 			"hex": "#00c0e0"
 		},
-
 		"hollow_knight": {
-			"price": 10000,
 			"hex": "#202030"
 		},
-
 		"iron_man": {
-			"price": 10000,
 			"hex": "#c00000"
 		},
-
+		"ink_bendy": {
+			"hex": "#602000"
+		},
 		"isaac": {
-			"price": 10000,
 			"hex": "#101010"
 		},
-
 		"itachi": {
-			"price": 10000,
 			"hex": "#101010"
 		},
-
 		"joker": {
-			"price": 10000,
 			"hex": "#101010"
 		},
-
-		"jake": {
-			"price": 10000,
+		"jake_a": {
 			"hex": "#e0c000"
 		},
-		
-		"jake_2": {
-			"price": 10000,
+		"jake_b": {
 			"hex": "#c40020"
 		},
-
 		"kakashi": {
-			"price": 10000,
 			"hex": "#101010"
 		},
-
-		"kaneki": {
-			"price": 10000,
+		"kaneki_a": {
 			"hex": "#404040"
 		},
-
-		"kaneki_2": {
-			"price": 10000,
+		"kaneki_b": {
 			"hex": "#404040"
 		},
-
+		"kda_ahri": {
+			"hex": "#9050e0"
+		},
 		"kda_akali": {
-			"price": 10000,
 			"hex": "#c000a0"
 		},
-
-		"kirby": {
-			"price": 10000,
+		"kenny_mccormick": {
+			"hex": "#405030"
+		},
+		"kirby_a": {
 			"hex": "#ffa0c0"
 		},
-
-		"kirby_2": {
-			"price": 10000,
+		"kirby_b": {
 			"hex": "#e0a0c0"
 		},
-
 		"l": {
-			"price": 10000,
 			"hex": "#101010"
 		},
-
-		"lelouch": {
-			"price": 10000,
+		"lelouch_a": {
 			"hex": "#400080"
 		},
-
-		"lelouch_2": {
-			"price": 10000,
+		"lelouch_b": {
 			"hex": "#600080"
 		},
-
 		"lux": {
-			"price": 10000,
 			"hex": "#500090"
 		},
-
 		"miku_hatsune": {
-			"price": 10000,
 			"hex": "#00c0ff"
 		},
-
 		"morioh_gang": {
-			"price": 10000,
 			"hex": "#00a0c0"
 		},
-
 		"murder_monkeys": {
-			"price": 10000,
 			"hex": "#601020"
 		},
-
 		"naruto": {
-			"price": 10000,
 			"hex": "#e0c000"
 		},
-
 		"nathan_drake": {
-			"price": 10000,
 			"hex": "#000040"
 		},
-
 		"nezuko_kamado": {
-			"price": 10000,
 			"hex": "#ff98a0"
 		},
-
 		"nightmare_chica": {
-			"price": 10000,
 			"hex": "#e0c000"
 		},
-
 		"nightmare_foxy": {
-			"price": 10000,
 			"hex": "#101010"
 		},
-
 		"nunu_&_willump": {
-			"price": 10000,
 			"hex": "#00c0ff"
 		},
-
 		"onslaught": {
-			"price": 10000,
 			"hex": "#c00000"
 		},
-
+		"poros": {
+			"hex": "#8090b0"
+		},
+		"professor_chaos": {
+			"hex": "#405030"
+		},
 		"reaper_soraka": {
-			"price": 10000,
 			"hex": "#a080e0"
 		},
-
+		"rin_kagamine": {
+			"hex": "#e0c000"
+		},
 		"saitama": {
-			"price": 10000,
 			"hex": "#c00000"
 		},
-
 		"sans": {
-			"price": 10000,
 			"hex": "#0080ff"
 		},
-
-		"scorpion": {
-			"price": 10000,
+		"scorpion_a": {
 			"hex": "#e0c000"
 		},
-
-		"scorpion_2": {
-			"price": 10000,
+		"scorpion_b": {
 			"hex": "#e0c000"
 		},
-
 		"shiro": {
-			"price": 10000,
-			"hex": "#1000000"
+			"hex": "#9020b0"
 		},
-
+		"six": {
+			"hex": "#909090"
+		},
 		"spider-man": {
-			"price": 10000,
 			"hex": "#c00000"
 		},
-
 		"springtrap": {
-			"price": 10000,
-			"hex": "#8010000"
+			"hex": "#202040"
 		},
-
 		"sora_&_shiro": {
-			"price": 10000,
-			"hex": "#1000000"
+			"hex": "#600000"
 		},
-
+		"stan_marsh": {
+			"hex": "#405030"
+		},
 		"sub-zero": {
-			"price": 10000,
 			"hex": "#00c0ff"
 		},
-
 		"superman": {
-			"price": 10000,
 			"hex": "#000080"
 		},
-
 		"thanos": {
-			"price": 10000,
 			"hex": "#606080"
 		},
-
 		"the_hillbilly": {
-			"price": 10000,
 			"hex": "#806020"
 		},
-
+		"warly": {
+			"hex": "#603020"
+		},
+		"we_bare_bears": {
+			"hex": "#405030"
+		},
+		"willow": {
+			"hex": "#602000"
+		},
+		"wormwood": {
+			"hex": "#308070"
+		},
 		"yasuo": {
-			"price": 10000,
 			"hex": "#606040"
 		},
-
 		"yone": {
-			"price": 10000,
 			"hex": "#203070"
 		},
-
 		"yukiteru_&_yuno": {
-			"price": 10000,
 			"hex": "#e0a0a0"
 		},
-
 		"yuno": {
-			"price": 10000,
 			"hex": "#a01030"
 		},
-
-		"zero_two": {
-			"price": 10000,
+		"zero_two_a": {
 			"hex": "#105090"
 		},
-
-		"zero_two_2": {
-			"price": 10000,
+		"zero_two_b": {
 			"hex": "#e05080"
 		}
 	},
-
 	"petHuds": {
+		"vipPrice": 8000,
+		"price": 3000,
 		"black": {
-			"price": 2500,
 			"vip": false
 		},
-
 		"blue": {
-			"price": 2500,
 			"vip": false
 		},
-
 		"brown": {
-			"price": 2500,
 			"vip": false
 		},
-
 		"green": {
-			"price": 2500,
 			"vip": false
 		},
-
 		"grey": {
-			"price": 2500,
 			"vip": false
 		},
-
 		"orange": {
-			"price": 2500,
 			"vip": false
 		},
-
 		"pink": {
-			"price": 2500,
 			"vip": false
 		},
-
 		"purple": {
-			"price": 2500,
 			"vip": false
 		},
-		
 		"red": {
-			"price": 2500,
 			"vip": false
 		},
-
 		"yellow": {
-			"price": 2500,
 			"vip": false
 		},
-
-
+		"among_us_a": {
+			"vip": true
+		},
+		"among_us_b": {
+			"vip": true
+		},
 		"bones": {
-			"price": 8000,
 			"vip": true
 		},
-
+		"butterflies": {
+			"vip": true
+		},
+		"cats": {
+			"vip": true
+		},
+		"circles_a": {
+			"vip": true
+		},
+		"circles_b": {
+			"vip": true
+		},
+		"crabs": {
+			"vip": true
+		},
+		"dogs": {
+			"vip": true
+		},
+		"dolphins": {
+			"vip": true
+		},
+		"doraemon": {
+			"vip": true
+		},
+		"fish": {
+			"vip": true
+		},
 		"foxes": {
-			"price": 8000,
 			"vip": true
 		},
-
+		"geometry_a": {
+			"vip": true
+		},
+		"geometry_b": {
+			"vip": true
+		},
+		"geometry_c": {
+			"vip": true
+		},
 		"ghost-type": {
-			"price": 8000,
 			"vip": true
 		},
-
-		"pokemon": {
-			"price": 8000,
+		"gumball": {
 			"vip": true
 		},
-
+		"ladybugs": {
+			"vip": true
+		},
+		"luna": {
+			"vip": true
+		},
+		"papyrus": {
+			"vip": true
+		},
+		"penguins": {
+			"vip": true
+		},
+		"pink_panther": {
+			"vip": true
+		},
+		"pink_pokemon": {
+			"vip": true
+		},
 		"saitama": {
-			"price": 8000,
 			"vip": true
 		},
-
+		"scooby-doo": {
+			"vip": true
+		},
+		"snoopy": {
+			"vip": true
+		},
+		"tigers": {
+			"vip": true
+		},
+		"totoro": {
+			"vip": true
+		},
+		"unicorns": {
+			"vip": true
+		},
 		"undertale": {
-			"price": 8000,
 			"vip": true
 		},
-
 		"winter": {
-			"price": 8000,
 			"vip": true
 		}
 	},
-
 	"pets": {
 		"cabra": {
 			"species": "Cabra",
@@ -461,72 +398,60 @@
 			"price": 8000,
 			"vip": false
 		},
-
 		"cao": {
 			"species": "Cão",
 			"gender": "random",
 			"price": 10000,
 			"vip": false
 		},
-
 		"escorpiao": {
 			"species": "Escorpião",
 			"gender": "random",
 			"price": 13000,
 			"vip": false
 		},
-
 		"formiga": {
 			"species": "Formiga",
 			"gender": "random",
 			"price": 1,
 			"vip": false
-			
 		},
-
 		"galinha": {
 			"species": "Galinha",
 			"gender": "♀️",
 			"price": 8000,
 			"vip": false
 		},
-
 		"gato": {
 			"species": "Gato",
 			"gender": "random",
 			"price": 10000,
 			"vip": false
 		},
-
 		"golfinho": {
 			"species": "Golfinho",
 			"gender": "random",
 			"price": 15000,
 			"vip": false
 		},
-
 		"hamster": {
 			"species": "Hamster",
 			"gender": "random",
 			"price": 10000,
 			"vip": false
 		},
-
 		"ponei": {
 			"species": "Cavalo (Pónei)",
 			"gender": "random",
 			"price": 15000,
 			"vip": false
 		},
-
 		"sapo": {
 			"species": "Sapo",
 			"gender": "random",
 			"price": 15000,
 			"vip": false
 		},
-
-
 		"akamaru": {
 			"name": "Akamaru",
 			"species": "Cão",
@@ -534,7 +459,6 @@
 			"price": 20000,
 			"vip": true
 		},
-
 		"frosch": {
 			"name": "Frosch",
 			"species": "Gato",
@@ -542,7 +466,6 @@
 			"price": 20000,
 			"vip": true
 		},
-
 		"happy": {
 			"name": "Happy",
 			"species": "Gato",
@@ -550,7 +473,6 @@
 			"price": 20000,
 			"vip": true
 		},
-
 		"iggy": {
 			"name": "Iggy",
 			"species": "Cão",
@@ -559,14 +481,9 @@
 			"vip": true
 		}
 	},
-
 	"items": {
 		"name_license": {
 			"price": 2000
 		}
-	},
-
-	"food": {
-
 	}
 }
