@@ -173,9 +173,9 @@ export function execute(bot: Client, message: Message, command: undefined, db: a
 					ctx.save();
 					ctx.font = '20px bold Comic Sans MS';
 					ctx.shadowColor = 'black';
-					ctx.shadowBlur = 2;
-					ctx.shadowOffsetX = 2;
-					ctx.shadowOffsetY = 2;
+					ctx.shadowBlur = 0;
+					ctx.shadowOffsetX = 1;
+					ctx.shadowOffsetY = 1;
 					ctx.fillStyle = 'white';
 					ctx.textAlign = 'center';
 					ctx.fillText(`${user.tag}`, 410, 65);
