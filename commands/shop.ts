@@ -514,6 +514,7 @@ export function execute(bot: Client, message: Message, command: undefined, db: a
 								.spliceFields(0, mainEmbed.fields.length, [
 									{ name: 'Sub-Zero', value: `Mortal Kombat\n¤${items.huds.price}`, inline: true },
 									{ name: 'The Hillbilly', value: `Dead by Daylight\n¤${items.huds.price}`, inline: true },
+									{ name: 'The Runaway Kid', value: `Little Nightmares\n¤${items.huds.price}`, inline: true },
 									{ name: 'Warly', value: `Don't Starve\n¤${items.huds.price}`, inline: true },
 									{ name: 'Willow', value: `Don't Starve\n¤${items.huds.price}`, inline: true },
 									{ name: 'Wormwood', value: `Don't Starve\n¤${items.huds.price}`, inline: true },
