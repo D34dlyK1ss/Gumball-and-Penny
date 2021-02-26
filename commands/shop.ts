@@ -79,7 +79,7 @@ export function execute(bot: Client, message: Message, command: undefined, db: a
 		itemsEmbed;
 
 	const page = parseInt(args[2]) || 1;
-	let cost: number, hud: string, petHud: string, item: string, pet: string;
+	let cost: number, hud = '', petHud = '', item = '', pet = '';
 	let colors = ['black', 'blue', 'brown', 'green', 'grey', 'orange', 'pink', 'purple', 'red', 'yellow'];
 
 	switch (option) {
