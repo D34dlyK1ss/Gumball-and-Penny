@@ -160,9 +160,9 @@ export function execute(bot: Client, message: Message, command: undefined, db: a
 
 					ctx.font = '18px Comic Sans MS';
 					ctx.shadowColor = 'black';
-					ctx.shadowBlur = 3;
-					ctx.shadowOffsetX = 3;
-					ctx.shadowOffsetY = 3;
+					ctx.shadowBlur = 2;
+					ctx.shadowOffsetX = 2;
+					ctx.shadowOffsetY = 2;
 					ctx.fillStyle = 'white';
 
 					const extra = 40;
