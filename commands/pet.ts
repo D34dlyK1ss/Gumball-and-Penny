@@ -156,7 +156,7 @@ export function execute(bot: Client, message: Message, command: undefined, db: a
 
 					ctx.globalAlpha = 0.4;
 					ctx.fillStyle = 'black';
-					ctx.fillRect(324, 102, 200, 176);
+					ctx.fillRect(324, 102, 220, 176);
 					ctx.fill();
 
 					ctx.globalAlpha = 1;
