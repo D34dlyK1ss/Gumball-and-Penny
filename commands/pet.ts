@@ -11,15 +11,15 @@ registerFont('./fonts/comicz.ttf', { family: 'bold-italic Sans MS' });
 export const name = 'pet';
 
 export function execute(bot: Client, message: Message, command: undefined, db: any, lang: Record<string, string | any>, language: undefined, prefix: undefined, args: string[]) {
-		const user = message.mentions.users.first() || message.author,
-			refV = db.collection('vip').doc(user.id),
-			refP = db.collection('pet').doc(user.id),
-			refI = db.collection('inventario').doc(message.author.id),
-			option = args[0];
-		args = args.slice(1);
-		const argsString = args.join(' ');
+	const user = message.mentions.users.first() || message.author,
+		refV = db.collection('vip').doc(user.id),
+		refP = db.collection('pet').doc(user.id),
+		refI = db.collection('inventario').doc(message.author.id),
+		option = args[0];
+	args = args.slice(1);
+	const argsString = args.join(' ');
 
-		switch (option) {
+	switch (option) {
 		case 'setname':
 			db.collection('pet').doc(message.author.id).get().then((doc: any) => {
 				const pet = doc.get('pet');
@@ -114,7 +114,7 @@ export function execute(bot: Client, message: Message, command: undefined, db: a
 					db.collection('pet').doc(message.author.id).delete().then(async () => {
 						refI.get().then((docI: any) => {
 							const iPetHUDs = docI.get('petHuds');
-							if (iPetHUDs.includes(pet)) iPetHUDs.splice(iPetHUDs.findIndex((petHud:string) => petHud === pet), 1);
+							if (iPetHUDs.includes(pet)) iPetHUDs.splice(iPetHUDs.findIndex((petHud: string) => petHud === pet), 1);
 						});
 						if (petName == '') petName = `${(docP.get('species')).toLowerCase()}`;
 						message.reply(`**${petName}**${lang.pet.wasSentToAdoption}`).catch(err => { console.error(err); });
@@ -172,12 +172,10 @@ export function execute(bot: Client, message: Message, command: undefined, db: a
 					ctx.fillText(`${lang.nature}: ${lang.pets.natures[petNature]}`, 330, 195 + extra);
 
 					ctx.restore();
-
 					ctx.closePath();
 
-
 					const petPic = await loadImage(`./img/pet/${pet}.png`);
-					ctx.drawImage (petPic, 160, 120);
+					ctx.drawImage(petPic, 160, 120);
 
 					ctx.beginPath();
 					ctx.arc(97, 70, 58, 0, Math.PI * 2, true);
@@ -190,12 +188,12 @@ export function execute(bot: Client, message: Message, command: undefined, db: a
 
 						if (docV.exists) {
 							const crown = await loadImage('./img/profile/crown.png');
-							ctx.drawImage (crown, 7, 12, 50, 50);
+							ctx.drawImage(crown, 7, 12, 50, 50);
 						}
 
 						const avatar = await loadImage(user.displayAvatarURL({ format: 'jpg' }));
 						ctx.clip();
-						ctx.drawImage (avatar, 37, 10, 120, 120);
+						ctx.drawImage(avatar, 37, 10, 120, 120);
 
 						const attachment = new MessageAttachment(canvas.toBuffer(), 'pet.png');
 
@@ -204,5 +202,5 @@ export function execute(bot: Client, message: Message, command: undefined, db: a
 				}
 			});
 			break;
-		}
+	}
 };
