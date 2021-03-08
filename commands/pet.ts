@@ -116,7 +116,7 @@ export function execute(bot: Client, message: Message, command: undefined, db: a
 							const iPetHUDs = docI.get('petHuds');
 							if (iPetHUDs.includes(pet)) iPetHUDs.splice(iPetHUDs.findIndex((petHud: string) => petHud === pet), 1);
 						});
-						if (petName == '') petName = `${(docP.get('species')).toLowerCase()}`;
+						if (petName === 'N/A') petName = `${(docP.get('species')).toLowerCase()}`;
 						message.reply(`**${petName}**${lang.pet.wasSentToAdoption}`).catch(err => { console.error(err); });
 					});
 				}
