@@ -138,7 +138,7 @@ export function execute(bot: Client, message: Message, command: undefined, db: a
 						else {
 							const bal = docP.get('balance'),
 								itemName = petHud.toLowerCase(),
-								vipPetHUD = (items as any).petHuds[itemName].vip;
+								vipPetHUD = (items.petHuds as any)[itemName].vip;
 							const userVIP = docP.get('vip');
 
 							colors.includes(itemName) ? cost = (items as any).price : cost = (items as any).vipPrice;
@@ -188,7 +188,7 @@ export function execute(bot: Client, message: Message, command: undefined, db: a
 						else {
 							const bal = docP.get('balance'),
 								itemName = item.toLowerCase(),
-								cost = (items as any).items[itemName].price;
+								cost = (items.items as any)[itemName].price;
 
 							if (!cost) {
 								message.reply(lang.error.noItem).catch(err => { console.error(err); });
@@ -224,11 +224,11 @@ export function execute(bot: Client, message: Message, command: undefined, db: a
 					pet = slugify(pet.concat((args as any).slice(2)).toLowerCase().replace(/[,]/g, '_'));
 					refPet.get().then((docPet: any) => {
 						if (docPet.exists) {
-							message.reply(`${lang.error.alreadyHasPet}\`${prefix}pet sendtoadoption\`!`).catch(err => { console.error(err); });
+							message.reply(`${lang.error.alreadyHasPet}\`${prefix}sendtoadoption\`!`).catch(err => { console.error(err); });
 						}
 						else {
 							const itemName = pet.toLowerCase();
-							const cost = (items as any).pets[itemName].price;
+							const cost = (items.pets as any)[itemName].price;
 
 							if (!cost) {
 								message.reply(lang.error.noItem).catch(err => { console.error(err); });
@@ -242,10 +242,10 @@ export function execute(bot: Client, message: Message, command: undefined, db: a
 									else {
 										const rndN = Math.floor(Math.random() * 12),
 											rndG = Math.random(),
-											vipPet = (items as any).pets[pet].vip,
+											vipPet = (items.pets as any)[pet].vip,
 											userVIP = docP.get('vip'),
-											species = (items as any).pets[pet].species;
-										let gender = (items as any).pets[pet].gender,
+											species = (items.pets as any)[pet].species;
+										let gender = (items.pets as any)[pet].gender,
 											name: string;
 
 										if (!userVIP && vipPet) {
@@ -253,7 +253,7 @@ export function execute(bot: Client, message: Message, command: undefined, db: a
 										}
 										else {
 											if (gender == 'random') rndG < 0.5 ? gender = '♂️' : gender = '♀️';
-											if (vipPet) name = `${(items as any).pets[pet].name}`;
+											vipPet ? name = `${(items.pets as any)[pet].name}` : name = 'N/A';
 
 											refPet.set({
 												gender: `${gender}`,
@@ -284,7 +284,7 @@ export function execute(bot: Client, message: Message, command: undefined, db: a
 												});
 
 												let petName = species.toLowerCase().replace(/[_]/g, ' ');
-												const vip = (items as any).pets[pet].vip;
+												const vip = (items.pets as any)[pet].vip;
 
 												if (vip) petName = name;
 												message.reply(`${lang.youBought}**${titleCase(petName)}**!`).catch(err => { console.error(err); });
@@ -331,16 +331,16 @@ export function execute(bot: Client, message: Message, command: undefined, db: a
 						.setDescription(`\`${prefix}shop buy pet [${lang.shop.animalName}]\`${lang.shop.toBuy}`)
 						.setFooter(`${lang.page} ${page}/1`)
 						.spliceFields(0, mainEmbed.fields.length, [
-							{ name: `${lang.pets.species.Cabra}`, value: `¤${items.pets.cabra.price}`, inline: true },
-							{ name: `${lang.pets.species.Cão}`, value: `¤${items.pets.cao.price}`, inline: true },
-							{ name: `${lang.pets.species.Escorpião}`, value: `¤${items.pets.escorpiao.price}`, inline: true },
-							{ name: `${lang.pets.species.Formiga}`, value: `¤${items.pets.formiga.price}`, inline: true },
-							{ name: `${lang.pets.species.Galinha}`, value: `¤${items.pets.galinha.price}`, inline: true },
-							{ name: `${lang.pets.species.Gato}`, value: `¤${items.pets.gato.price}`, inline: true },
-							{ name: `${lang.pets.species.Golfinho}`, value: `¤${items.pets.golfinho.price}`, inline: true },
-							{ name: `${lang.pets.species.Hamster}`, value: `¤${items.pets.hamster.price}`, inline: true },
-							{ name: `${lang.pets.species.Pónei}`, value: `¤${items.pets.ponei.price}`, inline: true },
-							{ name: `${lang.pets.species.Sapo}`, value: `¤${items.pets.sapo.price}`, inline: true },
+							{ name: `Ant`, value: `¤${items.pets.ant.price}`, inline: true },
+							{ name: `Cat`, value: `¤${items.pets.cat.price}`, inline: true },
+							{ name: `Chicken`, value: `¤${items.pets.chicken.price}`, inline: true },
+							{ name: `Dog`, value: `¤${items.pets.dog.price}`, inline: true },
+							{ name: `Dolphin`, value: `¤${items.pets.dolphin.price}`, inline: true },
+							{ name: `Frog`, value: `¤${items.pets.frog.price}`, inline: true },
+							{ name: `Goat`, value: `¤${items.pets.goat.price}`, inline: true },
+							{ name: `Hamster`, value: `¤${items.pets.hamster.price}`, inline: true },
+							{ name: `Pony`, value: `¤${items.pets.pony.price}`, inline: true },
+							{ name: `Scorpion`, value: `¤${items.pets.scorpion.price}`, inline: true },
 						]);
 					message.channel.send(petsCommonEmbed).catch(err => { console.error(err); });
 					break;

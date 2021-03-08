@@ -395,43 +395,43 @@
 		}
 	},
 	"pets": {
-		"cabra": {
+		"goat": {
 			"species": "Cabra",
 			"gender": "random",
 			"price": 8000,
 			"vip": false
 		},
-		"cao": {
+		"dog": {
 			"species": "Cão",
 			"gender": "random",
 			"price": 10000,
 			"vip": false
 		},
-		"escorpiao": {
+		"scorpion": {
 			"species": "Escorpião",
 			"gender": "random",
 			"price": 13000,
 			"vip": false
 		},
-		"formiga": {
+		"ant": {
 			"species": "Formiga",
 			"gender": "random",
 			"price": 1,
 			"vip": false
 		},
-		"galinha": {
+		"chicken": {
 			"species": "Galinha",
 			"gender": "♀️",
 			"price": 8000,
 			"vip": false
 		},
-		"gato": {
+		"cat": {
 			"species": "Gato",
 			"gender": "random",
 			"price": 10000,
 			"vip": false
 		},
-		"golfinho": {
+		"dolphin": {
 			"species": "Golfinho",
 			"gender": "random",
 			"price": 15000,
@@ -443,13 +443,13 @@
 			"price": 10000,
 			"vip": false
 		},
-		"ponei": {
+		"pony": {
 			"species": "Cavalo (Pónei)",
 			"gender": "random",
 			"price": 15000,
 			"vip": false
 		},
-		"sapo": {
+		"frog": {
 			"species": "Sapo",
 			"gender": "random",
 			"price": 15000,
