@@ -138,7 +138,7 @@ export function execute(bot: Client, message: Message, command: undefined, db: a
 						else {
 							const bal = docP.get('balance'),
 								itemName = petHud.toLowerCase(),
-								vipPetHUD = (items.petHuds as any)[itemName].vip;
+								vipPetHUD = (items as any).petHuds[itemName].vip;
 							const userVIP = docP.get('vip');
 
 							colors.includes(itemName) ? cost = (items as any).price : cost = (items as any).vipPrice;
@@ -188,7 +188,7 @@ export function execute(bot: Client, message: Message, command: undefined, db: a
 						else {
 							const bal = docP.get('balance'),
 								itemName = item.toLowerCase(),
-								cost = (items.items as any)[itemName].price;
+								cost = (items as any).items[itemName].price;
 
 							if (!cost) {
 								message.reply(lang.error.noItem).catch(err => { console.error(err); });
@@ -224,11 +224,11 @@ export function execute(bot: Client, message: Message, command: undefined, db: a
 					pet = slugify(pet.concat((args as any).slice(2)).toLowerCase().replace(/[,]/g, '_'));
 					refPet.get().then((docPet: any) => {
 						if (docPet.exists) {
-							message.reply(`${lang.error.alreadyHasPet}\`${prefix}sendtoadoption\`!`).catch(err => { console.error(err); });
+							message.reply(`${lang.error.alreadyHasPet}\`${prefix}pet sendtoadoption\`!`).catch(err => { console.error(err); });
 						}
 						else {
 							const itemName = pet.toLowerCase();
-							const cost = (items.pets as any)[itemName].price;
+							const cost = (items as any).pets[itemName].price;
 
 							if (!cost) {
 								message.reply(lang.error.noItem).catch(err => { console.error(err); });
@@ -242,10 +242,10 @@ export function execute(bot: Client, message: Message, command: undefined, db: a
 									else {
 										const rndN = Math.floor(Math.random() * 12),
 											rndG = Math.random(),
-											vipPet = (items.pets as any)[pet].vip,
+											vipPet = (items as any).pets[pet].vip,
 											userVIP = docP.get('vip'),
-											species = (items.pets as any)[pet].species;
-										let gender = (items.pets as any)[pet].gender,
+											species = (items as any).pets[pet].species;
+										let gender = (items as any).pets[pet].gender,
 											name: string;
 
 										if (!userVIP && vipPet) {
@@ -253,7 +253,7 @@ export function execute(bot: Client, message: Message, command: undefined, db: a
 										}
 										else {
 											if (gender == 'random') rndG < 0.5 ? gender = '♂️' : gender = '♀️';
-											if (vipPet) name = `${(items.pets as any)[pet].name}`;
+											if (vipPet) name = `${(items as any).pets[pet].name}`;
 
 											refPet.set({
 												gender: `${gender}`,
@@ -284,7 +284,7 @@ export function execute(bot: Client, message: Message, command: undefined, db: a
 												});
 
 												let petName = species.toLowerCase().replace(/[_]/g, ' ');
-												const vip = (items.pets as any)[pet].vip;
+												const vip = (items as any).pets[pet].vip;
 
 												if (vip) petName = name;
 												message.reply(`${lang.youBought}**${titleCase(petName)}**!`).catch(err => { console.error(err); });
