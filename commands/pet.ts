@@ -196,7 +196,7 @@ export function execute(bot: Client, message: Message, command: undefined, db: a
 							ctx.drawImage(crown, 7, 12, 50, 50);
 						}
 
-						const avatar = await loadImage(user.displayAvatarURL({ format: 'jpg' }));
+						const avatar = await loadImage(user.displayAvatarURL({ format: 'png' }));
 						ctx.clip();
 						ctx.drawImage(avatar, 37, 10, 120, 120);
 
