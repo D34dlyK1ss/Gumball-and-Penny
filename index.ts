@@ -71,8 +71,8 @@ const years = Math.round(mili / 31536000000);
 const months = Math.round(mili / 2629746000) - (12 * years);
 let pluralY: string, pluralM: string;
 
-years == 1 ? pluralY = 'ano' : 'anos';
-months == 1 ? pluralM = 'mês' : 'meses';
+years === 1 ? pluralY = 'ano' : pluralY = 'anos';
+months === 1 ? pluralM = 'mês' : pluralM = 'meses';
 
 import removeVIP from './src/functions/removeVIP';
 import giveVIP from './src/functions/giveVIP';
