@@ -148,8 +148,8 @@ export function execute(bot: Client, message: Message, command: undefined, db: a
 					let xpNeeded = nextLevel - prevLevel,
 						xpToNext = xp - prevLevel;
 
-					if (xpNeeded <= 1) xpNeeded = 200;
-					if (xpToNext <= 1) xpToNext = xp;
+					if (xpNeeded <= 200) xpNeeded = 200;
+					if (xpToNext <= xp) xpToNext = xp;
 
 					const canvas = createCanvas(700, 400),
 						ctx = canvas.getContext('2d');
