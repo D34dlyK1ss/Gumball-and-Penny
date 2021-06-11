@@ -6,12 +6,13 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 
 		if (args[0] == null) {
 			rnd = Math.floor(Math.random() * 100) + 1;
+			message.channel.send(`${rnd}!`).catch(err => { console.error(err); });
 		}
 		else if (!Number.isInteger(parseInt(args[0]))) {
-			return message.reply(lang.error.notANumber).catch(err => { console.error(err); });
+			message.reply(lang.error.notANumber).catch(err => { console.error(err); });
 		}
 		else {
 			rnd = Math.floor(Math.random() * parseInt(args[0])) + 1;
+			message.channel.send(`${rnd}!`).catch(err => { console.error(err); });
 		}
-		message.channel.send(`${rnd}!`).catch(err => { console.error(err); });
 };
