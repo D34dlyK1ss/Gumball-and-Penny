@@ -2,7 +2,7 @@ import { Message } from 'discord.js';
 
 export const name = 'random';
 export function execute(bot: undefined, message: Message, command: undefined, db: undefined, lang: Record<string, string | any>, language: undefined, prefix: undefined, args: string[]) {
-		let rnd == args[0];
+		let rnd = args[0];
 
 		if (rnd == '') {
 			rnd = Math.floor(Math.random() * 100) + 1;
