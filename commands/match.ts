@@ -11,7 +11,7 @@ export function execute(bot: Client, message: Message, command: Cmd, db: any, la
 		else {
 			const last = parseInt(message.member.id.slice(-1)),
 				otherLast = parseInt(other.id.slice(-1));
-			let number = `${Math.abs(last - otherLast) * 30}`;
+			let number = `${(Math.abs(last - otherLast) + 1) * 10}`;
 
 			if (parseInt(number) > 100) number = number.substr(1);
 
