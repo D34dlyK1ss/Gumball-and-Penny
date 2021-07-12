@@ -82,11 +82,6 @@ bot.once('ready', async () => {
 		dbl.postStats(bot.guilds.cache.size);
 	}, 1800000);
 
-	schedule.scheduleJob('0 14 28 * *', function() {
-		bot.users.resolve(botConfig.lilly).send(`:tada: Parabéns Lilly! Completaste ${years} ${pluralY} e ${months} ${pluralM} com o teu Ruru! :purple_heart:\nhttps://i.imgur.com/clrwrEk.gif`);
-		bot.users.resolve(botConfig.botOwner).send(`:tada: Parabéns Ruru! Completaste ${years} ${pluralY} e ${months} ${pluralM} com a tua Lilly! :purple_heart:\nhttps://i.imgur.com/clrwrEk.gif`);
-	});
-
 	console.log(`Preparados! (${moment().format('LL')} ${moment().format('LTS')})`);
 });
 
