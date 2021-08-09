@@ -36,9 +36,6 @@ function setActivity() {
 	bot.user.setActivity(`${botActivity1 + bot.guilds.cache.size + botActivity2}`);
 }
 
-// Biblioteca para horários
-import * as schedule from 'node-schedule';
-
 // Biblioteca para momentos
 import moment from 'moment';
 moment.locale('pt');
@@ -255,13 +252,13 @@ bot.on('guildCreate', async guildData => {
 	setActivity();
 	await db.collection('definicoes').doc(guildData.id).set({
 		settings: botConfig.settings,
-	}).catch(err => { console.error(err); });
+	}).catch((err: Error) => { console.error(err); });
 });
 
 // Quando o bot for expulso de um servidor, o bot apagará os dados respetivos
 bot.on('guildDelete', async guildData => {
 	setActivity();
-	await db.collection('definicoes').doc(guildData.id).delete().catch(err => { console.error(err); });
+	await db.collection('definicoes').doc(guildData.id).delete().catch((err: Error) => { console.error(err); });
 });
 
 // Autenticação do bot
