@@ -55,7 +55,7 @@ export function execute(bot: Client, message: Message, command: undefined, db: a
 		.setColor('#9900ff')
 		.setTitle(lang.awesomeStore)
 		.setDescription(`${lang.shop.welcome}\`${prefix}shop [${lang.shop.category}]\`${lang.shop.toSelect}`)
-		.setImgae('https://i.imgur.com/Ed2AqAr.gif')
+		.setImage('https://i.imgur.com/Ed2AqAr.gif')
 		.addFields(
 			{ name: 'HUDs', value: '\u200B', inline: true },
 			{ name: 'PetHUDs', value: '\u200B', inline: true },
