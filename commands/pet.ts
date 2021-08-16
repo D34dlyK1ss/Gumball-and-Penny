@@ -202,7 +202,7 @@ export function execute(bot: Client, message: Message, command: undefined, db: a
 
 						const attachment = new MessageAttachment(canvas.toBuffer(), 'pet.png');
 
-						await message.channel.send(attachment).catch(err => { console.error(err); });
+						await message.channel.send({ files: [attachment] }).catch(err => { console.error(err); });
 					});
 				}
 			});

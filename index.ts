@@ -1,5 +1,5 @@
 // Biblioteca do Discord.js
-import { Collection, Client, Message, MessageAttachment } from 'discord.js';
+import { Collection, Client, Intents, Message } from 'discord.js';
 
 export interface serverSettings {
 	automessages: boolean,
@@ -18,7 +18,7 @@ export class botClient extends Client  {
 }
 
 // Cliente
-const bot = new botClient();
+const bot = new botClient({ allowedMentions: { parse: ['users', 'roles'], repliedUser: true }, intents: [Intents.FLAGS.GUILDS] });
 
 // Tokens
 import { config } from 'dotenv';
@@ -29,11 +29,7 @@ import botConfig from './botConfig.json';
 
 // Descrição do bot na plataforma
 function setActivity() {
-	let plural = '';
-	if (bot.guilds.cache.size != 1) plural = 'es';
-	const botActivity1 = `${botConfig.settings.prefix}help em `,
-		botActivity2 = ` servidor${plural}!`;
-	bot.user.setActivity(`${botActivity1 + bot.guilds.cache.size + botActivity2}`);
+	bot.user.setActivity(`${botConfig.settings.prefix}help em ${bot.guilds.cache.size} servidores!`);
 }
 
 // Biblioteca para momentos
@@ -83,7 +79,7 @@ bot.once('ready', async () => {
 });
 
 import EventSource from 'eventsource';
-const eventSourceInit : object = { headers: { 'Authorization': 'Bearer 14aee8db11a152ed7f2d4ed23a839d58' } };
+const eventSourceInit: object = { headers: { 'Authorization': 'Bearer 14aee8db11a152ed7f2d4ed23a839d58' } };
 const es = new EventSource('https://api.pipedream.com/sources/dc_OLuY0W/sse', eventSourceInit);
 
 es.onopen = () => {
@@ -93,7 +89,7 @@ es.onopen = () => {
 es.onmessage = async messageEvent => {
 	const data = JSON.parse(messageEvent.data);
 	const agent = data.event.headers['user-agent'],
-		authorization = data.event.headers.authorization,
+		authorization = data.event.headers.memberization,
 		userID = data.event.body.user,
 		type = data.event.body.type;
 
@@ -127,9 +123,9 @@ const settings: any = new Object(),
 	xpCooldown: Set<string> = new Set();
 
 // Ações para quando o bot receber uma mensagem
-bot.on('message', async (message: Message) => {
-	if (message.channel.id === '810529155955032115' && message.content === `${botConfig.settings.prefix}activate`) {
-		return giveVIP(db, message, undefined);
+bot.on('messageCreate', async message => {
+	if (message.channelId === '810529155955032115' && message.content === `${botConfig.settings.prefix}activate`) {
+		giveVIP(db, message, undefined);
 	}
 
 	if (message.channel.id === '809182965607039007') {
@@ -138,12 +134,12 @@ bot.on('message', async (message: Message) => {
 		const args = array.slice(1);
 		
 		if (message.content.startsWith(`${botConfig.settings.prefix}setvip`)) {
-			return giveVIP(db, message, args);
+			giveVIP(db, message, args);
 		}
 	}
 
 	// Ignorar mensagens privadas e mensagens de outros bots
-	if (!message.guild || message.channel.id === '810529155955032115' || message.author.bot) return;
+	if (!message.guild || message.channelId === '810529155955032115' || message.author.bot) return;
 
 	// Leitura dos ficheiros de comandos
 	const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.ts'));
@@ -212,10 +208,10 @@ bot.on('message', async (message: Message) => {
 								const reward = newLevel * 500;
 								db.collection('perfis').doc(message.author.id).update({
 									balance: bal + reward,
-								}).then(() => message.channel.send(`🎉 ${lang.levelUp.congrats} **${message.author.tag}**, ${lang.levelUp.levelTo} **${newLevel}** ${lang.levelUp.received + reward}! 🆙💰`));
+								}).then(() => message.channel.send(`🎉 ${lang.levelUp.congrats} **<@${message.author.id}>**, ${lang.levelUp.levelTo} **${newLevel}** ${lang.levelUp.received + reward}! 🆙💰`));
 							}
 							else {
-								message.channel.send(`🎉 ${lang.levelUp.congrats} **${message.author.tag}**, ${lang.levelUp.levelTo} **${newLevel}**! 🆙`);
+								message.channel.send(`🎉 ${lang.levelUp.congrats} **<@${message.author.id}>**, ${lang.levelUp.levelTo} **${newLevel}**! 🆙`);
 							}
 						}
 					});
@@ -236,10 +232,10 @@ bot.on('message', async (message: Message) => {
 			gifs = ['distraction dance'];
 
 		if (pngs.includes(message.content)) {
-			message.channel.send(new MessageAttachment(`./img/automessages/${message.content}.png`)).catch(err => { console.error(err); });
+			message.channel.send({ files: [`./img/automessages/${message.content}.png`] }).catch((err: Error) => { console.error(err); });
 		}
 		else if (gifs.includes(message.content)) {
-			message.channel.send(new MessageAttachment(`./img/automessages/${message.content}.gif`)).catch(err => { console.error(err); });
+			message.channel.send({ files: [`./img/automessages/${message.content}.gif`] }).catch((err: Error) => { console.error(err); });
 		}
 	}
 	else if (message.content === `<@!${bot.user.id}>`) {

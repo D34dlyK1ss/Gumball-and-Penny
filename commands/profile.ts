@@ -227,7 +227,7 @@ export function execute(bot: Client, message: Message, command: undefined, db: a
 
 					const attachment = new MessageAttachment(canvas.toBuffer(), 'profile.png');
 
-					message.channel.send(attachment).catch(err => { console.error(err); });
+					message.channel.send({ files: [attachment] }).catch(err => { console.error(err); });
 				}
 			});
 			break;

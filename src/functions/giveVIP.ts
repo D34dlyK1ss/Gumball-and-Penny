@@ -7,12 +7,12 @@ async function giveVIP(db: any, message: Message, args: string[]) {
 		justPaidRole = message.guild.roles.cache.find(role => role.name === 'I Just Paid VIP');
 
 	if (args !== undefined) {
-		args.forEach(id => {
+		args.forEach(async id => {
 			db.collection('vip').doc(id).set({
 				until: timestamp,
 			});
 
-			const memberToVIP = message.guild.member(id);
+			const memberToVIP = await message.guild.members.fetch(id);
 
 			memberToVIP.roles.remove(justPaidRole);
 			memberToVIP.roles.add(vipRole);
@@ -32,11 +32,11 @@ async function giveVIP(db: any, message: Message, args: string[]) {
 			else {
 				refV.set({
 					until: timestamp,
-				}).then(() => {
-					const memberToVIP = message.guild.member(message.author.id);
+				}).then(async () => {
+					const memberToVIP = await message.guild.members.fetch(message.author.id);
 
 					memberToVIP.roles.remove(justPaidRole);
-					memberToVIP.roles.add(vipRole).then(() => { message.react('✅'); }).catch(err => { console.error(err); });
+					memberToVIP.roles.add(vipRole).then(() => { message.react('✅'); }).catch((err: Error) => { console.error(err); });
 				});
 			}
 		});

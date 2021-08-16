@@ -20,7 +20,7 @@ export function execute(bot: Client, message: Message, command: undefined, db: a
 
 			const attachment = new MessageAttachment(hudCanvas.toBuffer(), `${hud}_preview.png`);
 
-			message.channel.send(attachment).catch(err => { console.error(err); });
+			message.channel.send({ files: [attachment] }).catch(err => { console.error(err); });
 		}
 		catch {
 			return message.reply(lang.error.noHUD).catch(err => { console.error(err); });
@@ -39,7 +39,7 @@ export function execute(bot: Client, message: Message, command: undefined, db: a
 
 			const attachment = new MessageAttachment(hudCanvas.toBuffer(), `${petHud}_preview.png`);
 
-			message.channel.send(attachment).catch(err => { console.error(err); });
+			message.channel.send({ files: [attachment] }).catch(err => { console.error(err); });
 		}
 		catch {
 			return message.reply(lang.error.noPetHUD).catch(err => { console.error(err); });
@@ -324,7 +324,7 @@ export function execute(bot: Client, message: Message, command: undefined, db: a
 							{ name: 'Happy', value: `Fairy Tail\n¤${items.pets.happy.price}`, inline: true },
 							{ name: 'Iggy', value: `Jojo's Bizarre Adventure\n¤${items.pets.iggy.price}`, inline: true },
 						]);
-					message.channel.send(petsVIPEmbed).catch(err => { console.error(err); });
+					message.channel.send({ embeds: [petsVIPEmbed] }).catch(err => { console.error(err); });
 					break;
 				case 'common':
 					petsCommonEmbed = new MessageEmbed(mainEmbed)
@@ -343,7 +343,7 @@ export function execute(bot: Client, message: Message, command: undefined, db: a
 							{ name: `Pony`, value: `¤${items.pets.pony.price}`, inline: true },
 							{ name: `Scorpion`, value: `¤${items.pets.scorpion.price}`, inline: true },
 						]);
-					message.channel.send(petsCommonEmbed).catch(err => { console.error(err); });
+					message.channel.send({ embeds: [petsCommonEmbed] }).catch(err => { console.error(err); });
 					break;
 				default:
 					petsEmbed = new MessageEmbed(mainEmbed)
@@ -354,7 +354,7 @@ export function execute(bot: Client, message: Message, command: undefined, db: a
 							{ name: 'Common', value: '\u200B', inline: true },
 							{ name: 'VIP', value: '\u200B', inline: true },
 						]);
-					message.channel.send(petsEmbed).catch(err => { console.error(err); });
+					message.channel.send({ embeds: [petsEmbed] }).catch(err => { console.error(err); });
 					break;
 			}
 			break;
@@ -366,7 +366,7 @@ export function execute(bot: Client, message: Message, command: undefined, db: a
 				.spliceFields(0, mainEmbed.fields.length, [
 					{ name: 'Name License', value: `${lang.nameLicense}\n¤${items.items.name_license.price}`, inline: true },
 				]);
-			message.channel.send(itemsEmbed).catch(err => { console.error(err); });
+			message.channel.send({ embeds: [itemsEmbed] }).catch(err => { console.error(err); });
 			break;
 		case 'pethuds':
 			switch (args[1]) {
@@ -386,7 +386,7 @@ export function execute(bot: Client, message: Message, command: undefined, db: a
 							{ name: 'Red', value: `¤${items.petHuds.price}`, inline: true },
 							{ name: 'Yellow', value: `¤${items.petHuds.price}`, inline: true },
 						]);
-					message.channel.send(petHudColorsEmbed).catch(err => { console.error(err); });
+					message.channel.send({ embeds: [petHudColorsEmbed] }).catch(err => { console.error(err); });
 					break;
 				case 'vip':
 					switch (page) {
@@ -436,7 +436,7 @@ export function execute(bot: Client, message: Message, command: undefined, db: a
 									{ name: 'Ghost-Type', value: `Pokémon\n¤${items.petHuds.vipPrice}`, inline: true },
 								]);
 					}
-					message.channel.send(petHudVIPEmbed).catch(err => { console.error(err); });
+					message.channel.send({ embeds: [petHudVIPEmbed] }).catch(err => { console.error(err); });
 					break;
 				default:
 					petHudEmbed = new MessageEmbed(mainEmbed)
@@ -447,7 +447,7 @@ export function execute(bot: Client, message: Message, command: undefined, db: a
 							{ name: 'Colors', value: '\u200B', inline: true },
 							{ name: 'VIP', value: '\u200B', inline: true },
 						]);
-					message.channel.send(petHudEmbed).catch(err => { console.error(err); });
+					message.channel.send({ embeds: [petHudEmbed] }).catch(err => { console.error(err); });
 					break;
 			}
 			break;
@@ -469,7 +469,7 @@ export function execute(bot: Client, message: Message, command: undefined, db: a
 							{ name: 'Red', value: `¤${items.huds.colorPrice}`, inline: true },
 							{ name: 'Yellow', value: `¤${items.huds.colorPrice}`, inline: true },
 						]);
-					message.channel.send(hudColorsEmbed).catch(err => { console.error(err); });
+					message.channel.send({ embeds: [hudColorsEmbed] }).catch(err => { console.error(err); });
 					break;
 				case 'games':
 					switch (page) {
@@ -541,7 +541,7 @@ export function execute(bot: Client, message: Message, command: undefined, db: a
 								]);
 							break;
 					}
-					message.channel.send(hudGamesEmbed).catch(err => { console.error(err); });
+					message.channel.send({ embeds: [hudGamesEmbed] }).catch(err => { console.error(err); });
 					break;
 				case 'anime':
 					switch (page) {
@@ -580,7 +580,7 @@ export function execute(bot: Client, message: Message, command: undefined, db: a
 								]);
 							break;
 					}
-					message.channel.send(hudAnimeEmbed).catch(err => { console.error(err); });
+					message.channel.send({ embeds: [hudAnimeEmbed] }).catch(err => { console.error(err); });
 					break;
 				case 'cartoons':
 					hudCartoonsEmbed = new MessageEmbed(mainEmbed)
@@ -597,7 +597,7 @@ export function execute(bot: Client, message: Message, command: undefined, db: a
 							{ name: 'Stan Marsh', value: `South Park\n¤${items.huds.price}`, inline: true },
 							{ name: 'We Bare Bears', value: `¤${items.huds.price}`, inline: true },
 						]);
-					message.channel.send(hudCartoonsEmbed).catch(err => { console.error(err); });
+					message.channel.send({ embeds: [hudCartoonsEmbed] }).catch(err => { console.error(err); });
 					break;
 				case 'marvel':
 					hudMarvelEmbed = new MessageEmbed(mainEmbed)
@@ -613,7 +613,7 @@ export function execute(bot: Client, message: Message, command: undefined, db: a
 							{ name: 'Spider-Man', value: `${lang.shop.hero}\n¤${items.huds.price}`, inline: true },
 							{ name: 'Thanos', value: `${lang.shop.villain}\n¤${items.huds.price}`, inline: true },
 						]);
-					message.channel.send(hudMarvelEmbed).catch(err => { console.error(err); });
+					message.channel.send({ embeds: [hudMarvelEmbed] }).catch(err => { console.error(err); });
 					break;
 				case 'dc':
 					hudDCEmbed = new MessageEmbed(mainEmbed)
@@ -625,7 +625,7 @@ export function execute(bot: Client, message: Message, command: undefined, db: a
 							{ name: 'Joker', value: `${lang.shop.villain}\n¤${items.huds.price}`, inline: true },
 							{ name: 'Superman', value: `${lang.shop.hero}\n¤${items.huds.price}`, inline: true },
 						]);
-					message.channel.send(hudDCEmbed).catch(err => { console.error(err); });
+					message.channel.send({ embeds: [hudDCEmbed] }).catch(err => { console.error(err); });
 					break;
 				case 'vocaloids':
 					hudVocaloidsEmbed = new MessageEmbed(mainEmbed)
@@ -636,7 +636,7 @@ export function execute(bot: Client, message: Message, command: undefined, db: a
 							{ name: 'Miku Hatsune', value: `¤${items.huds.price}`, inline: true },
 							{ name: 'Rin Kagamine', value: `¤${items.huds.price}`, inline: true },
 						]);
-					message.channel.send(hudVocaloidsEmbed).catch(err => { console.error(err); });
+					message.channel.send({ embeds: [hudVocaloidsEmbed] }).catch(err => { console.error(err); });
 					break;
 				default:
 					hudEmbed = new MessageEmbed(mainEmbed)
@@ -651,14 +651,14 @@ export function execute(bot: Client, message: Message, command: undefined, db: a
 							{ name: 'DC', value: '\u200B', inline: true },
 							{ name: 'Vocaloids', value: '\u200B', inline: true },
 						]);
-					message.channel.send(hudEmbed).catch(err => { console.error(err); });
+					message.channel.send({ embeds: [hudEmbed] }).catch(err => { console.error(err); });
 					break;
 			}
 			break;
 		default:
 			mainEmbed = new MessageEmbed(mainEmbed)
 				.setImage('https://i.imgur.com/Ed2AqAr.gif');
-			message.channel.send(mainEmbed).catch(err => { console.error(err); });
+			message.channel.send({ embeds: [mainEmbed] }).catch(err => { console.error(err); });
 			break;
 	}
 };

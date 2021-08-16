@@ -51,7 +51,7 @@ export function execute(bot: undefined, message: Message, command: Cmd, db: any,
 
 				const attachment2 = new MessageAttachment(canvas.toBuffer(), 'profile.png');
 
-				message.channel.send(attachment).then(msg => msg.delete({ timeout: 2000 }).then(() => {
+				message.channel.send({ files: [attachment] }).then(msg => { setTimeout(() => { msg.delete(); }, 5000); }).then(() => {
 					if (g === 0 && p === 2) finalRes = 'gumball';
 					else if (p === 0 && g === 2) finalRes = 'penny';
 					else if (g > p) finalRes = 'gumball';
@@ -62,7 +62,7 @@ export function execute(bot: undefined, message: Message, command: Cmd, db: any,
 					resP = array[p];
 
 					if (finalRes === 0) {
-						message.channel.send(attachment2).then(() => {
+						message.channel.send({ embeds: [attachment2] }).then(() => {
 							message.reply(`**Gumball** ${lang.jankenpon.threw} **${resG}** ${lang.and} **Penny** ${lang.jankenpon.threw} **${resP}**! ${lang.jankenpon.draw}`).catch(err => { console.error(err); });
 						});
 					}
@@ -71,7 +71,7 @@ export function execute(bot: undefined, message: Message, command: Cmd, db: any,
 						ref.update({
 							balance: (bal + won),
 						}).then(async () => {
-							await message.channel.send(attachment2);
+							await message.channel.send({ embeds: [attachment2] });
 							message.reply(`**Gumball** ${lang.jankenpon.threw} **${resG}** ${lang.and} **Penny** ${lang.jankenpon.threw} **${resP}**, ${lang.won}**${won}**!`);
 						}).catch((err: Error) => { console.error(err); });
 					}
@@ -79,11 +79,11 @@ export function execute(bot: undefined, message: Message, command: Cmd, db: any,
 						ref.update({
 							balance: (bal - money),
 						}).then(async () => {
-							await message.channel.send(attachment2);
+							await message.channel.send({ embeds: [attachment2] });
 							message.reply(`**Gumball** ${lang.jankenpon.threw} **${resG}** ${lang.and} **Penny** ${lang.jankenpon.threw} **${resP}**, ${lang.lost}**${money}**!`);
 						}).catch((err: Error) => { console.error(err); });
 					}
-				}));
+				});
 			}
 		}
 	});

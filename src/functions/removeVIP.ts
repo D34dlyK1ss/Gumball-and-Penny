@@ -6,12 +6,12 @@ async function removeVIP(admin: any, bot: Client, db: any, vips: Set<string>) {
 	const snapshot = await refV.where('until', '<', timestamp).get();
 
 	if (!snapshot.empty) {
-		snapshot.forEach((doc: any) => {
+		snapshot.forEach(async (doc: any) => {
 			const until = doc.get('until');
 
 			if (until != 'forever') {
 				const officialServer = bot.guilds.cache.get('738540548305977366');
-				const memberToVIP = officialServer.member(doc.id),
+				const memberToVIP = await officialServer.members.fetch(doc.id),
 					vipRole = officialServer.roles.cache.find(role => role.name === 'VIP'),
 					ms = (until._seconds * 1000) - Date.now();
 

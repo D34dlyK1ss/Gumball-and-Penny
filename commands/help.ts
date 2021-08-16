@@ -24,7 +24,7 @@ export function execute(bot: botClient, message: Message, command: Cmd, db: unde
 		);
 
 	if (!args[0]) {
-		message.channel.send(helpEmbed).catch(err => { console.error(err); });
+		message.channel.send({ embeds: [helpEmbed] }).catch(err => { console.error(err); });
 	}
 	else {
 		const argsString = args.toString();
@@ -44,7 +44,7 @@ export function execute(bot: botClient, message: Message, command: Cmd, db: unde
 				);
 
 			if (!command.aliases) {
-				message.channel.send(commandEmbed).catch(err => { console.error(err); });
+				message.channel.send({ embeds: [commandEmbed] }).catch(err => { console.error(err); });
 			}
 			else {
 				const lastEmbed = commandEmbed;
@@ -53,7 +53,7 @@ export function execute(bot: botClient, message: Message, command: Cmd, db: unde
 						{ name: `${lang.aliases}`, value: `${command.aliases.join(', ')}` },
 					);
 
-				message.channel.send(newEmbed).catch(err => { console.error(err); });
+				message.channel.send({ embeds: [newEmbed] }).catch(err => { console.error(err); });
 			}
 		}
 	}

@@ -8,6 +8,6 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 			.setAuthor(`${lang.ping.yourPingIs}${ping}ms`)
 			.setColor('#9900ff');
 
-		msg.edit(embed);
+		msg.edit({ embeds: [embed] });
 	}).catch(err => { console.error(err); });
 };

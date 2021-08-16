@@ -4,9 +4,9 @@ import { serverSettings } from 'index';
 
 export const name = 'setprefix';
 export function execute(bot: undefined, message: Message, command: undefined, db: any, lang: Record<string, string | any>, language: undefined, prefix: undefined, args: string[], serverSettings: serverSettings) {
-		if (!message.member.hasPermission('MANAGE_GUILD')) {
+		if (!message.member.permissions.has('MANAGE_GUILD')) {
 			message.delete();
-			message.reply(lang.error.noPerm).then(msg => { msg.delete({ timeout: 3000 }); }).catch(err => { console.error(err); });
+			message.reply(lang.error.noPerm).then(msg => { { setTimeout(() => { msg.delete(); }, 5000); }; }).catch(err => { console.error(err); });
 		}
 		else if (args[0] == '') {
 			message.reply(lang.error.noPrefixChosen).catch(err => { console.error(err); });

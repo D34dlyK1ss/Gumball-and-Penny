@@ -11,6 +11,6 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 			message.reply(`${lang.which.noSelect}\`${prefix}help which\`${lang.forMoreInfo}`).catch(err => { console.error(err); });
 		}
 		else {
-			message.channel.send(`${(which as any)[argsString][last]}!`, { files: [`img/which/${argsString} (${last}).jpg`] }).catch(err => { console.error(err); });
+			message.channel.send({ content: `${(which as any)[argsString][last]}!`, files: [`img/which/${argsString} (${last}).jpg`] }).catch(err => { console.error(err); });
 		}
 };

@@ -1,4 +1,4 @@
-import { Message, MessageAttachment } from 'discord.js';
+import { Message } from 'discord.js';
 import { Cmd } from 'index';
 import titleCase from '../src/functions/titleCase';
 
@@ -37,12 +37,10 @@ export function execute(bot: undefined, message: Message, command: Cmd, db: any,
 					guess = args[0].toLowerCase();
 				let res: string;
 
-				const attachment = new MessageAttachment('img/coinflip/animation.gif');
-
-				message.channel.send(attachment).then(msg => msg.delete({ timeout: 2500 }).then(() => {
+				message.channel.send({ files: ['img/coinflip/animation.gif'] }).then(msg => { setTimeout(() => { msg.delete(); }, 5000); }).then(() => {
 					value === 0 ? res = 'heads' : res = 'tails';
 
-					message.channel.send(`${titleCase(lang.coinflip[res])}!`, { files: [`img/coinflip/${res}.gif`] });
+					message.channel.send({ content: `${titleCase(lang.coinflip[res])}!`, files: [`img/coinflip/${res}.gif`] });
 
 					if (res != guess) {
 						ref.update({
@@ -55,7 +53,7 @@ export function execute(bot: undefined, message: Message, command: Cmd, db: any,
 							balance: (bal + won),
 						}).then(() => { message.reply(`${lang.won}**¤${won}**!`); }).catch((err: Error) => { console.error(err); });
 					}
-				}));
+				});
 			}
 		}
 	});

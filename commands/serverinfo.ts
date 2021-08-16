@@ -13,10 +13,10 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 			.addFields(
 				{ name: `${lang.id}`, value: `${server.id}` },
 				{ name: `${lang.verificationLevel}`, value: `${lang.serverinfo.verificationLevel[server.verificationLevel]}`, inline: true },
-				{ name: `${lang.region}`, value: `${lang.serverinfo.region[server.region]}`, inline: true },
+				/*{ name: `${lang.region}`, value: `${lang.serverinfo.region[server.region]}`, inline: true },*/
 				{ name: `${lang.membersServerInfo}`, value: `${server.memberCount}`, inline: true },
 				{ name: `${lang.creation}`, value: `${lang.created + createdDate.format('LLL')}` },
-				{ name: `${lang.owner}`, value: `${server.owner}`, inline: true },
+				{ name: `${lang.owner}`, value: `<@${server.ownerId}>`, inline: true },
 			);
 
 		if (!server.iconURL()) {
@@ -24,9 +24,9 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 			const newEmbed = new MessageEmbed(lastEmbed)
 				.setAuthor(`${server.name}`)
 				.setThumbnail('');
-			message.channel.send(newEmbed).catch(err => { console.error(err); });
+			message.channel.send({ embeds: [newEmbed] }).catch(err => { console.error(err); });
 		}
 		else {
-			message.channel.send(embed).catch(err => { console.error(err); });
+			message.channel.send({ embeds: [embed] }).catch(err => { console.error(err); });
 		}
 };

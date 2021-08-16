@@ -10,12 +10,12 @@ export function execute(bot: Client, message: Message, command: Cmd, db: undefin
 		return;
 	}
 	else if (user == message.author) {
-		message.channel.send(`${message.author}${lang.slap.slappedSelf}`, { files: [`img/actions/${command.name} (${rnd}).gif`] }).catch(err => { console.error(err); });
+		message.channel.send({ content: `${message.author}${lang.slap.slappedSelf}`, files: [`img/actions/${command.name} (${rnd}).gif`] }).catch(err => { console.error(err); });
 	}
 	else if (user == bot.user) {
-		message.channel.send(`${message.author}${lang.slap.slappedUs} 😠`, { files: [`img/actions/${command.name} (${rnd}).gif`] }).catch(err => { console.error(err); });
+		message.channel.send({ content: `${message.author}${lang.slap.slappedUs} 😠`, files: [`img/actions/${command.name} (${rnd}).gif`] }).catch(err => { console.error(err); });
 	}
 	else {
-		message.channel.send(`${message.author}${lang.slap.slapped}${user}!`, { files: [`img/actions/${command.name} (${rnd}).gif`] }).catch(err => { console.error(err); });
+		message.channel.send({ content: `${message.author}${lang.slap.slapped}${user}!`, files: [`img/actions/${command.name} (${rnd}).gif`] }).catch(err => { console.error(err); });
 	}
 };
