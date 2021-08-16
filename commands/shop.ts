@@ -55,7 +55,6 @@ export function execute(bot: Client, message: Message, command: undefined, db: a
 		.setColor('#9900ff')
 		.setTitle(lang.awesomeStore)
 		.setDescription(`${lang.shop.welcome}\`${prefix}shop [${lang.shop.category}]\`${lang.shop.toSelect}`)
-		.setImage('https://i.imgur.com/Ed2AqAr.gif')
 		.addFields(
 			{ name: 'HUDs', value: '\u200B', inline: true },
 			{ name: 'PetHUDs', value: '\u200B', inline: true },
@@ -657,7 +656,7 @@ export function execute(bot: Client, message: Message, command: undefined, db: a
 			break;
 		default:
 			mainEmbed = new MessageEmbed(mainEmbed)
-				.setImage('https://i.imgur.com/Ed2AqAr.gif');
+				.setImage('https://i.imgur.com/fCIJGQW.gif');
 			message.channel.send({ embeds: [mainEmbed] }).catch(err => { console.error(err); });
 			break;
 	}
