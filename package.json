@@ -4,6 +4,9 @@
   "description": "A melhor duo do Discord!",
   "main": "bot.js",
   "author": "D34dlyK1ss",
+  "engines":{
+    "node":"16.6.2"
+  },
   "dependencies": {
     "@types/eventsource": "^1.1.5",
     "@types/ms": "^0.7.31",
