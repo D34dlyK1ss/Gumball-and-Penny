@@ -1,5 +1,5 @@
 // Biblioteca do Discord.js
-import { Collection, Client, Intents, Message } from 'discord.js';
+import { Collection, Client, Intents, Message, MessageAttachment } from 'discord.js';
 
 export interface serverSettings {
 	automessages: boolean,
@@ -18,7 +18,7 @@ export class botClient extends Client  {
 }
 
 // Cliente
-const bot = new botClient({ allowedMentions: { parse: ['users', 'roles'], repliedUser: true }, intents: [Intents.FLAGS.GUILDS] });
+const bot = new botClient({ allowedMentions: { parse: ['users', 'roles'], repliedUser: true }, intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MEMBERS, Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.GUILD_MESSAGE_REACTIONS] });
 
 // Tokens
 import { config } from 'dotenv';
@@ -29,7 +29,11 @@ import botConfig from './botConfig.json';
 
 // Descrição do bot na plataforma
 function setActivity() {
-	bot.user.setActivity(`${botConfig.settings.prefix}help em ${bot.guilds.cache.size} servidores!`);
+	let plural = '';
+	if (bot.guilds.cache.size != 1) plural = 'es';
+	const botActivity1 = `${botConfig.settings.prefix}help em `,
+		botActivity2 = ` servidor${plural}!`;
+	bot.user.setActivity(`${botActivity1 + bot.guilds.cache.size + botActivity2}`);
 }
 
 // Biblioteca para momentos
@@ -89,7 +93,7 @@ es.onopen = () => {
 es.onmessage = async messageEvent => {
 	const data = JSON.parse(messageEvent.data);
 	const agent = data.event.headers['user-agent'],
-		authorization = data.event.headers.memberization,
+		authorization = data.event.headers.authorization,
 		userID = data.event.body.user,
 		type = data.event.body.type;
 
@@ -124,7 +128,7 @@ const settings: any = new Object(),
 
 // Ações para quando o bot receber uma mensagem
 bot.on('messageCreate', async message => {
-	if (message.channelId === '810529155955032115' && message.content === `${botConfig.settings.prefix}activate`) {
+	if (message.channel.id === '810529155955032115' && message.content === `${botConfig.settings.prefix}activate`) {
 		giveVIP(db, message, undefined);
 	}
 
@@ -139,7 +143,7 @@ bot.on('messageCreate', async message => {
 	}
 
 	// Ignorar mensagens privadas e mensagens de outros bots
-	if (!message.guild || message.channelId === '810529155955032115' || message.author.bot) return;
+	if (!message.guild || message.channel.id === '810529155955032115' || message.author.bot) return;
 
 	// Leitura dos ficheiros de comandos
 	const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.ts'));
@@ -157,7 +161,7 @@ bot.on('messageCreate', async message => {
 		settings[message.guild.id] = doc.get('settings') || botConfig.settings;
 	}
 	const serverSettings = settings[message.guild.id];
-	const prefix = serverSettings.prefix || botConfig.settings.prefix,
+	const prefix = botConfig.settings.prefix,
 		language = message.channel.id === '787661396652589077' || message.channel.id === '787674033331634196' ? 'en' : serverSettings.language;
 	const lang = require(`./lang/${language}.json`);
 
@@ -208,17 +212,17 @@ bot.on('messageCreate', async message => {
 								const reward = newLevel * 500;
 								db.collection('perfis').doc(message.author.id).update({
 									balance: bal + reward,
-								}).then(() => message.channel.send(`🎉 ${lang.levelUp.congrats} **<@${message.author.id}>**, ${lang.levelUp.levelTo} **${newLevel}** ${lang.levelUp.received + reward}! 🆙💰`));
+								}).then(() => message.channel.send(`🎉 ${lang.levelUp.congrats} **${message.author.tag}**, ${lang.levelUp.levelTo} **${newLevel}** ${lang.levelUp.received + reward}! 🆙💰`));
 							}
 							else {
-								message.channel.send(`🎉 ${lang.levelUp.congrats} **<@${message.author.id}>**, ${lang.levelUp.levelTo} **${newLevel}**! 🆙`);
+								message.channel.send(`🎉 ${lang.levelUp.congrats} **${message.author.tag}**, ${lang.levelUp.levelTo} **${newLevel}**! 🆙`);
 							}
 						}
 					});
 				}
 			});
 		}
-
+		
 		try {
 			command.execute(bot, message, command, db, lang, language, prefix, args, serverSettings);
 		}
@@ -232,10 +236,10 @@ bot.on('messageCreate', async message => {
 			gifs = ['distraction dance'];
 
 		if (pngs.includes(message.content)) {
-			message.channel.send({ files: [`./img/automessages/${message.content}.png`] }).catch((err: Error) => { console.error(err); });
+			message.channel.send({ files: [`./img/automessages/${message.content}.png`] }).catch(err => { console.error(err); });
 		}
 		else if (gifs.includes(message.content)) {
-			message.channel.send({ files: [`./img/automessages/${message.content}.gif`] }).catch((err: Error) => { console.error(err); });
+			message.channel.send({ files: [`./img/automessages/${message.content}.gif`] }).catch(err => { console.error(err); });
 		}
 	}
 	else if (message.content === `<@!${bot.user.id}>`) {
@@ -258,4 +262,4 @@ bot.on('guildDelete', async guildData => {
 });
 
 // Autenticação do bot
-bot.login(process.env.TOKEN);
+bot.login(process.env.TOKENDEV);
