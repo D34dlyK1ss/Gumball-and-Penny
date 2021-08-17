@@ -161,8 +161,8 @@ bot.on('messageCreate', async message => {
 		settings[message.guild.id] = doc.get('settings') || botConfig.settings;
 	}
 	const serverSettings = settings[message.guild.id];
-	const prefix = botConfig.settings.prefix,
-		language = message.channel.id === '787661396652589077' || message.channel.id === '787674033331634196' ? 'en' : serverSettings.language;
+	const prefix = serverSettings.prefix;
+	const language = message.channel.id === '787661396652589077' || message.channel.id === '787674033331634196' ? 'en' : serverSettings.language;
 	const lang = require(`./lang/${language}.json`);
 
 	if (message.content.toLowerCase().startsWith(prefix)) {
