@@ -261,7 +261,7 @@ bot.on('interactionCreate', async interaction => {
 	}
 
 	const serverSettings = settings[interaction.guild.id];
-	const prefix = botConfig.settings.prefix,
+	const prefix = serverSettings.prefix,
 		language = interaction.channel.id === '787661396652589077' || interaction.channel.id === '787674033331634196' ? 'en' : serverSettings.language;
 	
 	lang = require(`./lang/${language}.json`);
