@@ -107,12 +107,12 @@ es.onmessage = async messageEvent => {
 
 		const refP = db.collection('perfis').doc(userID);
 
-		refP.get().then((doc: any) => {
+		refP.get().then(doc => {
 			if (!doc.exists) return;
 			const bal = doc.get('balance');
 			let add = 150;
 
-			if (userID === botConfig.botOwner || userID === botConfig.lilly || vips.has(userID)) {
+			if (vips.has(userID)) {
 				add *= 2;
 			}
 			else {
@@ -194,7 +194,7 @@ bot.on('messageCreate', async message => {
 				xpCooldown.delete(message.author.id);
 			}, 60000);
 
-			db.collection('perfis').doc(message.author.id).get().then((doc: any) => {
+			db.collection('perfis').doc(message.author.id).get().then(doc => {
 				if (!doc.exists) {
 					return;
 				}
@@ -204,7 +204,7 @@ bot.on('messageCreate', async message => {
 					let add = Math.floor(Math.random() * 10) + 50,
 						newXP: number;
 
-					if (vips.has(message.author.id) || message.author.id === botConfig.botOwner || message.author.id === botConfig.lilly) add *= 2;
+					if (vips.has(message.author.id)) add *= 2;
 
 					newXP = xp + add;
 

@@ -60,6 +60,14 @@
 	"and": "and",
 	"enabled": "enabled",
 	"disabled": "disabled",
+	"prevPage": "Previous",
+	"nextPage": "Next",
+	"back": "Back",
+	"start": "Start",
+	"games": "Games",
+	"colors": "Colors",
+	"common": "Common",
+	"items": "Items",
 
 
 	"error": {
@@ -258,6 +266,12 @@
 		"descHas": "That description has ",
 		"descChangedTo": "your description was changed to ",
 		"hudChangedTo": "your HUD was changed to "
+	},
+
+	"quiz": {
+		"mainDescription": "These are the available quiz themes.\nUse the buttons below to choose one!",
+		"themeDescription": "Now choose a category!",
+		"toStart": "Press the start button to start the quiz!"
 	},
 
 	"run": {
@@ -522,6 +536,12 @@
 			"usage": "profile [optional - option | @member]"
 		},
 
+		"quiz": {
+			"category": "Fun",
+			"description": "Play several themed quizzes!",
+			"usage": "quiz"
+		},
+
 		"random": {
 			"category": "Fun",
 			"description": "We'll tell a number between 1 and the indicated number. The default is 100",
@@ -560,7 +580,7 @@
 
 		"shop": {
 			"category": "Economy and Profile",
-			"description": "Go shopping on the Awesome Store!\nAvailable options: `buy`, `huds`, `view`",
+			"description": "Go shopping in the Awesome Store!\nAvailable options: `buy`, `view`",
 			"usage": "shop"
 		},
 		

@@ -8,7 +8,7 @@ import { createShopPage } from '../src/functions/shopHandler';
 
 export const name = 'shop';
 export const naliases = ['s'];
-export function execute(bot: Client, message: Message, command: undefined, db: any, lang: Record<string, any>, language: undefined, prefix: string, args: string[]) {
+export function execute(bot: undefined, message: Message, command: undefined, db: any, lang: Record<string, any>, language: undefined, prefix: string, args: string[]) {
 	async function sendPreview(hud: string) {
 		const hudCanvas = createCanvas(700, 400),
 			ctx = hudCanvas.getContext('2d');
@@ -52,7 +52,7 @@ export function execute(bot: Client, message: Message, command: undefined, db: a
 		refPet = db.collection('pet').doc(message.author.id),
 		refI = db.collection('inventario').doc(message.author.id);
 
-	let cost: number, hud = '', petHud = '', item = '', pet = '', pageToSend: any;
+	let cost: number, hud = '', petHud = '', item = '', pet = '';
 	let colors = ['black', 'blue', 'brown', 'green', 'grey', 'orange', 'pink', 'purple', 'red', 'yellow'];
 
 	switch (option) {
@@ -284,7 +284,8 @@ export function execute(bot: Client, message: Message, command: undefined, db: a
 			}
 			break;
 		default:
-			pageToSend = createShopPage(message.author, lang, prefix, 'mainEmbed0');
+			const pageToSend: any = createShopPage(message.author, lang, prefix, 'shopmainEmbed0');
+
 			message.channel.send({ embeds: [pageToSend[0]], components: [pageToSend[1]] }).catch(err => { console.error(err); });
 			break;
 	}

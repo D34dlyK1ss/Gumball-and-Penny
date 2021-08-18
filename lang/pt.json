@@ -60,6 +60,14 @@
 	"and": "e",
 	"enabled": "ativadas",
 	"disabled": "desativadas",
+	"prevPage": "Anterior",
+	"nextPage": "Próxima",
+	"back": "Voltar",
+	"start": "Começar",
+	"games": "Jogos",
+	"colors": "Cores",
+	"common": "Comuns",
+	"items": "Itens",
 
 
 	"error": {
@@ -258,6 +266,12 @@
 		"descHas": "Essa descrição tem ",
 		"descChangedTo": "a tua descrição foi alterada para ",
 		"hudChangedTo": "o teu HUD foi alterado para "
+	},
+
+	"quiz": {
+		"mainDescription": "Estes são os temas de quiz disponíveis.\nUsa os botões abaixo para escolher um!",
+		"themeDescription": "Agora escolhe uma categoria!",
+		"toStart": "Carrega no botão de começar pra começar o quiz!"
 	},
 
 	"run": {
@@ -522,6 +536,12 @@
 			"usage": "profile [opcional - opção | @membro]"
 		},
 
+		"quiz": {
+			"category": "Diversão",
+			"description": "Joga quizzes de diversos temas!",
+			"usage": "quiz"
+		},
+
 		"random": {
 			"category": "Diversão",
 			"description": "Diremos um número aleatório entre 1 e o número indicado. O predefinido é 100",
@@ -560,7 +580,7 @@
 
 		"shop": {
 			"category": "Economia e Perfil",
-			"description": "Faz compras na Loja Incrível!\nOpções disponíveis: `buy`, `huds`, `view`",
+			"description": "Faz compras na Loja Incrível!\nOpções disponíveis: `buy`, `view`",
 			"usage": "shop"
 		},
 		

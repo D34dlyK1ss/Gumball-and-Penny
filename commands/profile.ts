@@ -1,6 +1,6 @@
 import { Client, Message, MessageAttachment } from 'discord.js';
 import { registerFont, createCanvas, loadImage } from 'canvas';
-import config from '../botConfig.json';
+import botConfig from '../botConfig.json';
 import items from '../src/data/itemlist.json';
 import titleCase from '../src/functions/titleCase';
 import convert from '../src/functions/convert';
@@ -105,7 +105,7 @@ export function execute(bot: Client, message: Message, command: undefined, db: a
 						if (!newHud || newHud == '') {
 							message.reply(lang.error.noHUDChosen);
 						}
-						else if (!huds.includes(`${newHud}`) && message.author.id !== config.botOwner && message.author.id !== config.lilly) {
+						else if (!huds.includes(`${newHud}`) && message.author.id !== botConfig.botOwner && !botConfig.collaborators.includes(message.author.id)) {
 							message.reply(lang.error.noHaveHUD);
 						}
 						else {

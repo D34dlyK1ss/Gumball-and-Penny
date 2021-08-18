@@ -1,6 +1,6 @@
 import { Client, Message, MessageAttachment } from 'discord.js';
 import { registerFont, createCanvas, loadImage } from 'canvas';
-import config from '../botConfig.json';
+import botConfig from '../botConfig.json';
 import titleCase from '../src/functions/titleCase';
 import items from '../src/data/itemlist.json';
 registerFont('./fonts/comic.ttf', { family: 'Comic Sans MS' });
@@ -87,7 +87,7 @@ export function execute(bot: Client, message: Message, command: undefined, db: a
 						if (!newHud || newHud == '') {
 							message.reply(lang.error.noPetHUDChosen).catch(err => { console.error(err); });
 						}
-						else if (!petHuds.includes(`${newHud}`) && message.author.id !== config.botOwner && message.author.id !== config.lilly) {
+						else if (!petHuds.includes(`${newHud}`) && message.author.id !== botConfig.botOwner && !botConfig.collaborators.includes(message.author.id)) {
 							message.reply(lang.error.noHavePetHUD).catch(err => { console.error(err); });
 						}
 						else {
