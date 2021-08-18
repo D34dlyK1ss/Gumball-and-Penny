@@ -8,7 +8,6 @@ export function execute(bot: botClient, message: Message, command: Cmd, db: unde
 	const helpEmbed = new MessageEmbed()
 		.setColor('#9900ff')
 		.setTitle(lang.help)
-		.setAuthor(`${bot.user.tag}`, `${bot.user.displayAvatarURL()}`)
 		.setThumbnail(`${bot.user.displayAvatarURL()}`)
 		.setDescription(`${lang.botDescription}\`${prefix}help [${lang.commandName}]\``)
 		.addFields(

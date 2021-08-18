@@ -12,15 +12,10 @@ export async function execute(bot: undefined, message: Message, command: undefin
 		joined = joinedDate.from(Date.now());
 	let roles = `<@&${(member as any)._roles.join('>, <@&')}>`;
 
-	switch (roles) {
-		case '<@>':
-			roles = 'none';
-			break;
-	}
+	if (roles === '<@>') roles = 'None';
 
 	const embed = new MessageEmbed()
 		.setColor('#9900ff')
-		.setAuthor(`${user.tag}`, `${user.displayAvatarURL()}`)
 		.setThumbnail(`${user.displayAvatarURL()}`)
 		.addFields(
 			{ name: `${lang.id}`, value: `${user.id}` },

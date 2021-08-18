@@ -8,7 +8,6 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 		const createdDate = moment(server.createdAt).locale(`${language}`);
 		const embed = new MessageEmbed()
 			.setColor('#9900ff')
-			.setAuthor(`${server.name}`, `${server.iconURL()}`)
 			.setThumbnail(`${server.iconURL()}`)
 			.addFields(
 				{ name: `${lang.id}`, value: `${server.id}` },

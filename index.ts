@@ -1,5 +1,5 @@
 // Biblioteca do Discord.js
-import { Collection, Client, Intents, Message, MessageAttachment } from 'discord.js';
+import { Collection, Client, Intents, Message, MessageAttachment, ButtonInteraction } from 'discord.js';
 
 export interface serverSettings {
 	automessages: boolean,
@@ -126,6 +126,8 @@ es.onmessage = async messageEvent => {
 const settings: any = new Object(),
 	xpCooldown: Set<string> = new Set();
 
+let lang: Record<string, any>;
+
 // Ações para quando o bot receber uma mensagem
 bot.on('messageCreate', async message => {
 	if (message.channel.id === '810529155955032115' && message.content === `${botConfig.settings.prefix}activate`) {
@@ -161,9 +163,10 @@ bot.on('messageCreate', async message => {
 		settings[message.guild.id] = doc.get('settings') || botConfig.settings;
 	}
 	const serverSettings = settings[message.guild.id];
-	const prefix = serverSettings.prefix;
-	const language = message.channel.id === '787661396652589077' || message.channel.id === '787674033331634196' ? 'en' : serverSettings.language;
-	const lang = require(`./lang/${language}.json`);
+	const prefix = serverSettings.prefix,
+		language = message.channel.id === '787661396652589077' || message.channel.id === '787674033331634196' ? 'en' : serverSettings.language;
+	
+	lang = require(`./lang/${language}.json`);
 
 	if (message.content.toLowerCase().startsWith(prefix)) {
 		const array = message.content.split(' '),
@@ -245,6 +248,25 @@ bot.on('messageCreate', async message => {
 	else if (message.content === `<@!${bot.user.id}>`) {
 		message.channel.send(`${lang.prefixMsg} \`${prefix}\``);
 	}
+});
+
+import { shopButtonHandler } from './src/functions/shopHandler';
+
+bot.on('interactionCreate', async interaction => {
+	const ref = db.collection('definicoes').doc(interaction.guild.id);
+
+	if (!settings[interaction.guild.id]) {
+		const doc = await ref.get();
+		settings[interaction.guild.id] = doc.get('settings') || botConfig.settings;
+	}
+
+	const serverSettings = settings[interaction.guild.id];
+	const prefix = botConfig.settings.prefix,
+		language = interaction.channel.id === '787661396652589077' || interaction.channel.id === '787674033331634196' ? 'en' : serverSettings.language;
+	
+	lang = require(`./lang/${language}.json`);
+
+	if (interaction.isButton()) shopButtonHandler(interaction, prefix, lang);
 });
 
 // Quando o bot for adicionado a um novo servidor, são armazenados dados do mesmo

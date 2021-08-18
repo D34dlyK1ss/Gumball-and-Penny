@@ -61,6 +61,7 @@
 	"enabled": "ativadas",
 	"disabled": "desativadas",
 
+
 	"error": {
 		"cmd": "ocorreu um erro ao tentar executar esse comando!",
 		"noProfile": "ainda não criaste um perfil! Para criares um perfil usa ",
@@ -110,7 +111,13 @@
 		"sameLanguage": "essa linguagem é igual à que falamos!",
 		"noDuration": "não indicaste a duração!"
 	},
-	
+
+
+	"interaction": {
+		"notAuthor": "Isto não é para ti!",
+		"buttonExpired": "Este botão expirou!"
+	},
+
 	"levelUp": {
 		"congrats": "Parabéns",
 		"levelTo": "subiste para o nível",
@@ -221,7 +228,6 @@
 		"seconds": " segundos!"
 	},
 
-
 	"pat": {
 		"pattedSelf": " acariciou-se?",
 		"pattedUs": " acariciou-nos!",
@@ -299,9 +305,7 @@
 	},
 
 	"shop": {
-		"welcome": "Bem vindo à Loja Incrível!\nAqui poderás comprar algumas coisas com o dinheiro que acumulaste até agora.\nUsa ",
-		"category": "categoria",
-		"toSelect": " para selecionar uma categoria.",
+		"welcome": "Bem vindo à Loja Incrível!\nAqui poderás comprar algumas coisas com o dinheiro que acumulaste até agora.\nUsa os botões abaixo para navegar pela loja!",
 		"boughtHUD": "compraste o HUD ",
 		"boughtPetHUD": "compraste o Pet HUD ",
 		"boughtItem": "compraste 1 ",
@@ -314,8 +318,6 @@
 		"toSelectASubCat": " para selecionar uma sub-categoria.",
 		"animalName": "Nome do Animal",
 		"toBuy": " para comprar.",
-		"page": "página",
-		"subCategory": "sub-categoria",
 		"itemName": "Nome do Item"
 	},
 
@@ -338,10 +340,6 @@
 		},
 
 		"joined": "Entrou "
-	},
-
-	"vote": {
-		"vote": "Vota pelo bot a cada 12h para receberes ¤150!"
 	},
 
 	"which": {
@@ -602,6 +600,7 @@
 			"usage": "which [anime]"
 		}
 	},
+
 
 	"pets": {
 		"species": {

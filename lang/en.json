@@ -61,6 +61,7 @@
 	"enabled": "enabled",
 	"disabled": "disabled",
 
+
 	"error": {
 		"cmd": "there was an error when trying to execute that command!",
 		"noProfile": "you haven't created a profile yet! To create a profile use ",
@@ -110,7 +111,13 @@
 		"sameLanguage": "that's the same language we're speaking!",
 		"noDuration": "you didn't indicate the duration!"
 	},
-	
+
+
+	"interaction": {
+		"notAuthor": "This isn't for you!",
+		"buttonExpired": "This button expired!"
+	},
+
 	"levelUp": {
 		"congrats": "Congratulations",
 		"levelTo": "you leveled up to level",
@@ -298,9 +305,7 @@
 	},
 
 	"shop": {
-		"welcome": "Welcome to the Awesome Store!\nHere you can buy some stuff with the money you have saved so far.\nUse ",
-		"category": "category",
-		"toSelect": " to select a category.",
+		"welcome": "Welcome to the Awesome Store!\nHere you can buy some stuff with the money you have saved so far.\nUse the buttons below to navigate through the store!",
 		"boughtHUD": "you bought the HUD ",
 		"boughtPetHUD": "you bought the Pet HUD ",
 		"boughtItem": "you bought 1 ",
@@ -313,8 +318,6 @@
 		"toSelectASubCat": " to select a sub-category.",
 		"animalName": "Animal Name",
 		"toBuy": " to buy.",
-		"page": "page",
-		"subCategory": "sub-category",
 		"itemName": "Item Name"
 	},
 
@@ -597,6 +600,7 @@
 			"usage": "which [anime]"
 		}
 	},
+
 
 	"pets": {
 		"species": {
