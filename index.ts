@@ -1,26 +1,29 @@
 // Biblioteca do Discord.js
-import { Collection, Client, Intents, Message, MessageAttachment, ButtonInteraction } from 'discord.js';
+import { Collection, Client, Intents, Guild, Message, TextBasedChannels } from 'discord.js';
 
+// Interface para as definções do servidor
 export interface serverSettings {
 	automessages: boolean,
 	language: string,
 	prefix: string
 }
 
+// Interface para a execução de comandos
 export interface Cmd {
 	name: string;
 	aliases?: string[];
 	execute(bot: Client, message: Message, command: Cmd, db: any, lang: Record<string, string>, language: string, prefix: string, args: string[], serverSettings: serverSettings): void;
 }
 
+// Extenção do tipo Client da biblioteca discord.js
 export class botClient extends Client  {
 	commands: Collection<string, Cmd> = new Collection<string, Cmd>();
 }
 
-// Cliente
+// Cliente do bot
 const bot = new botClient({ allowedMentions: { parse: ['users', 'roles'], repliedUser: true }, intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES] });
 
-// Tokens
+// Tokens de autenticação
 import { config } from 'dotenv';
 config();
 
@@ -60,8 +63,10 @@ admin.initializeApp({
 
 const db = admin.firestore();
 
+// Funções úteis
 import removeVIP from './src/functions/removeVIP';
 import giveVIP from './src/functions/giveVIP';
+import { shopButtonHandler } from './src/functions/shopHandler';
 
 const vips: Set<string> = new Set();
 
@@ -128,6 +133,18 @@ const settings: any = new Object(),
 
 let lang: Record<string, any>;
 
+async function getServerSettings(guild: Guild, channel: TextBasedChannels) {
+	const ref = db.collection('definicoes').doc(guild.id);
+	if (!settings[guild.id]) {
+		const doc = await ref.get();
+		settings[guild.id] = doc.get('settings') || botConfig.settings;
+	}
+	const serverSettings:  serverSettings = settings[guild.id];
+	serverSettings.language = channel.id === '787661396652589077' || channel.id === '787674033331634196' ? 'en' : serverSettings.language;
+
+	return serverSettings;
+}
+
 // Ações para quando o bot receber uma mensagem
 bot.on('messageCreate', async message => {
 	if (message.channel.id === '810529155955032115' && message.content === `${botConfig.settings.prefix}activate`) {
@@ -155,17 +172,10 @@ bot.on('messageCreate', async message => {
 		bot.commands.set(props.name, props);
 	}
 
-	const ref = db.collection('definicoes').doc(message.guild.id);
-
 	//  Obter as definições do bot para o servidor
-	if (!settings[message.guild.id]) {
-		const doc = await ref.get();
-		settings[message.guild.id] = doc.get('settings') || botConfig.settings;
-	}
-	const serverSettings = settings[message.guild.id];
+	const serverSettings = await getServerSettings(message.guild, message.channel);
 	const prefix = serverSettings.prefix,
-		language = message.channel.id === '787661396652589077' || message.channel.id === '787674033331634196' ? 'en' : serverSettings.language;
-	
+		language = serverSettings.language;
 	lang = require(`./lang/${language}.json`);
 
 	if (message.content.toLowerCase().startsWith(prefix)) {
@@ -250,20 +260,10 @@ bot.on('messageCreate', async message => {
 	}
 });
 
-import { shopButtonHandler } from './src/functions/shopHandler';
-
 bot.on('interactionCreate', async interaction => {
-	const ref = db.collection('definicoes').doc(interaction.guild.id);
-
-	if (!settings[interaction.guild.id]) {
-		const doc = await ref.get();
-		settings[interaction.guild.id] = doc.get('settings') || botConfig.settings;
-	}
-
-	const serverSettings = settings[interaction.guild.id];
+	const serverSettings = await getServerSettings(interaction.guild, interaction.channel);
 	const prefix = serverSettings.prefix,
-		language = interaction.channel.id === '787661396652589077' || interaction.channel.id === '787674033331634196' ? 'en' : serverSettings.language;
-	
+		language = serverSettings.language;
 	lang = require(`./lang/${language}.json`);
 
 	if (interaction.isButton()) shopButtonHandler(interaction, prefix, lang);
