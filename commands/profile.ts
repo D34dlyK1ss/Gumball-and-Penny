@@ -34,7 +34,7 @@ export function execute(bot: BotClient, message: Message, command: undefined, db
 						level: 0,
 						name: user.tag,
 						nickname: 'N/A',
-						xp: 0,
+						xp: 0
 					});
 					refI.set({
 						huds: ['grey'],
@@ -56,13 +56,13 @@ export function execute(bot: BotClient, message: Message, command: undefined, db
 					}
 				}
 				else if (argsString.length > nicknameMax) {
-					message.reply(`${lang.profile.nicknameMaxIs + nicknameMax}!\n${lang.profile.nicknameHas + argsString.length}.`);
+					message.reply(`${lang.profile.nicknameMaxIs}${nicknameMax}!\n${lang.profile.nicknameHas}${argsString.length}.`);
 				}
 				else {
 					const newNickname = titleCase(argsString);
 
 					db.collection('perfis').doc(message.author.id).update({
-						nickname: newNickname,
+						nickname: newNickname
 					}).then(() => {
 						message.reply(`${lang.profile.nicknameChangedTo}**${newNickname}**!`);
 					}).catch((err: Error) => { console.error(err); });
@@ -78,11 +78,11 @@ export function execute(bot: BotClient, message: Message, command: undefined, db
 					}
 				}
 				else if (argsString.length > descMax) {
-					message.reply(`${lang.profile.descMaxIs + descMax}!\n${lang.profile.descHas + argsString.length}.`);
+					message.reply(`${lang.profile.descMaxIs}${descMax}!\n${lang.profile.descHas}${argsString.length}.`);
 				}
 				else {
 					db.collection('perfis').doc(message.author.id).update({
-						description: argsString,
+						description: argsString
 					}).then(() => {
 						message.reply(`${lang.profile.descChangedTo}_**${argsString}**_`);
 					}).catch((err: Error) => { console.error(err); });
@@ -111,7 +111,7 @@ export function execute(bot: BotClient, message: Message, command: undefined, db
 						}
 						else {
 							db.collection('perfis').doc(message.author.id).update({
-								hud: newHud,
+								hud: newHud
 							}).then(() => {
 								message.reply(`${lang.profile.hudChangedTo}**${titleCase(argsString)}**`);
 							}).catch((err: Error) => { console.error(err); });

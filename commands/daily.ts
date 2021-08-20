@@ -16,10 +16,10 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 			message.reply(`${lang.error.noProfile}\`${prefix}profile create\`!`).catch(err => { console.error(err); });
 		}
 		else if (today < nextDaily) {
-			message.reply(`${lang.daily.againIn + ms(nextDaily - today)}.`).catch(err => { console.error(err); });
+			message.reply(`${lang.daily.againIn}${ms(nextDaily - today)}.`).catch(err => { console.error(err); });
 		}
 		else {
-			const bal = doc.get('balance');
+			const bal: number = doc.get('balance');
 
 			if ((bal + daily) > 1000000) {
 				message.reply(lang.error.noAdd).catch(err => { console.error(err); });
@@ -27,7 +27,7 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 			else {
 				ref.update({
 					balance: (bal + daily),
-					lastDaily: today,
+					lastDaily: today
 				}).then(() => {
 					message.reply(`${lang.daily.received}**¤${daily}**${lang.daily.toGetMore}\`${prefix}vote\``).catch(err => { console.error(err); });
 				}).catch((err: any) => { console.error(err); });

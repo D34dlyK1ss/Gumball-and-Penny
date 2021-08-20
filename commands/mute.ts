@@ -1,4 +1,4 @@
-import { Message, MessageEmbed, GuildChannel, ThreadChannel } from 'discord.js';
+import { Message, MessageEmbed, GuildChannel } from 'discord.js';
 
 export const name = 'mute';
 export async function execute(bot: undefined, message: Message, command: undefined, db: undefined, lang: Record<string, string | any>, language: undefined, prefix: undefined, args: string[]) {
@@ -34,7 +34,7 @@ export async function execute(bot: undefined, message: Message, command: undefin
 			if (!muteRole) {
 				message.guild.roles.create({
 					name: 'Muted',
-					color: '#404040',
+					color: '#404040'
 				});
 
 				muteRole = message.guild.roles.cache.find(role => role.name === 'Muted');
@@ -44,7 +44,7 @@ export async function execute(bot: undefined, message: Message, command: undefin
 						SEND_MESSAGES: false,
 						ADD_REACTIONS: false,
 						CONNECT: false,
-						CHANGE_NICKNAME: false,
+						CHANGE_NICKNAME: false
 					});
 				});
 			}
@@ -54,11 +54,11 @@ export async function execute(bot: undefined, message: Message, command: undefin
 			memberToMute.roles.add(muteRole).then(() => {
 				const embed = new MessageEmbed()
 					.setColor('#9900ff')
-					.setTitle(`${memberToMute.user.tag}${lang.mute.isMutedFor + seconds + lang.mute.seconds} 🔇`)
+					.setTitle(`${memberToMute.user.tag}${lang.mute.isMutedFor}${seconds}${lang.mute.seconds} 🔇`)
 					.setThumbnail(`${memberToMute.user.displayAvatarURL()}`)
 					.setDescription(`${lang.by}${message.member.user.tag}`)
 					.addFields(
-						{ name: `${lang.reason}`, value: `${reason}` },
+						{ name: `${lang.reason}`, value: `${reason}` }
 					);
 
 				message.channel.send({ embeds: [embed] }).then(() => {

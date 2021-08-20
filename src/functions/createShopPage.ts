@@ -6,16 +6,16 @@ function createShopPage(author: User, lang:Record<string, any>, prefix: string, 
 	let buttonRow: MessageActionRow;
 	let buttonRow2: MessageActionRow;
 	const mainEmbed = new MessageEmbed()
-			.setColor('#9900ff')
-			.setTitle(lang.awesomeStore)
-			.setDescription(lang.shop.welcome)
-			.setFooter(`Used by ${author.username}`)
-			.addFields(
-				{ name: 'HUDs', value: '\u200B', inline: true },
-				{ name: 'PetHUDs', value: '\u200B', inline: true },
-				{ name: 'Pets', value: '\u200B', inline: true },
-				{ name: 'Items', value: '\u200B', inline: true },
-			);
+		.setColor('#9900ff')
+		.setTitle(lang.awesomeStore)
+		.setDescription(lang.shop.welcome)
+		.setFooter(`Used by ${author.username}`)
+		.addFields(
+			{ name: 'HUDs', value: '\u200B', inline: true },
+			{ name: 'PetHUDs', value: '\u200B', inline: true },
+			{ name: 'Pets', value: '\u200B', inline: true },
+			{ name: 'Items', value: '\u200B', inline: true }
+		);
 
 	switch (embedName) {
 		case 'mainEmbed0':
@@ -39,7 +39,7 @@ function createShopPage(author: User, lang:Record<string, any>, prefix: string, 
 					new MessageButton()
 						.setCustomId('itemsEmbed0')
 						.setLabel('Items')
-						.setStyle('PRIMARY'),
+						.setStyle('PRIMARY')
 				);
 			break;
 		case 'hudEmbed0':
@@ -53,7 +53,7 @@ function createShopPage(author: User, lang:Record<string, any>, prefix: string, 
 					{ name: 'Cartoons', value: '\u200B', inline: true },
 					{ name: 'Marvel', value: '\u200B', inline: true },
 					{ name: 'DC', value: '\u200B', inline: true },
-					{ name: 'Vocaloids', value: '\u200B', inline: true },
+					{ name: 'Vocaloids', value: '\u200B', inline: true }
 				]);
 
 			buttonRow = new MessageActionRow()
@@ -80,17 +80,18 @@ function createShopPage(author: User, lang:Record<string, any>, prefix: string, 
 						.setStyle('PRIMARY')
 				);
 
+			// eslint-disable-next-line prefer-const
 			buttonRow2 = new MessageActionRow()
 				.addComponents(
-				new MessageButton()
-					.setCustomId('hudDCEmbed0')
-					.setLabel('DC')
-					.setStyle('PRIMARY'),
-				new MessageButton()
-					.setCustomId('hudVocaloidsEmbed0')
-					.setLabel('Vocaloids')
-					.setStyle('PRIMARY'),
-				new MessageButton()
+					new MessageButton()
+						.setCustomId('hudDCEmbed0')
+						.setLabel('DC')
+						.setStyle('PRIMARY'),
+					new MessageButton()
+						.setCustomId('hudVocaloidsEmbed0')
+						.setLabel('Vocaloids')
+						.setStyle('PRIMARY'),
+					new MessageButton()
 						.setCustomId('mainEmbed0')
 						.setLabel('Back')
 						.setStyle('DANGER')
@@ -111,7 +112,7 @@ function createShopPage(author: User, lang:Record<string, any>, prefix: string, 
 					{ name: 'Pink', value: `¤${items.huds.colorPrice}`, inline: true },
 					{ name: 'Purple', value: `¤${items.huds.colorPrice}`, inline: true },
 					{ name: 'Red', value: `¤${items.huds.colorPrice}`, inline: true },
-					{ name: 'Yellow', value: `¤${items.huds.colorPrice}`, inline: true },
+					{ name: 'Yellow', value: `¤${items.huds.colorPrice}`, inline: true }
 				]);
 
 			buttonRow = new MessageActionRow()
@@ -136,7 +137,7 @@ function createShopPage(author: User, lang:Record<string, any>, prefix: string, 
 					{ name: 'Eclipse Leona', value: `League of Legends\n¤${items.huds.price}`, inline: true },
 					{ name: 'Flappy Bird', value: `¤${items.huds.price}`, inline: true },
 					{ name: 'Funtime Foxy', value: `Five Nights at Freddy's\n¤${items.huds.price}`, inline: true },
-					{ name: 'Glitchtrap', value: `Five Nights at Freddy's\n¤${items.huds.price}`, inline: true },
+					{ name: 'Glitchtrap', value: `Five Nights at Freddy's\n¤${items.huds.price}`, inline: true }
 				]);
 
 			buttonRow = new MessageActionRow()
@@ -170,24 +171,24 @@ function createShopPage(author: User, lang:Record<string, any>, prefix: string, 
 					{ name: 'Kirby B', value: `Nintendo\n¤${items.huds.price}`, inline: true },
 					{ name: 'Murder Monkeys', value: `Dark Deception\n¤${items.huds.price}`, inline: true },
 					{ name: 'Nathan Drake', value: `Uncharted\n¤${items.huds.price}`, inline: true },
-					{ name: 'Nightmare Chica', value: `Five Nights at Freddy's\n¤${items.huds.price}`, inline: true },
+					{ name: 'Nightmare Chica', value: `Five Nights at Freddy's\n¤${items.huds.price}`, inline: true }
 				]);
 
-				buttonRow = new MessageActionRow()
-					.addComponents(
-						new MessageButton()
-							.setCustomId('hudGamesEmbed0')
-							.setLabel('Prev. Page')
-							.setStyle('SECONDARY'),
-						new MessageButton()
-							.setCustomId('hudGamesEmbed2')
-							.setLabel('Next Page')
-							.setStyle('SECONDARY'),
-						new MessageButton()
-							.setCustomId('hudEmbed0')
-							.setLabel('Back')
-							.setStyle('DANGER')
-					);
+			buttonRow = new MessageActionRow()
+				.addComponents(
+					new MessageButton()
+						.setCustomId('hudGamesEmbed0')
+						.setLabel('Prev. Page')
+						.setStyle('SECONDARY'),
+					new MessageButton()
+						.setCustomId('hudGamesEmbed2')
+						.setLabel('Next Page')
+						.setStyle('SECONDARY'),
+					new MessageButton()
+						.setCustomId('hudEmbed0')
+						.setLabel('Back')
+						.setStyle('DANGER')
+				);
 			break;
 		case 'hudGamesEmbed2':
 			embedToExport = new MessageEmbed(mainEmbed)
@@ -203,7 +204,7 @@ function createShopPage(author: User, lang:Record<string, any>, prefix: string, 
 					{ name: 'Scorpion A', value: `Mortal Kombat\n¤${items.huds.price}`, inline: true },
 					{ name: 'Scorpion B', value: `Mortal Kombat\n¤${items.huds.price}`, inline: true },
 					{ name: 'Six', value: `Little Nightmares\n¤${items.huds.price}`, inline: true },
-					{ name: 'Springtrap', value: `Five Nights at Freddy's\n¤${items.huds.price}`, inline: true },
+					{ name: 'Springtrap', value: `Five Nights at Freddy's\n¤${items.huds.price}`, inline: true }
 				]);
 
 			buttonRow = new MessageActionRow()
@@ -235,7 +236,7 @@ function createShopPage(author: User, lang:Record<string, any>, prefix: string, 
 					{ name: 'Willow', value: `Don't Starve\n¤${items.huds.price}`, inline: true },
 					{ name: 'Wormwood', value: `Don't Starve\n¤${items.huds.price}`, inline: true },
 					{ name: 'Yasuo', value: `League of Legends\n¤${items.huds.price}`, inline: true },
-					{ name: 'Yone', value: `League of Legends\n¤${items.huds.price}`, inline: true },
+					{ name: 'Yone', value: `League of Legends\n¤${items.huds.price}`, inline: true }
 				]);
 			buttonRow = new MessageActionRow()
 				.addComponents(
@@ -252,7 +253,7 @@ function createShopPage(author: User, lang:Record<string, any>, prefix: string, 
 						.setCustomId('hudEmbed0')
 						.setLabel('Back')
 						.setStyle('DANGER')
-					);
+				);
 			break;
 		case 'hudAnimeEmbed0':
 			embedToExport = new MessageEmbed(mainEmbed)
@@ -268,7 +269,7 @@ function createShopPage(author: User, lang:Record<string, any>, prefix: string, 
 					{ name: 'Kaneki B', value: `Tokyo Ghoul\n¤${items.huds.price}`, inline: true },
 					{ name: 'L', value: `Death Note\n¤${items.huds.price}`, inline: true },
 					{ name: 'Lelouch A', value: `Code Geass\n¤${items.huds.price}`, inline: true },
-					{ name: 'Lelouch B', value: `Code Geass\n¤${items.huds.price}`, inline: true },
+					{ name: 'Lelouch B', value: `Code Geass\n¤${items.huds.price}`, inline: true }
 				]);
 			buttonRow = new MessageActionRow()
 				.addComponents(
@@ -301,7 +302,7 @@ function createShopPage(author: User, lang:Record<string, any>, prefix: string, 
 					{ name: 'Yukiteru Yuno', value: `Mirai Nikki\n¤${items.huds.price}`, inline: true },
 					{ name: 'Yuno', value: `Mirai Nikki\n¤${items.huds.price}`, inline: true },
 					{ name: 'Zero Two A', value: `Darling in the FranXX\n¤${items.huds.price}`, inline: true },
-					{ name: 'Zero Two B', value: `Darling in the FranXX\n¤${items.huds.price}`, inline: true },
+					{ name: 'Zero Two B', value: `Darling in the FranXX\n¤${items.huds.price}`, inline: true }
 				]);
 			buttonRow = new MessageActionRow()
 				.addComponents(
@@ -333,7 +334,7 @@ function createShopPage(author: User, lang:Record<string, any>, prefix: string, 
 					{ name: 'Kenny McCormick', value: `South Park\n¤${items.huds.price}`, inline: true },
 					{ name: 'Professor Chaos', value: `South Park\n¤${items.huds.price}`, inline: true },
 					{ name: 'Stan Marsh', value: `South Park\n¤${items.huds.price}`, inline: true },
-					{ name: 'We Bare Bears', value: `¤${items.huds.price}`, inline: true },
+					{ name: 'We Bare Bears', value: `¤${items.huds.price}`, inline: true }
 				]);
 
 			buttonRow = new MessageActionRow()
@@ -356,7 +357,7 @@ function createShopPage(author: User, lang:Record<string, any>, prefix: string, 
 					{ name: 'Iron Man', value: `${lang.shop.hero}\n¤${items.huds.price}`, inline: true },
 					{ name: 'Onslaught', value: `${lang.shop.villain}\n¤${items.huds.price}`, inline: true },
 					{ name: 'Spider-Man', value: `${lang.shop.hero}\n¤${items.huds.price}`, inline: true },
-					{ name: 'Thanos', value: `${lang.shop.villain}\n¤${items.huds.price}`, inline: true },
+					{ name: 'Thanos', value: `${lang.shop.villain}\n¤${items.huds.price}`, inline: true }
 				]);
 
 			buttonRow = new MessageActionRow()
@@ -375,7 +376,7 @@ function createShopPage(author: User, lang:Record<string, any>, prefix: string, 
 				.spliceFields(0, mainEmbed.fields.length, [
 					{ name: 'Batman', value: `${lang.shop.hero}\n¤${items.huds.price}`, inline: true },
 					{ name: 'Joker', value: `${lang.shop.villain}\n¤${items.huds.price}`, inline: true },
-					{ name: 'Superman', value: `${lang.shop.hero}\n¤${items.huds.price}`, inline: true },
+					{ name: 'Superman', value: `${lang.shop.hero}\n¤${items.huds.price}`, inline: true }
 				]);
 
 			buttonRow = new MessageActionRow()
@@ -393,7 +394,7 @@ function createShopPage(author: User, lang:Record<string, any>, prefix: string, 
 				.setFooter(`${lang.page} 1/1`)
 				.spliceFields(0, mainEmbed.fields.length, [
 					{ name: 'Miku Hatsune', value: `¤${items.huds.price}`, inline: true },
-					{ name: 'Rin Kagamine', value: `¤${items.huds.price}`, inline: true },
+					{ name: 'Rin Kagamine', value: `¤${items.huds.price}`, inline: true }
 				]);
 
 			buttonRow = new MessageActionRow()
@@ -411,24 +412,24 @@ function createShopPage(author: User, lang:Record<string, any>, prefix: string, 
 				.setFooter(`${lang.page} 1/1`)
 				.spliceFields(0, mainEmbed.fields.length, [
 					{ name: 'Colors', value: '\u200B', inline: true },
-					{ name: 'VIP', value: '\u200B', inline: true },
+					{ name: 'VIP', value: '\u200B', inline: true }
 				]);
 
 			buttonRow = new MessageActionRow()
-			.addComponents(
-				new MessageButton()
-					.setCustomId('petHudColorsEmbed0')
-					.setLabel('Colors')
-					.setStyle('PRIMARY'),
-				new MessageButton()
-					.setCustomId('petHudVIPEmbed0')
-					.setLabel('VIP')
-					.setStyle('PRIMARY'),
-				new MessageButton()
-					.setCustomId('mainEmbed0')
-					.setLabel('Back')
-					.setStyle('DANGER')
-			);
+				.addComponents(
+					new MessageButton()
+						.setCustomId('petHudColorsEmbed0')
+						.setLabel('Colors')
+						.setStyle('PRIMARY'),
+					new MessageButton()
+						.setCustomId('petHudVIPEmbed0')
+						.setLabel('VIP')
+						.setStyle('PRIMARY'),
+					new MessageButton()
+						.setCustomId('mainEmbed0')
+						.setLabel('Back')
+						.setStyle('DANGER')
+				);
 			break;
 		case 'petHudColorsEmbed0':
 			embedToExport = new MessageEmbed(mainEmbed)
@@ -444,7 +445,7 @@ function createShopPage(author: User, lang:Record<string, any>, prefix: string, 
 					{ name: 'Pink', value: `¤${items.petHuds.price}`, inline: true },
 					{ name: 'Purple', value: `¤${items.petHuds.price}`, inline: true },
 					{ name: 'Red', value: `¤${items.petHuds.price}`, inline: true },
-					{ name: 'Yellow', value: `¤${items.petHuds.price}`, inline: true },
+					{ name: 'Yellow', value: `¤${items.petHuds.price}`, inline: true }
 				]);
 
 			buttonRow = new MessageActionRow()
@@ -469,7 +470,7 @@ function createShopPage(author: User, lang:Record<string, any>, prefix: string, 
 					{ name: 'Geometry A', value: `¤${items.petHuds.vipPrice}`, inline: true },
 					{ name: 'Geometry B', value: `¤${items.petHuds.vipPrice}`, inline: true },
 					{ name: 'Geometry C', value: `¤${items.petHuds.vipPrice}`, inline: true },
-					{ name: 'Ghost-Type', value: `Pokémon\n¤${items.petHuds.vipPrice}`, inline: true },
+					{ name: 'Ghost-Type', value: `Pokémon\n¤${items.petHuds.vipPrice}`, inline: true }
 				]);
 
 			buttonRow = new MessageActionRow()
@@ -487,7 +488,7 @@ function createShopPage(author: User, lang:Record<string, any>, prefix: string, 
 						.setCustomId('petHudEmbed0')
 						.setLabel('Back')
 						.setStyle('DANGER')
-					);
+				);
 			break;
 		case 'petHudVIPEmbed1':
 			embedToExport = new MessageEmbed(mainEmbed)
@@ -503,7 +504,7 @@ function createShopPage(author: User, lang:Record<string, any>, prefix: string, 
 					{ name: 'Pink Panther', value: `¤${items.petHuds.vipPrice}`, inline: true },
 					{ name: 'Pink Pokémon', value: `¤${items.petHuds.vipPrice}`, inline: true },
 					{ name: 'Saitama', value: `One Punch Man\n¤${items.petHuds.vipPrice}`, inline: true },
-					{ name: 'Scooby-Doo', value: `¤${items.petHuds.vipPrice}`, inline: true },
+					{ name: 'Scooby-Doo', value: `¤${items.petHuds.vipPrice}`, inline: true }
 				]);
 
 			buttonRow = new MessageActionRow()
@@ -520,7 +521,7 @@ function createShopPage(author: User, lang:Record<string, any>, prefix: string, 
 						.setCustomId('petHudEmbed0')
 						.setLabel('Back')
 						.setStyle('DANGER')
-					);
+				);
 			break;
 		case 'petHudVIPEmbed2':
 			embedToExport = new MessageEmbed(mainEmbed)
@@ -533,7 +534,7 @@ function createShopPage(author: User, lang:Record<string, any>, prefix: string, 
 					{ name: 'Totoro', value: `My Neighbor Totoro\n¤${items.petHuds.vipPrice}`, inline: true },
 					{ name: 'Undertale', value: `¤${items.petHuds.vipPrice}`, inline: true },
 					{ name: 'Unicorns', value: `¤${items.petHuds.vipPrice}`, inline: true },
-					{ name: 'Winter', value: `¤${items.petHuds.vipPrice}`, inline: true },
+					{ name: 'Winter', value: `¤${items.petHuds.vipPrice}`, inline: true }
 				]);
 
 			buttonRow = new MessageActionRow()
@@ -551,7 +552,7 @@ function createShopPage(author: User, lang:Record<string, any>, prefix: string, 
 						.setCustomId('petHudEmbed0')
 						.setLabel('Back')
 						.setStyle('DANGER')
-					);
+				);
 			break;
 		case 'petsEmbed0':
 			embedToExport = new MessageEmbed(mainEmbed)
@@ -560,7 +561,7 @@ function createShopPage(author: User, lang:Record<string, any>, prefix: string, 
 				.setFooter(`${lang.page} 1/1`)
 				.spliceFields(0, mainEmbed.fields.length, [
 					{ name: 'Common', value: '\u200B', inline: true },
-					{ name: 'VIP', value: '\u200B', inline: true },
+					{ name: 'VIP', value: '\u200B', inline: true }
 				]);
 
 			buttonRow = new MessageActionRow()
@@ -594,7 +595,7 @@ function createShopPage(author: User, lang:Record<string, any>, prefix: string, 
 					{ name: 'Goat', value: `¤${items.pets.goat.price}`, inline: true },
 					{ name: 'Hamster', value: `¤${items.pets.hamster.price}`, inline: true },
 					{ name: 'Pony', value: `¤${items.pets.pony.price}`, inline: true },
-					{ name: 'Scorpion', value: `¤${items.pets.scorpion.price}`, inline: true },
+					{ name: 'Scorpion', value: `¤${items.pets.scorpion.price}`, inline: true }
 				]);
 
 			buttonRow = new MessageActionRow()
@@ -614,7 +615,7 @@ function createShopPage(author: User, lang:Record<string, any>, prefix: string, 
 					{ name: 'Akamaru', value: `Naruto\n¤${items.pets.akamaru.price}`, inline: true },
 					{ name: 'Frosch', value: `Fairy Tail\n¤${items.pets.frosch.price}`, inline: true },
 					{ name: 'Happy', value: `Fairy Tail\n¤${items.pets.happy.price}`, inline: true },
-					{ name: 'Iggy', value: `Jojo's Bizarre Adventure\n¤${items.pets.iggy.price}`, inline: true },
+					{ name: 'Iggy', value: `Jojo's Bizarre Adventure\n¤${items.pets.iggy.price}`, inline: true }
 				]);
 
 			buttonRow = new MessageActionRow()
@@ -631,7 +632,7 @@ function createShopPage(author: User, lang:Record<string, any>, prefix: string, 
 				.setDescription(`\`${prefix}shop buy item [${lang.shop.itemName}]\`${lang.shop.toBuy}`)
 				.setFooter(`${lang.page} 1/1`)
 				.spliceFields(0, mainEmbed.fields.length, [
-					{ name: 'Name License', value: `${lang.nameLicense}\n¤${items.items.name_license.price}`, inline: true },
+					{ name: 'Name License', value: `${lang.nameLicense}\n¤${items.items.name_license.price}`, inline: true }
 				]);
 
 			buttonRow = new MessageActionRow()

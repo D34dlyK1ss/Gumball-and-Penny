@@ -14,10 +14,10 @@ export function execute(bot: undefined, message: Message, command: Cmd, db: any,
 			message.reply(`${lang.error.noProfile}\`${prefix}profile create\`!`).catch(err => { console.error(err); });
 		}
 		else if (!Number.isInteger(money) || (args[0].toLowerCase() !== 'gumball' && args[0].toLowerCase() !== 'penny')) {
-			message.channel.send(`${lang.error.wrongSyntax}\`${prefix + lang.command[command.name].usage}\``).catch(err => { console.error(err); });
+			message.channel.send(`${lang.error.wrongSyntax}\`${prefix}${lang.command[command.name].usage}\``).catch(err => { console.error(err); });
 		}
 		else {
-			const bal = doc.get('balance');
+			const bal: number = doc.get('balance');
 			const least = 50;
 			const most = 1000;
 
@@ -28,10 +28,10 @@ export function execute(bot: undefined, message: Message, command: Cmd, db: any,
 				message.reply(lang.error.noMoney).catch(err => { console.error(err); });
 			}
 			else if (money < least) {
-				message.reply(`${lang.betAtLeast + least}!`).catch(err => { console.error(err); });
+				message.reply(`${lang.betAtLeast}${least}!`).catch(err => { console.error(err); });
 			}
 			else if (money > most) {
-				message.reply(`${lang.betAtMost + most}!`).catch(err => { console.error(err); });
+				message.reply(`${lang.betAtMost}${most}!`).catch(err => { console.error(err); });
 			}
 			else {
 				const g = Math.round(Math.random() * 2);
@@ -71,7 +71,7 @@ export function execute(bot: undefined, message: Message, command: Cmd, db: any,
 					else if (finalRes === guess) {
 						const won = money * 2;
 						ref.update({
-							balance: (bal + won),
+							balance: (bal + won)
 						}).then(async () => {
 							await message.channel.send({ embeds: [attachment2] });
 							message.reply(`**Gumball** ${lang.jankenpon.threw} **${resG}** ${lang.and} **Penny** ${lang.jankenpon.threw} **${resP}**, ${lang.won}**${won}**!`);
@@ -79,7 +79,7 @@ export function execute(bot: undefined, message: Message, command: Cmd, db: any,
 					}
 					else {
 						ref.update({
-							balance: (bal - money),
+							balance: (bal - money)
 						}).then(async () => {
 							await message.channel.send({ embeds: [attachment2] });
 							message.reply(`**Gumball** ${lang.jankenpon.threw} **${resG}** ${lang.and} **Penny** ${lang.jankenpon.threw} **${resP}**, ${lang.lost}**${money}**!`);

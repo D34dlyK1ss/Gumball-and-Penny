@@ -24,7 +24,7 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 				const allHuds = `\`${iHuds.join('`, `')}\``;
 				iEmbed = new MessageEmbed(iEmbed)
 					.addFields(
-						{ name: 'HUDs', value: `${allHuds}`, inline: true },
+						{ name: 'HUDs', value: `${allHuds}`, inline: true }
 					);
 
 				if (!docI.exists) {
@@ -37,7 +37,7 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 					const allPetHuds = `\`${iPetHuds.join('`, `')}\``;
 					iEmbed = new MessageEmbed(iEmbed)
 						.addFields(
-							{ name: 'Pet HUDs', value: `${allPetHuds}` },
+							{ name: 'Pet HUDs', value: `${allPetHuds}` }
 						);
 				}
 
@@ -47,7 +47,7 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 					const allItems = `\`${iItems.join('`, `')}\``;
 					iEmbed = new MessageEmbed(iEmbed)
 						.addFields(
-							{ name: 'Items', value: `${allItems}` },
+							{ name: 'Items', value: `${allItems}` }
 						);
 				}
 

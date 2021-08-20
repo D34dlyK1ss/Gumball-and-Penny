@@ -9,7 +9,7 @@ async function giveVIP(db: any, message: Message, args: string[]) {
 	if (args !== undefined) {
 		args.forEach(async id => {
 			db.collection('vip').doc(id).set({
-				until: timestamp,
+				until: timestamp
 			});
 
 			const memberToVIP = await message.guild.members.fetch(id);
@@ -31,7 +31,7 @@ async function giveVIP(db: any, message: Message, args: string[]) {
 			}
 			else {
 				refV.set({
-					until: timestamp,
+					until: timestamp
 				}).then(async () => {
 					const memberToVIP = await message.guild.members.fetch(message.author.id);
 

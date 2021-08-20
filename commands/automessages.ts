@@ -12,14 +12,15 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 		const ref = db.collection('definicoes').doc(message.guild.id);
 
 		ref.get().then(async (doc: any) => {
-			const dbSettings = doc.get('settings') || botConfig.settings;
+			const dbSettings = await doc.get('settings') || botConfig.settings;
 			const onOff = dbSettings.automessages;
 			let toggle = '';
+
 			serverSettings.automessages = !onOff;
 			!onOff === true ? toggle = `${lang.enabled}` : toggle = `${lang.disabled}`;
 
 			ref.set({
-				settings: serverSettings,
+				settings: serverSettings
 			}, { merge: true }).catch((err: Error) => { console.error(err); });
 			message.channel.send(`${lang.automessages.areNow}**${toggle}**`).catch(err => { console.error(err); });
 		});

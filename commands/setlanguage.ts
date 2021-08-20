@@ -20,7 +20,7 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 			ref.get().then((doc: any) => {
 				if (!doc.exists) {
 					ref.set({
-						settings: botConfig.settings,
+						settings: botConfig.settings
 					}, { merge: true }).catch((err: Error) => { console.error(err); });
 				}
 
@@ -32,7 +32,7 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 				else {
 					serverSettings.language = newLanguage;
 					ref.set({
-						settings: { 'language': newLanguage },
+						settings: { 'language': newLanguage }
 					}, { merge: true }).catch((err: Error) => { console.error(err); });
 				}
 				lang = require(`../lang/${newLanguage}.json`);

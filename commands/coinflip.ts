@@ -7,16 +7,16 @@ export function execute(bot: undefined, message: Message, command: Cmd, db: any,
 	const user = message.author;
 	const ref = db.collection('perfis').doc(user.id);
 
-	ref.get().then(async (doc: any) => {
+	ref.get().then((doc: any) => {
 		const money = Math.floor(parseInt(args[1]));
 		if (!doc.exists) {
 			message.reply(`${lang.error.noProfile}\`${prefix}profile create\`!`).catch(err => { console.error(err); });
 		}
 		else if (!Number.isInteger(money) || (args[0] !== lang.coinflip.heads && args[0] !== lang.coinflip.tails)) {
-			message.channel.send(`${lang.error.wrongSyntax}\`${prefix + lang.command[command.name].usage}\``).catch(err => { console.error(err); });
+			message.channel.send(`${lang.error.wrongSyntax}\`${prefix}${lang.command[command.name].usage}\``).catch(err => { console.error(err); });
 		}
 		else {
-			const bal = doc.get('balance');
+			const bal: number = doc.get('balance');
 			const least = 50;
 			const most = 1000;
 
@@ -27,10 +27,10 @@ export function execute(bot: undefined, message: Message, command: Cmd, db: any,
 				message.reply(lang.error.noMoney).catch(err => { console.error(err); });
 			}
 			else if (money < least) {
-				message.reply(`${lang.betAtLeast + least}!`).catch(err => { console.error(err); });
+				message.reply(`${lang.betAtLeast}${least}!`).catch(err => { console.error(err); });
 			}
 			else if (money > most) {
-				message.reply(`${lang.betAtMost + most}!`).catch(err => { console.error(err); });
+				message.reply(`${lang.betAtMost}${most}!`).catch(err => { console.error(err); });
 			}
 			else {
 				const value = Math.round(Math.random());
@@ -44,13 +44,13 @@ export function execute(bot: undefined, message: Message, command: Cmd, db: any,
 
 					if (res !== guess) {
 						ref.update({
-							balance: (bal - money),
-						}).then(() => { message.reply(`${lang.lost + money}!`); }).catch((err: Error) => { console.error(err); });
+							balance: (bal - money)
+						}).then(() => { message.reply(`${lang.lost}${money}!`); }).catch((err: Error) => { console.error(err); });
 					}
 					else if (res === guess) {
 						const won = money * 2;
 						ref.update({
-							balance: (bal + won),
+							balance: (bal + won)
 						}).then(() => { message.reply(`${lang.won}**¤${won}**!`); }).catch((err: Error) => { console.error(err); });
 					}
 				});

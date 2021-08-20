@@ -39,7 +39,7 @@ export function execute(bot: BotClient, message: Message, command: undefined, db
 
 						if (!invItems) {
 							await refI.update({
-								'items': [],
+								'items': []
 							});
 						}
 
@@ -53,16 +53,16 @@ export function execute(bot: BotClient, message: Message, command: undefined, db
 							message.reply(lang.error.petAlreadyHasName).catch(err => { console.error(err); });
 						}
 						else if (argsString.length > max) {
-							message.reply(`${lang.pet.nameMaxIs + max}!\n${lang.pet.nameHas + argsString.length}.`).catch(err => { console.error(err); });
+							message.reply(`${lang.pet.nameMaxIs}${max}!\n${lang.pet.nameHas}${argsString.length}.`).catch(err => { console.error(err); });
 						}
 						else {
 							invItems.splice(invItems.findIndex((item: string) => item === 'name_license'), 1);
 							refI.update({
-								items: invItems,
+								items: invItems
 							});
 
 							db.collection('pet').doc(message.author.id).update({
-								name: newName,
+								name: newName
 							}).then(() => {
 								message.reply(`${lang.pet.nameChangedTo}**${newName}**!`).catch(err => { console.error(err); });
 							}).catch((err: Error) => { console.error(err); });
@@ -93,7 +93,7 @@ export function execute(bot: BotClient, message: Message, command: undefined, db
 						}
 						else {
 							db.collection('pet').doc(message.author.id).update({
-								hud: newHud,
+								hud: newHud
 							}).then(() => {
 								message.reply(`${lang.pet.petHUDChangedTo}**${titleCase(argsString)}**`).catch(err => { console.error(err); });
 							}).catch((err: Error) => { console.error(err); });
@@ -112,7 +112,7 @@ export function execute(bot: BotClient, message: Message, command: undefined, db
 				else {
 					let petName = docP.get('name');
 					const pet = docP.get('pet');
-					db.collection('pet').doc(message.author.id).delete().then(async () => {
+					db.collection('pet').doc(message.author.id).delete().then(() => {
 						refI.get().then((docI: any) => {
 							const iPetHUDs = docI.get('petHuds');
 							if (iPetHUDs.includes(pet)) iPetHUDs.splice(iPetHUDs.findIndex((petHud: string) => petHud === pet), 1);

@@ -1,4 +1,4 @@
-import { Message, MessageAttachment, MessageEmbed, MessageActionRow } from 'discord.js';
+import { Message, MessageAttachment } from 'discord.js';
 import { createCanvas, loadImage } from 'canvas';
 import * as items from '../src/data/itemlist.json';
 import * as natures from '../src/data/natures.json';
@@ -91,11 +91,11 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 										iHuds.push(hudName);
 
 										refP.update({
-											balance: (bal - hudCost),
+											balance: (bal - hudCost)
 										});
 
 										refI.update({
-											huds: iHuds,
+											huds: iHuds
 										}).then(() => {
 											hudName = hudName.toLowerCase().replace(/[_]/g, ' ');
 											message.reply(`${lang.shop.boughtHUD}**${titleCase(hudName)}**! ${lang.shop.toEquip}\`${prefix}profile sethud\``).catch(err => { console.error(err); });
@@ -141,10 +141,10 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 										iPetHUDs.push(petHudName);
 
 										refI.update({
-											petHuds: iPetHUDs,
+											petHuds: iPetHUDs
 										}).then(() => {
 											refP.update({
-												balance: (bal - petHudCost),
+												balance: (bal - petHudCost)
 											});
 
 											petHudName = petHudName.toLowerCase().replace(/[_]/g, ' ');
@@ -182,10 +182,10 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 										iItems.push(itemName);
 
 										refI.update({
-											items: iItems,
+											items: iItems
 										}).then(() => {
 											refP.update({
-												balance: (bal - itemCost),
+												balance: (bal - itemCost)
 											});
 
 											itemName = itemName.toLowerCase().replace(/[_]/g, ' ');
@@ -237,27 +237,27 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 												hud: 'grey',
 												name: petName,
 												nature: (natures as any)[gender][rndN],
-												pet: pet as string,
-												species: titleCase(species),
+												pet: pet ,
+												species: titleCase(species)
 											}).then(() => {
 												refI.get().then((docI: any) => {
 													const iPetHuds = docI.get('petHuds');
 													if (!iPetHuds) {
 														refI.update({
-															'petHuds': ['grey'],
+															'petHuds': ['grey']
 														});
 													}
 
 													if (vip) {
 														iPetHuds.push(pet);
 														refI.update({
-															petHuds: iPetHuds,
+															petHuds: iPetHuds
 														});
 													}
 												});
 
 												refP.update({
-													balance: (bal - petCost),
+													balance: (bal - petCost)
 												});
 
 												petName = species.toLowerCase().replace(/[_]/g, ' ');

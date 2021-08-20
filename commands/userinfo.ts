@@ -20,10 +20,10 @@ export async function execute(bot: undefined, message: Message, command: undefin
 		.addFields(
 			{ name: `${lang.id}`, value: `${user.id}` },
 			{ name: `${lang.mention}`, value: `${user}`, inline: true },
-			{ name: `${lang.joined}`, value: `${lang.userinfo.joined + joined + lang.ago}(${joinedDate.format('LLLL')})` },
-			{ name: `${lang.roles}`, value: `${roles}`, inline: true },
+			{ name: `${lang.joined}`, value: `${lang.userinfo.joined}${joined}${lang.ago}(${joinedDate.format('LLLL')})` },
+			{ name: `${lang.roles}`, value: `${roles}`, inline: true }
 		)
-		.setFooter(`${lang.created + created + lang.ago}(${createdDate.format('LLLL')})`);
+		.setFooter(`${lang.created}${created}${lang.ago}(${createdDate.format('LLLL')})`);
 
 	message.channel.send({ embeds: [embed] }).catch(err => { console.error(err); });
 }

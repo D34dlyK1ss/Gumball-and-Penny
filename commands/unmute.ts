@@ -24,7 +24,7 @@ export async function execute(bot: undefined, message: Message, command: undefin
 			if (!muteRole) {
 				message.guild.roles.create({
 					name: 'Muted',
-					color: '#404040',
+					color: '#404040'
 				});
 
 				muteRole = message.guild.roles.cache.find(role => role.name === 'Muted');
@@ -33,7 +33,7 @@ export async function execute(bot: undefined, message: Message, command: undefin
 						SEND_MESSAGES: false,
 						ADD_REACTIONS: false,
 						CONNECT: false,
-						CHANGE_NICKNAME: false,
+						CHANGE_NICKNAME: false
 					});
 				});
 			}

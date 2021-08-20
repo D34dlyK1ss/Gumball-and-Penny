@@ -29,7 +29,7 @@ export async function execute(bot: undefined, message: Message, command: Cmd, db
 					.setThumbnail(`${member.user.displayAvatarURL()}`)
 					.setDescription(`${lang.by}${message.member.user.tag}`)
 					.addFields(
-						{ name: `${lang.reason}`, value: `${reason}` },
+						{ name: `${lang.reason}`, value: `${reason}` }
 					);
 
 				message.channel.send({ embeds: [embed] }).catch(err => { console.error(err); });

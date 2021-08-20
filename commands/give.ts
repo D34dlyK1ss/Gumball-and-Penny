@@ -14,7 +14,7 @@ export function execute(bot: BotClient, message: Message, command: Cmd, db: any,
 			message.reply(`${lang.error.noProfile}\`${prefix}profile create\`!`).catch(err => { console.error(err); });
 		}
 		else if (user === null || !Number.isInteger(amount)) {
-			message.reply(`${lang.error.wrongSyntax}\`${prefix + lang.command[command.name].usage}\``).catch(err => { console.error(err); });
+			message.reply(`${lang.error.wrongSyntax}\`${prefix}${lang.command[command.name].usage}\``).catch(err => { console.error(err); });
 		}
 		else {
 			const refU = db.collection('perfis').doc(user.id);
@@ -27,14 +27,14 @@ export function execute(bot: BotClient, message: Message, command: Cmd, db: any,
 					message.reply(lang.botsNoProfile).catch(err => { console.error(err); });
 				}
 				else if (!args[1]) {
-					message.reply(`${lang.error.wrongSyntax}\`${prefix + lang.command[command.name].usage}\``).catch(err => { console.error(err); });
+					message.reply(`${lang.error.wrongSyntax}\`${prefix}${lang.command[command.name].usage}\``).catch(err => { console.error(err); });
 				}
 				else if (!docU.exists) {
 					message.reply(`${user.tag}${lang.error.userNoProfile}`).catch(err => { console.error(err); });
 				}
 				else {
-					const balD = docD.get('balance');
-					const balU = docU.get('balance');
+					const balD: number = docD.get('balance');
+					const balU: number = docU.get('balance');
 
 					if (amount > balD) {
 						message.reply(lang.error.noMoney).catch(err => { console.error(err); });
@@ -52,10 +52,10 @@ export function execute(bot: BotClient, message: Message, command: Cmd, db: any,
 						}
 
 						refU.update({
-							balance: newBalU,
+							balance: newBalU
 						}).then(() => {
 							refD.update({
-								balance: balD - amount,
+								balance: balD - amount
 							}).then(() => {
 								message.reply(`${lang.give.youGave}**¤${amount}**${lang.give.to}${user}!`).catch(err => { console.error(err); });
 							});

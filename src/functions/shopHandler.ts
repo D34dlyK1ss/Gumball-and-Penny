@@ -11,13 +11,13 @@ export function createShopPage(user: User, lang:Record<string, any>, prefix: str
 	let buttonRow: MessageActionRow;
 	let buttonRow2: MessageActionRow;
 	const mainEmbed = new MessageEmbed()
-			.setColor('#9900ff')
-			.setAuthor(user.username, user.avatarURL())
-			.setTitle(lang.awesomeStore)
-			.setDescription(lang.shop.welcome)
-			.addFields(
-				{ name: `- HUDs\n- PetHUDs\n- Pets\n- ${lang.items}`, value: '\u200B' }
-			);
+		.setColor('#9900ff')
+		.setAuthor(user.username, user.avatarURL())
+		.setTitle(lang.awesomeStore)
+		.setDescription(lang.shop.welcome)
+		.addFields(
+			{ name: `- HUDs\n- PetHUDs\n- Pets\n- ${lang.items}`, value: '\u200B' }
+		);
 
 	switch (embedName) {
 		case 'shopmainEmbed0':
@@ -76,21 +76,22 @@ export function createShopPage(user: User, lang:Record<string, any>, prefix: str
 						.setStyle('PRIMARY')
 				);
 
+			// eslint-disable-next-line prefer-const
 			buttonRow2 = new MessageActionRow()
 				.addComponents(
-				new MessageButton()
-					.setCustomId('shophudDCEmbed0')
-					.setLabel('DC')
-					.setStyle('PRIMARY'),
-				new MessageButton()
-					.setCustomId('shophudVocaloidsEmbed0')
-					.setLabel('Vocaloids')
-					.setStyle('PRIMARY'),
-				new MessageButton()
-					.setCustomId('shopmainEmbed0')
-					.setLabel(lang.back)
-					.setStyle('DANGER')
-			);
+					new MessageButton()
+						.setCustomId('shophudDCEmbed0')
+						.setLabel('DC')
+						.setStyle('PRIMARY'),
+					new MessageButton()
+						.setCustomId('shophudVocaloidsEmbed0')
+						.setLabel('Vocaloids')
+						.setStyle('PRIMARY'),
+					new MessageButton()
+						.setCustomId('shopmainEmbed0')
+						.setLabel(lang.back)
+						.setStyle('DANGER')
+				);
 
 			break;
 		case 'shophudColorsEmbed0':
@@ -248,7 +249,7 @@ export function createShopPage(user: User, lang:Record<string, any>, prefix: str
 						.setCustomId('shophudEmbed0')
 						.setLabel(lang.back)
 						.setStyle('DANGER')
-					);
+				);
 			break;
 		case 'shophudAnimeEmbed0':
 			embedToExport = new MessageEmbed(mainEmbed)
@@ -410,20 +411,20 @@ export function createShopPage(user: User, lang:Record<string, any>, prefix: str
 				]);
 
 			buttonRow = new MessageActionRow()
-			.addComponents(
-				new MessageButton()
-					.setCustomId('shoppetHudColorsEmbed0')
-					.setLabel(lang.colors)
-					.setStyle('PRIMARY'),
-				new MessageButton()
-					.setCustomId('shoppetHudVIPEmbed0')
-					.setLabel('VIP')
-					.setStyle('PRIMARY'),
-				new MessageButton()
-					.setCustomId('shopmainEmbed0')
-					.setLabel(lang.back)
-					.setStyle('DANGER')
-			);
+				.addComponents(
+					new MessageButton()
+						.setCustomId('shoppetHudColorsEmbed0')
+						.setLabel(lang.colors)
+						.setStyle('PRIMARY'),
+					new MessageButton()
+						.setCustomId('shoppetHudVIPEmbed0')
+						.setLabel('VIP')
+						.setStyle('PRIMARY'),
+					new MessageButton()
+						.setCustomId('shopmainEmbed0')
+						.setLabel(lang.back)
+						.setStyle('DANGER')
+				);
 			break;
 		case 'shoppetHudColorsEmbed0':
 			embedToExport = new MessageEmbed(mainEmbed)
@@ -482,7 +483,7 @@ export function createShopPage(user: User, lang:Record<string, any>, prefix: str
 						.setCustomId('shoppetHudEmbed0')
 						.setLabel(lang.back)
 						.setStyle('DANGER')
-					);
+				);
 			break;
 		case 'shoppetHudVIPEmbed1':
 			embedToExport = new MessageEmbed(mainEmbed)
@@ -515,7 +516,7 @@ export function createShopPage(user: User, lang:Record<string, any>, prefix: str
 						.setCustomId('shoppetHudEmbed0')
 						.setLabel(lang.back)
 						.setStyle('DANGER')
-					);
+				);
 			break;
 		case 'shoppetHudVIPEmbed2':
 			embedToExport = new MessageEmbed(mainEmbed)
@@ -546,7 +547,7 @@ export function createShopPage(user: User, lang:Record<string, any>, prefix: str
 						.setCustomId('shoppetHudEmbed0')
 						.setLabel(lang.back)
 						.setStyle('DANGER')
-					);
+				);
 			break;
 		case 'shoppetsEmbed0':
 			embedToExport = new MessageEmbed(mainEmbed)

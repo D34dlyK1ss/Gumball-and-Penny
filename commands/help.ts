@@ -19,7 +19,7 @@ export function execute(bot: BotClient, message: Message, command: Cmd, db: unde
 			{ name: `🌐 ${lang.server}`, value: '`members`, `serverinfo`, `userinfo`', inline: true },
 			{ name: `🛠️ ${lang.utility}`, value: '`avatar`, `invite`, `ping`, `vip`, `vote`', inline: true },
 			{ name: `⚙️ ${lang.settings}`, value: '`automessages`, `setlanguage`, `setprefix`', inline: true },
-			{ name: `${lang.links}`, value: `**[${lang.inviteUs}](https://discordapp.com/oauth2/authorize?&client_id=679041548955942914&scope=bot&permissions=272100438) - [${lang.supportServer}](https://discord.gg/FaUGnB25hF) - [${lang.buyVIP}](https://www.patreon.com/suicidekiss)**` },
+			{ name: `${lang.links}`, value: `**[${lang.inviteUs}](https://discordapp.com/oauth2/authorize?&client_id=679041548955942914&scope=bot&permissions=272100438) - [${lang.supportServer}](https://discord.gg/FaUGnB25hF) - [${lang.buyVIP}](https://www.patreon.com/suicidekiss)**` }
 		);
 
 	if (!args[0]) {
@@ -39,7 +39,7 @@ export function execute(bot: BotClient, message: Message, command: Cmd, db: unde
 					{ name: `${lang.name}`, value: `${command.name}` },
 					{ name: `${lang.category}`, value: `${lang.command[command.name].category}` },
 					{ name: `${lang.howToUse}`, value: `\`${prefix}${lang.command[command.name].usage}\`` },
-					{ name: `${lang.description}`, value: `${lang.command[command.name].description}` },
+					{ name: `${lang.description}`, value: `${lang.command[command.name].description}` }
 				);
 
 			if (!command.aliases) {
@@ -49,7 +49,7 @@ export function execute(bot: BotClient, message: Message, command: Cmd, db: unde
 				const lastEmbed = commandEmbed;
 				const newEmbed = new MessageEmbed(lastEmbed)
 					.addFields(
-						{ name: `${lang.aliases}`, value: `${command.aliases.join(', ')}` },
+						{ name: `${lang.aliases}`, value: `${command.aliases.join(', ')}` }
 					);
 
 				message.channel.send({ embeds: [newEmbed] }).catch(err => { console.error(err); });

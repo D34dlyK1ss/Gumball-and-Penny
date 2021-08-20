@@ -16,7 +16,7 @@ export interface Cmd {
 }
 
 // Extenção do tipo Client da biblioteca discord.js
-export class BotClient extends Client  {
+export class BotClient extends Client {
 	commands: Collection<string, Cmd> = new Collection<string, Cmd>();
 }
 
@@ -34,9 +34,9 @@ import botConfig from './botConfig.json';
 function setActivity() {
 	let plural = '';
 	if (bot.guilds.cache.size !== 1) plural = 'es';
-	const botActivity1 = `${botConfig.settings.prefix}help em `;
-	const botActivity2 = ` servidor${plural}!`;
-	bot.user.setActivity(`${botActivity1 + bot.guilds.cache.size + botActivity2}`);
+	const botActivity1 = `${botConfig.settings.prefix}help em`;
+	const botActivity2 = `servidor${plural}!`;
+	bot.user.setActivity(`${botActivity1} ${bot.guilds.cache.size} ${botActivity2}`);
 }
 
 // Biblioteca para momentos
@@ -58,7 +58,7 @@ import * as serviceAccount from './serviceAccountKey.json';
 admin.initializeApp({
 	// Autenticação à BD
 	credential: admin.credential.cert((serviceAccount as any)),
-	databaseURL: 'https://gumball-and-penny.firebaseio.com',
+	databaseURL: 'https://gumball-and-penny.firebaseio.com'
 });
 
 const db = admin.firestore();
@@ -71,7 +71,7 @@ import { shopButtonHandler } from './src/functions/shopHandler';
 const vips: Set<string> = new Set();
 
 // Uma vez que o bot está ativo, realizar as seguintes ações
-bot.once('ready', async () => {
+bot.once('ready', () => {
 	setActivity();
 
 	removeVIP(admin, bot, db, vips);
@@ -88,7 +88,7 @@ bot.once('ready', async () => {
 });
 
 import EventSource from 'eventsource';
-const eventSourceInit: object = { headers: { 'Authorization': 'Bearer 14aee8db11a152ed7f2d4ed23a839d58' } };
+const eventSourceInit: Record<string, any> = { headers: { 'Authorization': 'Bearer 14aee8db11a152ed7f2d4ed23a839d58' } };
 const es = new EventSource('https://api.pipedream.com/sources/dc_OLuY0W/sse', eventSourceInit);
 
 es.onopen = () => {
@@ -107,9 +107,9 @@ es.onmessage = async messageEvent => {
 
 		const refP = db.collection('perfis').doc(userID);
 
-		refP.get().then(doc => {
+		await refP.get().then(doc => {
 			if (!doc.exists) return;
-			const bal = doc.get('balance');
+			const bal: number = doc.get('balance');
 			let add = 150;
 
 			if (vips.has(userID)) {
@@ -122,7 +122,7 @@ es.onmessage = async messageEvent => {
 			}
 
 			refP.update({
-				balance: bal + add,
+				balance: bal + add
 			});
 		});
 	}
@@ -139,7 +139,7 @@ async function getServerSettings(guild: Guild, channel: TextBasedChannels) {
 		const doc = await ref.get();
 		settings[guild.id] = doc.get('settings') || botConfig.settings;
 	}
-	const serverSettings:  ServerSettings = settings[guild.id];
+	const serverSettings: ServerSettings = settings[guild.id];
 	serverSettings.language = channel.id === '787661396652589077' || channel.id === '787674033331634196' ? 'en' : serverSettings.language;
 
 	return serverSettings;
@@ -199,7 +199,7 @@ bot.on('messageCreate', async message => {
 					return;
 				}
 				else {
-					const xp = doc.get('xp');
+					const xp: number = doc.get('xp');
 					const level = Math.floor(Math.sqrt(xp / 2000000) * 99) + 1;
 					let add = Math.floor(Math.random() * 10) + 50;
 					let newXP: number;
@@ -213,19 +213,19 @@ bot.on('messageCreate', async message => {
 					const newLevel = Math.floor(Math.sqrt(newXP / 2000000) * 99) + 1;
 
 					db.collection('perfis').doc(message.author.id).update({
-						xp: newXP,
+						xp: newXP
 					}).then(() => {
 						if (newLevel > level) {
 							db.collection('perfis').doc(message.author.id).update({
-								level: newLevel,
+								level: newLevel
 							});
 
-							const bal = doc.get('balance');
+							const bal: number = doc.get('balance');
 							if (newLevel % 10 === 0) {
 								const reward = newLevel * 500;
 								db.collection('perfis').doc(message.author.id).update({
-									balance: bal + reward,
-								}).then(() => message.channel.send(`🎉 ${lang.levelUp.congrats} **${message.author.tag}**, ${lang.levelUp.levelTo} **${newLevel}** ${lang.levelUp.received + reward}! 🆙💰`));
+									balance: bal + reward
+								}).then(() => message.channel.send(`🎉 ${lang.levelUp.congrats} **${message.author.tag}**, ${lang.levelUp.levelTo} **${newLevel}** ${lang.levelUp.received}${reward}! 🆙💰`));
 							}
 							else {
 								message.channel.send(`🎉 ${lang.levelUp.congrats} **${message.author.tag}**, ${lang.levelUp.levelTo} **${newLevel}**! 🆙`);
@@ -273,7 +273,7 @@ bot.on('interactionCreate', async interaction => {
 bot.on('guildCreate', async guildData => {
 	setActivity();
 	await db.collection('definicoes').doc(guildData.id).set({
-		settings: botConfig.settings,
+		settings: botConfig.settings
 	}).catch((err: Error) => { console.error(err); });
 });
 
