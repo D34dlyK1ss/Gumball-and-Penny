@@ -14,7 +14,7 @@ export async function execute(bot: undefined, message: Message, command: undefin
 		const memberToUnmute = await message.guild.members.fetch(mention);
 
 		args.shift();
-		
+
 		let muteRole = message.guild.roles.cache.find(role => role.name === 'Muted');
 
 		if (!mention) {
@@ -27,7 +27,7 @@ export async function execute(bot: undefined, message: Message, command: undefin
 					color: '#404040',
 				});
 
-				muteRole = message.guild.roles.cache.find(role => role.name === 'Muted')
+				muteRole = message.guild.roles.cache.find(role => role.name === 'Muted');
 				message.guild.channels.cache.forEach(async (channel: GuildChannel) => {
 					await channel.permissionOverwrites.edit(muteRole, {
 						SEND_MESSAGES: false,
@@ -47,4 +47,4 @@ export async function execute(bot: undefined, message: Message, command: undefin
 			}
 		}
 	}
-};
+}

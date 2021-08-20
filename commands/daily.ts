@@ -4,13 +4,13 @@ import ms from 'ms';
 export const name = 'daily';
 export const aliases = ['d'];
 export function execute(bot: undefined, message: Message, command: undefined, db: any, lang: Record<string, string | any>, language: string, prefix: string) {
-	const user = message.author,
-		ref = db.collection('perfis').doc(user.id),
-		daily = 300;
+	const user = message.author;
+	const ref = db.collection('perfis').doc(user.id);
+	const daily = 300;
 
 	ref.get().then((doc: any) => {
-		const today = Date.now(),
-			lastDaily: number = doc.get('lastDaily');
+		const today = Date.now();
+		const lastDaily: number = doc.get('lastDaily');
 		const nextDaily = lastDaily + 86400000;
 		if (!doc.exists) {
 			message.reply(`${lang.error.noProfile}\`${prefix}profile create\`!`).catch(err => { console.error(err); });
@@ -34,4 +34,4 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 			}
 		}
 	});
-};
+}

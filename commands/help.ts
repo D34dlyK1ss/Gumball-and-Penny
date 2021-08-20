@@ -1,9 +1,9 @@
 import { Message, MessageEmbed } from 'discord.js';
-import { botClient, Cmd } from 'index';
+import { BotClient, Cmd } from 'index';
 
 export const name = 'help';
 export const aliases = ['h'];
-export function execute(bot: botClient, message: Message, command: Cmd, db: undefined, lang: Record<string, string | any>, language: undefined, prefix: string, args: string[]) {
+export function execute(bot: BotClient, message: Message, command: Cmd, db: undefined, lang: Record<string, string | any>, language: undefined, prefix: string, args: string[]) {
 	const commands = bot.commands;
 	const helpEmbed = new MessageEmbed()
 		.setColor('#9900ff')
@@ -27,8 +27,8 @@ export function execute(bot: botClient, message: Message, command: Cmd, db: unde
 	}
 	else {
 		const argsString = args.toString();
-		const name = argsString.toLowerCase();
-		command = commands.get(name) || commands.find(c => c.aliases && c.aliases.includes(name));
+		const commandName = argsString.toLowerCase();
+		command = commands.get(commandName) || commands.find(c => c.aliases && c.aliases.includes(commandName));
 		if (!command) {
 			message.reply(lang.error.noCommand).catch(err => { console.error(err); });
 		}
@@ -56,4 +56,4 @@ export function execute(bot: botClient, message: Message, command: Cmd, db: unde
 			}
 		}
 	}
-};
+}

@@ -68,6 +68,7 @@
 	"colors": "Cores",
 	"common": "Comuns",
 	"items": "Itens",
+	"eyes": "Olhos",
 
 
 	"error": {
@@ -269,9 +270,17 @@
 	},
 
 	"quiz": {
-		"mainDescription": "Estes são os temas de quiz disponíveis.\nUsa os botões abaixo para escolher um!",
+		"mainDescription": "Estes são os temas de quiz disponíveis.\nTodos os quizzes vão ter 5 perguntas. Cada resposta correta irá dar-te 1 ponto!\nUsa os botões abaixo para escolher um!",
 		"themeDescription": "Agora escolhe uma categoria!",
-		"toStart": "Carrega no botão de começar pra começar o quiz!"
+		"toStart": "Carrega no botão de começar pra começar o quiz!",
+		"alreadyPlaying": "Já há um quiz a ser jogado neste canal! Começa um novo noutro canal ou espera pelo fim do quiz",
+		"starting": "Começando quiz em 5 segundos para",
+		"correct": "Correto!",
+		"wrong": "Errado!",
+		"noAnswer": "não repsondeste!",
+		"ended": "O quiz acabou! ",
+		"youAnsweredTo": ", respondeste a ",
+		"correctly": " perguntas corretamente."
 	},
 
 	"run": {

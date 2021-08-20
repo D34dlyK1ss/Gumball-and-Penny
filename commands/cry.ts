@@ -1,8 +1,8 @@
 import { Message } from 'discord.js';
-import { botClient, Cmd } from 'index';
+import { BotClient, Cmd } from 'index';
 
 export const name = 'cry';
-export function	execute(bot: botClient, message: Message, command: Cmd, db: undefined, lang: Record<string, string | any>) {
+export function	execute(bot: BotClient, message: Message, command: Cmd, db: undefined, lang: Record<string, string | any>) {
 	const user = message.mentions.users.first();
 	const rnd = Math.floor(Math.random() * 6);
 
@@ -15,4 +15,4 @@ export function	execute(bot: botClient, message: Message, command: Cmd, db: unde
 	else {
 		message.channel.send({ content: `${user}${lang.cry.made}${message.author}${lang.cry.cry}`, files: [`img/actions/${command.name} (${rnd}).gif`] }).catch(err => { console.error(err); });
 	}
-};
+}

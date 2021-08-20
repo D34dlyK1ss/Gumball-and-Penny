@@ -20,7 +20,7 @@ export async function execute(bot: undefined, message: Message, command: undefin
 
 		args.shift();
 		args.shift();
-		
+
 		const reason = args.join(' ') || lang.notIndicated;
 		let muteRole = message.guild.roles.cache.find(role => role.name === 'Muted');
 
@@ -69,4 +69,4 @@ export async function execute(bot: undefined, message: Message, command: undefin
 			});
 		}
 	}
-};
+}

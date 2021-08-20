@@ -68,6 +68,7 @@
 	"colors": "Colors",
 	"common": "Common",
 	"items": "Items",
+	"eyes": "Eyes",
 
 
 	"error": {
@@ -269,9 +270,17 @@
 	},
 
 	"quiz": {
-		"mainDescription": "These are the available quiz themes.\nUse the buttons below to choose one!",
+		"mainDescription": "These are the available quiz themes.\nEvery quiz will take 5 questions. Each correct answer gives you 1 point!\nUse the buttons below to choose one!",
 		"themeDescription": "Now choose a category!",
-		"toStart": "Press the start button to start the quiz!"
+		"toStart": "Press the start button to start the quiz!",
+		"alreadyPlaying": "There's a quiz being played already in this channel! Start a new one on another channel or wait for the quiz to end",
+		"starting": "Starting quiz in 5 seconds for",
+		"correct": "Correct!",
+		"wrong": "Wrong!",
+		"noAnswer": "you didn't answer!",
+		"ended": "The quiz has ended! ",
+		"youAnsweredTo": ", you answered to",
+		"correctly": " questions correctly."
 	},
 
 	"run": {

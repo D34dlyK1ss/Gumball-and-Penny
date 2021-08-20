@@ -5,21 +5,21 @@ import { Cmd } from 'index';
 export const name = 'jankenpon';
 export const aliases = ['jkp'];
 export function execute(bot: undefined, message: Message, command: Cmd, db: any, lang: Record<string, string | any>, language: undefined, prefix: string, args: string[]) {
-	const user = message.author,
-		ref = db.collection('perfis').doc(user.id);
+	const user = message.author;
+	const ref = db.collection('perfis').doc(user.id);
 
 	ref.get().then(async (doc: any) => {
 		const money = Math.floor(parseInt(args[1]));
 		if (!doc.exists) {
 			message.reply(`${lang.error.noProfile}\`${prefix}profile create\`!`).catch(err => { console.error(err); });
 		}
-		else if (!Number.isInteger(money) || (args[0].toLowerCase() != 'gumball' && args[0].toLowerCase() != 'penny')) {
+		else if (!Number.isInteger(money) || (args[0].toLowerCase() !== 'gumball' && args[0].toLowerCase() !== 'penny')) {
 			message.channel.send(`${lang.error.wrongSyntax}\`${prefix + lang.command[command.name].usage}\``).catch(err => { console.error(err); });
 		}
 		else {
-			const bal = doc.get('balance'),
-				least = 50,
-				most = 1000;
+			const bal = doc.get('balance');
+			const least = 50;
+			const most = 1000;
 
 			if ((bal + money) > 1000000) {
 				message.reply(lang.error.noAdd).catch(err => { console.error(err); });
@@ -34,18 +34,20 @@ export function execute(bot: undefined, message: Message, command: Cmd, db: any,
 				message.reply(`${lang.betAtMost + most}!`).catch(err => { console.error(err); });
 			}
 			else {
-				const g = Math.round(Math.random() * 2),
-					p = Math.round(Math.random() * 2),
-					guess = args[0].toLowerCase(),
-					array = [lang.jankenpon.rock, lang.jankenpon.paper, lang.jankenpon.scissors];
-				let resG: string, resP: string, finalRes;
+				const g = Math.round(Math.random() * 2);
+				const p = Math.round(Math.random() * 2);
+				const guess = args[0].toLowerCase();
+				const array = [lang.jankenpon.rock, lang.jankenpon.paper, lang.jankenpon.scissors];
+				let resG: string;
+				let resP: string;
+				let finalRes;
 
-				const attachment = new MessageAttachment('img/jankenpon/animation.gif'),
-					canvas = createCanvas(400, 200),
-					ctx = canvas.getContext('2d');
+				const attachment = new MessageAttachment('img/jankenpon/animation.gif');
+				const canvas = createCanvas(400, 200);
+				const ctx = canvas.getContext('2d');
 
-				const left = await loadImage(`img/jankenpon/gumball (${g}).png`),
-					right = await loadImage(`img/jankenpon/penny (${p}).png`);
+				const left = await loadImage(`img/jankenpon/gumball (${g}).png`);
+				const right = await loadImage(`img/jankenpon/penny (${p}).png`);
 				ctx.drawImage(left, 0, 0, 200, 200);
 				ctx.drawImage(right, 200, 0, 200, 200);
 
@@ -87,4 +89,4 @@ export function execute(bot: undefined, message: Message, command: Cmd, db: any,
 			}
 		}
 	});
-};
+}

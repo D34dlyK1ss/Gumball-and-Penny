@@ -1,9 +1,9 @@
 import { Message } from 'discord.js';
 import * as botConfig from '../botConfig.json';
-import { serverSettings } from 'index';
+import { ServerSettings } from 'index';
 
 export const name = 'automessages';
-export function execute(bot: undefined, message: Message, command: undefined, db: any, lang: Record<string, string | any>, language: undefined, prefix: undefined, args: undefined, serverSettings: serverSettings) {
+export function execute(bot: undefined, message: Message, command: undefined, db: any, lang: Record<string, string | any>, language: undefined, prefix: undefined, args: undefined, serverSettings: ServerSettings) {
 	if (!message.member.permissions.has('MANAGE_GUILD')) {
 		message.delete();
 		message.reply(lang.error.noPerm).then(msg => { setTimeout(() => { msg.delete(); }, 5000); }).catch(err => { console.error(err); });
@@ -13,10 +13,10 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 
 		ref.get().then(async (doc: any) => {
 			const dbSettings = doc.get('settings') || botConfig.settings;
-			const boolean = dbSettings.automessages;
+			const onOff = dbSettings.automessages;
 			let toggle = '';
-			serverSettings.automessages = !boolean;
-			!boolean === true ? toggle = `${lang.enabled}` : toggle = `${lang.disabled}`;
+			serverSettings.automessages = !onOff;
+			!onOff === true ? toggle = `${lang.enabled}` : toggle = `${lang.disabled}`;
 
 			ref.set({
 				settings: serverSettings,
@@ -24,4 +24,4 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 			message.channel.send(`${lang.automessages.areNow}**${toggle}**`).catch(err => { console.error(err); });
 		});
 	}
-};
+}

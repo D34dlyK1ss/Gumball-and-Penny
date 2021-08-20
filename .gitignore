@@ -1,5 +1,5 @@
 .env
-.eslintrc.json
+tslint*
 .vscode
-node_modules/
+node_modules
 indexDev.ts

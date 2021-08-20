@@ -4,8 +4,8 @@
   "description": "A melhor duo do Discord!",
   "main": "bot.js",
   "author": "D34dlyK1ss",
-  "engines":{
-    "node":"16.6.2"
+  "engines": {
+    "node": "16.6.2"
   },
   "dependencies": {
     "@types/eventsource": "^1.1.5",
@@ -24,10 +24,5 @@
     "tslib": "^2.3.0",
     "typescript": "^4.1.5",
     "ws": "^7.4.3"
-  },
-  "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^4.15.1",
-    "@typescript-eslint/parser": "^4.15.1",
-    "eslint": "^7.20.0"
   }
 }

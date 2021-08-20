@@ -1,77 +1,81 @@
-import { ButtonInteraction, MessageEmbed, MessageActionRow, MessageButton, User } from 'discord.js';
-import items from '../data/itemlist.json';
+import { MessageEmbed, MessageActionRow, MessageButton, User } from 'discord.js';
+import * as items from '../data/itemlist.json';
 
-let author: User;
-
-export function createShopPage(user: User, lang:Record<string, any>, prefix: string, embedName: string) {
-	if (!user) return 0;
-	author = user;
-
+function createShopPage(author: User, lang:Record<string, any>, prefix: string, embedName: string) {
 	let embedToExport: MessageEmbed;
 	let buttonRow: MessageActionRow;
 	let buttonRow2: MessageActionRow;
 	const mainEmbed = new MessageEmbed()
 			.setColor('#9900ff')
-			.setAuthor(user.username, user.avatarURL())
 			.setTitle(lang.awesomeStore)
 			.setDescription(lang.shop.welcome)
+			.setFooter(`Used by ${author.username}`)
 			.addFields(
-				{ name: `- HUDs\n- PetHUDs\n- Pets\n- ${lang.items}`, value: '\u200B' }
+				{ name: 'HUDs', value: '\u200B', inline: true },
+				{ name: 'PetHUDs', value: '\u200B', inline: true },
+				{ name: 'Pets', value: '\u200B', inline: true },
+				{ name: 'Items', value: '\u200B', inline: true },
 			);
 
 	switch (embedName) {
-		case 'shopmainEmbed0':
+		case 'mainEmbed0':
 			embedToExport = new MessageEmbed(mainEmbed)
 				.setImage('https://i.imgur.com/fCIJGQW.gif');
 
 			buttonRow = new MessageActionRow()
 				.addComponents(
 					new MessageButton()
-						.setCustomId('shophudEmbed0')
+						.setCustomId('hudEmbed0')
 						.setLabel('HUDs')
 						.setStyle('PRIMARY'),
 					new MessageButton()
-						.setCustomId('shoppetHudEmbed0')
+						.setCustomId('petHudEmbed0')
 						.setLabel('PetHUDs')
 						.setStyle('PRIMARY'),
 					new MessageButton()
-						.setCustomId('shoppetsEmbed0')
+						.setCustomId('petsEmbed0')
 						.setLabel('Pets')
 						.setStyle('PRIMARY'),
 					new MessageButton()
-						.setCustomId('shopitemsEmbed0')
-						.setLabel(lang.items)
-						.setStyle('PRIMARY')
+						.setCustomId('itemsEmbed0')
+						.setLabel('Items')
+						.setStyle('PRIMARY'),
 				);
 			break;
-		case 'shophudEmbed0':
+		case 'hudEmbed0':
 			embedToExport = new MessageEmbed(mainEmbed)
 				.setImage('https://i.imgur.com/fCIJGQW.gif')
 				.setTitle(`${lang.awesomeStore} - HUDs`)
 				.spliceFields(0, mainEmbed.fields.length, [
-					{ name: `- ${lang.colors}\n- ${lang.games}\n- Anime\n- Cartoon\n- Marvel\n- DC\n- Vocaloids`, value: '\u200B' }
+					{ name: 'Colors', value: '\u200B', inline: true },
+					{ name: 'Games', value: '\u200B', inline: true },
+					{ name: 'Anime', value: '\u200B', inline: true },
+					{ name: 'Cartoons', value: '\u200B', inline: true },
+					{ name: 'Marvel', value: '\u200B', inline: true },
+					{ name: 'DC', value: '\u200B', inline: true },
+					{ name: 'Vocaloids', value: '\u200B', inline: true },
 				]);
 
 			buttonRow = new MessageActionRow()
 				.addComponents(
 					new MessageButton()
-						.setCustomId('shophudColorsEmbed0')
-						.setLabel(lang.colors)
+						.setCustomId('hudColorsEmbed0')
+						.setLabel('Colors')
 						.setStyle('PRIMARY'),
 					new MessageButton()
-						.setCustomId('shophudGamesEmbed0')
-						.setLabel(lang.games)
+						.setCustomId('hudGamesEmbed0')
+						.setLabel('Games')
 						.setStyle('PRIMARY'),
 					new MessageButton()
-						.setCustomId('shophudAnimeEmbed0')
+						.setCustomId('hudAnimeEmbed0')
 						.setLabel('Anime')
 						.setStyle('PRIMARY'),
 					new MessageButton()
-						.setCustomId('shophudCartoonEmbed0')
-						.setLabel('Cartoon')
+						.setCustomId('hudCartoonsEmbed0')
+						.setLabel('Cartoons')
 						.setStyle('PRIMARY'),
 					new MessageButton()
-						.setCustomId('shophudMarvelEmbed0')
+						.setCustomId('hudMarvelEmbed0')
 						.setLabel('Marvel')
 						.setStyle('PRIMARY')
 				);
@@ -79,23 +83,23 @@ export function createShopPage(user: User, lang:Record<string, any>, prefix: str
 			buttonRow2 = new MessageActionRow()
 				.addComponents(
 				new MessageButton()
-					.setCustomId('shophudDCEmbed0')
+					.setCustomId('hudDCEmbed0')
 					.setLabel('DC')
 					.setStyle('PRIMARY'),
 				new MessageButton()
-					.setCustomId('shophudVocaloidsEmbed0')
+					.setCustomId('hudVocaloidsEmbed0')
 					.setLabel('Vocaloids')
 					.setStyle('PRIMARY'),
 				new MessageButton()
-					.setCustomId('shopmainEmbed0')
-					.setLabel(lang.back)
-					.setStyle('DANGER')
-			);
+						.setCustomId('mainEmbed0')
+						.setLabel('Back')
+						.setStyle('DANGER')
+				);
 
 			break;
-		case 'shophudColorsEmbed0':
+		case 'hudColorsEmbed0':
 			embedToExport = new MessageEmbed(mainEmbed)
-				.setTitle(`${lang.awesomeStore} - HUDs (${lang.colors})`)
+				.setTitle(`${lang.awesomeStore} - HUDs (Colors)`)
 				.setDescription(`\`${prefix}shop buy hud [${lang.shop.hudName}]\`${lang.shop.toBuyOr}\`${prefix}shop view hud [${lang.shop.hudName}]\`${lang.shop.toSee}`)
 				.setFooter(`${lang.page} 1/1`)
 				.spliceFields(0, mainEmbed.fields.length, [
@@ -107,20 +111,20 @@ export function createShopPage(user: User, lang:Record<string, any>, prefix: str
 					{ name: 'Pink', value: `¤${items.huds.colorPrice}`, inline: true },
 					{ name: 'Purple', value: `¤${items.huds.colorPrice}`, inline: true },
 					{ name: 'Red', value: `¤${items.huds.colorPrice}`, inline: true },
-					{ name: 'Yellow', value: `¤${items.huds.colorPrice}`, inline: true }
+					{ name: 'Yellow', value: `¤${items.huds.colorPrice}`, inline: true },
 				]);
 
 			buttonRow = new MessageActionRow()
 				.addComponents(
 					new MessageButton()
-						.setCustomId('shophudEmbed0')
-						.setLabel(lang.back)
+						.setCustomId('hudEmbed0')
+						.setLabel('Back')
 						.setStyle('DANGER')
 				);
 			break;
-		case 'shophudGamesEmbed0':
+		case 'hudGamesEmbed0':
 			embedToExport = new MessageEmbed(mainEmbed)
-				.setTitle(`${lang.awesomeStore} - HUDs (${lang.games})`)
+				.setTitle(`${lang.awesomeStore} - HUDs (Games)`)
 				.setDescription(`\`${prefix}shop buy hud [${lang.shop.hudName}]\`${lang.shop.toBuyOr}\`${prefix}shop view hud [${lang.shop.hudName}]\`${lang.shop.toSee}`)
 				.setFooter(`${lang.page} 1/4`)
 				.spliceFields(0, mainEmbed.fields.length, [
@@ -132,29 +136,29 @@ export function createShopPage(user: User, lang:Record<string, any>, prefix: str
 					{ name: 'Eclipse Leona', value: `League of Legends\n¤${items.huds.price}`, inline: true },
 					{ name: 'Flappy Bird', value: `¤${items.huds.price}`, inline: true },
 					{ name: 'Funtime Foxy', value: `Five Nights at Freddy's\n¤${items.huds.price}`, inline: true },
-					{ name: 'Glitchtrap', value: `Five Nights at Freddy's\n¤${items.huds.price}`, inline: true }
+					{ name: 'Glitchtrap', value: `Five Nights at Freddy's\n¤${items.huds.price}`, inline: true },
 				]);
 
 			buttonRow = new MessageActionRow()
 				.addComponents(
 					new MessageButton()
 						.setCustomId('disabled')
-						.setLabel(lang.prevPage)
+						.setLabel('Prev. Page')
 						.setStyle('SECONDARY')
 						.setDisabled(true),
 					new MessageButton()
-						.setCustomId('shophudGamesEmbed1')
-						.setLabel(lang.nextPage)
+						.setCustomId('hudGamesEmbed1')
+						.setLabel('Next Page')
 						.setStyle('SECONDARY'),
 					new MessageButton()
-						.setCustomId('shophudEmbed0')
-						.setLabel(lang.back)
+						.setCustomId('hudEmbed0')
+						.setLabel('Back')
 						.setStyle('DANGER')
 				);
 			break;
-		case 'shophudGamesEmbed1':
+		case 'hudGamesEmbed1':
 			embedToExport = new MessageEmbed(mainEmbed)
-				.setTitle(`${lang.awesomeStore} - HUDs (${lang.games})`)
+				.setTitle(`${lang.awesomeStore} - HUDs (Games)`)
 				.setDescription(`\`${prefix}shop buy hud [${lang.shop.hudName}]\`${lang.shop.toBuyOr}\`${prefix}shop view hud [${lang.shop.hudName}]\`${lang.shop.toSee}`)
 				.setFooter(`${lang.page} 2/4`)
 				.spliceFields(0, mainEmbed.fields.length, [
@@ -166,28 +170,28 @@ export function createShopPage(user: User, lang:Record<string, any>, prefix: str
 					{ name: 'Kirby B', value: `Nintendo\n¤${items.huds.price}`, inline: true },
 					{ name: 'Murder Monkeys', value: `Dark Deception\n¤${items.huds.price}`, inline: true },
 					{ name: 'Nathan Drake', value: `Uncharted\n¤${items.huds.price}`, inline: true },
-					{ name: 'Nightmare Chica', value: `Five Nights at Freddy's\n¤${items.huds.price}`, inline: true }
+					{ name: 'Nightmare Chica', value: `Five Nights at Freddy's\n¤${items.huds.price}`, inline: true },
 				]);
 
-			buttonRow = new MessageActionRow()
-				.addComponents(
-					new MessageButton()
-						.setCustomId('shophudGamesEmbed0')
-						.setLabel(lang.prevPage)
-						.setStyle('SECONDARY'),
-					new MessageButton()
-						.setCustomId('shophudGamesEmbed2')
-						.setLabel(lang.nextPage)
-						.setStyle('SECONDARY'),
-					new MessageButton()
-						.setCustomId('shophudEmbed0')
-						.setLabel(lang.back)
-						.setStyle('DANGER')
-				);
+				buttonRow = new MessageActionRow()
+					.addComponents(
+						new MessageButton()
+							.setCustomId('hudGamesEmbed0')
+							.setLabel('Prev. Page')
+							.setStyle('SECONDARY'),
+						new MessageButton()
+							.setCustomId('hudGamesEmbed2')
+							.setLabel('Next Page')
+							.setStyle('SECONDARY'),
+						new MessageButton()
+							.setCustomId('hudEmbed0')
+							.setLabel('Back')
+							.setStyle('DANGER')
+					);
 			break;
-		case 'shophudGamesEmbed2':
+		case 'hudGamesEmbed2':
 			embedToExport = new MessageEmbed(mainEmbed)
-				.setTitle(`${lang.awesomeStore} - HUDs (${lang.games})`)
+				.setTitle(`${lang.awesomeStore} - HUDs (Games)`)
 				.setDescription(`\`${prefix}shop buy hud [${lang.shop.hudName}]\`${lang.shop.toBuyOr}\`${prefix}shop view hud [${lang.shop.hudName}]\`${lang.shop.toSee}`)
 				.setFooter(`${lang.page} 3/4`)
 				.spliceFields(0, mainEmbed.fields.length, [
@@ -199,28 +203,28 @@ export function createShopPage(user: User, lang:Record<string, any>, prefix: str
 					{ name: 'Scorpion A', value: `Mortal Kombat\n¤${items.huds.price}`, inline: true },
 					{ name: 'Scorpion B', value: `Mortal Kombat\n¤${items.huds.price}`, inline: true },
 					{ name: 'Six', value: `Little Nightmares\n¤${items.huds.price}`, inline: true },
-					{ name: 'Springtrap', value: `Five Nights at Freddy's\n¤${items.huds.price}`, inline: true }
+					{ name: 'Springtrap', value: `Five Nights at Freddy's\n¤${items.huds.price}`, inline: true },
 				]);
 
 			buttonRow = new MessageActionRow()
 				.addComponents(
 					new MessageButton()
-						.setCustomId('shophudGamesEmbed1')
-						.setLabel(lang.prevPage)
+						.setCustomId('hudGamesEmbed1')
+						.setLabel('Prev. Page')
 						.setStyle('SECONDARY'),
 					new MessageButton()
-						.setCustomId('shophudGamesEmbed3')
-						.setLabel(lang.nextPage)
+						.setCustomId('hudGamesEmbed3')
+						.setLabel('Next Page')
 						.setStyle('SECONDARY'),
 					new MessageButton()
-						.setCustomId('shophudEmbed0')
-						.setLabel(lang.back)
+						.setCustomId('hudEmbed0')
+						.setLabel('Back')
 						.setStyle('DANGER')
 				);
 			break;
-		case 'shophudGamesEmbed3':
+		case 'hudGamesEmbed3':
 			embedToExport = new MessageEmbed(mainEmbed)
-				.setTitle(`${lang.awesomeStore} - HUDs (${lang.games})`)
+				.setTitle(`${lang.awesomeStore} - HUDs (Games)`)
 				.setDescription(`\`${prefix}shop buy hud [${lang.shop.hudName}]\`${lang.shop.toBuyOr}\`${prefix}shop view hud [${lang.shop.hudName}]\`${lang.shop.toSee}`)
 				.setFooter(`${lang.page} 4/4`)
 				.spliceFields(0, mainEmbed.fields.length, [
@@ -231,26 +235,26 @@ export function createShopPage(user: User, lang:Record<string, any>, prefix: str
 					{ name: 'Willow', value: `Don't Starve\n¤${items.huds.price}`, inline: true },
 					{ name: 'Wormwood', value: `Don't Starve\n¤${items.huds.price}`, inline: true },
 					{ name: 'Yasuo', value: `League of Legends\n¤${items.huds.price}`, inline: true },
-					{ name: 'Yone', value: `League of Legends\n¤${items.huds.price}`, inline: true }
+					{ name: 'Yone', value: `League of Legends\n¤${items.huds.price}`, inline: true },
 				]);
 			buttonRow = new MessageActionRow()
 				.addComponents(
 					new MessageButton()
-						.setCustomId('shophudGamesEmbed2')
-						.setLabel(lang.prevPage)
+						.setCustomId('hudGamesEmbed2')
+						.setLabel('Prev. Page')
 						.setStyle('SECONDARY'),
 					new MessageButton()
 						.setCustomId('disabled')
-						.setLabel(lang.nextPage)
+						.setLabel('Next Page')
 						.setStyle('SECONDARY')
 						.setDisabled(true),
 					new MessageButton()
-						.setCustomId('shophudEmbed0')
-						.setLabel(lang.back)
+						.setCustomId('hudEmbed0')
+						.setLabel('Back')
 						.setStyle('DANGER')
 					);
 			break;
-		case 'shophudAnimeEmbed0':
+		case 'hudAnimeEmbed0':
 			embedToExport = new MessageEmbed(mainEmbed)
 				.setTitle(`${lang.awesomeStore} - HUDs (Anime)`)
 				.setDescription(`\`${prefix}shop buy hud [${lang.shop.hudName}]\`${lang.shop.toBuyOr}\`${prefix}shop view hud [${lang.shop.hudName}]\`${lang.shop.toSee}`)
@@ -264,26 +268,26 @@ export function createShopPage(user: User, lang:Record<string, any>, prefix: str
 					{ name: 'Kaneki B', value: `Tokyo Ghoul\n¤${items.huds.price}`, inline: true },
 					{ name: 'L', value: `Death Note\n¤${items.huds.price}`, inline: true },
 					{ name: 'Lelouch A', value: `Code Geass\n¤${items.huds.price}`, inline: true },
-					{ name: 'Lelouch B', value: `Code Geass\n¤${items.huds.price}`, inline: true }
+					{ name: 'Lelouch B', value: `Code Geass\n¤${items.huds.price}`, inline: true },
 				]);
 			buttonRow = new MessageActionRow()
 				.addComponents(
 					new MessageButton()
 						.setCustomId('disabled')
-						.setLabel(lang.prevPage)
+						.setLabel('Prev. Page')
 						.setStyle('SECONDARY')
 						.setDisabled(true),
 					new MessageButton()
-						.setCustomId('shophudAnimeEmbed1')
-						.setLabel(lang.nextPage)
+						.setCustomId('hudAnimeEmbed1')
+						.setLabel('Next Page')
 						.setStyle('SECONDARY'),
 					new MessageButton()
-						.setCustomId('shophudEmbed0')
-						.setLabel(lang.back)
+						.setCustomId('hudEmbed0')
+						.setLabel('Back')
 						.setStyle('DANGER')
 				);
 			break;
-		case 'shophudAnimeEmbed1':
+		case 'hudAnimeEmbed1':
 			embedToExport = new MessageEmbed(mainEmbed)
 				.setTitle(`${lang.awesomeStore} - HUDs (Anime)`)
 				.setDescription(`\`${prefix}shop buy hud [${lang.shop.hudName}]\`${lang.shop.toBuyOr}\`${prefix}shop view hud [${lang.shop.hudName}]\`${lang.shop.toSee}`)
@@ -297,28 +301,28 @@ export function createShopPage(user: User, lang:Record<string, any>, prefix: str
 					{ name: 'Yukiteru Yuno', value: `Mirai Nikki\n¤${items.huds.price}`, inline: true },
 					{ name: 'Yuno', value: `Mirai Nikki\n¤${items.huds.price}`, inline: true },
 					{ name: 'Zero Two A', value: `Darling in the FranXX\n¤${items.huds.price}`, inline: true },
-					{ name: 'Zero Two B', value: `Darling in the FranXX\n¤${items.huds.price}`, inline: true }
+					{ name: 'Zero Two B', value: `Darling in the FranXX\n¤${items.huds.price}`, inline: true },
 				]);
 			buttonRow = new MessageActionRow()
 				.addComponents(
 					new MessageButton()
-						.setCustomId('shophudAnimeEmbed0')
-						.setLabel(lang.prevPage)
+						.setCustomId('hudAnimeEmbed0')
+						.setLabel('Prev. Page')
 						.setStyle('SECONDARY'),
 					new MessageButton()
 						.setCustomId('disabled')
-						.setLabel(lang.nextPage)
+						.setLabel('Next Page')
 						.setStyle('SECONDARY')
 						.setDisabled(true),
 					new MessageButton()
-						.setCustomId('shophudEmbed0')
-						.setLabel(lang.back)
+						.setCustomId('hudEmbed0')
+						.setLabel('Back')
 						.setStyle('DANGER')
 				);
 			break;
-		case 'shophudCartoonEmbed0':
+		case 'hudCartoonsEmbed0':
 			embedToExport = new MessageEmbed(mainEmbed)
-				.setTitle(`${lang.awesomeStore} - HUDs (Cartoon)`)
+				.setTitle(`${lang.awesomeStore} - HUDs (Cartoons)`)
 				.setDescription(`\`${prefix}shop buy hud [${lang.shop.hudName}]\`${lang.shop.toBuyOr}\`${prefix}shop view hud [${lang.shop.hudName}]\`${lang.shop.toSee}`)
 				.setFooter(`${lang.page} 1/1`)
 				.spliceFields(0, mainEmbed.fields.length, [
@@ -329,18 +333,18 @@ export function createShopPage(user: User, lang:Record<string, any>, prefix: str
 					{ name: 'Kenny McCormick', value: `South Park\n¤${items.huds.price}`, inline: true },
 					{ name: 'Professor Chaos', value: `South Park\n¤${items.huds.price}`, inline: true },
 					{ name: 'Stan Marsh', value: `South Park\n¤${items.huds.price}`, inline: true },
-					{ name: 'We Bare Bears', value: `¤${items.huds.price}`, inline: true }
+					{ name: 'We Bare Bears', value: `¤${items.huds.price}`, inline: true },
 				]);
 
 			buttonRow = new MessageActionRow()
 				.addComponents(
 					new MessageButton()
-						.setCustomId('shophudEmbed0')
-						.setLabel(lang.back)
+						.setCustomId('hudEmbed0')
+						.setLabel('Back')
 						.setStyle('DANGER')
 				);
 			break;
-		case 'shophudMarvelEmbed0':
+		case 'hudMarvelEmbed0':
 			embedToExport = new MessageEmbed(mainEmbed)
 				.setTitle(`${lang.awesomeStore} - HUDs (Marvel)`)
 				.setDescription(`\`${prefix}shop buy hud [${lang.shop.hudName}]\`${lang.shop.toBuyOr}\`${prefix}shop view hud [${lang.shop.hudName}]\`${lang.shop.toSee}`)
@@ -352,18 +356,18 @@ export function createShopPage(user: User, lang:Record<string, any>, prefix: str
 					{ name: 'Iron Man', value: `${lang.shop.hero}\n¤${items.huds.price}`, inline: true },
 					{ name: 'Onslaught', value: `${lang.shop.villain}\n¤${items.huds.price}`, inline: true },
 					{ name: 'Spider-Man', value: `${lang.shop.hero}\n¤${items.huds.price}`, inline: true },
-					{ name: 'Thanos', value: `${lang.shop.villain}\n¤${items.huds.price}`, inline: true }
+					{ name: 'Thanos', value: `${lang.shop.villain}\n¤${items.huds.price}`, inline: true },
 				]);
 
 			buttonRow = new MessageActionRow()
 				.addComponents(
 					new MessageButton()
-						.setCustomId('shophudEmbed0')
-						.setLabel(lang.back)
+						.setCustomId('hudEmbed0')
+						.setLabel('Back')
 						.setStyle('DANGER')
 				);
 			break;
-		case 'shophudDCEmbed0':
+		case 'hudDCEmbed0':
 			embedToExport = new MessageEmbed(mainEmbed)
 				.setTitle(`${lang.awesomeStore} - HUDs (DC)`)
 				.setDescription(`\`${prefix}shop buy hud [${lang.shop.hudName}]\`${lang.shop.toBuyOr}\`${prefix}shop view hud [${lang.shop.hudName}]\`${lang.shop.toSee}`)
@@ -371,63 +375,64 @@ export function createShopPage(user: User, lang:Record<string, any>, prefix: str
 				.spliceFields(0, mainEmbed.fields.length, [
 					{ name: 'Batman', value: `${lang.shop.hero}\n¤${items.huds.price}`, inline: true },
 					{ name: 'Joker', value: `${lang.shop.villain}\n¤${items.huds.price}`, inline: true },
-					{ name: 'Superman', value: `${lang.shop.hero}\n¤${items.huds.price}`, inline: true }
+					{ name: 'Superman', value: `${lang.shop.hero}\n¤${items.huds.price}`, inline: true },
 				]);
 
 			buttonRow = new MessageActionRow()
 				.addComponents(
 					new MessageButton()
-						.setCustomId('shophudEmbed0')
-						.setLabel(lang.back)
+						.setCustomId('hudEmbed0')
+						.setLabel('Back')
 						.setStyle('DANGER')
 				);
 			break;
-		case 'shophudVocaloidsEmbed0':
+		case 'hudVocaloidsEmbed0':
 			embedToExport = new MessageEmbed(mainEmbed)
 				.setTitle(`${lang.awesomeStore} - HUDs (Vocaloids)`)
 				.setDescription(`\`${prefix}shop buy hud [${lang.shop.hudName}]\`${lang.shop.toBuyOr}\`${prefix}shop view hud [${lang.shop.hudName}]\`${lang.shop.toSee}`)
 				.setFooter(`${lang.page} 1/1`)
 				.spliceFields(0, mainEmbed.fields.length, [
 					{ name: 'Miku Hatsune', value: `¤${items.huds.price}`, inline: true },
-					{ name: 'Rin Kagamine', value: `¤${items.huds.price}`, inline: true }
+					{ name: 'Rin Kagamine', value: `¤${items.huds.price}`, inline: true },
 				]);
 
 			buttonRow = new MessageActionRow()
 				.addComponents(
 					new MessageButton()
-						.setCustomId('shophudEmbed0')
-						.setLabel(lang.back)
+						.setCustomId('hudEmbed0')
+						.setLabel('Back')
 						.setStyle('DANGER')
 				);
 			break;
-		case 'shoppetHudEmbed0':
+		case 'petHudEmbed0':
 			embedToExport = new MessageEmbed(mainEmbed)
 				.setImage('https://i.imgur.com/fCIJGQW.gif')
-				.setTitle(`${lang.awesomeStore} - PetHUDs (${lang.colors})`)
+				.setTitle(`${lang.awesomeStore} - PetHUDs (Colors)`)
 				.setFooter(`${lang.page} 1/1`)
 				.spliceFields(0, mainEmbed.fields.length, [
-					{ name: `- ${lang.colors}\n - VIP`, value: '\u200B' }
+					{ name: 'Colors', value: '\u200B', inline: true },
+					{ name: 'VIP', value: '\u200B', inline: true },
 				]);
 
 			buttonRow = new MessageActionRow()
 			.addComponents(
 				new MessageButton()
-					.setCustomId('shoppetHudColorsEmbed0')
-					.setLabel(lang.colors)
+					.setCustomId('petHudColorsEmbed0')
+					.setLabel('Colors')
 					.setStyle('PRIMARY'),
 				new MessageButton()
-					.setCustomId('shoppetHudVIPEmbed0')
+					.setCustomId('petHudVIPEmbed0')
 					.setLabel('VIP')
 					.setStyle('PRIMARY'),
 				new MessageButton()
-					.setCustomId('shopmainEmbed0')
-					.setLabel(lang.back)
+					.setCustomId('mainEmbed0')
+					.setLabel('Back')
 					.setStyle('DANGER')
 			);
 			break;
-		case 'shoppetHudColorsEmbed0':
+		case 'petHudColorsEmbed0':
 			embedToExport = new MessageEmbed(mainEmbed)
-				.setTitle(`${lang.awesomeStore} - PetHUDs (${lang.colors})`)
+				.setTitle(`${lang.awesomeStore} - PetHUDs (Colors)`)
 				.setDescription(`\`${prefix}shop buy pethud [${lang.shop.petHUDName}]\`${lang.shop.toBuyOr}\`${prefix}shop view pethud [${lang.shop.petHUDName}]\`${lang.shop.toSee}`)
 				.setFooter(`${lang.page} 1/1`)
 				.spliceFields(0, mainEmbed.fields.length, [
@@ -439,18 +444,18 @@ export function createShopPage(user: User, lang:Record<string, any>, prefix: str
 					{ name: 'Pink', value: `¤${items.petHuds.price}`, inline: true },
 					{ name: 'Purple', value: `¤${items.petHuds.price}`, inline: true },
 					{ name: 'Red', value: `¤${items.petHuds.price}`, inline: true },
-					{ name: 'Yellow', value: `¤${items.petHuds.price}`, inline: true }
+					{ name: 'Yellow', value: `¤${items.petHuds.price}`, inline: true },
 				]);
 
 			buttonRow = new MessageActionRow()
 				.addComponents(
 					new MessageButton()
-						.setCustomId('shoppetHudEmbed0')
-						.setLabel(lang.back)
+						.setCustomId('petHudEmbed0')
+						.setLabel('Back')
 						.setStyle('DANGER')
 				);
 			break;
-		case 'shoppetHudVIPEmbed0':
+		case 'petHudVIPEmbed0':
 			embedToExport = new MessageEmbed(mainEmbed)
 				.setTitle(`${lang.awesomeStore} - PetHUDs (VIP)`)
 				.setDescription(`\`${prefix}shop buy pethud [${lang.shop.petHUDName}]\`${lang.shop.toBuyOr}\`${prefix}shop view pethud [${lang.shop.petHUDName}]\`${lang.shop.toSee}`)
@@ -464,27 +469,27 @@ export function createShopPage(user: User, lang:Record<string, any>, prefix: str
 					{ name: 'Geometry A', value: `¤${items.petHuds.vipPrice}`, inline: true },
 					{ name: 'Geometry B', value: `¤${items.petHuds.vipPrice}`, inline: true },
 					{ name: 'Geometry C', value: `¤${items.petHuds.vipPrice}`, inline: true },
-					{ name: 'Ghost-Type', value: `Pokémon\n¤${items.petHuds.vipPrice}`, inline: true }
+					{ name: 'Ghost-Type', value: `Pokémon\n¤${items.petHuds.vipPrice}`, inline: true },
 				]);
 
 			buttonRow = new MessageActionRow()
 				.addComponents(
 					new MessageButton()
 						.setCustomId('disabled')
-						.setLabel(lang.prevPage)
+						.setLabel('Prev. Page')
 						.setStyle('SECONDARY')
 						.setDisabled(true),
 					new MessageButton()
-						.setCustomId('shoppetHudVIPEmbed1')
-						.setLabel(lang.nextPage)
+						.setCustomId('petHudVIPEmbed1')
+						.setLabel('Next Page')
 						.setStyle('SECONDARY'),
 					new MessageButton()
-						.setCustomId('shoppetHudEmbed0')
-						.setLabel(lang.back)
+						.setCustomId('petHudEmbed0')
+						.setLabel('Back')
 						.setStyle('DANGER')
 					);
 			break;
-		case 'shoppetHudVIPEmbed1':
+		case 'petHudVIPEmbed1':
 			embedToExport = new MessageEmbed(mainEmbed)
 				.setTitle(`${lang.awesomeStore} - PetHUDs (VIP)`)
 				.setDescription(`\`${prefix}shop buy pethud [${lang.shop.petHUDName}]\`${lang.shop.toBuyOr}\`${prefix}shop view pethud [${lang.shop.petHUDName}]\`${lang.shop.toSee}`)
@@ -498,26 +503,26 @@ export function createShopPage(user: User, lang:Record<string, any>, prefix: str
 					{ name: 'Pink Panther', value: `¤${items.petHuds.vipPrice}`, inline: true },
 					{ name: 'Pink Pokémon', value: `¤${items.petHuds.vipPrice}`, inline: true },
 					{ name: 'Saitama', value: `One Punch Man\n¤${items.petHuds.vipPrice}`, inline: true },
-					{ name: 'Scooby-Doo', value: `¤${items.petHuds.vipPrice}`, inline: true }
+					{ name: 'Scooby-Doo', value: `¤${items.petHuds.vipPrice}`, inline: true },
 				]);
 
 			buttonRow = new MessageActionRow()
 				.addComponents(
 					new MessageButton()
-						.setCustomId('shoppetHudVIPEmbed0')
-						.setLabel(lang.prevPage)
+						.setCustomId('petHudVIPEmbed0')
+						.setLabel('Prev. Page')
 						.setStyle('SECONDARY'),
 					new MessageButton()
-						.setCustomId('shoppetHudVIPEmbed2')
-						.setLabel(lang.nextPage)
+						.setCustomId('petHudVIPEmbed2')
+						.setLabel('Next Page')
 						.setStyle('SECONDARY'),
 					new MessageButton()
-						.setCustomId('shoppetHudEmbed0')
-						.setLabel(lang.back)
+						.setCustomId('petHudEmbed0')
+						.setLabel('Back')
 						.setStyle('DANGER')
 					);
 			break;
-		case 'shoppetHudVIPEmbed2':
+		case 'petHudVIPEmbed2':
 			embedToExport = new MessageEmbed(mainEmbed)
 				.setTitle(`${lang.awesomeStore} - PetHUDs (VIP)`)
 				.setDescription(`\`${prefix}shop buy pethud [${lang.shop.petHUDName}]\`${lang.shop.toBuyOr}\`${prefix}shop view pethud [${lang.shop.petHUDName}]\`${lang.shop.toSee}`)
@@ -528,54 +533,55 @@ export function createShopPage(user: User, lang:Record<string, any>, prefix: str
 					{ name: 'Totoro', value: `My Neighbor Totoro\n¤${items.petHuds.vipPrice}`, inline: true },
 					{ name: 'Undertale', value: `¤${items.petHuds.vipPrice}`, inline: true },
 					{ name: 'Unicorns', value: `¤${items.petHuds.vipPrice}`, inline: true },
-					{ name: 'Winter', value: `¤${items.petHuds.vipPrice}`, inline: true }
+					{ name: 'Winter', value: `¤${items.petHuds.vipPrice}`, inline: true },
 				]);
 
 			buttonRow = new MessageActionRow()
 				.addComponents(
 					new MessageButton()
-						.setCustomId('shoppetHudVIPEmbed1')
-						.setLabel(lang.prevPage)
+						.setCustomId('petHudVIPEmbed1')
+						.setLabel('Prev. Page')
 						.setStyle('SECONDARY'),
 					new MessageButton()
 						.setCustomId('disabled')
-						.setLabel(lang.nextPage)
+						.setLabel('Next Page')
 						.setStyle('SECONDARY')
 						.setDisabled(true),
 					new MessageButton()
-						.setCustomId('shoppetHudEmbed0')
-						.setLabel(lang.back)
+						.setCustomId('petHudEmbed0')
+						.setLabel('Back')
 						.setStyle('DANGER')
 					);
 			break;
-		case 'shoppetsEmbed0':
+		case 'petsEmbed0':
 			embedToExport = new MessageEmbed(mainEmbed)
 				.setImage('https://i.imgur.com/fCIJGQW.gif')
 				.setTitle(`${lang.awesomeStore} - Pets`)
 				.setFooter(`${lang.page} 1/1`)
 				.spliceFields(0, mainEmbed.fields.length, [
-					{ name: `- ${lang.common}\n- VIP`, value: '\u200B' }
+					{ name: 'Common', value: '\u200B', inline: true },
+					{ name: 'VIP', value: '\u200B', inline: true },
 				]);
 
 			buttonRow = new MessageActionRow()
 				.addComponents(
 					new MessageButton()
-						.setCustomId('shoppetsCommonEmbed0')
-						.setLabel(lang.common)
+						.setCustomId('petsCommonEmbed0')
+						.setLabel('Common')
 						.setStyle('PRIMARY'),
 					new MessageButton()
-						.setCustomId('shoppetsVIPEmbed0')
+						.setCustomId('petsVIPEmbed0')
 						.setLabel('VIP')
 						.setStyle('PRIMARY'),
 					new MessageButton()
-						.setCustomId('shopmainEmbed0')
-						.setLabel(lang.back)
+						.setCustomId('mainEmbed0')
+						.setLabel('Back')
 						.setStyle('DANGER')
 				);
 			break;
-		case 'shoppetsCommonEmbed0':
+		case 'petsCommonEmbed0':
 			embedToExport = new MessageEmbed(mainEmbed)
-				.setTitle(`${lang.awesomeStore} - Pets (${lang.common})`)
+				.setTitle(`${lang.awesomeStore} - Pets (Common)`)
 				.setDescription(`\`${prefix}shop buy pet [${lang.shop.animalName}]\`${lang.shop.toBuy}`)
 				.setFooter(`${lang.page} 1/1`)
 				.spliceFields(0, mainEmbed.fields.length, [
@@ -588,18 +594,18 @@ export function createShopPage(user: User, lang:Record<string, any>, prefix: str
 					{ name: 'Goat', value: `¤${items.pets.goat.price}`, inline: true },
 					{ name: 'Hamster', value: `¤${items.pets.hamster.price}`, inline: true },
 					{ name: 'Pony', value: `¤${items.pets.pony.price}`, inline: true },
-					{ name: 'Scorpion', value: `¤${items.pets.scorpion.price}`, inline: true }
+					{ name: 'Scorpion', value: `¤${items.pets.scorpion.price}`, inline: true },
 				]);
 
 			buttonRow = new MessageActionRow()
 				.addComponents(
 					new MessageButton()
-						.setCustomId('shoppetsEmbed0')
-						.setLabel(lang.back)
+						.setCustomId('petsEmbed0')
+						.setLabel('Back')
 						.setStyle('DANGER')
 				);
 			break;
-		case 'shoppetsVIPEmbed0':
+		case 'petsVIPEmbed0':
 			embedToExport = new MessageEmbed(mainEmbed)
 				.setTitle(`${lang.awesomeStore} - Pets (VIP)`)
 				.setDescription(`\`${prefix}shop buy pet [${lang.shop.animalName}]\`${lang.shop.toBuy}`)
@@ -608,53 +614,37 @@ export function createShopPage(user: User, lang:Record<string, any>, prefix: str
 					{ name: 'Akamaru', value: `Naruto\n¤${items.pets.akamaru.price}`, inline: true },
 					{ name: 'Frosch', value: `Fairy Tail\n¤${items.pets.frosch.price}`, inline: true },
 					{ name: 'Happy', value: `Fairy Tail\n¤${items.pets.happy.price}`, inline: true },
-					{ name: 'Iggy', value: `Jojo's Bizarre Adventure\n¤${items.pets.iggy.price}`, inline: true }
+					{ name: 'Iggy', value: `Jojo's Bizarre Adventure\n¤${items.pets.iggy.price}`, inline: true },
 				]);
 
 			buttonRow = new MessageActionRow()
 				.addComponents(
 					new MessageButton()
-						.setCustomId('shoppetsEmbed0')
-						.setLabel(lang.back)
+						.setCustomId('petsEmbed0')
+						.setLabel('Back')
 						.setStyle('DANGER')
 				);
 			break;
-		case 'shopitemsEmbed0':
+		case 'itemsEmbed0':
 			embedToExport = new MessageEmbed(mainEmbed)
-				.setTitle(`${lang.awesomeStore} - ${lang.items}`)
+				.setTitle(`${lang.awesomeStore} - Items`)
 				.setDescription(`\`${prefix}shop buy item [${lang.shop.itemName}]\`${lang.shop.toBuy}`)
 				.setFooter(`${lang.page} 1/1`)
 				.spliceFields(0, mainEmbed.fields.length, [
-					{ name: 'Name License', value: `${lang.nameLicense}\n¤${items.items.name_license.price}`, inline: true }
+					{ name: 'Name License', value: `${lang.nameLicense}\n¤${items.items.name_license.price}`, inline: true },
 				]);
 
 			buttonRow = new MessageActionRow()
 				.addComponents(
 					new MessageButton()
-						.setCustomId('shopmainEmbed0')
-						.setLabel(lang.back)
+						.setCustomId('mainEmbed0')
+						.setLabel('Back')
 						.setStyle('DANGER')
 				);
 			break;
 	}
+
 	return [embedToExport, buttonRow, buttonRow2];
 }
 
-export function shopButtonHandler(button: ButtonInteraction, prefix: string, lang: Record<string, any>) {
-	if (!author) {
-		button.reply({ content: lang.interaction.buttonExpired, ephemeral: true });
-	}
-	else if (author.id !== button.user.id) {
-		button.reply({ content: lang.interaction.notAuthor, ephemeral: true });
-	}
-	else {
-		const toSend:any = createShopPage(author, lang, prefix, button.customId);
-
-		if (toSend[2] === undefined) {
-			button.update({ embeds: [toSend[0]], components: [toSend[1]] });
-		}
-		else {
-			button.update({ embeds: [toSend[0]], components: [toSend[1], toSend[2]] });
-		}
-	}
-}
+export default createShopPage;

@@ -12,9 +12,9 @@ export async function execute(bot: undefined, message: Message, command: undefin
 	else {
 		const mention = message.mentions.users.first();
 		const member = await message.guild.members.fetch(mention);
-		
+
 		args.shift();
-		
+
 		const reason = args.join(' ') || lang.notIndicated;
 
 		if (!mention) {
@@ -35,4 +35,4 @@ export async function execute(bot: undefined, message: Message, command: undefin
 			});
 		}
 	}
-};
+}

@@ -36,4 +36,4 @@ export async function execute(bot: undefined, message: Message, command: Cmd, db
 			});
 		}
 	}
-};
+}

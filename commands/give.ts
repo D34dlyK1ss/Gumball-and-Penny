@@ -1,26 +1,26 @@
-import { Client, Message } from 'discord.js';
-import { Cmd } from 'index';
+import { Message } from 'discord.js';
+import { BotClient, Cmd } from 'index';
 
 export const name = 'give';
-export function execute(bot: Client, message: Message, command: Cmd, db: any, lang: Record<string, string | any>, language: undefined, prefix: string, args: string[]) {
+export function execute(bot: BotClient, message: Message, command: Cmd, db: any, lang: Record<string, string | any>, language: undefined, prefix: string, args: string[]) {
 	const donor = message.author;
 	if (!args[0]) message.reply(lang.error.noMention).catch(err => { console.error(err); });
-	const user = message.mentions.users.first(),
-		refD = db.collection('perfis').doc(donor.id);
+	const user = message.mentions.users.first();
+	const refD = db.collection('perfis').doc(donor.id);
 	let amount = Math.abs(parseInt(args[1]));
 
 	refD.get().then((docD: any) => {
 		if (!docD.exists) {
 			message.reply(`${lang.error.noProfile}\`${prefix}profile create\`!`).catch(err => { console.error(err); });
 		}
-		else if (user == null || !Number.isInteger(amount)) {
+		else if (user === null || !Number.isInteger(amount)) {
 			message.reply(`${lang.error.wrongSyntax}\`${prefix + lang.command[command.name].usage}\``).catch(err => { console.error(err); });
 		}
 		else {
 			const refU = db.collection('perfis').doc(user.id);
 
 			refU.get().then((docU: any) => {
-				if (user == bot.user) {
+				if (user === bot.user) {
 					message.reply(`${lang.give.thanksBut} 😁`).catch(err => { console.error(err); });
 				}
 				else if (user.bot) {
@@ -33,13 +33,13 @@ export function execute(bot: Client, message: Message, command: Cmd, db: any, la
 					message.reply(`${user.tag}${lang.error.userNoProfile}`).catch(err => { console.error(err); });
 				}
 				else {
-					const balD = docD.get('balance'),
-						balU = docU.get('balance');
+					const balD = docD.get('balance');
+					const balU = docU.get('balance');
 
 					if (amount > balD) {
 						message.reply(lang.error.noMoney).catch(err => { console.error(err); });
 					}
-					else if (balU == 1000000) {
+					else if (balU === 1000000) {
 						message.reply(`${lang.error.noGive}${user.tag}! 😧`).catch(err => { console.error(err); });
 					}
 					else {
@@ -65,4 +65,4 @@ export function execute(bot: Client, message: Message, command: Cmd, db: any, la
 			});
 		}
 	});
-};
+}

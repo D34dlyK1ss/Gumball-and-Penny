@@ -2,26 +2,26 @@
 import { Collection, Client, Intents, Guild, Message, TextBasedChannels } from 'discord.js';
 
 // Interface para as definções do servidor
-export interface serverSettings {
-	automessages: boolean,
-	language: string,
-	prefix: string
+export interface ServerSettings {
+	automessages: boolean;
+	language: string;
+	prefix: string;
 }
 
 // Interface para a execução de comandos
 export interface Cmd {
 	name: string;
 	aliases?: string[];
-	execute(bot: Client, message: Message, command: Cmd, db: any, lang: Record<string, string>, language: string, prefix: string, args: string[], serverSettings: serverSettings): void;
+	execute(bot: Client, message: Message, command: Cmd, db: any, lang: Record<string, string>, language: string, prefix: string, args: string[], serverSettings: ServerSettings): void;
 }
 
 // Extenção do tipo Client da biblioteca discord.js
-export class botClient extends Client  {
+export class BotClient extends Client  {
 	commands: Collection<string, Cmd> = new Collection<string, Cmd>();
 }
 
 // Cliente do bot
-const bot = new botClient({ allowedMentions: { parse: ['users', 'roles'], repliedUser: true }, intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES] });
+const bot = new BotClient({ allowedMentions: { parse: ['users', 'roles'], repliedUser: true }, intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES] });
 
 // Tokens de autenticação
 import { config } from 'dotenv';
@@ -33,9 +33,9 @@ import botConfig from './botConfig.json';
 // Descrição do bot na plataforma
 function setActivity() {
 	let plural = '';
-	if (bot.guilds.cache.size != 1) plural = 'es';
-	const botActivity1 = `${botConfig.settings.prefix}help em `,
-		botActivity2 = ` servidor${plural}!`;
+	if (bot.guilds.cache.size !== 1) plural = 'es';
+	const botActivity1 = `${botConfig.settings.prefix}help em `;
+	const botActivity2 = ` servidor${plural}!`;
 	bot.user.setActivity(`${botActivity1 + bot.guilds.cache.size + botActivity2}`);
 }
 
@@ -97,13 +97,13 @@ es.onopen = () => {
 
 es.onmessage = async messageEvent => {
 	const data = JSON.parse(messageEvent.data);
-	const agent = data.event.headers['user-agent'],
-		authorization = data.event.headers.authorization,
-		userID = data.event.body.user,
-		type = data.event.body.type;
+	const agent = data.event.headers['user-agent'];
+	const authorization = data.event.headers.authorization;
+	const userID = data.event.body.user;
+	const type = data.event.body.type;
 
 	if (agent === 'DBL' && authorization === 'Gumball&PennyDBL') {
-		if (type != 'upvote') return;
+		if (type !== 'upvote') return;
 
 		const refP = db.collection('perfis').doc(userID);
 
@@ -128,8 +128,8 @@ es.onmessage = async messageEvent => {
 	}
 };
 
-const settings: any = new Object(),
-	xpCooldown: Set<string> = new Set();
+const settings: any = new Object();
+const xpCooldown: Set<string> = new Set();
 
 let lang: Record<string, any>;
 
@@ -139,7 +139,7 @@ async function getServerSettings(guild: Guild, channel: TextBasedChannels) {
 		const doc = await ref.get();
 		settings[guild.id] = doc.get('settings') || botConfig.settings;
 	}
-	const serverSettings:  serverSettings = settings[guild.id];
+	const serverSettings:  ServerSettings = settings[guild.id];
 	serverSettings.language = channel.id === '787661396652589077' || channel.id === '787674033331634196' ? 'en' : serverSettings.language;
 
 	return serverSettings;
@@ -155,7 +155,7 @@ bot.on('messageCreate', async message => {
 		const array = message.content.split(' ');
 		array[0].slice(botConfig.settings.prefix.length).toLowerCase();
 		const args = array.slice(1);
-		
+
 		if (message.content.startsWith(`${botConfig.settings.prefix}setvip`)) {
 			giveVIP(db, message, args);
 		}
@@ -174,16 +174,16 @@ bot.on('messageCreate', async message => {
 
 	//  Obter as definições do bot para o servidor
 	const serverSettings = await getServerSettings(message.guild, message.channel);
-	const prefix = serverSettings.prefix,
-		language = serverSettings.language;
+	const prefix = serverSettings.prefix;
+	const language = serverSettings.language;
 	lang = require(`./lang/${language}.json`);
 
 	if (message.content.toLowerCase().startsWith(prefix)) {
-		const array = message.content.split(' '),
-			commandName = array[0].slice(prefix.length).toLowerCase(),
-			args = array.slice(1);
+		const array = message.content.split(' ');
+		const commandName = array[0].slice(prefix.length).toLowerCase();
+		const args = array.slice(1);
 
-		const command = bot.commands.get(commandName) || bot.commands.find(Cmd => Cmd.aliases && Cmd.aliases.includes(commandName));
+		const command = bot.commands.get(commandName) || bot.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
 		// Ignorar mensagem se o bot não tiver tal comando
 		if (!command) return;
 
@@ -201,8 +201,8 @@ bot.on('messageCreate', async message => {
 				else {
 					const xp = doc.get('xp');
 					const level = Math.floor(Math.sqrt(xp / 2000000) * 99) + 1;
-					let add = Math.floor(Math.random() * 10) + 50,
-						newXP: number;
+					let add = Math.floor(Math.random() * 10) + 50;
+					let newXP: number;
 
 					if (vips.has(message.author.id)) add *= 2;
 
@@ -235,7 +235,7 @@ bot.on('messageCreate', async message => {
 				}
 			});
 		}
-		
+
 		try {
 			command.execute(bot, message, command, db, lang, language, prefix, args, serverSettings);
 		}
@@ -245,8 +245,8 @@ bot.on('messageCreate', async message => {
 		}
 	}
 	else if (serverSettings.automessages === true) {
-		const pngs = ['boi', 'E', 'hmm', 'just monika', 'nice plan', 'no u', 'noice', 'shine'],
-			gifs = ['distraction dance'];
+		const pngs = ['boi', 'E', 'hmm', 'just monika', 'nice plan', 'no u', 'noice', 'shine'];
+		const gifs = ['distraction dance'];
 
 		if (pngs.includes(message.content)) {
 			message.channel.send({ files: [`./img/automessages/${message.content}.png`] }).catch(err => { console.error(err); });
@@ -262,8 +262,8 @@ bot.on('messageCreate', async message => {
 
 bot.on('interactionCreate', async interaction => {
 	const serverSettings = await getServerSettings(interaction.guild, interaction.channel);
-	const prefix = serverSettings.prefix,
-		language = serverSettings.language;
+	const prefix = serverSettings.prefix;
+	const language = serverSettings.language;
 	lang = require(`./lang/${language}.json`);
 
 	if (interaction.isButton()) shopButtonHandler(interaction, prefix, lang);

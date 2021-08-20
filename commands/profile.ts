@@ -1,4 +1,5 @@
-import { Client, Message, MessageAttachment } from 'discord.js';
+import { Message, MessageAttachment } from 'discord.js';
+import { BotClient } from 'index';
 import { registerFont, createCanvas, loadImage } from 'canvas';
 import botConfig from '../botConfig.json';
 import items from '../src/data/itemlist.json';
@@ -11,11 +12,11 @@ registerFont('./fonts/comicz.ttf', { family: 'bold-italic Sans MS' });
 
 export const name = 'profile';
 export const aliases = ['p'];
-export function execute(bot: Client, message: Message, command: undefined, db: any, lang: Record<string, string | any>, language: undefined, prefix: undefined, args: string[]) {
-	const user = message.mentions.users.first() || message.author,
-		refP = db.collection('perfis').doc(user.id),
-		refI = db.collection('inventario').doc(message.author.id),
-		option = args[0];
+export function execute(bot: BotClient, message: Message, command: undefined, db: any, lang: Record<string, string | any>, language: undefined, prefix: undefined, args: string[]) {
+	const user = message.mentions.users.first() || message.author;
+	const refP = db.collection('perfis').doc(user.id);
+	const refI = db.collection('inventario').doc(message.author.id);
+	const option = args[0];
 	let argsString = args.slice(1).join(' ');
 
 	switch (option) {
@@ -46,11 +47,11 @@ export function execute(bot: Client, message: Message, command: undefined, db: a
 			});
 			break;
 		case 'setnickname':
-			if (argsString == '') argsString = 'N/A';
+			if (argsString === '') argsString = 'N/A';
 			db.collection('perfis').doc(message.author.id).get().then((doc: any) => {
 				const nicknameMax = 32;
 				if (!doc.exists) {
-					if (user == message.author) {
+					if (user === message.author) {
 						message.reply(`${lang.error.noProfile}\`${prefix}profile create\`!`);
 					}
 				}
@@ -72,7 +73,7 @@ export function execute(bot: Client, message: Message, command: undefined, db: a
 			db.collection('perfis').doc(message.author.id).get().then((doc: any) => {
 				const descMax = 44;
 				if (!doc.exists) {
-					if (user == message.author) {
+					if (user === message.author) {
 						message.reply(`${lang.error.noProfile}\`${prefix}profile create\`!`);
 					}
 				}
@@ -91,7 +92,7 @@ export function execute(bot: Client, message: Message, command: undefined, db: a
 		case 'sethud':
 			db.collection('perfis').doc(message.author.id).get().then((docP: any) => {
 				if (!docP.exists) {
-					if (user == message.author) {
+					if (user === message.author) {
 						message.reply(`${lang.error.noProfile}\`${prefix}profile create\`!`);
 					}
 				}
@@ -102,7 +103,7 @@ export function execute(bot: Client, message: Message, command: undefined, db: a
 
 						newHud = newHud.concat(argsString.slice(0)).toLowerCase().replace(/[ ]/g, '_');
 
-						if (!newHud || newHud == '') {
+						if (!newHud || newHud === '') {
 							message.reply(lang.error.noHUDChosen);
 						}
 						else if (!huds.includes(`${newHud}`) && message.author.id !== botConfig.botOwner && !botConfig.collaborators.includes(message.author.id)) {
@@ -122,10 +123,10 @@ export function execute(bot: Client, message: Message, command: undefined, db: a
 		default:
 			refP.get().then(async (doc: any) => {
 				if (!doc.exists) {
-					if (user == message.author) {
+					if (user === message.author) {
 						message.reply(`${lang.error.noProfile}\`${prefix}profile create\`!`).catch(err => { console.error(err); });
 					}
-					else if (user == bot.user) {
+					else if (user === bot.user) {
 						message.reply(lang.botNoProfile).catch(err => { console.error(err); });
 					}
 					else if (user.bot) {
@@ -136,23 +137,23 @@ export function execute(bot: Client, message: Message, command: undefined, db: a
 					}
 				}
 				else {
-					const nick = doc.get('nickname'),
-						desc = doc.get('description'),
-						bal = doc.get('balance'),
-						hud = doc.get('hud'),
-						xp = doc.get('xp');
+					const nick = doc.get('nickname');
+					const desc = doc.get('description');
+					const bal = doc.get('balance');
+					const hud = doc.get('hud');
+					const xp = doc.get('xp');
 
-					const level = Math.floor(Math.sqrt(xp / 2000000) * 99) + 1,
-						prevLevel = Math.round(Math.pow((level - 1) / 99, 2) * 2000000),
-						nextLevel = Math.round(Math.pow(level / 99, 2) * 2000000);
-					let xpNeeded = nextLevel - prevLevel,
-						xpToNext = xp - prevLevel;
+					const level = Math.floor(Math.sqrt(xp / 2000000) * 99) + 1;
+					const prevLevel = Math.round(Math.pow((level - 1) / 99, 2) * 2000000);
+					const nextLevel = Math.round(Math.pow(level / 99, 2) * 2000000);
+					let xpNeeded = nextLevel - prevLevel;
+					let xpToNext = xp - prevLevel;
 
 					if (xpNeeded <= 0) xpNeeded = 200;
 					if (xpToNext <= 0) xpToNext = xp;
 
-					const canvas = createCanvas(700, 400),
-						ctx = canvas.getContext('2d');
+					const canvas = createCanvas(700, 400);
+					const ctx = canvas.getContext('2d');
 
 					const bg = await loadImage(`img/profile/hud (${hud}).png`);
 					ctx.drawImage(bg, 0, 0, canvas.width, canvas.height);
@@ -232,4 +233,4 @@ export function execute(bot: Client, message: Message, command: undefined, db: a
 			});
 			break;
 	}
-};
+}

@@ -28,4 +28,4 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 		else {
 			message.channel.send({ embeds: [embed] }).catch(err => { console.error(err); });
 		}
-};
+}

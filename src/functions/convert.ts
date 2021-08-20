@@ -7,6 +7,7 @@ function convert(value: number) {
 	else if (value >= 1000) {
 		valueString = (value / 1000) + 'k';
 	}
+
 	return valueString;
 }
 

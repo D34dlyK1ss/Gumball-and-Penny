@@ -1,4 +1,5 @@
-import { Client, Message, MessageAttachment } from 'discord.js';
+import { Message, MessageAttachment } from 'discord.js';
+import { BotClient } from 'index';
 import { registerFont, createCanvas, loadImage } from 'canvas';
 import botConfig from '../botConfig.json';
 import titleCase from '../src/functions/titleCase';
@@ -10,12 +11,12 @@ registerFont('./fonts/comicz.ttf', { family: 'bold-italic Sans MS' });
 
 export const name = 'pet';
 
-export function execute(bot: Client, message: Message, command: undefined, db: any, lang: Record<string, string | any>, language: undefined, prefix: undefined, args: string[]) {
-	const user = message.mentions.users.first() || message.author,
-		refV = db.collection('vip').doc(user.id),
-		refP = db.collection('pet').doc(user.id),
-		refI = db.collection('inventario').doc(message.author.id),
-		option = args[0];
+export function execute(bot: BotClient, message: Message, command: undefined, db: any, lang: Record<string, string | any>, language: undefined, prefix: undefined, args: string[]) {
+	const user = message.mentions.users.first() || message.author;
+	const refV = db.collection('vip').doc(user.id);
+	const refP = db.collection('pet').doc(user.id);
+	const refI = db.collection('inventario').doc(message.author.id);
+	const option = args[0];
 	args = args.slice(1);
 	const argsString = args.join(' ');
 
@@ -33,8 +34,8 @@ export function execute(bot: Client, message: Message, command: undefined, db: a
 					const max = 25;
 
 					refI.get().then(async (docI: any) => {
-						const invItems = docI.get('items'),
-							newName = titleCase(argsString);
+						const invItems = docI.get('items');
+						const newName = titleCase(argsString);
 
 						if (!invItems) {
 							await refI.update({
@@ -45,10 +46,10 @@ export function execute(bot: Client, message: Message, command: undefined, db: a
 						if (!invItems.includes('name_license')) {
 							message.reply(lang.error.noNameLicense).catch(err => { console.error(err); });
 						}
-						else if (!newName || newName == '') {
+						else if (!newName || newName === '') {
 							message.reply(lang.error.noName).catch(err => { console.error(err); });
 						}
-						else if (newName == doc.get('name')) {
+						else if (newName === doc.get('name')) {
 							message.reply(lang.error.petAlreadyHasName).catch(err => { console.error(err); });
 						}
 						else if (argsString.length > max) {
@@ -73,7 +74,7 @@ export function execute(bot: Client, message: Message, command: undefined, db: a
 		case 'sethud':
 			db.collection('pet').doc(message.author.id).get().then((docP: any) => {
 				if (!docP.exists) {
-					if (user == message.author) {
+					if (user === message.author) {
 						message.reply(`${lang.error.noPet}\`${prefix}shop pets\`!`).catch(err => { console.error(err); });
 					}
 				}
@@ -84,7 +85,7 @@ export function execute(bot: Client, message: Message, command: undefined, db: a
 
 						newHud = newHud.concat(argsString.slice(0)).toLowerCase().replace(/[ ]/g, '_');
 
-						if (!newHud || newHud == '') {
+						if (!newHud || newHud === '') {
 							message.reply(lang.error.noPetHUDChosen).catch(err => { console.error(err); });
 						}
 						else if (!petHuds.includes(`${newHud}`) && message.author.id !== botConfig.botOwner && !botConfig.collaborators.includes(message.author.id)) {
@@ -104,7 +105,7 @@ export function execute(bot: Client, message: Message, command: undefined, db: a
 		case 'sendtoadoption':
 			db.collection('pet').doc(message.author.id).get().then((docP: any) => {
 				if (!docP.exists) {
-					if (user == message.author) {
+					if (user === message.author) {
 						message.reply(lang.error.noPetToAdoption).catch(err => { console.error(err); });
 					}
 				}
@@ -125,10 +126,10 @@ export function execute(bot: Client, message: Message, command: undefined, db: a
 		default:
 			refP.get().then(async (doc: any) => {
 				if (!doc.exists) {
-					if (user == message.author) {
+					if (user === message.author) {
 						message.reply(`${lang.error.noPet}\`${prefix}shop pets\`!`).catch(err => { console.error(err); });
 					}
-					else if (user == bot.user) {
+					else if (user === bot.user) {
 						message.reply(lang.pet.botNoPet).catch(err => { console.error(err); });
 					}
 					else if (user.bot) {
@@ -139,15 +140,15 @@ export function execute(bot: Client, message: Message, command: undefined, db: a
 					}
 				}
 				else {
-					const pet = doc.get('pet'),
-						petName = doc.get('name'),
-						petSpecies = doc.get('species'),
-						petGender = doc.get('gender'),
-						petNature = doc.get('nature'),
-						petHud = doc.get('hud');
+					const pet = doc.get('pet');
+					const petName = doc.get('name');
+					const petSpecies = doc.get('species');
+					const petGender = doc.get('gender');
+					const petNature = doc.get('nature');
+					const petHud = doc.get('hud');
 
-					const canvas = createCanvas(617, 327),
-						ctx = canvas.getContext('2d');
+					const canvas = createCanvas(617, 327);
+					const ctx = canvas.getContext('2d');
 
 					const bg = await loadImage(`img/pet/hud_pet (${petHud}).png`);
 					ctx.drawImage(bg, 0, 0, canvas.width, canvas.height);
@@ -208,4 +209,4 @@ export function execute(bot: Client, message: Message, command: undefined, db: a
 			});
 			break;
 	}
-};
+}
