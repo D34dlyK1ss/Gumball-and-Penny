@@ -584,7 +584,7 @@
 
 		"setlanguage": {
 			"category": "Server",
-			"description": "Change our language for this server\nAvailable languages: `pt`, `en`",
+			"description": "Change our language for this server",
 			"usage": "setlanguage [language]"
 		},
 

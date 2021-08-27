@@ -584,8 +584,8 @@
 
 		"setlanguage": {
 			"category": "Servidor",
-			"description": "Muda a nossa linguagem para este servidor\nLinguagens disponíveis: `pt`, `en`",
-			"usage": "setlanguage [linguagem]"
+			"description": "Muda a nossa linguagem para este servidor",
+			"usage": "setlanguage"
 		},
 
 		"setprefix": {
