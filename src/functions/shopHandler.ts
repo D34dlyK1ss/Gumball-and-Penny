@@ -40,7 +40,11 @@ export function createShopPage(user: User, lang:Record<string, any>, prefix: str
 					new MessageButton()
 						.setCustomId('shopitemsEmbed0')
 						.setLabel(lang.items)
-						.setStyle('PRIMARY')
+						.setStyle('PRIMARY'),
+					new MessageButton()
+						.setCustomId('shopExit')
+						.setLabel(lang.exit)
+						.setStyle('DANGER')
 				);
 			break;
 		case 'shophudEmbed0':
@@ -646,6 +650,9 @@ export function shopButtonHandler(button: ButtonInteraction, lang: Record<string
 	}
 	else if (author.id !== button.user.id) {
 		button.reply({ content: lang.interaction.notAuthor, ephemeral: true });
+	}
+	else if (button.customId.endsWith('Exit')) {
+		button.update({ content: lang.shop.exited, components: [] });
 	}
 	else {
 		const toSend:any = createShopPage(author, lang, prefix, button.customId);
