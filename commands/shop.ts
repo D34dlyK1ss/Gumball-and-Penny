@@ -290,7 +290,7 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 		default:
 			const pageToSend: any = createShopPage(message.author, lang, prefix, 'shopmainEmbed0');
 
-			message.channel.send({ embeds: [pageToSend[0]], components: [pageToSend[1]] }).catch(err => { console.error(err); });
+			message.reply({ embeds: [pageToSend[0]], components: [pageToSend[1]] }).catch(err => { console.error(err); });
 			break;
 	}
 }

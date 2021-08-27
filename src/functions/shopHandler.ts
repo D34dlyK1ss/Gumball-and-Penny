@@ -12,7 +12,6 @@ export function createShopPage(user: User, lang:Record<string, any>, prefix: str
 	let buttonRow2: MessageActionRow;
 	const mainEmbed = new MessageEmbed()
 		.setColor('#9900ff')
-		.setAuthor(user.username, user.avatarURL())
 		.setTitle(lang.awesomeStore)
 		.setDescription(lang.shop.welcome)
 		.addFields(
@@ -641,7 +640,7 @@ export function createShopPage(user: User, lang:Record<string, any>, prefix: str
 	return [embedToExport, buttonRow, buttonRow2];
 }
 
-export function shopButtonHandler(button: ButtonInteraction, prefix: string, lang: Record<string, any>) {
+export function shopButtonHandler(button: ButtonInteraction, lang: Record<string, any>, prefix: string) {
 	if (!author) {
 		button.reply({ content: lang.interaction.buttonExpired, ephemeral: true });
 	}
