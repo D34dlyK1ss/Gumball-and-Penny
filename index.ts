@@ -67,6 +67,7 @@ const db = admin.firestore();
 import removeVIP from './src/functions/removeVIP';
 import giveVIP from './src/functions/giveVIP';
 import { shopButtonHandler } from './src/functions/shopHandler';
+import { confirmLanguage } from './src/functions/setlanguageHandler';
 
 const vips: Set<string> = new Set();
 
@@ -260,13 +261,24 @@ bot.on('messageCreate', async message => {
 	}
 });
 
+let newLanguage: string|undefined;
+
 bot.on('interactionCreate', async interaction => {
 	const serverSettings = await getServerSettings(interaction.guild, interaction.channel);
 	const prefix = serverSettings.prefix;
 	const language = serverSettings.language;
 	lang = require(`./lang/${language}.json`);
 
-	if (interaction.isButton()) shopButtonHandler(interaction, prefix, lang);
+	if (interaction.isButton()) {
+		if (interaction.customId.startsWith('shop')) shopButtonHandler(interaction, lang, prefix);
+		else if (interaction.customId.startsWith('language')) confirmLanguage(interaction, db, newLanguage, lang, prefix, serverSettings);
+	}
+	if	(interaction.isSelectMenu()) {
+		if (interaction.customId.startsWith('languageMenu')) {
+			newLanguage = interaction.values[0];
+			interaction.deferUpdate().catch(err => { console.log(err); });
+		}
+	}
 });
 
 // Quando o bot for adicionado a um novo servidor, são armazenados dados do mesmo

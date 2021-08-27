@@ -19,7 +19,7 @@
 	"links": "Ligações",
 	"inviteUs": "Convida-nos!",
 	"supportServer": "Servidor de Suporte",
-	"buyVIP": "Comprar VIP",
+	"buyVIP": "Comprar Status VIP",
 	"name": "Nome",
 	"category": "Categoria",
 	"howToUse": "Como usar",
@@ -48,12 +48,12 @@
 	"level": "Nível",
 	"balanceProfile": "Capital",
 	"awesomeStore": "Loja Incrível",
-	"youBought": "compraste ",
+	"youBought": "Compraste ",
 	"nameLicense": "Licença de Nome",
 	"page": "Página",
 	"toChangePage": "Para mudar de página usa ",
 	"forMoreInfo": " para mais informação.",
-	"betAtLeast": "tens de apostar no mínimo ¤",
+	"betAtLeast": "Tens de apostar no mínimo ¤",
 	"betAtMost": "não podes apostar mais que ¤",
 	"lost": "perdeste ¤",
 	"won": "ganhaste ¤",
@@ -69,62 +69,67 @@
 	"common": "Comuns",
 	"items": "Itens",
 	"eyes": "Olhos",
+	"ok": "OK",
+	"cancel": "Cancelar",
+	"exit": "Sair",
+	"userCancelled": "_Operação cancelada pelo utilizador_",
 
 
 	"error": {
-		"cmd": "ocorreu um erro ao tentar executar esse comando!",
-		"noProfile": "ainda não criaste um perfil! Para criares um perfil usa ",
+		"cmd": "Ocorreu um erro ao tentar executar esse comando!",
+		"noProfile": "Ainda não criaste um perfil! Para criares um perfil usa ",
 		"userNoProfile": " ainda não criou um perfil!",
-		"noMention": "tens de mencionar alguém!",
-		"noPerm": "não tens permissão para usar este comando! 💢",
-		"botNoBan": "nós não temos permissão para banir membros!",
-		"botNoManageMsgs": "nós não temos permissão para gerir mensagens!",
-		"noNumberToDelete": "tens de definir o número de mensagens que queres apagar!",
+		"noMention": "Tens de mencionar alguém!",
+		"noPerm": "Não tens permissão para usar este comando! 💢",
+		"botNoBan": "Nós não temos permissão para banir membros!",
+		"botNoManageMsgs": "Nós não temos permissão para gerir mensagens!",
+		"noNumberToDelete": "Tens de definir o número de mensagens que queres apagar!",
 		"wrongSyntax": "Sintaxe errada! Como usar: ",
-		"noAdd": "não podes ganhar mais dinheiro! 😧",
-		"noMoney": "não tens dinheiro suficiente!",
-		"noMessage": "não escreveste mensagem nenhuma!",
-		"noGive": "não podes dar dinheiro a ",
-		"noCommand": "esse comando não existe!",
-		"noInventory": "não tens nenhum inventário!",
-		"botNoKick": "nós não temos permissão para expulsar membros!",
-		"noSelf": "não podes usar este comando em ti!",
-		"wontWorkOnBot": "isso não vai funcionar com um bot! 😂",
-		"botNoManageRoles": "nós não temos permissão para gerir cargos!",
-		"botNoManageChannels": "nós não temos permissão para gerir canais!",
-		"noPet": "ainda não compraste um pet! Para comprares um vai à Loja Incrível usando ",
-		"noChangePetName": "não podes mudar o nome do teu pet!",
-		"noNameLicense": "não tens uma **Licença de Nome**!",
-		"noName": "não escolheste nome nenhum!",
-		"petAlreadyHasName": "o teu pet já tem esse nome!",
-		"noPetHUDChosen": "não escolheste um Pet HUD!",
-		"noHavePetHUD": "não tens esse Pet HUD!",
-		"noPetToAdoption": "não tens pet nenhum para dar para adoção!",
+		"noAdd": "Não podes ganhar mais dinheiro! 😧",
+		"noMoney": "Não tens dinheiro suficiente!",
+		"noMessage": "Não escreveste mensagem nenhuma!",
+		"noGive": "Não podes dar dinheiro a ",
+		"noCommand": "Esse comando não existe!",
+		"noInventory": "Não tens nenhum inventário!",
+		"botNoKick": "Nós não temos permissão para expulsar membros!",
+		"noSelf": "Não podes usar este comando em ti!",
+		"wontWorkOnBot": "Isso não vai funcionar com um bot! 😂",
+		"botNoManageRoles": "Nós não temos permissão para gerir cargos!",
+		"botNoManageChannels": "Nós não temos permissão para gerir canais!",
+		"noPet": "Ainda não compraste um pet! Para comprares um vai à Loja Incrível usando ",
+		"noChangePetName": "Não podes mudar o nome do teu pet!",
+		"noNameLicense": "Não tens uma **Licença de Nome**!",
+		"noName": "Não escolheste nome nenhum!",
+		"petAlreadyHasName": "O teu pet já tem esse nome!",
+		"noPetHUDChosen": "Não escolheste um Pet HUD!",
+		"noHavePetHUD": "Não tens esse Pet HUD!",
+		"noPetToAdoption": "Não tens pet nenhum para dar para adoção!",
 		"userNoPet": " ainda não comprou um pet!",
-		"notANumber": "isso não é um número!",
-		"noPrefixChosen": "precisamos de saber qual é o prefixo desejado!",
-		"noLinks": "não podemos escrever links!",
-		"memberNotMuted": "esse membro não está silenciado!",
+		"notANumber": "Isso não é um número!",
+		"noPrefixChosen": "Precisamos de saber qual é o prefixo desejado!",
+		"noLinks": "Não podemos escrever links!",
+		"memberNotMuted": "Esse membro não está silenciado!",
 		"hasProfileAlready": "Já tens um perfil criado, não podes criar outro! 💢",
-		"noHUDChosen": "não escolheste um HUD!",
-		"noHaveHUD": "não tens esse HUD!",
-		"noHUD": "esse HUD não existe!",
-		"noPetHUD": "esse Pet HUD não existe!",
-		"alreadyHasHUD": "já tens este HUD!",
-		"alreadyHasPetHUD": "já tens este Pet HUD!",
-		"noVIPForPetHUD": "precisas de ser VIP para comprares este Pet HUD!",
-		"alreadyHasPet": "já tens um pet! Se quiseres outro tens de dar o que tens para adoção usando ",
-		"noItem": "esse item não existe!",
-		"noVIPForPet": "precisas de ser VIP para comprares este pet!",
-		"samePrefix": "esse prefixo é igual ao que usamos!",
-		"sameLanguage": "essa linguagem é igual à que falamos!",
-		"noDuration": "não indicaste a duração!"
+		"noHUDChosen": "Não escolheste um HUD!",
+		"noHaveHUD": "Não tens esse HUD!",
+		"noHUD": "Esse HUD não existe!",
+		"noPetHUD": "Esse Pet HUD não existe!",
+		"alreadyHasHUD": "Já tens este HUD!",
+		"alreadyHasPetHUD": "Já tens este Pet HUD!",
+		"noVIPForPetHUD": "Precisas de ser VIP para comprares este Pet HUD!",
+		"alreadyHasPet": "Já tens um pet! Se quiseres outro tens de dar o que tens para adoção usando ",
+		"noItem": "Esse item não existe!",
+		"noVIPForPet": "Precisas de ser VIP para comprares este pet!",
+		"samePrefix": "Esse prefixo é igual ao que usamos!",
+		"sameLanguage": "Essa linguagem é igual à que estamos a falar!",
+		"noDuration": "Não indicaste a duração!"
 	},
 
 
 	"interaction": {
 		"notAuthor": "Isto não é para ti!",
-		"buttonExpired": "Este botão expirou!"
+		"buttonExpired": "Este botão expirou!",
+		"nothingSelected": "Nada selecionado"
 	},
 
 	"levelUp": {
@@ -144,7 +149,7 @@
 	},
 
 	"balance": {
-		"have": "tens "
+		"have": "Tens "
 	},
 
 	"ban": {
@@ -319,8 +324,9 @@
 	},
 
 	"setlanguage": {
-		"noLanguage": "tens de selecionar uma linguagem disponível! Usa ",
-		"isNow": "Agora falaremos em Português 🇵🇹 neste servidor"
+		"noLanguage": "Tens de selecionar uma linguagem!",
+		"select": "Seleciona uma das linguagens abaixo.",
+		"isNow": "Agora falaremos em Português 🇵🇹 neste servidor."
 	},
 
 	"setprefix": {
@@ -329,9 +335,9 @@
 
 	"shop": {
 		"welcome": "Bem vindo à Loja Incrível!\nAqui poderás comprar algumas coisas com o dinheiro que acumulaste até agora.\nUsa os botões abaixo para navegar pela loja!",
-		"boughtHUD": "compraste o HUD ",
-		"boughtPetHUD": "compraste o Pet HUD ",
-		"boughtItem": "compraste 1 ",
+		"boughtHUD": "Compraste o HUD ",
+		"boughtPetHUD": "Compraste o Pet HUD ",
+		"boughtItem": "Compraste 1 ",
 		"toEquip": "Para o equipares usa ",
 		"hero": "Herói",
 		"villain": "Vilão",
@@ -341,7 +347,8 @@
 		"toSelectASubCat": " para selecionar uma sub-categoria.",
 		"animalName": "Nome do Animal",
 		"toBuy": " para comprar.",
-		"itemName": "Nome do Item"
+		"itemName": "Nome do Item",
+		"exited": "Saíste da loja!"
 	},
 
 	"slap": {
@@ -366,7 +373,7 @@
 	},
 
 	"which": {
-		"noSelect": "tens de selecionar um anime disponível! Usa "
+		"noSelect": "Tens de selecionar um anime disponível! Usa "
 	},
 
 

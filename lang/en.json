@@ -19,7 +19,7 @@
 	"links": "Links",
 	"inviteUs": "Invite Us!",
 	"supportServer": "Support Server",
-	"buyVIP": "Buy VIP",
+	"buyVIP": "Buy VIP Status",
 	"name": "Name",
 	"category": "Category",
 	"howToUse": "How to use",
@@ -43,20 +43,20 @@
 	"joined": "Joined",
 	"roles": "Roles",
 	"ago": " ",
-	"botNoProfile": "we don't have a profile!",
+	"botNoProfile": "We don't have a profile!",
 	"totalXP": "Total XP",
 	"level": "Level",
 	"balanceProfile": "Balance",
 	"awesomeStore": "Awesome Store",
-	"youBought": "you bought ",
+	"YouBought": "You bought ",
 	"nameLicense": "Name License",
 	"page": "Page",
 	"toChangePage": "To change page use ",
 	"forMoreInfo": " for more information.",
-	"betAtLeast": "you have to bet at least ¤",
-	"betAtMost": "you can't bet over ¤",
-	"lost": "you lost ",
-	"won": "you won ",
+	"betAtLeast": "You have to bet at least ¤",
+	"betAtMost": "You can't bet over ¤",
+	"lost": "You lost ",
+	"won": "You won ",
 	"and": "and",
 	"enabled": "enabled",
 	"disabled": "disabled",
@@ -69,67 +69,72 @@
 	"common": "Common",
 	"items": "Items",
 	"eyes": "Eyes",
+	"ok": "OK",
+	"cancel": "Cancel",
+	"exit": "Exit",
+	"userCancelled": "_Operation cancelled by the user_",
 
 
 	"error": {
-		"cmd": "there was an error when trying to execute that command!",
-		"noProfile": "you haven't created a profile yet! To create a profile use ",
+		"cmd": "There was an error when trying to execute that command!",
+		"noProfile": "You haven't created a profile yet! To create a profile use ",
 		"userNoProfile": " hasn't yet created a profile!",
-		"noMention": "you have to mention someone!",
-		"noPerm": "you have no permisison to use this command! 💢",
-		"botNoBan": "we don't have permission to ban members!",
-		"botNoManageMsgs": "we don't have permission to manage messages!",
-		"noNumberToDelete": "you have to indicate how many messages you want to delete!",
+		"noMention": "You have to mention someone!",
+		"noPerm": "You have no permisison to use this command! 💢",
+		"botNoBan": "We don't have permission to ban members!",
+		"botNoManageMsgs": "We don't have permission to manage messages!",
+		"noNumberToDelete": "You have to indicate how many messages you want to delete!",
 		"wrongSyntax": "Wrong syntax! How to use: ",
-		"noAdd": "you can't get any more money! 😧",
-		"noMoney": "you don't have enough money!",
-		"noMessage": "you didn't write any message!",
-		"noGive": "you can't give money to ",
-		"noCommand": "that command doesn't exist!",
-		"noInventory": "you have no inventory!",
-		"botNoKick": "we don't have permission to kick members!",
-		"noSelf": "you can't use this command on you!",
-		"wontWorkOnBot": "isso não vai funcionar com um bot! 😂",
-		"botNoManageRoles": "we don't have permission to manage roles!",
-		"botNoManageChannels": "we don't have permission to manage channels!",
-		"noPet": "you haven't bought a pet yet! To buy one go to the Awesome Store using ",
-		"noChangePetName": "you can't change your pet's name!",
-		"noNameLicense": "you don't have a **Name License**!",
-		"noName": "you didn't choose any name!",
-		"petAlreadyHasName": "your pet has that name already!",
-		"noPetHUDChosen": "you didn't choose a Pet HUD!",
-		"noHavePetHUD": "you don't have that Pet HUD!",
-		"noPetToAdoption": "you have no pet to send to adoption!",
-		"userNoPet": "hasn't bought a pet yet!",
-		"notANumber": "that's not a number!",
-		"noPrefixChosen": "we need to know the desired prefix!",
-		"noLinks": "we can't write any links!",
-		"memberNotMuted": "that member isn't muted!",
-		"hasProfileAlready": "you already have a profile created, you can't create another! 💢",
-		"noHUDChosen": "you didn't choose a HUD!",
-		"noHaveHUD": "you don't have that HUD!",
-		"noHUD": "that HUD doesn't exist!",
-		"noPetHUD": "that Pet HUD doesn't exist!",
-		"alreadyHasHUD": "you already have HUD!",
-		"alreadyHasPetHUD": "you already have HUD!",
-		"noVIPForPetHUD": "you need to be VIP to buy this Pet HUD!",
-		"alreadyHasPet": "you already have a pet! If you want another one you have to give yours to adoption using",
-		"noItem": "that item doesn't exist!",
-		"noVIPForPet": "you need to be VIP to buy this pet!",
-		"samePrefix": "that's the same prefix we're using!",
-		"sameLanguage": "that's the same language we're speaking!",
-		"noDuration": "you didn't indicate the duration!"
+		"noAdd": "You can't get any more money! 😧",
+		"noMoney": "You don't have enough money!",
+		"noMessage": "You didn't write any message!",
+		"noGive": "You can't give money to ",
+		"noCommand": "That command doesn't exist!",
+		"noInventory": "You have no inventory!",
+		"botNoKick": "We don't have permission to kick members!",
+		"noSelf": "You can't use this command on you!",
+		"wontWorkOnBot": "That won't work on a bot! 😂",
+		"botNoManageRoles": "We don't have permission to manage roles!",
+		"botNoManageChannels": "We don't have permission to manage channels!",
+		"noPet": "You haven't bought a pet yet! To buy one go to the Awesome Store using ",
+		"noChangePetName": "You can't change your pet's name!",
+		"noNameLicense": "You don't have a **Name License**!",
+		"noName": "You didn't choose any name!",
+		"petAlreadyHasName": "Your pet has that name already!",
+		"noPetHUDChosen": "You didn't choose a Pet HUD!",
+		"noHavePetHUD": "You don't have that Pet HUD!",
+		"noPetToAdoption": "You have no pet to send to adoption!",
+		"userNoPet": " hasn't bought a pet yet!",
+		"notANumber": "That's not a number!",
+		"noPrefixChosen": "We need to know the desired prefix!",
+		"noLinks": "We can't write any links!",
+		"memberNotMuted": "That member isn't muted!",
+		"hasProfileAlready": "You already have a profile created, you can't create another! 💢",
+		"noHUDChosen": "You didn't choose a HUD!",
+		"noHaveHUD": "You don't have that HUD!",
+		"noHUD": "That HUD doesn't exist!",
+		"noPetHUD": "That Pet HUD doesn't exist!",
+		"alreadyHasHUD": "You already have HUD!",
+		"alreadyHasPetHUD": "You already have HUD!",
+		"noVIPForPetHUD": "You need to be VIP to buy this Pet HUD!",
+		"alreadyHasPet": "You already have a pet! If you want another one you have to give yours to adoption using",
+		"noItem": "That item doesn't exist!",
+		"noVIPForPet": "You need to be VIP to buy this pet!",
+		"samePrefix": "That's the same prefix we're using!",
+		"sameLanguage": "That's the same language we're speaking right now!",
+		"noDuration": "You didn't indicate the duration!"
 	},
 
 
 	"interaction": {
 		"notAuthor": "This isn't for you!",
-		"buttonExpired": "This button expired!"
+		"buttonExpired": "This button expired!",
+		"nothingSelected": "Nothing selected"
 	},
 
 	"levelUp": {
 		"congrats": "Congratulations",
-		"levelTo": "you leveled up to level",
+		"levelTo": "You leveled up to level",
 		"received": "and received ¤"
 	},
 
@@ -144,7 +149,7 @@
 	},
 
 	"balance": {
-		"have": "you have "
+		"have": "You have "
 	},
 
 	"ban": {
@@ -152,7 +157,7 @@
 	},
 
 	"clear": {
-		"weDeleted": "We have deleted ",
+		"WeDeleted": "We have deleted ",
 		"message": " message",
 		"messages": " messages"
 	},
@@ -170,8 +175,8 @@
 	},
 
 	"daily": {
-		"againIn": "you can get money again in ",
-		"received": "you received your ",
+		"againIn": "You can get money again in ",
+		"received": "You received your ",
 		"toGetMore": " of today! To get more ¤150 (¤300 for VIPs) use "
 	},
 
@@ -183,7 +188,7 @@
 
 	"give": {
 		"thanksBut": "Thanks, but you'll need that money more than us!",
-		"youGave": "you gave ",
+		"YouGave": "You gave ",
 		"to": " to "
 	},
 
@@ -228,7 +233,7 @@
 
 	"match": {
 		"alreadyAPair": "Hey, we're already a pair! 😠",
-		"youAre": "you are ",
+		"YouAre": "You are ",
 		"compatibleWith": " compatible with "
 	},
 
@@ -246,27 +251,27 @@
 	"pet": {
 		"nameMaxIs": "the name's maximum character limit is ",
 		"nameHas": "That name has ",
-		"nameChangedTo": "you pet's name was changed to ",
-		"petHUDChangedTo": "your Pet HUD was changed to ",
+		"nameChangedTo": "You pet's name was changed to ",
+		"petHUDChangedTo": "Your Pet HUD was changed to ",
 		"wasSentToAdoption": " was sent to adoption!",
-		"botNoPet": "we don't have a pet! Yet...",
+		"botNoPet": "We don't have a pet! Yet...",
 		"botsNoPets": "bots have no pets! 😂"
 	},
 
 	"ping": {
-		"yourPingIs": "Your ping is "
+		"YourPingIs": "Your ping is "
 	},
 
 	"profile": {
-		"wasCreated": "you profile was created! Add a description with ",
+		"wasCreated": "You profile was created! Add a description with ",
 		"description": "description",
 		"nicknameMaxIs": "the nickname's maximum character limit is ",
 		"nicknameHas": "That nickname has ",
-		"nicknameChangedTo": "your nickname was changed to ",
+		"nicknameChangedTo": "Your nickname was changed to ",
 		"descMaxIs": "the description's maximum character limit is ",
 		"descHas": "That description has ",
-		"descChangedTo": "your description was changed to ",
-		"hudChangedTo": "your HUD was changed to "
+		"descChangedTo": "Your description was changed to ",
+		"hudChangedTo": "Your HUD was changed to "
 	},
 
 	"quiz": {
@@ -277,9 +282,9 @@
 		"starting": "Starting quiz in 5 seconds for",
 		"correct": "Correct!",
 		"wrong": "Wrong!",
-		"noAnswer": "you didn't answer!",
+		"noAnswer": "You didn't answer!",
 		"ended": "The quiz has ended! ",
-		"youAnsweredTo": ", you answered to",
+		"YouAnsweredTo": ", you answered to",
 		"correctly": " questions correctly."
 	},
 
@@ -319,8 +324,9 @@
 	},
 
 	"setlanguage": {
-		"noLanguage": "you have to select an available language! Use ",
-		"isNow": "Now we'll speak in English 🇺🇸 in this server"
+		"noLanguage": "You have to select a language!",
+		"select": "Select one of the languages below.",
+		"isNow": "Now we'll speak in English 🇺🇸 in this server."
 	},
 
 	"setprefix": {
@@ -328,10 +334,10 @@
 	},
 
 	"shop": {
-		"welcome": "Welcome to the Awesome Store!\nHere you can buy some stuff with the money you have saved so far.\nUse the buttons below to navigate through the store!",
-		"boughtHUD": "you bought the HUD ",
-		"boughtPetHUD": "you bought the Pet HUD ",
-		"boughtItem": "you bought 1 ",
+		"Welcome": "Welcome to the Awesome Store!\nHere you can buy some stuff with the money you have saved so far.\nUse the buttons below to navigate through the store!",
+		"boughtHUD": "You bought the HUD ",
+		"boughtPetHUD": "You bought the Pet HUD ",
+		"boughtItem": "You bought 1 ",
 		"toEquip": "To equip it use ",
 		"hero": "Hero",
 		"villain": "Villain",
@@ -341,7 +347,8 @@
 		"toSelectASubCat": " to select a sub-category.",
 		"animalName": "Animal Name",
 		"toBuy": " to buy.",
-		"itemName": "Item Name"
+		"itemName": "Item Name",
+		"exited": "You exited the store!"
 	},
 
 	"slap": {
@@ -366,7 +373,7 @@
 	},
 
 	"which": {
-		"noSelect": "you have to select an available anime! Use "
+		"noSelect": "You have to select an available anime! Use "
 	},
 
 
