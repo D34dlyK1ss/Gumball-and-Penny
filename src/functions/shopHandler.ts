@@ -652,7 +652,7 @@ export function shopButtonHandler(button: ButtonInteraction, lang: Record<string
 		button.reply({ content: lang.interaction.notAuthor, ephemeral: true });
 	}
 	else if (button.customId.endsWith('Exit')) {
-		button.update({ content: lang.shop.exited, components: [] });
+		button.update({ content: lang.shop.exited, embeds: [], components: [] });
 	}
 	else {
 		const toSend:any = createShopPage(author, lang, prefix, button.customId);
