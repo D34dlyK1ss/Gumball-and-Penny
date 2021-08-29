@@ -157,7 +157,7 @@
 	},
 
 	"clear": {
-		"WeDeleted": "We have deleted ",
+		"weDeleted": "We have deleted ",
 		"message": " message",
 		"messages": " messages"
 	},
@@ -334,7 +334,7 @@
 	},
 
 	"shop": {
-		"Welcome": "Welcome to the Awesome Store!\nHere you can buy some stuff with the money you have saved so far.\nUse the buttons below to navigate through the store!",
+		"welcome": "Welcome to the Awesome Store!\nHere you can buy some stuff with the money you have saved so far.\nUse the buttons below to navigate through the store!",
 		"boughtHUD": "You bought the HUD ",
 		"boughtPetHUD": "You bought the Pet HUD ",
 		"boughtItem": "You bought 1 ",
