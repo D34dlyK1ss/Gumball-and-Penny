@@ -76,7 +76,11 @@ export function createShopPage(user: User, lang:Record<string, any>, prefix: str
 					new MessageButton()
 						.setCustomId('shophudMarvelEmbed0')
 						.setLabel('Marvel')
-						.setStyle('PRIMARY')
+						.setStyle('PRIMARY'),
+					new MessageButton()
+						.setCustomId('shopExit')
+						.setLabel(lang.exit)
+						.setStyle('DANGER')
 				);
 
 			// eslint-disable-next-line prefer-const
@@ -93,6 +97,10 @@ export function createShopPage(user: User, lang:Record<string, any>, prefix: str
 					new MessageButton()
 						.setCustomId('shopmainEmbed0')
 						.setLabel(lang.back)
+						.setStyle('DANGER'),
+					new MessageButton()
+						.setCustomId('shopExit')
+						.setLabel(lang.exit)
 						.setStyle('DANGER')
 				);
 
@@ -119,6 +127,10 @@ export function createShopPage(user: User, lang:Record<string, any>, prefix: str
 					new MessageButton()
 						.setCustomId('shophudEmbed0')
 						.setLabel(lang.back)
+						.setStyle('DANGER'),
+					new MessageButton()
+						.setCustomId('shopExit')
+						.setLabel(lang.exit)
 						.setStyle('DANGER')
 				);
 			break;
@@ -153,6 +165,10 @@ export function createShopPage(user: User, lang:Record<string, any>, prefix: str
 					new MessageButton()
 						.setCustomId('shophudEmbed0')
 						.setLabel(lang.back)
+						.setStyle('DANGER'),
+					new MessageButton()
+						.setCustomId('shopExit')
+						.setLabel(lang.exit)
 						.setStyle('DANGER')
 				);
 			break;
@@ -186,6 +202,10 @@ export function createShopPage(user: User, lang:Record<string, any>, prefix: str
 					new MessageButton()
 						.setCustomId('shophudEmbed0')
 						.setLabel(lang.back)
+						.setStyle('DANGER'),
+					new MessageButton()
+						.setCustomId('shopExit')
+						.setLabel(lang.exit)
 						.setStyle('DANGER')
 				);
 			break;
@@ -219,6 +239,10 @@ export function createShopPage(user: User, lang:Record<string, any>, prefix: str
 					new MessageButton()
 						.setCustomId('shophudEmbed0')
 						.setLabel(lang.back)
+						.setStyle('DANGER'),
+					new MessageButton()
+						.setCustomId('shopExit')
+						.setLabel(lang.exit)
 						.setStyle('DANGER')
 				);
 			break;
@@ -251,6 +275,10 @@ export function createShopPage(user: User, lang:Record<string, any>, prefix: str
 					new MessageButton()
 						.setCustomId('shophudEmbed0')
 						.setLabel(lang.back)
+						.setStyle('DANGER'),
+					new MessageButton()
+						.setCustomId('shopExit')
+						.setLabel(lang.exit)
 						.setStyle('DANGER')
 				);
 			break;
@@ -284,6 +312,18 @@ export function createShopPage(user: User, lang:Record<string, any>, prefix: str
 					new MessageButton()
 						.setCustomId('shophudEmbed0')
 						.setLabel(lang.back)
+						.setStyle('DANGER'),
+					new MessageButton()
+						.setCustomId('shopExit')
+						.setLabel(lang.exit)
+						.setStyle('DANGER'),
+					new MessageButton()
+						.setCustomId('shopExit')
+						.setLabel(lang.exit)
+						.setStyle('DANGER'),
+					new MessageButton()
+						.setCustomId('shopExit')
+						.setLabel(lang.exit)
 						.setStyle('DANGER')
 				);
 			break;
@@ -317,6 +357,14 @@ export function createShopPage(user: User, lang:Record<string, any>, prefix: str
 					new MessageButton()
 						.setCustomId('shophudEmbed0')
 						.setLabel(lang.back)
+						.setStyle('DANGER'),
+					new MessageButton()
+						.setCustomId('shopExit')
+						.setLabel(lang.exit)
+						.setStyle('DANGER'),
+					new MessageButton()
+						.setCustomId('shopExit')
+						.setLabel(lang.exit)
 						.setStyle('DANGER')
 				);
 			break;
@@ -341,6 +389,14 @@ export function createShopPage(user: User, lang:Record<string, any>, prefix: str
 					new MessageButton()
 						.setCustomId('shophudEmbed0')
 						.setLabel(lang.back)
+						.setStyle('DANGER'),
+					new MessageButton()
+						.setCustomId('shopExit')
+						.setLabel(lang.exit)
+						.setStyle('DANGER'),
+					new MessageButton()
+						.setCustomId('shopExit')
+						.setLabel(lang.exit)
 						.setStyle('DANGER')
 				);
 			break;
@@ -364,6 +420,10 @@ export function createShopPage(user: User, lang:Record<string, any>, prefix: str
 					new MessageButton()
 						.setCustomId('shophudEmbed0')
 						.setLabel(lang.back)
+						.setStyle('DANGER'),
+					new MessageButton()
+						.setCustomId('shopExit')
+						.setLabel(lang.exit)
 						.setStyle('DANGER')
 				);
 			break;
@@ -383,6 +443,10 @@ export function createShopPage(user: User, lang:Record<string, any>, prefix: str
 					new MessageButton()
 						.setCustomId('shophudEmbed0')
 						.setLabel(lang.back)
+						.setStyle('DANGER'),
+					new MessageButton()
+						.setCustomId('shopExit')
+						.setLabel(lang.exit)
 						.setStyle('DANGER')
 				);
 			break;
@@ -401,6 +465,10 @@ export function createShopPage(user: User, lang:Record<string, any>, prefix: str
 					new MessageButton()
 						.setCustomId('shophudEmbed0')
 						.setLabel(lang.back)
+						.setStyle('DANGER'),
+					new MessageButton()
+						.setCustomId('shopExit')
+						.setLabel(lang.exit)
 						.setStyle('DANGER')
 				);
 			break;
@@ -426,6 +494,10 @@ export function createShopPage(user: User, lang:Record<string, any>, prefix: str
 					new MessageButton()
 						.setCustomId('shopmainEmbed0')
 						.setLabel(lang.back)
+						.setStyle('DANGER'),
+					new MessageButton()
+						.setCustomId('shopExit')
+						.setLabel(lang.exit)
 						.setStyle('DANGER')
 				);
 			break;
@@ -451,6 +523,10 @@ export function createShopPage(user: User, lang:Record<string, any>, prefix: str
 					new MessageButton()
 						.setCustomId('shoppetHudEmbed0')
 						.setLabel(lang.back)
+						.setStyle('DANGER'),
+					new MessageButton()
+						.setCustomId('shopExit')
+						.setLabel(lang.exit)
 						.setStyle('DANGER')
 				);
 			break;
@@ -485,6 +561,10 @@ export function createShopPage(user: User, lang:Record<string, any>, prefix: str
 					new MessageButton()
 						.setCustomId('shoppetHudEmbed0')
 						.setLabel(lang.back)
+						.setStyle('DANGER'),
+					new MessageButton()
+						.setCustomId('shopExit')
+						.setLabel(lang.exit)
 						.setStyle('DANGER')
 				);
 			break;
@@ -518,6 +598,10 @@ export function createShopPage(user: User, lang:Record<string, any>, prefix: str
 					new MessageButton()
 						.setCustomId('shoppetHudEmbed0')
 						.setLabel(lang.back)
+						.setStyle('DANGER'),
+					new MessageButton()
+						.setCustomId('shopExit')
+						.setLabel(lang.exit)
 						.setStyle('DANGER')
 				);
 			break;
@@ -549,6 +633,10 @@ export function createShopPage(user: User, lang:Record<string, any>, prefix: str
 					new MessageButton()
 						.setCustomId('shoppetHudEmbed0')
 						.setLabel(lang.back)
+						.setStyle('DANGER'),
+					new MessageButton()
+						.setCustomId('shopExit')
+						.setLabel(lang.exit)
 						.setStyle('DANGER')
 				);
 			break;
@@ -574,6 +662,10 @@ export function createShopPage(user: User, lang:Record<string, any>, prefix: str
 					new MessageButton()
 						.setCustomId('shopmainEmbed0')
 						.setLabel(lang.back)
+						.setStyle('DANGER'),
+					new MessageButton()
+						.setCustomId('shopExit')
+						.setLabel(lang.exit)
 						.setStyle('DANGER')
 				);
 			break;
@@ -600,6 +692,10 @@ export function createShopPage(user: User, lang:Record<string, any>, prefix: str
 					new MessageButton()
 						.setCustomId('shoppetsEmbed0')
 						.setLabel(lang.back)
+						.setStyle('DANGER'),
+					new MessageButton()
+						.setCustomId('shopExit')
+						.setLabel(lang.exit)
 						.setStyle('DANGER')
 				);
 			break;
@@ -637,6 +733,10 @@ export function createShopPage(user: User, lang:Record<string, any>, prefix: str
 					new MessageButton()
 						.setCustomId('shopmainEmbed0')
 						.setLabel(lang.back)
+						.setStyle('DANGER'),
+					new MessageButton()
+						.setCustomId('shopExit')
+						.setLabel(lang.exit)
 						.setStyle('DANGER')
 				);
 			break;
