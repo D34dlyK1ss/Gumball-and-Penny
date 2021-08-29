@@ -142,7 +142,7 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 
 										refI.update({
 											petHuds: iPetHUDs
-										}).then(() => {
+										}, { merge: true }).then(() => {
 											refP.update({
 												balance: (bal - petHudCost)
 											});
@@ -183,7 +183,7 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 
 										refI.update({
 											items: iItems
-										}).then(() => {
+										}, { merge: true }).then(() => {
 											refP.update({
 												balance: (bal - itemCost)
 											});
