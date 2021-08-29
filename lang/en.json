@@ -48,7 +48,7 @@
 	"level": "Level",
 	"balanceProfile": "Balance",
 	"awesomeStore": "Awesome Store",
-	"YouBought": "You bought ",
+	"youBought": "You bought ",
 	"nameLicense": "Name License",
 	"page": "Page",
 	"toChangePage": "To change page use ",
@@ -188,7 +188,7 @@
 
 	"give": {
 		"thanksBut": "Thanks, but you'll need that money more than us!",
-		"YouGave": "You gave ",
+		"youGave": "You gave ",
 		"to": " to "
 	},
 
@@ -233,7 +233,7 @@
 
 	"match": {
 		"alreadyAPair": "Hey, we're already a pair! 😠",
-		"YouAre": "You are ",
+		"youAre": "You are ",
 		"compatibleWith": " compatible with "
 	},
 
@@ -259,7 +259,7 @@
 	},
 
 	"ping": {
-		"YourPingIs": "Your ping is "
+		"yourPingIs": "Your ping is "
 	},
 
 	"profile": {
@@ -284,7 +284,7 @@
 		"wrong": "Wrong!",
 		"noAnswer": "You didn't answer!",
 		"ended": "The quiz has ended! ",
-		"YouAnsweredTo": ", you answered to",
+		"youAnsweredTo": ", you answered to",
 		"correctly": " questions correctly."
 	},
 
