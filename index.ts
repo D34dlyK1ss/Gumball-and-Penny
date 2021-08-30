@@ -113,7 +113,7 @@ es.onmessage = async messageEvent => {
 			const bal: number = doc.get('balance');
 			let add = 150;
 
-			if (vips.has(userID)) {
+			if (userID === botConfig.botOwner || botConfig.collaborators.includes(userID) || vips.has(userID)) {
 				add *= 2;
 			}
 			else {
@@ -140,7 +140,7 @@ async function getServerSettings(guild: Guild, channel: TextBasedChannels) {
 		const doc = await ref.get();
 		settings[guild.id] = doc.get('settings') || botConfig.settings;
 	}
-	const serverSettings: ServerSettings = settings[guild.id];
+	const serverSettings:  ServerSettings = settings[guild.id];
 	serverSettings.language = channel.id === '787661396652589077' || channel.id === '787674033331634196' ? 'en' : serverSettings.language;
 
 	return serverSettings;
@@ -203,9 +203,9 @@ bot.on('messageCreate', async message => {
 					const xp: number = doc.get('xp');
 					const level = Math.floor(Math.sqrt(xp / 2000000) * 99) + 1;
 					let add = Math.floor(Math.random() * 10) + 50;
-					let newXP: number;
+					let	newXP: number;
 
-					if (vips.has(message.author.id)) add *= 2;
+					if (vips.has(message.author.id) || message.author.id === botConfig.botOwner || botConfig.collaborators.includes(message.author.id)) add *= 2;
 
 					newXP = xp + add;
 
@@ -222,6 +222,7 @@ bot.on('messageCreate', async message => {
 							});
 
 							const bal: number = doc.get('balance');
+
 							if (newLevel % 10 === 0) {
 								const reward = newLevel * 500;
 								db.collection('perfis').doc(message.author.id).update({

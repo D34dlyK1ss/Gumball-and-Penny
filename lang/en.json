@@ -3,8 +3,7 @@
 	"notIndicated": "_Not indicated_",
 	"by": "by ",
 	"reason": "Reason:",
-	"sent": "sent!",
-	"botsNoProfile": "bots have no profiles!",
+	"botsNoProfile": "Bots have no profiles!",
 	"help": "Help",
 	"botDescription": "We are Gumball and Penny and we aim to make any server on which we are in a fun place!\nWhen in doubt on any command use ",
 	"commandName": "command name",
@@ -134,7 +133,7 @@
 
 	"levelUp": {
 		"congrats": "Congratulations",
-		"levelTo": "You leveled up to level",
+		"levelTo": "you leveled up to level",
 		"received": "and received ¤"
 	},
 
@@ -265,10 +264,10 @@
 	"profile": {
 		"wasCreated": "You profile was created! Add a description with ",
 		"description": "description",
-		"nicknameMaxIs": "the nickname's maximum character limit is ",
+		"nicknameMaxIs": "The nickname's maximum character limit is ",
 		"nicknameHas": "That nickname has ",
 		"nicknameChangedTo": "Your nickname was changed to ",
-		"descMaxIs": "the description's maximum character limit is ",
+		"descMaxIs": "The description's maximum character limit is ",
 		"descHas": "That description has ",
 		"descChangedTo": "Your description was changed to ",
 		"hudChangedTo": "Your HUD was changed to "

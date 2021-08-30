@@ -3,8 +3,7 @@
 	"notIndicated": "_Não indicada_",
 	"by": "por ",
 	"reason": "Razão:",
-	"sent": "enviado!",
-	"botsNoProfile": "os bots não têm perfis!",
+	"botsNoProfile": "Os bots não têm perfis!",
 	"help": "Ajuda",
 	"botDescription": "Nós somos o Gumball e a Penny e temos como objetivo tornar qualquer servidor em que estamos num lugar divertido!\nEm caso de dúvida nalgum comando usa ",
 	"commandName": "nome do comando",
@@ -43,7 +42,7 @@
 	"joined": "Entrada",
 	"roles": "Cargos",
 	"ago": " atrás ",
-	"botNoProfile": "nós não temos um perfil!",
+	"botNoProfile": "Nós não temos um perfil!",
 	"totalXP": "XP Total",
 	"level": "Nível",
 	"balanceProfile": "Capital",
@@ -54,9 +53,9 @@
 	"toChangePage": "Para mudar de página usa ",
 	"forMoreInfo": " para mais informação.",
 	"betAtLeast": "Tens de apostar no mínimo ¤",
-	"betAtMost": "não podes apostar mais que ¤",
-	"lost": "perdeste ¤",
-	"won": "ganhaste ¤",
+	"betAtMost": "Não podes apostar mais que ¤",
+	"lost": "Perdeste ¤",
+	"won": "Ganhaste ¤",
 	"and": "e",
 	"enabled": "ativadas",
 	"disabled": "desativadas",
@@ -233,7 +232,7 @@
 
 	"match": {
 		"alreadyAPair": "Hey, nós já somos um par! 😠",
-		"youAre": "tu és ",
+		"youAre": "És ",
 		"compatibleWith": " compatível com "
 	},
 

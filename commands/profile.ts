@@ -49,7 +49,7 @@ export function execute(bot: BotClient, message: Message, command: undefined, db
 		case 'setnickname':
 			if (argsString === '') argsString = 'N/A';
 			db.collection('perfis').doc(message.author.id).get().then((doc: any) => {
-				const nicknameMax = 32;
+				const nicknameMax = 40;
 				if (!doc.exists) {
 					if (user === message.author) {
 						message.reply(`${lang.error.noProfile}\`${prefix}profile create\`!`);
@@ -59,19 +59,17 @@ export function execute(bot: BotClient, message: Message, command: undefined, db
 					message.reply(`${lang.profile.nicknameMaxIs}${nicknameMax}!\n${lang.profile.nicknameHas}${argsString.length}.`);
 				}
 				else {
-					const newNickname = titleCase(argsString);
-
 					db.collection('perfis').doc(message.author.id).update({
-						nickname: newNickname
+						nickname: argsString
 					}).then(() => {
-						message.reply(`${lang.profile.nicknameChangedTo}**${newNickname}**!`);
+						message.reply(`${lang.profile.nicknameChangedTo}**${argsString}**!`);
 					}).catch((err: Error) => { console.error(err); });
 				}
 			});
 			break;
 		case 'setdescription':
 			db.collection('perfis').doc(message.author.id).get().then((doc: any) => {
-				const descMax = 44;
+				const descMax = 52;
 				if (!doc.exists) {
 					if (user === message.author) {
 						message.reply(`${lang.error.noProfile}\`${prefix}profile create\`!`);
