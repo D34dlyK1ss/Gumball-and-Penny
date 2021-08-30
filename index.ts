@@ -141,14 +141,15 @@ async function getServerSettings(guild: Guild, channel: TextBasedChannels) {
 		settings[guild.id] = doc.get('settings') || botConfig.settings;
 	}
 	const serverSettings:  ServerSettings = settings[guild.id];
-	serverSettings.language = channel.id === '787661396652589077' || channel.id === '787674033331634196' ? 'en' : serverSettings.language;
+	const englishChannels = ['809182965607039007', '787661396652589077', '787674033331634196'];
+	serverSettings.language = englishChannels.includes(channel.id) ? 'en' : serverSettings.language;
 
 	return serverSettings;
 }
 
 // Ações para quando o bot receber uma mensagem
 bot.on('messageCreate', async message => {
-	if (message.channel.id === '810529155955032115' && message.content === `${botConfig.settings.prefix}activate`) {
+	if (message.channel.id === '810529155955032115' && message.content === `${botConfig.settings.prefix}activate` && message.member.id === botConfig.botOwner) {
 		giveVIP(db, message, undefined);
 	}
 
