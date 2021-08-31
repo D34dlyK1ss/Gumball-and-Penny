@@ -104,28 +104,28 @@ es.onmessage = async messageEvent => {
 	const type = data.event.body.type;
 
 	if (agent === 'DBL' && authorization === 'Gumball&PennyDBL') {
-		if (type !== 'upvote') return;
+		if (type === 'upvote') {
+			const refP = db.collection('perfis').doc(userID);
 
-		const refP = db.collection('perfis').doc(userID);
+			await refP.get().then(doc => {
+				if (!doc.exists) return;
+				const bal: number = doc.get('balance');
+				let add = 150;
 
-		await refP.get().then(doc => {
-			if (!doc.exists) return;
-			const bal: number = doc.get('balance');
-			let add = 150;
+				if (userID === botConfig.botOwner || botConfig.collaborators.includes(userID) || vips.has(userID)) {
+					add *= 2;
+				}
+				else {
+					refP.get().then((docP: any) => {
+						if (docP.exists) add *= 2;
+					});
+				}
 
-			if (userID === botConfig.botOwner || botConfig.collaborators.includes(userID) || vips.has(userID)) {
-				add *= 2;
-			}
-			else {
-				refP.get().then((docP: any) => {
-					if (docP.exists) add *= 2;
+				refP.update({
+					balance: bal + add
 				});
-			}
-
-			refP.update({
-				balance: bal + add
 			});
-		});
+		}
 	}
 };
 
@@ -142,7 +142,7 @@ async function getServerSettings(guild: Guild, channel: TextBasedChannels) {
 	}
 	const serverSettings:  ServerSettings = settings[guild.id];
 	const englishChannels = ['809182965607039007', '787661396652589077', '787674033331634196'];
-	serverSettings.language = englishChannels.includes(channel.id) ? 'en' : serverSettings.language;
+	if (englishChannels.includes(channel.id)) serverSettings.language = 'en';
 
 	return serverSettings;
 }
@@ -186,6 +186,7 @@ bot.on('messageCreate', async message => {
 		const args = array.slice(1);
 
 		const command = bot.commands.get(commandName) || bot.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
+
 		// Ignorar mensagem se o bot não tiver tal comando
 		if (!command) return;
 
@@ -258,7 +259,7 @@ bot.on('messageCreate', async message => {
 			message.channel.send({ files: [`./img/automessages/${message.content}.gif`] }).catch(err => { console.error(err); });
 		}
 	}
-	else if (message.content === `<@!${bot.user.id}>`) {
+	else if (message.content === `<@${bot.user.id}>`) {
 		message.channel.send(`${lang.prefixMsg} \`${prefix}\``);
 	}
 });
