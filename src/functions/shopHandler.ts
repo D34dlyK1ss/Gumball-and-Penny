@@ -11,7 +11,7 @@ export function createShopPage(user: User, lang:Record<string, any>, prefix: str
 	let buttonRow: MessageActionRow;
 	let buttonRow2: MessageActionRow;
 	const mainEmbed = new MessageEmbed()
-		.setColor('#9900ff')
+		.setColor('DARK_PURPLE')
 		.setTitle(lang.awesomeStore)
 		.setDescription(lang.shop.welcome)
 		.addFields(
@@ -76,11 +76,7 @@ export function createShopPage(user: User, lang:Record<string, any>, prefix: str
 					new MessageButton()
 						.setCustomId('shophudMarvelEmbed0')
 						.setLabel('Marvel')
-						.setStyle('PRIMARY'),
-					new MessageButton()
-						.setCustomId('shopExit')
-						.setLabel(lang.exit)
-						.setStyle('DANGER')
+						.setStyle('PRIMARY')
 				);
 
 			// eslint-disable-next-line prefer-const
@@ -320,7 +316,11 @@ export function createShopPage(user: User, lang:Record<string, any>, prefix: str
 					new MessageButton()
 						.setCustomId('shopExit')
 						.setLabel(lang.exit)
-						.setStyle('DANGER'),
+						.setStyle('DANGER')
+				);
+			
+			buttonRow2 = new MessageActionRow()
+				.addComponents(
 					new MessageButton()
 						.setCustomId('shopExit')
 						.setLabel(lang.exit)
