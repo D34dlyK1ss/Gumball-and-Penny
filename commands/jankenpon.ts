@@ -87,7 +87,7 @@ export function execute(bot: undefined, message: Message, command: Cmd, db: any,
 							}).catch((err: Error) => { console.error(err); });
 						}
 					});
-				}, 5000); });
+				}, 3000); });
 			}
 		}
 	});
