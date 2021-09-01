@@ -1,5 +1,5 @@
 // Biblioteca do Discord.js
-import { Collection, Client, Intents, Guild, Message, TextBasedChannels } from 'discord.js';
+import { Collection, Client, Intents, Guild, Message } from 'discord.js';
 
 // Interface para as definções do servidor
 export interface ServerSettings {
@@ -134,15 +134,13 @@ const xpCooldown: Set<string> = new Set();
 
 let lang: Record<string, any>;
 
-async function getServerSettings(guild: Guild, channel: TextBasedChannels) {
+async function getServerSettings(guild: Guild) {
 	const ref = db.collection('definicoes').doc(guild.id);
 	if (!settings[guild.id]) {
 		const doc = await ref.get();
 		settings[guild.id] = doc.get('settings') || botConfig.settings;
 	}
-	const serverSettings:  ServerSettings = settings[guild.id];
-	const englishChannels = ['809182965607039007', '787661396652589077', '787674033331634196'];
-	if (englishChannels.includes(channel.id)) serverSettings.language = 'en';
+	const serverSettings: ServerSettings = settings[guild.id];
 
 	return serverSettings;
 }
@@ -175,10 +173,8 @@ bot.on('messageCreate', async message => {
 	}
 
 	//  Obter as definições do bot para o servidor
-	const serverSettings = await getServerSettings(message.guild, message.channel);
+	const serverSettings = await getServerSettings(message.guild);
 	const prefix = serverSettings.prefix;
-	const language = serverSettings.language;
-	lang = require(`./lang/${language}.json`);
 
 	if (message.content.toLowerCase().startsWith(prefix)) {
 		const array = message.content.split(' ');
@@ -189,6 +185,14 @@ bot.on('messageCreate', async message => {
 
 		// Ignorar mensagem se o bot não tiver tal comando
 		if (!command) return;
+
+		const englishChannels = ['809182965607039007', '787661396652589077', '787674033331634196'];
+		let language;
+
+		if (englishChannels.includes(message.channel.id)) language = 'en';
+		else language = serverSettings.language;
+
+		lang = require(`./lang/${language}.json`);
 
 		// Adicionar XP ao perfil do utilizador
 		if (!xpCooldown.has(message.author.id)) {
@@ -267,7 +271,7 @@ bot.on('messageCreate', async message => {
 let newLanguage: string|undefined;
 
 bot.on('interactionCreate', async interaction => {
-	const serverSettings = await getServerSettings(interaction.guild, interaction.channel);
+	const serverSettings = await getServerSettings(interaction.guild);
 	const prefix = serverSettings.prefix;
 	const language = serverSettings.language;
 	lang = require(`./lang/${language}.json`);
