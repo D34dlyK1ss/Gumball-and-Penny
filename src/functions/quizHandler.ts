@@ -2,6 +2,7 @@
 import { ButtonInteraction, Message, MessageAttachment, MessageEmbed, MessageActionRow, MessageButton, User } from 'discord.js';
 import { registerFont, createCanvas, loadImage } from 'canvas';
 import * as answers from '../data/quizAnswers.json';
+import slugify from './slugify';
 registerFont('./fonts/comic.ttf', { family: 'Comic Sans MS' });
 registerFont('./fonts/comicb.ttf', { family: 'bold Comic Sans MS' });
 registerFont('./fonts/comici.ttf', { family: 'italic Comic Sans MS' });
@@ -137,7 +138,7 @@ export function createQuizQuestion(interaction: ButtonInteraction, user: User, l
 	
 					interaction.channel.send({ files: [attachment] }).catch(err => { console.error(err); });
 	
-					const filter = (msg: Message) => answers.animeEyes[rnd].includes(msg.content.toLowerCase());
+					const filter = (msg: Message) => answers.animeEyes[rnd].includes(slugify(msg.content.toLowerCase()));
 					const collector = interaction.channel.createMessageCollector({ filter, max: 1, time: 15000 });
 	
 					collector.on('collect', message => {
