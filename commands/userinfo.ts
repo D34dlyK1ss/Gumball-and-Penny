@@ -15,7 +15,7 @@ export async function execute(bot: undefined, message: Message, command: undefin
 	if (roles === '<@>') roles = 'None';
 
 	const embed = new MessageEmbed()
-		.setColor('#9900ff')
+		.setColor('DARK_PURPLE')
 		.setThumbnail(`${user.displayAvatarURL()}`)
 		.addFields(
 			{ name: `${lang.id}`, value: `${user.id}` },

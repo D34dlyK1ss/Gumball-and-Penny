@@ -53,7 +53,7 @@ export async function execute(bot: undefined, message: Message, command: undefin
 
 			memberToMute.roles.add(muteRole).then(() => {
 				const embed = new MessageEmbed()
-					.setColor('#9900ff')
+					.setColor('DARK_PURPLE')
 					.setTitle(`${memberToMute.user.tag}${lang.mute.isMutedFor}${seconds}${lang.mute.seconds} 🔇`)
 					.setThumbnail(`${memberToMute.user.displayAvatarURL()}`)
 					.setDescription(`${lang.by}${message.member.user.tag}`)

@@ -23,7 +23,7 @@ export async function execute(bot: undefined, message: Message, command: undefin
 		else {
 			member.kick(reason).then(() => {
 				const embed = new MessageEmbed()
-					.setColor('#9900ff')
+					.setColor('DARK_PURPLE')
 					.setTitle(`${member.user.tag}${lang.kick.wasKicked} 👋`)
 					.setThumbnail(`${member.user.displayAvatarURL()}`)
 					.setDescription(`${lang.by}${message.member.user.tag}`)

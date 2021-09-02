@@ -6,7 +6,7 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 		const ping = msg.createdTimestamp - message.createdTimestamp;
 		const embed = new MessageEmbed()
 			.setAuthor(`${lang.ping.yourPingIs}${ping}ms`)
-			.setColor('#9900ff');
+			.setColor('DARK_PURPLE');
 
 		msg.edit({ embeds: [embed] });
 	}).catch(err => { console.error(err); });

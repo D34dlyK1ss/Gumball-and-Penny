@@ -71,7 +71,9 @@
 	"ok": "OK",
 	"cancel": "Cancel",
 	"exit": "Exit",
+	"close": "Close",
 	"userCancelled": "_Operation cancelled by the user_",
+	"results": "Results",
 
 
 	"error": {
@@ -248,13 +250,13 @@
 	},
 
 	"pet": {
-		"nameMaxIs": "the name's maximum character limit is ",
+		"nameMaxIs": "The name's maximum character limit is ",
 		"nameHas": "That name has ",
 		"nameChangedTo": "You pet's name was changed to ",
 		"petHUDChangedTo": "Your Pet HUD was changed to ",
 		"wasSentToAdoption": " was sent to adoption!",
 		"botNoPet": "We don't have a pet! Yet...",
-		"botsNoPets": "bots have no pets! 😂"
+		"botsNoPets": "bBots have no pets! 😂"
 	},
 
 	"ping": {
@@ -274,22 +276,24 @@
 	},
 
 	"quiz": {
-		"mainDescription": "These are the available quiz themes.\nEvery quiz will take 5 questions. Each correct answer gives you 1 point!\nUse the buttons below to choose one!",
+		"mainDescription": "These are the available quiz themes.\nEvery quiz will take 10 questions. Each correct answer in 15 seconds gives you 1 point, and anyone can join just by answering correctly.",
 		"themeDescription": "Now choose a category!",
-		"toStart": "Press the start button to start the quiz!",
-		"alreadyPlaying": "There's a quiz being played already in this channel! Start a new one on another channel or wait for the quiz to end",
-		"starting": "Starting quiz in 5 seconds for",
+		"toStart": "Press the _Start_ button to start the quiz!",
+		"closed": "You closed the Quiz page!",
+		"alreadyPlaying": "There's a quiz being played already in this channel! Start a new one on another channel or wait for the quiz to end.",
+		"starting": "Starting quiz in 5 seconds!",
+		"whoIsCharacter": "Who is this character?",
 		"correct": "Correct!",
 		"wrong": "Wrong!",
-		"noAnswer": "You didn't answer!",
-		"ended": "The quiz has ended! ",
-		"youAnsweredTo": ", you answered to",
-		"correctly": " questions correctly."
+		"noCorrectAnswer": "No correct answer!",
+		"ended": "The quiz has ended!",
+		"points": "points",
+		"noOneScored": "No one scored!"
 	},
 
 	"run": {
 		"ranAway": " ran away!",
-		"ranAwayFromUs": " ran away form us!",
+		"ranAwayFromUs": " ran away from us!",
 		"ranAwayFrom": " ran away from "
 	},
 

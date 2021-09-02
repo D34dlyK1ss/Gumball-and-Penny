@@ -6,14 +6,14 @@ export const aliases = ['h'];
 export function execute(bot: BotClient, message: Message, command: Cmd, db: undefined, lang: Record<string, string | any>, language: undefined, prefix: string, args: string[]) {
 	const commands = bot.commands;
 	const helpEmbed = new MessageEmbed()
-		.setColor('#9900ff')
+		.setColor('DARK_PURPLE')
 		.setTitle(lang.help)
 		.setThumbnail(`${bot.user.displayAvatarURL()}`)
 		.setDescription(`${lang.botDescription}\`${prefix}help [${lang.commandName}]\``)
 		.addFields(
 			{ name: `🎭 ${lang.actions}`, value: '`angry`, `cry`, `dance`, `happy`, `hug`, `kiss`, `laugh`, `pat`, `run`, `slap`', inline: true },
 			{ name: `🎰 ${lang.casino}`, value: '`coinflip`, `jankenpon`', inline: true },
-			{ name: `😁 ${lang.fun}`, value: '`fact`, `match`, `random`, `which`', inline: true },
+			{ name: `😁 ${lang.fun}`, value: '`fact`, `match`, `quiz`, `random`, `which`', inline: true },
 			{ name: `💰 ${lang.economyAndProfile}`, value: '`balance`, `daily`, `give`, `inventory`, `pet`, `profile`, `shop`', inline: true },
 			{ name: `⚠️ ${lang.moderation}`, value: '`ban`, `clear`, `kick`, `mute`, `unmute`', inline: true },
 			{ name: `🌐 ${lang.server}`, value: '`members`, `serverinfo`, `userinfo`', inline: true },
@@ -34,7 +34,7 @@ export function execute(bot: BotClient, message: Message, command: Cmd, db: unde
 		}
 		else {
 			const commandEmbed = new MessageEmbed()
-				.setColor('#9900ff')
+				.setColor('DARK_PURPLE')
 				.addFields(
 					{ name: `${lang.name}`, value: `${command.name}` },
 					{ name: `${lang.category}`, value: `${lang.command[command.name].category}` },

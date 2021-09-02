@@ -7,7 +7,7 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 	const server = message.guild;
 	const createdDate = moment(server.createdAt).locale(`${language}`);
 	const embed = new MessageEmbed()
-		.setColor('#9900ff')
+		.setColor('DARK_PURPLE')
 		.setThumbnail(`${server.iconURL()}`)
 		.addFields(
 			{ name: `${lang.id}`, value: `${server.id}` },

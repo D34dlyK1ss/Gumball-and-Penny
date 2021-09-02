@@ -6,7 +6,7 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 	const refP = db.collection('perfis').doc(message.author.id);
 	const refI = db.collection('inventario').doc(message.author.id);
 	let iEmbed = new MessageEmbed()
-		.setColor('#9900ff')
+		.setColor('DARK_PURPLE')
 		.setTitle(`${lang.inventory.inventoryFrom}${message.author.tag}`)
 		.setThumbnail(`${message.author.displayAvatarURL()}`);
 

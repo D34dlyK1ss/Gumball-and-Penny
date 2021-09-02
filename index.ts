@@ -67,6 +67,7 @@ const db = admin.firestore();
 import removeVIP from './src/functions/removeVIP';
 import giveVIP from './src/functions/giveVIP';
 import { shopButtonHandler } from './src/functions/shopHandler';
+import { quizButtonHandler } from './src/functions/quizHandler';
 import { confirmLanguage } from './src/functions/setlanguageHandler';
 
 const vips: Set<string> = new Set();
@@ -132,8 +133,6 @@ es.onmessage = async messageEvent => {
 const settings: any = new Object();
 const xpCooldown: Set<string> = new Set();
 
-let lang: Record<string, any>;
-
 async function getServerSettings(guild: Guild) {
 	const ref = db.collection('definicoes').doc(guild.id);
 	if (!settings[guild.id]) {
@@ -175,6 +174,13 @@ bot.on('messageCreate', async message => {
 	//  Obter as definições do bot para o servidor
 	const serverSettings = await getServerSettings(message.guild);
 	const prefix = serverSettings.prefix;
+	const englishChannels = ['809182965607039007', '787661396652589077', '787674033331634196'];
+	let language;
+
+	if (englishChannels.includes(message.channel.id)) language = 'en';
+	else language = serverSettings.language;
+
+	const lang = require(`./lang/${language}.json`);
 
 	if (message.content.toLowerCase().startsWith(prefix)) {
 		const array = message.content.split(' ');
@@ -185,14 +191,6 @@ bot.on('messageCreate', async message => {
 
 		// Ignorar mensagem se o bot não tiver tal comando
 		if (!command) return;
-
-		const englishChannels = ['809182965607039007', '787661396652589077', '787674033331634196'];
-		let language;
-
-		if (englishChannels.includes(message.channel.id)) language = 'en';
-		else language = serverSettings.language;
-
-		lang = require(`./lang/${language}.json`);
 
 		// Adicionar XP ao perfil do utilizador
 		if (!xpCooldown.has(message.author.id)) {
@@ -252,6 +250,9 @@ bot.on('messageCreate', async message => {
 			message.reply(lang.error.cmd);
 		}
 	}
+	else if (message.content === `<@${bot.user.id}>`) {
+		message.channel.send(`${lang.prefixMsg} \`${prefix}\``);
+	}
 	else if (serverSettings.automessages === true) {
 		const pngs = ['boi', 'E', 'hmm', 'just monika', 'nice plan', 'no u', 'noice', 'shine'];
 		const gifs = ['distraction dance'];
@@ -263,21 +264,25 @@ bot.on('messageCreate', async message => {
 			message.channel.send({ files: [`./img/automessages/${message.content}.gif`] }).catch(err => { console.error(err); });
 		}
 	}
-	else if (message.content === `<@${bot.user.id}>`) {
-		message.channel.send(`${lang.prefixMsg} \`${prefix}\``);
-	}
 });
 
 let newLanguage: string|undefined;
 
 bot.on('interactionCreate', async interaction => {
+	//  Obter as definições do bot para o servidor
 	const serverSettings = await getServerSettings(interaction.guild);
 	const prefix = serverSettings.prefix;
-	const language = serverSettings.language;
-	lang = require(`./lang/${language}.json`);
+	const englishChannels = ['809182965607039007', '787661396652589077', '787674033331634196'];
+	let language;
+
+	if (englishChannels.includes(interaction.channel.id)) language = 'en';
+	else language = serverSettings.language;
+
+	const lang = require(`./lang/${language}.json`);
 
 	if (interaction.isButton()) {
 		if (interaction.customId.startsWith('shop')) shopButtonHandler(interaction, lang, prefix);
+		else if (interaction.customId.startsWith('quiz')) quizButtonHandler(interaction, lang, prefix);
 		else if (interaction.customId.startsWith('language')) confirmLanguage(interaction, db, newLanguage, lang, prefix, serverSettings);
 	}
 	if	(interaction.isSelectMenu()) {
