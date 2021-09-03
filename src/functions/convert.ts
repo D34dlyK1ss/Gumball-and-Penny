@@ -1,5 +1,5 @@
 function convert(value: number) {
-	let valueString: string;
+	let valueString = value.toString();
 
 	if (value >= 1000000) {
 		valueString = `${value / 1000000}M`;
