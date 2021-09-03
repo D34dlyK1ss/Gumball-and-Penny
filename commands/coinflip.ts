@@ -48,7 +48,7 @@ export function execute(bot: undefined, message: Message, command: Cmd, db: any,
 						}).then(() => { message.reply(`${lang.lost}${money}!`); }).catch((err: Error) => { console.error(err); });
 					}
 					else if (res === guess) {
-						const won = money * 2;
+						const won = money * 1.5;
 						ref.update({
 							balance: (bal + won)
 						}).then(() => { message.reply(`${lang.won}**¤${won}**!`); }).catch((err: Error) => { console.error(err); });
