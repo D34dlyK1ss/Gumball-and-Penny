@@ -276,7 +276,7 @@
 	},
 
 	"quiz": {
-		"mainDescription": "Estes são os temas de quiz disponíveis.\nTodos os quizzes vão ter 10 perguntas. Cada resposta correta dentro de 15 segundos irá dar-te 1 ponto, e qualquer um pode participar por apenas reponder corretamente.",
+		"mainDescription": "Estes são os temas de quiz disponíveis.\nTodos os quizzes vão ter 10 perguntas. Cada resposta correta dentro de 15 segundos irá dar-te 1 ponto, e qualquer um pode participar por apenas responder corretamente.",
 		"themeDescription": "Agora escolhe uma categoria!",
 		"toStart": "Carrega no botão _Começar_ pra começar o quiz!",
 		"closed": "Fechaste a página de Quiz!",
