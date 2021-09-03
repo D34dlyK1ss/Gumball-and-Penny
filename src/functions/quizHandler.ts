@@ -3,6 +3,7 @@ import { ButtonInteraction, Message, MessageAttachment, MessageEmbed, MessageAct
 import { registerFont, createCanvas, loadImage } from 'canvas';
 import * as answers from '../data/quizAnswers.json';
 import slugify from './slugify';
+import { messaging } from 'firebase-admin';
 registerFont('./fonts/comic.ttf', { family: 'Comic Sans MS' });
 registerFont('./fonts/comicb.ttf', { family: 'bold Comic Sans MS' });
 registerFont('./fonts/comici.ttf', { family: 'italic Comic Sans MS' });
@@ -140,7 +141,7 @@ export function createQuizQuestion(interaction: ButtonInteraction, user: User, l
 	
 					const filter = (msg: Message) => answers.animeEyes[rnd].includes(slugify(msg.content.toLowerCase()));
 					const collector = interaction.channel.createMessageCollector({ filter, max: 1, time: 15000 });
-	
+
 					collector.on('collect', message => {
 						message.reply(lang.quiz.correct).catch(err => { console.error(err); });
 	

@@ -49,6 +49,7 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 
 	const option = args[0];
 	const refP = db.collection('perfis').doc(message.author.id);
+	const refV = db.collection('vip').doc(message.author.id);
 	const refPet = db.collection('pet').doc(message.author.id);
 	const refI = db.collection('inventario').doc(message.author.id);
 
@@ -63,6 +64,7 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 			switch (args[1]) {
 				case 'hud':
 					hud = slugify(hud.concat((args as any).slice(2)).toLowerCase().replace(/[,]/g, '_'));
+
 					refP.get().then((docP: any) => {
 						if (!docP.exists) {
 							message.reply(`${lang.error.noProfile}\`${prefix}profile create\`!`).catch(err => { console.error(err); });
@@ -72,9 +74,9 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 							let hudName = hud.toLowerCase();
 							let hudCost: number;
 
-							colors.includes(hudName) ? hudCost = (items as any).colorPrice : hudCost = (items as any).price;
+							colors.includes(hudName) ? hudCost = items.huds.colorPrice : hudCost = items.huds.price;
 
-							if (!hudCost) {
+							if (!(items as any).huds[hudName]) {
 								message.reply(lang.error.noHUD).catch(err => { console.error(err); });
 							}
 							else {
@@ -108,6 +110,7 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 					break;
 				case 'pethud':
 					petHud = slugify(petHud.concat((args as any).slice(2)).toLowerCase().replace(/[,]/g, '_'));
+
 					refP.get().then((docP: any) => {
 						if (!docP.exists) {
 							message.reply(`${lang.error.noProfile}\`${prefix}profile create\`!`).catch(err => { console.error(err); });
@@ -115,17 +118,16 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 						else {
 							const bal = docP.get('balance');
 							let petHudName = petHud.toLowerCase();
-							const vipPetHUD = (items.petHuds as any)[petHudName].vip;
-							const userVIP = docP.get('vip');
+							const userVIP = refV.get();
 							let petHudCost: number;
 
-							colors.includes(petHudName) ? petHudCost = (items as any).price : petHudCost = (items as any).vipPrice;
-
-							if (!userVIP && vipPetHUD) {
-								message.reply(lang.error.noVIPForPetHUD).catch(err => { console.error(err); });
-							}
-							else if (!petHudCost) {
+							colors.includes(petHudName) ? petHudCost = items.petHuds.price : petHudCost = items.petHuds.vipPrice;
+							
+							if (!(items as any).petHuds[petHudName]) {
 								message.reply(lang.error.noPetHUD).catch(err => { console.error(err); });
+							}
+							else if (!userVIP && (items as any).petHuds[petHudName].vip) {
+								message.reply(lang.error.noVIPForPetHUD).catch(err => { console.error(err); });
 							}
 							else {
 								refI.get().then((docI: any) => {
@@ -159,6 +161,7 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 					break;
 				case 'item':
 					item = slugify(item.concat((args as any).slice(2)).toLowerCase().replace(/[,]/g, '_'));
+
 					refP.get().then((docP: any) => {
 						if (!docP.exists) {
 							message.reply(`${lang.error.noProfile}\`${prefix}profile create\`!`).catch(err => { console.error(err); });
@@ -166,9 +169,9 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 						else {
 							const bal = docP.get('balance');
 							let itemName = item.toLowerCase();
-							const itemCost = (items.items as any)[itemName].price;
+							const itemCost = (items as any).items[itemName].price;
 
-							if (!itemCost) {
+							if (!(items as any).items[itemName]) {
 								message.reply(lang.error.noItem).catch(err => { console.error(err); });
 							}
 							else {
@@ -208,7 +211,7 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 							let petName = pet.toLowerCase();
 							const petCost = (items.pets as any)[petName].price;
 
-							if (!petCost) {
+							if (!(items as any).pets[petName]) {
 								message.reply(lang.error.noItem).catch(err => { console.error(err); });
 							}
 							else {
@@ -221,7 +224,7 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 										const rndN = Math.floor(Math.random() * 12);
 										const rndG = Math.random();
 										const vipPet = (items.pets as any)[pet].vip;
-										const userVIP = docP.get('vip');
+										const userVIP = refV.get();
 										const species = (items.pets as any)[pet].species;
 										let gender = (items.pets as any)[pet].gender;
 
@@ -279,10 +282,12 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 			switch (args[1]) {
 				case 'hud':
 					const hudName = hud.concat((args as any).slice(2)).toLowerCase().replace(/[,]/g, '_');
+
 					sendPreview(hudName);
 					break;
 				case 'pethud':
 					const petHudName = petHud.concat((args as any).slice(2)).toLowerCase().replace(/[,]/g, '_');
+
 					sendPreviewPet(petHudName);
 					break;
 			}
