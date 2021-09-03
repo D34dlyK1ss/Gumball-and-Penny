@@ -100,7 +100,7 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 											huds: iHuds
 										}).then(() => {
 											hudName = hudName.toLowerCase().replace(/[_]/g, ' ');
-											message.reply(`${lang.shop.boughtHUD}**${titleCase(hudName)}**! ${lang.shop.toEquip}\`${prefix}profile sethud\``).catch(err => { console.error(err); });
+											message.reply(`${lang.shop.boughtHUD}**${titleCase(hudName)}**! ${lang.shop.toEquip}\`${prefix}profile sethud[${lang.shop.hudName}]\``).catch(err => { console.error(err); });
 										});
 									}
 								});
@@ -151,7 +151,7 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 
 											petHudName = petHudName.toLowerCase().replace(/[_]/g, ' ');
 
-											message.reply(`${lang.shop.boughtPetHUD}**${titleCase(petHudName)}**! ${lang.shop.toEquip}\`${prefix}pet sethud\``).catch(err => { console.error(err); });
+											message.reply(`${lang.shop.boughtPetHUD}**${titleCase(petHudName)}**! ${lang.shop.toEquip}\`${prefix}pet sethud[${lang.shop.hudName}]\``).catch(err => { console.error(err); });
 										});
 									}
 								});
@@ -267,7 +267,7 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 												const vip = (items.pets as any)[pet].vip;
 
 												if (vip) petName = name;
-												message.reply(`${lang.youBought}**${titleCase(petName)}**!`).catch(err => { console.error(err); });
+												message.reply(`${lang.youBought}**${titleCase(petName)}**! ${lang.shop.toGiveName} \`${prefix}pet setname [${lang.shop.name}]\``).catch(err => { console.error(err); });
 											});
 										}
 									}

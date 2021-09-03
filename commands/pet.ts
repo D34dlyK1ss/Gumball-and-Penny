@@ -75,7 +75,7 @@ export function execute(bot: BotClient, message: Message, command: undefined, db
 			db.collection('pet').doc(message.author.id).get().then((docP: any) => {
 				if (!docP.exists) {
 					if (user === message.author) {
-						message.reply(`${lang.error.noPet}\`${prefix}shop pets\`!`).catch(err => { console.error(err); });
+						message.reply(`${lang.error.noPet}\`${prefix}shop\`!`).catch(err => { console.error(err); });
 					}
 				}
 				else {
