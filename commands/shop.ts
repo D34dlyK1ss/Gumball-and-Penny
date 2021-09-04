@@ -280,22 +280,25 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 			break;
 		case 'view':
 			switch (args[1]) {
-				case 'hud':
+				case 'hud': {
 					const hudName = hud.concat((args as any).slice(2)).toLowerCase().replace(/[,]/g, '_');
 
 					sendPreview(hudName);
 					break;
-				case 'pethud':
+				}
+				case 'pethud': {
 					const petHudName = petHud.concat((args as any).slice(2)).toLowerCase().replace(/[,]/g, '_');
 
 					sendPreviewPet(petHudName);
 					break;
+				}
 			}
 			break;
-		default:
+		default: {
 			const pageToSend: any = createShopPage(message.member.id, lang, prefix, 'shopmainEmbed0');
 
 			message.reply({ embeds: [pageToSend[0]], components: [pageToSend[1]] }).catch(err => { console.error(err); });
 			break;
+		}
 	}
 }

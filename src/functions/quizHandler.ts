@@ -20,7 +20,7 @@ export function createQuizPage(message: Message, user: User, lang:Record<string,
 			{ name: '- Anime', value: '\u200B', inline: true }
 		);
 
-	switch(embedName) {
+	switch (embedName) {
 		case 'quizmainEmbed':
 			embedToExport = new MessageEmbed(mainEmbed)
 				.setDescription(lang.quiz.mainDescription);
