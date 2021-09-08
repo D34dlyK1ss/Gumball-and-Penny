@@ -95,96 +95,103 @@ export function createQuizQuestion(interaction: ButtonInteraction, user: User, l
 		interaction.reply(lang.quiz.alreadyPlaying).catch(err => { console.error(err); });
 	}
 	else {
-		interaction.update({ content: lang.quiz.starting, embeds: [], components: [] }).then(() => {
+		const quiz = interaction.customId.slice(0, -23);
 
-			alreadyPlaying.add(interaction.channelId);
-	
-			const points: Map<string, number> = new Map();
-			const alreadyAsked: number[] = [];
-	
-			(function loopQuestions(i) {
-				setTimeout(async function() {
-					let rnd = Math.floor(Math.random() * answers.animeEyes.length);
-	
-					while (alreadyAsked.includes(rnd)) {
-						rnd = Math.floor(Math.random() * answers.animeEyes.length);
-					}
-	
-					alreadyAsked.push(rnd);
-	
-					const canvas = createCanvas(401, 250);
-					const ctx = canvas.getContext('2d');
-					const eyes = await loadImage(`img/quiz/anime/eyes/${rnd}.png`);
-					const hud = await loadImage('img/quiz/anime/eyes/hud.png');
-	
-					ctx.drawImage(eyes, 24, 116, 354, 96);
-					ctx.drawImage(hud, 0, 0, canvas.width, canvas.height);
-	
-					ctx.globalAlpha = 0.4;
-					ctx.fillStyle = 'black';
-					ctx.fillRect(25, 30, 353, 72);
-					ctx.fill();
-					ctx.globalAlpha = 1;
-	
-					ctx.font = '26px bold Comic Sans MS';
-					ctx.shadowColor = 'black';
-					ctx.shadowBlur = 1;
-					ctx.shadowOffsetX = 2;
-					ctx.shadowOffsetY = 2;
-					ctx.fillStyle = 'white';
-					ctx.textAlign = 'left';
-					ctx.fillText(`${lang.quiz.whoIsCharacter}`, 30, 76);
-	
-					const attachment = new MessageAttachment(canvas.toBuffer(), 'question.png');
-	
-					interaction.channel.send({ files: [attachment] }).catch(err => { console.error(err); });
-	
-					const filter = (msg: Message) => answers.animeEyes[rnd].includes(slugify(msg.content.toLowerCase()));
-					const collector = interaction.channel.createMessageCollector({ filter, max: 1, time: 15000 });
+		switch (quiz) {
+			case 'quizanimeEyes': {
+				interaction.update({ content: `${lang.quiz.starting} **${lang.quiz.animeEyes}** ${lang.quiz.inSeconds}`, embeds: [], components: [] }).then(() => {
 
-					collector.on('collect', message => {
-						message.reply(lang.quiz.correct).catch(err => { console.error(err); });
-	
-						if (!points.has(message.member.user.tag)) points.set(message.member.user.tag, 0);
-	
-						points.set(message.member.user.tag, points.get(message.member.user.tag) + 1);
-					});
-	
-					collector.on('end', collected => {
-						if (collected.size === 0) interaction.channel.send(lang.quiz.noCorrectAnswer);
-	
-						setTimeout(() => {
-							if (--i) {
-								loopQuestions(i);
+					alreadyPlaying.add(interaction.channelId);
+			
+					const points: Map<string, number> = new Map();
+					const alreadyAsked: number[] = [];
+			
+					(function loopQuestions(i) {
+						setTimeout(async function() {
+							let rnd = Math.floor(Math.random() * answers.animeEyes.length);
+			
+							while (alreadyAsked.includes(rnd)) {
+								rnd = Math.floor(Math.random() * answers.animeEyes.length);
 							}
-							else {
-								const resultsEmbed = new MessageEmbed()
-									.setTitle(lang.results)
-									.setColor('DARK_PURPLE')
-									.setDescription(lang.quiz.noOneScored);
-	
-								if (points.size !== 0)
-								{
-									const nParticipants = points.size;
-									const keys = points.keys();
-									const values = points.values();
-									let description = '';
-									
-									for (let j = 0; j < nParticipants; j++) {
-										description = description + `\n ${keys.next().value} - ${values.next().value} ${lang.quiz.points}`;
+			
+							alreadyAsked.push(rnd);
+			
+							const canvas = createCanvas(401, 250);
+							const ctx = canvas.getContext('2d');
+							const eyes = await loadImage(`img/quiz/anime/eyes/${rnd}.png`);
+							const hud = await loadImage('img/quiz/anime/eyes/hud.png');
+			
+							ctx.drawImage(eyes, 24, 116, 354, 96);
+							ctx.drawImage(hud, 0, 0, canvas.width, canvas.height);
+			
+							ctx.globalAlpha = 0.4;
+							ctx.fillStyle = 'black';
+							ctx.fillRect(25, 30, 353, 72);
+							ctx.fill();
+							ctx.globalAlpha = 1;
+			
+							ctx.font = '26px bold Comic Sans MS';
+							ctx.shadowColor = 'black';
+							ctx.shadowBlur = 1;
+							ctx.shadowOffsetX = 2;
+							ctx.shadowOffsetY = 2;
+							ctx.fillStyle = 'white';
+							ctx.textAlign = 'left';
+							ctx.fillText(`${lang.quiz.whoIsCharacter}`, 30, 76);
+			
+							const attachment = new MessageAttachment(canvas.toBuffer(), 'question.png');
+			
+							interaction.channel.send({ files: [attachment] }).catch(err => { console.error(err); });
+			
+							const filter = (msg: Message) => answers.animeEyes[rnd].includes(slugify(msg.content.toLowerCase()));
+							const collector = interaction.channel.createMessageCollector({ filter, max: 1, time: 15000 });
+		
+							collector.on('collect', message => {
+								message.reply(lang.quiz.correct).catch(err => { console.error(err); });
+			
+								if (!points.has(message.member.user.tag)) points.set(message.member.user.tag, 0);
+			
+								points.set(message.member.user.tag, points.get(message.member.user.tag) + 1);
+							});
+			
+							collector.on('end', collected => {
+								if (collected.size === 0) interaction.channel.send(lang.quiz.noCorrectAnswer);
+			
+								setTimeout(() => {
+									if (--i) {
+										loopQuestions(i);
 									}
-	
-									resultsEmbed.setDescription(description);
-								}
-	
-								interaction.channel.send({ content: lang.quiz.ended, embeds: [resultsEmbed] }).catch(err => { console.error(err); });
-								alreadyPlaying.delete(interaction.channelId);
-							}
-						});
-					});
-				}, 5000);
-			})(10);
-		});
+									else {
+										const resultsEmbed = new MessageEmbed()
+											.setTitle(lang.results)
+											.setColor('DARK_PURPLE')
+											.setDescription(lang.quiz.noOneScored);
+			
+										if (points.size !== 0)
+										{
+											const nParticipants = points.size;
+											const keys = points.keys();
+											const values = points.values();
+											let description = '';
+											
+											for (let j = 0; j < nParticipants; j++) {
+												description = description + `\n ${keys.next().value} - ${values.next().value} ${lang.quiz.points}`;
+											}
+			
+											resultsEmbed.setDescription(description);
+										}
+			
+										interaction.channel.send({ content: lang.quiz.ended, embeds: [resultsEmbed] }).catch(err => { console.error(err); });
+										alreadyPlaying.delete(interaction.channelId);
+									}
+								});
+							});
+						}, 5000);
+					})(10);
+				});
+			}
+				break;
+		}
 	}
 }
 
