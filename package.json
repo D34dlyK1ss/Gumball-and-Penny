@@ -5,7 +5,7 @@
   "main": "bot.js",
   "author": "D34dlyK1ss",
   "engines": {
-    "node": "16.6.2"
+    "node": "16.9.0"
   },
   "dependencies": {
     "@types/eventsource": "^1.1.5",
