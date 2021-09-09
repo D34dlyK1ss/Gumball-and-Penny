@@ -46,7 +46,7 @@ export function execute(bot: BotClient, message: Message, command: Cmd, db: any,
 
 						let newBalU = balU + amount;
 
-						if ((balU + amount) > 1000000) {
+						if (balU + amount > 1000000) {
 							newBalU = 1000000;
 							amount = newBalU - balU;
 						}

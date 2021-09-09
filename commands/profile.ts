@@ -165,7 +165,7 @@ export function execute(bot: BotClient, message: Message, command: undefined, db
 
 					ctx.globalAlpha = 0.7;
 					ctx.fillStyle = (items as any).huds[hud].hex;
-					ctx.fillRect(175, 192, ((99 / (xpNeeded)) * (xpToNext) * 4.25), 30);
+					ctx.fillRect(175, 192, 99 / xpNeeded * xpToNext * 4.25, 30);
 					ctx.fill();
 					ctx.globalAlpha = 1;
 

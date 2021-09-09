@@ -12,7 +12,7 @@ export function execute(bot: undefined, message: Message, command: Cmd, db: any,
 		if (!doc.exists) {
 			message.reply(`${lang.error.noProfile}\`${prefix}profile create\`!`).catch(err => { console.error(err); });
 		}
-		else if (!Number.isInteger(money) || (args[0] !== lang.coinflip.heads && args[0] !== lang.coinflip.tails)) {
+		else if (!Number.isInteger(money) || args[0] !== lang.coinflip.heads && args[0] !== lang.coinflip.tails) {
 			message.channel.send(`${lang.error.wrongSyntax}\`${prefix}${lang.command[command.name].usage}\``).catch(err => { console.error(err); });
 		}
 		else {
@@ -20,7 +20,7 @@ export function execute(bot: undefined, message: Message, command: Cmd, db: any,
 			const least = 50;
 			const most = 1000;
 
-			if ((bal + money) > 1000000) {
+			if (bal + money > 1000000) {
 				message.reply(lang.error.noAdd).catch(err => { console.error(err); });
 			}
 			else if (money > bal) {
@@ -44,13 +44,13 @@ export function execute(bot: undefined, message: Message, command: Cmd, db: any,
 
 					if (res !== guess) {
 						ref.update({
-							balance: (bal - money)
+							balance: bal - money
 						}).then(() => { message.reply(`${lang.lost} **¤${money}**!`); }).catch((err: Error) => { console.error(err); });
 					}
 					else if (res === guess) {
 						const won = money * 1.5;
 						ref.update({
-							balance: (bal + won)
+							balance: bal + won
 						}).then(() => { message.reply(`${lang.won} **¤${won}**!`); }).catch((err: Error) => { console.error(err); });
 					}
 				});

@@ -2,7 +2,7 @@ import { Message } from 'discord.js';
 
 async function giveVIP(db: any, message: Message, args: string[]) {
 	const refV = db.collection('vip').doc(message.author.id);
-	const timestamp = new Date(Date.now() + (2592000000));
+	const timestamp = new Date(Date.now() + 2592000000);
 	const vipRole = message.guild.roles.cache.find(role => role.name === 'VIP');
 	const justPaidRole = message.guild.roles.cache.find(role => role.name === 'I Just Paid VIP');
 

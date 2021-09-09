@@ -93,7 +93,7 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 										iHuds.push(hudName);
 
 										refP.update({
-											balance: (bal - hudCost)
+											balance: bal - hudCost
 										});
 
 										refI.update({
@@ -146,7 +146,7 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 											petHuds: iPetHUDs
 										}, { merge: true }).then(() => {
 											refP.update({
-												balance: (bal - petHudCost)
+												balance: bal - petHudCost
 											});
 
 											petHudName = petHudName.toLowerCase().replace(/[_]/g, ' ');
@@ -188,7 +188,7 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 											items: iItems
 										}, { merge: true }).then(() => {
 											refP.update({
-												balance: (bal - itemCost)
+												balance: bal - itemCost
 											});
 
 											itemName = itemName.toLowerCase().replace(/[_]/g, ' ');
@@ -240,7 +240,7 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 												hud: 'grey',
 												name: petName,
 												nature: (natures as any)[gender][rndN],
-												pet: pet ,
+												pet: pet,
 												species: titleCase(species)
 											}).then(() => {
 												refI.get().then((docI: any) => {
@@ -260,7 +260,7 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 												});
 
 												refP.update({
-													balance: (bal - petCost)
+													balance: bal - petCost
 												});
 
 												petName = species.toLowerCase().replace(/[_]/g, ' ');

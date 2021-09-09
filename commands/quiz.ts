@@ -1,6 +1,5 @@
 import { Message } from 'discord.js';
-import { createQuizPage } from '../src/functions/quizHandler';
-import { alreadyPlaying } from '../src/functions/quizHandler';
+import { createQuizPage, alreadyPlaying } from '../src/functions/quizHandler';
 
 export const name = 'quiz';
 export function execute(bot: undefined, message: Message, command: undefined, db: undefined, lang: Record<string, any>, language: string, prefix: string) {

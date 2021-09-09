@@ -13,7 +13,7 @@ export function execute(bot: undefined, message: Message, command: Cmd, db: any,
 		if (!doc.exists) {
 			message.reply(`${lang.error.noProfile}\`${prefix}profile create\`!`).catch(err => { console.error(err); });
 		}
-		else if (!Number.isInteger(money) || (args[0].toLowerCase() !== 'gumball' && args[0].toLowerCase() !== 'penny')) {
+		else if (!Number.isInteger(money) || args[0].toLowerCase() !== 'gumball' && args[0].toLowerCase() !== 'penny') {
 			message.channel.send(`${lang.error.wrongSyntax}\`${prefix}${lang.command[command.name].usage}\``).catch(err => { console.error(err); });
 		}
 		else {
@@ -21,7 +21,7 @@ export function execute(bot: undefined, message: Message, command: Cmd, db: any,
 			const least = 50;
 			const most = 1000;
 
-			if ((bal + money) > 1000000) {
+			if (bal + money > 1000000) {
 				message.reply(lang.error.noAdd).catch(err => { console.error(err); });
 			}
 			else if (money > bal) {
@@ -72,7 +72,7 @@ export function execute(bot: undefined, message: Message, command: Cmd, db: any,
 						else if (finalRes === guess) {
 							const won = money * 1.5;
 							ref.update({
-								balance: (bal + won)
+								balance: bal + won
 							}).then(async () => {
 								await message.channel.send({ files: [attachment2] });
 								message.reply(`**Gumball** ${lang.jankenpon.threw} **${resG}** ${lang.and} **Penny** ${lang.jankenpon.threw} **${resP}**, ${lang.won} **¤${won}**!`);
@@ -80,7 +80,7 @@ export function execute(bot: undefined, message: Message, command: Cmd, db: any,
 						}
 						else {
 							ref.update({
-								balance: (bal - money)
+								balance: bal - money
 							}).then(async () => {
 								await message.channel.send({ files: [attachment2] });
 								message.reply(`**Gumball** ${lang.jankenpon.threw} **${resG}** ${lang.and} **Penny** ${lang.jankenpon.threw} **${resP}**, ${lang.lost} **¤${money}**!`);

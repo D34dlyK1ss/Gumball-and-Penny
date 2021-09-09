@@ -6,7 +6,7 @@ export function execute(bot: BotClient, message: Message, command: Cmd, db: unde
 	const user = message.mentions.users.first();
 	const rnd = Math.floor(Math.random() * 6);
 
-	if (!user || user === message.author) {
+	if (user === null || user === message.author) {
 		message.channel.send({ content: `${message.author}${lang.angry.gotAngry}`, files: [`img/actions/${command.name} (${rnd}).gif`] }).catch(err => { console.error(err); });
 	}
 	else if (user === bot.user) {

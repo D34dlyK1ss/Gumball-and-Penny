@@ -57,7 +57,7 @@ import * as admin from 'firebase-admin';
 import * as serviceAccount from './serviceAccountKey.json';
 admin.initializeApp({
 	// Autenticação à BD
-	credential: admin.credential.cert((serviceAccount as any)),
+	credential: admin.credential.cert(serviceAccount as any),
 	databaseURL: 'https://gumball-and-penny.firebaseio.com'
 });
 
@@ -231,7 +231,7 @@ bot.on('messageCreate', async message => {
 								const reward = newLevel * 500;
 								db.collection('perfis').doc(message.author.id).update({
 									balance: bal + reward
-								}).then(() => message.channel.send(`🎉 ${lang.levelUp.congrats} **${message.author.tag}**, ${lang.levelUp.levelTo} **${newLevel}** ${lang.levelUp.received}${reward}! 🆙💰`));
+								}).then(async () => message.channel.send(`🎉 ${lang.levelUp.congrats} **${message.author.tag}**, ${lang.levelUp.levelTo} **${newLevel}** ${lang.levelUp.received}${reward}! 🆙💰`));
 							}
 							else {
 								message.channel.send(`🎉 ${lang.levelUp.congrats} **${message.author.tag}**, ${lang.levelUp.levelTo} **${newLevel}**! 🆙`);

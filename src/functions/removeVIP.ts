@@ -12,7 +12,7 @@ async function removeVIP(admin: any, bot: BotClient, db: any, vips: Set<string>)
 			if (until !== 'forever') {
 				const officialServer = bot.guilds.cache.get('738540548305977366');
 				const memberToVIP = await officialServer.members.fetch(doc.id), vipRole = officialServer.roles.cache.find(role => role.name === 'VIP');
-				const ms = (until._seconds * 1000) - Date.now();
+				const ms = until._seconds * 1000 - Date.now();
 
 				vips.add(doc.id);
 				setTimeout(async () => {

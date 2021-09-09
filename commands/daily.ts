@@ -21,12 +21,12 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 		else {
 			const bal: number = doc.get('balance');
 
-			if ((bal + daily) > 1000000) {
+			if (bal + daily > 1000000) {
 				message.reply(lang.error.noAdd).catch(err => { console.error(err); });
 			}
 			else {
 				ref.update({
-					balance: (bal + daily),
+					balance: bal + daily,
 					lastDaily: today
 				}).then(() => {
 					message.reply(`${lang.daily.received}**¤${daily}**${lang.daily.toGetMore}\`${prefix}vote\``).catch(err => { console.error(err); });
