@@ -123,7 +123,7 @@ export function createQuizQuestion(interaction: ButtonInteraction, user: User, l
 							const eyes = await loadImage(`img/quiz/anime/eyes/${rnd}.png`);
 							const hud = await loadImage('img/quiz/anime/eyes/hud.png');
 			
-							ctx.drawImage(eyes, 24, 116, 354, 96);
+							ctx.drawImage(eyes, 25, 122);
 							ctx.drawImage(hud, 0, 0, canvas.width, canvas.height);
 			
 							ctx.globalAlpha = 0.4;
