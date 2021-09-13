@@ -113,8 +113,6 @@ export function createQuizQuestion(interaction: ButtonInteraction, user: User, l
 							while (alreadyAsked.includes(rnd)) {
 								rnd = Math.floor(Math.random() * answers.animeEyes.length);
 							}
-							
-							rnd = 124;
 
 							alreadyAsked.push(rnd);
 			
@@ -123,7 +121,7 @@ export function createQuizQuestion(interaction: ButtonInteraction, user: User, l
 							const eyes = await loadImage(`img/quiz/anime/eyes/${rnd}.png`);
 							const hud = await loadImage('img/quiz/anime/eyes/hud.png');
 			
-							ctx.drawImage(eyes, 25, 122);
+							ctx.drawImage(eyes, 26, 121);
 							ctx.drawImage(hud, 0, 0, canvas.width, canvas.height);
 			
 							ctx.globalAlpha = 0.4;
