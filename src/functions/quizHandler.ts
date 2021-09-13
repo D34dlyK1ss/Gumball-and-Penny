@@ -113,7 +113,9 @@ export function createQuizQuestion(interaction: ButtonInteraction, user: User, l
 							while (alreadyAsked.includes(rnd)) {
 								rnd = Math.floor(Math.random() * answers.animeEyes.length);
 							}
-			
+							
+							rnd = 124;
+
 							alreadyAsked.push(rnd);
 			
 							const canvas = createCanvas(401, 250);
