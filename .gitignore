@@ -1,7 +1,5 @@
 .env
-.eslint*
 .vscode
 *.sh
 backups
 node_modules
-indexDev.ts
