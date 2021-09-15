@@ -31,12 +31,10 @@ config();
 import botConfig from './botConfig.json';
 
 // Descrição do bot na plataforma
-function setActivity() {
+function setBotStatus() {
 	let plural = '';
-	if (bot.guilds.cache.size !== 1) plural = 'es';
-	const botActivity1 = 'dev!help em';
-	const botActivity2 = `servidor${plural}!`;
-	bot.user.setActivity(`${botActivity1} ${bot.guilds.cache.size} ${botActivity2}`);
+	bot.guilds.cache.size !== 1 ? plural = '' : plural = 's';
+	bot.user.setActivity({ name: `${botConfig.settings.prefix}help on ${bot.guilds.cache.size} server${plural}!`, type: 'WATCHING' });
 }
 
 // Biblioteca para momentos
@@ -67,7 +65,7 @@ import { confirmLanguage } from './src/functions/setlanguageHandler';
 
 // Uma vez que o bot está ativo, realizar as seguintes ações
 bot.once('ready', () => {
-	setActivity();
+	setBotStatus();
 	console.log(`Preparados! (${moment().format('LL')} ${moment().format('LTS')})`);
 });
 
@@ -174,7 +172,7 @@ bot.on('interactionCreate', async interaction => {
 
 // Quando o bot for adicionado a um novo servidor, são armazenados dados do mesmo
 bot.on('guildCreate', async guildData => {
-	setActivity();
+	setBotStatus();
 	await db.collection('definicoes').doc(guildData.id).set({
 		settings: botConfig.settings
 	}).catch((err: Error) => { console.error(err); });
@@ -182,7 +180,7 @@ bot.on('guildCreate', async guildData => {
 
 // Quando o bot for expulso de um servidor, o bot apagará os dados respetivos
 bot.on('guildDelete', async guildData => {
-	setActivity();
+	setBotStatus();
 	await db.collection('definicoes').doc(guildData.id).delete().catch((err: Error) => { console.error(err); });
 });
 
