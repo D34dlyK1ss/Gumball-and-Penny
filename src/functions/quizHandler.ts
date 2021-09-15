@@ -3,7 +3,6 @@ import { ButtonInteraction, Message, MessageAttachment, MessageEmbed, MessageAct
 import { registerFont, createCanvas, loadImage } from 'canvas';
 import * as answers from '../data/quizAnswers.json';
 import slugify from './slugify';
-import { messaging } from 'firebase-admin';
 registerFont('./fonts/comic.ttf', { family: 'Comic Sans MS' });
 registerFont('./fonts/comicb.ttf', { family: 'bold Comic Sans MS' });
 registerFont('./fonts/comici.ttf', { family: 'italic Comic Sans MS' });
@@ -136,8 +135,8 @@ export function createQuizQuestion(interaction: ButtonInteraction, user: User, l
 							ctx.shadowOffsetX = 2;
 							ctx.shadowOffsetY = 2;
 							ctx.fillStyle = 'white';
-							ctx.textAlign = 'left';
-							ctx.fillText(`${lang.quiz.whoIsCharacter}`, 30, 76);
+							ctx.textAlign = 'center';
+							ctx.fillText(`${lang.quiz.whoIsCharacter}`, 200, 76);
 			
 							const attachment = new MessageAttachment(canvas.toBuffer(), 'question.png');
 			
