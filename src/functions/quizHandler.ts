@@ -1,6 +1,6 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { ButtonInteraction, Message, MessageAttachment, MessageEmbed, MessageActionRow, MessageButton, User } from 'discord.js';
 import { registerFont, createCanvas, loadImage } from 'canvas';
+import * as admin from 'firebase-admin';
 import * as answers from '../data/quizAnswers.json';
 import slugify from './slugify';
 registerFont('./fonts/comic.ttf', { family: 'Comic Sans MS' });
@@ -102,7 +102,7 @@ export function createQuizQuestion(interaction: ButtonInteraction, user: User, l
 
 					alreadyPlaying.add(interaction.channelId);
 			
-					const points: Map<string, number> = new Map();
+					const score: Map<string, number> = new Map();
 					const alreadyAsked: number[] = [];
 			
 					(function loopQuestions(i) {
@@ -148,15 +148,15 @@ export function createQuizQuestion(interaction: ButtonInteraction, user: User, l
 							collector.on('collect', message => {
 								message.reply(lang.quiz.correct).catch(err => { console.error(err); });
 			
-								if (!points.has(message.member.user.tag)) points.set(message.member.user.tag, 0);
+								if (!score.has(message.member.id)) score.set(message.member.id, 0);
 			
-								points.set(message.member.user.tag, points.get(message.member.user.tag) + 1);
+								score.set(message.member.id, score.get(message.member.id) + 1);
 							});
 			
 							collector.on('end', collected => {
 								if (collected.size === 0) interaction.channel.send(lang.quiz.noCorrectAnswer);
 			
-								setTimeout(() => {
+								setTimeout(async () => {
 									if (--i) {
 										loopQuestions(i);
 									}
@@ -166,15 +166,26 @@ export function createQuizQuestion(interaction: ButtonInteraction, user: User, l
 											.setColor('DARK_PURPLE')
 											.setDescription(lang.quiz.noOneScored);
 			
-										if (points.size !== 0)
+										if (score.size !== 0)
 										{
-											const nParticipants = points.size;
-											const keys = points.keys();
-											const values = points.values();
+											const nParticipants = score.size;
 											let description = '';
 											
 											for (let j = 0; j < nParticipants; j++) {
-												description = description + `\n ${keys.next().value} - ${values.next().value} ${lang.quiz.points}`;
+												const userId = score.keys().next().value;
+												const points = score.values().next().value;
+												const refP = admin.firestore().collection('perfis').doc(userId);
+												description = description + `\n<@${userId}> - ${points} ${lang.quiz.points}`;
+
+												await refP.get().then(doc => {
+													if (!doc.exists) return;
+													const xp: number = doc.get('xp');
+													const xpGain = 25 * points + 50 * (nParticipants - 1);
+
+													refP.update({
+														xp: xp + xpGain
+													});
+												});
 											}
 			
 											resultsEmbed.setDescription(description);
