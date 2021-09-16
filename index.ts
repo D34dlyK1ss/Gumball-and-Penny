@@ -50,11 +50,13 @@ const dbl = new DBL(process.env.DBLTOKEN, bot);
 // Acesso de administrador à BD
 import * as admin from 'firebase-admin';
 
-// Chaves de autenticação à BD
-import * as serviceAccount from './serviceAccountKey.json';
+// Autenticação à BD
 admin.initializeApp({
-	// Autenticação à BD
-	credential: admin.credential.cert(serviceAccount as any),
+	credential: admin.credential.cert({
+		projectId: 'gumball-and-penny',
+		privateKey: process.env.DBPRIVATEKEY,
+		clientEmail: 'firebase-adminsdk-weska@gumball-and-penny.iam.gserviceaccount.com'
+	}),
 	databaseURL: 'https://gumball-and-penny.firebaseio.com'
 });
 
