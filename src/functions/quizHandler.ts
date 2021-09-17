@@ -172,8 +172,6 @@ export function createQuizQuestion(interaction: ButtonInteraction, user: User, l
 											const userId = score.keys();
 											const points = score.values();
 											let description = '';
-											
-
 
 											for (let j = 0; j < nParticipants; j++) {
 												const refP = admin.firestore().collection('perfis').doc(userId.next().value);
