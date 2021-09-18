@@ -182,10 +182,9 @@ export function createQuizQuestion(interaction: ButtonInteraction, user: User, l
 													if (!doc.exists) return;
 													const xp: number = doc.get('xp');
 													const xpGain = 25 * points + 50 * (nParticipants - 1);
-													const newXP = xp + xpGain;
 
 													refP.update({
-														xp: newXP
+														xp: xp + xpGain
 													});
 												});
 											}
