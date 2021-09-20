@@ -79,7 +79,7 @@
 	"error": {
 		"cmd": "There was an error when trying to execute that command!",
 		"noProfile": "You haven't created a profile yet! To create a profile use ",
-		"userNoProfile": " hasn't yet created a profile!",
+		"userNoProfile": " hasn't created a profile yet!",
 		"noMention": "You have to mention someone!",
 		"noPerm": "You have no permisison to use this command! 💢",
 		"botNoBan": "We don't have permission to ban members!",
