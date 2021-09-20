@@ -54,7 +54,7 @@ import * as admin from 'firebase-admin';
 admin.initializeApp({
 	credential: admin.credential.cert({
 		projectId: 'gumball-and-penny',
-		privateKey: process.env.DBPRIVATEKEY,
+		privateKey: process.env.GOOGLE_APPLICATION_CREDENTIALS,
 		clientEmail: 'firebase-adminsdk-weska@gumball-and-penny.iam.gserviceaccount.com'
 	}),
 	databaseURL: 'https://gumball-and-penny.firebaseio.com'
