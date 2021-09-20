@@ -5,10 +5,10 @@ export const name = 'ban';
 export async function execute(bot: undefined, message: Message, command: Cmd, db: undefined, lang: Record<string, string | any>, language: undefined, prefix: undefined, args: string[]) {
 	message.delete();
 	if (!message.member.permissions.has('BAN_MEMBERS')) {
-		message.reply(lang.error.noPerm).then(msg => { setTimeout(() => { msg.delete(); }, 5000); }).catch(err => { console.error(err); });
+		message.reply(lang.error.noPerm).catch(err => { console.error(err); });
 	}
 	else if (!message.guild.me.permissions.has('BAN_MEMBERS')) {
-		message.reply(lang.error.botNoBan).then(msg => { setTimeout(() => { msg.delete(); }, 5000); }).catch(err => { console.error(err); });
+		message.reply(lang.error.botNoBan).catch(err => { console.error(err); });
 	}
 	else {
 		const mention = message.mentions.users.first();
@@ -19,7 +19,7 @@ export async function execute(bot: undefined, message: Message, command: Cmd, db
 		const reason = args.join(' ') || lang.notIndicated;
 
 		if (!mention) {
-			message.reply(lang.error.noMention).then(msg => { setTimeout(() => { msg.delete(); }, 5000); }).catch(err => { console.error(err); });
+			message.reply(lang.error.noMention).catch(err => { console.error(err); });
 		}
 		else {
 			member.ban(reason).then(() => {

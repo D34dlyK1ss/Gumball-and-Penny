@@ -5,13 +5,13 @@ export async function execute(bot: undefined, message: Message, command: undefin
 	message.delete();
 
 	if (!message.member.permissions.has('MANAGE_ROLES') || !message.member.permissions.has('MANAGE_CHANNELS')) {
-		message.reply(lang.error.noPerm).then(msg => { setTimeout(() => { msg.delete(); }, 5000); }).catch(err => { console.error(err); });
+		message.reply(lang.error.noPerm).catch(err => { console.error(err); });
 	}
 	else if (!message.guild.me.permissions.has('MANAGE_ROLES')) {
-		message.reply(lang.error.botNoManageRoles).then(msg => { setTimeout(() => { msg.delete(); }, 5000); }).catch(err => { console.error(err); });
+		message.reply(lang.error.botNoManageRoles).catch(err => { console.error(err); });
 	}
 	else if (!message.guild.me.permissions.has('MANAGE_CHANNELS')) {
-		message.reply(lang.error.botNoManageChannels).then(msg => { setTimeout(() => { msg.delete(); }, 5000); }).catch(err => { console.error(err); });
+		message.reply(lang.error.botNoManageChannels).catch(err => { console.error(err); });
 	}
 	else {
 		const mention = message.mentions.users.first();
@@ -25,10 +25,10 @@ export async function execute(bot: undefined, message: Message, command: undefin
 		let muteRole = message.guild.roles.cache.find(role => role.name === 'Muted');
 
 		if (!mention) {
-			message.reply(lang.error.noMention).then(msg => { setTimeout(() => { msg.delete(); }, 5000); }).catch(err => { console.error(err); });
+			message.reply(lang.error.noMention).catch(err => { console.error(err); });
 		}
 		else if (!seconds) {
-			message.reply(lang.error.noDuration).then(msg => { setTimeout(() => { msg.delete(); }, 5000); }).catch(err => { console.error(err); });
+			message.reply(lang.error.noDuration).catch(err => { console.error(err); });
 		}
 		else {
 			if (!muteRole) {

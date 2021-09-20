@@ -6,7 +6,7 @@ export const name = 'automessages';
 export function execute(bot: undefined, message: Message, command: undefined, db: any, lang: Record<string, string | any>, language: undefined, prefix: undefined, args: undefined, serverSettings: ServerSettings) {
 	if (!message.member.permissions.has('MANAGE_GUILD')) {
 		message.delete();
-		message.reply(lang.error.noPerm).then(msg => { setTimeout(() => { msg.delete(); }, 5000); }).catch(err => { console.error(err); });
+		message.reply(lang.error.noPerm).catch(err => { console.error(err); });
 	}
 	else {
 		const ref = db.collection('definicoes').doc(message.guild.id);
