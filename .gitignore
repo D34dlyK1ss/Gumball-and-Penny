@@ -1,5 +1,6 @@
 .env
 .vscode
 *.sh
+serviceAccountKey.json
 backups
 node_modules
