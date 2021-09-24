@@ -20,7 +20,10 @@ export function execute(bot: BotClient, message: Message, command: Cmd, db: any,
 			const refU = db.collection('perfis').doc(user.id);
 
 			refU.get().then((docU: any) => {
-				if (user === bot.user) {
+				if (message.author.id = user.id) {
+					message.reply(`${lang.give.self}`).catch(err => { console.error(err); });
+				}
+				else if (user === bot.user) {
 					message.reply(`${lang.give.thanksBut} 😁`).catch(err => { console.error(err); });
 				}
 				else if (user.bot) {

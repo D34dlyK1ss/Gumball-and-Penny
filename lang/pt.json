@@ -188,6 +188,7 @@
 	},
 
 	"give": {
+		"self": "A sério que acabaste de tentar dar dinheiro a ti mesmo?",
 		"thanksBut": "Obrigado, mas vais precisar mais desse dinheiro do que nós!",
 		"youGave": "Deste ",
 		"to": " a "

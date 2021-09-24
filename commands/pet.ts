@@ -25,7 +25,7 @@ export function execute(bot: BotClient, message: Message, command: undefined, db
 			db.collection('pet').doc(message.author.id).get().then((doc: any) => {
 				const pet = doc.get('pet');
 				if (!doc.exists) {
-					message.reply(`${lang.error.noPet}\`${prefix}shop pets\`!`).catch(err => { console.error(err); });
+					message.reply(`${lang.error.noPet}\`${prefix}shop\`!`).catch(err => { console.error(err); });
 				}
 				else if ((items as any).pets[pet].vip) {
 					message.reply(lang.error.noChangePetName).catch(err => { console.error(err); });
@@ -127,7 +127,7 @@ export function execute(bot: BotClient, message: Message, command: undefined, db
 			refP.get().then(async (doc: any) => {
 				if (!doc.exists) {
 					if (user === message.author) {
-						message.reply(`${lang.error.noPet}\`${prefix}shop pets\`!`).catch(err => { console.error(err); });
+						message.reply(`${lang.error.noPet}\`${prefix}shop\`!`).catch(err => { console.error(err); });
 					}
 					else if (user === bot.user) {
 						message.reply(lang.pet.botNoPet).catch(err => { console.error(err); });

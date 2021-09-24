@@ -188,6 +188,7 @@
 	},
 
 	"give": {
+		"self": "Seriously you just tried to give yourself money?",
 		"thanksBut": "Thanks, but you'll need that money more than us!",
 		"youGave": "You gave ",
 		"to": " to "
