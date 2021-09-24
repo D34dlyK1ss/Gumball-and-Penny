@@ -234,8 +234,8 @@
 
 	"match": {
 		"alreadyAPair": "Hey, we're already a pair! 😠",
-		"youAre": "You are ",
-		"compatibleWith": " compatible with "
+		"youAre": "You are",
+		"compatibleWith": "compatible with"
 	},
 
 	"mute": {

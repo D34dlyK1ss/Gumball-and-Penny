@@ -169,19 +169,21 @@ export function createQuizQuestion(interaction: ButtonInteraction, user: User, l
 										if (score.size !== 0)
 										{
 											const nParticipants = score.size;
+											const userIds = score.keys();
+											const points = score.values();
 											let description = '';
 
 											for (let j = 0; j < nParticipants; j++) {
-												const userId = score.keys().next().value;
-												const points = score.values().next().value;
-												const refP = admin.firestore().collection('perfis').doc(`${userId}`);
+												const userId = userIds.next().value;
+												const punctuation = points.next().value;
+												const refP = admin.firestore().collection('perfis').doc(`${user}`);
 
-												description = description + `\n<@${userId}> - ${points} ${lang.quiz.points}`;
+												description = description + `\n<@${userId}> - ${punctuation} ${lang.quiz.points}`;
 
 												await refP.get().then(doc => {
 													if (!doc.exists) return;
 													const xp: number = doc.get('xp');
-													const xpGain = 25 * points + 50 * (nParticipants - 1);
+													const xpGain = 25 * punctuation + 50 * (nParticipants - 1);
 
 													refP.update({
 														xp: xp + xpGain
