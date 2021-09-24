@@ -20,7 +20,7 @@ export function execute(bot: BotClient, message: Message, command: Cmd, db: any,
 			const refU = db.collection('perfis').doc(user.id);
 
 			refU.get().then((docU: any) => {
-				if (message.author.id = user.id) {
+				if (message.author.id == user.id) {
 					message.reply(`${lang.give.self}`).catch(err => { console.error(err); });
 				}
 				else if (user === bot.user) {
