@@ -73,10 +73,18 @@ bot.once('ready', () => {
 const settings: any = new Object();
 
 async function getServerSettings(guild: Guild) {
-	const ref = db.collection('definicoes').doc(guild.id);
+	const refD = db.collection('definicoes').doc(guild.id);
+
 	if (!settings[guild.id]) {
-		const doc = await ref.get();
-		settings[guild.id] = doc.get('settings') || botConfig.settings;
+		await refD.get().then((docD: any) => {
+			if (!docD.exists) {
+				db.collection('definicoes').doc(guild.id).set({
+					settings: botConfig.settings
+				});
+			}
+
+			settings[guild.id] = docD.get('settings') || botConfig.settings;
+		});
 	}
 	const serverSettings: ServerSettings = settings[guild.id];
 
