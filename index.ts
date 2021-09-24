@@ -124,7 +124,7 @@ es.onmessage = async messageEvent => {
 				refP.update({
 					balance: bal + add
 				});
-			});
+			}).catch((err: Error) => { console.error(err); });
 		}
 	}
 };
@@ -144,7 +144,7 @@ async function getServerSettings(guild: Guild) {
 			}
 
 			settings[guild.id] = docD.get('settings') || botConfig.settings;
-		});
+		}).catch((err: Error) => { console.error(err); });
 	}
 
 	const serverSettings: ServerSettings = settings[guild.id];
