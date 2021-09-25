@@ -86,18 +86,20 @@ async function getServerSettings(guild: Guild) {
 			settings[guild.id] = docD.get('settings') || botConfig.settings;
 		});
 	}
+
 	const serverSettings: ServerSettings = settings[guild.id];
 
 	return serverSettings;
 }
+
+const englishChannels = ['809182965607039007', '787661396652589077', '787674033331634196'];
 
 // Ações para quando o bot receber uma mensagem
 bot.on('messageCreate', async message => {
 	if (message.channel.id === '810529155955032115' && message.content === `${botConfig.settings.prefix}activate` && message.member.id === botConfig.botOwner) {
 		giveVIP(db, message, undefined);
 	}
-
-	if (message.channel.id === '809182965607039007') {
+	else if (message.channel.id === '891365431879827527') {
 		const array = message.content.split(' ');
 		array[0].slice(botConfig.settings.prefix.length).toLowerCase();
 		const args = array.slice(1);
@@ -106,9 +108,7 @@ bot.on('messageCreate', async message => {
 			giveVIP(db, message, args);
 		}
 	}
-
-	// Ignorar mensagens privadas e mensagens de outros bots
-	if (!message.guild || message.channel.id === '810529155955032115' || message.author.bot) return;
+	else if (!message.guild || message.channel.id === '810529155955032115' || message.author.bot) return;
 
 	// Leitura dos ficheiros de comandos
 	const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.ts'));
@@ -121,7 +121,7 @@ bot.on('messageCreate', async message => {
 	//  Obter as definições do bot para o servidor
 	const serverSettings = await getServerSettings(message.guild);
 	const prefix = 'dev!';
-	const englishChannels = ['809182965607039007', '787661396652589077', '787674033331634196'];
+	
 	let language;
 
 	if (englishChannels.includes(message.channel.id)) language = 'en';
@@ -158,7 +158,6 @@ bot.on('interactionCreate', async interaction => {
 	//  Obter as definições do bot para o servidor
 	const serverSettings = await getServerSettings(interaction.guild);
 	const prefix = 'dev!';
-	const englishChannels = ['809182965607039007', '787661396652589077', '787674033331634196'];
 	let language;
 
 	if (englishChannels.includes(interaction.channel.id)) language = 'en';
