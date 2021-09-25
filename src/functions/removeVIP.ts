@@ -1,12 +1,12 @@
 import { BotClient } from 'index';
 
-async function removeVIP(admin: any, bot: BotClient, db: any, vips: Set<string>) {
+async function removeVIP(admin: any, bot: BotClient, db: FirebaseFirestore.Firestore, vips: Set<string>) {
 	const refV = db.collection('vip');
 	const timestamp = admin.firestore.Timestamp.fromDate(new Date(Date.now() + 86400000));
 	const snapshot = await refV.where('until', '<', timestamp).get();
 
 	if (!snapshot.empty) {
-		snapshot.forEach(async (doc: any) => {
+		snapshot.forEach(async doc => {
 			const until = doc.get('until');
 
 			if (until !== 'forever') {

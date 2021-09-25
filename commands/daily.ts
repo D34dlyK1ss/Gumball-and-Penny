@@ -3,12 +3,12 @@ import ms from 'ms';
 
 export const name = 'daily';
 export const aliases = ['d'];
-export function execute(bot: undefined, message: Message, command: undefined, db: any, lang: Record<string, string | any>, language: string, prefix: string) {
+export function execute(bot: undefined, message: Message, command: undefined, db: FirebaseFirestore.Firestore, lang: Record<string, string | any>, language: string, prefix: string) {
 	const user = message.author;
 	const ref = db.collection('perfis').doc(user.id);
 	const daily = 300;
 
-	ref.get().then((doc: any) => {
+	ref.get().then(doc => {
 		const today = Date.now();
 		const lastDaily: number = doc.get('lastDaily');
 		const nextDaily = lastDaily + 86400000;

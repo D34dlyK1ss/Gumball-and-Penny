@@ -3,7 +3,7 @@ import * as botConfig from '../botConfig.json';
 import { ServerSettings } from 'index';
 
 export const name = 'automessages';
-export function execute(bot: undefined, message: Message, command: undefined, db: any, lang: Record<string, string | any>, language: undefined, prefix: undefined, args: undefined, serverSettings: ServerSettings) {
+export function execute(bot: undefined, message: Message, command: undefined, db: FirebaseFirestore.Firestore, lang: Record<string, string | any>, language: undefined, prefix: undefined, args: undefined, serverSettings: ServerSettings) {
 	if (!message.member.permissions.has('MANAGE_GUILD')) {
 		message.delete();
 		message.reply(lang.error.noPerm).catch(err => { console.error(err); });
@@ -11,7 +11,7 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 	else {
 		const ref = db.collection('definicoes').doc(message.guild.id);
 
-		ref.get().then(async (doc: any) => {
+		ref.get().then(async doc => {
 			const dbSettings = await doc.get('settings') || botConfig.settings;
 			const onOff = dbSettings.automessages;
 			let toggle = '';

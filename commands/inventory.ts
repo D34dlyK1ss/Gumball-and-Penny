@@ -2,7 +2,7 @@ import { Message, MessageEmbed } from 'discord.js';
 
 export const name = 'inventory';
 export const aliases = ['i'];
-export function execute(bot: undefined, message: Message, command: undefined, db: any, lang: Record<string, string | any>, language: string, prefix: string) {
+export function execute(bot: undefined, message: Message, command: undefined, db: FirebaseFirestore.Firestore, lang: Record<string, string | any>, language: string, prefix: string) {
 	const refP = db.collection('perfis').doc(message.author.id);
 	const refI = db.collection('inventario').doc(message.author.id);
 	let iEmbed = new MessageEmbed()

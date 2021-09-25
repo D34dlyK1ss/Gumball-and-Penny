@@ -3,7 +3,7 @@ import botConfig from '../../botConfig.json';
 import { ServerSettings } from 'index';
 
 
-export function confirmLanguage(button: ButtonInteraction, db: any, newLanguage: string|undefined, lang:Record<string, any>, prefix: string, serverSettings: ServerSettings) {
+export function confirmLanguage(button: ButtonInteraction, db: FirebaseFirestore.Firestore, newLanguage: string|undefined, lang:Record<string, any>, prefix: string, serverSettings: ServerSettings) {
 	const ref = db.collection('definicoes').doc(button.guild.id);
 
 	if (!button.customId.endsWith(button.user.id)) {
@@ -16,7 +16,7 @@ export function confirmLanguage(button: ButtonInteraction, db: any, newLanguage:
 		button.reply({ content: lang.setlanguage.noLanguage, ephemeral: true }).catch(err => { console.error(err); });
 	}
 	else {
-		ref.get().then((doc: any) => {
+		ref.get().then(doc => {
 			if (!doc.exists) {
 				ref.set({
 					settings: botConfig.settings

@@ -1,7 +1,7 @@
 import { Message, MessageActionRow, MessageButton, MessageSelectMenu } from 'discord.js';
 
 export const name = 'setlanguage';
-export function execute(bot: undefined, message: Message, command: undefined, db: any, lang: Record<string, string | any>) {
+export function execute(bot: undefined, message: Message, command: undefined, db: FirebaseFirestore.Firestore, lang: Record<string, string | any>) {
 	if (!message.member.permissions.has('MANAGE_GUILD')) {
 		message.reply(lang.error.noPerm).catch(err => { console.error(err); });
 	}

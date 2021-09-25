@@ -12,7 +12,7 @@ registerFont('./fonts/comicz.ttf', { family: 'bold-italic Sans MS' });
 
 export const name = 'profile';
 export const aliases = ['p'];
-export function execute(bot: BotClient, message: Message, command: undefined, db: any, lang: Record<string, string | any>, language: undefined, prefix: undefined, args: string[]) {
+export function execute(bot: BotClient, message: Message, command: undefined, db: FirebaseFirestore.Firestore, lang: Record<string, string | any>, language: undefined, prefix: undefined, args: string[]) {
 	const user = message.mentions.users.first() || message.author;
 	const refP = db.collection('perfis').doc(user.id);
 	const refI = db.collection('inventario').doc(message.author.id);
@@ -21,7 +21,7 @@ export function execute(bot: BotClient, message: Message, command: undefined, db
 
 	switch (option) {
 		case 'create':
-			db.collection('perfis').doc(message.author.id).get().then((doc: any) => {
+			db.collection('perfis').doc(message.author.id).get().then(doc => {
 				if (doc.exists) {
 					message.channel.send(lang.error.hasProfileAlready).catch(err => { console.error(err); });
 				}
@@ -48,7 +48,7 @@ export function execute(bot: BotClient, message: Message, command: undefined, db
 			break;
 		case 'setnickname':
 			if (argsString === '') argsString = 'N/A';
-			db.collection('perfis').doc(message.author.id).get().then((doc: any) => {
+			db.collection('perfis').doc(message.author.id).get().then(doc => {
 				const nicknameMax = 40;
 				if (!doc.exists) {
 					if (user === message.author) {
@@ -68,7 +68,7 @@ export function execute(bot: BotClient, message: Message, command: undefined, db
 			});
 			break;
 		case 'setdescription':
-			db.collection('perfis').doc(message.author.id).get().then((doc: any) => {
+			db.collection('perfis').doc(message.author.id).get().then(doc => {
 				const descMax = 52;
 				if (!doc.exists) {
 					if (user === message.author) {
@@ -119,7 +119,7 @@ export function execute(bot: BotClient, message: Message, command: undefined, db
 			});
 			break;
 		default:
-			refP.get().then(async (doc: any) => {
+			refP.get().then(async doc => {
 				if (!doc.exists) {
 					if (user === message.author) {
 						message.reply(`${lang.error.noProfile}\`${prefix}profile create\`!`).catch(err => { console.error(err); });

@@ -2,7 +2,7 @@ import { Message } from 'discord.js';
 import { BotClient, Cmd } from 'index';
 
 export const name = 'match';
-export function execute(bot: BotClient, message: Message, command: Cmd, db: any, lang: Record<string, string | any>) {
+export function execute(bot: BotClient, message: Message, command: Cmd, db: FirebaseFirestore.Firestore, lang: Record<string, string | any>) {
 	const other = message.mentions.users.first();
 
 	if (!other) {

@@ -12,7 +12,7 @@ export interface ServerSettings {
 export interface Cmd {
 	name: string;
 	aliases?: string[];
-	execute(bot: Client, message: Message, command: Cmd, db: any, lang: Record<string, string>, language: string, prefix: string, args: string[], serverSettings: ServerSettings): void;
+	execute(bot: Client, message: Message, command: Cmd, db: FirebaseFirestore.Firestore, lang: Record<string, string>, language: string, prefix: string, args: string[], serverSettings: ServerSettings): void;
 }
 
 // Extenção do tipo Client da biblioteca discord.js
