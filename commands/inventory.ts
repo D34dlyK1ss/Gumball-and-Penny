@@ -10,12 +10,12 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 		.setTitle(`${lang.inventory.inventoryFrom}${message.author.tag}`)
 		.setThumbnail(`${message.author.displayAvatarURL()}`);
 
-	refP.get().then((docP: any) => {
+	refP.get().then(docP => {
 		if (!docP.exists) {
 			message.reply(`${lang.error.noProfile}\`${prefix}profile create\`!`).catch(err => { console.error(err); });
 		}
 		else {
-			refI.get().then((docI: any) => {
+			refI.get().then(docI => {
 				let iHuds = docI.get('huds');
 				let iPetHuds = docI.get('petHuds');
 				let iItems = docI.get('items');

@@ -116,7 +116,7 @@ es.onmessage = async messageEvent => {
 					add *= 2;
 				}
 				else {
-					refP.get().then((docP: any) => {
+					refP.get().then(docP => {
 						if (docP.exists) add *= 2;
 					});
 				}
@@ -136,7 +136,7 @@ async function getServerSettings(guild: Guild) {
 	const refD = db.collection('definicoes').doc(guild.id);
 
 	if (!settings[guild.id]) {
-		await refD.get().then((docD: any) => {
+		await refD.get().then(docD => {
 			if (!docD.exists) {
 				db.collection('definicoes').doc(guild.id).set({
 					settings: botConfig.settings

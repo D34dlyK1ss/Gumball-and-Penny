@@ -9,7 +9,7 @@ export function execute(bot: BotClient, message: Message, command: Cmd, db: Fire
 	const refD = db.collection('perfis').doc(donor.id);
 	let amount = Math.abs(parseInt(args[1]));
 
-	refD.get().then((docD: any) => {
+	refD.get().then(docD => {
 		if (!docD.exists) {
 			message.reply(`${lang.error.noProfile}\`${prefix}profile create\`!`).catch(err => { console.error(err); });
 		}
@@ -19,7 +19,7 @@ export function execute(bot: BotClient, message: Message, command: Cmd, db: Fire
 		else {
 			const refU = db.collection('perfis').doc(user.id);
 
-			refU.get().then((docU: any) => {
+			refU.get().then(docU => {
 				if (message.author.id == user.id) {
 					message.reply(`${lang.give.self}`).catch(err => { console.error(err); });
 				}

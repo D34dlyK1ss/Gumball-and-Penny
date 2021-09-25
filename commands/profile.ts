@@ -88,14 +88,14 @@ export function execute(bot: BotClient, message: Message, command: undefined, db
 			});
 			break;
 		case 'sethud':
-			db.collection('perfis').doc(message.author.id).get().then((docP: any) => {
+			db.collection('perfis').doc(message.author.id).get().then(docP => {
 				if (!docP.exists) {
 					if (user === message.author) {
 						message.reply(`${lang.error.noProfile}\`${prefix}profile create\`!`);
 					}
 				}
 				else {
-					refI.get().then((docI: any) => {
+					refI.get().then(docI => {
 						const huds = docI.get('huds');
 						let newHud = '';
 

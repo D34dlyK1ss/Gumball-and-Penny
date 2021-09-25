@@ -65,7 +65,7 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 				case 'hud':
 					hud = slugify(hud.concat((args as any).slice(2)).toLowerCase().replace(/[,]/g, '_'));
 
-					refP.get().then((docP: any) => {
+					refP.get().then(docP => {
 						if (!docP.exists) {
 							message.reply(`${lang.error.noProfile}\`${prefix}profile create\`!`).catch(err => { console.error(err); });
 						}
@@ -80,7 +80,7 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 								message.reply(lang.error.noHUD).catch(err => { console.error(err); });
 							}
 							else {
-								refI.get().then((docI: any) => {
+								refI.get().then(docI => {
 									const iHuds = docI.get('huds');
 
 									if (iHuds.includes(hudName)) {
@@ -111,7 +111,7 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 				case 'pethud':
 					petHud = slugify(petHud.concat((args as any).slice(2)).toLowerCase().replace(/[,]/g, '_'));
 
-					refP.get().then((docP: any) => {
+					refP.get().then(docP => {
 						if (!docP.exists) {
 							message.reply(`${lang.error.noProfile}\`${prefix}profile create\`!`).catch(err => { console.error(err); });
 						}
@@ -126,11 +126,11 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 							if (!(items as any).petHuds[petHudName]) {
 								message.reply(lang.error.noPetHUD).catch(err => { console.error(err); });
 							}
-							else if (!userVIP && (items as any).petHuds[petHudName].vip) {
+							else if (userVIP === null && (items as any).petHuds[petHudName].vip) {
 								message.reply(lang.error.noVIPForPetHUD).catch(err => { console.error(err); });
 							}
 							else {
-								refI.get().then((docI: any) => {
+								refI.get().then(docI => {
 									const iPetHUDs = docI.get('petHuds');
 
 									if (iPetHUDs.includes(petHudName)) {
@@ -144,7 +144,7 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 
 										refI.update({
 											petHuds: iPetHUDs
-										}, { merge: true }).then(() => {
+										}).then(() => {
 											refP.update({
 												balance: bal - petHudCost
 											});
@@ -162,7 +162,7 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 				case 'item':
 					item = slugify(item.concat((args as any).slice(2)).toLowerCase().replace(/[,]/g, '_'));
 
-					refP.get().then((docP: any) => {
+					refP.get().then(docP => {
 						if (!docP.exists) {
 							message.reply(`${lang.error.noProfile}\`${prefix}profile create\`!`).catch(err => { console.error(err); });
 						}
@@ -175,7 +175,7 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 								message.reply(lang.error.noItem).catch(err => { console.error(err); });
 							}
 							else {
-								refI.get().then((docI: any) => {
+								refI.get().then(docI => {
 									const iItems = docI.get('items') || [];
 
 									if (itemCost > bal) {
@@ -186,7 +186,7 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 
 										refI.update({
 											items: iItems
-										}, { merge: true }).then(() => {
+										}).then(() => {
 											refP.update({
 												balance: bal - itemCost
 											});
@@ -215,7 +215,7 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 								message.reply(lang.error.noItem).catch(err => { console.error(err); });
 							}
 							else {
-								refP.get().then((docP: any) => {
+								refP.get().then(docP => {
 									const bal = docP.get('balance');
 									if (petCost > bal) {
 										message.reply(lang.error.noMoney).catch(err => { console.error(err); });
@@ -228,7 +228,7 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 										const species = (items.pets as any)[pet].species;
 										let gender = (items.pets as any)[pet].gender;
 
-										if (!userVIP && vipPet) {
+										if (userVIP === null && vipPet) {
 											message.reply(lang.error.noVIPForPet).catch(err => { console.error(err); });
 										}
 										else {
@@ -243,7 +243,7 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 												pet: pet,
 												species: titleCase(species)
 											}).then(() => {
-												refI.get().then((docI: any) => {
+												refI.get().then(docI => {
 													const iPetHuds = docI.get('petHuds');
 													if (!iPetHuds) {
 														refI.update({

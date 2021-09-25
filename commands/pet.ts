@@ -33,7 +33,7 @@ export function execute(bot: BotClient, message: Message, command: undefined, db
 				else {
 					const max = 25;
 
-					refI.get().then(async (docI: any) => {
+					refI.get().then(async docI => {
 						const invItems = docI.get('items');
 						const newName = titleCase(argsString);
 
@@ -72,14 +72,14 @@ export function execute(bot: BotClient, message: Message, command: undefined, db
 			});
 			break;
 		case 'sethud':
-			db.collection('pet').doc(message.author.id).get().then((docP: any) => {
+			db.collection('pet').doc(message.author.id).get().then(docP => {
 				if (!docP.exists) {
 					if (user === message.author) {
 						message.reply(`${lang.error.noPet}\`${prefix}shop\`!`).catch(err => { console.error(err); });
 					}
 				}
 				else {
-					refI.get().then((docI: any) => {
+					refI.get().then(docI => {
 						const petHuds = docI.get('petHuds');
 						let newHud = '';
 
@@ -103,7 +103,7 @@ export function execute(bot: BotClient, message: Message, command: undefined, db
 			});
 			break;
 		case 'sendtoadoption':
-			db.collection('pet').doc(message.author.id).get().then((docP: any) => {
+			db.collection('pet').doc(message.author.id).get().then(docP => {
 				if (!docP.exists) {
 					if (user === message.author) {
 						message.reply(lang.error.noPetToAdoption).catch(err => { console.error(err); });
@@ -113,7 +113,7 @@ export function execute(bot: BotClient, message: Message, command: undefined, db
 					let petName = docP.get('name');
 					const pet = docP.get('pet');
 					db.collection('pet').doc(message.author.id).delete().then(() => {
-						refI.get().then((docI: any) => {
+						refI.get().then(docI => {
 							const iPetHUDs = docI.get('petHuds');
 							if (iPetHUDs.includes(pet)) iPetHUDs.splice(iPetHUDs.findIndex((petHud: string) => petHud === pet), 1);
 						});
@@ -190,7 +190,7 @@ export function execute(bot: BotClient, message: Message, command: undefined, db
 					ctx.stroke();
 					ctx.closePath();
 
-					refV.get().then(async (docV: any) => {
+					refV.get().then(async docV => {
 
 						if (docV.exists) {
 							const crown = await loadImage('./img/profile/crown.png');
