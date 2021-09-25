@@ -13,6 +13,6 @@ export function execute(bot: BotClient, message: Message, command: Cmd, db: unde
 		message.channel.send({ content: `${message.author}${lang.dance.isDancingForUs}😯`, files: [`img/actions/${command.name} (${rnd}).gif`] }).catch(err => { console.error(err); });
 	}
 	else {
-		message.channel.send({ content: `${message.author}${lang.dance.isDancingFor}${user}!`, files: [`img/actions/${command.name} (${rnd}).gif`] }).catch(err => { console.error(err); });
+		message.channel.send({ content: `${message.author}${lang.dance.isDancingFor}**${user.tag}**!`, files: [`img/actions/${command.name} (${rnd}).gif`] }).catch(err => { console.error(err); });
 	}
 }

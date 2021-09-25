@@ -13,6 +13,6 @@ export function	execute(bot: BotClient, message: Message, command: Cmd, db: unde
 		message.channel.send({ content: `${message.author}${lang.cry.isCryingBecauseOfUs} 😦`, files: [`img/actions/${command.name} (${rnd}).gif`] }).catch(err => { console.error(err); });
 	}
 	else {
-		message.channel.send({ content: `${user}${lang.cry.made}${message.author}${lang.cry.cry}`, files: [`img/actions/${command.name} (${rnd}).gif`] }).catch(err => { console.error(err); });
+		message.channel.send({ content: `**${user.tag}**${lang.cry.made}${message.author}${lang.cry.cry}`, files: [`img/actions/${command.name} (${rnd}).gif`] }).catch(err => { console.error(err); });
 	}
 }

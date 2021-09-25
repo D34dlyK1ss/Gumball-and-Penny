@@ -16,6 +16,6 @@ export function execute(bot: BotClient, message: Message, command: Cmd, db: unde
 		message.channel.send({ content: `${message.author}${lang.pat.pattedUs} 😊`, files: [`img/actions/${command.name} (${rnd}).gif`] }).catch(err => { console.error(err); });
 	}
 	else {
-		message.channel.send({ content: `${message.author}${lang.pat.patted}${user}!`, files: [`img/actions/${command.name} (${rnd}).gif`] }).catch(err => { console.error(err); });
+		message.channel.send({ content: `${message.author}${lang.pat.patted}**${user.tag}**!`, files: [`img/actions/${command.name} (${rnd}).gif`] }).catch(err => { console.error(err); });
 	}
 }

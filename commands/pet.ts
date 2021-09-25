@@ -136,7 +136,7 @@ export function execute(bot: BotClient, message: Message, command: undefined, db
 						message.reply(lang.pet.botsNoPets).catch(err => { console.error(err); });
 					}
 					else {
-						message.reply(`${user.tag}${lang.error.userNoPet}`).catch(err => { console.error(err); });
+						message.reply(`**${user.tag}**${lang.error.userNoPet}`).catch(err => { console.error(err); });
 					}
 				}
 				else {

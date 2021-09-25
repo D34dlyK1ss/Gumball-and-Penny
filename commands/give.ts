@@ -33,7 +33,7 @@ export function execute(bot: BotClient, message: Message, command: Cmd, db: Fire
 					message.reply(`${lang.error.wrongSyntax}\`${prefix}${lang.command[command.name].usage}\``).catch(err => { console.error(err); });
 				}
 				else if (!docU.exists) {
-					message.reply(`${user.tag}${lang.error.userNoProfile}`).catch(err => { console.error(err); });
+					message.reply(`**${user.tag}**${lang.error.userNoProfile}`).catch(err => { console.error(err); });
 				}
 				else {
 					const balD: number = docD.get('balance');
@@ -43,7 +43,7 @@ export function execute(bot: BotClient, message: Message, command: Cmd, db: Fire
 						message.reply(lang.error.noMoney).catch(err => { console.error(err); });
 					}
 					else if (balU === 1000000) {
-						message.reply(`${lang.error.noGive}${user.tag}! 😧`).catch(err => { console.error(err); });
+						message.reply(`${lang.error.noGive}**${user.tag}**! 😧`).catch(err => { console.error(err); });
 					}
 					else {
 
@@ -60,7 +60,7 @@ export function execute(bot: BotClient, message: Message, command: Cmd, db: Fire
 							refD.update({
 								balance: balD - amount
 							}).then(() => {
-								message.reply(`${lang.give.youGave}**¤${amount}**${lang.give.to}${user}!`).catch(err => { console.error(err); });
+								message.reply(`${lang.give.youGave}**¤${amount}**${lang.give.to}**${user.tag}**!`).catch(err => { console.error(err); });
 							});
 						});
 					}
