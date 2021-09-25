@@ -140,9 +140,9 @@
 	},
 
 	"angry": {
-		"gotAngry": " got angry!",
-		"gotAngryWithUs": " got angry with us!",
-		"gotAngryWith": " got angry with "
+		"gotAngry": "got angry!",
+		"gotAngryWithUs": "got angry with us! 😶",
+		"gotAngryWith": "got angry with"
 	},
 
 	"automessages": {
@@ -169,10 +169,10 @@
 	},
 
 	"cry": {
-		"isCrying": " is crying!",
-		"isCryingBecauseOfUs": " is crying because of us!",
-		"made": " made ",
-		"cry": " cry!"
+		"isCrying": "is crying!",
+		"isCryingBecauseOfUs": "is crying because of us! 😟",
+		"made": "made",
+		"cry": "cry!"
 	},
 
 	"daily": {
@@ -182,9 +182,9 @@
 	},
 
 	"dance": {
-		"isDancing": "  is dancing!",
-		"isDancingForUs": " is dancing for us!",
-		"isDancingFor": " is dancing for "
+		"isDancing": " is dancing!",
+		"isDancingForUs": "is dancing for us! 😯",
+		"isDancingFor": "is dancing for"
 	},
 
 	"give": {
@@ -195,13 +195,15 @@
 	},
 
 	"happy": {
-		"isHappy": " is happy!"
+		"isHappy": "is happy!",
+		"made": "made",
+		"happy": "happy!"
 	},
 
 	"hug": {
-		"huggedSelf": " hugged themselves?",
-		"huggedUs": " hugged us!",
-		"hugged": " hugged "
+		"huggedSelf": "hugged themselves?",
+		"huggedUs": "hugged us! 🤗",
+		"hugged": "hugged"
 	},
 
 	"inventory": {
@@ -221,16 +223,16 @@
 	},
 
 	"kiss": {
-		"kissedSelf": " kissed themselves?",
-		"kissedUs": " kissed us!",
-		"kissed": " kissed "
+		"kissedSelf": "kissed themselves?",
+		"kissedUs": "kissed us! 😳",
+		"kissed": "kissed"
 	},
 
 	"laugh": {
-		"isLaughing": " is laughing!",
-		"isLaughingFromSelf": " is laughing from themselves!",
-		"isLaughingFromUs": " is laughing from us!",
-		"isLaughingFrom": " is laughing from "
+		"isLaughing": "is laughing!",
+		"isLaughingFromSelf": "is laughing from themselves!",
+		"isLaughingFromUs": "is laughing from us! 😅",
+		"isLaughingFrom": "is laughing from"
 	},
 
 	"match": {
@@ -245,9 +247,9 @@
 	},
 
 	"pat": {
-		"pattedSelf": " patted themsleves?",
-		"pattedUs": " patted us!",
-		"patted": " patted "
+		"pattedSelf": "patted themsleves?",
+		"pattedUs": "patted us! 😊",
+		"patted": "patted "
 	},
 
 	"pet": {
@@ -257,7 +259,7 @@
 		"petHUDChangedTo": "Your Pet HUD was changed to ",
 		"wasSentToAdoption": " was sent to adoption!",
 		"botNoPet": "We don't have a pet! Yet...",
-		"botsNoPets": "bBots have no pets! 😂"
+		"botsNoPets": "Bots have no pets!"
 	},
 
 	"ping": {
@@ -295,9 +297,9 @@
 	},
 
 	"run": {
-		"ranAway": " ran away!",
-		"ranAwayFromUs": " ran away from us!",
-		"ranAwayFrom": " ran away from "
+		"ranAway": "ran away!",
+		"ranAwayFromUs": "ran away from us! 🤨",
+		"ranAwayFrom": "ran away from"
 	},
 
 	"serverinfo": {
@@ -360,9 +362,9 @@
 	},
 
 	"slap": {
-		"slappedSelf": " slapped themselves?",
-		"slappedUs": " slapped us!",
-		"slapped": " slapped "
+		"slappedSelf": "slapped themselves?",
+		"slappedUs": "slapped us! 😠",
+		"slapped": "slapped"
 	},
 
 	"unmute": {

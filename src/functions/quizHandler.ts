@@ -165,12 +165,14 @@ export function createQuizQuestion(interaction: ButtonInteraction, user: User, l
 											.setTitle(lang.results)
 											.setColor('DARK_PURPLE')
 											.setDescription(lang.quiz.noOneScored);
+										
+										const sortedScore = new Map([...score.entries()].sort((a, b) => b[1] - a[1]));
 			
-										if (score.size !== 0)
+										if (sortedScore.size !== 0)
 										{
-											const nParticipants = score.size;
-											const userIds = score.keys();
-											const points = score.values();
+											const nParticipants = sortedScore.size;
+											const userIds = sortedScore.keys();
+											const points = sortedScore.values();
 											let description = '';
 
 											for (let j = 0; j < nParticipants; j++) {

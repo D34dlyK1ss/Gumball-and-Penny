@@ -10,12 +10,12 @@ export function execute(bot: BotClient, message: Message, command: Cmd, db: unde
 		return;
 	}
 	else if (user === message.author) {
-		message.channel.send({ content: `${message.author}${lang.pat.pattedSelf}`, files: [`img/actions/${command.name} (${rnd}).gif`] }).catch(err => { console.error(err); });
+		message.channel.send({ content: `**${message.author.tag}** ${lang.pat.pattedSelf}`, files: [`img/actions/${command.name} (${rnd}).gif`] }).catch(err => { console.error(err); });
 	}
 	else if (user === bot.user) {
-		message.channel.send({ content: `${message.author}${lang.pat.pattedUs} 😊`, files: [`img/actions/${command.name} (${rnd}).gif`] }).catch(err => { console.error(err); });
+		message.channel.send({ content: `**${message.author.tag}** ${lang.pat.pattedUs}`, files: [`img/actions/${command.name} (${rnd}).gif`] }).catch(err => { console.error(err); });
 	}
 	else {
-		message.channel.send({ content: `${message.author}${lang.pat.patted}**${user.tag}**!`, files: [`img/actions/${command.name} (${rnd}).gif`] }).catch(err => { console.error(err); });
+		message.channel.send({ content: `**${message.author.tag}** ${lang.pat.patted} **${user.tag}**!`, files: [`img/actions/${command.name} (${rnd}).gif`] }).catch(err => { console.error(err); });
 	}
 }

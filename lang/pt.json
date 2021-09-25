@@ -140,9 +140,9 @@
 	},
 
 	"angry": {
-		"gotAngry": " chateou-se!",
-		"gotAngryWithUs": " chateou-se connosco!",
-		"gotAngryWith": " chateou-se com "
+		"gotAngry": "chateou-se!",
+		"gotAngryWithUs": "chateou-se connosco! 😶",
+		"gotAngryWith": "chateou-se com"
 	},
 
 	"automessages": {
@@ -169,10 +169,10 @@
 	},
 
 	"cry": {
-		"isCrying": " está chorar!",
-		"isCryingBecauseOfUs": " está a chorar por causa de nós!",
-		"made": " fez ",
-		"cry": " chorar!"
+		"isCrying": "está chorar!",
+		"isCryingBecauseOfUs": "está a chorar por causa de nós! 😟",
+		"made": "fez",
+		"cry": "chorar!"
 	},
 
 	"daily": {
@@ -182,9 +182,9 @@
 	},
 
 	"dance": {
-		"isDancing": " está a dançar!",
-		"isDancingForUs": " está a dançar para nós!",
-		"isDancingFor": " está a dançar para "
+		"isDancing": "está a dançar!",
+		"isDancingForUs": "está a dançar para nós! 😯",
+		"isDancingFor": "está a dançar para"
 	},
 
 	"give": {
@@ -195,13 +195,15 @@
 	},
 
 	"happy": {
-		"isHappy": " está feliz!"
+		"isHappy": "está feliz!",
+		"made": "fez",
+		"happy": "feliz!"
 	},
 
 	"hug": {
-		"huggedSelf": " abraçou-se?",
-		"huggedUs": " abraçou-nos!",
-		"hugged": " abraçou "
+		"huggedSelf": "abraçou-se?",
+		"huggedUs": "abraçou-nos! 🤗",
+		"hugged": "abraçou"
 	},
 
 	"inventory": {
@@ -221,16 +223,16 @@
 	},
 
 	"kiss": {
-		"kissedSelf": " beijou-se a si mesmo?",
-		"kissedUs": " beijou-nos!",
-		"kissed": " beijou "
+		"kissedSelf": "beijou-se a si mesmo?",
+		"kissedUs": "beijou-nos! 😳",
+		"kissed": "beijou"
 	},
 
 	"laugh": {
-		"isLaughing": " está a rir-se!",
-		"isLaughingFromSelf": " está a rir-se de si mesmo!",
-		"isLaughingFromUs": " está a rir-se de nós!",
-		"isLaughingFrom": " está a rir-se de "
+		"isLaughing": "está a rir-se!",
+		"isLaughingFromSelf": "está a rir-se de si mesmo!",
+		"isLaughingFromUs": "está a rir-se de nós! 😅",
+		"isLaughingFrom": "está a rir-se de"
 	},
 
 	"match": {
@@ -245,9 +247,9 @@
 	},
 
 	"pat": {
-		"pattedSelf": " acariciou-se?",
-		"pattedUs": " acariciou-nos!",
-		"patted": " acariciou "
+		"pattedSelf": "acariciou-se?",
+		"pattedUs": "acariciou-nos! 😊",
+		"patted": "acariciou"
 	},
 
 	"pet": {
@@ -257,7 +259,7 @@
 		"petHUDChangedTo": "O teu Pet HUD foi alterado para ",
 		"wasSentToAdoption": " foi para adoção!",
 		"botNoPet": "Nós não temos um pet! Ainda...",
-		"botsNoPets": "Os bots não têm pets! 😂"
+		"botsNoPets": "Os bots não têm pets!"
 	},
 
 	"ping": {
@@ -295,9 +297,9 @@
 	},
 
 	"run": {
-		"ranAway": " fugiu!",
-		"ranAwayFromUs": " fugiu para longe de nós!",
-		"ranAwayFrom": " fugiu para longe de "
+		"ranAway": "fugiu!",
+		"ranAwayFromUs": "fugiu para longe de nós! 🤨",
+		"ranAwayFrom": "fugiu para longe de"
 	},
 
 	"serverinfo": {
@@ -360,9 +362,9 @@
 	},
 
 	"slap": {
-		"slappedSelf": " deu uma chapada a si mesmo?",
-		"slappedUs": " deu-nos uma chapada!",
-		"slapped": " deu uma chapada a "
+		"slappedSelf": "deu uma chapada a si mesmo?",
+		"slappedUs": "deu-nos uma chapada! 😠",
+		"slapped": "deu uma chapada a"
 	},
 
 	"unmute": {

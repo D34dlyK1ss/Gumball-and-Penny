@@ -10,12 +10,12 @@ export function execute(bot: BotClient, message: Message, command: Cmd, db: unde
 		return;
 	}
 	else if (user === message.author) {
-		message.channel.send({ content: `${message.author}${lang.kiss.kissedSelf}`, files: [`img/actions/${command.name} (${rnd}).gif`] }).catch(err => { console.error(err); });
+		message.channel.send({ content: `**${message.author.tag}** ${lang.kiss.kissedSelf}`, files: [`img/actions/${command.name} (${rnd}).gif`] }).catch(err => { console.error(err); });
 	}
 	else if (user === bot.user) {
-		message.channel.send({ content: `${message.author}${lang.kiss.kissedUs} 😳`, files: [`img/actions/${command.name} (${rnd}).gif`] }).catch(err => { console.error(err); });
+		message.channel.send({ content: `**${message.author.tag}** ${lang.kiss.kissedUs}`, files: [`img/actions/${command.name} (${rnd}).gif`] }).catch(err => { console.error(err); });
 	}
 	else {
-		message.channel.send({ content: `${message.author}${lang.kiss.kissed}**${user.tag}**!`, files: [`img/actions/${command.name} (${rnd}).gif`] }).catch(err => { console.error(err); });
+		message.channel.send({ content: `**${message.author.tag}** ${lang.kiss.kissed} **${user.tag}**!`, files: [`img/actions/${command.name} (${rnd}).gif`] }).catch(err => { console.error(err); });
 	}
 }

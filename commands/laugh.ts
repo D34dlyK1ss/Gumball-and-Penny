@@ -7,15 +7,15 @@ export function execute(bot: BotClient, message: Message, command: Cmd, db: unde
 	const rnd = Math.floor(Math.random() * 6);
 
 	if (!user) {
-		message.channel.send({ content: `${message.author}${lang.laugh.isLaughing}`, files: [`img/actions/${command.name} (${rnd}).gif`] }).catch(err => { console.error(err); });
+		message.channel.send({ content: `**${message.author.tag}** ${lang.laugh.isLaughing}`, files: [`img/actions/${command.name} (${rnd}).gif`] }).catch(err => { console.error(err); });
 	}
 	else if (user === message.author) {
-		message.channel.send({ content: `${message.author}${lang.laugh.isLaughingFromSelf}`, files: [`img/actions/${command.name} (${rnd}).gif`] }).catch(err => { console.error(err); });
+		message.channel.send({ content: `**${message.author.tag}** ${lang.laugh.isLaughingFromSelf}`, files: [`img/actions/${command.name} (${rnd}).gif`] }).catch(err => { console.error(err); });
 	}
 	else if (user === bot.user) {
-		message.channel.send({ content: `${message.author}${lang.laugh.isLaughingFromUs} 😅`, files: [`img/actions/${command.name} (${rnd}).gif`] }).catch(err => { console.error(err); });
+		message.channel.send({ content: `**${message.author.tag}** ${lang.laugh.isLaughingFromUs}`, files: [`img/actions/${command.name} (${rnd}).gif`] }).catch(err => { console.error(err); });
 	}
 	else {
-		message.channel.send({ content: `${message.author}${lang.laugh.isLaughingFrom}**${user.tag}**!`, files: [`img/actions/${command.name} (${rnd}).gif`] }).catch(err => { console.error(err); });
+		message.channel.send({ content: `**${message.author.tag}** ${lang.laugh.isLaughingFrom} **${user.tag}**!`, files: [`img/actions/${command.name} (${rnd}).gif`] }).catch(err => { console.error(err); });
 	}
 }
