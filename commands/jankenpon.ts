@@ -4,11 +4,11 @@ import { Cmd } from 'index';
 
 export const name = 'jankenpon';
 export const aliases = ['jkp'];
-export function execute(bot: undefined, message: Message, command: Cmd, db: any, lang: Record<string, string | any>, language: undefined, prefix: string, args: string[]) {
+export function execute(bot: undefined, message: Message, command: Cmd, db: FirebaseFirestore.Firestore, lang: Record<string, string | any>, language: undefined, prefix: string, args: string[]) {
 	const user = message.author;
 	const ref = db.collection('perfis').doc(user.id);
 
-	ref.get().then(async (doc: any) => {
+	ref.get().then(async doc => {
 		const money = Math.floor(parseInt(args[1]));
 		if (!doc.exists) {
 			message.reply(`${lang.error.noProfile}\`${prefix}profile create\`!`).catch(err => { console.error(err); });

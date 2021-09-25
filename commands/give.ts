@@ -2,7 +2,7 @@ import { Message } from 'discord.js';
 import { BotClient, Cmd } from 'index';
 
 export const name = 'give';
-export function execute(bot: BotClient, message: Message, command: Cmd, db: any, lang: Record<string, string | any>, language: undefined, prefix: string, args: string[]) {
+export function execute(bot: BotClient, message: Message, command: Cmd, db: FirebaseFirestore.Firestore, lang: Record<string, string | any>, language: undefined, prefix: string, args: string[]) {
 	const donor = message.author;
 	if (!args[0]) message.reply(lang.error.noMention).catch(err => { console.error(err); });
 	const user = message.mentions.users.first();
@@ -13,7 +13,7 @@ export function execute(bot: BotClient, message: Message, command: Cmd, db: any,
 		if (!docD.exists) {
 			message.reply(`${lang.error.noProfile}\`${prefix}profile create\`!`).catch(err => { console.error(err); });
 		}
-		else if (user === null || !Number.isInteger(amount)) {
+		else if (!user || !Number.isInteger(amount)) {
 			message.reply(`${lang.error.wrongSyntax}\`${prefix}${lang.command[command.name].usage}\``).catch(err => { console.error(err); });
 		}
 		else {

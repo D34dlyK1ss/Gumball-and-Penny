@@ -11,7 +11,7 @@ registerFont('./fonts/comicz.ttf', { family: 'bold-italic Sans MS' });
 
 export const name = 'pet';
 
-export function execute(bot: BotClient, message: Message, command: undefined, db: any, lang: Record<string, string | any>, language: undefined, prefix: undefined, args: string[]) {
+export function execute(bot: BotClient, message: Message, command: undefined, db: FirebaseFirestore.Firestore, lang: Record<string, string | any>, language: undefined, prefix: undefined, args: string[]) {
 	const user = message.mentions.users.first() || message.author;
 	const refV = db.collection('vip').doc(user.id);
 	const refP = db.collection('pet').doc(user.id);
@@ -22,7 +22,7 @@ export function execute(bot: BotClient, message: Message, command: undefined, db
 
 	switch (option) {
 		case 'setname':
-			db.collection('pet').doc(message.author.id).get().then((doc: any) => {
+			db.collection('pet').doc(message.author.id).get().then(doc => {
 				const pet = doc.get('pet');
 				if (!doc.exists) {
 					message.reply(`${lang.error.noPet}\`${prefix}shop\`!`).catch(err => { console.error(err); });
@@ -124,7 +124,7 @@ export function execute(bot: BotClient, message: Message, command: undefined, db
 			});
 			break;
 		default:
-			refP.get().then(async (doc: any) => {
+			refP.get().then(async doc => {
 				if (!doc.exists) {
 					if (user === message.author) {
 						message.reply(`${lang.error.noPet}\`${prefix}shop\`!`).catch(err => { console.error(err); });

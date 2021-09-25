@@ -8,7 +8,7 @@ import { createShopPage } from '../src/functions/shopHandler';
 
 export const name = 'shop';
 export const naliases = ['s'];
-export function execute(bot: undefined, message: Message, command: undefined, db: any, lang: Record<string, any>, language: undefined, prefix: string, args: string[]) {
+export function execute(bot: undefined, message: Message, command: undefined, db: FirebaseFirestore.Firestore, lang: Record<string, any>, language: undefined, prefix: string, args: string[]) {
 	async function sendPreview(hudName: string) {
 		const hudCanvas = createCanvas(700, 400);
 		const ctx = hudCanvas.getContext('2d');

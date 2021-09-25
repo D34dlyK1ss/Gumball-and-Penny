@@ -3,7 +3,7 @@ import * as botConfig from '../botConfig.json';
 import { ServerSettings } from 'index';
 
 export const name = 'setprefix';
-export function execute(bot: undefined, message: Message, command: undefined, db: any, lang: Record<string, string | any>, language: undefined, prefix: undefined, args: string[], serverSettings: ServerSettings) {
+export function execute(bot: undefined, message: Message, command: undefined, db: FirebaseFirestore.Firestore, lang: Record<string, string | any>, language: undefined, prefix: undefined, args: string[], serverSettings: ServerSettings) {
 	if (!message.member.permissions.has('MANAGE_GUILD')) {
 		message.delete();
 		message.reply(lang.error.noPerm).catch(err => { console.error(err); });
@@ -15,7 +15,7 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 		const newPrefix = args[0].toLowerCase();
 		const ref = db.collection('definicoes').doc(message.guild.id);
 
-		ref.get().then((doc: any) => {
+		ref.get().then(doc => {
 			if (!doc.exists) {
 				ref.set({
 					settings: botConfig.settings

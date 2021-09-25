@@ -2,7 +2,7 @@ import { Message } from 'discord.js';
 import { createQuizPage, alreadyPlaying } from '../src/functions/quizHandler';
 
 export const name = 'quiz';
-export function execute(bot: undefined, message: Message, command: undefined, db: any, lang: Record<string, any>, language: string, prefix: string) {
+export function execute(bot: undefined, message: Message, command: undefined, db: FirebaseFirestore.Firestore, lang: Record<string, any>, language: string, prefix: string) {
 
 	if (alreadyPlaying.has(message.channelId)) {
 		message.reply(lang.quiz.alreadyPlaying).catch(err => { console.error(err); });
