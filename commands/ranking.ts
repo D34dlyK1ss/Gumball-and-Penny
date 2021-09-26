@@ -1,4 +1,5 @@
 import { Message, MessageEmbed } from 'discord.js';
+import moment from 'moment';
 
 export const name = 'ranking';
 export const aliases = ['leaderboard'];
@@ -7,7 +8,9 @@ let isCached = false;
 const rankingEmbed = new MessageEmbed()
 	.setColor('DARK_PURPLE');
 
-export async function execute(bot: undefined, message: Message, command: undefined, db: FirebaseFirestore.Firestore, lang: Record<string, string | any>) {
+export async function execute(bot: undefined, message: Message, command: undefined, db: FirebaseFirestore.Firestore, lang: Record<string, string | any>, language: string) {
+	moment.locale(language);
+
 	const refP = db.collection('perfis');
 	const query = await refP.orderBy('xp', 'desc').limit(10).get();
 	let i = 0;
@@ -17,6 +20,8 @@ export async function execute(bot: undefined, message: Message, command: undefin
 			i++;
 			rankingEmbed.addField(`\n${i}# ${doc.get('name')}`, `${lang.level} ${doc.get('level')}, ${doc.get('xp')} XP`);
 		});
+
+		rankingEmbed.setFooter(`${lang.ranking.updatedAt} ${moment().format('LL')} ${moment().format('LTS')}`);
 
 		isCached = true;
 		setTimeout(() => {

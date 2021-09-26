@@ -5,7 +5,7 @@ export const name = 'serverinfo';
 export const aliases = ['si'];
 export function execute(bot: undefined, message: Message, command: undefined, db: undefined, lang: Record<string, string | any>, language: string) {
 	const server = message.guild;
-	const createdDate = moment(server.createdAt).locale(`${language}`);
+	const createdDate = moment(server.createdAt).locale(language);
 	const embed = new MessageEmbed()
 		.setColor('DARK_PURPLE')
 		.setThumbnail(`${server.iconURL()}`)

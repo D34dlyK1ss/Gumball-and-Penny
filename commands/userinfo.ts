@@ -6,8 +6,8 @@ export const aliases = ['ui'];
 export async function execute(bot: undefined, message: Message, command: undefined, db: undefined, lang: Record<string, string | any>, language: string) {
 	const user = message.mentions.users.first() || message.author;
 	const member = await message.guild.members.fetch(user);
-	const createdDate = moment(user.createdAt).locale(`${language}`);
-	const joinedDate = moment(member.joinedAt).locale(`${language}`);
+	const createdDate = moment(user.createdAt).locale(language);
+	const joinedDate = moment(member.joinedAt).locale(language);
 	const created = createdDate.from(Date.now());
 	const joined = joinedDate.from(Date.now());
 	let roles = `<@&${(member as any)._roles.join('>, <@&')}>`;
