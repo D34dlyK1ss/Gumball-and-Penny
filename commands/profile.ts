@@ -177,7 +177,7 @@ export function execute(bot: BotClient, message: Message, command: undefined, db
 					ctx.shadowOffsetY = 1;
 					ctx.fillStyle = 'white';
 					ctx.textAlign = 'center';
-					ctx.fillText(`**${user.tag}**`, 410, 65);
+					ctx.fillText(user.tag, 410, 65);
 
 					ctx.font = '16px Comic Sans MS';
 					ctx.fillText(`${nick}`, 410, 90);
