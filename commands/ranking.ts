@@ -16,6 +16,7 @@ export async function execute(bot: undefined, message: Message, command: undefin
 	let i = 0;
 
 	if (isCached === false) {
+		rankingEmbed.spliceFields(0, 10);
 		query.forEach(doc => {
 			i++;
 			rankingEmbed.addField(`\n${i}# ${doc.get('name')}`, `${lang.level} ${doc.get('level')}, ${doc.get('xp')} XP`);
