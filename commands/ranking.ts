@@ -3,7 +3,7 @@ import { Message, MessageEmbed } from 'discord.js';
 export const name = 'ranking';
 export const aliases = ['leaderboard'];
 
-let isCached = true;
+let isCached = false;
 const rankingEmbed = new MessageEmbed()
 	.setColor('DARK_PURPLE');
 
