@@ -296,6 +296,11 @@
 		"noOneScored": "No one scored!"
 	},
 
+	"ranking": {
+		"title": "Top 10 users",
+		"description": "The ranking system is based on how much XP you've acquired over time\nThe more commands you use, the more XP you get and the higher you climb in the ranking!\nIt updates every 30 minutes."
+	},
+
 	"run": {
 		"ranAway": "ran away!",
 		"ranAwayFromUs": "ran away from us! 🤨",
@@ -572,6 +577,12 @@
 			"category": "Fun",
 			"description": "We'll tell a number between 1 and the indicated number. The default is 100",
 			"usage": "random [optional - number]"
+		},
+
+		"ranking": {
+			"category": "Economy and Profile",
+			"description": "Check the top 10 users who use us!",
+			"usage": "ranking"
 		},
 
 		"run": {

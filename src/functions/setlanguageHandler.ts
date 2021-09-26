@@ -20,7 +20,7 @@ export function confirmLanguage(button: ButtonInteraction, db: FirebaseFirestore
 			if (!doc.exists) {
 				ref.set({
 					settings: botConfig.settings
-				}, { merge: true }).catch((err: Error) => { console.error(err); });
+				}, { merge: true }).catch(err => { console.error(err); });
 			}
 
 			const oldLanguage = doc.get('settings').language || botConfig.settings.language;
@@ -32,7 +32,7 @@ export function confirmLanguage(button: ButtonInteraction, db: FirebaseFirestore
 				serverSettings.language = newLanguage;
 				ref.set({
 					settings: { 'language': newLanguage }
-				}, { merge: true }).catch((err: Error) => { console.error(err); });
+				}, { merge: true }).catch(err => { console.error(err); });
 			}
 			lang = require(`../../lang/${newLanguage}.json`);
 			button.update({ content: lang.setlanguage.isNow, components: [] }).catch(err => { console.error(err); });

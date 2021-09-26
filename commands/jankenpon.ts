@@ -76,7 +76,7 @@ export function execute(bot: undefined, message: Message, command: Cmd, db: Fire
 							}).then(async () => {
 								await message.channel.send({ files: [attachment2] });
 								message.reply(`**Gumball** ${lang.jankenpon.threw} **${resG}** ${lang.and} **Penny** ${lang.jankenpon.threw} **${resP}**, ${lang.won} **¤${won}**!`);
-							}).catch((err: Error) => { console.error(err); });
+							}).catch(err => { console.error(err); });
 						}
 						else {
 							ref.update({
@@ -84,7 +84,7 @@ export function execute(bot: undefined, message: Message, command: Cmd, db: Fire
 							}).then(async () => {
 								await message.channel.send({ files: [attachment2] });
 								message.reply(`**Gumball** ${lang.jankenpon.threw} **${resG}** ${lang.and} **Penny** ${lang.jankenpon.threw} **${resP}**, ${lang.lost} **¤${money}**!`);
-							}).catch((err: Error) => { console.error(err); });
+							}).catch(err => { console.error(err); });
 						}
 					});
 				}, 3000); });

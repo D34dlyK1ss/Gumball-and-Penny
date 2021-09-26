@@ -124,7 +124,7 @@ es.onmessage = async messageEvent => {
 				refP.update({
 					balance: bal + add
 				});
-			}).catch((err: Error) => { console.error(err); });
+			}).catch(err => { console.error(err); });
 		}
 	}
 };
@@ -144,7 +144,7 @@ async function getServerSettings(guild: Guild) {
 			}
 
 			settings[guild.id] = docD.get('settings') || botConfig.settings;
-		}).catch((err: Error) => { console.error(err); });
+		}).catch(err => { console.error(err); });
 	}
 
 	const serverSettings: ServerSettings = settings[guild.id];
@@ -303,13 +303,13 @@ bot.on('guildCreate', async guildData => {
 	setBotStatus();
 	await db.collection('definicoes').doc(guildData.id).set({
 		settings: botConfig.settings
-	}).catch((err: Error) => { console.error(err); });
+	}).catch(err => { console.error(err); });
 });
 
 // Quando o bot for expulso de um servidor, o bot apagará os dados respetivos
 bot.on('guildDelete', async guildData => {
 	setBotStatus();
-	await db.collection('definicoes').doc(guildData.id).delete().catch((err: Error) => { console.error(err); });
+	await db.collection('definicoes').doc(guildData.id).delete().catch(err => { console.error(err); });
 });
 
 // Autenticação do bot

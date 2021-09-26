@@ -36,7 +36,7 @@ async function giveVIP(db: FirebaseFirestore.Firestore, message: Message, args: 
 					const memberToVIP = await message.guild.members.fetch(message.author.id);
 
 					memberToVIP.roles.remove(justPaidRole);
-					memberToVIP.roles.add(vipRole).then(() => { message.react('✅'); }).catch((err: Error) => { console.error(err); });
+					memberToVIP.roles.add(vipRole).then(() => { message.react('✅'); }).catch(err => { console.error(err); });
 				});
 			}
 		});

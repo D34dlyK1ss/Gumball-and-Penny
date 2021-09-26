@@ -42,7 +42,7 @@ export function execute(bot: BotClient, message: Message, command: undefined, db
 						petHuds: []
 					}).then(() => {
 						message.reply(`${lang.profile.wasCreated}\`${prefix}profile setdescription [${lang.profile.description}]\`!`);
-					}).catch((err: Error) => { console.error(err); });
+					}).catch(err => { console.error(err); });
 				}
 			});
 			break;
@@ -63,7 +63,7 @@ export function execute(bot: BotClient, message: Message, command: undefined, db
 						nickname: argsString
 					}).then(() => {
 						message.reply(`${lang.profile.nicknameChangedTo}**${argsString}**!`);
-					}).catch((err: Error) => { console.error(err); });
+					}).catch(err => { console.error(err); });
 				}
 			});
 			break;
@@ -83,7 +83,7 @@ export function execute(bot: BotClient, message: Message, command: undefined, db
 						description: argsString
 					}).then(() => {
 						message.reply(`${lang.profile.descChangedTo}_**${argsString}**_`);
-					}).catch((err: Error) => { console.error(err); });
+					}).catch(err => { console.error(err); });
 				}
 			});
 			break;
@@ -112,7 +112,7 @@ export function execute(bot: BotClient, message: Message, command: undefined, db
 								hud: newHud
 							}).then(() => {
 								message.reply(`${lang.profile.hudChangedTo}**${titleCase(argsString)}**`);
-							}).catch((err: Error) => { console.error(err); });
+							}).catch(err => { console.error(err); });
 						}
 					});
 				}

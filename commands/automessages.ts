@@ -21,7 +21,7 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 
 			ref.set({
 				settings: serverSettings
-			}, { merge: true }).catch((err: Error) => { console.error(err); });
+			}, { merge: true }).catch(err => { console.error(err); });
 			message.channel.send(`${lang.automessages.areNow}**${toggle}**`).catch(err => { console.error(err); });
 		});
 	}

@@ -45,13 +45,13 @@ export function execute(bot: undefined, message: Message, command: Cmd, db: Fire
 					if (res !== guess) {
 						ref.update({
 							balance: bal - money
-						}).then(() => { message.reply(`${lang.lost} **¤${money}**!`); }).catch((err: Error) => { console.error(err); });
+						}).then(() => { message.reply(`${lang.lost} **¤${money}**!`); }).catch(err => { console.error(err); });
 					}
 					else if (res === guess) {
 						const won = money * 1.5;
 						ref.update({
 							balance: bal + won
-						}).then(() => { message.reply(`${lang.won} **¤${won}**!`); }).catch((err: Error) => { console.error(err); });
+						}).then(() => { message.reply(`${lang.won} **¤${won}**!`); }).catch(err => { console.error(err); });
 					}
 				});
 			}

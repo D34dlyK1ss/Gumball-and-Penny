@@ -19,7 +19,7 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 			if (!doc.exists) {
 				ref.set({
 					settings: botConfig.settings
-				}, { merge: true }).catch((err: Error) => { console.error(err); });
+				}, { merge: true }).catch(err => { console.error(err); });
 			}
 
 			const oldPrefix = doc.get('settings').prefix || botConfig.settings.prefix;
@@ -31,7 +31,7 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 				serverSettings.prefix = newPrefix;
 				ref.set({
 					settings: { 'prefix': newPrefix }
-				}, { merge: true }).catch((err: Error) => { console.error(err); });
+				}, { merge: true }).catch(err => { console.error(err); });
 			}
 			message.channel.send(`${lang.setprefix.isNow}\`${newPrefix}\``).catch(err => { console.error(err); });
 		});

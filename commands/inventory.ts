@@ -51,7 +51,7 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 						);
 				}
 
-				message.channel.send({ embeds: [iEmbed] }).catch((err: Error) => { console.error(err); });
+				message.channel.send({ embeds: [iEmbed] }).catch(err => { console.error(err); });
 			});
 		}
 	});

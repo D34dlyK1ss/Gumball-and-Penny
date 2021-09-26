@@ -296,6 +296,11 @@
 		"noOneScored": "Ninguém pontoou!"
 	},
 
+	"ranking": {
+		"title": "Top 10 de utilizadores",
+		"description": "O sistema de ranking é baseado no quanto XP adquiriste ao longo do tempo\nQuanto mais comandos usares, mais XP ganhas e mais alto sobes no ranking!\nEle atualiza a cada 30 minutos."
+	},
+
 	"run": {
 		"ranAway": "fugiu!",
 		"ranAwayFromUs": "fugiu para longe de nós! 🤨",
@@ -572,6 +577,12 @@
 			"category": "Diversão",
 			"description": "Diremos um número aleatório entre 1 e o número indicado. O predefinido é 100",
 			"usage": "random [opcional - número]"
+		},
+
+		"ranking": {
+			"category": "Economia e Perfil",
+			"description": "Verifica o top 10 de utilizadores que nos usam!",
+			"usage": "ranking"
 		},
 
 		"run": {

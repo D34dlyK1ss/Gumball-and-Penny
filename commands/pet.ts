@@ -65,7 +65,7 @@ export function execute(bot: BotClient, message: Message, command: undefined, db
 								name: newName
 							}).then(() => {
 								message.reply(`${lang.pet.nameChangedTo}**${newName}**!`).catch(err => { console.error(err); });
-							}).catch((err: Error) => { console.error(err); });
+							}).catch(err => { console.error(err); });
 						}
 					});
 				}
@@ -96,7 +96,7 @@ export function execute(bot: BotClient, message: Message, command: undefined, db
 								hud: newHud
 							}).then(() => {
 								message.reply(`${lang.pet.petHUDChangedTo}**${titleCase(argsString)}**`).catch(err => { console.error(err); });
-							}).catch((err: Error) => { console.error(err); });
+							}).catch(err => { console.error(err); });
 						}
 					});
 				}
