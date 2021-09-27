@@ -263,7 +263,7 @@
 	},
 
 	"ping": {
-		"yourPingIs": "Your ping is "
+		"apiPingIs": "API ping"
 	},
 
 	"profile": {
