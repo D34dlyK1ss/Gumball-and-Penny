@@ -4,7 +4,7 @@ import moment from 'moment';
 export const name = 'ranking';
 export const aliases = ['leaderboard'];
 
-let isCached = false;
+const lastUpdateAt = 0;
 const rankingEmbed = new MessageEmbed()
 	.setColor('DARK_PURPLE');
 
@@ -15,19 +15,14 @@ export async function execute(bot: undefined, message: Message, command: undefin
 	const query = await refP.orderBy('xp', 'desc').limit(10).get();
 	let i = 0;
 
-	if (isCached === false) {
+	if (Date.now() - lastUpdateAt > 1800000) {
 		rankingEmbed.spliceFields(0, 10);
 		query.forEach(doc => {
 			i++;
 			rankingEmbed.addField(`\n${i}# ${doc.get('name')}`, `${lang.level} ${doc.get('level')}, ${doc.get('xp')} XP`);
 		});
 
-		rankingEmbed.setFooter(`${lang.ranking.updatedAt} ${moment.utc().format('LL')} ${moment().utc().format('LTS')} UTC`);
-
-		isCached = true;
-		setTimeout(() => {
-			isCached = false;
-		}, 1800000);
+		rankingEmbed.setFooter(`${lang.ranking.updatedAt} ${moment(lastUpdateAt).utc().format('LL')} ${moment(lastUpdateAt).utc().format('LTS')} UTC`);
 	}
 
 	rankingEmbed.setTitle(lang.ranking.title)

@@ -30,7 +30,7 @@ export function execute(bot: BotClient, message: Message, command: undefined, db
 						balance: 0,
 						hud: 'grey',
 						description: 'N/A',
-						lastDaily: '01/01/1970',
+						lastDaily: 0,
 						level: 0,
 						name: user.tag,
 						nickname: 'N/A',
