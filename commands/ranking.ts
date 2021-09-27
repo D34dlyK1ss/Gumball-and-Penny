@@ -22,7 +22,7 @@ export async function execute(bot: undefined, message: Message, command: undefin
 			rankingEmbed.addField(`\n${i}# ${doc.get('name')}`, `${lang.level} ${doc.get('level')}, ${doc.get('xp')} XP`);
 		});
 
-		rankingEmbed.setFooter(`${lang.ranking.updatedAt} ${moment().format('LL')} ${moment().format('LTS')}`);
+		rankingEmbed.setFooter(`${lang.ranking.updatedAt} ${moment.utc().format('LL')} ${moment().utc().format('LTS')} UTC`);
 
 		isCached = true;
 		setTimeout(() => {
