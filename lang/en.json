@@ -343,8 +343,8 @@
 		"hudName": "HUD Name",
 		"petHudName": "Pet HUD name",
 		"animalName": "Animal Name",
-		"toBuy": "Use `$0$shop buy $1$ [$2$]` to buy.",
 		"itemName": "Item Name",
+		"toBuy": "Use `$0$shop buy $1$ [$2$]` to buy.",
 		"exited": "You exited the store!"
 	},
 
