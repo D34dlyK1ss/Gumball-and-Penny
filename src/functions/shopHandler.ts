@@ -721,7 +721,7 @@ export function createShopPage(userId: string, lang:Record<string, any>, prefix:
 
 export function shopButtonHandler(button: ButtonInteraction, lang: Record<string, any>, prefix: string) {
 	if (!button.customId.endsWith(button.user.id)) {
-		button.reply({ content: lang.interaction.notAuthor, ephemeral: true });
+		button.reply({ content: lang.error.notAuthor, ephemeral: true });
 	}
 	else if (button.customId.slice(0, -18).endsWith('Exit')) {
 		button.update({ content: lang.shop.exited, embeds: [], components: [] });

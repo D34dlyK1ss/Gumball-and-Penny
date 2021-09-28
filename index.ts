@@ -89,6 +89,7 @@ bot.once('ready', () => {
 });
 
 import EventSource from 'eventsource';
+import text from './src/functions/text';
 const eventSourceInit: Record<string, any> = { headers: { 'Authorization': 'Bearer 14aee8db11a152ed7f2d4ed23a839d58' } };
 const es = new EventSource('https://api.pipedream.com/sources/dc_OLuY0W/sse', eventSourceInit);
 
@@ -237,10 +238,10 @@ bot.on('messageCreate', async message => {
 								const reward = newLevel * 500;
 								db.collection('perfis').doc(message.author.id).update({
 									balance: bal + reward
-								}).then(async () => message.channel.send(`🎉 ${lang.levelUp.congrats} **${message.author.tag}**, ${lang.levelUp.levelTo} **${newLevel}** ${lang.levelUp.received}${reward}! 🆙💰`));
+								}).then(async () => message.channel.send(text(lang.levelUp.congratsReward, [message.author.tag, newLevel, reward])));
 							}
 							else {
-								message.channel.send(`🎉 ${lang.levelUp.congrats} **${message.author.tag}**, ${lang.levelUp.levelTo} **${newLevel}**! 🆙`);
+								message.channel.send(text(lang.levelUp.congrats, [message.author.tag, newLevel]));
 							}
 						}
 					});

@@ -7,7 +7,7 @@ export function confirmLanguage(button: ButtonInteraction, db: FirebaseFirestore
 	const ref = db.collection('definicoes').doc(button.guild.id);
 
 	if (!button.customId.endsWith(button.user.id)) {
-		button.reply({ content: lang.interaction.notAuthor, ephemeral: true });
+		button.reply({ content: lang.error.notAuthor, ephemeral: true });
 	}
 	if (button.customId.startsWith('languageCancel')) {
 		button.update({ content: lang.userCancelled, components:[] });

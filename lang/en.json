@@ -123,44 +123,39 @@
 		"noVIPForPet": "You need to be VIP to buy this pet!",
 		"samePrefix": "That's the same prefix we're using!",
 		"sameLanguage": "That's the same language we're speaking right now!",
-		"noDuration": "You didn't indicate the duration!"
-	},
-
-
-	"interaction": {
+		"noDuration": "You didn't indicate the duration!",
 		"notAuthor": "This isn't for you!",
-		"buttonExpired": "This button expired!",
 		"nothingSelected": "Nothing selected"
 	},
 
+	
 	"levelUp": {
-		"congrats": "Congratulations",
-		"levelTo": "you leveled up to level",
-		"received": "and received ¤"
+		"congrats": "🎉 Congratulations **$0$** you leveled up to level **$1$**! 🆙",
+		"congratsReward": "🎉 Congratulations **$0$** you leveled up to level **$1$** and received **¤$2$**! 🆙💰"
 	},
 
 	"angry": {
-		"gotAngry": "got angry!",
-		"gotAngryWithUs": "got angry with us! 😶",
-		"gotAngryWith": "got angry with"
+		"gotAngry": "**$0$** got angry!",
+		"gotAngryWithUs": "**$0$** got angry with us! 😶",
+		"gotAngryWith": "**$0$** got angry with **$1$**"
 	},
 
 	"automessages": {
-		"areNow": "_AutoMessages_ are now "
+		"areNow": "_AutoMessages_ are now **$0$**."
 	},
 
 	"balance": {
-		"have": "You have "
+		"have": "You have **¤$0$**"
 	},
 
 	"ban": {
-		"wasBanned": " was banned!"
+		"wasBanned": "**$0$** was banned! 🔨"
 	},
 
 	"clear": {
-		"weDeleted": "We have deleted ",
-		"message": " message",
-		"messages": " messages"
+		"weDeleted": "We have deleted `$0$` $1$!",
+		"message": "message",
+		"messages": "messages"
 	},
 
 	"coinflip": {

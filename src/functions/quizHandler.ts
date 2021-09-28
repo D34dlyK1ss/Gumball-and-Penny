@@ -212,7 +212,7 @@ export function createQuizQuestion(interaction: ButtonInteraction, user: User, l
 
 export function quizButtonHandler(button: ButtonInteraction, lang: Record<string, any>, prefix: string) {
 	if (!button.customId.endsWith(button.user.id)) {
-		button.reply({ content: lang.interaction.notAuthor, ephemeral: true });
+		button.reply({ content: lang.error.notAuthor, ephemeral: true });
 	}
 	else {
 		if (button.customId.slice(0, -18).endsWith('Start')) {

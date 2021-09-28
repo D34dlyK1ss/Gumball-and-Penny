@@ -1,6 +1,7 @@
 import { Message } from 'discord.js';
 import * as botConfig from '../botConfig.json';
 import { ServerSettings } from 'index';
+import text from '../src/functions/text';
 
 export const name = 'automessages';
 export function execute(bot: undefined, message: Message, command: undefined, db: FirebaseFirestore.Firestore, lang: Record<string, string | any>, language: undefined, prefix: undefined, args: undefined, serverSettings: ServerSettings) {
@@ -22,7 +23,8 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 			ref.set({
 				settings: serverSettings
 			}, { merge: true }).catch(err => { console.error(err); });
-			message.channel.send(`${lang.automessages.areNow}**${toggle}**`).catch(err => { console.error(err); });
+
+			message.channel.send(text(lang.automessages.areNow, [toggle])).catch(err => { console.error(err); });
 		});
 	}
 }

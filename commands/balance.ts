@@ -1,4 +1,5 @@
 import { Message } from 'discord.js';
+import text from '../src/functions/text';
 
 export const name = 'balance';
 export const aliases = ['bal'];
@@ -12,7 +13,8 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 		}
 		else {
 			const bal = doc.get('balance');
-			message.reply(`${lang.balance.have}**¤${bal}**.`).catch(err => { console.error(err); });
+
+			message.reply(text(lang.balance.have, [bal])).catch(err => { console.error(err); });
 		}
 	});
 }

@@ -10,7 +10,7 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 			.addComponents(
 				new MessageSelectMenu()
 					.setCustomId(`languageMenu${message.member.id}`)
-					.setPlaceholder(lang.interaction.nothingSelected)
+					.setPlaceholder(lang.error.nothingSelected)
 					.addOptions([
 						{
 							label: 'English',
