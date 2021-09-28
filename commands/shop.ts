@@ -152,7 +152,7 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 
 											petHudName = petHudName.toLowerCase().replace(/[_]/g, ' ');
 
-											message.reply(text(lang.shop.boughtHUD, [titleCase(petHudName), prefix, lang.shop.petHudName]));
+											message.reply(text(lang.shop.boughtPetHUD, [titleCase(petHudName), prefix, lang.shop.petHudName]));
 										});
 									}
 								});
@@ -194,7 +194,7 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 
 											itemName = itemName.toLowerCase().replace(/[_]/g, ' ');
 
-											message.reply(`${lang.shop.boughtItem}**${titleCase(itemName)}**!`);
+											message.reply(text(lang.shop.boughtItem, [titleCase(itemName)]));
 										});
 									}
 								});
@@ -268,7 +268,7 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 												const vip = (items.pets as any)[pet].vip;
 
 												if (vip) petName = name;
-												message.reply(`${lang.youBought}**${titleCase(petName)}**! ${lang.shop.toGiveName} \`${prefix}pet setname [${lang.shop.name}]\``);
+												message.reply(text(lang.boughtPet, [titleCase(petName), prefix, lang.name]));
 											});
 										}
 									}
