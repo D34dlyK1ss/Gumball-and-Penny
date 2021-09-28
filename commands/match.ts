@@ -1,31 +1,32 @@
 import { Message } from 'discord.js';
 import { BotClient, Cmd } from 'index';
+import text from '../src/functions/text';
 
 export const name = 'match';
 export function execute(bot: BotClient, message: Message, command: Cmd, db: FirebaseFirestore.Firestore, lang: Record<string, string | any>) {
-	const other = message.mentions.users.first();
+	const otherUser = message.mentions.users.first();
 
-	if (!other) {
-		message.reply(lang.error.noMention).catch(err => { console.error(err); });
+	if (!otherUser) {
+		message.reply(lang.error.noMention);
 	}
 	else {
 		const userLast = parseInt(message.member.id.slice(-1));
-		const otherUserLast = parseInt(other.id.slice(-1));
+		const otherUserLast = parseInt(otherUser.id.slice(-1));
 		let integer = `${(Math.abs(userLast - otherUserLast) + 1) * 10}`;
 
 		if (parseInt(integer) > 100) integer = integer.substr(1);
 
-		if (other === message.author) {
-			message.reply(lang.error.noSelf).catch(err => { console.error(err); });
+		if (otherUser === message.author) {
+			message.reply(lang.error.noSelf);
 		}
-		else if (other === bot.user) {
-			message.channel.send(lang.match.alreadyAPair).catch(err => { console.error(err); });
+		else if (otherUser === bot.user) {
+			message.channel.send(lang.match.alreadyAPair);
 		}
-		else if (other.bot) {
-			message.reply(lang.error.wontWorkOnBot).catch(err => { console.error(err); });
+		else if (otherUser.bot) {
+			message.reply(lang.error.wontWorkOnBot);
 		}
 		else {
-			message.reply(`${lang.match.youAre} **${integer}%** ${lang.match.compatibleWith} ${other}!`).catch(err => { console.error(err); });
+			message.reply(text(lang.match.youAre, [integer, otherUser.tag]));
 		}
 	}
 }

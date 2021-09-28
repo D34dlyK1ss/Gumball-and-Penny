@@ -1,5 +1,6 @@
 import { Message } from 'discord.js';
 import { BotClient, Cmd } from 'index';
+import text from '../src/functions/text';
 
 export const name = 'laugh';
 export function execute(bot: BotClient, message: Message, command: Cmd, db: undefined, lang: Record<string, string | any>) {
@@ -7,15 +8,15 @@ export function execute(bot: BotClient, message: Message, command: Cmd, db: unde
 	const rnd = Math.floor(Math.random() * 6);
 
 	if (!user) {
-		message.channel.send({ content: `**${message.author.tag}** ${lang.laugh.isLaughing}`, files: [`img/actions/${command.name} (${rnd}).gif`] }).catch(err => { console.error(err); });
+		message.channel.send({ content: text(lang.lugh.isLaughing, [message.author.tag]), files: [`img/actions/${command.name} (${rnd}).gif`] });
 	}
 	else if (user === message.author) {
-		message.channel.send({ content: `**${message.author.tag}** ${lang.laugh.isLaughingFromSelf}`, files: [`img/actions/${command.name} (${rnd}).gif`] }).catch(err => { console.error(err); });
+		message.channel.send({ content: text(lang.lugh.isLaughingFromSelf, [message.author.tag]), files: [`img/actions/${command.name} (${rnd}).gif`] });
 	}
 	else if (user === bot.user) {
-		message.channel.send({ content: `**${message.author.tag}** ${lang.laugh.isLaughingFromUs}`, files: [`img/actions/${command.name} (${rnd}).gif`] }).catch(err => { console.error(err); });
+		message.channel.send({ content: text(lang.lugh.isLaughingFromUs, [message.author.tag]), files: [`img/actions/${command.name} (${rnd}).gif`] });
 	}
 	else {
-		message.channel.send({ content: `**${message.author.tag}** ${lang.laugh.isLaughingFrom} **${user.tag}**!`, files: [`img/actions/${command.name} (${rnd}).gif`] }).catch(err => { console.error(err); });
+		message.channel.send({ content: text(lang.lugh.isLaughingFrom, [message.author.tag, user.tag]), files: [`img/actions/${command.name} (${rnd}).gif`] });
 	}
 }

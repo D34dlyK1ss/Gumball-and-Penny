@@ -183,13 +183,13 @@ bot.on('guildCreate', async guildData => {
 	setBotStatus();
 	await db.collection('definicoes').doc(guildData.id).set({
 		settings: botConfig.settings
-	}).catch(err => { console.error(err); });
+	});
 });
 
 // Quando o bot for expulso de um servidor, o bot apagará os dados respetivos
 bot.on('guildDelete', async guildData => {
 	setBotStatus();
-	await db.collection('definicoes').doc(guildData.id).delete().catch(err => { console.error(err); });
+	await db.collection('definicoes').doc(guildData.id).delete();
 });
 
 // Autenticação do bot

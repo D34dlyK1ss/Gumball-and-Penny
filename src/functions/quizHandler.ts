@@ -3,6 +3,7 @@ import { registerFont, createCanvas, loadImage } from 'canvas';
 import * as admin from 'firebase-admin';
 import * as answers from '../data/quizAnswers.json';
 import slugify from './slugify';
+import text from './text';
 registerFont('./fonts/comic.ttf', { family: 'Comic Sans MS' });
 registerFont('./fonts/comicb.ttf', { family: 'bold Comic Sans MS' });
 registerFont('./fonts/comici.ttf', { family: 'italic Comic Sans MS' });
@@ -91,14 +92,14 @@ export const alreadyPlaying: Set<string> = new Set();
 
 export function createQuizQuestion(interaction: ButtonInteraction, user: User, lang:Record<string, any>) {
 	if (alreadyPlaying.has(interaction.channelId)) {
-		interaction.reply(lang.quiz.alreadyPlaying).catch(err => { console.error(err); });
+		interaction.reply(lang.quiz.alreadyPlaying);
 	}
 	else {
 		const quiz = interaction.customId.slice(0, -23);
 
 		switch (quiz) {
 			case 'quizanimeEyes': {
-				interaction.update({ content: `${lang.quiz.starting} **${lang.quiz.animeEyes}** ${lang.quiz.inSeconds}`, embeds: [], components: [] }).then(() => {
+				interaction.update({ content: text(lang.quiz.starting, [lang.quiz.animeEyes]), embeds: [], components: [] }).then(() => {
 
 					alreadyPlaying.add(interaction.channelId);
 			
@@ -140,13 +141,13 @@ export function createQuizQuestion(interaction: ButtonInteraction, user: User, l
 			
 							const attachment = new MessageAttachment(canvas.toBuffer(), 'question.png');
 			
-							interaction.channel.send({ files: [attachment] }).catch(err => { console.error(err); });
+							interaction.channel.send({ files: [attachment] });
 			
 							const filter = (msg: Message) => answers.animeEyes[rnd].includes(slugify(msg.content.toLowerCase()));
 							const collector = interaction.channel.createMessageCollector({ filter, max: 1, time: 15000 });
 		
 							collector.on('collect', message => {
-								message.reply(lang.quiz.correct).catch(err => { console.error(err); });
+								message.reply(lang.quiz.correct);
 			
 								if (!score.has(message.member.id)) score.set(message.member.id, 0);
 			
@@ -180,7 +181,7 @@ export function createQuizQuestion(interaction: ButtonInteraction, user: User, l
 												const punctuation = points.next().value;
 												const refP = admin.firestore().collection('perfis').doc(`${user}`);
 
-												description = description + `\n<@${userId}> - ${punctuation} ${lang.quiz.points}`;
+												description = description + text(lang.quiz.points, [userId, punctuation]);
 
 												await refP.get().then(doc => {
 													if (!doc.exists) return;
@@ -196,7 +197,7 @@ export function createQuizQuestion(interaction: ButtonInteraction, user: User, l
 											resultsEmbed.setDescription(description);
 										}
 			
-										interaction.channel.send({ content: lang.quiz.ended, embeds: [resultsEmbed] }).catch(err => { console.error(err); });
+										interaction.channel.send({ content: lang.quiz.ended, embeds: [resultsEmbed] });
 										alreadyPlaying.delete(interaction.channelId);
 									}
 								});
@@ -219,12 +220,12 @@ export function quizButtonHandler(button: ButtonInteraction, lang: Record<string
 			createQuizQuestion(button, button.user, lang);
 		}
 		else if (button.customId.slice(0, -18).endsWith('Close')) {
-			button.update({ content: lang.quiz.closed, embeds: [], components: [] }).catch(err => { console.error(err); });
+			button.update({ content: lang.quiz.closed, embeds: [], components: [] });
 		}
 		else {
 			const toSend:any = createQuizPage(undefined, button.user, lang, prefix, button.customId.slice(0, -18));
 
-			button.update({ embeds: [toSend[0]], components: [toSend[1]] }).catch(err => { console.error(err); });
+			button.update({ embeds: [toSend[0]], components: [toSend[1]] });
 		}
 	}
 }

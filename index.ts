@@ -125,7 +125,7 @@ es.onmessage = async messageEvent => {
 				refP.update({
 					balance: bal + add
 				});
-			}).catch(err => { console.error(err); });
+			});
 		}
 	}
 };
@@ -145,7 +145,7 @@ async function getServerSettings(guild: Guild) {
 			}
 
 			settings[guild.id] = docD.get('settings') || botConfig.settings;
-		}).catch(err => { console.error(err); });
+		});
 	}
 
 	const serverSettings: ServerSettings = settings[guild.id];
@@ -265,10 +265,10 @@ bot.on('messageCreate', async message => {
 		const gifs = ['distraction dance'];
 
 		if (pngs.includes(message.content)) {
-			message.channel.send({ files: [`./img/automessages/${message.content}.png`] }).catch(err => { console.error(err); });
+			message.channel.send({ files: [`./img/automessages/${message.content}.png`] });
 		}
 		else if (gifs.includes(message.content)) {
-			message.channel.send({ files: [`./img/automessages/${message.content}.gif`] }).catch(err => { console.error(err); });
+			message.channel.send({ files: [`./img/automessages/${message.content}.gif`] });
 		}
 	}
 });
@@ -304,13 +304,13 @@ bot.on('guildCreate', async guildData => {
 	setBotStatus();
 	await db.collection('definicoes').doc(guildData.id).set({
 		settings: botConfig.settings
-	}).catch(err => { console.error(err); });
+	});
 });
 
 // Quando o bot for expulso de um servidor, o bot apagará os dados respetivos
 bot.on('guildDelete', async guildData => {
 	setBotStatus();
-	await db.collection('definicoes').doc(guildData.id).delete().catch(err => { console.error(err); });
+	await db.collection('definicoes').doc(guildData.id).delete();
 });
 
 // Autenticação do bot

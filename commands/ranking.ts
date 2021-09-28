@@ -1,5 +1,6 @@
 import { Message, MessageEmbed } from 'discord.js';
 import moment from 'moment';
+import text from '../src/functions/text';
 
 export const name = 'ranking';
 export const aliases = ['leaderboard'];
@@ -22,7 +23,7 @@ export async function execute(bot: undefined, message: Message, command: undefin
 			rankingEmbed.addField(`\n${i}# ${doc.get('name')}`, `${lang.level} ${doc.get('level')}, ${doc.get('xp')} XP`);
 		});
 
-		rankingEmbed.setFooter(`${lang.ranking.updatedAt} ${moment(lastUpdateAt).utc().format('LL')} ${moment(lastUpdateAt).utc().format('LTS')} UTC`);
+		rankingEmbed.setFooter(text(lang.ranking.updatedAt, [moment(lastUpdateAt).utc().format('LL'), moment(lastUpdateAt).utc().format('LTS')]));
 	}
 
 	rankingEmbed.setTitle(lang.ranking.title)

@@ -23,9 +23,9 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 		const newEmbed = new MessageEmbed(lastEmbed)
 			.setAuthor(`${server.name}`)
 			.setThumbnail('');
-		message.channel.send({ embeds: [newEmbed] }).catch(err => { console.error(err); });
+		message.channel.send({ embeds: [newEmbed] });
 	}
 	else {
-		message.channel.send({ embeds: [embed] }).catch(err => { console.error(err); });
+		message.channel.send({ embeds: [embed] });
 	}
 }

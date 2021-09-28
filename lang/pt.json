@@ -54,8 +54,8 @@
 	"forMoreInfo": " para mais informação.",
 	"betAtLeast": "Tens de apostar no mínimo ¤",
 	"betAtMost": "Não podes apostar mais que ¤",
-	"lost": "Perdeste",
-	"won": "Ganhaste",
+	"lost": "Perdeste **¤$0$**!",
+	"won": "Ganhaste **¤$0$**!",
 	"and": "e",
 	"enabled": "ativadas",
 	"disabled": "desativadas",
@@ -164,95 +164,88 @@
 	},
 
 	"cry": {
-		"isCrying": "está chorar!",
-		"isCryingBecauseOfUs": "está a chorar por causa de nós! 😟",
-		"made": "fez",
-		"cry": "chorar!"
+		"isCrying": "**$0$** está chorar!",
+		"isCryingBecauseOfUs": "**$0$** está a chorar por causa de nós! 😟",
+		"madeCry": "**$0$** fez **$1$** chorar!"
 	},
 
 	"daily": {
-		"againIn": "Poderás receber dinheiro outra vez em ",
-		"received": "Recebeste os teus ",
-		"toGetMore": " de hoje! Para receberes mais ¤150 (¤300 para VIPs) usa "
+		"againIn": "Poderás receber dinheiro outra vez em **¤$0$**",
+		"received": "Recebeste os teus **¤$0$** de hoje! Para receberes mais ¤150 (¤300 para VIPs) usa `$1$vote`"
 	},
 
 	"dance": {
-		"isDancing": "está a dançar!",
-		"isDancingForUs": "está a dançar para nós! 😯",
-		"isDancingFor": "está a dançar para"
+		"isDancing": "**$0$** está a dançar!",
+		"isDancingForUs": "**$0$** está a dançar para nós! 😯",
+		"isDancingFor": "**$0$** está a dançar para **$1$**"
 	},
 
 	"give": {
 		"self": "A sério que acabaste de tentar dar dinheiro a ti mesmo?",
 		"thanksBut": "Obrigado, mas vais precisar mais desse dinheiro do que nós!",
-		"youGave": "Deste ",
-		"to": " a "
+		"youGave": "Deste **¤$0$** a **$1$**"
 	},
 
 	"happy": {
-		"isHappy": "está feliz!",
-		"made": "fez",
-		"happy": "feliz!"
+		"madeHappy": "**$0$** fez **$1$** feliz!",
+		"isHappy": "**$0$** está feliz!"
 	},
 
 	"hug": {
-		"huggedSelf": "abraçou-se?",
-		"huggedUs": "abraçou-nos! 🤗",
-		"hugged": "abraçou"
+		"huggedSelf": "**$0$** abraçou-se?",
+		"huggedUs": "**$0$** abraçou-nos! 🤗",
+		"hugged": "**$0$** abraçou **$1$**"
 	},
 
 	"inventory": {
-		"inventoryFrom": "Inventário de "
+		"inventoryFrom": "Inventário de **$0$**"
 	},
 
 	"jankenpon": {
 		"rock": "Pedra",
 		"paper": "Papel",
 		"scissors": "Tesoura",
-		"threw": "jogou",
+		"threw": "**Gumball** jogou **$1$** e **Penny** jogou **$3$**",
 		"draw": "É um empate! Tens o teu dinheiro reembolsado."
 	},
 
 	"kick": {
-		"wasKicked": " foi expulso!"
+		"wasKicked": "**$0$** foi expulso! 👋"
 	},
 
 	"kiss": {
-		"kissedSelf": "beijou-se a si mesmo?",
-		"kissedUs": "beijou-nos! 😳",
-		"kissed": "beijou"
+		"kissedSelf": "**$0$** beijou-se a si mesmo?",
+		"kissedUs": "**$0$** beijou-nos! 😳",
+		"kissed": "**$0$** beijou **$1$!**"
 	},
 
 	"laugh": {
-		"isLaughing": "está a rir-se!",
-		"isLaughingFromSelf": "está a rir-se de si mesmo!",
-		"isLaughingFromUs": "está a rir-se de nós! 😅",
-		"isLaughingFrom": "está a rir-se de"
+		"isLaughing": "**$0$** está a rir-se!",
+		"isLaughingFromSelf": "**$0$** está a rir-se de si mesmo!",
+		"isLaughingFromUs": "**$0$** está a rir-se de nós! 😅",
+		"isLaughingFrom": "**$0$** está a rir-se de **$1$**!"
 	},
 
 	"match": {
 		"alreadyAPair": "Hey, nós já somos um par! 😠",
-		"youAre": "És",
-		"compatibleWith": "compatível com"
+		"youAre": "És **$0$%** compatível com **$1$**!"
 	},
 
 	"mute": {
-		"isMutedFor": " estará silenciado durante ",
-		"seconds": " segundos!"
+		"isMutedFor": "**$0$** está silenciado durante **$1$ segundos**! 🔇"
 	},
 
 	"pat": {
-		"pattedSelf": "acariciou-se?",
-		"pattedUs": "acariciou-nos! 😊",
-		"patted": "acariciou"
+		"pattedSelf": "**$0$** acariciou-se?",
+		"pattedUs": "**$0$** acariciou-nos! 😊",
+		"patted": "**$0$** acariciou **$1$**!"
 	},
 
 	"pet": {
-		"nameMaxIs": "O limite máximo de caracteres para o nome é ",
-		"nameHas": "Esse nome tem ",
-		"nameChangedTo": "O nome do teu pet foi alterado para ",
-		"petHUDChangedTo": "O teu Pet HUD foi alterado para ",
-		"wasSentToAdoption": " foi para adoção!",
+		"nameMaxIs": "O limite máximo de caracteres para o nome é **$0$**. Esse nome tem **$1$**.",
+		"nameChangedTo": "O nome do teu pet foi alterado para **$0$**.",
+		"petHUDChangedTo": "O teu Pet HUD foi alterado para **$0$**.",
+		"wasSentToAdoption": "**$0$** foi para adoção!",
 		"botNoPet": "Nós não temos um pet! Ainda...",
 		"botsNoPets": "Os bots não têm pets!"
 	},
@@ -262,15 +255,13 @@
 	},
 
 	"profile": {
-		"wasCreated": "O teu perfil foi criado! Adiciona uma descrição com ",
-		"description": "descrição",
-		"nicknameMaxIs": "O limite máximo de caracteres para alcunha é ",
-		"nicknameHas": "Essa alcunha tem ",
-		"nicknameChangedTo": "A tua alcunha foi alterada para ",
-		"descMaxIs": "O limite máximo de caracteres para a descrição é ",
-		"descHas": "Essa descrição tem ",
-		"descChangedTo": "A tua descrição foi alterada para ",
-		"hudChangedTo": "O teu HUD foi alterado para "
+		"wasCreated": "O teu perfil foi criado! Adiciona uma descrição com `$0$profile setdescription [$1$]`.",
+		"description": "Descrição",
+		"nicknameMaxIs": "O limite máximo de caracteres para alcunha é **$0$**. Essa alcunha tem **$1$**.",
+		"nicknameChangedTo": "A tua alcunha foi alterada para **$0$**.",
+		"descMaxIs": "O limite máximo de caracteres para a descrição é **$0$**. Essa descrição tem **$1$**.",
+		"descChangedTo": "A tua descrição foi alterada para **$0$**.",
+		"hudChangedTo": "O teu HUD foi alterado para **$0$**."
 	},
 
 	"quiz": {
@@ -279,28 +270,27 @@
 		"toStart": "Carrega no botão _Começar_ pra começar o quiz!",
 		"closed": "Fechaste a página de Quiz!",
 		"alreadyPlaying": "Já há um quiz a ser jogado neste canal! Começa um novo noutro canal ou espera pelo fim do quiz.",
-		"starting": "Começando o quiz",
+		"starting": "Começando o quiz **$0$** em 5 segundos!",
 		"animeEyes": "Olhos de Anime",
-		"inSeconds": "em 5 segundos!",
 		"whoIsCharacter": "Quem é esta personagem?",
 		"correct": "Correto!",
 		"wrong": "Errado!",
 		"noCorrectAnswer": "Sem resposta correta!",
 		"ended": "O quiz acabou!",
-		"points": "pontos",
+		"points": "<@$0$> - $1$ pontos",
 		"noOneScored": "Ninguém pontoou!"
 	},
 
 	"ranking": {
 		"title": "Top 10 de utilizadores",
 		"description": "O sistema de ranking é baseado no quanto XP adquiriste ao longo do tempo.\nQuanto mais comandos usares, mais XP ganhas e mais alto sobes no ranking!",
-		"updatedAt": "Atualizado a"
+		"updatedAt": "Atualizado a $0$ $1$ UTC"
 	},
 
 	"run": {
-		"ranAway": "fugiu!",
-		"ranAwayFromUs": "fugiu para longe de nós! 🤨",
-		"ranAwayFrom": "fugiu para longe de"
+		"ranAway": "**$0$** fugiu!",
+		"ranAwayFromUs": "**$0$** fugiu para longe de nós! 🤨",
+		"ranAwayFrom": "**$0$** fugiu para longe de **$1$**"
 	},
 
 	"serverinfo": {
@@ -339,25 +329,22 @@
 	},
 
 	"setprefix": {
-		"isNow": "O nosso prefixo para este servidor agora é "
+		"isNow": "O nosso prefixo para este servidor agora é `$0$`"
 	},
 
 	"shop": {
 		"welcome": "Bem vindo à Loja Incrível!\nAqui poderás comprar algumas coisas com o dinheiro que acumulaste até agora.\nUsa os botões abaixo para navegar pela loja!",
-		"boughtHUD": "Compraste o HUD ",
-		"boughtPetHUD": "Compraste o Pet HUD ",
-		"boughtItem": "Compraste 1 ",
-		"toEquip": "Para o equipares usa ",
+		"boughtHUD": "Compraste o HUD **$0$**! Para o equipares usa `**$1$**profile sethud [$2$]`",
+		"boughtPetHUD": "Compraste o Pet HUD **$0$**! Para o equipares usa `**$1$**pet sethud [$2$]`",
+		"boughtItem": "Compraste 1 **$0$**",
 		"hero": "Herói",
 		"villain": "Vilão",
-		"toBuyOr": " para comprar ou ",
-		"toGiveName": "Para lhe dares um nome usa",
+		"toBuyOr": "Usa `$0$shop buy $1$ [$2$]` para comprar ou `$3$shop view$4$ [$5$]` para ver.",
+		"toGiveName": "Para lhe dares um nome usa `$0$pet setnickname [$1$]`",
 		"hudName": "Nome do HUD",
 		"petHudName": "Nome do Pet HUD",
-		"toSee": " para ver.",
-		"toSelectASubCat": " para selecionar uma sub-categoria.",
 		"animalName": "Nome do Animal",
-		"toBuy": " para comprar.",
+		"toBuy": "Usa `$0$shop buy $1$ [$2$]` para comprar.",
 		"itemName": "Nome do Item",
 		"exited": "Saíste da loja!"
 	},

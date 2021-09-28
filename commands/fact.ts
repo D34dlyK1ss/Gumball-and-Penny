@@ -5,5 +5,5 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 	const rnd = Math.floor(Math.random() * 28);
 	const facts = require('../src/data/facts.json');
 
-	message.channel.send(facts[language][rnd]).catch(err => { console.error(err); });
+	message.channel.send(facts[language][rnd]);
 }

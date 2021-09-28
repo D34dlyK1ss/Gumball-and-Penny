@@ -22,12 +22,12 @@ async function giveVIP(db: FirebaseFirestore.Firestore, message: Message, args: 
 
 		args.length === 1 ? plural = ' é' : plural = 'es são';
 
-		return message.channel.send(`${args.length} utilizador${plural} agora VIP por 1 mês!`).catch(err => { console.error(err); });
+		return message.channel.send(`${args.length} utilizador${plural} agora VIP por 1 mês!`);
 	}
 	else {
 		refV.get().then(doc => {
 			if (doc.exists) {
-				message.react('❌').catch(err => { console.error(err); });
+				message.react('❌');
 			}
 			else {
 				refV.set({
@@ -36,7 +36,7 @@ async function giveVIP(db: FirebaseFirestore.Firestore, message: Message, args: 
 					const memberToVIP = await message.guild.members.fetch(message.author.id);
 
 					memberToVIP.roles.remove(justPaidRole);
-					memberToVIP.roles.add(vipRole).then(() => { message.react('✅'); }).catch(err => { console.error(err); });
+					memberToVIP.roles.add(vipRole).then(() => { message.react('✅'); });
 				});
 			}
 		});

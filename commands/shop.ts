@@ -5,6 +5,7 @@ import * as natures from '../src/data/natures.json';
 import slugify from '../src/functions/slugify';
 import titleCase from '../src/functions/titleCase';
 import { createShopPage } from '../src/functions/shopHandler';
+import text from '../src/functions/text';
 
 export const name = 'shop';
 export const naliases = ['s'];
@@ -21,10 +22,10 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 
 			const attachment = new MessageAttachment(hudCanvas.toBuffer(), `${hudName}_preview.png`);
 
-			message.channel.send({ files: [attachment] }).catch(err => { console.error(err); });
+			return message.channel.send({ files: [attachment] });
 		}
 		catch {
-			return message.reply(lang.error.noHUD).catch(err => { console.error(err); });
+			return message.reply(lang.error.noHUD);
 		}
 
 	}
@@ -40,10 +41,10 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 
 			const attachment = new MessageAttachment(hudCanvas.toBuffer(), `${petHudName}_preview.png`);
 
-			message.channel.send({ files: [attachment] }).catch(err => { console.error(err); });
+			return message.channel.send({ files: [attachment] });
 		}
 		catch {
-			return message.reply(lang.error.noPetHUD).catch(err => { console.error(err); });
+			return message.reply(lang.error.noPetHUD);
 		}
 	}
 
@@ -67,7 +68,7 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 
 					refP.get().then(docP => {
 						if (!docP.exists) {
-							message.reply(`${lang.error.noProfile}\`${prefix}profile create\`!`).catch(err => { console.error(err); });
+							message.reply(`${lang.error.noProfile}\`${prefix}profile create\`!`);
 						}
 						else {
 							const bal = docP.get('balance');
@@ -77,17 +78,17 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 							colors.includes(hudName) ? hudCost = items.huds.colorPrice : hudCost = items.huds.price;
 
 							if (!(items as any).huds[hudName]) {
-								message.reply(lang.error.noHUD).catch(err => { console.error(err); });
+								message.reply(lang.error.noHUD);
 							}
 							else {
 								refI.get().then(docI => {
 									const iHuds = docI.get('huds');
 
 									if (iHuds.includes(hudName)) {
-										message.reply(lang.error.alreadyHasHUD).catch(err => { console.error(err); });
+										message.reply(lang.error.alreadyHasHUD);
 									}
 									else if (hudCost > bal) {
-										message.reply(lang.error.noMoney).catch(err => { console.error(err); });
+										message.reply(lang.error.noMoney);
 									}
 									else {
 										iHuds.push(hudName);
@@ -100,7 +101,7 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 											huds: iHuds
 										}).then(() => {
 											hudName = hudName.toLowerCase().replace(/[_]/g, ' ');
-											message.reply(`${lang.shop.boughtHUD}**${titleCase(hudName)}**! ${lang.shop.toEquip}\`${prefix}profile sethud[${lang.shop.hudName}]\``).catch(err => { console.error(err); });
+											message.reply(text(lang.shop.boughtHUD, [titleCase(hudName), prefix, lang.shop.hudName]));
 										});
 									}
 								});
@@ -113,7 +114,7 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 
 					refP.get().then(docP => {
 						if (!docP.exists) {
-							message.reply(`${lang.error.noProfile}\`${prefix}profile create\`!`).catch(err => { console.error(err); });
+							message.reply(`${lang.error.noProfile}\`${prefix}profile create\`!`);
 						}
 						else {
 							const bal = docP.get('balance');
@@ -124,20 +125,20 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 							colors.includes(petHudName) ? petHudCost = items.petHuds.price : petHudCost = items.petHuds.vipPrice;
 							
 							if (!(items as any).petHuds[petHudName]) {
-								message.reply(lang.error.noPetHUD).catch(err => { console.error(err); });
+								message.reply(lang.error.noPetHUD);
 							}
 							else if (userVIP === null && (items as any).petHuds[petHudName].vip) {
-								message.reply(lang.error.noVIPForPetHUD).catch(err => { console.error(err); });
+								message.reply(lang.error.noVIPForPetHUD);
 							}
 							else {
 								refI.get().then(docI => {
 									const iPetHUDs = docI.get('petHuds');
 
 									if (iPetHUDs.includes(petHudName)) {
-										message.reply(lang.error.alreadyHasPetHUD).catch(err => { console.error(err); });
+										message.reply(lang.error.alreadyHasPetHUD);
 									}
 									else if (petHudCost > bal) {
-										message.reply(lang.error.noMoney).catch(err => { console.error(err); });
+										message.reply(lang.error.noMoney);
 									}
 									else {
 										iPetHUDs.push(petHudName);
@@ -151,7 +152,7 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 
 											petHudName = petHudName.toLowerCase().replace(/[_]/g, ' ');
 
-											message.reply(`${lang.shop.boughtPetHUD}**${titleCase(petHudName)}**! ${lang.shop.toEquip}\`${prefix}pet sethud[${lang.shop.hudName}]\``).catch(err => { console.error(err); });
+											message.reply(text(lang.shop.boughtHUD, [titleCase(petHudName), prefix, lang.shop.petHudName]));
 										});
 									}
 								});
@@ -164,7 +165,7 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 
 					refP.get().then(docP => {
 						if (!docP.exists) {
-							message.reply(`${lang.error.noProfile}\`${prefix}profile create\`!`).catch(err => { console.error(err); });
+							message.reply(`${lang.error.noProfile}\`${prefix}profile create\`!`);
 						}
 						else {
 							const bal = docP.get('balance');
@@ -172,14 +173,14 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 							const itemCost = (items as any).items[itemName].price;
 
 							if (!(items as any).items[itemName]) {
-								message.reply(lang.error.noItem).catch(err => { console.error(err); });
+								message.reply(lang.error.noItem);
 							}
 							else {
 								refI.get().then(docI => {
 									const iItems = docI.get('items') || [];
 
 									if (itemCost > bal) {
-										message.reply(lang.error.noMoney).catch(err => { console.error(err); });
+										message.reply(lang.error.noMoney);
 									}
 									else {
 										iItems.push(itemName);
@@ -193,7 +194,7 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 
 											itemName = itemName.toLowerCase().replace(/[_]/g, ' ');
 
-											message.reply(`${lang.shop.boughtItem}**${titleCase(itemName)}**!`).catch(err => { console.error(err); });
+											message.reply(`${lang.shop.boughtItem}**${titleCase(itemName)}**!`);
 										});
 									}
 								});
@@ -205,20 +206,20 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 					pet = slugify(pet.concat((args as any).slice(2)).toLowerCase().replace(/[,]/g, '_'));
 					refPet.get().then((docPet: any) => {
 						if (docPet.exists) {
-							message.reply(`${lang.error.alreadyHasPet}\`${prefix}sendtoadoption\`!`).catch(err => { console.error(err); });
+							message.reply(`${lang.error.alreadyHasPet}\`${prefix}sendtoadoption\`!`);
 						}
 						else {
 							let petName = pet.toLowerCase();
 							const petCost = (items.pets as any)[petName].price;
 
 							if (!(items as any).pets[petName]) {
-								message.reply(lang.error.noItem).catch(err => { console.error(err); });
+								message.reply(lang.error.noItem);
 							}
 							else {
 								refP.get().then(docP => {
 									const bal = docP.get('balance');
 									if (petCost > bal) {
-										message.reply(lang.error.noMoney).catch(err => { console.error(err); });
+										message.reply(lang.error.noMoney);
 									}
 									else {
 										const rndN = Math.floor(Math.random() * 12);
@@ -229,7 +230,7 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 										let gender = (items.pets as any)[pet].gender;
 
 										if (userVIP === null && vipPet) {
-											message.reply(lang.error.noVIPForPet).catch(err => { console.error(err); });
+											message.reply(lang.error.noVIPForPet);
 										}
 										else {
 											if (gender === 'random') rndG < 0.5 ? gender = '♂️' : gender = '♀️';
@@ -267,7 +268,7 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 												const vip = (items.pets as any)[pet].vip;
 
 												if (vip) petName = name;
-												message.reply(`${lang.youBought}**${titleCase(petName)}**! ${lang.shop.toGiveName} \`${prefix}pet setname [${lang.shop.name}]\``).catch(err => { console.error(err); });
+												message.reply(`${lang.youBought}**${titleCase(petName)}**! ${lang.shop.toGiveName} \`${prefix}pet setname [${lang.shop.name}]\``);
 											});
 										}
 									}
@@ -297,7 +298,7 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 		default: {
 			const pageToSend: any = createShopPage(message.member.id, lang, prefix, 'shopmainEmbed0');
 
-			message.reply({ embeds: [pageToSend[0]], components: [pageToSend[1]] }).catch(err => { console.error(err); });
+			message.reply({ embeds: [pageToSend[0]], components: [pageToSend[1]] });
 			break;
 		}
 	}

@@ -54,8 +54,8 @@
 	"forMoreInfo": " for more information.",
 	"betAtLeast": "You have to bet at least ¤",
 	"betAtMost": "You can't bet over ¤",
-	"lost": "You lost",
-	"won": "You won",
+	"lost": "You lost **¤$0$**!",
+	"won": "You won **¤$0$**!",
 	"and": "and",
 	"enabled": "enabled",
 	"disabled": "disabled",
@@ -164,95 +164,88 @@
 	},
 
 	"cry": {
-		"isCrying": "is crying!",
-		"isCryingBecauseOfUs": "is crying because of us! 😟",
-		"made": "made",
-		"cry": "cry!"
+		"isCrying": "**$0$** is crying!",
+		"isCryingBecauseOfUs": "**$0$** is crying because of us! 😟",
+		"madeCry": "**$0$** made **$1$** cry!"
 	},
 
 	"daily": {
-		"againIn": "You can get money again in ",
-		"received": "You received your ",
-		"toGetMore": " of today! To get more ¤150 (¤300 for VIPs) use "
+		"againIn": "You can get money again in **¤$0$**",
+		"received": "You received your **¤$0$** of today! To get more ¤150 (¤300 for VIPs) use `$1$vote`"
 	},
 
 	"dance": {
-		"isDancing": " is dancing!",
-		"isDancingForUs": "is dancing for us! 😯",
-		"isDancingFor": "is dancing for"
+		"isDancing": "**$0$** is dancing!",
+		"isDancingForUs": "**$0$** is dancing for us! 😯",
+		"isDancingFor": "**$0$** is dancing for **$1$**"
 	},
 
 	"give": {
 		"self": "Seriously you just tried to give yourself money?",
 		"thanksBut": "Thanks, but you'll need that money more than us!",
-		"youGave": "You gave ",
-		"to": " to "
+		"youGave": "You gave **¤$0$** to **$1$**"
 	},
 
 	"happy": {
-		"isHappy": "is happy!",
-		"made": "made",
-		"happy": "happy!"
+		"madeHappy": "**$0$** made **$1$** happy!",
+		"isHappy": "**$0$** is happy!"
 	},
 
 	"hug": {
-		"huggedSelf": "hugged themselves?",
-		"huggedUs": "hugged us! 🤗",
-		"hugged": "hugged"
+		"huggedSelf": "**$0$** hugged themselves?",
+		"huggedUs": "**$0$** hugged us! 🤗",
+		"hugged": "**$0$** hugged **$1$**"
 	},
 
 	"inventory": {
-		"inventoryFrom": "Inventory from "
+		"inventoryFrom": "Inventory from **$0$**"
 	},
 
 	"jankenpon": {
 		"rock": "Rock",
 		"paper": "Paper",
 		"scissors": "Scissors",
-		"threw": "threw",
+		"threw": "**Gumball** threw **$1$** and **Penny** threw **$3$**",
 		"draw": "It's a draw! You have your money refunded."
 	},
 
 	"kick": {
-		"wasKicked": " was kicked!"
+		"wasKicked": "**$0$** was kicked! 👋"
 	},
 
 	"kiss": {
-		"kissedSelf": "kissed themselves?",
-		"kissedUs": "kissed us! 😳",
-		"kissed": "kissed"
+		"kissedSelf": "**$0$** kissed themselves?",
+		"kissedUs": "**$0$** kissed us! 😳",
+		"kissed": "**$0$** kissed **$1$!**"
 	},
 
 	"laugh": {
-		"isLaughing": "is laughing!",
-		"isLaughingFromSelf": "is laughing from themselves!",
-		"isLaughingFromUs": "is laughing from us! 😅",
-		"isLaughingFrom": "is laughing from"
+		"isLaughing": "**$0$** is laughing!",
+		"isLaughingFromSelf": "**$0$** is laughing from themselves!",
+		"isLaughingFromUs": "**$0$** is laughing from us! 😅",
+		"isLaughingFrom": "**$0$** is laughing from **$1$**!"
 	},
 
 	"match": {
 		"alreadyAPair": "Hey, we're already a pair! 😠",
-		"youAre": "You are",
-		"compatibleWith": "compatible with"
+		"youAre": "You are **$0$** compatible with **$1$**!"
 	},
 
 	"mute": {
-		"isMutedFor": " is muted for ",
-		"seconds": " seconds!"
+		"isMutedFor": "**$0$** is muted for **$1$ seconds**! 🔇"
 	},
 
 	"pat": {
-		"pattedSelf": "patted themsleves?",
-		"pattedUs": "patted us! 😊",
-		"patted": "patted "
+		"pattedSelf": "**$0$** patted themsleves?",
+		"pattedUs": "**$0$** patted us! 😊",
+		"patted": "**$0$** patted **$1$**!"
 	},
 
 	"pet": {
-		"nameMaxIs": "The name's maximum character limit is ",
-		"nameHas": "That name has ",
-		"nameChangedTo": "You pet's name was changed to ",
-		"petHUDChangedTo": "Your Pet HUD was changed to ",
-		"wasSentToAdoption": " was sent to adoption!",
+		"nameMaxIs": "The name's maximum character limit is **$0$**. That name has **$0$**.",
+		"nameChangedTo": "You pet's name was changed to **$0$**",
+		"petHUDChangedTo": "Your Pet HUD was changed to **$0$**",
+		"wasSentToAdoption": "**$0$** was sent to adoption!",
 		"botNoPet": "We don't have a pet! Yet...",
 		"botsNoPets": "Bots have no pets!"
 	},
@@ -262,15 +255,13 @@
 	},
 
 	"profile": {
-		"wasCreated": "You profile was created! Add a description with ",
-		"description": "description",
-		"nicknameMaxIs": "The nickname's maximum character limit is ",
-		"nicknameHas": "That nickname has ",
-		"nicknameChangedTo": "Your nickname was changed to ",
-		"descMaxIs": "The description's maximum character limit is ",
-		"descHas": "That description has ",
-		"descChangedTo": "Your description was changed to ",
-		"hudChangedTo": "Your HUD was changed to "
+		"wasCreated": "You profile was created! Add a description with `$0$profile setdescription [$1$]`.",
+		"description": "Description",
+		"nicknameMaxIs": "The nickname's maximum character limit is **$0$**. That nickname has **$1$**.",
+		"nicknameChangedTo": "Your nickname was changed to **$0$**.",
+		"descMaxIs": "The description's maximum character limit is **$0$**. That description has **$1$**.",
+		"descChangedTo": "Your description was changed to **$0$**.",
+		"hudChangedTo": "Your HUD was changed to **$0$**."
 	},
 
 	"quiz": {
@@ -279,28 +270,27 @@
 		"toStart": "Press the _Start_ button to start the quiz!",
 		"closed": "You closed the Quiz page!",
 		"alreadyPlaying": "There's a quiz being played already in this channel! Start a new one on another channel or wait for the quiz to end.",
-		"starting": "Starting",
+		"starting": "Starting **$0$** quiz in 5 seconds!",
 		"animeEyes": "Anime Eyes",
-		"inSeconds": "quiz in 5 seconds!",
 		"whoIsCharacter": "Who is this character?",
 		"correct": "Correct!",
 		"wrong": "Wrong!",
 		"noCorrectAnswer": "No correct answer!",
 		"ended": "The quiz has ended!",
-		"points": "points",
+		"points": "<@$0$> - $1$ points",
 		"noOneScored": "No one scored!"
 	},
 
 	"ranking": {
 		"title": "Top 10 users",
 		"description": "The ranking system is based on how much XP you've acquired over time.\nThe more commands you use, the more XP you get and the higher you climb in the ranking!",
-		"updatedAt": "Updated at"
+		"updatedAt": "Updated at $0$ $1$ UTC"
 	},
 
 	"run": {
-		"ranAway": "ran away!",
-		"ranAwayFromUs": "ran away from us! 🤨",
-		"ranAwayFrom": "ran away from"
+		"ranAway": "**$0$** ran away!",
+		"ranAwayFromUs": "**$0$** ran away from us! 🤨",
+		"ranAwayFrom": "**$0$** ran away from **$1$**"
 	},
 
 	"serverinfo": {
@@ -339,25 +329,22 @@
 	},
 
 	"setprefix": {
-		"isNow": "Our prefix for this server is now "
+		"isNow": "Our prefix for this server is now `$0$`"
 	},
 
 	"shop": {
 		"welcome": "Welcome to the Awesome Store!\nHere you can buy some stuff with the money you have saved so far.\nUse the buttons below to navigate through the store!",
-		"boughtHUD": "You bought the HUD ",
-		"boughtPetHUD": "You bought the Pet HUD ",
-		"boughtItem": "You bought 1 ",
-		"toEquip": "To equip it use ",
+		"boughtHUD": "You bought the HUD **$0$*! To equip it use `**$0$**profile sethud [$1$]`",
+		"boughtPetHUD": "You bought the Pet HUD **$0$*! To equip it use `**$0$**profile sethud [$1$]`",
+		"boughtItem": "You bought 1 **$0$*!",
 		"hero": "Hero",
 		"villain": "Villain",
-		"toBuyOr": " to buy or ",
-		"toGiveName": "To give it a name use",
+		"toBuyOr": "Use `$0$shop buy $1$ [$2$]` to buy or `$3$shop view$4$ [$5$]` to see.",
+		"toGiveName": "To give it a name use `$0$pet setnickname [$1$]`",
 		"hudName": "HUD Name",
 		"petHudName": "Pet HUD name",
-		"toSee": " to see.",
-		"toSelectASubCat": " to select a sub-category.",
 		"animalName": "Animal Name",
-		"toBuy": " to buy.",
+		"toBuy": "Use `$0$shop buy $1$ [$2$]` to buy.",
 		"itemName": "Item Name",
 		"exited": "You exited the store!"
 	},

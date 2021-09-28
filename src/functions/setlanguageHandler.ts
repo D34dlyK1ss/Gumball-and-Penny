@@ -13,29 +13,29 @@ export function confirmLanguage(button: ButtonInteraction, db: FirebaseFirestore
 		button.update({ content: lang.userCancelled, components:[] });
 	}
 	else if (newLanguage === undefined) {
-		button.reply({ content: lang.setlanguage.noLanguage, ephemeral: true }).catch(err => { console.error(err); });
+		button.reply({ content: lang.setlanguage.noLanguage, ephemeral: true });
 	}
 	else {
 		ref.get().then(doc => {
 			if (!doc.exists) {
 				ref.set({
 					settings: botConfig.settings
-				}, { merge: true }).catch(err => { console.error(err); });
+				}, { merge: true });
 			}
 
 			const oldLanguage = doc.get('settings').language || botConfig.settings.language;
 
 			if (newLanguage === oldLanguage) {
-				button.reply({ content: lang.error.sameLanguage, ephemeral: true }).catch(err => { console.error(err); });
+				button.reply({ content: lang.error.sameLanguage, ephemeral: true });
 			}
 			else {
 				serverSettings.language = newLanguage;
 				ref.set({
 					settings: { 'language': newLanguage }
-				}, { merge: true }).catch(err => { console.error(err); });
+				}, { merge: true });
 			}
 			lang = require(`../../lang/${newLanguage}.json`);
-			button.update({ content: lang.setlanguage.isNow, components: [] }).catch(err => { console.error(err); });
+			button.update({ content: lang.setlanguage.isNow, components: [] });
 		});
 	}
 }

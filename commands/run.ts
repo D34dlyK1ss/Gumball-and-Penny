@@ -1,5 +1,6 @@
 import { Message } from 'discord.js';
 import { BotClient, Cmd } from 'index';
+import text from '../src/functions/text';
 
 export const name = 'run';
 export function execute(bot: BotClient, message: Message, command: Cmd, db: undefined, lang: Record<string, string | any>) {
@@ -7,12 +8,12 @@ export function execute(bot: BotClient, message: Message, command: Cmd, db: unde
 	const rnd = Math.floor(Math.random() * 6);
 
 	if (!user || user === message.author) {
-		message.channel.send({ content: `**${message.author.tag}** ${lang.run.ranAway}`, files: [`img/actions/${command.name} (${rnd}).gif`] }).catch(err => { console.error(err); });
+		message.channel.send({ content: text(lang.run.ranAway, [message.author.tag]), files: [`img/actions/${command.name} (${rnd}).gif`] });
 	}
 	else if (user === bot.user) {
-		message.channel.send({ content: `**${message.author.tag}** ${lang.run.ranAwayFromUs}`, files: [`img/actions/${command.name} (${rnd}).gif`] }).catch(err => { console.error(err); });
+		message.channel.send({ content: text(lang.run.ranAwayFromUs, [message.author.tag]), files: [`img/actions/${command.name} (${rnd}).gif`] });
 	}
 	else {
-		message.channel.send({ content: `**${message.author.tag}** ${lang.run.ranAwayFrom} **${user.tag}**!`, files: [`img/actions/${command.name} (${rnd}).gif`] }).catch(err => { console.error(err); });
+		message.channel.send({ content: text(lang.run.ranAwayFrom, [message.author.tag, user.tag]), files: [`img/actions/${command.name} (${rnd}).gif`] });
 	}
 }

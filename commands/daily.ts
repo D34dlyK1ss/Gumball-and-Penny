@@ -1,5 +1,6 @@
 import { Message } from 'discord.js';
 import ms from 'ms';
+import text from '../src/functions/text';
 
 export const name = 'daily';
 export const aliases = ['d'];
@@ -13,23 +14,23 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 		const lastDaily: number = doc.get('lastDaily');
 		const nextDaily = lastDaily + 86400000;
 		if (!doc.exists) {
-			message.reply(`${lang.error.noProfile}\`${prefix}profile create\`!`).catch(err => { console.error(err); });
+			message.reply(`${lang.error.noProfile}\`${prefix}profile create\`!`);
 		}
 		else if (today < nextDaily) {
-			message.reply(`${lang.daily.againIn}${ms(nextDaily - today)}.`).catch(err => { console.error(err); });
+			message.reply(`${lang.daily.againIn}${ms(nextDaily - today)}.`);
 		}
 		else {
 			const bal: number = doc.get('balance');
 
 			if (bal + daily > 1000000) {
-				message.reply(lang.error.noAdd).catch(err => { console.error(err); });
+				message.reply(lang.error.noAdd);
 			}
 			else {
 				ref.update({
 					balance: bal + daily,
 					lastDaily: today
 				}).then(() => {
-					message.reply(`${lang.daily.received}**¤${daily}**${lang.daily.toGetMore}\`${prefix}vote\``).catch(err => { console.error(err); });
+					message.reply(text(lang.daily.received, [daily, prefix]));
 				}).catch((err: any) => { console.error(err); });
 			}
 		}

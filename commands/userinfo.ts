@@ -25,5 +25,5 @@ export async function execute(bot: undefined, message: Message, command: undefin
 		)
 		.setFooter(`${lang.created}${created}${lang.ago}(${createdDate.format('LLLL')})`);
 
-	message.channel.send({ embeds: [embed] }).catch(err => { console.error(err); });
+	message.channel.send({ embeds: [embed] });
 }

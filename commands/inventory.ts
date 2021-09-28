@@ -1,4 +1,5 @@
 import { Message, MessageEmbed } from 'discord.js';
+import text from '../src/functions/text';
 
 export const name = 'inventory';
 export const aliases = ['i'];
@@ -7,12 +8,12 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 	const refI = db.collection('inventario').doc(message.author.id);
 	let iEmbed = new MessageEmbed()
 		.setColor('DARK_PURPLE')
-		.setTitle(`${lang.inventory.inventoryFrom}${message.author.tag}`)
+		.setTitle(text(lang.inventory.inventoryFrom, [message.author.tag]))
 		.setThumbnail(`${message.author.displayAvatarURL()}`);
 
 	refP.get().then(docP => {
 		if (!docP.exists) {
-			message.reply(`${lang.error.noProfile}\`${prefix}profile create\`!`).catch(err => { console.error(err); });
+			message.reply(`${lang.error.noProfile}\`${prefix}profile create\`!`);
 		}
 		else {
 			refI.get().then(docI => {
@@ -28,7 +29,7 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 					);
 
 				if (!docI.exists) {
-					message.reply(lang.error.noInventory).catch(err => { console.error(err); });
+					message.reply(lang.error.noInventory);
 				}
 
 				if (iPetHuds !== undefined) {
@@ -51,7 +52,7 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 						);
 				}
 
-				message.channel.send({ embeds: [iEmbed] }).catch(err => { console.error(err); });
+				message.channel.send({ embeds: [iEmbed] });
 			});
 		}
 	});

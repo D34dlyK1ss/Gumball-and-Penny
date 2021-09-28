@@ -10,5 +10,5 @@ export function execute(bot: BotClient, message: Message, command: undefined, db
 		])
 		.setColor('DARK_PURPLE');
 
-	message.reply({ content: 'Pong! 🏓', embeds: [embed] }).catch(err => { console.error(err); });
+	message.reply({ content: 'Pong! 🏓', embeds: [embed] });
 }

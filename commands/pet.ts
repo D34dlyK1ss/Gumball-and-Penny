@@ -4,6 +4,7 @@ import { registerFont, createCanvas, loadImage } from 'canvas';
 import botConfig from '../botConfig.json';
 import titleCase from '../src/functions/titleCase';
 import items from '../src/data/itemlist.json';
+import text from '../src/functions/text';
 registerFont('./fonts/comic.ttf', { family: 'Comic Sans MS' });
 registerFont('./fonts/comicb.ttf', { family: 'bold Comic Sans MS' });
 registerFont('./fonts/comici.ttf', { family: 'italic Comic Sans MS' });
@@ -25,10 +26,10 @@ export function execute(bot: BotClient, message: Message, command: undefined, db
 			db.collection('pet').doc(message.author.id).get().then(doc => {
 				const pet = doc.get('pet');
 				if (!doc.exists) {
-					message.reply(`${lang.error.noPet}\`${prefix}shop\`!`).catch(err => { console.error(err); });
+					message.reply(`${lang.error.noPet}\`${prefix}shop\`!`);
 				}
 				else if ((items as any).pets[pet].vip) {
-					message.reply(lang.error.noChangePetName).catch(err => { console.error(err); });
+					message.reply(lang.error.noChangePetName);
 				}
 				else {
 					const max = 25;
@@ -44,16 +45,16 @@ export function execute(bot: BotClient, message: Message, command: undefined, db
 						}
 
 						if (!invItems.includes('name_license')) {
-							message.reply(lang.error.noNameLicense).catch(err => { console.error(err); });
+							message.reply(lang.error.noNameLicense);
 						}
 						else if (!newName || newName === '') {
-							message.reply(lang.error.noName).catch(err => { console.error(err); });
+							message.reply(lang.error.noName);
 						}
 						else if (newName === doc.get('name')) {
-							message.reply(lang.error.petAlreadyHasName).catch(err => { console.error(err); });
+							message.reply(lang.error.petAlreadyHasName);
 						}
 						else if (argsString.length > max) {
-							message.reply(`${lang.pet.nameMaxIs}${max}!\n${lang.pet.nameHas}${argsString.length}.`).catch(err => { console.error(err); });
+							message.reply(text(lang.pet.nameMaxIs, [max, argsString.length]));
 						}
 						else {
 							invItems.splice(invItems.findIndex((item: string) => item === 'name_license'), 1);
@@ -64,8 +65,8 @@ export function execute(bot: BotClient, message: Message, command: undefined, db
 							db.collection('pet').doc(message.author.id).update({
 								name: newName
 							}).then(() => {
-								message.reply(`${lang.pet.nameChangedTo}**${newName}**!`).catch(err => { console.error(err); });
-							}).catch(err => { console.error(err); });
+								message.reply(text(lang.pet.nameChangedTo, [newName]));
+							});
 						}
 					});
 				}
@@ -75,7 +76,7 @@ export function execute(bot: BotClient, message: Message, command: undefined, db
 			db.collection('pet').doc(message.author.id).get().then(docP => {
 				if (!docP.exists) {
 					if (user === message.author) {
-						message.reply(`${lang.error.noPet}\`${prefix}shop\`!`).catch(err => { console.error(err); });
+						message.reply(`${lang.error.noPet}\`${prefix}shop\`!`);
 					}
 				}
 				else {
@@ -86,17 +87,17 @@ export function execute(bot: BotClient, message: Message, command: undefined, db
 						newHud = newHud.concat(argsString.slice(0)).toLowerCase().replace(/[ ]/g, '_');
 
 						if (!newHud || newHud === '') {
-							message.reply(lang.error.noPetHUDChosen).catch(err => { console.error(err); });
+							message.reply(lang.error.noPetHUDChosen);
 						}
 						else if (!petHuds.includes(`${newHud}`) && message.author.id !== botConfig.botOwner && !botConfig.collaborators.includes(message.author.id)) {
-							message.reply(lang.error.noHavePetHUD).catch(err => { console.error(err); });
+							message.reply(lang.error.noHavePetHUD);
 						}
 						else {
 							db.collection('pet').doc(message.author.id).update({
 								hud: newHud
 							}).then(() => {
-								message.reply(`${lang.pet.petHUDChangedTo}**${titleCase(argsString)}**`).catch(err => { console.error(err); });
-							}).catch(err => { console.error(err); });
+								message.reply(text(lang.pet.petHUDChangedTo, [titleCase(argsString)]));
+							});
 						}
 					});
 				}
@@ -106,7 +107,7 @@ export function execute(bot: BotClient, message: Message, command: undefined, db
 			db.collection('pet').doc(message.author.id).get().then(docP => {
 				if (!docP.exists) {
 					if (user === message.author) {
-						message.reply(lang.error.noPetToAdoption).catch(err => { console.error(err); });
+						message.reply(lang.error.noPetToAdoption);
 					}
 				}
 				else {
@@ -118,7 +119,7 @@ export function execute(bot: BotClient, message: Message, command: undefined, db
 							if (iPetHUDs.includes(pet)) iPetHUDs.splice(iPetHUDs.findIndex((petHud: string) => petHud === pet), 1);
 						});
 						if (petName === 'N/A') petName = `${docP.get('species').toLowerCase()}`;
-						message.reply(`**${petName}**${lang.pet.wasSentToAdoption}`).catch(err => { console.error(err); });
+						message.reply(text(lang.pet.wasSentToAdoption, [petName]));
 					});
 				}
 			});
@@ -127,16 +128,16 @@ export function execute(bot: BotClient, message: Message, command: undefined, db
 			refP.get().then(async doc => {
 				if (!doc.exists) {
 					if (user === message.author) {
-						message.reply(`${lang.error.noPet}\`${prefix}shop\`!`).catch(err => { console.error(err); });
+						message.reply(`${lang.error.noPet}\`${prefix}shop\`!`);
 					}
 					else if (user === bot.user) {
-						message.reply(lang.pet.botNoPet).catch(err => { console.error(err); });
+						message.reply(lang.pet.botNoPet);
 					}
 					else if (user.bot) {
-						message.reply(lang.pet.botsNoPets).catch(err => { console.error(err); });
+						message.reply(lang.pet.botsNoPets);
 					}
 					else {
-						message.reply(`**${user.tag}**${lang.error.userNoPet}`).catch(err => { console.error(err); });
+						message.reply(`**${user.tag}**${lang.error.userNoPet}`);
 					}
 				}
 				else {
@@ -203,7 +204,7 @@ export function execute(bot: BotClient, message: Message, command: undefined, db
 
 						const attachment = new MessageAttachment(canvas.toBuffer(), 'pet.png');
 
-						await message.channel.send({ files: [attachment] }).catch(err => { console.error(err); });
+						await message.channel.send({ files: [attachment] });
 					});
 				}
 			});

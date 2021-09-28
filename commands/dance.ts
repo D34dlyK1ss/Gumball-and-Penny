@@ -1,5 +1,6 @@
 import { Message } from 'discord.js';
 import { BotClient, Cmd } from 'index';
+import text from '../src/functions/text';
 
 export const name = 'dance';
 export function execute(bot: BotClient, message: Message, command: Cmd, db: undefined, lang: Record<string, string | any>) {
@@ -7,12 +8,12 @@ export function execute(bot: BotClient, message: Message, command: Cmd, db: unde
 	const rnd = Math.floor(Math.random() * 6);
 
 	if (!user || user === message.author) {
-		message.channel.send({ content: `**${message.author.tag}** ${lang.dance.isDancing}`, files: [`img/actions/${command.name} (${rnd}).gif`] }).catch(err => { console.error(err); });
+		message.channel.send({ content: text(lang.dance.isDancing, [message.author.tag]), files: [`img/actions/${command.name} (${rnd}).gif`] });
 	}
 	else if (user === bot.user) {
-		message.channel.send({ content: `**${message.author.tag}** ${lang.dance.isDancingForUs}`, files: [`img/actions/${command.name} (${rnd}).gif`] }).catch(err => { console.error(err); });
+		message.channel.send({ content: text(lang.dance.isDancingForUs, [message.author.tag]), files: [`img/actions/${command.name} (${rnd}).gif`] });
 	}
 	else {
-		message.channel.send({ content: `**${message.author.tag}** ${lang.dance.isDancingFor} **${user.tag}**!`, files: [`img/actions/${command.name} (${rnd}).gif`] }).catch(err => { console.error(err); });
+		message.channel.send({ content: text(lang.dance.isDancingFor, [message.author.tag, user.tag]), files: [`img/actions/${command.name} (${rnd}).gif`] });
 	}
 }

@@ -1,17 +1,18 @@
 import { Message, MessageEmbed, GuildChannel } from 'discord.js';
+import text from '../src/functions/text';
 
 export const name = 'mute';
 export async function execute(bot: undefined, message: Message, command: undefined, db: undefined, lang: Record<string, string | any>, language: undefined, prefix: undefined, args: string[]) {
 	message.delete();
 
 	if (!message.member.permissions.has('MANAGE_ROLES') || !message.member.permissions.has('MANAGE_CHANNELS')) {
-		message.reply(lang.error.noPerm).catch(err => { console.error(err); });
+		message.reply(lang.error.noPerm);
 	}
 	else if (!message.guild.me.permissions.has('MANAGE_ROLES')) {
-		message.reply(lang.error.botNoManageRoles).catch(err => { console.error(err); });
+		message.reply(lang.error.botNoManageRoles);
 	}
 	else if (!message.guild.me.permissions.has('MANAGE_CHANNELS')) {
-		message.reply(lang.error.botNoManageChannels).catch(err => { console.error(err); });
+		message.reply(lang.error.botNoManageChannels);
 	}
 	else {
 		const mention = message.mentions.users.first();
@@ -25,10 +26,10 @@ export async function execute(bot: undefined, message: Message, command: undefin
 		let muteRole = message.guild.roles.cache.find(role => role.name === 'Muted');
 
 		if (!mention) {
-			message.reply(lang.error.noMention).catch(err => { console.error(err); });
+			message.reply(lang.error.noMention);
 		}
 		else if (!seconds) {
-			message.reply(lang.error.noDuration).catch(err => { console.error(err); });
+			message.reply(lang.error.noDuration);
 		}
 		else {
 			if (!muteRole) {
@@ -54,7 +55,7 @@ export async function execute(bot: undefined, message: Message, command: undefin
 			memberToMute.roles.add(muteRole).then(() => {
 				const embed = new MessageEmbed()
 					.setColor('DARK_PURPLE')
-					.setTitle(`${memberToMute.user.tag}${lang.mute.isMutedFor}${seconds}${lang.mute.seconds} 🔇`)
+					.setTitle(text(lang.mute.isMutedFor, [memberToMute.user.tag, seconds]))
 					.setThumbnail(`${memberToMute.user.displayAvatarURL()}`)
 					.setDescription(`${lang.by}${message.member.user.tag}`)
 					.addFields(

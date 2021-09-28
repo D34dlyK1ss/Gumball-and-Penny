@@ -8,12 +8,12 @@ export function execute(bot: BotClient, message: Message, command: Cmd, db: unde
 	const rnd = Math.floor(Math.random() * 6);
 
 	if (!user || user === message.author) {
-		message.channel.send({ content: text(lang.angry.gotAngry, [message.author.tag]), files: [`img/actions/${command.name} (${rnd}).gif`] }).catch(err => { console.error(err); });
+		message.channel.send({ content: text(lang.angry.gotAngry, [message.author.tag]), files: [`img/actions/${command.name} (${rnd}).gif`] });
 	}
 	else if (user === bot.user) {
-		message.channel.send({ content: text(lang.angry.gotAngryWithUs, [message.author.tag]), files: [`img/actions/${command.name} (${rnd}).gif`] }).catch(err => { console.error(err); });
+		message.channel.send({ content: text(lang.angry.gotAngryWithUs, [message.author.tag]), files: [`img/actions/${command.name} (${rnd}).gif`] });
 	}
 	else {
-		message.channel.send({ content: text(lang.angry.gotAngryWith, [message.author.tag, user.tag]), files: [`img/actions/${command.name} (${rnd}).gif`] }).catch(err => { console.error(err); });
+		message.channel.send({ content: text(lang.angry.gotAngryWith, [message.author.tag, user.tag]), files: [`img/actions/${command.name} (${rnd}).gif`] });
 	}
 }

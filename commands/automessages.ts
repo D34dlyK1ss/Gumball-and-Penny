@@ -7,7 +7,7 @@ export const name = 'automessages';
 export function execute(bot: undefined, message: Message, command: undefined, db: FirebaseFirestore.Firestore, lang: Record<string, string | any>, language: undefined, prefix: undefined, args: undefined, serverSettings: ServerSettings) {
 	if (!message.member.permissions.has('MANAGE_GUILD')) {
 		message.delete();
-		message.reply(lang.error.noPerm).catch(err => { console.error(err); });
+		message.reply(lang.error.noPerm);
 	}
 	else {
 		const ref = db.collection('definicoes').doc(message.guild.id);
@@ -22,9 +22,9 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 
 			ref.set({
 				settings: serverSettings
-			}, { merge: true }).catch(err => { console.error(err); });
+			}, { merge: true });
 
-			message.channel.send(text(lang.automessages.areNow, [toggle])).catch(err => { console.error(err); });
+			message.channel.send(text(lang.automessages.areNow, [toggle]));
 		});
 	}
 }

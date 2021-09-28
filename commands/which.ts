@@ -8,9 +8,9 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 	const last = message.member.id.slice(-1);
 
 	if (argsString === '' || !(which as any)[argsString]) {
-		message.reply(`${lang.which.noSelect}\`${prefix}help which\`${lang.forMoreInfo}`).catch(err => { console.error(err); });
+		message.reply(`${lang.which.noSelect}\`${prefix}help which\`${lang.forMoreInfo}`);
 	}
 	else {
-		message.channel.send({ content: `${(which as any)[argsString][last]}!`, files: [`img/which/${argsString} (${last}).jpg`] }).catch(err => { console.error(err); });
+		message.channel.send({ content: `${(which as any)[argsString][last]}!`, files: [`img/which/${argsString} (${last}).jpg`] });
 	}
 }

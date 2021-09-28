@@ -4,10 +4,10 @@ export const name = 'unmute';
 export async function execute(bot: undefined, message: Message, command: undefined, db: undefined, lang: Record<string, string | any>, language: undefined, prefix: undefined, args: string[]) {
 	message.delete();
 	if (!message.member.permissions.has('MANAGE_ROLES') || !message.member.permissions.has('MANAGE_CHANNELS')) {
-		message.reply(lang.error.noPerm).catch(err => { console.error(err); });
+		message.reply(lang.error.noPerm);
 	}
 	else if (!message.guild.me.permissions.has('MANAGE_ROLES')) {
-		message.reply(lang.error.botNoManageRoles).catch(err => { console.error(err); });
+		message.reply(lang.error.botNoManageRoles);
 	}
 	else {
 		const mention = message.mentions.users.first();
@@ -18,7 +18,7 @@ export async function execute(bot: undefined, message: Message, command: undefin
 		let muteRole = message.guild.roles.cache.find(role => role.name === 'Muted');
 
 		if (!mention) {
-			message.reply(lang.error.noMention).catch(err => { console.error(err); });
+			message.reply(lang.error.noMention);
 		}
 		else {
 			if (!muteRole) {
@@ -39,11 +39,11 @@ export async function execute(bot: undefined, message: Message, command: undefin
 			}
 
 			if (!memberToUnmute.roles.cache.find((role: Role) => role.name === 'Muted')) {
-				message.reply(lang.error.memberNotMuted).catch(err => { console.error(err); });
+				message.reply(lang.error.memberNotMuted);
 			}
 			else {
 				memberToUnmute.roles.remove(muteRole);
-				message.channel.send(`${memberToUnmute}${lang.unmute.isNowUnmuted}`).catch(err => { console.error(err); });
+				message.channel.send(`${memberToUnmute}${lang.unmute.isNowUnmuted}`);
 			}
 		}
 	}

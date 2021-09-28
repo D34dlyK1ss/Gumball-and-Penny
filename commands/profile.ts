@@ -5,6 +5,7 @@ import botConfig from '../botConfig.json';
 import items from '../src/data/itemlist.json';
 import titleCase from '../src/functions/titleCase';
 import convert from '../src/functions/convert';
+import text from '../src/functions/text';
 registerFont('./fonts/comic.ttf', { family: 'Comic Sans MS' });
 registerFont('./fonts/comicb.ttf', { family: 'bold Comic Sans MS' });
 registerFont('./fonts/comici.ttf', { family: 'italic Comic Sans MS' });
@@ -23,7 +24,7 @@ export function execute(bot: BotClient, message: Message, command: undefined, db
 		case 'create':
 			db.collection('perfis').doc(message.author.id).get().then(doc => {
 				if (doc.exists) {
-					message.channel.send(lang.error.hasProfileAlready).catch(err => { console.error(err); });
+					message.channel.send(lang.error.hasProfileAlready);
 				}
 				else {
 					db.collection('perfis').doc(message.author.id).set({
@@ -41,8 +42,8 @@ export function execute(bot: BotClient, message: Message, command: undefined, db
 						items: [],
 						petHuds: []
 					}).then(() => {
-						message.reply(`${lang.profile.wasCreated}\`${prefix}profile setdescription [${lang.profile.description}]\`!`);
-					}).catch(err => { console.error(err); });
+						message.reply(text(lang.profile.wasCreated, [prefix, lang.profile.description]));
+					});
 				}
 			});
 			break;
@@ -56,14 +57,14 @@ export function execute(bot: BotClient, message: Message, command: undefined, db
 					}
 				}
 				else if (argsString.length > nicknameMax) {
-					message.reply(`${lang.profile.nicknameMaxIs}${nicknameMax}!\n${lang.profile.nicknameHas}${argsString.length}.`);
+					message.reply(text(lang.profile.nicknameMaxIs, [nicknameMax, argsString.length]));
 				}
 				else {
 					db.collection('perfis').doc(message.author.id).update({
 						nickname: argsString
 					}).then(() => {
-						message.reply(`${lang.profile.nicknameChangedTo}**${argsString}**!`);
-					}).catch(err => { console.error(err); });
+						message.reply(text(lang.profile.nicknameChangedTo, [argsString]));
+					});
 				}
 			});
 			break;
@@ -76,14 +77,14 @@ export function execute(bot: BotClient, message: Message, command: undefined, db
 					}
 				}
 				else if (argsString.length > descMax) {
-					message.reply(`${lang.profile.descMaxIs}${descMax}!\n${lang.profile.descHas}${argsString.length}.`);
+					message.reply(text(lang.profile.decMaxIs, [descMax, argsString.length]));
 				}
 				else {
 					db.collection('perfis').doc(message.author.id).update({
 						description: argsString
 					}).then(() => {
-						message.reply(`${lang.profile.descChangedTo}_**${argsString}**_`);
-					}).catch(err => { console.error(err); });
+						message.reply(text(lang.profile.descChangedTo, [argsString]));
+					});
 				}
 			});
 			break;
@@ -111,8 +112,8 @@ export function execute(bot: BotClient, message: Message, command: undefined, db
 							db.collection('perfis').doc(message.author.id).update({
 								hud: newHud
 							}).then(() => {
-								message.reply(`${lang.profile.hudChangedTo}**${titleCase(argsString)}**`);
-							}).catch(err => { console.error(err); });
+								message.reply(text(lang.profile.hudChangedTo, [titleCase(argsString)]));
+							});
 						}
 					});
 				}
@@ -122,16 +123,16 @@ export function execute(bot: BotClient, message: Message, command: undefined, db
 			refP.get().then(async doc => {
 				if (!doc.exists) {
 					if (user === message.author) {
-						message.reply(`${lang.error.noProfile}\`${prefix}profile create\`!`).catch(err => { console.error(err); });
+						message.reply(`${lang.error.noProfile}\`${prefix}profile create\`!`);
 					}
 					else if (user === bot.user) {
-						message.reply(lang.botNoProfile).catch(err => { console.error(err); });
+						message.reply(lang.botNoProfile);
 					}
 					else if (user.bot) {
-						message.reply(lang.botsNoProfile).catch(err => { console.error(err); });
+						message.reply(lang.botsNoProfile);
 					}
 					else {
-						message.reply(`**${user.tag}**${lang.error.userNoProfile}`).catch(err => { console.error(err); });
+						message.reply(`**${user.tag}**${lang.error.userNoProfile}`);
 					}
 				}
 				else {
@@ -226,7 +227,7 @@ export function execute(bot: BotClient, message: Message, command: undefined, db
 
 					const attachment = new MessageAttachment(canvas.toBuffer(), 'profile.png');
 
-					message.channel.send({ files: [attachment] }).catch(err => { console.error(err); });
+					message.channel.send({ files: [attachment] });
 				}
 			});
 			break;
