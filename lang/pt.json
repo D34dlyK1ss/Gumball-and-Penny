@@ -276,7 +276,7 @@
 		"wrong": "Errado!",
 		"noCorrectAnswer": "Sem resposta correta!",
 		"ended": "O quiz acabou!",
-		"points": "<@$0$> - $1$ pontos",
+		"points": "\n<@$0$> - $1$ pontos",
 		"noOneScored": "Ninguém pontoou!"
 	},
 
