@@ -40,6 +40,8 @@ async function giveVIP(db: FirebaseFirestore.Firestore, message: Message, args: 
 				});
 			}
 		});
+
+		return 0;
 	}
 }
 
