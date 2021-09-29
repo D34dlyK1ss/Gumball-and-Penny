@@ -36,10 +36,8 @@
 	"membersServerInfo": "Members",
 	"creation": "Creation",
 	"owner": "Owner",
-	"created": "Created ",
 	"status": "Status",
 	"mention": "Mention",
-	"joined": "Joined",
 	"roles": "Roles",
 	"ago": " ",
 	"botNoProfile": "We don't have a profile!",
@@ -50,7 +48,7 @@
 	"nameLicense": "Name License",
 	"page": "Page",
 	"toChangePage": "To change page use ",
-	"forMoreInfo": " for more information.",
+	"forMoreInfo": "for more information.",
 	"betAtLeast": "You have to bet at least ¤",
 	"betAtMost": "You can't bet over ¤",
 	"lost": "You lost **¤$0$**!",
@@ -318,7 +316,9 @@
 			"us-east": "US East",
 			"us-south": "US South",
 			"us-west": "US West"
-		}
+		},
+
+		"created": "Created $0$ ago ($1$)"
 	},
 
 	"setlanguage": {
@@ -339,23 +339,25 @@
 		"boughtPet": "You bought 1 **$0$**! To give it a name use `$1$pet setnickname [$2$]`",
 		"hero": "Hero",
 		"villain": "Villain",
-		"toBuyOr": "Use `$0$shop buy $1$ [$2$]` to buy or `$3$shop view$4$ [$5$]` to see.",
+		"toBuyHud": "Use `$0$shop buy hud [$1$]` to buy or `$2$shop view hud [$3$]` to see.",
+		"toBuyPetHud": "Use `$0$shop buy pethud [$1$]` to buy or `$2$shop view pethud [$3$]` to see.",
 		"hudName": "HUD Name",
 		"petHudName": "Pet HUD name",
 		"animalName": "Animal Name",
 		"itemName": "Item Name",
-		"toBuy": "Use `$0$shop buy $1$ [$2$]` to buy.",
+		"toBuyPet": "Use `$0$shop buy pet [$1$]` to buy.",
+		"toBuyItem": "Use `$0$shop buy item [$1$]` to buy.",
 		"exited": "You exited the store!"
 	},
 
 	"slap": {
-		"slappedSelf": "slapped themselves?",
-		"slappedUs": "slapped us! 😠",
-		"slapped": "slapped"
+		"slappedSelf": "**$0$** slapped themselves?",
+		"slappedUs": "**$0$** slapped us! 😠",
+		"slapped": "**$0$** slapped **$1$**!"
 	},
 
 	"unmute": {
-		"isNowUnmuted": " is now unmuted!"
+		"isNowUnmuted": "**$0$** is now unmuted!"
 	},
 
 	"userinfo": {
@@ -366,11 +368,12 @@
 			"offline": "Offline"
 		},
 
-		"joined": "Joined "
+		"joined": "Joined $0$ ago ($1$)",
+		"created": "Created $0$ ago ($1$)"
 	},
 
 	"which": {
-		"noSelect": "You have to select an available anime! Use "
+		"noSelect": "You have to select an available anime! Use `$0$help which` $1$"
 	},
 
 

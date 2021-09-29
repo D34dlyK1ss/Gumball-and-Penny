@@ -1,4 +1,5 @@
 import { GuildChannel, Message, Role } from 'discord.js';
+import text from '../src/functions/text';
 
 export const name = 'unmute';
 export async function execute(bot: undefined, message: Message, command: undefined, db: undefined, lang: Record<string, string | any>, language: undefined, prefix: undefined, args: string[]) {
@@ -43,7 +44,7 @@ export async function execute(bot: undefined, message: Message, command: undefin
 			}
 			else {
 				memberToUnmute.roles.remove(muteRole);
-				message.channel.send(`${memberToUnmute}${lang.unmute.isNowUnmuted}`);
+				message.channel.send(text(lang.unmute.isNowUnmuted, [memberToUnmute.user.tag]));
 			}
 		}
 	}

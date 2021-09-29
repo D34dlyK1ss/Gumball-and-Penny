@@ -1,5 +1,6 @@
 import { ButtonInteraction, MessageEmbed, MessageActionRow, MessageButton } from 'discord.js';
 import items from '../data/itemlist.json';
+import text from './text';
 
 export function createShopPage(userId: string, lang:Record<string, any>, prefix: string, embedName: string) {
 	let embedToExport: MessageEmbed;
@@ -99,7 +100,7 @@ export function createShopPage(userId: string, lang:Record<string, any>, prefix:
 		case 'shophudColorsEmbed0':
 			embedToExport = new MessageEmbed(mainEmbed)
 				.setTitle(`${lang.awesomeStore} - HUDs (${lang.colors})`)
-				.setDescription(`\`${prefix}shop buy hud [${lang.shop.hudName}]\`${lang.shop.toBuyOr}\`${prefix}shop view hud [${lang.shop.hudName}]\`${lang.shop.toSee}`)
+				.setDescription(text(lang.shop.toBuyHud, [prefix, lang.shop.hudName, prefix, lang.shop.hudName]))
 				.setFooter(`${lang.page} 1/1`)
 				.spliceFields(0, mainEmbed.fields.length, [
 					{ name: 'Black', value: `¤${items.huds.colorPrice}`, inline: true },
@@ -128,7 +129,7 @@ export function createShopPage(userId: string, lang:Record<string, any>, prefix:
 		case 'shophudGamesEmbed0':
 			embedToExport = new MessageEmbed(mainEmbed)
 				.setTitle(`${lang.awesomeStore} - HUDs (${lang.games})`)
-				.setDescription(`\`${prefix}shop buy hud [${lang.shop.hudName}]\`${lang.shop.toBuyOr}\`${prefix}shop view hud [${lang.shop.hudName}]\`${lang.shop.toSee}`)
+				.setDescription(text(lang.shop.toBuyHud, [prefix, lang.shop.hudName, prefix, lang.shop.hudName]))
 				.setFooter(`${lang.page} 1/4`)
 				.spliceFields(0, mainEmbed.fields.length, [
 					{ name: 'Among Us', value: `\n¤${items.huds.price}`, inline: true },
@@ -166,7 +167,7 @@ export function createShopPage(userId: string, lang:Record<string, any>, prefix:
 		case 'shophudGamesEmbed1':
 			embedToExport = new MessageEmbed(mainEmbed)
 				.setTitle(`${lang.awesomeStore} - HUDs (${lang.games})`)
-				.setDescription(`\`${prefix}shop buy hud [${lang.shop.hudName}]\`${lang.shop.toBuyOr}\`${prefix}shop view hud [${lang.shop.hudName}]\`${lang.shop.toSee}`)
+				.setDescription(text(lang.shop.toBuyHud, [prefix, lang.shop.hudName, prefix, lang.shop.hudName]))
 				.setFooter(`${lang.page} 2/4`)
 				.spliceFields(0, mainEmbed.fields.length, [
 					{ name: 'Hollow Knight', value: `Hollow Knight\n¤${items.huds.price}`, inline: true },
@@ -203,7 +204,7 @@ export function createShopPage(userId: string, lang:Record<string, any>, prefix:
 		case 'shophudGamesEmbed2':
 			embedToExport = new MessageEmbed(mainEmbed)
 				.setTitle(`${lang.awesomeStore} - HUDs (${lang.games})`)
-				.setDescription(`\`${prefix}shop buy hud [${lang.shop.hudName}]\`${lang.shop.toBuyOr}\`${prefix}shop view hud [${lang.shop.hudName}]\`${lang.shop.toSee}`)
+				.setDescription(text(lang.shop.toBuyHud, [prefix, lang.shop.hudName, prefix, lang.shop.hudName]))
 				.setFooter(`${lang.page} 3/4`)
 				.spliceFields(0, mainEmbed.fields.length, [
 					{ name: 'Nightmare Foxy', value: `Five Nights at Freddy's\n¤${items.huds.price}`, inline: true },
@@ -240,7 +241,7 @@ export function createShopPage(userId: string, lang:Record<string, any>, prefix:
 		case 'shophudGamesEmbed3':
 			embedToExport = new MessageEmbed(mainEmbed)
 				.setTitle(`${lang.awesomeStore} - HUDs (${lang.games})`)
-				.setDescription(`\`${prefix}shop buy hud [${lang.shop.hudName}]\`${lang.shop.toBuyOr}\`${prefix}shop view hud [${lang.shop.hudName}]\`${lang.shop.toSee}`)
+				.setDescription(text(lang.shop.toBuyHud, [prefix, lang.shop.hudName, prefix, lang.shop.hudName]))
 				.setFooter(`${lang.page} 4/4`)
 				.spliceFields(0, mainEmbed.fields.length, [
 					{ name: 'Sub-Zero', value: `Mortal Kombat\n¤${items.huds.price}`, inline: true },
@@ -276,7 +277,7 @@ export function createShopPage(userId: string, lang:Record<string, any>, prefix:
 		case 'shophudAnimeEmbed0':
 			embedToExport = new MessageEmbed(mainEmbed)
 				.setTitle(`${lang.awesomeStore} - HUDs (Anime)`)
-				.setDescription(`\`${prefix}shop buy hud [${lang.shop.hudName}]\`${lang.shop.toBuyOr}\`${prefix}shop view hud [${lang.shop.hudName}]\`${lang.shop.toSee}`)
+				.setDescription(text(lang.shop.toBuyHud, [prefix, lang.shop.hudName, prefix, lang.shop.hudName]))
 				.setFooter(`${lang.page} 1/2`)
 				.spliceFields(0, mainEmbed.fields.length, [
 					{ name: 'Giorno', value: `Jojo's Bizarre Adventure\n¤${items.huds.price}`, inline: true },
@@ -313,7 +314,7 @@ export function createShopPage(userId: string, lang:Record<string, any>, prefix:
 		case 'shophudAnimeEmbed1':
 			embedToExport = new MessageEmbed(mainEmbed)
 				.setTitle(`${lang.awesomeStore} - HUDs (Anime)`)
-				.setDescription(`\`${prefix}shop buy hud [${lang.shop.hudName}]\`${lang.shop.toBuyOr}\`${prefix}shop view hud [${lang.shop.hudName}]\`${lang.shop.toSee}`)
+				.setDescription(text(lang.shop.toBuyHud, [prefix, lang.shop.hudName, prefix, lang.shop.hudName]))
 				.setFooter(`${lang.page} 2/2`)
 				.spliceFields(0, mainEmbed.fields.length, [
 					{ name: 'Morioh Gang', value: `Jojo's Bizarre Adventure Part 4\n¤${items.huds.price}`, inline: true },
@@ -350,7 +351,7 @@ export function createShopPage(userId: string, lang:Record<string, any>, prefix:
 		case 'shophudCartoonEmbed0':
 			embedToExport = new MessageEmbed(mainEmbed)
 				.setTitle(`${lang.awesomeStore} - HUDs (Cartoon)`)
-				.setDescription(`\`${prefix}shop buy hud [${lang.shop.hudName}]\`${lang.shop.toBuyOr}\`${prefix}shop view hud [${lang.shop.hudName}]\`${lang.shop.toSee}`)
+				.setDescription(text(lang.shop.toBuyHud, [prefix, lang.shop.hudName, prefix, lang.shop.hudName]))
 				.setFooter(`${lang.page} 1/1`)
 				.spliceFields(0, mainEmbed.fields.length, [
 					{ name: 'Courage', value: `Courage the Cowardly Dog\n¤${items.huds.price}`, inline: true },
@@ -378,7 +379,7 @@ export function createShopPage(userId: string, lang:Record<string, any>, prefix:
 		case 'shophudMarvelEmbed0':
 			embedToExport = new MessageEmbed(mainEmbed)
 				.setTitle(`${lang.awesomeStore} - HUDs (Marvel)`)
-				.setDescription(`\`${prefix}shop buy hud [${lang.shop.hudName}]\`${lang.shop.toBuyOr}\`${prefix}shop view hud [${lang.shop.hudName}]\`${lang.shop.toSee}`)
+				.setDescription(text(lang.shop.toBuyHud, [prefix, lang.shop.hudName, prefix, lang.shop.hudName]))
 				.setFooter(`${lang.page} 1/1`)
 				.spliceFields(0, mainEmbed.fields.length, [
 					{ name: 'Captain America', value: `${lang.shop.hero}\n¤${items.huds.price}`, inline: true },
@@ -405,7 +406,7 @@ export function createShopPage(userId: string, lang:Record<string, any>, prefix:
 		case 'shophudDCEmbed0':
 			embedToExport = new MessageEmbed(mainEmbed)
 				.setTitle(`${lang.awesomeStore} - HUDs (DC)`)
-				.setDescription(`\`${prefix}shop buy hud [${lang.shop.hudName}]\`${lang.shop.toBuyOr}\`${prefix}shop view hud [${lang.shop.hudName}]\`${lang.shop.toSee}`)
+				.setDescription(text(lang.shop.toBuyHud, [prefix, lang.shop.hudName, prefix, lang.shop.hudName]))
 				.setFooter(`${lang.page} 1/1`)
 				.spliceFields(0, mainEmbed.fields.length, [
 					{ name: 'Batman', value: `${lang.shop.hero}\n¤${items.huds.price}`, inline: true },
@@ -428,7 +429,7 @@ export function createShopPage(userId: string, lang:Record<string, any>, prefix:
 		case 'shophudVocaloidsEmbed0':
 			embedToExport = new MessageEmbed(mainEmbed)
 				.setTitle(`${lang.awesomeStore} - HUDs (Vocaloids)`)
-				.setDescription(`\`${prefix}shop buy hud [${lang.shop.hudName}]\`${lang.shop.toBuyOr}\`${prefix}shop view hud [${lang.shop.hudName}]\`${lang.shop.toSee}`)
+				.setDescription(text(lang.shop.toBuyHud, [prefix, lang.shop.hudName, prefix, lang.shop.hudName]))
 				.setFooter(`${lang.page} 1/1`)
 				.spliceFields(0, mainEmbed.fields.length, [
 					{ name: 'Miku Hatsune', value: `¤${items.huds.price}`, inline: true },
@@ -479,7 +480,7 @@ export function createShopPage(userId: string, lang:Record<string, any>, prefix:
 		case 'shoppetHudColorsEmbed0':
 			embedToExport = new MessageEmbed(mainEmbed)
 				.setTitle(`${lang.awesomeStore} - PetHUDs (${lang.colors})`)
-				.setDescription(`\`${prefix}shop buy pethud [${lang.shop.petHUDName}]\`${lang.shop.toBuyOr}\`${prefix}shop view pethud [${lang.shop.petHUDName}]\`${lang.shop.toSee}`)
+				.setDescription(text(lang.shop.toBuyPetHud, [prefix, lang.shop.petHUDName, prefix, lang.shop.petHUDName]))
 				.setFooter(`${lang.page} 1/1`)
 				.spliceFields(0, mainEmbed.fields.length, [
 					{ name: 'Black', value: `¤${items.petHuds.price}`, inline: true },
@@ -508,7 +509,7 @@ export function createShopPage(userId: string, lang:Record<string, any>, prefix:
 		case 'shoppetHudVIPEmbed0':
 			embedToExport = new MessageEmbed(mainEmbed)
 				.setTitle(`${lang.awesomeStore} - PetHUDs (VIP)`)
-				.setDescription(`\`${prefix}shop buy pethud [${lang.shop.petHUDName}]\`${lang.shop.toBuyOr}\`${prefix}shop view pethud [${lang.shop.petHUDName}]\`${lang.shop.toSee}`)
+				.setDescription(text(lang.shop.toBuyPetHud, [prefix, lang.shop.petHUDName, prefix, lang.shop.petHUDName]))
 				.setFooter(`${lang.page} 1/3`)
 				.spliceFields(0, mainEmbed.fields.length, [
 					{ name: 'Among Us A', value: `¤${items.petHuds.vipPrice}`, inline: true },
@@ -546,7 +547,7 @@ export function createShopPage(userId: string, lang:Record<string, any>, prefix:
 		case 'shoppetHudVIPEmbed1':
 			embedToExport = new MessageEmbed(mainEmbed)
 				.setTitle(`${lang.awesomeStore} - PetHUDs (VIP)`)
-				.setDescription(`\`${prefix}shop buy pethud [${lang.shop.petHUDName}]\`${lang.shop.toBuyOr}\`${prefix}shop view pethud [${lang.shop.petHUDName}]\`${lang.shop.toSee}`)
+				.setDescription(text(lang.shop.toBuyPetHud, [prefix, lang.shop.petHUDName, prefix, lang.shop.petHUDName]))
 				.setFooter(`${lang.page} 2/3`)
 				.spliceFields(0, mainEmbed.fields.length, [
 					{ name: 'Gumball', value: `The Amazing World of Gumball\n¤${items.petHuds.vipPrice}`, inline: true },
@@ -583,7 +584,7 @@ export function createShopPage(userId: string, lang:Record<string, any>, prefix:
 		case 'shoppetHudVIPEmbed2':
 			embedToExport = new MessageEmbed(mainEmbed)
 				.setTitle(`${lang.awesomeStore} - PetHUDs (VIP)`)
-				.setDescription(`\`${prefix}shop buy pethud [${lang.shop.petHUDName}]\`${lang.shop.toBuyOr}\`${prefix}shop view pethud [${lang.shop.petHUDName}]\`${lang.shop.toSee}`)
+				.setDescription(text(lang.shop.toBuyPetHud, [prefix, lang.shop.petHUDName, prefix, lang.shop.petHUDName]))
 				.setFooter(`${lang.page} 3/3`)
 				.spliceFields(0, mainEmbed.fields.length, [
 					{ name: 'Snoopy', value: `Peanuts\n¤${items.petHuds.vipPrice}`, inline: true },
@@ -647,7 +648,7 @@ export function createShopPage(userId: string, lang:Record<string, any>, prefix:
 		case 'shoppetsCommonEmbed0':
 			embedToExport = new MessageEmbed(mainEmbed)
 				.setTitle(`${lang.awesomeStore} - Pets (${lang.common})`)
-				.setDescription(`\`${prefix}shop buy pet [${lang.shop.animalName}]\`${lang.shop.toBuy}`)
+				.setDescription(text(lang.shop.toBuyPet, [prefix, lang.shop.animalName]))
 				.setFooter(`${lang.page} 1/1`)
 				.spliceFields(0, mainEmbed.fields.length, [
 					{ name: 'Ant', value: `¤${items.pets.ant.price}`, inline: true },
@@ -677,7 +678,7 @@ export function createShopPage(userId: string, lang:Record<string, any>, prefix:
 		case 'shoppetsVIPEmbed0':
 			embedToExport = new MessageEmbed(mainEmbed)
 				.setTitle(`${lang.awesomeStore} - Pets (VIP)`)
-				.setDescription(`\`${prefix}shop buy pet [${lang.shop.animalName}]\`${lang.shop.toBuy}`)
+				.setDescription(text(lang.shop.toBuyPet, [prefix, lang.shop.animalName]))
 				.setFooter(`${lang.page} 1/1`)
 				.spliceFields(0, mainEmbed.fields.length, [
 					{ name: 'Akamaru', value: `Naruto\n¤${items.pets.akamaru.price}`, inline: true },
@@ -697,7 +698,7 @@ export function createShopPage(userId: string, lang:Record<string, any>, prefix:
 		case 'shopitemsEmbed0':
 			embedToExport = new MessageEmbed(mainEmbed)
 				.setTitle(`${lang.awesomeStore} - ${lang.items}`)
-				.setDescription(`\`${prefix}shop buy item [${lang.shop.itemName}]\`${lang.shop.toBuy}`)
+				.setDescription(text(lang.shop.toBuyItem, [prefix, lang.shop.itemName]))
 				.setFooter(`${lang.page} 1/1`)
 				.spliceFields(0, mainEmbed.fields.length, [
 					{ name: 'Name License', value: `${lang.nameLicense}\n¤${items.items.name_license.price}`, inline: true }

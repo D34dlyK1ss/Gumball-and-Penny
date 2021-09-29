@@ -36,10 +36,8 @@
 	"membersServerInfo": "Membros",
 	"creation": "Criação",
 	"owner": "Proprietário",
-	"created": "Criado a ",
 	"status": "Status",
 	"mention": "Menção",
-	"joined": "Entrada",
 	"roles": "Cargos",
 	"ago": " atrás ",
 	"botNoProfile": "Nós não temos um perfil!",
@@ -50,7 +48,7 @@
 	"nameLicense": "Licença de Nome",
 	"page": "Página",
 	"toChangePage": "Para mudar de página usa ",
-	"forMoreInfo": " para mais informação.",
+	"forMoreInfo": "para mais informação.",
 	"betAtLeast": "Tens de apostar no mínimo ¤",
 	"betAtMost": "Não podes apostar mais que ¤",
 	"lost": "Perdeste **¤$0$**!",
@@ -318,7 +316,9 @@
 			"us-east": "EUA Este",
 			"us-south": "EUA Sul",
 			"us-west": "EUA Oeste"
-		}
+		},
+
+		"created": "Criado $0$ atrás ($1$)"
 	},
 
 	"setlanguage": {
@@ -339,23 +339,25 @@
 		"boughtPet": "Compraste 1 **$0$*! Para lhe dares um nome usa `$1$pet setnickname [$2$]`",
 		"hero": "Herói",
 		"villain": "Vilão",
-		"toBuyOr": "Usa `$0$shop buy $1$ [$2$]` para comprar ou `$3$shop view$4$ [$5$]` para ver.",
+		"toBuyHud": "Usa `$0$shop buy hud [$1$]` para comprar ou `$2$shop view hud [$3$]` para ver.",
+		"toBuyPetHud": "Usa `$0$shop buy pethud [$1$]` para comprar ou `$2$shop view pethud [$3$]` para ver.",
 		"hudName": "Nome do HUD",
 		"petHudName": "Nome do Pet HUD",
 		"animalName": "Nome do Animal",
 		"itemName": "Nome do Item",
-		"toBuy": "Usa `$0$shop buy $1$ [$2$]` para comprar.",
+		"toBuyPet": "Usa `$0$shop buy pet [$1$]` para comprar.",
+		"toBuyItem": "Usa `$0$shop buy item [$1$]` para comprar.",
 		"exited": "Saíste da loja!"
 	},
 
 	"slap": {
-		"slappedSelf": "deu uma chapada a si mesmo?",
-		"slappedUs": "deu-nos uma chapada! 😠",
-		"slapped": "deu uma chapada a"
+		"slappedSelf": "**$0$** deu uma chapada a si mesmo?",
+		"slappedUs": "**$0$** deu-nos uma chapada! 😠",
+		"slapped": "**$0$** deu uma chapada a **$1$**!"
 	},
 
 	"unmute": {
-		"isNowUnmuted": " agora não está silenciado!"
+		"isNowUnmuted": "**$0$** deixou de estar silenciado!"
 	},
 
 	"userinfo": {
@@ -366,11 +368,12 @@
 			"offline": "Offline"
 		},
 
-		"joined": "Entrou "
+		"joined": "Entrou $0$ atrás ($1$)",
+		"created": "Criado $0$ atrás ($1$)"
 	},
 
 	"which": {
-		"noSelect": "Tens de selecionar um anime disponível! Usa "
+		"noSelect": "Tens de selecionar um anime disponível! Usa `$0$help which` $1$"
 	},
 
 

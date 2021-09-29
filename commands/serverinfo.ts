@@ -1,27 +1,29 @@
 import { Message, MessageEmbed } from 'discord.js';
 import moment from 'moment';
+import text from '../src/functions/text';
 
 export const name = 'serverinfo';
 export const aliases = ['si'];
 export function execute(bot: undefined, message: Message, command: undefined, db: undefined, lang: Record<string, string | any>, language: string) {
-	const server = message.guild;
-	const createdDate = moment(server.createdAt).locale(language);
+	const createdDate = moment(message.guild.createdAt).locale(language);
+	const createdAgo = createdDate.from(Date.now());
+
 	const embed = new MessageEmbed()
 		.setColor('DARK_PURPLE')
-		.setThumbnail(`${server.iconURL()}`)
+		.setThumbnail(`${message.guild.iconURL()}`)
 		.addFields(
-			{ name: `${lang.id}`, value: `${server.id}` },
-			{ name: `${lang.verificationLevel}`, value: `${lang.serverinfo.verificationLevel[server.verificationLevel]}`, inline: true },
-			/*{ name: `${lang.region}`, value: `${lang.serverinfo.region[server.region]}`, inline: true },*/
-			{ name: `${lang.membersServerInfo}`, value: `${server.memberCount}`, inline: true },
-			{ name: `${lang.creation}`, value: `${lang.created}${createdDate.format('LLL')}` },
-			{ name: `${lang.owner}`, value: `<@${server.ownerId}>`, inline: true }
+			{ name: `${lang.id}`, value: `${message.guild.id}` },
+			{ name: `${lang.verificationLevel}`, value: `${lang.serverinfo.verificationLevel[message.guild.verificationLevel]}`, inline: true },
+			/*{ name: `${lang.region}`, value: `${lang.serverinfo.region[message.guild.region]}`, inline: true },*/
+			{ name: `${lang.membersServerInfo}`, value: `${message.guild.memberCount}`, inline: true },
+			{ name: `${lang.creation}`, value: text(lang.serverinfo.created, [createdAgo, createdDate.format('LLLL')]) },
+			{ name: `${lang.owner}`, value: `<@${message.guild.ownerId}>`, inline: true }
 		);
 
-	if (!server.iconURL()) {
+	if (!message.guild.iconURL()) {
 		const lastEmbed = embed;
 		const newEmbed = new MessageEmbed(lastEmbed)
-			.setAuthor(`${server.name}`)
+			.setAuthor(`${message.guild.name}`)
 			.setThumbnail('');
 		message.channel.send({ embeds: [newEmbed] });
 	}

@@ -1,5 +1,6 @@
 import { Message } from 'discord.js';
 import { BotClient, Cmd } from 'index';
+import text from '../src/functions/text';
 
 export const name = 'slap';
 export function execute(bot: BotClient, message: Message, command: Cmd, db: undefined, lang: Record<string, string | any>) {
@@ -10,12 +11,12 @@ export function execute(bot: BotClient, message: Message, command: Cmd, db: unde
 		return;
 	}
 	else if (user === message.author) {
-		message.channel.send({ content: `**${message.author.tag}** ${lang.slap.slappedSelf}`, files: [`img/actions/${command.name} (${rnd}).gif`] });
+		message.channel.send({ content: text(lang.slap.slappedSelf, [message.author.tag]), files: [`img/actions/${command.name} (${rnd}).gif`] });
 	}
 	else if (user === bot.user) {
-		message.channel.send({ content: `**${message.author.tag}** ${lang.slap.slappedUs}`, files: [`img/actions/${command.name} (${rnd}).gif`] });
+		message.channel.send({ content: text(lang.slap.slappedUs, [message.author.tag]), files: [`img/actions/${command.name} (${rnd}).gif`] });
 	}
 	else {
-		message.channel.send({ content: `**${message.author.tag}** ${lang.slap.slapped} **${user.tag}**!`, files: [`img/actions/${command.name} (${rnd}).gif`] });
+		message.channel.send({ content: text(lang.slap.slapped, [message.author.tag, user.tag]), files: [`img/actions/${command.name} (${rnd}).gif`] });
 	}
 }
