@@ -1,11 +1,11 @@
 {
-	"prefixMsg": "Our prefix for this server is `$0$`",
+	"prefixMsg": "Our prefix for this server is `$0$`.",
 	"notIndicated": "_Not indicated_",
 	"by": "by",
 	"reason": "Reason:",
 	"botsNoProfile": "Bots have no profiles!",
 	"help": "Help",
-	"helpDescription": "We are Gumball and Penny and we aim to make any server we're in in a fun place!\nWhen in doubt on any command use `$0$help [$1$]`",
+	"helpDescription": "We're Gumball and Penny and we aim to make any server we're at in a fun place!\nWhen in doubt on any command use `$0$help [$1$]`.",
 	"commandName": "command name",
 	"actions": "Actions",
 	"casino": "Casino",
@@ -47,8 +47,8 @@
 	"page": "Page",
 	"toChangePage": "To change page use ",
 	"forMoreInfo": "for more information.",
-	"betAtLeast": "You have to bet at least ¤",
-	"betAtMost": "You can't bet over ¤",
+	"betAtLeast": "You have to bet at least ¤$0$!",
+	"betAtMost": "You can't bet over ¤$0$!",
 	"lost": "You lost **¤$0$**!",
 	"won": "You won **¤$0$**!",
 	"and": "and",
@@ -97,8 +97,8 @@
 		"noNameLicense": "You don't have a **Name License**!",
 		"noName": "You didn't choose any name!",
 		"petAlreadyHasName": "Your pet has that name already!",
-		"noPetHUDChosen": "You didn't choose a Pet HUD!",
-		"noHavePetHUD": "You don't have that Pet HUD!",
+		"noPetHudChosen": "You didn't choose a Pet HUD!",
+		"noHavePetHud": "You don't have that Pet HUD!",
 		"noPetToAdoption": "You have no pet to send to adoption!",
 		"userHasNoPet": " hasn't bought a pet yet!",
 		"notANumber": "That's not a number!",
@@ -109,10 +109,10 @@
 		"noHUDChosen": "You didn't choose a HUD!",
 		"noHaveHUD": "You don't have that HUD!",
 		"noHUD": "That HUD doesn't exist!",
-		"noPetHUD": "That Pet HUD doesn't exist!",
+		"noPetHud": "That Pet HUD doesn't exist!",
 		"alreadyHasHUD": "You already have this HUD!",
-		"alreadyHasPetHUD": "You already have this Pet HUD!",
-		"noVIPForPetHUD": "You need to be VIP to buy this Pet HUD!",
+		"alreadyHasPetHud": "You already have this Pet HUD!",
+		"noVIPForPetHud": "You need to be VIP to buy this Pet HUD!",
 		"alreadyHasPet": "You already have a pet! If you want another one you have to give yours to adoption using `$0$pet sendtoadoption`.",
 		"noItem": "That item doesn't exist!",
 		"noVIPForPet": "You need to be VIP to buy this pet!",
@@ -165,8 +165,8 @@
 	},
 
 	"daily": {
-		"againIn": "You can get money again in **¤$0$**",
-		"received": "You received your **¤$0$** of today! To get more ¤150 (¤300 for VIPs) use `$1$vote`"
+		"againIn": "You can get money again in **$0$**",
+		"received": "You received your **¤$0$** of today! To get more ¤150 (¤300 for VIPs) use `$1$vote`."
 	},
 
 	"dance": {
@@ -178,7 +178,7 @@
 	"give": {
 		"self": "Seriously you just tried to give yourself money?",
 		"thanksBut": "Thanks, but you'll need that money more than us! 😁",
-		"youGave": "You gave **¤$0$** to **$1$**"
+		"youGave": "You gave **¤$0$** to **$1$**!"
 	},
 
 	"happy": {
@@ -200,7 +200,7 @@
 		"rock": "Rock",
 		"paper": "Paper",
 		"scissors": "Scissors",
-		"threw": "**Gumball** threw **$1$** and **Penny** threw **$3$**",
+		"threw": "**Gumball** threw **$0$** and **Penny** threw **$1$**.",
 		"draw": "It's a draw! You have your money refunded."
 	},
 
@@ -227,7 +227,7 @@
 	},
 
 	"members": {
-		"mesage": "**$0$** has **$1$** members!"
+		"message": "**$0$** has **$1$** members!"
 	},
 
 	"mute": {
@@ -243,7 +243,7 @@
 	"pet": {
 		"nameMaxIs": "The name's maximum character limit is **$0$**. That name has **$0$**.",
 		"nameChangedTo": "You pet's name was changed to **$0$**",
-		"petHUDChangedTo": "Your Pet HUD was changed to **$0$**",
+		"petHudChangedTo": "Your Pet HUD was changed to **$0$**",
 		"wasSentToAdoption": "**$0$** was sent to adoption!",
 		"botNoPet": "We don't have a pet! Yet...",
 		"botsNoPets": "Bots have no pets!"
@@ -330,15 +330,15 @@
 	},
 
 	"setprefix": {
-		"isNow": "Our prefix for this server is now `$0$`"
+		"isNow": "Our prefix for this server is now `$0$`."
 	},
 
 	"shop": {
 		"welcome": "Welcome to the Awesome Store!\nHere you can buy some stuff with the money you have saved so far.\nUse the buttons below to navigate through the store!",
-		"boughtHUD": "You bought the HUD **$0$**! To equip it use `**$0$**profile sethud [$1$]`",
-		"boughtPetHUD": "You bought the Pet HUD **$0$**! To equip it use `**$0$**profile sethud [$1$]`",
+		"boughtHUD": "You bought the HUD **$0$**! To equip it use `**$0$**profile sethud [$1$]`.",
+		"boughtPetHud": "You bought the Pet HUD **$0$**! To equip it use `**$0$**profile sethud [$1$]`.",
 		"boughtItem": "You bought 1 **$0$**!",
-		"boughtPet": "You bought 1 **$0$**! To give it a name use `$1$pet setnickname [$2$]`",
+		"boughtPet": "You bought 1 **$0$**! To give it a name use `$1$pet setnickname [$2$]`.",
 		"hero": "Hero",
 		"villain": "Villain",
 		"toBuyHud": "Use `$0$shop buy hud [$1$]` to buy or `$2$shop view hud [$3$]` to see.",
@@ -538,7 +538,7 @@
 
 		"pet": {
 			"category": "Economy and Profile",
-			"description": "Check your pet or someone's!\nAvailable options: `setname`, `sethud`, `sendtoadoption`",
+			"description": "Check your pet or someone's!\nAvailable options: `setname`, `sethud`, `sendtoadoption`.",
 			"usage": "pet [optional - option | @member]"
 		},
 
@@ -550,7 +550,7 @@
 
 		"profile": {
 			"category": "Economy and Profile",
-			"description": "Check your profile or someone's!\nAvailable options: `create`, `sethud`, `setnickname`, `setdescription`",
+			"description": "Check your profile or someone's!\nAvailable options: `create`, `sethud`, `setnickname`, `setdescription`.",
 			"usage": "profile [optional - option | @member]"
 		},
 
@@ -604,7 +604,7 @@
 
 		"shop": {
 			"category": "Economy and Profile",
-			"description": "Go shopping in the Awesome Store!\nAvailable options: `buy`, `view`",
+			"description": "Go shopping in the Awesome Store!\nAvailable options: `buy`, `view`.",
 			"usage": "shop"
 		},
 		
@@ -640,7 +640,7 @@
 		
 		"which": {
 			"category": "Fun",
-			"description": "Which anime character are you?\nAvailable anime: `akame ga kill`, `code geass`, `death note`, `higurashi` , `jojo`, `kakegurui`, `mirai nikki`, `noragami`, `one punch man`, `psycho-pass`, `steins;gate`",
+			"description": "Which anime character are you?\nAvailable anime: `akame ga kill`, `code geass`, `death note`, `higurashi` , `jojo`, `kakegurui`, `mirai nikki`, `noragami`, `one punch man`, `psycho-pass`, `steins;gate`.",
 			"usage": "which [anime]"
 		}
 	},

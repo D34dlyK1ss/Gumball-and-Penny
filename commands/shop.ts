@@ -44,7 +44,7 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 			return message.channel.send({ files: [attachment] });
 		}
 		catch {
-			return message.reply(lang.error.noPetHUD);
+			return message.reply(lang.error.noPetHud);
 		}
 	}
 
@@ -125,26 +125,26 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 							colors.includes(petHudName) ? petHudCost = items.petHuds.price : petHudCost = items.petHuds.vipPrice;
 							
 							if (!(items as any).petHuds[petHudName]) {
-								message.reply(lang.error.noPetHUD);
+								message.reply(lang.error.noPetHud);
 							}
 							else if (userVIP === null && (items as any).petHuds[petHudName].vip) {
-								message.reply(lang.error.noVIPForPetHUD);
+								message.reply(lang.error.noVIPForPetHud);
 							}
 							else {
 								refI.get().then(docI => {
-									const iPetHUDs = docI.get('petHuds');
+									const iPetHuds = docI.get('petHuds');
 
-									if (iPetHUDs.includes(petHudName)) {
-										message.reply(lang.error.alreadyHasPetHUD);
+									if (iPetHuds.includes(petHudName)) {
+										message.reply(lang.error.alreadyHasPetHud);
 									}
 									else if (petHudCost > bal) {
 										message.reply(lang.error.noMoney);
 									}
 									else {
-										iPetHUDs.push(petHudName);
+										iPetHuds.push(petHudName);
 
 										refI.update({
-											petHuds: iPetHUDs
+											petHuds: iPetHuds
 										}).then(() => {
 											refP.update({
 												balance: bal - petHudCost
@@ -152,7 +152,7 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 
 											petHudName = petHudName.toLowerCase().replace(/[_]/g, ' ');
 
-											message.reply(getText(lang.shop.boughtPetHUD, [titleCase(petHudName), prefix, lang.shop.petHudName]));
+											message.reply(getText(lang.shop.boughtPetHud, [titleCase(petHudName), prefix, lang.shop.petHudName]));
 										});
 									}
 								});

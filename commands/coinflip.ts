@@ -39,25 +39,27 @@ export function execute(bot: undefined, message: Message, command: Cmd, db: Fire
 				let res: string;
 
 				message.channel.send({ files: ['img/coinflip/animation.gif'] }).then(msg => { setTimeout(() => { msg.delete(); }, 5000); }).then(() => {
-					value === 0 ? res = 'heads' : res = 'tails';
+					setTimeout(() => {
+						value === 0 ? res = 'heads' : res = 'tails';
 
-					message.channel.send({ content: `${titleCase(lang.coinflip[res])}!`, files: [`img/coinflip/${res}.gif`] });
+						message.channel.send({ files: [`img/coinflip/${res}.gif`] });
 
-					if (res !== guess) {
-						ref.update({
-							balance: bal - money
-						}).then(() => {
-							message.reply(getText(lang.lost, [money]));
-						});
-					}
-					else if (res === guess) {
-						const won = money * 1.5;
-						ref.update({
-							balance: bal + won
-						}).then(() => {
-							message.reply(getText(lang.won, [won]));
-						});
-					}
+						if (res !== guess) {
+							ref.update({
+								balance: bal - money
+							}).then(() => {
+								message.reply(`${titleCase(lang.coinflip[res])}! ${getText(lang.lost, [money])}`);
+							});
+						}
+						else if (res === guess) {
+							const won = money * 1.5;
+							ref.update({
+								balance: bal + won
+							}).then(() => {
+								message.reply(getText(lang.won, [won]));
+							});
+						}
+					}, 2000);
 				});
 			}
 		}

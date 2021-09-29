@@ -1,11 +1,11 @@
 {
-	"prefixMsg": "O nosso prefixo para este servidor é `$0$`",
+	"prefixMsg": "O nosso prefixo para este servidor é `$0$`.",
 	"notIndicated": "_Não indicada_",
 	"by": "por",
 	"reason": "Razão:",
 	"botsNoProfile": "Os bots não têm perfis!",
 	"help": "Ajuda",
-	"helpDescription": "Nós somos o Gumball e a Penny e temos como objetivo tornar qualquer servidor onde estamos num lugar divertido!\nEm caso de dúvida nalgum comando usa `$0$help [$1$]`",
+	"helpDescription": "Nós somos o Gumball e a Penny e temos como objetivo tornar qualquer servidor onde estamos num lugar divertido!\nEm caso de dúvida nalgum comando usa `$0$help [$1$]`.",
 	"commandName": "nome do comando",
 	"actions": "Ações",
 	"casino": "Casino",
@@ -47,8 +47,8 @@
 	"page": "Página",
 	"toChangePage": "Para mudar de página usa ",
 	"forMoreInfo": "para mais informação.",
-	"betAtLeast": "Tens de apostar no mínimo ¤",
-	"betAtMost": "Não podes apostar mais que ¤",
+	"betAtLeast": "Tens de apostar no mínimo ¤$0$!",
+	"betAtMost": "Não podes apostar mais que ¤$0$!",
 	"lost": "Perdeste **¤$0$**!",
 	"won": "Ganhaste **¤$0$**!",
 	"and": "e",
@@ -97,8 +97,8 @@
 		"noNameLicense": "Não tens uma **Licença de Nome**!",
 		"noName": "Não escolheste nome nenhum!",
 		"petAlreadyHasName": "O teu pet já tem esse nome!",
-		"noPetHUDChosen": "Não escolheste um Pet HUD!",
-		"noHavePetHUD": "Não tens esse Pet HUD!",
+		"noPetHudChosen": "Não escolheste um Pet HUD!",
+		"noHavePetHud": "Não tens esse Pet HUD!",
 		"noPetToAdoption": "Não tens pet nenhum para dar para adoção!",
 		"userHasNoPet": " ainda não comprou um pet!",
 		"notANumber": "Isso não é um número!",
@@ -109,10 +109,10 @@
 		"noHUDChosen": "Não escolheste um HUD!",
 		"noHaveHUD": "Não tens esse HUD!",
 		"noHUD": "Esse HUD não existe!",
-		"noPetHUD": "Esse Pet HUD não existe!",
+		"noPetHud": "Esse Pet HUD não existe!",
 		"alreadyHasHUD": "Já tens este HUD!",
-		"alreadyHasPetHUD": "Já tens este Pet HUD!",
-		"noVIPForPetHUD": "Precisas de ser VIP para comprares este Pet HUD!",
+		"alreadyHasPetHud": "Já tens este Pet HUD!",
+		"noVIPForPetHud": "Precisas de ser VIP para comprares este Pet HUD!",
 		"alreadyHasPet": "Já tens um pet! Se quiseres outro tens de dar o que tens para adoção usando `$0$pet sendtoadoption`.",
 		"noItem": "Esse item não existe!",
 		"noVIPForPet": "Precisas de ser VIP para comprares este pet!",
@@ -126,7 +126,7 @@
 
 	"levelUp": {
 		"congrats": "🎉 Parabéns **$0$** subiste para o nível **$1$**! 🆙",
-		"congratsReward": "🎉 Parabéns **$0$** subiste para o nível **$1$** e recebeste **$2$**! 🆙💰"
+		"congratsReward": "🎉 Parabéns **$0$** subiste para o nível **$1$** e recebeste **¤$2$**! 🆙💰"
 	},
 
 	"angry": {
@@ -144,7 +144,7 @@
 	},
 
 	"ban": {
-		"wasBanned": "**¤$0$** foi banido! 🔨"
+		"wasBanned": "**$0$** foi banido! 🔨"
 	},
 
 	"clear": {
@@ -165,8 +165,8 @@
 	},
 
 	"daily": {
-		"againIn": "Poderás receber dinheiro outra vez em **¤$0$**",
-		"received": "Recebeste os teus **¤$0$** de hoje! Para receberes mais ¤150 (¤300 para VIPs) usa `$1$vote`"
+		"againIn": "Poderás receber dinheiro outra vez em **$0$**",
+		"received": "Recebeste os teus **¤$0$** de hoje! Para receberes mais ¤150 (¤300 para VIPs) usa `$1$vote`."
 	},
 
 	"dance": {
@@ -178,7 +178,7 @@
 	"give": {
 		"self": "A sério que acabaste de tentar dar dinheiro a ti mesmo?",
 		"thanksBut": "Obrigado, mas vais precisar mais desse dinheiro do que nós! 😁",
-		"youGave": "Deste **¤$0$** a **$1$**"
+		"youGave": "Deste **¤$0$** a **$1$**!"
 	},
 
 	"happy": {
@@ -200,7 +200,7 @@
 		"rock": "Pedra",
 		"paper": "Papel",
 		"scissors": "Tesoura",
-		"threw": "**Gumball** jogou **$1$** e **Penny** jogou **$3$**",
+		"threw": "**Gumball** jogou **$0$** e **Penny** jogou **$1$**.",
 		"draw": "É um empate! Tens o teu dinheiro reembolsado."
 	},
 
@@ -227,7 +227,7 @@
 	},
 
 	"members": {
-		"mesage": "**$0$** tem **$1$** membros!"
+		"message": "**$0$** tem **$1$** membros!"
 	},
 
 	"mute": {
@@ -243,7 +243,7 @@
 	"pet": {
 		"nameMaxIs": "O limite máximo de caracteres para o nome é **$0$**. Esse nome tem **$1$**.",
 		"nameChangedTo": "O nome do teu pet foi alterado para **$0$**.",
-		"petHUDChangedTo": "O teu Pet HUD foi alterado para **$0$**.",
+		"petHudChangedTo": "O teu Pet HUD foi alterado para **$0$**.",
 		"wasSentToAdoption": "**$0$** foi para adoção!",
 		"botNoPet": "Nós não temos um pet! Ainda...",
 		"botsNoPets": "Os bots não têm pets!"
@@ -330,15 +330,15 @@
 	},
 
 	"setprefix": {
-		"isNow": "O nosso prefixo para este servidor agora é `$0$`"
+		"isNow": "O nosso prefixo para este servidor agora é `$0$`."
 	},
 
 	"shop": {
 		"welcome": "Bem vindo à Loja Incrível!\nAqui poderás comprar algumas coisas com o dinheiro que acumulaste até agora.\nUsa os botões abaixo para navegar pela loja!",
-		"boughtHUD": "Compraste o HUD **$0$**! Para o equipares usa `**$1$**profile sethud [$2$]`",
-		"boughtPetHUD": "Compraste o Pet HUD **$0$**! Para o equipares usa `**$1$**pet sethud [$2$]`",
+		"boughtHUD": "Compraste o HUD **$0$**! Para o equipares usa `**$1$**profile sethud [$2$]`.",
+		"boughtPetHud": "Compraste o Pet HUD **$0$**! Para o equipares usa `**$1$**pet sethud [$2$]`.",
 		"boughtItem": "Compraste 1 **$0$**",
-		"boughtPet": "Compraste 1 **$0$*! Para lhe dares um nome usa `$1$pet setnickname [$2$]`",
+		"boughtPet": "Compraste 1 **$0$*! Para lhe dares um nome usa `$1$pet setnickname [$2$]`.",
 		"hero": "Herói",
 		"villain": "Vilão",
 		"toBuyHud": "Usa `$0$shop buy hud [$1$]` para comprar ou `$2$shop view hud [$3$]` para ver.",
@@ -538,7 +538,7 @@
 
 		"pet": {
 			"category": "Economia e Perfil",
-			"description": "Vê o teu pet ou o de alguém!\nOpções disponíveis: `setname`, `sethud`, `sendtoadoption`",
+			"description": "Vê o teu pet ou o de alguém!\nOpções disponíveis: `setname`, `sethud`, `sendtoadoption`.",
 			"usage": "pet [opcional - opção | @membro]"
 		},
 
@@ -550,7 +550,7 @@
 
 		"profile": {
 			"category": "Economia e Perfil",
-			"description": "Vê o teu perfil ou o de alguém!\nOpções disponíveis: `create`, `sethud`, `setnickname`, `setdescription`",
+			"description": "Vê o teu perfil ou o de alguém!\nOpções disponíveis: `create`, `sethud`, `setnickname`, `setdescription`.",
 			"usage": "profile [opcional - opção | @membro]"
 		},
 
@@ -604,7 +604,7 @@
 
 		"shop": {
 			"category": "Economia e Perfil",
-			"description": "Faz compras na Loja Incrível!\nOpções disponíveis: `buy`, `view`",
+			"description": "Faz compras na Loja Incrível!\nOpções disponíveis: `buy`, `view`.",
 			"usage": "shop"
 		},
 		
@@ -640,7 +640,7 @@
 		
 		"which": {
 			"category": "Diversão",
-			"description": "Que personagem de anime és?\nAnimes disponíveis: `akame ga kill`, `code geass`, `death note`, `higurashi` , `jojo`, `kakegurui`, `mirai nikki`, `noragami`, `one punch man`, `psycho-pass`, `steins;gate`",
+			"description": "Que personagem de anime és?\nAnimes disponíveis: `akame ga kill`, `code geass`, `death note`, `higurashi` , `jojo`, `kakegurui`, `mirai nikki`, `noragami`, `one punch man`, `psycho-pass`, `steins;gate`.",
 			"usage": "which [anime]"
 		}
 	},

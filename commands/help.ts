@@ -10,12 +10,12 @@ export function execute(bot: BotClient, message: Message, command: Cmd, db: unde
 		.setColor('DARK_PURPLE')
 		.setTitle(lang.help)
 		.setThumbnail(`${bot.user.displayAvatarURL()}`)
-		.setDescription(getText(lang.botDescription, [prefix, lang.commandName]))
+		.setDescription(getText(lang.helpDescription, [prefix, lang.commandName]))
 		.addFields(
 			{ name: `🎭 ${lang.actions}`, value: '`angry`, `cry`, `dance`, `happy`, `hug`, `kiss`, `laugh`, `pat`, `run`, `slap`', inline: true },
 			{ name: `🎰 ${lang.casino}`, value: '`coinflip`, `jankenpon`', inline: true },
 			{ name: `😁 ${lang.fun}`, value: '`fact`, `match`, `quiz`, `random`, `which`', inline: true },
-			{ name: `💰 ${lang.economyAndProfile}`, value: '`balance`, `daily`, `give`, `inventory`, `pet`, `profile`, `rank`, `shop`', inline: true },
+			{ name: `💰 ${lang.economyAndProfile}`, value: '`balance`, `daily`, `give`, `inventory`, `pet`, `profile`, `ranking`, `shop`', inline: true },
 			{ name: `⚠️ ${lang.moderation}`, value: '`ban`, `clear`, `kick`, `mute`, `unmute`', inline: true },
 			{ name: `🌐 ${lang.server}`, value: '`members`, `serverinfo`, `userinfo`', inline: true },
 			{ name: `🛠️ ${lang.utility}`, value: '`avatar`, `invite`, `ping`, `vip`, `vote`', inline: true },

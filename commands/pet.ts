@@ -87,16 +87,16 @@ export function execute(bot: BotClient, message: Message, command: undefined, db
 						newHud = newHud.concat(argsString.slice(0)).toLowerCase().replace(/[ ]/g, '_');
 
 						if (!newHud || newHud === '') {
-							message.reply(lang.error.noPetHUDChosen);
+							message.reply(lang.error.noPetHudChosen);
 						}
 						else if (!petHuds.includes(`${newHud}`) && message.author.id !== botConfig.botOwnerID && !botConfig.collaboratorIDs.includes(message.author.id)) {
-							message.reply(lang.error.noHavePetHUD);
+							message.reply(lang.error.noHavePetHud);
 						}
 						else {
 							db.collection('pet').doc(message.author.id).update({
 								hud: newHud
 							}).then(() => {
-								message.reply(getText(lang.pet.petHUDChangedTo, [titleCase(argsString)]));
+								message.reply(getText(lang.pet.petHudChangedTo, [titleCase(argsString)]));
 							});
 						}
 					});
@@ -115,8 +115,8 @@ export function execute(bot: BotClient, message: Message, command: undefined, db
 					const pet = docP.get('pet');
 					db.collection('pet').doc(message.author.id).delete().then(() => {
 						refI.get().then(docI => {
-							const iPetHUDs = docI.get('petHuds');
-							if (iPetHUDs.includes(pet)) iPetHUDs.splice(iPetHUDs.findIndex((petHud: string) => petHud === pet), 1);
+							const iPetHuds = docI.get('petHuds');
+							if (iPetHuds.includes(pet)) iPetHuds.splice(iPetHuds.findIndex((petHud: string) => petHud === pet), 1);
 						});
 						if (petName === 'N/A') petName = `${docP.get('species').toLowerCase()}`;
 						message.reply(getText(lang.pet.wasSentToAdoption, [petName]));

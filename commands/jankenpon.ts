@@ -54,41 +54,42 @@ export function execute(bot: undefined, message: Message, command: Cmd, db: Fire
 
 				const attachment2 = new MessageAttachment(canvas.toBuffer(), 'profile.png');
 
-				message.channel.send({ files: [attachment] }).then(msg => { setTimeout(() => {
-					msg.delete().then(()=> {
-						if (g === 0 && p === 2) finalRes = 'gumball';
-						else if (p === 0 && g === 2) finalRes = 'penny';
-						else if (g > p) finalRes = 'gumball';
-						else if (p > g) finalRes = 'penny';
-						else finalRes = 0;
+				message.channel.send({ files: [attachment] }).then(msg => {
+					setTimeout(() => {
+						msg.delete().then(()=> {
+							if (g === 0 && p === 2) finalRes = 'gumball';
+							else if (p === 0 && g === 2) finalRes = 'penny';
+							else if (g > p) finalRes = 'gumball';
+							else if (p > g) finalRes = 'penny';
+							else finalRes = 0;
 
-						resG = array[g];
-						resP = array[p];
+							resG = array[g];
+							resP = array[p];
 
-						if (finalRes === 0) {
-							message.channel.send({ files: [attachment2] }).then(() => {
-								message.reply(`${getText(lang.jankenpon.threw, [resG, resP])} ${lang.draw}`);
-							});
-						}
-						else if (finalRes !== guess) {
-							ref.update({
-								balance: bal - money
-							}).then(async () => {
-								await message.channel.send({ files: [attachment2] });
-								message.reply(`${getText(lang.jankenpon.threw, [resG, resP])} ${getText(lang.lost, [money])}`);
-							});
-						}
-						else if (finalRes === guess) {
-							const won = money * 1.5;
-							ref.update({
-								balance: bal + won
-							}).then(async () => {
-								await message.channel.send({ files: [attachment2] });
-								message.reply(`${getText(lang.jankenpon.threw, [resG, resP])} ${getText(lang.won, [won])}`);
-							});
-						}
-					});
-				}, 3000); });
+							if (finalRes === 0) {
+								message.channel.send({ files: [attachment2] }).then(() => {
+									message.reply(`${getText(lang.jankenpon.threw, [resG, resP])} ${lang.jankenpon.draw}`);
+								});
+							}
+							else if (finalRes !== guess) {
+								ref.update({
+									balance: bal - money
+								}).then(async () => {
+									await message.channel.send({ files: [attachment2] });
+									message.reply(`${getText(lang.jankenpon.threw, [resG, resP])} ${getText(lang.lost, [money])}`);
+								});
+							}
+							else if (finalRes === guess) {
+								const won = money * 1.5;
+								ref.update({
+									balance: bal + won
+								}).then(async () => {
+									await message.channel.send({ files: [attachment2] });
+									message.reply(`${getText(lang.jankenpon.threw, [resG, resP])} ${getText(lang.won, [won])}`);
+								});
+							}
+						});
+					}, 2000); });
 			}
 		}
 	});
