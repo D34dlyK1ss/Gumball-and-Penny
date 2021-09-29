@@ -1,7 +1,7 @@
 import { Message } from 'discord.js';
 import * as botConfig from '../botConfig.json';
 import { ServerSettings } from 'index';
-import text from '../src/functions/text';
+import getText from '../src/functions/getText';
 
 export const name = 'automessages';
 export function execute(bot: undefined, message: Message, command: undefined, db: FirebaseFirestore.Firestore, lang: Record<string, string | any>, language: undefined, prefix: undefined, args: undefined, serverSettings: ServerSettings) {
@@ -18,13 +18,13 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 			let toggle = '';
 
 			serverSettings.automessages = !onOff;
-			!onOff === true ? toggle = `${lang.enabled}` : toggle = `${lang.disabled}`;
+			!onOff === true ? toggle = lang.enabled : toggle = lang.disabled;
 
 			ref.set({
 				settings: serverSettings
 			}, { merge: true });
 
-			message.channel.send(text(lang.automessages.areNow, [toggle]));
+			message.channel.send(getText(lang.automessages.areNow, [toggle]));
 		});
 	}
 }

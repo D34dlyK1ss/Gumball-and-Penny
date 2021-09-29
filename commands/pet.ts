@@ -4,7 +4,7 @@ import { registerFont, createCanvas, loadImage } from 'canvas';
 import botConfig from '../botConfig.json';
 import titleCase from '../src/functions/titleCase';
 import items from '../src/data/itemlist.json';
-import text from '../src/functions/text';
+import getText from '../src/functions/getText';
 registerFont('./fonts/comic.ttf', { family: 'Comic Sans MS' });
 registerFont('./fonts/comicb.ttf', { family: 'bold Comic Sans MS' });
 registerFont('./fonts/comici.ttf', { family: 'italic Comic Sans MS' });
@@ -54,7 +54,7 @@ export function execute(bot: BotClient, message: Message, command: undefined, db
 							message.reply(lang.error.petAlreadyHasName);
 						}
 						else if (argsString.length > max) {
-							message.reply(text(lang.pet.nameMaxIs, [max, argsString.length]));
+							message.reply(getText(lang.pet.nameMaxIs, [max, argsString.length]));
 						}
 						else {
 							invItems.splice(invItems.findIndex((item: string) => item === 'name_license'), 1);
@@ -65,7 +65,7 @@ export function execute(bot: BotClient, message: Message, command: undefined, db
 							db.collection('pet').doc(message.author.id).update({
 								name: newName
 							}).then(() => {
-								message.reply(text(lang.pet.nameChangedTo, [newName]));
+								message.reply(getText(lang.pet.nameChangedTo, [newName]));
 							});
 						}
 					});
@@ -89,14 +89,14 @@ export function execute(bot: BotClient, message: Message, command: undefined, db
 						if (!newHud || newHud === '') {
 							message.reply(lang.error.noPetHUDChosen);
 						}
-						else if (!petHuds.includes(`${newHud}`) && message.author.id !== botConfig.botOwner && !botConfig.collaborators.includes(message.author.id)) {
+						else if (!petHuds.includes(`${newHud}`) && message.author.id !== botConfig.botOwnerID && !botConfig.collaboratorIDs.includes(message.author.id)) {
 							message.reply(lang.error.noHavePetHUD);
 						}
 						else {
 							db.collection('pet').doc(message.author.id).update({
 								hud: newHud
 							}).then(() => {
-								message.reply(text(lang.pet.petHUDChangedTo, [titleCase(argsString)]));
+								message.reply(getText(lang.pet.petHUDChangedTo, [titleCase(argsString)]));
 							});
 						}
 					});
@@ -119,7 +119,7 @@ export function execute(bot: BotClient, message: Message, command: undefined, db
 							if (iPetHUDs.includes(pet)) iPetHUDs.splice(iPetHUDs.findIndex((petHud: string) => petHud === pet), 1);
 						});
 						if (petName === 'N/A') petName = `${docP.get('species').toLowerCase()}`;
-						message.reply(text(lang.pet.wasSentToAdoption, [petName]));
+						message.reply(getText(lang.pet.wasSentToAdoption, [petName]));
 					});
 				}
 			});
@@ -149,7 +149,7 @@ export function execute(bot: BotClient, message: Message, command: undefined, db
 					const petHud = doc.get('hud');
 
 					const canvas = createCanvas(617, 327);
-					const ctx = canvas.getContext('2d');
+					const ctx = canvas.getCongetText('2d');
 
 					const bg = await loadImage(`img/pet/hud_pet (${petHud}).png`);
 					ctx.drawImage(bg, 0, 0, canvas.width, canvas.height);
@@ -173,10 +173,10 @@ export function execute(bot: BotClient, message: Message, command: undefined, db
 					ctx.fillStyle = 'white';
 
 					const extra = 40;
-					ctx.fillText(`${lang.name}: ${petName}`, 330, 105 + extra);
-					ctx.fillText(`${lang.species}: ${lang.pets.species[petSpecies]}`, 330, 135 + extra);
-					ctx.fillText(`${lang.gender}: ${petGender}`, 330, 165 + extra);
-					ctx.fillText(`${lang.nature}: ${lang.pets.natures[petNature]}`, 330, 195 + extra);
+					ctx.fillgetText(`${lang.name}: ${petName}`, 330, 105 + extra);
+					ctx.fillgetText(`${lang.species}: ${lang.pets.species[petSpecies]}`, 330, 135 + extra);
+					ctx.fillgetText(`${lang.gender}: ${petGender}`, 330, 165 + extra);
+					ctx.fillgetText(`${lang.nature}: ${lang.pets.natures[petNature]}`, 330, 195 + extra);
 
 					ctx.restore();
 					ctx.closePath();

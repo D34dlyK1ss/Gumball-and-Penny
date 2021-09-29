@@ -1,6 +1,6 @@
 import { Message } from 'discord.js';
 import ms from 'ms';
-import text from '../src/functions/text';
+import getText from '../src/functions/getText';
 
 export const name = 'daily';
 export const aliases = ['d'];
@@ -14,10 +14,10 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 		const lastDaily: number = doc.get('lastDaily');
 		const nextDaily = lastDaily + 86400000;
 		if (!doc.exists) {
-			message.reply(`${lang.error.noProfile}\`${prefix}profile create\`!`);
+			message.reply(getText(lang.error.noProfile, [prefix]));
 		}
 		else if (today < nextDaily) {
-			message.reply(`${lang.daily.againIn}${ms(nextDaily - today)}.`);
+			message.reply(getText(lang.daily.againIn, [ms(nextDaily - today)]));
 		}
 		else {
 			const bal: number = doc.get('balance');
@@ -30,7 +30,7 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 					balance: bal + daily,
 					lastDaily: today
 				}).then(() => {
-					message.reply(text(lang.daily.received, [daily, prefix]));
+					message.reply(getText(lang.daily.received, [daily, prefix]));
 				}).catch((err: any) => { console.error(err); });
 			}
 		}

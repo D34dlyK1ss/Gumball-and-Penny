@@ -1,6 +1,6 @@
 import { Message, MessageEmbed } from 'discord.js';
 import moment from 'moment';
-import text from '../src/functions/text';
+import getText from '../src/functions/getText';
 
 export const name = 'serverinfo';
 export const aliases = ['si'];
@@ -16,7 +16,7 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 			{ name: `${lang.verificationLevel}`, value: `${lang.serverinfo.verificationLevel[message.guild.verificationLevel]}`, inline: true },
 			/*{ name: `${lang.region}`, value: `${lang.serverinfo.region[message.guild.region]}`, inline: true },*/
 			{ name: `${lang.membersServerInfo}`, value: `${message.guild.memberCount}`, inline: true },
-			{ name: `${lang.creation}`, value: text(lang.serverinfo.created, [createdAgo, createdDate.format('LLLL')]) },
+			{ name: `${lang.creation}`, value: getText(lang.serverinfo.created, [createdAgo, createdDate.format('LLLL')]) },
 			{ name: `${lang.owner}`, value: `<@${message.guild.ownerId}>`, inline: true }
 		);
 

@@ -1,4 +1,4 @@
-function text(string: string, variables: (string|number)[]) {
+function getText(string: string, variables: (string|number)[]) {
 	const toInsert = variables.map(String);
 
 	for( let i = 0; i < toInsert.length; i++ ){
@@ -8,4 +8,4 @@ function text(string: string, variables: (string|number)[]) {
 	return string;
 }
 
-export default text;
+export default getText;

@@ -59,6 +59,7 @@ admin.initializeApp({
 const db = admin.firestore();
 
 // Funções úteis
+import getText from './src/functions/getText';
 import giveVIP from './src/functions/giveVIP';
 import { shopButtonHandler } from './src/functions/shopHandler';
 import { quizButtonHandler } from './src/functions/quizHandler';
@@ -96,7 +97,7 @@ const englishChannels = ['809182965607039007', '787661396652589077', '7876740333
 
 // Ações para quando o bot receber uma mensagem
 bot.on('messageCreate', async message => {
-	if (message.channel.id === '810529155955032115' && message.content === `${botConfig.settings.prefix}activate` && message.member.id === botConfig.botOwner) {
+	if (message.channel.id === '810529155955032115' && message.content === `${botConfig.settings.prefix}activate` && message.member.id === botConfig.botOwnerID) {
 		giveVIP(db, message, undefined);
 	}
 	else if (message.channel.id === '891365431879827527') {
@@ -148,7 +149,7 @@ bot.on('messageCreate', async message => {
 		}
 	}
 	else if (message.content === `<@${bot.user.id}>`) {
-		message.channel.send(`${lang.prefixMsg} \`${prefix}\``);
+		message.channel.send(getText(lang.prefixMsg, [prefix]));
 	}
 });
 

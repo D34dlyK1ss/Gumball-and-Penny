@@ -1,5 +1,6 @@
 import { Message, MessageEmbed } from 'discord.js';
 import { BotClient, Cmd } from 'index';
+import getText from '../src/functions/getText';
 
 export const name = 'help';
 export const aliases = ['h'];
@@ -9,7 +10,7 @@ export function execute(bot: BotClient, message: Message, command: Cmd, db: unde
 		.setColor('DARK_PURPLE')
 		.setTitle(lang.help)
 		.setThumbnail(`${bot.user.displayAvatarURL()}`)
-		.setDescription(`${lang.botDescription}\`${prefix}help [${lang.commandName}]\``)
+		.setDescription(getText(lang.botDescription, [prefix, lang.commandName]))
 		.addFields(
 			{ name: `🎭 ${lang.actions}`, value: '`angry`, `cry`, `dance`, `happy`, `hug`, `kiss`, `laugh`, `pat`, `run`, `slap`', inline: true },
 			{ name: `🎰 ${lang.casino}`, value: '`coinflip`, `jankenpon`', inline: true },

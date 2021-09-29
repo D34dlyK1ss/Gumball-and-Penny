@@ -1,11 +1,11 @@
 {
-	"prefixMsg": "O nosso prefixo para este servidor é ",
+	"prefixMsg": "O nosso prefixo para este servidor é `$0$`",
 	"notIndicated": "_Não indicada_",
-	"by": "por ",
+	"by": "por",
 	"reason": "Razão:",
 	"botsNoProfile": "Os bots não têm perfis!",
 	"help": "Ajuda",
-	"botDescription": "Nós somos o Gumball e a Penny e temos como objetivo tornar qualquer servidor em que estamos num lugar divertido!\nEm caso de dúvida nalgum comando usa ",
+	"helpDescription": "Nós somos o Gumball e a Penny e temos como objetivo tornar qualquer servidor onde estamos num lugar divertido!\nEm caso de dúvida nalgum comando usa `$0$help [$1$]`",
 	"commandName": "nome do comando",
 	"actions": "Ações",
 	"casino": "Casino",
@@ -24,9 +24,7 @@
 	"howToUse": "Como usar",
 	"description": "Descrição",
 	"aliases": "Abreviações",
-	"inviteUsToYourServer": "Convida-nos para o teu servidor!",
-	"has": " tem ",
-	"members": " membros",
+	"inviteUsToYourServer": "Convida-nos para o teu servidor! 😁",
 	"species": "Espécie",
 	"gender": "Género",
 	"nature": "Natureza",
@@ -75,18 +73,18 @@
 
 	"error": {
 		"cmd": "Ocorreu um erro ao tentar executar esse comando!",
-		"noProfile": "Ainda não criaste um perfil! Para criares um perfil usa ",
-		"userNoProfile": " ainda não criou um perfil!",
+		"noProfile": "Ainda não criaste um perfil! Para criares um perfil usa `$0$profile create`.",
+		"userHasNoProfile": "**$0$** ainda não criou um perfil!",
 		"noMention": "Tens de mencionar alguém!",
 		"noPerm": "Não tens permissão para usar este comando! 💢",
 		"botNoBan": "Nós não temos permissão para banir membros!",
 		"botNoManageMsgs": "Nós não temos permissão para gerir mensagens!",
 		"noNumberToDelete": "Tens de definir o número de mensagens que queres apagar!",
-		"wrongSyntax": "Sintaxe errada! Como usar: ",
+		"wrongSyntax": "Sintaxe errada! Como usar: `$0$$1$`.",
 		"noAdd": "Não podes ganhar mais dinheiro! 😧",
 		"noMoney": "Não tens dinheiro suficiente!",
 		"noMessage": "Não escreveste mensagem nenhuma!",
-		"noGive": "Não podes dar dinheiro a ",
+		"cantGive": "Não podes dar dinheiro a **$0$**! 😧",
 		"noCommand": "Esse comando não existe!",
 		"noInventory": "Não tens nenhum inventário!",
 		"botNoKick": "Nós não temos permissão para expulsar membros!",
@@ -102,7 +100,7 @@
 		"noPetHUDChosen": "Não escolheste um Pet HUD!",
 		"noHavePetHUD": "Não tens esse Pet HUD!",
 		"noPetToAdoption": "Não tens pet nenhum para dar para adoção!",
-		"userNoPet": " ainda não comprou um pet!",
+		"userHasNoPet": " ainda não comprou um pet!",
 		"notANumber": "Isso não é um número!",
 		"noPrefixChosen": "Precisamos de saber qual é o prefixo desejado!",
 		"noLinks": "Não podemos escrever links!",
@@ -115,7 +113,7 @@
 		"alreadyHasHUD": "Já tens este HUD!",
 		"alreadyHasPetHUD": "Já tens este Pet HUD!",
 		"noVIPForPetHUD": "Precisas de ser VIP para comprares este Pet HUD!",
-		"alreadyHasPet": "Já tens um pet! Se quiseres outro tens de dar o que tens para adoção usando ",
+		"alreadyHasPet": "Já tens um pet! Se quiseres outro tens de dar o que tens para adoção usando `$0$pet sendtoadoption`.",
 		"noItem": "Esse item não existe!",
 		"noVIPForPet": "Precisas de ser VIP para comprares este pet!",
 		"samePrefix": "Esse prefixo é igual ao que usamos!",
@@ -179,7 +177,7 @@
 
 	"give": {
 		"self": "A sério que acabaste de tentar dar dinheiro a ti mesmo?",
-		"thanksBut": "Obrigado, mas vais precisar mais desse dinheiro do que nós!",
+		"thanksBut": "Obrigado, mas vais precisar mais desse dinheiro do que nós! 😁",
 		"youGave": "Deste **¤$0$** a **$1$**"
 	},
 
@@ -226,6 +224,10 @@
 	"match": {
 		"alreadyAPair": "Hey, nós já somos um par! 😠",
 		"youAre": "És **$0$%** compatível com **$1$**!"
+	},
+
+	"members": {
+		"mesage": "**$0$** tem **$1$** membros!"
 	},
 
 	"mute": {

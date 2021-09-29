@@ -1,7 +1,7 @@
 import { Message } from 'discord.js';
 import * as botConfig from '../botConfig.json';
 import { ServerSettings } from 'index';
-import text from '../src/functions/text';
+import getText from '../src/functions/getText';
 
 export const name = 'setprefix';
 export function execute(bot: undefined, message: Message, command: undefined, db: FirebaseFirestore.Firestore, lang: Record<string, string | any>, language: undefined, prefix: undefined, args: string[], serverSettings: ServerSettings) {
@@ -34,7 +34,7 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 					settings: { 'prefix': newPrefix }
 				}, { merge: true });
 			}
-			message.channel.send(text(lang.setprefix.isNow, [newPrefix]));
+			message.channel.send(getText(lang.setprefix.isNow, [newPrefix]));
 		});
 	}
 }

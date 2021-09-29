@@ -1,5 +1,5 @@
 import { Message, MessageEmbed } from 'discord.js';
-import text from '../src/functions/text';
+import getText from '../src/functions/getText';
 
 export const name = 'kick';
 export async function execute(bot: undefined, message: Message, command: undefined, db: undefined, lang: Record<string, string | any>, language: undefined, prefix: undefined, args: string[]) {
@@ -25,9 +25,9 @@ export async function execute(bot: undefined, message: Message, command: undefin
 			member.kick(reason).then(() => {
 				const embed = new MessageEmbed()
 					.setColor('DARK_PURPLE')
-					.setTitle(text(lang.kick.wasKicked, [member.user.tag]))
+					.setTitle(getText(lang.kick.wasKicked, [member.user.tag]))
 					.setThumbnail(`${member.user.displayAvatarURL()}`)
-					.setDescription(`${lang.by}${message.member.user.tag}`)
+					.setDescription(`${lang.by} ${message.member.user.tag}`)
 					.addFields(
 						{ name: `${lang.reason}`, value: `${reason}` }
 					);

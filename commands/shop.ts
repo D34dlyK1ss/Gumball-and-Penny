@@ -5,14 +5,14 @@ import * as natures from '../src/data/natures.json';
 import slugify from '../src/functions/slugify';
 import titleCase from '../src/functions/titleCase';
 import { createShopPage } from '../src/functions/shopHandler';
-import text from '../src/functions/text';
+import getText from '../src/functions/getText';
 
 export const name = 'shop';
 export const naliases = ['s'];
 export function execute(bot: undefined, message: Message, command: undefined, db: FirebaseFirestore.Firestore, lang: Record<string, any>, language: undefined, prefix: string, args: string[]) {
 	async function sendPreview(hudName: string) {
 		const hudCanvas = createCanvas(700, 400);
-		const ctx = hudCanvas.getContext('2d');
+		const ctx = hudCanvas.getCongetText('2d');
 
 		try {
 			const bg = await loadImage(`img/profile/hud (${hudName}).png`);
@@ -32,7 +32,7 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 
 	async function sendPreviewPet(petHudName: string) {
 		const hudCanvas = createCanvas(617, 327);
-		const ctx = hudCanvas.getContext('2d');
+		const ctx = hudCanvas.getCongetText('2d');
 		try {
 			const bg = await loadImage(`img/pet/hud_pet (${petHudName}).png`);
 			const watermark = await loadImage('img/hud_watermark.png');
@@ -68,7 +68,7 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 
 					refP.get().then(docP => {
 						if (!docP.exists) {
-							message.reply(`${lang.error.noProfile}\`${prefix}profile create\`!`);
+							message.reply(getText(lang.error.noProfile, [prefix]));
 						}
 						else {
 							const bal = docP.get('balance');
@@ -101,7 +101,7 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 											huds: iHuds
 										}).then(() => {
 											hudName = hudName.toLowerCase().replace(/[_]/g, ' ');
-											message.reply(text(lang.shop.boughtHUD, [titleCase(hudName), prefix, lang.shop.hudName]));
+											message.reply(getText(lang.shop.boughtHUD, [titleCase(hudName), prefix, lang.shop.hudName]));
 										});
 									}
 								});
@@ -114,7 +114,7 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 
 					refP.get().then(docP => {
 						if (!docP.exists) {
-							message.reply(`${lang.error.noProfile}\`${prefix}profile create\`!`);
+							message.reply(getText(lang.error.noProfile, [prefix]));
 						}
 						else {
 							const bal = docP.get('balance');
@@ -152,7 +152,7 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 
 											petHudName = petHudName.toLowerCase().replace(/[_]/g, ' ');
 
-											message.reply(text(lang.shop.boughtPetHUD, [titleCase(petHudName), prefix, lang.shop.petHudName]));
+											message.reply(getText(lang.shop.boughtPetHUD, [titleCase(petHudName), prefix, lang.shop.petHudName]));
 										});
 									}
 								});
@@ -165,7 +165,7 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 
 					refP.get().then(docP => {
 						if (!docP.exists) {
-							message.reply(`${lang.error.noProfile}\`${prefix}profile create\`!`);
+							message.reply(getText(lang.error.noProfile, [prefix]));
 						}
 						else {
 							const bal = docP.get('balance');
@@ -194,7 +194,7 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 
 											itemName = itemName.toLowerCase().replace(/[_]/g, ' ');
 
-											message.reply(text(lang.shop.boughtItem, [titleCase(itemName)]));
+											message.reply(getText(lang.shop.boughtItem, [titleCase(itemName)]));
 										});
 									}
 								});
@@ -206,7 +206,7 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 					pet = slugify(pet.concat((args as any).slice(2)).toLowerCase().replace(/[,]/g, '_'));
 					refPet.get().then((docPet: any) => {
 						if (docPet.exists) {
-							message.reply(`${lang.error.alreadyHasPet}\`${prefix}sendtoadoption\`!`);
+							message.reply(getText(lang.error.alreadyHasPet, [prefix]));
 						}
 						else {
 							let petName = pet.toLowerCase();
@@ -268,7 +268,7 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 												const vip = (items.pets as any)[pet].vip;
 
 												if (vip) petName = name;
-												message.reply(text(lang.boughtPet, [titleCase(petName), prefix, lang.name]));
+												message.reply(getText(lang.boughtPet, [titleCase(petName), prefix, lang.name]));
 											});
 										}
 									}

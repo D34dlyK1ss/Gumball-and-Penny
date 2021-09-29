@@ -63,8 +63,9 @@ admin.initializeApp({
 const db = admin.firestore();
 
 // Funções úteis
-import removeVIP from './src/functions/removeVIP';
+import getText from './src/functions/getText';
 import giveVIP from './src/functions/giveVIP';
+import removeVIP from './src/functions/removeVIP';
 import { shopButtonHandler } from './src/functions/shopHandler';
 import { quizButtonHandler } from './src/functions/quizHandler';
 import { confirmLanguage } from './src/functions/setlanguageHandler';
@@ -89,7 +90,6 @@ bot.once('ready', () => {
 });
 
 import EventSource from 'eventsource';
-import text from './src/functions/text';
 const eventSourceInit: Record<string, any> = { headers: { 'Authorization': 'Bearer 14aee8db11a152ed7f2d4ed23a839d58' } };
 const es = new EventSource('https://api.pipedream.com/sources/dc_OLuY0W/sse', eventSourceInit);
 
@@ -113,7 +113,7 @@ es.onmessage = async messageEvent => {
 				const bal: number = doc.get('balance');
 				let add = 150;
 
-				if (userID === botConfig.botOwner || botConfig.collaborators.includes(userID) || vips.has(userID)) {
+				if (userID === botConfig.botOwnerID || botConfig.collaboratorIDs.includes(userID) || vips.has(userID)) {
 					add *= 2;
 				}
 				else {
@@ -157,7 +157,7 @@ const englishChannels = ['809182965607039007', '787661396652589077', '7876740333
 
 // Ações para quando o bot receber uma mensagem
 bot.on('messageCreate', async message => {
-	if (message.channel.id === '810529155955032115' && message.content === `${botConfig.settings.prefix}activate` && message.member.id === botConfig.botOwner) {
+	if (message.channel.id === '810529155955032115' && message.content === `${botConfig.settings.prefix}activate` && message.member.id === botConfig.botOwnerID) {
 		giveVIP(db, message, undefined);
 	}
 	else if (message.channel.id === '810529155955032115') {
@@ -216,7 +216,7 @@ bot.on('messageCreate', async message => {
 					let add = Math.floor(Math.random() * 10) + 50;
 					let	newXP: number;
 
-					if (vips.has(message.author.id) || message.author.id === botConfig.botOwner || botConfig.collaborators.includes(message.author.id)) add *= 2;
+					if (vips.has(message.author.id) || message.author.id === botConfig.botOwnerID || botConfig.collaboratorIDs.includes(message.author.id)) add *= 2;
 
 					newXP = xp + add;
 
@@ -238,10 +238,10 @@ bot.on('messageCreate', async message => {
 								const reward = newLevel * 500;
 								db.collection('perfis').doc(message.author.id).update({
 									balance: bal + reward
-								}).then(async () => message.channel.send(text(lang.levelUp.congratsReward, [message.author.tag, newLevel, reward])));
+								}).then(async () => message.channel.send(getText(lang.levelUp.congratsReward, [message.author.tag, newLevel, reward])));
 							}
 							else {
-								message.channel.send(text(lang.levelUp.congrats, [message.author.tag, newLevel]));
+								message.channel.send(getText(lang.levelUp.congrats, [message.author.tag, newLevel]));
 							}
 						}
 					});
@@ -258,7 +258,7 @@ bot.on('messageCreate', async message => {
 		}
 	}
 	else if (message.content === `<@${bot.user.id}>`) {
-		message.channel.send(`${lang.prefixMsg} \`${prefix}\``);
+		message.channel.send(getText(lang.prefixMsg, [prefix]));
 	}
 	else if (serverSettings.automessages === true) {
 		const pngs = ['boi', 'E', 'hmm', 'just monika', 'nice plan', 'no u', 'noice', 'shine'];

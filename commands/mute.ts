@@ -1,5 +1,5 @@
 import { Message, MessageEmbed, GuildChannel } from 'discord.js';
-import text from '../src/functions/text';
+import getText from '../src/functions/getText';
 
 export const name = 'mute';
 export async function execute(bot: undefined, message: Message, command: undefined, db: undefined, lang: Record<string, string | any>, language: undefined, prefix: undefined, args: string[]) {
@@ -55,9 +55,9 @@ export async function execute(bot: undefined, message: Message, command: undefin
 			memberToMute.roles.add(muteRole).then(() => {
 				const embed = new MessageEmbed()
 					.setColor('DARK_PURPLE')
-					.setTitle(text(lang.mute.isMutedFor, [memberToMute.user.tag, seconds]))
+					.setTitle(getText(lang.mute.isMutedFor, [memberToMute.user.tag, seconds]))
 					.setThumbnail(`${memberToMute.user.displayAvatarURL()}`)
-					.setDescription(`${lang.by}${message.member.user.tag}`)
+					.setDescription(`${lang.by} ${message.member.user.tag}`)
 					.addFields(
 						{ name: `${lang.reason}`, value: `${reason}` }
 					);

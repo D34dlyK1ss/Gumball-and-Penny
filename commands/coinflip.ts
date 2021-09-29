@@ -1,5 +1,6 @@
 import { Message } from 'discord.js';
 import { Cmd } from 'index';
+import getText from '../src/functions/getText';
 import titleCase from '../src/functions/titleCase';
 
 export const name = 'coinflip';
@@ -10,10 +11,10 @@ export function execute(bot: undefined, message: Message, command: Cmd, db: Fire
 	ref.get().then(doc => {
 		const money = Math.floor(parseInt(args[1]));
 		if (!doc.exists) {
-			message.reply(`${lang.error.noProfile}\`${prefix}profile create\`!`);
+			message.reply(getText(lang.error.noProfile, [prefix]));
 		}
 		else if (!Number.isInteger(money) || args[0] !== lang.coinflip.heads && args[0] !== lang.coinflip.tails) {
-			message.channel.send(`${lang.error.wrongSyntax}\`${prefix}${lang.command[command.name].usage}\``);
+			message.channel.send(getText(lang.error.wrongSyntax, [prefix, lang.command[command.name].usage]));
 		}
 		else {
 			const bal: number = doc.get('balance');
@@ -27,10 +28,10 @@ export function execute(bot: undefined, message: Message, command: Cmd, db: Fire
 				message.reply(lang.error.noMoney);
 			}
 			else if (money < least) {
-				message.reply(`${lang.betAtLeast}${least}!`);
+				message.reply(getText(lang.betAtLeast, [least]));
 			}
 			else if (money > most) {
-				message.reply(`${lang.betAtMost}${most}!`);
+				message.reply(getText(lang.betAtMost, [most]));
 			}
 			else {
 				const value = Math.round(Math.random());
@@ -45,13 +46,17 @@ export function execute(bot: undefined, message: Message, command: Cmd, db: Fire
 					if (res !== guess) {
 						ref.update({
 							balance: bal - money
-						}).then(() => { message.reply(`${lang.lost} **¤${money}**!`); });
+						}).then(() => {
+							message.reply(getText(lang.lost, [money]));
+						});
 					}
 					else if (res === guess) {
 						const won = money * 1.5;
 						ref.update({
 							balance: bal + won
-						}).then(() => { message.reply(`${lang.won} **¤${won}**!`); });
+						}).then(() => {
+							message.reply(getText(lang.won, [won]));
+						});
 					}
 				});
 			}

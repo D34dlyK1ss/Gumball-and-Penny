@@ -3,7 +3,7 @@ import { registerFont, createCanvas, loadImage } from 'canvas';
 import * as admin from 'firebase-admin';
 import * as answers from '../data/quizAnswers.json';
 import slugify from './slugify';
-import text from './text';
+import getText from './getText';
 registerFont('./fonts/comic.ttf', { family: 'Comic Sans MS' });
 registerFont('./fonts/comicb.ttf', { family: 'bold Comic Sans MS' });
 registerFont('./fonts/comici.ttf', { family: 'italic Comic Sans MS' });
@@ -99,7 +99,7 @@ export function createQuizQuestion(interaction: ButtonInteraction, user: User, l
 
 		switch (quiz) {
 			case 'quizanimeEyes': {
-				interaction.update({ content: text(lang.quiz.starting, [lang.quiz.animeEyes]), embeds: [], components: [] }).then(() => {
+				interaction.update({ content: getText(lang.quiz.starting, [lang.quiz.animeEyes]), embeds: [], components: [] }).then(() => {
 
 					alreadyPlaying.add(interaction.channelId);
 			
@@ -117,7 +117,7 @@ export function createQuizQuestion(interaction: ButtonInteraction, user: User, l
 							alreadyAsked.push(rnd);
 			
 							const canvas = createCanvas(401, 250);
-							const ctx = canvas.getContext('2d');
+							const ctx = canvas.getCongetText('2d');
 							const eyes = await loadImage(`img/quiz/anime/eyes/${rnd}.png`);
 							const hud = await loadImage('img/quiz/anime/eyes/hud.png');
 			
@@ -137,7 +137,7 @@ export function createQuizQuestion(interaction: ButtonInteraction, user: User, l
 							ctx.shadowOffsetY = 2;
 							ctx.fillStyle = 'white';
 							ctx.textAlign = 'center';
-							ctx.fillText(`${lang.quiz.whoIsCharacter}`, 200, 76);
+							ctx.fillgetText(lang.quiz.whoIsCharacter, 200, 76);
 			
 							const attachment = new MessageAttachment(canvas.toBuffer(), 'question.png');
 			
@@ -181,7 +181,7 @@ export function createQuizQuestion(interaction: ButtonInteraction, user: User, l
 												const punctuation = points.next().value;
 												const refP = admin.firestore().collection('perfis').doc(`${user}`);
 
-												description = description + text(lang.quiz.points, [userId, punctuation]);
+												description = description + getText(lang.quiz.points, [userId, punctuation]);
 
 												await refP.get().then(doc => {
 													if (!doc.exists) return;

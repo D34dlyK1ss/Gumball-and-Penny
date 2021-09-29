@@ -1,6 +1,6 @@
 {
-	"botOwner": "287953505992572929",
-	"collaborators": ["503009296267608066"],
+	"botOwnerID": "287953505992572929",
+	"collaboratorIDs": ["503009296267608066"],
 	"settings": {
 		"automessages": false,
 		"language": "en",

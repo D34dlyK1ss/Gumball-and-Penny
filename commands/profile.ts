@@ -5,7 +5,7 @@ import botConfig from '../botConfig.json';
 import items from '../src/data/itemlist.json';
 import titleCase from '../src/functions/titleCase';
 import convert from '../src/functions/convert';
-import text from '../src/functions/text';
+import getText from '../src/functions/getText';
 registerFont('./fonts/comic.ttf', { family: 'Comic Sans MS' });
 registerFont('./fonts/comicb.ttf', { family: 'bold Comic Sans MS' });
 registerFont('./fonts/comici.ttf', { family: 'italic Comic Sans MS' });
@@ -42,7 +42,7 @@ export function execute(bot: BotClient, message: Message, command: undefined, db
 						items: [],
 						petHuds: []
 					}).then(() => {
-						message.reply(text(lang.profile.wasCreated, [prefix, lang.profile.description]));
+						message.reply(getText(lang.profile.wasCreated, [prefix, lang.profile.description]));
 					});
 				}
 			});
@@ -53,17 +53,17 @@ export function execute(bot: BotClient, message: Message, command: undefined, db
 				const nicknameMax = 40;
 				if (!doc.exists) {
 					if (user === message.author) {
-						message.reply(`${lang.error.noProfile}\`${prefix}profile create\`!`);
+						message.reply(getText(lang.error.noProfile, [prefix]));
 					}
 				}
 				else if (argsString.length > nicknameMax) {
-					message.reply(text(lang.profile.nicknameMaxIs, [nicknameMax, argsString.length]));
+					message.reply(getText(lang.profile.nicknameMaxIs, [nicknameMax, argsString.length]));
 				}
 				else {
 					db.collection('perfis').doc(message.author.id).update({
 						nickname: argsString
 					}).then(() => {
-						message.reply(text(lang.profile.nicknameChangedTo, [argsString]));
+						message.reply(getText(lang.profile.nicknameChangedTo, [argsString]));
 					});
 				}
 			});
@@ -73,17 +73,17 @@ export function execute(bot: BotClient, message: Message, command: undefined, db
 				const descMax = 52;
 				if (!doc.exists) {
 					if (user === message.author) {
-						message.reply(`${lang.error.noProfile}\`${prefix}profile create\`!`);
+						message.reply(getText(lang.error.noProfile, [prefix]));
 					}
 				}
 				else if (argsString.length > descMax) {
-					message.reply(text(lang.profile.decMaxIs, [descMax, argsString.length]));
+					message.reply(getText(lang.profile.decMaxIs, [descMax, argsString.length]));
 				}
 				else {
 					db.collection('perfis').doc(message.author.id).update({
 						description: argsString
 					}).then(() => {
-						message.reply(text(lang.profile.descChangedTo, [argsString]));
+						message.reply(getText(lang.profile.descChangedTo, [argsString]));
 					});
 				}
 			});
@@ -92,7 +92,7 @@ export function execute(bot: BotClient, message: Message, command: undefined, db
 			db.collection('perfis').doc(message.author.id).get().then(docP => {
 				if (!docP.exists) {
 					if (user === message.author) {
-						message.reply(`${lang.error.noProfile}\`${prefix}profile create\`!`);
+						message.reply(getText(lang.error.noProfile, [prefix]));
 					}
 				}
 				else {
@@ -105,14 +105,14 @@ export function execute(bot: BotClient, message: Message, command: undefined, db
 						if (!newHud || newHud === '') {
 							message.reply(lang.error.noHUDChosen);
 						}
-						else if (!huds.includes(`${newHud}`) && message.author.id !== botConfig.botOwner && !botConfig.collaborators.includes(message.author.id)) {
+						else if (!huds.includes(`${newHud}`) && message.author.id !== botConfig.botOwnerID && !botConfig.collaboratorIDs.includes(message.author.id)) {
 							message.reply(lang.error.noHaveHUD);
 						}
 						else {
 							db.collection('perfis').doc(message.author.id).update({
 								hud: newHud
 							}).then(() => {
-								message.reply(text(lang.profile.hudChangedTo, [titleCase(argsString)]));
+								message.reply(getText(lang.profile.hudChangedTo, [titleCase(argsString)]));
 							});
 						}
 					});
@@ -123,7 +123,7 @@ export function execute(bot: BotClient, message: Message, command: undefined, db
 			refP.get().then(async doc => {
 				if (!doc.exists) {
 					if (user === message.author) {
-						message.reply(`${lang.error.noProfile}\`${prefix}profile create\`!`);
+						message.reply(getText(lang.error.noProfile, [prefix]));
 					}
 					else if (user === bot.user) {
 						message.reply(lang.botNoProfile);
@@ -132,7 +132,7 @@ export function execute(bot: BotClient, message: Message, command: undefined, db
 						message.reply(lang.botsNoProfile);
 					}
 					else {
-						message.reply(`**${user.tag}**${lang.error.userNoProfile}`);
+						message.reply(getText(lang.error.userNoProfile, [user.tag]));
 					}
 				}
 				else {
@@ -152,7 +152,7 @@ export function execute(bot: BotClient, message: Message, command: undefined, db
 					if (xpToNext <= 0) xpToNext = xp;
 
 					const canvas = createCanvas(700, 400);
-					const ctx = canvas.getContext('2d');
+					const ctx = canvas.getCongetText('2d');
 
 					const bg = await loadImage(`img/profile/hud (${hud}).png`);
 					ctx.drawImage(bg, 0, 0, canvas.width, canvas.height);
@@ -178,29 +178,29 @@ export function execute(bot: BotClient, message: Message, command: undefined, db
 					ctx.shadowOffsetY = 1;
 					ctx.fillStyle = 'white';
 					ctx.textAlign = 'center';
-					ctx.fillText(user.tag, 410, 65);
+					ctx.fillgetText(user.tag, 410, 65);
 
 					ctx.font = '16px Comic Sans MS';
-					ctx.fillText(`${nick}`, 410, 90);
+					ctx.fillgetText(`${nick}`, 410, 90);
 
 					ctx.font = '18px Comic Sans MS';
 					ctx.textAlign = 'left';
-					ctx.fillText(`${lang.totalXP}: ${xp}`, 175, 140);
-					ctx.fillText(`${lang.level}: ${level}`, 175, 175);
+					ctx.fillgetText(`${lang.totalXP}: ${xp}`, 175, 140);
+					ctx.fillgetText(`${lang.level}: ${level}`, 175, 175);
 
 					ctx.fillStyle = 'gold';
 					ctx.textAlign = 'right';
-					ctx.fillText(`${lang.balanceProfile}: ¤${bal}`, 640, 155);
+					ctx.fillgetText(`${lang.balanceProfile}: ¤${bal}`, 640, 155);
 
 					ctx.font = '18px Comic Sans MS';
 					ctx.fillStyle = 'white';
 					ctx.textAlign = 'left';
-					ctx.fillText(`${lang.description}:`, 175, 270);
-					ctx.fillText(`${desc}`, 175, 320);
+					ctx.fillgetText(`${lang.description}:`, 175, 270);
+					ctx.fillgetText(`${desc}`, 175, 320);
 
 					ctx.font = '18px Comic Sans MS';
 					ctx.textAlign = 'center';
-					ctx.fillText(`${xpToNext} / ${convert(xpNeeded)}`, 410, 214);
+					ctx.fillgetText(`${xpToNext} / ${convert(xpNeeded)}`, 410, 214);
 					ctx.restore();
 
 					ctx.closePath();

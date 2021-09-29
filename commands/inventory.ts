@@ -1,5 +1,5 @@
 import { Message, MessageEmbed } from 'discord.js';
-import text from '../src/functions/text';
+import getText from '../src/functions/getText';
 
 export const name = 'inventory';
 export const aliases = ['i'];
@@ -8,12 +8,12 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 	const refI = db.collection('inventario').doc(message.author.id);
 	let iEmbed = new MessageEmbed()
 		.setColor('DARK_PURPLE')
-		.setTitle(text(lang.inventory.inventoryFrom, [message.author.tag]))
+		.setTitle(getText(lang.inventory.inventoryFrom, [message.author.tag]))
 		.setThumbnail(`${message.author.displayAvatarURL()}`);
 
 	refP.get().then(docP => {
 		if (!docP.exists) {
-			message.reply(`${lang.error.noProfile}\`${prefix}profile create\`!`);
+			message.reply(getText(lang.error.noProfile, [prefix]));
 		}
 		else {
 			refI.get().then(docI => {

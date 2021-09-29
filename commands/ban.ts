@@ -1,6 +1,6 @@
 import { Message, MessageEmbed } from 'discord.js';
 import { Cmd } from 'index';
-import text from '../src/functions/text';
+import getText from '../src/functions/getText';
 
 export const name = 'ban';
 export async function execute(bot: undefined, message: Message, command: Cmd, db: undefined, lang: Record<string, string | any>, language: undefined, prefix: undefined, args: string[]) {
@@ -26,9 +26,9 @@ export async function execute(bot: undefined, message: Message, command: Cmd, db
 			member.ban(reason).then(() => {
 				const embed = new MessageEmbed()
 					.setColor('DARK_PURPLE')
-					.setTitle(text(member.user.tag, [lang.ban.wasBanned]))
+					.setTitle(getText(member.user.tag, [lang.ban.wasBanned]))
 					.setThumbnail(`${member.user.displayAvatarURL()}`)
-					.setDescription(`${lang.by}${message.member.user.tag}`)
+					.setDescription(`${lang.by} ${message.member.user.tag}`)
 					.addFields(
 						{ name: `${lang.reason}`, value: `${reason}` }
 					);

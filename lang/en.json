@@ -1,11 +1,11 @@
 {
-	"prefixMsg": "Our prefix for this server is ",
+	"prefixMsg": "Our prefix for this server is `$0$`",
 	"notIndicated": "_Not indicated_",
-	"by": "by ",
+	"by": "by",
 	"reason": "Reason:",
 	"botsNoProfile": "Bots have no profiles!",
 	"help": "Help",
-	"botDescription": "We are Gumball and Penny and we aim to make any server on which we are in a fun place!\nWhen in doubt on any command use ",
+	"helpDescription": "We are Gumball and Penny and we aim to make any server we're in in a fun place!\nWhen in doubt on any command use `$0$help [$1$]`",
 	"commandName": "command name",
 	"actions": "Actions",
 	"casino": "Casino",
@@ -24,9 +24,7 @@
 	"howToUse": "How to use",
 	"description": "Description",
 	"aliases": "Aliases",
-	"inviteUsToYourServer": "Invite us to your server!",
-	"has": " has ",
-	"members": " members",
+	"inviteUsToYourServer": "Invite us to your server! 😁",
 	"species": "Species",
 	"gender": "Gender",
 	"nature": "Nature",
@@ -75,18 +73,18 @@
 
 	"error": {
 		"cmd": "There was an error when trying to execute that command!",
-		"noProfile": "You haven't created a profile yet! To create a profile use ",
-		"userNoProfile": " hasn't created a profile yet!",
+		"noProfile": "You haven't created a profile yet! To create a profile use `$0$profile create`.",
+		"userHasNoProfile": "**$0$** hasn't created a profile yet!",
 		"noMention": "You have to mention someone!",
 		"noPerm": "You have no permisison to use this command! 💢",
 		"botNoBan": "We don't have permission to ban members!",
 		"botNoManageMsgs": "We don't have permission to manage messages!",
 		"noNumberToDelete": "You have to indicate how many messages you want to delete!",
-		"wrongSyntax": "Wrong syntax! How to use: ",
+		"wrongSyntax": "Wrong syntax! How to use: `$0$$1$`.",
 		"noAdd": "You can't get any more money! 😧",
 		"noMoney": "You don't have enough money!",
 		"noMessage": "You didn't write any message!",
-		"noGive": "You can't give money to ",
+		"cantGive": "You can't give money to **$0$**! 😧",
 		"noCommand": "That command doesn't exist!",
 		"noInventory": "You have no inventory!",
 		"botNoKick": "We don't have permission to kick members!",
@@ -102,7 +100,7 @@
 		"noPetHUDChosen": "You didn't choose a Pet HUD!",
 		"noHavePetHUD": "You don't have that Pet HUD!",
 		"noPetToAdoption": "You have no pet to send to adoption!",
-		"userNoPet": " hasn't bought a pet yet!",
+		"userHasNoPet": " hasn't bought a pet yet!",
 		"notANumber": "That's not a number!",
 		"noPrefixChosen": "We need to know the desired prefix!",
 		"noLinks": "We can't write any links!",
@@ -115,7 +113,7 @@
 		"alreadyHasHUD": "You already have this HUD!",
 		"alreadyHasPetHUD": "You already have this Pet HUD!",
 		"noVIPForPetHUD": "You need to be VIP to buy this Pet HUD!",
-		"alreadyHasPet": "You already have a pet! If you want another one you have to give yours to adoption using ",
+		"alreadyHasPet": "You already have a pet! If you want another one you have to give yours to adoption using `$0$pet sendtoadoption`.",
 		"noItem": "That item doesn't exist!",
 		"noVIPForPet": "You need to be VIP to buy this pet!",
 		"samePrefix": "That's the same prefix we're using!",
@@ -179,7 +177,7 @@
 
 	"give": {
 		"self": "Seriously you just tried to give yourself money?",
-		"thanksBut": "Thanks, but you'll need that money more than us!",
+		"thanksBut": "Thanks, but you'll need that money more than us! 😁",
 		"youGave": "You gave **¤$0$** to **$1$**"
 	},
 
@@ -226,6 +224,10 @@
 	"match": {
 		"alreadyAPair": "Hey, we're already a pair! 😠",
 		"youAre": "You are **$0$** compatible with **$1$**!"
+	},
+
+	"members": {
+		"mesage": "**$0$** has **$1$** members!"
 	},
 
 	"mute": {

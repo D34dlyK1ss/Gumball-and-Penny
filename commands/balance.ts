@@ -1,5 +1,5 @@
 import { Message } from 'discord.js';
-import text from '../src/functions/text';
+import getText from '../src/functions/getText';
 
 export const name = 'balance';
 export const aliases = ['bal'];
@@ -9,12 +9,12 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 
 	ref.get().then(doc => {
 		if (!doc.exists) {
-			message.reply(`${lang.error.noProfile}\`${prefix}profile create\`!`);
+			message.reply(getText(lang.error.noProfile, [prefix]));
 		}
 		else {
 			const bal = doc.get('balance');
 
-			message.reply(text(lang.balance.have, [bal]));
+			message.reply(getText(lang.balance.have, [bal]));
 		}
 	});
 }

@@ -1,6 +1,6 @@
 import { Message, MessageEmbed } from 'discord.js';
 import moment from 'moment';
-import text from '../src/functions/text';
+import getText from '../src/functions/getText';
 
 export const name = 'userinfo';
 export const aliases = ['ui'];
@@ -21,10 +21,10 @@ export async function execute(bot: undefined, message: Message, command: undefin
 		.addFields(
 			{ name: `${lang.id}`, value: `${user.id}` },
 			{ name: `${lang.mention}`, value: `${user}`, inline: true },
-			{ name: `${lang.joined}`, value: text(lang.userinfo.joined, [joinedAgo, joinedDate.format('LLLL')]) },
+			{ name: `${lang.joined}`, value: getText(lang.userinfo.joined, [joinedAgo, joinedDate.format('LLLL')]) },
 			{ name: `${lang.roles}`, value: `${roles}`, inline: true }
 		)
-		.setFooter(text(lang.userinfo.created, [createdAgo, createdDate.format('LLLL')]));
+		.setFooter(getText(lang.userinfo.created, [createdAgo, createdDate.format('LLLL')]));
 
 	message.channel.send({ embeds: [embed] });
 }

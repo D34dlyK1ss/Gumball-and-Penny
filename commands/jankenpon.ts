@@ -1,7 +1,7 @@
 import { Message, MessageAttachment } from 'discord.js';
 import { createCanvas, loadImage } from 'canvas';
 import { Cmd } from 'index';
-import text from '../src/functions/text';
+import getText from '../src/functions/getText';
 
 export const name = 'jankenpon';
 export const aliases = ['jkp'];
@@ -12,10 +12,10 @@ export function execute(bot: undefined, message: Message, command: Cmd, db: Fire
 	ref.get().then(async doc => {
 		const money = Math.floor(parseInt(args[1]));
 		if (!doc.exists) {
-			message.reply(`${lang.error.noProfile}\`${prefix}profile create\`!`);
+			message.reply(getText(lang.error.noProfile, [prefix]));
 		}
 		else if (!Number.isInteger(money) || args[0].toLowerCase() !== 'gumball' && args[0].toLowerCase() !== 'penny') {
-			message.channel.send(`${lang.error.wrongSyntax}\`${prefix}${lang.command[command.name].usage}\``);
+			message.channel.send(getText(lang.error.wrongSyntax, [prefix, lang.command[command.name].usage]));
 		}
 		else {
 			const bal: number = doc.get('balance');
@@ -29,10 +29,10 @@ export function execute(bot: undefined, message: Message, command: Cmd, db: Fire
 				message.reply(lang.error.noMoney);
 			}
 			else if (money < least) {
-				message.reply(`${lang.betAtLeast}${least}!`);
+				message.reply(getText(lang.betAtLeast, [least]));
 			}
 			else if (money > most) {
-				message.reply(`${lang.betAtMost}${most}!`);
+				message.reply(getText(lang.betAtMost, [most]));
 			}
 			else {
 				const g = Math.round(Math.random() * 2);
@@ -45,7 +45,7 @@ export function execute(bot: undefined, message: Message, command: Cmd, db: Fire
 
 				const attachment = new MessageAttachment('img/jankenpon/animation.gif');
 				const canvas = createCanvas(400, 200);
-				const ctx = canvas.getContext('2d');
+				const ctx = canvas.getCongetText('2d');
 
 				const left = await loadImage(`img/jankenpon/gumball (${g}).png`);
 				const right = await loadImage(`img/jankenpon/penny (${p}).png`);
@@ -67,7 +67,15 @@ export function execute(bot: undefined, message: Message, command: Cmd, db: Fire
 
 						if (finalRes === 0) {
 							message.channel.send({ files: [attachment2] }).then(() => {
-								message.reply(`${text(lang.jankenpon.threw, [resG, resP])} ${lang.draw}`);
+								message.reply(`${getText(lang.jankenpon.threw, [resG, resP])} ${lang.draw}`);
+							});
+						}
+						else if (finalRes !== guess) {
+							ref.update({
+								balance: bal - money
+							}).then(async () => {
+								await message.channel.send({ files: [attachment2] });
+								message.reply(`${getText(lang.jankenpon.threw, [resG, resP])} ${getText(lang.lost, [money])}`);
 							});
 						}
 						else if (finalRes === guess) {
@@ -76,15 +84,7 @@ export function execute(bot: undefined, message: Message, command: Cmd, db: Fire
 								balance: bal + won
 							}).then(async () => {
 								await message.channel.send({ files: [attachment2] });
-								message.reply(`${text(lang.jankenpon.threw, [resG, resP])} ${text(lang.won, [won])}`);
-							});
-						}
-						else {
-							ref.update({
-								balance: bal - money
-							}).then(async () => {
-								await message.channel.send({ files: [attachment2] });
-								message.reply(`${text(lang.jankenpon.threw, [resG, resP])} ${text(lang.lost, [money])}`);
+								message.reply(`${getText(lang.jankenpon.threw, [resG, resP])} ${getText(lang.won, [won])}`);
 							});
 						}
 					});

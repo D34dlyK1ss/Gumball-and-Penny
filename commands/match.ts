@@ -1,6 +1,6 @@
 import { Message } from 'discord.js';
 import { BotClient, Cmd } from 'index';
-import text from '../src/functions/text';
+import getText from '../src/functions/getText';
 
 export const name = 'match';
 export function execute(bot: BotClient, message: Message, command: Cmd, db: FirebaseFirestore.Firestore, lang: Record<string, string | any>) {
@@ -26,7 +26,7 @@ export function execute(bot: BotClient, message: Message, command: Cmd, db: Fire
 			message.reply(lang.error.wontWorkOnBot);
 		}
 		else {
-			message.reply(text(lang.match.youAre, [integer, otherUser.tag]));
+			message.reply(getText(lang.match.youAre, [integer, otherUser.tag]));
 		}
 	}
 }
