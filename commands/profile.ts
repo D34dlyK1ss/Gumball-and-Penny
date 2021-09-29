@@ -152,7 +152,7 @@ export function execute(bot: BotClient, message: Message, command: undefined, db
 					if (xpToNext <= 0) xpToNext = xp;
 
 					const canvas = createCanvas(700, 400);
-					const ctx = canvas.getCongetText('2d');
+					const ctx = canvas.getContext('2d');
 
 					const bg = await loadImage(`img/profile/hud (${hud}).png`);
 					ctx.drawImage(bg, 0, 0, canvas.width, canvas.height);
@@ -178,29 +178,29 @@ export function execute(bot: BotClient, message: Message, command: undefined, db
 					ctx.shadowOffsetY = 1;
 					ctx.fillStyle = 'white';
 					ctx.textAlign = 'center';
-					ctx.fillgetText(user.tag, 410, 65);
+					ctx.fillText(user.tag, 410, 65);
 
 					ctx.font = '16px Comic Sans MS';
-					ctx.fillgetText(`${nick}`, 410, 90);
+					ctx.fillText(`${nick}`, 410, 90);
 
 					ctx.font = '18px Comic Sans MS';
 					ctx.textAlign = 'left';
-					ctx.fillgetText(`${lang.totalXP}: ${xp}`, 175, 140);
-					ctx.fillgetText(`${lang.level}: ${level}`, 175, 175);
+					ctx.fillText(`${lang.totalXP}: ${xp}`, 175, 140);
+					ctx.fillText(`${lang.level}: ${level}`, 175, 175);
 
 					ctx.fillStyle = 'gold';
 					ctx.textAlign = 'right';
-					ctx.fillgetText(`${lang.balanceProfile}: ¤${bal}`, 640, 155);
+					ctx.fillText(`${lang.balanceProfile}: ¤${bal}`, 640, 155);
 
 					ctx.font = '18px Comic Sans MS';
 					ctx.fillStyle = 'white';
 					ctx.textAlign = 'left';
-					ctx.fillgetText(`${lang.description}:`, 175, 270);
-					ctx.fillgetText(`${desc}`, 175, 320);
+					ctx.fillText(`${lang.description}:`, 175, 270);
+					ctx.fillText(`${desc}`, 175, 320);
 
 					ctx.font = '18px Comic Sans MS';
 					ctx.textAlign = 'center';
-					ctx.fillgetText(`${xpToNext} / ${convert(xpNeeded)}`, 410, 214);
+					ctx.fillText(`${xpToNext} / ${convert(xpNeeded)}`, 410, 214);
 					ctx.restore();
 
 					ctx.closePath();

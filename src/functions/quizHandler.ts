@@ -117,7 +117,7 @@ export function createQuizQuestion(interaction: ButtonInteraction, user: User, l
 							alreadyAsked.push(rnd);
 			
 							const canvas = createCanvas(401, 250);
-							const ctx = canvas.getCongetText('2d');
+							const ctx = canvas.getContext('2d');
 							const eyes = await loadImage(`img/quiz/anime/eyes/${rnd}.png`);
 							const hud = await loadImage('img/quiz/anime/eyes/hud.png');
 			
@@ -137,7 +137,7 @@ export function createQuizQuestion(interaction: ButtonInteraction, user: User, l
 							ctx.shadowOffsetY = 2;
 							ctx.fillStyle = 'white';
 							ctx.textAlign = 'center';
-							ctx.fillgetText(lang.quiz.whoIsCharacter, 200, 76);
+							ctx.fillText(lang.quiz.whoIsCharacter, 200, 76);
 			
 							const attachment = new MessageAttachment(canvas.toBuffer(), 'question.png');
 			

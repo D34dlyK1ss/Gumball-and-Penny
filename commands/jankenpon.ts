@@ -45,7 +45,7 @@ export function execute(bot: undefined, message: Message, command: Cmd, db: Fire
 
 				const attachment = new MessageAttachment('img/jankenpon/animation.gif');
 				const canvas = createCanvas(400, 200);
-				const ctx = canvas.getCongetText('2d');
+				const ctx = canvas.getContext('2d');
 
 				const left = await loadImage(`img/jankenpon/gumball (${g}).png`);
 				const right = await loadImage(`img/jankenpon/penny (${p}).png`);

@@ -149,7 +149,7 @@ export function execute(bot: BotClient, message: Message, command: undefined, db
 					const petHud = doc.get('hud');
 
 					const canvas = createCanvas(617, 327);
-					const ctx = canvas.getCongetText('2d');
+					const ctx = canvas.getContext('2d');
 
 					const bg = await loadImage(`img/pet/hud_pet (${petHud}).png`);
 					ctx.drawImage(bg, 0, 0, canvas.width, canvas.height);
@@ -173,10 +173,10 @@ export function execute(bot: BotClient, message: Message, command: undefined, db
 					ctx.fillStyle = 'white';
 
 					const extra = 40;
-					ctx.fillgetText(`${lang.name}: ${petName}`, 330, 105 + extra);
-					ctx.fillgetText(`${lang.species}: ${lang.pets.species[petSpecies]}`, 330, 135 + extra);
-					ctx.fillgetText(`${lang.gender}: ${petGender}`, 330, 165 + extra);
-					ctx.fillgetText(`${lang.nature}: ${lang.pets.natures[petNature]}`, 330, 195 + extra);
+					ctx.fillText(`${lang.name}: ${petName}`, 330, 105 + extra);
+					ctx.fillText(`${lang.species}: ${lang.pets.species[petSpecies]}`, 330, 135 + extra);
+					ctx.fillText(`${lang.gender}: ${petGender}`, 330, 165 + extra);
+					ctx.fillText(`${lang.nature}: ${lang.pets.natures[petNature]}`, 330, 195 + extra);
 
 					ctx.restore();
 					ctx.closePath();

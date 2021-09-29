@@ -12,7 +12,7 @@ export const naliases = ['s'];
 export function execute(bot: undefined, message: Message, command: undefined, db: FirebaseFirestore.Firestore, lang: Record<string, any>, language: undefined, prefix: string, args: string[]) {
 	async function sendPreview(hudName: string) {
 		const hudCanvas = createCanvas(700, 400);
-		const ctx = hudCanvas.getCongetText('2d');
+		const ctx = hudCanvas.getContext('2d');
 
 		try {
 			const bg = await loadImage(`img/profile/hud (${hudName}).png`);
@@ -32,7 +32,7 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 
 	async function sendPreviewPet(petHudName: string) {
 		const hudCanvas = createCanvas(617, 327);
-		const ctx = hudCanvas.getCongetText('2d');
+		const ctx = hudCanvas.getContext('2d');
 		try {
 			const bg = await loadImage(`img/pet/hud_pet (${petHudName}).png`);
 			const watermark = await loadImage('img/hud_watermark.png');
