@@ -42,7 +42,7 @@ export function execute(bot: BotClient, message: Message, command: undefined, db
 						items: [],
 						petHuds: []
 					}).then(() => {
-						message.reply(getText(lang.profile.wasCreated, [prefix, lang.profile.description]));
+						message.reply(getText(lang.profile.wasCreated, [prefix, lang.description]));
 					});
 				}
 			});

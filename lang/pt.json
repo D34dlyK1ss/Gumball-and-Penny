@@ -132,7 +132,7 @@
 	"angry": {
 		"gotAngry": "**$0$** chateou-se!",
 		"gotAngryWithUs": "**$0$** chateou-se connosco! 😶",
-		"gotAngryWith": "**$0$** chateou-se com **$1$**"
+		"gotAngryWith": "**$0$** chateou-se com **$1$**!"
 	},
 
 	"automessages": {
@@ -140,7 +140,7 @@
 	},
 
 	"balance": {
-		"have": "Tens **¤$0$**"
+		"have": "Tens **¤$0$**."
 	},
 
 	"ban": {
@@ -165,14 +165,14 @@
 	},
 
 	"daily": {
-		"againIn": "Poderás receber dinheiro outra vez em **$0$**",
+		"againIn": "Poderás receber dinheiro outra vez em **$0$**.",
 		"received": "Recebeste os teus **¤$0$** de hoje! Para receberes mais ¤150 (¤300 para VIPs) usa `$1$vote`."
 	},
 
 	"dance": {
 		"isDancing": "**$0$** está a dançar!",
 		"isDancingForUs": "**$0$** está a dançar para nós! 😯",
-		"isDancingFor": "**$0$** está a dançar para **$1$**"
+		"isDancingFor": "**$0$** está a dançar para **$1$**!"
 	},
 
 	"give": {
@@ -189,7 +189,7 @@
 	"hug": {
 		"huggedSelf": "**$0$** abraçou-se?",
 		"huggedUs": "**$0$** abraçou-nos! 🤗",
-		"hugged": "**$0$** abraçou **$1$**"
+		"hugged": "**$0$** abraçou **$1$**!"
 	},
 
 	"inventory": {
@@ -211,7 +211,7 @@
 	"kiss": {
 		"kissedSelf": "**$0$** beijou-se a si mesmo?",
 		"kissedUs": "**$0$** beijou-nos! 😳",
-		"kissed": "**$0$** beijou **$1$!**"
+		"kissed": "**$0$** beijou **$1$**!"
 	},
 
 	"laugh": {
@@ -255,7 +255,6 @@
 
 	"profile": {
 		"wasCreated": "O teu perfil foi criado! Adiciona uma descrição com `$0$profile setdescription [$1$]`.",
-		"description": "Descrição",
 		"nicknameMaxIs": "O limite máximo de caracteres para alcunha é **$0$**. Essa alcunha tem **$1$**.",
 		"nicknameChangedTo": "A tua alcunha foi alterada para **$0$**.",
 		"descMaxIs": "O limite máximo de caracteres para a descrição é **$0$**. Essa descrição tem **$1$**.",
@@ -289,7 +288,7 @@
 	"run": {
 		"ranAway": "**$0$** fugiu!",
 		"ranAwayFromUs": "**$0$** fugiu para longe de nós! 🤨",
-		"ranAwayFrom": "**$0$** fugiu para longe de **$1$**"
+		"ranAwayFrom": "**$0$** fugiu para longe de **$1$**!"
 	},
 
 	"serverinfo": {
@@ -337,7 +336,7 @@
 		"welcome": "Bem vindo à Loja Incrível!\nAqui poderás comprar algumas coisas com o dinheiro que acumulaste até agora.\nUsa os botões abaixo para navegar pela loja!",
 		"boughtHUD": "Compraste o HUD **$0$**! Para o equipares usa `**$1$**profile sethud [$2$]`.",
 		"boughtPetHud": "Compraste o Pet HUD **$0$**! Para o equipares usa `**$1$**pet sethud [$2$]`.",
-		"boughtItem": "Compraste 1 **$0$**",
+		"boughtItem": "Compraste 1 **$0$**!",
 		"boughtPet": "Compraste 1 **$0$*! Para lhe dares um nome usa `$1$pet setnickname [$2$]`.",
 		"hero": "Herói",
 		"villain": "Vilão",
@@ -412,7 +411,7 @@
 
 		"clear": {
 			"category": "Moderação",
-			"description": "Limpa o chat",
+			"description": "Iremos limpar o chat.",
 			"usage": "clear [número]"
 		},
 
@@ -440,15 +439,9 @@
 			"usage": "dance [opcional - @membro]"
 		},
 
-		"dm": {
-			"category": "Secretos",
-			"description": "Enviamos uma mensagem privada ao utilizador mencionado",
-			"usage": "dm [@utilizador] [mensagem]"
-		},
-
 		"fact": {
 			"category": "Diversão",
-			"description": "**Factos**",
+			"description": "**Factos**.",
 			"usage": "fact"
 		},
 
@@ -478,7 +471,7 @@
 
 		"inventory": {
 			"category": "Perfil",
-			"description": "Verifica o teu inventário",
+			"description": "Verifica o teu inventário!",
 			"usage": "inventory"
 		},
 
@@ -526,7 +519,7 @@
 
 		"mute": {
 			"category": "Moderação",
-			"description": "Calaremos um membro do servidor, mas por um tempo determinado! 5 minutos por predefinição",
+			"description": "Calaremos um membro do servidor, mas por um tempo determinado! 5 minutos por predefinição.",
 			"usage": "tempmute [@membro] [opcional - segundos] [opcional - razão]"
 		},
 
@@ -562,7 +555,7 @@
 
 		"random": {
 			"category": "Diversão",
-			"description": "Diremos um número aleatório entre 1 e o número indicado. O predefinido é 100",
+			"description": "Diremos um número aleatório entre 1 e o número indicado. O predefinido é 100.",
 			"usage": "random [opcional - número]"
 		},
 
@@ -592,13 +585,13 @@
 
 		"setlanguage": {
 			"category": "Servidor",
-			"description": "Muda a nossa linguagem para este servidor",
+			"description": "Muda a nossa linguagem para este servidor.",
 			"usage": "setlanguage"
 		},
 
 		"setprefix": {
 			"category": "Servidor",
-			"description": "Muda o nosso prefixo para este servidor",
+			"description": "Muda o nosso prefixo para este servidor.",
 			"usage": "setprefix [prefixo]"
 		},
 

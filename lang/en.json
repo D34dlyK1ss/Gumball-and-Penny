@@ -132,7 +132,7 @@
 	"angry": {
 		"gotAngry": "**$0$** got angry!",
 		"gotAngryWithUs": "**$0$** got angry with us! 😶",
-		"gotAngryWith": "**$0$** got angry with **$1$**"
+		"gotAngryWith": "**$0$** got angry with **$1$**!"
 	},
 
 	"automessages": {
@@ -140,7 +140,7 @@
 	},
 
 	"balance": {
-		"have": "You have **¤$0$**"
+		"have": "You have **¤$0$**."
 	},
 
 	"ban": {
@@ -165,14 +165,14 @@
 	},
 
 	"daily": {
-		"againIn": "You can get money again in **$0$**",
+		"againIn": "You can get money again in **$0$**.",
 		"received": "You received your **¤$0$** of today! To get more ¤150 (¤300 for VIPs) use `$1$vote`."
 	},
 
 	"dance": {
 		"isDancing": "**$0$** is dancing!",
 		"isDancingForUs": "**$0$** is dancing for us! 😯",
-		"isDancingFor": "**$0$** is dancing for **$1$**"
+		"isDancingFor": "**$0$** is dancing for **$1$**!"
 	},
 
 	"give": {
@@ -189,7 +189,7 @@
 	"hug": {
 		"huggedSelf": "**$0$** hugged themselves?",
 		"huggedUs": "**$0$** hugged us! 🤗",
-		"hugged": "**$0$** hugged **$1$**"
+		"hugged": "**$0$** hugged **$1$**!"
 	},
 
 	"inventory": {
@@ -211,7 +211,7 @@
 	"kiss": {
 		"kissedSelf": "**$0$** kissed themselves?",
 		"kissedUs": "**$0$** kissed us! 😳",
-		"kissed": "**$0$** kissed **$1$!**"
+		"kissed": "**$0$** kissed **$1$!**!"
 	},
 
 	"laugh": {
@@ -242,8 +242,8 @@
 
 	"pet": {
 		"nameMaxIs": "The name's maximum character limit is **$0$**. That name has **$0$**.",
-		"nameChangedTo": "You pet's name was changed to **$0$**",
-		"petHudChangedTo": "Your Pet HUD was changed to **$0$**",
+		"nameChangedTo": "You pet's name was changed to **$0$**.",
+		"petHudChangedTo": "Your Pet HUD was changed to **$0$**.",
 		"wasSentToAdoption": "**$0$** was sent to adoption!",
 		"botNoPet": "We don't have a pet! Yet...",
 		"botsNoPets": "Bots have no pets!"
@@ -255,7 +255,6 @@
 
 	"profile": {
 		"wasCreated": "You profile was created! Add a description with `$0$profile setdescription [$1$]`.",
-		"description": "Description",
 		"nicknameMaxIs": "The nickname's maximum character limit is **$0$**. That nickname has **$1$**.",
 		"nicknameChangedTo": "Your nickname was changed to **$0$**.",
 		"descMaxIs": "The description's maximum character limit is **$0$**. That description has **$1$**.",
@@ -289,7 +288,7 @@
 	"run": {
 		"ranAway": "**$0$** ran away!",
 		"ranAwayFromUs": "**$0$** ran away from us! 🤨",
-		"ranAwayFrom": "**$0$** ran away from **$1$**"
+		"ranAwayFrom": "**$0$** ran away from **$1$**!"
 	},
 
 	"serverinfo": {
@@ -412,7 +411,7 @@
 
 		"clear": {
 			"category": "Moderation",
-			"description": "Clean the chat",
+			"description": "We'll clean the chat.",
 			"usage": "clear [number]"
 		},
 
@@ -440,15 +439,9 @@
 			"usage": "dance [optional - @member]"
 		},
 
-		"dm": {
-			"category": "Secrets",
-			"description": "We'll send a private message to the tagged user",
-			"usage": "dm [@user] [message]"
-		},
-
 		"fact": {
 			"category": "Fun",
-			"description": "**Facts**",
+			"description": "**Facts**.",
 			"usage": "fact"
 		},
 
@@ -478,7 +471,7 @@
 
 		"inventory": {
 			"category": "Profile",
-			"description": "Check your inventory",
+			"description": "Check your inventory!",
 			"usage": "inventory"
 		},
 
@@ -526,7 +519,7 @@
 
 		"mute": {
 			"category": "Moderation",
-			"description": "We'll mute a server member, but for a determined time! 5 minutes for default",
+			"description": "We'll mute a server member, but for a determined time! 5 minutes for default.",
 			"usage": "tempmute [@member] [optional - seconds] [optional - reason]"
 		},
 
@@ -562,7 +555,7 @@
 
 		"random": {
 			"category": "Fun",
-			"description": "We'll tell a number between 1 and the indicated number. The default is 100",
+			"description": "We'll tell a number between 1 and the indicated number. The default is 100.",
 			"usage": "random [optional - number]"
 		},
 
@@ -592,13 +585,13 @@
 
 		"setlanguage": {
 			"category": "Server",
-			"description": "Change our language for this server",
+			"description": "Change our language for this server.",
 			"usage": "setlanguage [language]"
 		},
 
 		"setprefix": {
 			"category": "Server",
-			"description": "Change our prefix for this server",
+			"description": "Change our prefix for this server.",
 			"usage": "setprefix [prefix]"
 		},
 
