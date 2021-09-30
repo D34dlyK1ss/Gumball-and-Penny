@@ -172,10 +172,10 @@ bot.on('messageCreate', async message => {
 	else if (!message.guild || message.channel.id === '810529155955032115' || message.author.bot) return;
 
 	// Leitura dos ficheiros de comandos
-	const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.ts'));
+	const commandFiles = fs.readdirSync('./src/commands').filter(file => file.endsWith('.ts'));
 	if (commandFiles.length === 0) return;
 	for (const file of commandFiles) {
-		const props = require(`./commands/${file}`);
+		const props = require(`./src/commands/${file}`);
 		bot.commands.set(props.name, props);
 	}
 
@@ -187,7 +187,7 @@ bot.on('messageCreate', async message => {
 	if (englishChannels.includes(message.channel.id)) language = 'en';
 	else language = serverSettings.language;
 
-	const lang = require(`./lang/${language}.json`);
+	const lang = require(`./src/lang/${language}.json`);
 
 	if (message.content.toLowerCase().startsWith(prefix)) {
 		const array = message.content.split(' ');
@@ -265,10 +265,10 @@ bot.on('messageCreate', async message => {
 		const gifs = ['distraction dance'];
 
 		if (pngs.includes(message.content)) {
-			message.channel.send({ files: [`./img/automessages/${message.content}.png`] });
+			message.channel.send({ files: [`./src/img/automessages/${message.content}.png`] });
 		}
 		else if (gifs.includes(message.content)) {
-			message.channel.send({ files: [`./img/automessages/${message.content}.gif`] });
+			message.channel.send({ files: [`./src/img/automessages/${message.content}.gif`] });
 		}
 	}
 });
@@ -284,7 +284,7 @@ bot.on('interactionCreate', async interaction => {
 	if (englishChannels.includes(interaction.channel.id)) language = 'en';
 	else language = serverSettings.language;
 
-	const lang = require(`./lang/${language}.json`);
+	const lang = require(`./src/lang/${language}.json`);
 
 	if (interaction.isButton()) {
 		if (interaction.customId.startsWith('shop')) shopButtonHandler(interaction, lang, prefix);

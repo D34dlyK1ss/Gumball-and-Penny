@@ -4,10 +4,10 @@ import * as admin from 'firebase-admin';
 import * as answers from '../data/quizAnswers.json';
 import slugify from './slugify';
 import getText from './getText';
-registerFont('./fonts/comic.ttf', { family: 'Comic Sans MS' });
-registerFont('./fonts/comicb.ttf', { family: 'bold Comic Sans MS' });
-registerFont('./fonts/comici.ttf', { family: 'italic Comic Sans MS' });
-registerFont('./fonts/comicz.ttf', { family: 'bold-italic Sans MS' });
+registerFont('src/fonts/comic.ttf', { family: 'Comic Sans MS' });
+registerFont('src/fonts/comicb.ttf', { family: 'bold Comic Sans MS' });
+registerFont('src/fonts/comici.ttf', { family: 'italic Comic Sans MS' });
+registerFont('src/fonts/comicz.ttf', { family: 'bold-italic Sans MS' });
 
 export function createQuizPage(message: Message, user: User, lang:Record<string, any>, prefix: string, embedName: string) {
 	let embedToExport: MessageEmbed;
@@ -118,8 +118,8 @@ export function createQuizQuestion(interaction: ButtonInteraction, user: User, l
 			
 							const canvas = createCanvas(401, 250);
 							const ctx = canvas.getContext('2d');
-							const eyes = await loadImage(`img/quiz/anime/eyes/${rnd}.png`);
-							const hud = await loadImage('img/quiz/anime/eyes/hud.png');
+							const eyes = await loadImage(`src/img/quiz/anime/eyes/${rnd}.png`);
+							const hud = await loadImage('src/img/quiz/anime/eyes/hud.png');
 			
 							ctx.drawImage(eyes, 28, 120);
 							ctx.drawImage(hud, 0, 0, canvas.width, canvas.height);
