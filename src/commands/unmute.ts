@@ -12,7 +12,7 @@ export async function execute(bot: undefined, message: Message, command: undefin
 	}
 	else {
 		const mention = message.mentions.users.first();
-		const memberToUnmute = await message.guild.members.fetch(mention);
+		const memberToUnmute = await message.guild.members.fetch(mention).catch(() => undefined);
 
 		args.shift();
 
@@ -39,12 +39,14 @@ export async function execute(bot: undefined, message: Message, command: undefin
 				});
 			}
 
-			if (!memberToUnmute.roles.cache.find((role: Role) => role.name === 'Muted')) {
-				message.reply(lang.error.memberNotMuted);
-			}
-			else {
-				memberToUnmute.roles.remove(muteRole);
-				message.channel.send(getText(lang.unmute.isNowUnmuted, [memberToUnmute.user.tag]));
+			if (memberToUnmute) {
+				if (!memberToUnmute.roles.cache.find((role: Role) => role.name === 'Muted')) {
+					message.reply(lang.error.memberNotMuted);
+				}
+				else {
+					memberToUnmute.roles.remove(muteRole);
+					message.channel.send(getText(lang.unmute.isNowUnmuted, [memberToUnmute.user.tag]));
+				}
 			}
 		}
 	}

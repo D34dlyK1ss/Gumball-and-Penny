@@ -36,10 +36,6 @@ function setBotStatus() {
 	bot.user.setActivity({ name: `${botConfig.settings.prefix}help on ${bot.guilds.cache.size} server${plural}!`, type: 'WATCHING' });
 }
 
-// Biblioteca para momentos
-import moment from 'moment';
-moment.locale('pt');
-
 // Biblioteca para sistema de ficheiros
 import * as fs from 'fs';
 
@@ -63,6 +59,7 @@ admin.initializeApp({
 const db = admin.firestore();
 
 // Funções úteis
+import moment from 'moment';
 import getText from './src/functions/getText';
 import giveVIP from './src/functions/giveVIP';
 import removeVIP from './src/functions/removeVIP';
@@ -86,6 +83,7 @@ bot.once('ready', () => {
 		dbl.postStats(bot.guilds.cache.size);
 	}, 1800000);
 
+	moment.locale('pt');
 	console.log(`Preparados! (${moment().format('LL')} ${moment().format('LTS')})`);
 });
 
@@ -124,6 +122,14 @@ es.onmessage = async messageEvent => {
 
 				refP.update({
 					balance: bal + add
+				}).then(async () => {
+					const voter = await bot.users.fetch(userID).catch(() => undefined);
+
+					if (voter) {
+						bot.users.fetch(botConfig.botOwnerID).then(owner => {
+							owner.send(`${voter.tag} votou em nós!`);
+						});
+					}
 				});
 			});
 		}
@@ -294,7 +300,7 @@ bot.on('interactionCreate', async interaction => {
 	if	(interaction.isSelectMenu()) {
 		if (interaction.customId.startsWith('languageMenu')) {
 			newLanguage = interaction.values[0];
-			interaction.deferUpdate().catch(err => { console.log(err); });
+			interaction.deferUpdate();
 		}
 	}
 });

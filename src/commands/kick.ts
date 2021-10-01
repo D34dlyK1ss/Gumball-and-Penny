@@ -12,28 +12,30 @@ export async function execute(bot: undefined, message: Message, command: undefin
 	}
 	else {
 		const mention = message.mentions.users.first();
-		const member = await message.guild.members.fetch(mention);
-
-		args.shift();
-
-		const reason = args.join(' ') || lang.notIndicated;
 
 		if (!mention) {
 			message.reply(lang.error.noMention);
 		}
 		else {
-			member.kick(reason).then(() => {
-				const embed = new MessageEmbed()
-					.setColor('DARK_PURPLE')
-					.setTitle(getText(lang.kick.wasKicked, [member.user.tag]))
-					.setThumbnail(`${member.user.displayAvatarURL()}`)
-					.setDescription(`${lang.by} ${message.member.user.tag}`)
-					.addFields(
-						{ name: `${lang.reason}`, value: `${reason}` }
-					);
+			args.shift();
 
-				message.channel.send({ embeds: [embed] });
-			});
+			const reason = args.join(' ') || lang.notIndicated;
+			const member = await message.guild.members.fetch(mention).catch(() => undefined);
+
+			if (member) {
+				member.kick(reason).then(() => {
+					const embed = new MessageEmbed()
+						.setColor('DARK_PURPLE')
+						.setTitle(getText(lang.kick.wasKicked, [member.user.tag]))
+						.setThumbnail(`${member.user.displayAvatarURL()}`)
+						.setDescription(`${lang.by} ${message.member.user.tag}`)
+						.addFields(
+							{ name: `${lang.reason}`, value: `${reason}` }
+						);
+
+					message.channel.send({ embeds: [embed] });
+				});
+			}
 		}
 	}
 }

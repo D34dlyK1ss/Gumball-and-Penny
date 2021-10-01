@@ -31,7 +31,7 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 					lastDaily: today
 				}).then(() => {
 					message.reply(getText(lang.daily.received, [daily, prefix]));
-				}).catch((err: any) => { console.error(err); });
+				});
 			}
 		}
 	});

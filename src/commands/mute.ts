@@ -16,7 +16,7 @@ export async function execute(bot: undefined, message: Message, command: undefin
 	}
 	else {
 		const mention = message.mentions.users.first();
-		const memberToMute = await message.guild.members.fetch(mention);
+		const memberToMute = await message.guild.members.fetch(mention).catch(() => undefined);
 		let seconds = parseInt(args[1]);
 
 		args.shift();
@@ -52,22 +52,24 @@ export async function execute(bot: undefined, message: Message, command: undefin
 
 			if (seconds > 86400) seconds = 86400;
 
-			memberToMute.roles.add(muteRole).then(() => {
-				const embed = new MessageEmbed()
-					.setColor('DARK_PURPLE')
-					.setTitle(getText(lang.mute.isMutedFor, [memberToMute.user.tag, seconds]))
-					.setThumbnail(`${memberToMute.user.displayAvatarURL()}`)
-					.setDescription(`${lang.by} ${message.member.user.tag}`)
-					.addFields(
-						{ name: `${lang.reason}`, value: `${reason}` }
-					);
-
-				message.channel.send({ embeds: [embed] }).then(() => {
-					setTimeout(() => {
-						memberToMute.roles.remove(muteRole);
-					}, seconds * 1000);
+			if (memberToMute) {
+				memberToMute.roles.add(muteRole).then(() => {
+					const embed = new MessageEmbed()
+						.setColor('DARK_PURPLE')
+						.setTitle(getText(lang.mute.isMutedFor, [memberToMute.user.tag, seconds]))
+						.setThumbnail(`${memberToMute.user.displayAvatarURL()}`)
+						.setDescription(`${lang.by} ${message.member.user.tag}`)
+						.addFields(
+							{ name: `${lang.reason}`, value: `${reason}` }
+						);
+	
+					message.channel.send({ embeds: [embed] }).then(() => {
+						setTimeout(() => {
+							memberToMute.roles.remove(muteRole);
+						}, seconds * 1000);
+					});
 				});
-			});
+			}
 		}
 	}
 }

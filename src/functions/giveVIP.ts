@@ -6,16 +6,18 @@ async function giveVIP(db: FirebaseFirestore.Firestore, message: Message, args: 
 	const vipRole = message.guild.roles.cache.find(role => role.name === 'VIP');
 	const justPaidRole = message.guild.roles.cache.find(role => role.name === 'I Just Paid VIP');
 
-	if (args !== undefined) {
+	if (args) {
 		args.forEach(async id => {
 			db.collection('vip').doc(id).set({
 				until: timestamp
 			});
 
-			const memberToVIP = await message.guild.members.fetch(id);
+			const memberToVIP = await message.guild.members.fetch(id).catch(() => undefined);
 
-			memberToVIP.roles.remove(justPaidRole);
-			memberToVIP.roles.add(vipRole);
+			if (memberToVIP) {
+				memberToVIP.roles.remove(justPaidRole);
+				memberToVIP.roles.add(vipRole);
+			}
 		});
 
 		let plural;
@@ -33,10 +35,12 @@ async function giveVIP(db: FirebaseFirestore.Firestore, message: Message, args: 
 				refV.set({
 					until: timestamp
 				}).then(async () => {
-					const memberToVIP = await message.guild.members.fetch(message.author.id);
+					const memberToVIP = await message.guild.members.fetch(message.author.id).catch(() => undefined);
 
-					memberToVIP.roles.remove(justPaidRole);
-					memberToVIP.roles.add(vipRole).then(() => { message.react('✅'); });
+					if (memberToVIP) {
+						memberToVIP.roles.remove(justPaidRole);
+						memberToVIP.roles.add(vipRole).then(() => { message.react('✅'); });
+					}
 				});
 			}
 		});
