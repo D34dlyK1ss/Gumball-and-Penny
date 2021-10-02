@@ -334,8 +334,8 @@
 
 	"shop": {
 		"welcome": "Bem vindo à Loja Incrível!\nAqui poderás comprar algumas coisas com o dinheiro que acumulaste até agora.\nUsa os botões abaixo para navegar pela loja!",
-		"boughtHUD": "Compraste o HUD **$0$**! Para o equipares usa `**$1$**profile sethud [$2$]`.",
-		"boughtPetHud": "Compraste o Pet HUD **$0$**! Para o equipares usa `**$1$**pet sethud [$2$]`.",
+		"boughtHUD": "Compraste o HUD **$0$**! Para o equipares usa `$1$profile sethud [$2$]`.",
+		"boughtPetHud": "Compraste o Pet HUD **$0$**! Para o equipares usa `$1$pet sethud [$2$]`.",
 		"boughtItem": "Compraste 1 **$0$**!",
 		"boughtPet": "Compraste 1 **$0$*! Para lhe dares um nome usa `$1$pet setnickname [$2$]`.",
 		"hero": "Herói",
