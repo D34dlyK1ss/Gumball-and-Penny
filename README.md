@@ -1,6 +1,6 @@
 # Gumball & Penny
 
-The best duo of Discord!
+The best Discord duo!
 
 ## FAQ
 
