@@ -1,17 +1,17 @@
 # Gumball & Penny
 
-A melhor duo do Discord!
+The best duo of Discord!
 
 ## FAQ
 
-### O que é o Gumball & Penny?
-O Gumball & Penny é um bot para Discord que eu criei não só para diversão, como também para aprimorar os meus conhecimentos em programação.
+### What is Gumball & Penny?
+Gumball & Penny is a bot for Discord I created not only for fun, but also to improve my programming skills.
 
-### O que faz um bot desses?
-Os bots para Discord são aplicações que funcionam como utilizadores normais: podem escrever, enviar ficheiros, e até usar o voice chat!
-A diferença é que podes dar-lhe ordens por comandos que o bot respetivo possui, podendo serem utilizados para lazer, anunciar eventos, ou até mesmo para moderação de servidores!
+### What does such a bot?
+Discord bots are applications which work like normal users: they can write, send files, and even use voice chat!
+The difference is that you can give them orders by commands the respective bot has, which can be used for entertainment, announcing events or even for server moderation!
 
-### O teu bot tem alguma coisa de especial?
-A minha ideia de momento não é criar um bot que se distinga dos outros, mas por outro lado também quero que tenha umas quantas funcionalidades que eu nunca vi noutro bot qualquer. Se quiseres descobrir quais são, convida-o para o teu servidor através do link abaixo!
+### Is your bot anything special?
+My idea at the moment isn't to create a bot which stands out from the others, but on the other hand I also want it to have a few features I've never seen in any other bot. If you want to find out what they are, invite them to your server via the link below! 
 
 https://discordapp.com/oauth2/authorize?&client_id=679041548955942914&scope=bot&permissions=272100438
