@@ -5,3 +5,4 @@
 serviceAccountKey.json
 backups
 node_modules
+indexDev.ts
