@@ -62,14 +62,6 @@ import { shopButtonHandler } from './src/functions/shopHandler';
 import { quizButtonHandler } from './src/functions/quizHandler';
 import { confirmLanguage } from './src/functions/setlanguageHandler';
 
-// Uma vez que o bot está ativo, realizar as seguintes ações
-bot.once('ready', () => {
-	setBotStatus();
-	moment.locale('pt');
-
-	console.log(`Preparados! (${moment().format('LL')} ${moment().format('LTS')})`);
-});
-
 const settings: any = new Object();
 
 async function getServerSettings(guild: Guild) {

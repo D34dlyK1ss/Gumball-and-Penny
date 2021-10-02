@@ -102,7 +102,7 @@ es.onmessage = async messageEvent => {
 	const userID = data.event.body.user;
 	const type = data.event.body.type;
 
-	if (agent === 'DBL' && authorization === 'Gumball&PennyDBL') {
+	if (agent === 'Top.gg Webhook/1.0.0' && authorization === 'Gumball&PennyDBL') {
 		if (type === 'upvote') {
 			const refP = db.collection('perfis').doc(userID);
 
@@ -127,7 +127,7 @@ es.onmessage = async messageEvent => {
 
 					if (voter) {
 						bot.users.fetch(botConfig.botOwnerID).then(owner => {
-							owner.send(`${voter.tag} votou em nós!`);
+							owner.send(`**${voter.tag}** votou em nós!`);
 						});
 					}
 				});
