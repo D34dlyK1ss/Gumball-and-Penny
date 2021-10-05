@@ -11,7 +11,7 @@ export interface ServerSettings {
 // Interface para a execução de comandos
 export interface Cmd {
 	name: string;
-	aliases: string[];
+	aliases?: string[];
 	execute(bot: Client, message: Message, command: Cmd, db: FirebaseFirestore.Firestore, lang: Record<string, string>, language: string, prefix: string, args: string[], serverSettings: ServerSettings): void;
 }
 
@@ -33,7 +33,7 @@ import botConfig from './botConfig.json';
 // Descrição do bot na plataforma
 function setBotStatus() {
 	const plural = bot.guilds.cache.size === 1 ? '' : 's';
-	bot.user?.setActivity({ name: `${botConfig.settings.prefix}help on ${bot.guilds.cache.size} server${plural}!`, type: 'WATCHING' });
+	bot.user.setActivity({ name: `${botConfig.settings.prefix}help on ${bot.guilds.cache.size} server${plural}!`, type: 'WATCHING' });
 }
 
 // Biblioteca para sistema de ficheiros
@@ -41,7 +41,7 @@ import * as fs from 'fs';
 
 // API do Discord Bot List
 import DBL from 'dblapi.js';
-const dbl = new DBL(process.env.DBLTOKEN as string, bot);
+const dbl = new DBL(process.env.DBLTOKEN, bot);
 
 // Acesso de administrador à BD
 import * as admin from 'firebase-admin';
@@ -163,8 +163,8 @@ const englishChannels = ['809182965607039007', '787661396652589077', '7876740333
 
 // Ações para quando o bot receber uma mensagem
 bot.on('messageCreate', async message => {
-	if (message.channel.id === '810529155955032115' && message.content === `${botConfig.settings.prefix}activate` && message.member?.id === botConfig.botOwnerID) {
-		giveVIP(db, message, []);
+	if (message.channel.id === '810529155955032115' && message.content === `${botConfig.settings.prefix}activate` && message.member.id === botConfig.botOwnerID) {
+		giveVIP(db, message, undefined);
 	}
 	else if (message.channel.id === '810529155955032115') {
 		const array = message.content.split(' ');
@@ -186,7 +186,7 @@ bot.on('messageCreate', async message => {
 	}
 
 	//  Obter as definições do bot para o servidor
-	const serverSettings = await getServerSettings(message.guild as Guild);
+	const serverSettings = await getServerSettings(message.guild);
 	const prefix = serverSettings.prefix;
 	let language;
 
@@ -200,7 +200,7 @@ bot.on('messageCreate', async message => {
 		const commandName = array[0].slice(prefix.length).toLowerCase();
 		const args = array.slice(1);
 
-		const command = bot.commands.get(commandName) ?? bot.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
+		const command = bot.commands.get(commandName) || bot.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
 
 		// Ignorar mensagem se o bot não tiver tal comando
 		if (!command) return;
@@ -263,7 +263,7 @@ bot.on('messageCreate', async message => {
 			message.reply(lang.error.cmd);
 		}
 	}
-	else if (message.content === `<@${bot.user?.id}>`) {
+	else if (message.content === `<@${bot.user.id}>`) {
 		message.channel.send(getText(lang.prefixMsg, [prefix]));
 	}
 	else if (serverSettings.automessages === true) {
@@ -283,11 +283,11 @@ let newLanguage: string|undefined;
 
 bot.on('interactionCreate', async interaction => {
 	//  Obter as definições do bot para o servidor
-	const serverSettings = await getServerSettings(interaction.guild as Guild);
+	const serverSettings = await getServerSettings(interaction.guild);
 	const prefix = serverSettings.prefix;
 	let language;
 
-	if (englishChannels.includes(interaction.channelId as string)) language = 'en';
+	if (englishChannels.includes(interaction.channel.id)) language = 'en';
 	else language = serverSettings.language;
 
 	const lang = require(`./src/lang/${language}.json`);

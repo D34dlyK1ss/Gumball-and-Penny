@@ -296,7 +296,7 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 			}
 			break;
 		default: {
-			const pageToSend: any = createShopPage(message.member?.id as string, lang, prefix, 'shopmainEmbed0');
+			const pageToSend: any = createShopPage(message.member.id, lang, prefix, 'shopmainEmbed0');
 
 			message.reply({ embeds: [pageToSend[0]], components: [pageToSend[1]] });
 			break;

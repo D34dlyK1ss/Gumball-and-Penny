@@ -12,8 +12,8 @@ registerFont('src/fonts/comicz.ttf', { family: 'bold-italic Sans MS' });
 
 export const name = 'pet';
 
-export function execute(bot: BotClient, message: Message, command: undefined, db: FirebaseFirestore.Firestore, lang: Record<string, string | any>, language: undefined, prefix: string, args: string[]) {
-	const user = message.mentions.users.first() ?? message.author;
+export function execute(bot: BotClient, message: Message, command: undefined, db: FirebaseFirestore.Firestore, lang: Record<string, string | any>, language: undefined, prefix: undefined, args: string[]) {
+	const user = message.mentions.users.first() || message.author;
 	const refV = db.collection('vip').doc(user.id);
 	const refP = db.collection('pet').doc(user.id);
 	const refI = db.collection('inventario').doc(message.author.id);

@@ -1,21 +1,21 @@
-import { Message, MessageEmbed, GuildChannel, User, Role } from 'discord.js';
+import { Message, MessageEmbed, GuildChannel } from 'discord.js';
 import getText from '../functions/getText';
 
 export const name = 'mute';
 export async function execute(bot: undefined, message: Message, command: undefined, db: undefined, lang: Record<string, string | any>, language: undefined, prefix: undefined, args: string[]) {
 	message.delete();
 
-	if (!message.member?.permissions.has('MANAGE_ROLES') || !message.member?.permissions.has('MANAGE_CHANNELS')) {
+	if (!message.member.permissions.has('MANAGE_ROLES') || !message.member.permissions.has('MANAGE_CHANNELS')) {
 		message.reply(lang.error.noPerm);
 	}
-	else if (!message.guild?.me?.permissions.has('MANAGE_ROLES')) {
+	else if (!message.guild.me.permissions.has('MANAGE_ROLES')) {
 		message.reply(lang.error.botNoManageRoles);
 	}
-	else if (!message.guild?.me?.permissions.has('MANAGE_CHANNELS')) {
+	else if (!message.guild.me.permissions.has('MANAGE_CHANNELS')) {
 		message.reply(lang.error.botNoManageChannels);
 	}
 	else {
-		const mention = message.mentions.users.first() as User;
+		const mention = message.mentions.users.first();
 		const memberToMute = await message.guild.members.fetch(mention).catch(() => undefined);
 		let seconds = parseInt(args[1]);
 
@@ -23,7 +23,7 @@ export async function execute(bot: undefined, message: Message, command: undefin
 		args.shift();
 
 		const reason = args.join(' ') || lang.notIndicated;
-		let muteRole = message.guild.roles.cache.find(role => role.name === 'Muted') as Role;
+		let muteRole = message.guild.roles.cache.find(role => role.name === 'Muted');
 
 		if (!mention) {
 			message.reply(lang.error.noMention);
@@ -38,10 +38,10 @@ export async function execute(bot: undefined, message: Message, command: undefin
 					color: '#404040'
 				});
 
-				muteRole = message.guild.roles.cache.find(role => role.name === 'Muted') as Role;
+				muteRole = message.guild.roles.cache.find(role => role.name === 'Muted');
 
-				message.guild.channels.cache.forEach(async channel => {
-					await (channel as GuildChannel).permissionOverwrites.edit(muteRole, {
+				message.guild.channels.cache.forEach(async (channel: GuildChannel) => {
+					await channel.permissionOverwrites.edit(muteRole, {
 						SEND_MESSAGES: false,
 						ADD_REACTIONS: false,
 						CONNECT: false,
@@ -58,7 +58,7 @@ export async function execute(bot: undefined, message: Message, command: undefin
 						.setColor('DARK_PURPLE')
 						.setTitle(getText(lang.mute.isMutedFor, [memberToMute.user.tag, seconds]))
 						.setThumbnail(`${memberToMute.user.displayAvatarURL()}`)
-						.setDescription(`${lang.by} ${message.member?.user.tag}`)
+						.setDescription(`${lang.by} ${message.member.user.tag}`)
 						.addFields(
 							{ name: `${lang.reason}`, value: `${reason}` }
 						);

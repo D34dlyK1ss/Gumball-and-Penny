@@ -5,7 +5,7 @@ import getText from '../functions/getText';
 
 export const name = 'setprefix';
 export function execute(bot: undefined, message: Message, command: undefined, db: FirebaseFirestore.Firestore, lang: Record<string, string | any>, language: undefined, prefix: undefined, args: string[], serverSettings: ServerSettings) {
-	if (!message.member?.permissions.has('MANAGE_GUILD')) {
+	if (!message.member.permissions.has('MANAGE_GUILD')) {
 		message.delete();
 		message.reply(lang.error.noPerm);
 	}
@@ -14,7 +14,7 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 	}
 	else {
 		const newPrefix = args[0].toLowerCase();
-		const ref = db.collection('definicoes').doc(message.guild?.id as string);
+		const ref = db.collection('definicoes').doc(message.guild.id);
 
 		ref.get().then(doc => {
 			if (!doc.exists) {

@@ -3,9 +3,9 @@ import items from '../data/itemlist.json';
 import getText from './getText';
 
 export function createShopPage(userId: string, lang:Record<string, any>, prefix: string, embedName: string) {
-	let embedToExport = new MessageEmbed();
-	let buttonRow = new MessageActionRow();
-	let buttonRow2 = new MessageActionRow();
+	let embedToExport: MessageEmbed;
+	let buttonRow: MessageActionRow;
+	let buttonRow2: MessageActionRow;
 	const mainEmbed = new MessageEmbed()
 		.setColor('DARK_PURPLE')
 		.setTitle(lang.awesomeStore)

@@ -9,7 +9,7 @@ export function execute(bot: BotClient, message: Message, command: Cmd, db: unde
 	const helpEmbed = new MessageEmbed()
 		.setColor('DARK_PURPLE')
 		.setTitle(lang.help)
-		.setThumbnail(`${bot.user?.displayAvatarURL()}`)
+		.setThumbnail(`${bot.user.displayAvatarURL()}`)
 		.setDescription(getText(lang.helpDescription, [prefix, lang.commandName]))
 		.addFields(
 			{ name: `🎭 ${lang.actions}`, value: '`angry`, `cry`, `dance`, `happy`, `hug`, `kiss`, `laugh`, `pat`, `run`, `slap`', inline: true },

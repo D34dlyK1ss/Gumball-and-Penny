@@ -1,4 +1,4 @@
-import { Message, User } from 'discord.js';
+import { Message } from 'discord.js';
 import { BotClient, Cmd } from 'index';
 import getText from '../functions/getText';
 import botConfig from '../../botConfig.json';
@@ -12,7 +12,7 @@ export function execute(bot: BotClient, message: Message, command: Cmd, db: Fire
 		message.reply(getText(lang.error.wrongSyntax, [prefix, lang.command[command.name].usage]));
 	}
 	else {
-		const user = message.mentions.users.first() as User;
+		const user = message.mentions.users.first();
 		const refD = db.collection('perfis').doc(donor.id);
 
 		refD.get().then(docD => {
