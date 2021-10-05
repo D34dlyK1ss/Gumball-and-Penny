@@ -5,6 +5,7 @@ import getText from '../functions/getText';
 export const name = 'help';
 export const aliases = ['h'];
 export function execute(bot: BotClient, message: Message, command: Cmd, db: undefined, lang: Record<string, string | any>, language: undefined, prefix: string, args: string[]) {
+	const commands = bot.commands;
 	const helpEmbed = new MessageEmbed()
 		.setColor('DARK_PURPLE')
 		.setTitle(lang.help)
@@ -28,7 +29,7 @@ export function execute(bot: BotClient, message: Message, command: Cmd, db: unde
 	else {
 		const argsString = args.toString();
 		const commandName = argsString.toLowerCase();
-		command = bot.commands.get(commandName) ?? bot.commands.find(c => c.aliases && c.aliases.includes(commandName)) as Cmd;
+		command = commands.get(commandName) || commands.find(c => c.aliases && c.aliases.includes(commandName));
 		if (!command) {
 			message.reply(lang.error.noCommand);
 		}
