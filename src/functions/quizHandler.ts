@@ -1,4 +1,4 @@
-import { ButtonInteraction, Message, MessageAttachment, MessageEmbed, MessageActionRow, MessageButton, User } from 'discord.js';
+import { ButtonInteraction, Message, MessageAttachment, MessageEmbed, MessageActionRow, MessageButton, User, MessageCollector } from 'discord.js';
 import { registerFont, createCanvas, loadImage } from 'canvas';
 import * as admin from 'firebase-admin';
 import * as answers from '../data/quizAnswers.json';
@@ -9,12 +9,12 @@ registerFont('src/fonts/comicb.ttf', { family: 'bold Comic Sans MS' });
 registerFont('src/fonts/comici.ttf', { family: 'italic Comic Sans MS' });
 registerFont('src/fonts/comicz.ttf', { family: 'bold-italic Sans MS' });
 
-export function createQuizPage(message: Message, user: User, lang:Record<string, any>, prefix: string, embedName: string) {
-	let embedToExport: MessageEmbed;
-	let buttonRow: MessageActionRow;
+export function createQuizPage(user: User, lang:Record<string, any>, prefix: string, embedName: string) {
+	let embedToExport = new MessageEmbed();
+	let buttonRow = new MessageActionRow();
 	const mainEmbed = new MessageEmbed()
 		.setColor('DARK_PURPLE')
-		.setAuthor(user.username, user.avatarURL())
+		.setAuthor(user.username, user.avatarURL() as string)
 		.setTitle('Quiz')
 		.addFields(
 			{ name: '- Anime', value: '\u200B', inline: true }
@@ -141,21 +141,21 @@ export function createQuizQuestion(interaction: ButtonInteraction, user: User, l
 			
 							const attachment = new MessageAttachment(canvas.toBuffer(), 'question.png');
 			
-							interaction.channel.send({ files: [attachment] });
+							interaction.channel?.send({ files: [attachment] });
 			
 							const filter = (msg: Message) => answers.animeEyes[rnd].includes(slugify(msg.content.toLowerCase()));
-							const collector = interaction.channel.createMessageCollector({ filter, max: 1, time: 15000 });
+							const collector = interaction.channel?.createMessageCollector({ filter, max: 1, time: 15000 }) as MessageCollector;
 		
 							collector.on('collect', message => {
 								message.reply(lang.quiz.correct);
 			
-								if (!score.has(message.member.id)) score.set(message.member.id, 0);
+								if (!score.has(message.member?.id as string)) score.set(message.member?.id as string, 0);
 			
-								score.set(message.member.id, score.get(message.member.id) + 1);
+								score.set(message.member?.id as string, score.get(message.member?.id as string) as number + 1);
 							});
 			
 							collector.on('end', collected => {
-								if (collected.size === 0) interaction.channel.send(lang.quiz.noCorrectAnswer);
+								if (collected.size === 0) interaction.channel?.send(lang.quiz.noCorrectAnswer);
 			
 								setTimeout(async () => {
 									if (--i) {
@@ -197,7 +197,7 @@ export function createQuizQuestion(interaction: ButtonInteraction, user: User, l
 											resultsEmbed.setDescription(description);
 										}
 			
-										interaction.channel.send({ content: lang.quiz.ended, embeds: [resultsEmbed] });
+										interaction.channel?.send({ content: lang.quiz.ended, embeds: [resultsEmbed] });
 										alreadyPlaying.delete(interaction.channelId);
 									}
 								});
@@ -223,7 +223,7 @@ export function quizButtonHandler(button: ButtonInteraction, lang: Record<string
 			button.update({ content: lang.quiz.closed, embeds: [], components: [] });
 		}
 		else {
-			const toSend:any = createQuizPage(undefined, button.user, lang, prefix, button.customId.slice(0, -18));
+			const toSend:any = createQuizPage(button.user, lang, prefix, button.customId.slice(0, -18));
 
 			button.update({ embeds: [toSend[0]], components: [toSend[1]] });
 		}

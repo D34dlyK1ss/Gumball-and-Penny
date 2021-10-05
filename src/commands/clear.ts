@@ -6,10 +6,10 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 	message.delete().then(() => {
 		let integer = parseInt(args[0], 10);
 
-		if (!message.member.permissions.has('MANAGE_MESSAGES')) {
+		if (!message.member?.permissions.has('MANAGE_MESSAGES')) {
 			message.reply(lang.error.noPerm);
 		}
-		else if (!message.guild.me.permissions.has('MANAGE_MESSAGES')) {
+		else if (!message.guild?.me?.permissions.has('MANAGE_MESSAGES')) {
 			message.reply(lang.error.botNoManageMsgs);
 		}
 		else if (!args[0] || args[0] === '0' || !Number.isInteger(integer)) {

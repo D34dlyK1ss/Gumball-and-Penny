@@ -4,10 +4,10 @@ import getText from '../functions/getText';
 export const name = 'kick';
 export async function execute(bot: undefined, message: Message, command: undefined, db: undefined, lang: Record<string, string | any>, language: undefined, prefix: undefined, args: string[]) {
 	message.delete();
-	if (!message.member.permissions.has('KICK_MEMBERS')) {
+	if (!message.member?.permissions.has('KICK_MEMBERS')) {
 		message.reply(lang.error.noPerm);
 	}
-	else if (!message.guild.me.permissions.has('KICK_MEMBERS')) {
+	else if (!message.guild?.me?.permissions.has('KICK_MEMBERS')) {
 		message.reply(lang.error.botNoKick);
 	}
 	else {
@@ -28,7 +28,7 @@ export async function execute(bot: undefined, message: Message, command: undefin
 						.setColor('DARK_PURPLE')
 						.setTitle(getText(lang.kick.wasKicked, [member.user.tag]))
 						.setThumbnail(`${member.user.displayAvatarURL()}`)
-						.setDescription(`${lang.by} ${message.member.user.tag}`)
+						.setDescription(`${lang.by} ${message.member?.user.tag}`)
 						.addFields(
 							{ name: `${lang.reason}`, value: `${reason}` }
 						);

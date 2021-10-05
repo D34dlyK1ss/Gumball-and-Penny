@@ -8,7 +8,7 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 		message.reply(lang.quiz.alreadyPlaying);
 	}
 	else {
-		const pageToSend: any = createQuizPage(message, message.author, lang, prefix, 'quizmainEmbed');
+		const pageToSend: any = createQuizPage(message.author, lang, prefix, 'quizmainEmbed');
 
 		message.reply({ embeds: [pageToSend[0]], components: [pageToSend[1]] });
 	}

@@ -10,7 +10,7 @@ export function execute(bot: BotClient, message: Message, command: Cmd, db: Fire
 		message.reply(lang.error.noMention);
 	}
 	else {
-		const userLast = parseInt(message.member.id.slice(-1));
+		const userLast = parseInt((message.member?.id as string).slice(-1));
 		const otherUserLast = parseInt(otherUser.id.slice(-1));
 		let integer = `${(Math.abs(userLast - otherUserLast) + 1) * 10}`;
 

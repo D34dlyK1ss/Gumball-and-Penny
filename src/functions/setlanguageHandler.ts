@@ -4,7 +4,7 @@ import { ServerSettings } from 'index';
 
 
 export function confirmLanguage(button: ButtonInteraction, db: FirebaseFirestore.Firestore, newLanguage: string|undefined, lang:Record<string, any>, prefix: string, serverSettings: ServerSettings) {
-	const ref = db.collection('definicoes').doc(button.guild.id);
+	const ref = db.collection('definicoes').doc(button.guild?.id as string);
 
 	if (!button.customId.endsWith(button.user.id)) {
 		button.reply({ content: lang.error.notAuthor, ephemeral: true });
