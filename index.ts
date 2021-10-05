@@ -279,7 +279,7 @@ bot.on('messageCreate', async message => {
 	}
 });
 
-let newLanguage: string|undefined;
+let newLanguage: string;
 
 bot.on('interactionCreate', async interaction => {
 	//  Obter as definições do bot para o servidor
