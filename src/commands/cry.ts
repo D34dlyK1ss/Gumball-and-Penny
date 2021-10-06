@@ -14,6 +14,6 @@ export function	execute(bot: BotClient, message: Message, command: Cmd, db: unde
 		message.channel.send({ content: getText(lang.cry.isCryingBecauseOfUs, [message.author.tag]), files: [`src/img/actions/${command.name} (${rnd}).gif`] });
 	}
 	else {
-		message.channel.send({ content: getText(lang.cry.made, [user.tag, message.author.tag]), files: [`src/img/actions/${command.name} (${rnd}).gif`] });
+		message.channel.send({ content: getText(lang.cry.madeCry, [user.tag, message.author.tag]), files: [`src/img/actions/${command.name} (${rnd}).gif`] });
 	}
 }
