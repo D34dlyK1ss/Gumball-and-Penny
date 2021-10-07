@@ -1,7 +1,7 @@
 {
 	"huds": {
 		"colorPrice": 3000,
-		"price": 10000,
+		"price": 12000,
 		"black": {
 			"hex": "#202020"
 		},
@@ -18,7 +18,7 @@
 			"hex": "#808080"
 		},
 		"orange": {
-			"hex": "#ff10000"
+			"hex": "#ff1000"
 		},
 		"pink": {
 			"hex": "#e000e0"
@@ -266,7 +266,7 @@
 	},
 	"petHuds": {
 		"vipPrice": 8000,
-		"price": 3000,
+		"price": 4000,
 		"black": {
 			"vip": false
 		},
@@ -398,19 +398,19 @@
 		"goat": {
 			"species": "Cabra",
 			"gender": "random",
-			"price": 8000,
+			"price": 7000,
 			"vip": false
 		},
 		"dog": {
 			"species": "Cão",
 			"gender": "random",
-			"price": 10000,
+			"price": 12000,
 			"vip": false
 		},
 		"scorpion": {
 			"species": "Escorpião",
 			"gender": "random",
-			"price": 13000,
+			"price": 18000,
 			"vip": false
 		},
 		"ant": {
@@ -422,19 +422,19 @@
 		"chicken": {
 			"species": "Galinha",
 			"gender": "♀️",
-			"price": 8000,
+			"price": 7000,
 			"vip": false
 		},
 		"cat": {
 			"species": "Gato",
 			"gender": "random",
-			"price": 10000,
+			"price": 12000,
 			"vip": false
 		},
 		"dolphin": {
 			"species": "Golfinho",
 			"gender": "random",
-			"price": 15000,
+			"price": 16000,
 			"vip": false
 		},
 		"hamster": {
@@ -452,7 +452,7 @@
 		"frog": {
 			"species": "Sapo",
 			"gender": "random",
-			"price": 15000,
+			"price": 12000,
 			"vip": false
 		},
 		"akamaru": {
