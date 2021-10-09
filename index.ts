@@ -270,10 +270,10 @@ bot.on('messageCreate', async message => {
 		const pngs = ['boi', 'E', 'hmm', 'just monika', 'nice plan', 'no u', 'noice', 'shine'];
 		const gifs = ['distraction dance'];
 
-		if (pngs.includes(message.content)) {
+		if (pngs.includes(message.content.toLowerCase())) {
 			message.channel.send({ files: [`./src/img/automessages/${message.content}.png`] });
 		}
-		else if (gifs.includes(message.content)) {
+		else if (gifs.includes(message.content.toLowerCase())) {
 			message.channel.send({ files: [`./src/img/automessages/${message.content}.gif`] });
 		}
 	}
