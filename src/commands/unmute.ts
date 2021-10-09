@@ -3,7 +3,7 @@ import getText from '../functions/getText';
 
 export const name = 'unmute';
 export async function execute(bot: undefined, message: Message, command: undefined, db: undefined, lang: Record<string, string | any>, language: undefined, prefix: undefined, args: string[]) {
-	message.delete();
+	
 	if (!message.member.permissions.has('MANAGE_ROLES') || !message.member.permissions.has('MANAGE_CHANNELS')) {
 		message.reply(lang.error.noPerm);
 	}

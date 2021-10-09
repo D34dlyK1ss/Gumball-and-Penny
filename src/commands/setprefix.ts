@@ -6,7 +6,7 @@ import getText from '../functions/getText';
 export const name = 'setprefix';
 export function execute(bot: undefined, message: Message, command: undefined, db: FirebaseFirestore.Firestore, lang: Record<string, string | any>, language: undefined, prefix: undefined, args: string[], serverSettings: ServerSettings) {
 	if (!message.member.permissions.has('MANAGE_GUILD')) {
-		message.delete();
+		
 		message.reply(lang.error.noPerm);
 	}
 	else if (args[0] === '') {
