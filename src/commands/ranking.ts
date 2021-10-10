@@ -5,7 +5,7 @@ import getText from '../functions/getText';
 export const name = 'ranking';
 export const aliases = ['leaderboard'];
 
-const lastUpdateAt = 0;
+let lastUpdateAt = 0;
 const rankingEmbed = new MessageEmbed()
 	.setColor('DARK_PURPLE');
 
@@ -23,6 +23,7 @@ export async function execute(bot: undefined, message: Message, command: undefin
 			rankingEmbed.addField(`\n${i}# ${doc.get('name')}`, `${lang.level} ${doc.get('level')}, ${doc.get('xp')} XP`);
 		});
 
+		lastUpdateAt = Date.now();
 		rankingEmbed.setFooter(getText(lang.ranking.updatedAt, [moment(lastUpdateAt).utc().format('LL'), moment(lastUpdateAt).utc().format('LTS')]));
 	}
 
