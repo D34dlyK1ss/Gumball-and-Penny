@@ -19,8 +19,8 @@ export function execute(bot: undefined, message: Message, command: Cmd, db: Fire
 		}
 		else {
 			const bal: number = doc.get('balance');
-			const least = 50;
-			const most = 1000;
+			const min = 50;
+			const max = 1000;
 
 			if (bal + money > 1000000) {
 				message.reply(lang.error.noAdd);
@@ -28,11 +28,11 @@ export function execute(bot: undefined, message: Message, command: Cmd, db: Fire
 			else if (money > bal) {
 				message.reply(lang.error.noMoney);
 			}
-			else if (money < least) {
-				message.reply(getText(lang.betAtLeast, [least]));
+			else if (money < min) {
+				message.reply(getText(lang.betAtLeast, [min]));
 			}
-			else if (money > most) {
-				message.reply(getText(lang.betAtMost, [most]));
+			else if (money > max) {
+				message.reply(getText(lang.betAtMost, [max]));
 			}
 			else {
 				const g = Math.round(Math.random() * 2);
