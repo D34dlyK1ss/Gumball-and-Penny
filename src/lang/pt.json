@@ -239,7 +239,8 @@
 	"mute": {
 		"whyMuteUs": "Porque é que nos queres silenciar? 😦",
 		"muteSelf": "Acabaste de tentar silenciar-te? 😆",
-		"cannotMuteAboveOrSameLevel": "Não podes silenciar alguém acima de ti ou ao mesmo nível na hierarquia de roles!",
+		"youCannotMute": "Não podes silenciar **$0$**!",
+		"cannotMute": "Não conseguimos silenciar ninguém. Verifica a ordem das roles!",
 		"isMutedFor": "**$0$** está silenciado durante **$1$**! 🔇"
 	},
 

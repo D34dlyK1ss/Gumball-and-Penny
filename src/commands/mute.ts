@@ -29,7 +29,7 @@ export async function execute(bot: BotClient, message: Message, command: undefin
 			message.reply(lang.mute.muteSelf);
 		}
 		else if (!(author.roles.highest.comparePositionTo(memberToMute.roles.highest) > 0)) {
-			message.reply(lang.mute.cannotMuteAboveOrSameLevel);
+			message.reply(getText(lang.mute.youCannotMute, [mention.tag]));
 		}
 		else if (!args[1]) {
 			message.reply(lang.error.noDuration);
@@ -64,7 +64,9 @@ export async function execute(bot: BotClient, message: Message, command: undefin
 			}
 
 			if (memberToMute) {
-				memberToMute.roles.add(muteRole).then(() => {
+				memberToMute.roles.add(muteRole).catch(() => {
+					message.reply(getText(lang.mute.cannotMute, [muteRole.name]));
+				}).then(() => {
 					const embed = new MessageEmbed()
 						.setColor('DARK_PURPLE')
 						.setTitle(getText(lang.mute.isMutedFor, [memberToMute.user.tag, ms(duration)]))

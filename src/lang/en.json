@@ -239,7 +239,8 @@
 	"mute": {
 		"whyMuteUs": "Why do you want to mute us? 😦",
 		"muteSelf": "Did you just try muting yourself? 😆",
-		"cannotMuteAboveOrSameLevel": "You can't mute someone above you or at the same level in the role hierarchy!",
+		"youCannotMute": "You can't mute **$0$**!",
+		"cannotMute": "We can't mute anybody. Check the role order!",
 		"isMutedFor": "**$0$** is muted for **$1$**! 🔇"
 	},
 
