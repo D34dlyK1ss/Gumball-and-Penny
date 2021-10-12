@@ -84,7 +84,7 @@
 		"noAdd": "Não podes ganhar mais dinheiro! 😧",
 		"noMoney": "Não tens dinheiro suficiente!",
 		"noMessage": "Não escreveste mensagem nenhuma!",
-		"cantGive": "Não podes dar dinheiro a **$0$**! 😧",
+		"cannotGive": "Não podes dar dinheiro a **$0$**! 😧",
 		"noCommand": "Esse comando não existe!",
 		"noInventory": "Não tens nenhum inventário!",
 		"botNoKick": "Nós não temos permissão para expulsar membros!",
@@ -104,7 +104,7 @@
 		"notANumber": "Isso não é um número!",
 		"noPrefixChosen": "Precisamos de saber qual é o prefixo desejado!",
 		"noLinks": "Não podemos escrever links!",
-		"memberNotMuted": "Esse membro não está silenciado!",
+		"memberNotMuted": "**$0$** não está silenciado/a!",
 		"hasProfileAlready": "Já tens um perfil criado, não podes criar outro! 💢",
 		"noHUDChosen": "Não escolheste um HUD!",
 		"noHaveHUD": "Não tens esse HUD!",
@@ -237,7 +237,10 @@
 	},
 
 	"mute": {
-		"isMutedFor": "**$0$** está silenciado durante **$1$ segundos**! 🔇"
+		"whyMuteUs": "Porque é que nos queres silenciar? 😦",
+		"muteSelf": "Acabaste de tentar silenciar-te? 😆",
+		"cannotMuteAboveOrSameLevel": "Não podes silenciar alguém acima de ti ou ao mesmo nível na hierarquia de roles!",
+		"isMutedFor": "**$0$** está silenciado durante **$1$**! 🔇"
 	},
 
 	"pat": {
@@ -548,8 +551,8 @@
 
 		"mute": {
 			"category": "Moderação",
-			"description": "Calaremos um membro do servidor, mas por um tempo determinado! 5 minutos por predefinição.",
-			"usage": "mute [@membro] [opcional - segundos] [opcional - razão]"
+			"description": "Silenciaremos um membro do servidor por um tempo determinado!",
+			"usage": "mute [@membro] [duração(s/m/h/d)] [opcional - razão]"
 		},
 
 		"pat": {

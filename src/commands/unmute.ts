@@ -12,16 +12,16 @@ export async function execute(bot: undefined, message: Message, command: undefin
 	}
 	else {
 		const mention = message.mentions.users.first();
-		const memberToUnmute = await message.guild.members.fetch(mention).catch(() => undefined);
+		const memberToUnmute = await message.guild.members.fetch(mention);
 
 		args.shift();
-
-		let muteRole = message.guild.roles.cache.find(role => role.name === 'Muted');
 
 		if (!mention) {
 			message.reply(lang.error.noMention);
 		}
 		else {
+			let muteRole = message.guild.roles.cache.find(role => role.name === 'Muted');
+
 			if (!muteRole) {
 				message.guild.roles.create({
 					name: 'Muted',
@@ -41,7 +41,7 @@ export async function execute(bot: undefined, message: Message, command: undefin
 
 			if (memberToUnmute) {
 				if (!memberToUnmute.roles.cache.find((role: Role) => role.name === 'Muted')) {
-					message.reply(lang.error.memberNotMuted);
+					message.reply(getText(lang.error.memberNotMuted, [memberToUnmute.user.tag]));
 				}
 				else {
 					memberToUnmute.roles.remove(muteRole);

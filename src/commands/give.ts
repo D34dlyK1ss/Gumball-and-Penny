@@ -46,7 +46,7 @@ export function execute(bot: BotClient, message: Message, command: Cmd, db: Fire
 							message.reply(lang.error.noMoney);
 						}
 						else if (balU === 1000000 || botConfig.botOwnerID === user.id ) {
-							message.reply(getText(lang.error.cantGive, [user.tag]));
+							message.reply(getText(lang.error.cannotGive, [user.tag]));
 						}
 						else {
 							let newBalU = balU + amount;

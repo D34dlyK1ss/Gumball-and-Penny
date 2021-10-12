@@ -84,7 +84,7 @@
 		"noAdd": "You can't get any more money! 😧",
 		"noMoney": "You don't have enough money!",
 		"noMessage": "You didn't write any message!",
-		"cantGive": "You can't give money to **$0$**! 😧",
+		"cannotGive": "You can't give money to **$0$**! 😧",
 		"noCommand": "That command doesn't exist!",
 		"noInventory": "You have no inventory!",
 		"botNoKick": "We don't have permission to kick members!",
@@ -104,7 +104,7 @@
 		"notANumber": "That's not a number!",
 		"noPrefixChosen": "We need to know the desired prefix!",
 		"noLinks": "We can't write any links!",
-		"memberNotMuted": "That member isn't muted!",
+		"memberNotMuted": "**$0$** isn't muted!",
 		"hasProfileAlready": "You already have a profile created, you can't create another! 💢",
 		"noHUDChosen": "You didn't choose a HUD!",
 		"noHaveHUD": "You don't have that HUD!",
@@ -237,7 +237,10 @@
 	},
 
 	"mute": {
-		"isMutedFor": "**$0$** is muted for **$1$ seconds**! 🔇"
+		"whyMuteUs": "Why do you want to mute us? 😦",
+		"muteSelf": "Did you just try muting yourself? 😆",
+		"cannotMuteAboveOrSameLevel": "You can't mute someone above you or at the same level in the role hierarchy!",
+		"isMutedFor": "**$0$** is muted for **$1$**! 🔇"
 	},
 
 	"pat": {
@@ -548,8 +551,8 @@
 
 		"mute": {
 			"category": "Moderation",
-			"description": "We'll mute a server member, but for a determined time! 5 minutes for default.",
-			"usage": "mute [@member] [optional - seconds] [optional - reason]"
+			"description": "We'll mute a server member for a determined time!",
+			"usage": "mute [@member] [duration(s/m/h/d)] [optional - reason]"
 		},
 
 		"pat": {
