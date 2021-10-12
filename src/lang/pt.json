@@ -520,7 +520,7 @@
 		"mute": {
 			"category": "Moderação",
 			"description": "Calaremos um membro do servidor, mas por um tempo determinado! 5 minutos por predefinição.",
-			"usage": "tempmute [@membro] [opcional - segundos] [opcional - razão]"
+			"usage": "mute [@membro] [opcional - segundos] [opcional - razão]"
 		},
 
 		"pat": {

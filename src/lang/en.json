@@ -520,7 +520,7 @@
 		"mute": {
 			"category": "Moderation",
 			"description": "We'll mute a server member, but for a determined time! 5 minutes for default.",
-			"usage": "tempmute [@member] [optional - seconds] [optional - reason]"
+			"usage": "mute [@member] [optional - seconds] [optional - reason]"
 		},
 
 		"pat": {
