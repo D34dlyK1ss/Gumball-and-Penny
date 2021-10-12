@@ -147,6 +147,11 @@
 		"wasBanned": "**$0$** foi banido! 🔨"
 	},
 
+	"blush": {
+		"weMadeBlush": "Nós fizémos **$0$** corar! 😊",
+		"madeBlush": "**$0$** fez **$1$** corar!"
+	},
+
 	"clear": {
 		"weDeleted": "Apagámos `$0$` $1$!",
 		"message": "mensagem",
@@ -183,6 +188,7 @@
 
 	"happy": {
 		"madeHappy": "**$0$** fez **$1$** feliz!",
+		"weMadeHappy": "Nós fizémos **$0$** feliz! 🙂",
 		"isHappy": "**$0$** está feliz!"
 	},
 
@@ -351,10 +357,22 @@
 		"exited": "Saíste da loja!"
 	},
 
+	"scared": {
+		"isScared": "**$0$** está com medo!",
+		"isScaredOfUs": "**$0$** está com medo de nós! 👀",
+		"isScaredOf": "**$0$** está com medo de **$1$**!"
+	},
+
 	"slap": {
 		"slappedSelf": "**$0$** deu uma chapada a si mesmo?",
 		"slappedUs": "**$0$** deu-nos uma chapada! 😠",
 		"slapped": "**$0$** deu uma chapada a **$1$**!"
+	},
+
+	"sleep": {
+		"isSleeping": "**$0$** está a dormir!",
+		"weMadeSleep": "Nós fizémos **$0$** dormir! 😴",
+		"madeSleep": "**$0$** fez **$1$** dormir!"
 	},
 
 	"unmute": {
@@ -375,6 +393,11 @@
 
 	"which": {
 		"noSelect": "Tens de selecionar um anime disponível! Usa `$0$help which` $1$"
+	},
+
+	"wink": {
+		"winkedAtUs": "**$0$** piscou-nos o olho! 😉",
+		"winkedAt": "**$0$** picou o olho a **$1$**!"
 	},
 
 
@@ -407,6 +430,12 @@
 			"category": "Moderação",
 			"description": "Baniremos um membro do servidor!",
 			"usage": "ban [@membro] [opcional - razão]"
+		},
+
+		"blush": {
+			"category": "Ações",
+			"description": "Fica corado!",
+			"usage": "blush [@member]"
 		},
 
 		"clear": {
@@ -577,6 +606,12 @@
 			"usage": "say [mensagem]"
 		},
 
+		"scared": {
+			"category": "Ações",
+			"description": "Fica assusado!",
+			"usage": "scared [opcional - @member]"
+		},
+
 		"serverinfo": {
 			"category": "Servidor",
 			"description": "Todas as informações do servidor!",
@@ -604,6 +639,12 @@
 		"slap": {
 			"category": "Ações",
 			"description": "Dá uma chapada!",
+			"usage": "slap [opcional - @membro]"
+		},
+		
+		"sleep": {
+			"category": "Ações",
+			"description": "Adormece!",
 			"usage": "slap [opcional - @membro]"
 		},
 
@@ -635,6 +676,12 @@
 			"category": "Diversão",
 			"description": "Que personagem de anime és?\nAnimes disponíveis: `akame ga kill`, `code geass`, `death note`, `higurashi` , `jojo`, `kakegurui`, `mirai nikki`, `noragami`, `one punch man`, `psycho-pass`, `steins;gate`.",
 			"usage": "which [anime]"
+		},
+
+		"wink": {
+			"category": "Ações",
+			"description": "Pisca o olho a alguém!",
+			"usage": "wink [@member]"
 		}
 	},
 
