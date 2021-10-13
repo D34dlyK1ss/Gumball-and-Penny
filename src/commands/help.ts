@@ -12,7 +12,7 @@ export function execute(bot: BotClient, message: Message, command: Cmd, db: unde
 		.setThumbnail(`${bot.user.displayAvatarURL()}`)
 		.setDescription(getText(lang.helpDescription, [prefix, lang.commandName]))
 		.addFields(
-			{ name: `🎭 ${lang.actions}`, value: '`angry`, `cry`, `dance`, `happy`, `hug`, `kiss`, `laugh`, `pat`, `run`, `slap`', inline: true },
+			{ name: `🎭 ${lang.actions}`, value: '`angry`, `blush`, `cry`, `dance`, `happy`, `hug`, `kiss`, `laugh`, `pat`, `run`, `scared`, `slap`, `sleep`, `wink`', inline: true },
 			{ name: `🎰 ${lang.casino}`, value: '`coinflip`, `jankenpon`', inline: true },
 			{ name: `😁 ${lang.fun}`, value: '`fact`, `match`, `quiz`, `random`, `which`', inline: true },
 			{ name: `💰 ${lang.economyAndProfile}`, value: '`balance`, `daily`, `give`, `inventory`, `pet`, `profile`, `ranking`, `shop`', inline: true },
