@@ -375,8 +375,8 @@
 
 	"sleep": {
 		"isSleeping": "**$0$** is sleeping!",
-		"weMadeSleep": "We made **$0$** sleep! 😴",
-		"madeSleep": "**$0$** made **$1$** sleep!"
+		"weMadeFallAsleep": "We made **$0$** fall asleep! 😴",
+		"madeFallAsleep": "**$0$** made **$1$** fall asleep!"
 	},
 
 	"unmute": {
