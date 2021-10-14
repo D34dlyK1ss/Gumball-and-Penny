@@ -11,9 +11,9 @@ export function execute(bot: BotClient, message: Message, command: Cmd, db: unde
 		message.channel.send({ content: getText(lang.sleep.fellAsleep, [message.author.tag]), files: [`src/img/actions/${command.name} (${rnd}).gif`] });
 	}
 	else if (user === bot.user) {
-		message.channel.send({ content: getText(lang.sleep.weMadeFellAsleep, [message.author.tag]), files: [`src/img/actions/${command.name} (${rnd}).gif`] });
+		message.channel.send({ content: getText(lang.sleep.weMadeFallAsleep, [message.author.tag]), files: [`src/img/actions/${command.name} (${rnd}).gif`] });
 	}
 	else {
-		message.channel.send({ content: getText(lang.sleep.madeFellAsleep, [user.tag, message.author.tag]), files: [`src/img/actions/${command.name} (${rnd}).gif`] });
+		message.channel.send({ content: getText(lang.sleep.madeFallAsleep, [user.tag, message.author.tag]), files: [`src/img/actions/${command.name} (${rnd}).gif`] });
 	}
 }
