@@ -374,7 +374,7 @@
 	},
 
 	"sleep": {
-		"isSleeping": "**$0$** adormeceu!",
+		"fellAsleep": "**$0$** adormeceu!",
 		"weMadeFallAsleep": "Nós fizémos **$0$** adormecer! 😴",
 		"madeFallAsleep": "**$0$** fez **$1$** adormecer!"
 	},
