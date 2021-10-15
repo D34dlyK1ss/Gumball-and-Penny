@@ -1,4 +1,5 @@
 import { Message, MessageEmbed } from 'discord.js';
+import { BotClient } from 'index';
 import moment from 'moment';
 import getText from '../functions/getText';
 
