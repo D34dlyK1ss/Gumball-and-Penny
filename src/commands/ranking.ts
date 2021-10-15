@@ -24,8 +24,8 @@ export async function execute(bot: BotClient, message: Message, command: undefin
 		rankingEmbed.spliceFields(0, 10);
 		query.forEach(async doc => {
 			i++;
-			column += `${i}. ${(await bot.users.cache.fetch(doc.id)).tag} (${lang.level} ${doc.get('level')})\n`;
-			column2 += `${doc.get('xp')}XP\n`;
+			column += `${i}. ${(await bot.users.cache.fetch(doc.id)).tag}\n`;
+			column2 += `${doc.get('xp')} XP, ${lang.level} ${doc.get('level')}\n`;
 		});
 		
 		lastUpdateAt = Date.now();
