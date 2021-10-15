@@ -16,7 +16,7 @@ export async function execute(bot: BotClient, message: Message, command: undefin
 
 	const refP = db.collection('perfis');
 	const query = await refP.orderBy('xp', 'desc').limit(10).get();
-	let users: any[] = [];
+	const users: FirebaseFirestore.QueryDocumentSnapshot<FirebaseFirestore.DocumentData>[] = [];
 	query.forEach((doc) => users.push(doc));
 	
 	if (Date.now() - lastUpdateAt > 1800000) {
@@ -25,7 +25,7 @@ export async function execute(bot: BotClient, message: Message, command: undefin
 		let column2 = '';
 
 		for (const doc of users) {
-			let user = await bot.users.fetch(doc.id);
+			const user = await bot.users.fetch(doc.id);
 
 			i++;
 			column += `${i}. ${user.tag}\n`;
@@ -37,7 +37,7 @@ export async function execute(bot: BotClient, message: Message, command: undefin
 		rankingEmbed
 			.addFields([
 				{ name: 'Top 10', value: column, inline: true },
-				{ name: 'XP', value: column2, inline: true },
+				{ name: 'XP', value: column2, inline: true }
 			])
 			.setFooter(getText(lang.ranking.updatedAt, [moment(lastUpdateAt).utc().format('LL'), moment(lastUpdateAt).utc().format('LTS')]));
 	}
