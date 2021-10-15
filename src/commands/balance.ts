@@ -1,4 +1,4 @@
-import { Message } from 'discord.js';
+import { Message, MessageEmbed } from 'discord.js';
 import getText from '../functions/getText';
 
 export const name = 'balance';
@@ -13,8 +13,13 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 		}
 		else {
 			const bal = doc.get('balance');
+			const embed = new MessageEmbed()
+				.setTitle(lang.balance.yourBalance)
+				.setColor('DARK_PURPLE')
+				.setThumbnail(message.author.displayAvatarURL())
+				.setDescription(`<a:gpCoin:898355693193662464>${bal}`);
 
-			message.reply(getText(lang.balance.have, [bal]));
+			message.reply({ embeds: [embed] });
 		}
 	});
 }

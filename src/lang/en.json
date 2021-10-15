@@ -47,10 +47,10 @@
 	"page": "Page",
 	"toChangePage": "To change page use ",
 	"forMoreInfo": "for more information.",
-	"betAtLeast": "You have to bet at least ¤$0$!",
-	"betAtMost": "You can't bet over ¤$0$!",
-	"lost": "You lost **¤$0$**!",
-	"won": "You won **¤$0$**!",
+	"betAtLeast": "You have to bet at least <a:gpCoin:898355693193662464>$0$!",
+	"betAtMost": "You can't bet over <a:gpCoin:898355693193662464>$0$!",
+	"lost": "You lost **<a:gpCoin:898355693193662464>$0$**!",
+	"won": "You won **<a:gpCoin:898355693193662464>$0$**!",
 	"and": "and",
 	"enabled": "enabled",
 	"disabled": "disabled",
@@ -126,7 +126,7 @@
 	
 	"levelUp": {
 		"congrats": "🎉 Congratulations **$0$** you leveled up to level **$1$**! 🆙",
-		"congratsReward": "🎉 Congratulations **$0$** you leveled up to level **$1$** and received **¤$2$**! 🆙💰"
+		"congratsReward": "🎉 Congratulations **$0$** you leveled up to level **$1$** and received **<a:gpCoin:898355693193662464>$2$**! 🆙💰"
 	},
 
 	"angry": {
@@ -140,7 +140,7 @@
 	},
 
 	"balance": {
-		"have": "You have **¤$0$**."
+		"yourBalance": "Your balance"
 	},
 
 	"ban": {
@@ -171,7 +171,7 @@
 
 	"daily": {
 		"againIn": "You can get money again in **$0$**.",
-		"received": "You received your **¤$0$** of today! To get more ¤150 (¤300 for VIPs) use `$1$vote`."
+		"received": "You received your **<a:gpCoin:898355693193662464>$0$** of today! To get more <a:gpCoin:898355693193662464>150 (x2 for VIP) use `$1$vote`."
 	},
 
 	"dance": {
@@ -183,7 +183,7 @@
 	"give": {
 		"self": "Seriously you just tried to give yourself money?",
 		"thanksBut": "Thanks, but you'll need that money more than us! 😁",
-		"youGave": "You gave **¤$0$** to **$1$**!"
+		"youGave": "You gave **<a:gpCoin:898355693193662464>$0$** to **$1$**!"
 	},
 
 	"happy": {
@@ -395,6 +395,10 @@
 		"created": "Created $0$ ago ($1$)"
 	},
 
+	"vote": {
+		"click": "Click on the button below to vote!"
+	},
+
 	"which": {
 		"noSelect": "You have to select an available anime! Use `$0$help which` $1$"
 	},
@@ -462,7 +466,7 @@
 
 		"daily": {
 			"category": "Economy and Profile",
-			"description": "You will receive ¤300 each day you use this command!",
+			"description": "You will receive <a:gpCoin:898355693193662464>300 each day you use this command!",
 			"usage": "daily"
 		},
 
@@ -672,7 +676,7 @@
 
 		"vote": {
 			"category": "Economy and Profile",
-			"description": "Vote for us to receive ¤150 (¤300 for VIPs)!",
+			"description": "Vote for us to receive <a:gpCoin:898355693193662464>150 (<a:gpCoin:898355693193662464>300 for VIPs)!",
 			"usage": "vote"
 		},
 		

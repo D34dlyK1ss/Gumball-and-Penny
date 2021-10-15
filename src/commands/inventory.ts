@@ -9,7 +9,7 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 	let iEmbed = new MessageEmbed()
 		.setColor('DARK_PURPLE')
 		.setTitle(getText(lang.inventory.inventoryFrom, [message.author.tag]))
-		.setThumbnail(`${message.author.displayAvatarURL()}`);
+		.setThumbnail(message.author.displayAvatarURL());
 
 	refP.get().then(docP => {
 		if (!docP.exists) {

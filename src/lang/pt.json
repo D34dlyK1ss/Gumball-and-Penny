@@ -47,10 +47,10 @@
 	"page": "Página",
 	"toChangePage": "Para mudar de página usa ",
 	"forMoreInfo": "para mais informação.",
-	"betAtLeast": "Tens de apostar no mínimo ¤$0$!",
-	"betAtMost": "Não podes apostar mais que ¤$0$!",
-	"lost": "Perdeste **¤$0$**!",
-	"won": "Ganhaste **¤$0$**!",
+	"betAtLeast": "Tens de apostar no mínimo <a:gpCoin:898355693193662464>$0$!",
+	"betAtMost": "Não podes apostar mais que <a:gpCoin:898355693193662464>$0$!",
+	"lost": "Perdeste **<a:gpCoin:898355693193662464>$0$**!",
+	"won": "Ganhaste **<a:gpCoin:898355693193662464>$0$**!",
 	"and": "e",
 	"enabled": "ativadas",
 	"disabled": "desativadas",
@@ -126,7 +126,7 @@
 
 	"levelUp": {
 		"congrats": "🎉 Parabéns **$0$** subiste para o nível **$1$**! 🆙",
-		"congratsReward": "🎉 Parabéns **$0$** subiste para o nível **$1$** e recebeste **¤$2$**! 🆙💰"
+		"congratsReward": "🎉 Parabéns **$0$** subiste para o nível **$1$** e recebeste **<a:gpCoin:898355693193662464>$2$**! 🆙💰"
 	},
 
 	"angry": {
@@ -140,7 +140,7 @@
 	},
 
 	"balance": {
-		"have": "Tens **¤$0$**."
+		"yourBalance": "O teu capital"
 	},
 
 	"ban": {
@@ -171,7 +171,7 @@
 
 	"daily": {
 		"againIn": "Poderás receber dinheiro outra vez em **$0$**.",
-		"received": "Recebeste os teus **¤$0$** de hoje! Para receberes mais ¤150 (¤300 para VIPs) usa `$1$vote`."
+		"received": "Recebeste os teus **<a:gpCoin:898355693193662464>$0$** de hoje! Para receberes mais <a:gpCoin:898355693193662464>150 (x2 para VIPs) usa `$1$vote`."
 	},
 
 	"dance": {
@@ -183,7 +183,7 @@
 	"give": {
 		"self": "A sério que acabaste de tentar dar dinheiro a ti mesmo?",
 		"thanksBut": "Obrigado, mas vais precisar mais desse dinheiro do que nós! 😁",
-		"youGave": "Deste **¤$0$** a **$1$**!"
+		"youGave": "Deste **<a:gpCoin:898355693193662464>$0$** a **$1$**!"
 	},
 
 	"happy": {
@@ -395,6 +395,10 @@
 		"created": "Criado $0$ atrás ($1$)"
 	},
 
+	"vote": {
+		"click": "Clica no botão abaixo para votar!"
+	},
+
 	"which": {
 		"noSelect": "Tens de selecionar um anime disponível! Usa `$0$help which` $1$"
 	},
@@ -462,7 +466,7 @@
 
 		"daily": {
 			"category": "Economia e Perfil",
-			"description": "Receberás ¤300 a cada dia que usares este comando!",
+			"description": "Receberás <a:gpCoin:898355693193662464>300 a cada dia que usares este comando!",
 			"usage": "daily"
 		},
 
