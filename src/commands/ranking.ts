@@ -16,13 +16,15 @@ export async function execute(bot: BotClient, message: Message, command: undefin
 
 	const refP = db.collection('perfis');
 	const query = await refP.orderBy('xp', 'desc').limit(10).get();
-	let column = '';
-	let column2 = '';
-	let i = 0;
 
 	if (Date.now() - lastUpdateAt > 1800000) {
+		let i = 0;
+		let column = '';
+		let column2 = '';
+
 		rankingEmbed.spliceFields(0, 10);
-		query.forEach(async doc => {
+		
+		await query.forEach(async doc => {
 			i++;
 			column += `${i}. ${(await bot.users.fetch(doc.id)).tag}\n`;
 			column2 += `${doc.get('xp')} XP, ${lang.level} ${doc.get('level')}\n`;
