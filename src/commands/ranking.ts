@@ -16,6 +16,8 @@ export async function execute(bot: BotClient, message: Message, command: undefin
 
 	const refP = db.collection('perfis');
 	const query = await refP.orderBy('xp', 'desc').limit(10).get();
+	const users = [];
+	query.forEach((doc) => users.push(doc));
 	
 	if (Date.now() - lastUpdateAt > 1800000) {
 		let i = 0;
