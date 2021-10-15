@@ -41,7 +41,7 @@
 	"botNoProfile": "Nós não temos um perfil!",
 	"totalXP": "XP Total",
 	"level": "Nível",
-	"balanceProfile": "Capital",
+	"balanceProfile": "Saldo",
 	"awesomeStore": "Loja Incrível",
 	"nameLicense": "Licença de Nome",
 	"page": "Página",
@@ -140,7 +140,7 @@
 	},
 
 	"balance": {
-		"yourBalance": "O teu capital"
+		"yourBalance": "O teu saldo"
 	},
 
 	"ban": {
@@ -430,7 +430,7 @@
 
 		"balance": {
 			"category": "Economia e Perfil",
-			"description": "Verifica o teu capital!",
+			"description": "Verifica o teu saldo!",
 			"usage": "balance"
 		},
 
