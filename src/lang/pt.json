@@ -290,8 +290,6 @@
 	},
 
 	"ranking": {
-		"title": "Top 10 de utilizadores",
-		"description": "O sistema de ranking é baseado no quanto XP adquiriste ao longo do tempo.\nQuanto mais comandos usares, mais XP ganhas e mais alto sobes no ranking!",
 		"updatedAt": "Atualizado a $0$ $1$ UTC"
 	},
 

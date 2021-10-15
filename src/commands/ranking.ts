@@ -15,23 +15,23 @@ export async function execute(bot: undefined, message: Message, command: undefin
 
 	const refP = db.collection('perfis');
 	const query = await refP.orderBy('xp', 'desc').limit(10).get();
+	let column: string;
+	let column2: string;
 	let i = 0;
-	let column = '';
-	let column2 = '';
 
 	if (Date.now() - lastUpdateAt > 1800000) {
 		rankingEmbed.spliceFields(0, 10);
 		query.forEach(doc => {
 			i++;
-			column = `\n${i}# ${doc.get('name')}`;
-			column2 = `\n${lang.level} ${doc.get('level')}, ${doc.get('xp')} XP`;
+			column += `\n${i}# ${doc.get('name')}`;
+			column2 += `\n${lang.level} ${doc.get('level')}, ${doc.get('xp')} XP`;
 		});
 		
 		lastUpdateAt = Date.now();
 
 		rankingEmbed
 			.addFields([
-				{ name: lang.ranking.title, value: column, inline: true },
+				{ name: 'Top 10', value: column, inline: true },
 				{ name: 'XP', value: column2, inline: true },
 			])
 			.setFooter(getText(lang.ranking.updatedAt, [moment(lastUpdateAt).utc().format('LL'), moment(lastUpdateAt).utc().format('LTS')]));
