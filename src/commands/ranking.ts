@@ -24,7 +24,7 @@ export async function execute(bot: undefined, message: Message, command: undefin
 		query.forEach(doc => {
 			i++;
 			column += `${i}# ${doc.get('name')}\n`;
-			column2 += `${doc.get('xp')} XP, ${lang.level} ${doc.get('level')}\n`;
+			column2 += `${doc.get('xp')}, ${lang.ranking.atLevel} ${doc.get('level')}\n`;
 		});
 		
 		lastUpdateAt = Date.now();
