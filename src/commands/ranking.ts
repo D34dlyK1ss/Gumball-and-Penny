@@ -25,9 +25,10 @@ export async function execute(bot: BotClient, message: Message, command: undefin
 
 		rankingEmbed.spliceFields(0, 10);
 		
-		query.forEach(doc => {
+		query.forEach(async doc => {
 			i++;
-			column += `${i}. ${(bot.users.fetch(doc.id)).tag}\n`;
+			let user = await bot.users.fetch(doc.id);
+			column += `${i}. ${user.tag}\n`;
 			column2 += `${doc.get('xp')} XP, ${lang.level} ${doc.get('level')}\n`;
 		});
 		
