@@ -25,16 +25,16 @@ export async function execute(bot: undefined, message: Message, command: undefin
 			i++;
 			column = `\n${i}# ${doc.get('name')}`;
 			column2 = `\n${lang.level} ${doc.get('level')}, ${doc.get('xp')} XP`;
-		}).then(() => {
-			lastUpdateAt = Date.now();
-
-			rankingEmbed
-				.addFields([
-					{ name: lang.ranking.title, value: column, inline: true },
-					{ name: 'XP', value: column2, inline: true },
-				])
-				.setFooter(getText(lang.ranking.updatedAt, [moment(lastUpdateAt).utc().format('LL'), moment(lastUpdateAt).utc().format('LTS')]));
 		});
+		
+		lastUpdateAt = Date.now();
+
+		rankingEmbed
+			.addFields([
+				{ name: lang.ranking.title, value: column, inline: true },
+				{ name: 'XP', value: column2, inline: true },
+			])
+			.setFooter(getText(lang.ranking.updatedAt, [moment(lastUpdateAt).utc().format('LL'), moment(lastUpdateAt).utc().format('LTS')]));
 	}
 
 	message.channel.send({ embeds: [rankingEmbed] });
