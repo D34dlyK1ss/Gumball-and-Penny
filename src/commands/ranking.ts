@@ -23,10 +23,10 @@ export async function execute(bot: BotClient, message: Message, command: undefin
 		let column2 = '';
 
 		query.forEach(async doc => {
-			let user = await bot.users.fetch(doc.id);
+			/*let user = await bot.users.fetch(doc.id);*/
 
 			i++;
-			column += `${i}. ${user.tag}\n`;
+			column += `${i}. ${doc.get('name')}\n`;
 			column2 += `${doc.get('xp')} XP, ${lang.level} ${doc.get('level')}\n`;
 		});
 		
