@@ -19,25 +19,25 @@ export async function execute(bot: BotClient, message: Message, command: undefin
 	
 	if (Date.now() - lastUpdateAt > 1800000) {
 		let i = 0;
-		let column = '';
-		let column2 = '';
+		let column = 'empty';
+		let column2 = 'empty';
 
-		(query.forEach(async doc => {
+		query.forEach(async doc => {
 			let user = await bot.users.fetch(doc.id);
 
 			i++;
 			column += `${i}. ${user.tag}\n`;
 			column2 += `${doc.get('xp')} XP, ${lang.level} ${doc.get('level')}\n`;
-		})).then(() => {
-			lastUpdateAt = Date.now();
-			rankingEmbed.spliceFields(0, 10);
-			rankingEmbed
-				.addFields([
-					{ name: 'Top 10', value: column, inline: true },
-					{ name: 'XP', value: column2, inline: true },
-				])
-				.setFooter(getText(lang.ranking.updatedAt, [moment(lastUpdateAt).utc().format('LL'), moment(lastUpdateAt).utc().format('LTS')]));
 		});
+		
+		lastUpdateAt = Date.now();
+		rankingEmbed.spliceFields(0, 10);
+		rankingEmbed
+			.addFields([
+				{ name: 'Top 10', value: column, inline: true },
+				{ name: 'XP', value: column2, inline: true },
+			])
+			.setFooter(getText(lang.ranking.updatedAt, [moment(lastUpdateAt).utc().format('LL'), moment(lastUpdateAt).utc().format('LTS')]));
 	}
 
 	message.channel.send({ embeds: [rankingEmbed] });
