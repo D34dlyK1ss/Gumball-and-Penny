@@ -10,7 +10,7 @@ const rankingEmbed = new MessageEmbed()
 	.setColor('DARK_PURPLE')
 	.setThumbnail('https://i.imgur.com/0lJXooH.png');
 
-export async function execute(bot: undefined, message: Message, command: undefined, db: FirebaseFirestore.Firestore, lang: Record<string, string | any>, language: string) {
+export async function execute(bot: BotClient, message: Message, command: undefined, db: FirebaseFirestore.Firestore, lang: Record<string, string | any>, language: string) {
 	moment.locale(language);
 
 	const refP = db.collection('perfis');
@@ -21,10 +21,10 @@ export async function execute(bot: undefined, message: Message, command: undefin
 
 	if (Date.now() - lastUpdateAt > 1800000) {
 		rankingEmbed.spliceFields(0, 10);
-		query.forEach(doc => {
+		query.forEach(async doc => {
 			i++;
-			column += `${i}# ${doc.get('name')}\n`;
-			column2 += `${doc.get('xp')}, ${lang.ranking.atLevel} ${doc.get('level')}\n`;
+			column += `${i}. ${(await bot.users.cache.fetch(doc.id)).tag} (${lang.level} ${doc.get('level')})\n`;
+			column2 += `${doc.get('xp')}XP\n`;
 		});
 		
 		lastUpdateAt = Date.now();
