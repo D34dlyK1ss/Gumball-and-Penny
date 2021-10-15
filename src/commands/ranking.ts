@@ -22,24 +22,22 @@ export async function execute(bot: BotClient, message: Message, command: undefin
 		let column = '';
 		let column2 = '';
 
-		query.forEach(async doc => {
-			/*let user = await bot.users.fetch(doc.id);*/
+		for (const doc of query) {
+			let user = await bot.users.fetch(doc.id);
 
 			i++;
-			column += `${i}. ${doc.get('name')}\n`;
+			column += `${i}. ${user.tag}\n`;
 			column2 += `${doc.get('xp')} XP, ${lang.level} ${doc.get('level')}\n`;
-		});
-		
-		{
-			lastUpdateAt = Date.now();
-			rankingEmbed.spliceFields(0, 10);
-			rankingEmbed
-				.addFields([
-					{ name: 'Top 10', value: column, inline: true },
-					{ name: 'XP', value: column2, inline: true },
-				])
-				.setFooter(getText(lang.ranking.updatedAt, [moment(lastUpdateAt).utc().format('LL'), moment(lastUpdateAt).utc().format('LTS')]));
 		}
+		
+		lastUpdateAt = Date.now();
+		rankingEmbed.spliceFields(0, 10);
+		rankingEmbed
+			.addFields([
+				{ name: 'Top 10', value: column, inline: true },
+				{ name: 'XP', value: column2, inline: true },
+			])
+			.setFooter(getText(lang.ranking.updatedAt, [moment(lastUpdateAt).utc().format('LL'), moment(lastUpdateAt).utc().format('LTS')]));
 	}
 
 	message.channel.send({ embeds: [rankingEmbed] });
