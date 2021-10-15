@@ -290,6 +290,7 @@
 	},
 
 	"ranking": {
+		"level": "level",
 		"updatedAt": "Updated at $0$ $1$ UTC"
 	},
 
