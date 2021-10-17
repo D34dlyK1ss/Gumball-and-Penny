@@ -180,8 +180,11 @@ export function createQuizQuestion(interaction: ButtonInteraction, user: User, l
 												const userId = userIds.next().value;
 												const punctuation = points.next().value;
 												const refP = admin.firestore().collection('perfis').doc(`${user}`);
+												let plural = '';
 
-												description = description + getText(lang.quiz.points, [userId, punctuation]);
+												punctuation !== 1 ? plural = 's' : plural = '';
+
+												description = description + getText(lang.quiz.points, [userId, punctuation]) + plural;
 
 												await refP.get().then(doc => {
 													if (!doc.exists) return;
