@@ -40,8 +40,8 @@ function setBotStatus() {
 import * as fs from 'fs';
 
 // API do Discord Bot List
-import DBL from 'dblapi.js';
-const dbl = new DBL(process.env.DBLTOKEN, bot);
+/*import DBL from 'dblapi.js';
+const dbl = new DBL(process.env.DBLTOKEN, bot);*/
 
 // Acesso de administrador à BD
 import * as admin from 'firebase-admin';
@@ -79,9 +79,9 @@ bot.once('ready', () => {
 		removeVIP(admin, bot, db, vips);
 	}, 86400000);
 
-	setInterval(() => {
+	/*setInterval(() => {
 		dbl.postStats(bot.guilds.cache.size);
-	}, 1800000);
+	}, 1800000);*/
 
 	moment.locale('pt');
 	console.log(`Preparados! (${moment().format('LL')} ${moment().format('LTS')})`);
