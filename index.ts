@@ -1,52 +1,40 @@
-// Biblioteca do Discord.js
 import { Collection, Client, Intents, Guild, Message } from 'discord.js';
 
-// Interface para as definções do servidor
 export interface ServerSettings {
 	automessages: boolean;
 	language: string;
 	prefix: string;
 }
 
-// Interface para a execução de comandos
 export interface Cmd {
 	name: string;
 	aliases?: string[];
 	execute(bot: BotClient, message: Message, command: Cmd, db: FirebaseFirestore.Firestore, lang: Record<string, string>, language: string, prefix: string, args: string[], serverSettings: ServerSettings): void;
 }
 
-// Extensão do tipo Client da biblioteca discord.js
 export class BotClient extends Client {
 	commands: Collection<string, Cmd> = new Collection<string, Cmd>();
 }
 
-// Cliente do bot
 const bot = new BotClient({ allowedMentions: { parse: ['users', 'roles'], repliedUser: true }, intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES] });
 
-// Tokens de autenticação
 import { config } from 'dotenv';
 config();
 
-// Propriedades default do bot
 import botConfig from './botConfig.json';
 
-// Descrição do bot na plataforma
 function setBotStatus() {
 	const plural = bot.guilds.cache.size !== 1 ? 's' : '';
 	bot.user.setActivity({ name: `${botConfig.settings.prefix}help on ${bot.guilds.cache.size} server${plural}!`, type: 'WATCHING' });
 }
 
-// Biblioteca para sistema de ficheiros
 import * as fs from 'fs';
 
-// API do Discord Bot List
 /*import DBL from 'dblapi.js';
 const dbl = new DBL(process.env.DBLTOKEN, bot);*/
 
-// Acesso de administrador à BD
 import * as admin from 'firebase-admin';
 
-// Autenticação à BD
 admin.initializeApp({
 	credential: admin.credential.cert({
 		projectId: 'gumball-and-penny',
@@ -58,10 +46,8 @@ admin.initializeApp({
 
 const db = admin.firestore();
 
-// Funções úteis
 import moment from 'moment';
 import getText from './src/functions/getText';
-import giveVIP from './src/functions/giveVIP';
 import removeVIP from './src/functions/removeVIP';
 import { shopButtonHandler } from './src/functions/shopHandler';
 import { quizButtonHandler } from './src/functions/quizHandler';
@@ -69,15 +55,10 @@ import { confirmLanguage } from './src/functions/setlanguageHandler';
 
 const vips: Set<string> = new Set();
 
-// Uma vez que o bot está ativo, realizar as seguintes ações
 bot.once('ready', () => {
 	setBotStatus();
 
 	removeVIP(admin, bot, db, vips);
-
-	setInterval(() => {
-		removeVIP(admin, bot, db, vips);
-	}, 86400000);
 
 	/*setInterval(() => {
 		dbl.postStats(bot.guilds.cache.size);
@@ -161,23 +142,9 @@ async function getServerSettings(guild: Guild) {
 
 const englishChannels = ['809182965607039007', '787661396652589077', '787674033331634196'];
 
-// Ações para quando o bot receber uma mensagem
 bot.on('messageCreate', async message => {
-	if (message.channel.id === '810529155955032115' && message.content === `${botConfig.settings.prefix}activate` && message.member.id === botConfig.botOwnerID) {
-		giveVIP(db, message, undefined);
-	}
-	else if (message.channel.id === '810529155955032115') {
-		const array = message.content.split(' ');
-		array[0].slice(botConfig.settings.prefix.length).toLowerCase();
-		const args = array.slice(1);
+	if (!message.guild || message.channel.id === '810529155955032115' || message.author.bot) return;
 
-		if (message.content.startsWith(`${botConfig.settings.prefix}setvip`)) {
-			giveVIP(db, message, args);
-		}
-	}
-	else if (!message.guild || message.channel.id === '810529155955032115' || message.author.bot) return;
-
-	// Leitura dos ficheiros de comandos
 	const commandFiles = fs.readdirSync('./src/commands').filter(file => file.endsWith('.ts'));
 	if (commandFiles.length === 0) return;
 	for (const file of commandFiles) {
@@ -185,7 +152,6 @@ bot.on('messageCreate', async message => {
 		bot.commands.set(props.name, props);
 	}
 
-	//  Obter as definições do bot para o servidor
 	const serverSettings = await getServerSettings(message.guild);
 	const prefix = serverSettings.prefix;
 	let language;
@@ -202,10 +168,8 @@ bot.on('messageCreate', async message => {
 
 		const command = bot.commands.get(commandName) || bot.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
 
-		// Ignorar mensagem se o bot não tiver tal comando
 		if (!command) return;
 
-		// Adicionar XP ao perfil do utilizador
 		if (!xpCooldown.has(message.author.id)) {
 			xpCooldown.add(message.author.id);
 			setTimeout(() => {
@@ -282,7 +246,6 @@ bot.on('messageCreate', async message => {
 let newLanguage: string;
 
 bot.on('interactionCreate', async interaction => {
-	//  Obter as definições do bot para o servidor
 	const serverSettings = await getServerSettings(interaction.guild);
 	const prefix = serverSettings.prefix;
 	let language;
@@ -305,7 +268,22 @@ bot.on('interactionCreate', async interaction => {
 	}
 });
 
-// Quando o bot for adicionado a um novo servidor, são armazenados dados do mesmo
+bot.on('guildMemberUpdate', (oldMember, newMember) => {
+	if (newMember.guild.id !== '738540548305977366') return;
+
+	if (!oldMember.roles.cache.has('757970567931363389') && newMember.roles.cache.has('757970567931363389')) {
+		const timestamp = new Date(Date.now() + 2592000000);
+
+		db.collection('vip').doc(newMember.id).set({
+			until: timestamp
+		});
+
+		vips.add(newMember.id);
+		
+		removeVIP(admin, bot, db, vips);
+	}
+});
+
 bot.on('guildCreate', async guildData => {
 	setBotStatus();
 	await db.collection('definicoes').doc(guildData.id).set({
@@ -313,11 +291,9 @@ bot.on('guildCreate', async guildData => {
 	});
 });
 
-// Quando o bot for expulso de um servidor, o bot apagará os dados respetivos
 bot.on('guildDelete', async guildData => {
 	setBotStatus();
 	await db.collection('definicoes').doc(guildData.id).delete();
 });
 
-// Autenticação do bot
 bot.login(process.env.TOKEN);
