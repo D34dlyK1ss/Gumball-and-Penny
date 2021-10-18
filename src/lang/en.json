@@ -393,6 +393,10 @@
 		"created": "Created $0$ ago ($1$)"
 	},
 
+	"vip": {
+		"click": "Click on the button below to buy the VIP status!"
+	},
+
 	"vote": {
 		"click": "Click on the button below to vote!"
 	},

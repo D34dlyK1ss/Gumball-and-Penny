@@ -35,57 +35,53 @@ export function execute(bot: undefined, message: Message, command: Cmd, db: Fire
 				message.reply(getText(lang.betAtMost, [max]));
 			}
 			else {
-				const g = Math.round(Math.random() * 2);
-				const p = Math.round(Math.random() * 2);
+				const gumballRandom = Math.round(Math.random() * 2);
+				const pennyRandom = Math.round(Math.random() * 2);
 				const guess = args[0].toLowerCase();
 				const array = [lang.jankenpon.rock, lang.jankenpon.paper, lang.jankenpon.scissors];
-				let resG: string;
-				let resP: string;
 				let finalRes;
 
-				const attachment = new MessageAttachment('src/img/jankenpon/animation.gif');
+				const animation = new MessageAttachment('src/img/jankenpon/animation.gif');
 				const canvas = createCanvas(400, 200);
 				const ctx = canvas.getContext('2d');
 
-				const left = await loadImage(`src/img/jankenpon/gumball (${g}).png`);
-				const right = await loadImage(`src/img/jankenpon/penny (${p}).png`);
-				ctx.drawImage(left, 0, 0, 200, 200);
-				ctx.drawImage(right, 200, 0, 200, 200);
+				const gumball = await loadImage(`src/img/jankenpon/gumball (${gumballRandom}).png`);
+				const penny = await loadImage(`src/img/jankenpon/penny (${pennyRandom}).png`);
+				ctx.drawImage(gumball, 0, 0, 200, 200);
+				ctx.drawImage(penny, 200, 0, 200, 200);
 
-				const attachment2 = new MessageAttachment(canvas.toBuffer(), 'profile.png');
+				const imageRes = new MessageAttachment(canvas.toBuffer(), 'profile.png');
 
-				message.channel.send({ files: [attachment] }).then(msg => {
+				message.channel.send({ files: [animation] }).then(msg => {
 					setTimeout(() => {
 						msg.delete().then(()=> {
-							if (g === 0 && p === 2) finalRes = 'gumball';
-							else if (p === 0 && g === 2) finalRes = 'penny';
-							else if (g > p) finalRes = 'gumball';
-							else if (p > g) finalRes = 'penny';
+							if (gumballRandom === 0 && pennyRandom === 2) finalRes = 'gumball';
+							else if (pennyRandom === 0 && gumballRandom === 2) finalRes = 'penny';
+							else if (gumballRandom > pennyRandom) finalRes = 'gumball';
+							else if (pennyRandom > gumballRandom) finalRes = 'penny';
 							else finalRes = 0;
 
-							resG = array[g];
-							resP = array[p];
+							const gumballRes = array[gumballRandom];
+							const pennyRes = array[pennyRandom];
+							const messageRes = getText(lang.jankenpon.threw, [gumballRes, pennyRes]);
 
 							if (finalRes === 0) {
-								message.channel.send({ files: [attachment2] }).then(() => {
-									message.reply(`${getText(lang.jankenpon.threw, [resG, resP])} ${lang.jankenpon.draw}`);
-								});
+								message.channel.send({ content: `${messageRes} ${lang.jankenpon.draw}`, files: [imageRes] });
 							}
 							else if (finalRes !== guess) {
 								ref.update({
 									balance: bal - money
-								}).then(async () => {
-									await message.channel.send({ files: [attachment2] });
-									message.reply(`${getText(lang.jankenpon.threw, [resG, resP])} ${getText(lang.lost, [money])}`);
+								}).then(() => {
+									message.channel.send({ content: `${messageRes} ${getText(lang.lost, [money])}`, files: [imageRes] });
 								});
 							}
 							else if (finalRes === guess) {
 								const won = money * 1.5;
+
 								ref.update({
 									balance: bal + won
-								}).then(async () => {
-									await message.channel.send({ files: [attachment2] });
-									message.reply(`${getText(lang.jankenpon.threw, [resG, resP])} ${getText(lang.won, [won])}`);
+								}).then(() => {
+									message.channel.send({ content: `${messageRes} ${getText(lang.won, [won])}`, files: [imageRes] });
 								});
 							}
 						});

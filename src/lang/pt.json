@@ -393,6 +393,10 @@
 		"created": "Criado $0$ atrás ($1$)"
 	},
 
+	"vip": {
+		"click": "Clica no botão abaixo comprar um estado VIP!"
+	},
+
 	"vote": {
 		"click": "Clica no botão abaixo para votar!"
 	},

@@ -42,21 +42,23 @@ export function execute(bot: undefined, message: Message, command: Cmd, db: Fire
 					msg.delete().then(()=> {
 						value === 0 ? res = 'heads' : res = 'tails';
 
-						message.channel.send({ files: [`src/img/coinflip/${res}.gif`] });
+						const messageRes = titleCase(lang.coinflip[res]);
+						const imageRes = `src/img/coinflip/${res}.gif`;
 
 						if (lang.coinflip[res] !== guess) {
 							ref.update({
 								balance: bal - money
 							}).then(() => {
-								message.reply(`${titleCase(lang.coinflip[res])}! ${getText(lang.lost, [money])}`);
+								message.reply({ content: `${messageRes}! ${getText(lang.lost, [money])}`, files: [imageRes] });
 							});
 						}
 						else if (lang.coinflip[res] === guess) {
 							const won = money * 1.5;
+
 							ref.update({
 								balance: bal + won
 							}).then(() => {
-								message.reply(`${titleCase(lang.coinflip[res])}! ${getText(lang.won, [won])}`);
+								message.reply({ content: `${messageRes}! ${getText(lang.won, [won])}`, files: [imageRes] });
 							});
 						}
 					});
