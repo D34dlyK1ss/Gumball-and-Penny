@@ -80,7 +80,7 @@
 		"botNoBan": "Nós não temos permissão para banir membros!",
 		"botNoManageMsgs": "Nós não temos permissão para gerir mensagens!",
 		"noNumberToDelete": "Tens de definir o número de mensagens que queres apagar!",
-		"wrongSyntax": "Sintaxe errada! Como usar: `$0$$1$`.",
+		"wrongSyntax": "Sintaxe errada! Como usar: `$0$$1$`",
 		"noAdd": "Não podes ganhar mais dinheiro! 😧",
 		"noMoney": "Não tens dinheiro suficiente!",
 		"noMessage": "Não escreveste mensagem nenhuma!",

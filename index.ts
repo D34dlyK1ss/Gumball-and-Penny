@@ -32,7 +32,7 @@ import botConfig from './botConfig.json';
 
 // Descrição do bot na plataforma
 function setBotStatus() {
-	const plural = bot.guilds.cache.size === 1 ? '' : 's';
+	const plural = bot.guilds.cache.size !== 1 ? 's' : '';
 	bot.user.setActivity({ name: `${botConfig.settings.prefix}help on ${bot.guilds.cache.size} server${plural}!`, type: 'WATCHING' });
 }
 

@@ -80,7 +80,7 @@
 		"botNoBan": "We don't have permission to ban members!",
 		"botNoManageMsgs": "We don't have permission to manage messages!",
 		"noNumberToDelete": "You have to indicate how many messages you want to delete!",
-		"wrongSyntax": "Wrong syntax! How to use: `$0$$1$`.",
+		"wrongSyntax": "Wrong syntax! How to use: `$0$$1$`",
 		"noAdd": "You can't get any more money! 😧",
 		"noMoney": "You don't have enough money!",
 		"noMessage": "You didn't write any message!",
