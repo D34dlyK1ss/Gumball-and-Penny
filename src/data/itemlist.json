@@ -1,7 +1,7 @@
 {
 	"huds": {
-		"colorPrice": 3000,
-		"price": 12000,
+		"colorPrice": 7500,
+		"price": 15000,
 		"black": {
 			"hex": "#202020"
 		},
@@ -265,8 +265,8 @@
 		}
 	},
 	"petHuds": {
-		"vipPrice": 8000,
-		"price": 4000,
+		"price": 6000,
+		"vipPrice": 12000,
 		"black": {
 			"vip": false
 		},
@@ -398,19 +398,19 @@
 		"goat": {
 			"species": "Cabra",
 			"gender": "random",
-			"price": 7000,
+			"price": 8000,
 			"vip": false
 		},
 		"dog": {
 			"species": "Cão",
 			"gender": "random",
-			"price": 12000,
+			"price": 15000,
 			"vip": false
 		},
 		"scorpion": {
 			"species": "Escorpião",
 			"gender": "random",
-			"price": 18000,
+			"price": 20000,
 			"vip": false
 		},
 		"ant": {
@@ -422,31 +422,31 @@
 		"chicken": {
 			"species": "Galinha",
 			"gender": "♀️",
-			"price": 7000,
+			"price": 8000,
 			"vip": false
 		},
 		"cat": {
 			"species": "Gato",
 			"gender": "random",
-			"price": 12000,
+			"price": 15000,
 			"vip": false
 		},
 		"dolphin": {
 			"species": "Golfinho",
 			"gender": "random",
-			"price": 16000,
+			"price": 18000,
 			"vip": false
 		},
 		"hamster": {
 			"species": "Hamster",
 			"gender": "random",
-			"price": 10000,
+			"price": 12000,
 			"vip": false
 		},
 		"pony": {
 			"species": "Cavalo (Pónei)",
 			"gender": "random",
-			"price": 15000,
+			"price": 18000,
 			"vip": false
 		},
 		"frog": {
@@ -459,28 +459,28 @@
 			"name": "Akamaru",
 			"species": "Cão",
 			"gender": "♂️",
-			"price": 20000,
+			"price": 25000,
 			"vip": true
 		},
 		"frosch": {
 			"name": "Frosch",
 			"species": "Gato",
 			"gender": "♀️",
-			"price": 20000,
+			"price": 25000,
 			"vip": true
 		},
 		"happy": {
 			"name": "Happy",
 			"species": "Gato",
 			"gender": "♂️",
-			"price": 20000,
+			"price": 25000,
 			"vip": true
 		},
 		"iggy": {
 			"name": "Iggy",
 			"species": "Cão",
 			"gender": "♂️",
-			"price": 20000,
+			"price": 25000,
 			"vip": true
 		}
 	},
