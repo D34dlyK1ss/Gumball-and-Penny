@@ -12,7 +12,7 @@ export interface ServerSettings {
 export interface Cmd {
 	name: string;
 	aliases?: string[];
-	execute(bot: BotClient, message: Message, command: Cmd, db: FirebaseFirestore.Firestore, lang: Record<string, string>, language: string, prefix: string, args: string[], serverSettings: ServerSettings): void;
+	execute(bot: Client, message: Message, command: Cmd, db: FirebaseFirestore.Firestore, lang: Record<string, string>, language: string, prefix: string, args: string[], serverSettings: ServerSettings): void;
 }
 
 // Extensão do tipo Client da biblioteca discord.js
@@ -32,16 +32,12 @@ import botConfig from './botConfig.json';
 
 // Descrição do bot na plataforma
 function setBotStatus() {
-	const plural = bot.guilds.cache.size !== 1 ? 's' : '';
+	const plural = bot.guilds.cache.size === 1 ? '' : 's';
 	bot.user.setActivity({ name: `${botConfig.settings.prefix}help on ${bot.guilds.cache.size} server${plural}!`, type: 'WATCHING' });
 }
 
 // Biblioteca para sistema de ficheiros
 import * as fs from 'fs';
-
-// API do Discord Bot List
-/*import DBL from 'dblapi.js';
-const dbl = new DBL(process.env.DBLTOKEN, bot);*/
 
 // Acesso de administrador à BD
 import * as admin from 'firebase-admin';
@@ -62,7 +58,6 @@ const db = admin.firestore();
 import moment from 'moment';
 import getText from './src/functions/getText';
 import giveVIP from './src/functions/giveVIP';
-import removeVIP from './src/functions/removeVIP';
 import { shopButtonHandler } from './src/functions/shopHandler';
 import { quizButtonHandler } from './src/functions/quizHandler';
 import { confirmLanguage } from './src/functions/setlanguageHandler';
@@ -71,70 +66,9 @@ const vips: Set<string> = new Set();
 
 // Uma vez que o bot está ativo, realizar as seguintes ações
 bot.once('ready', () => {
-	setBotStatus();
-
-	removeVIP(admin, bot, db, vips);
-
-	setInterval(() => {
-		removeVIP(admin, bot, db, vips);
-	}, 86400000);
-
-	/*setInterval(() => {
-		dbl.postStats(bot.guilds.cache.size);
-	}, 1800000);*/
-
 	moment.locale('pt');
 	console.log(`Preparados! (${moment().format('LL')} ${moment().format('LTS')})`);
 });
-
-import EventSource from 'eventsource';
-const eventSourceInit: Record<string, any> = { headers: { 'Authorization': 'Bearer 14aee8db11a152ed7f2d4ed23a839d58' } };
-const es = new EventSource('https://api.pipedream.com/sources/dc_OLuY0W/sse', eventSourceInit);
-
-es.onopen = () => {
-	console.log('Atentos ao fluxo SSE em https://api.pipedream.com/sources/dc_OLuY0W/sse');
-};
-
-es.onmessage = async messageEvent => {
-	const data = JSON.parse(messageEvent.data);
-	const agent = data.event.headers['user-agent'];
-	const authorization = data.event.headers.authorization;
-	const userID = data.event.body.user;
-	const type = data.event.body.type;
-
-	if (agent === 'Top.gg Webhook/1.0.0' && authorization === 'Gumball&PennyDBL') {
-		if (type === 'upvote') {
-			const refP = db.collection('perfis').doc(userID);
-
-			await refP.get().then(doc => {
-				if (!doc.exists) return;
-				const bal: number = doc.get('balance');
-				let add = 150;
-
-				if (userID === botConfig.botOwnerID || botConfig.collaboratorIDs.includes(userID) || vips.has(userID)) {
-					add *= 2;
-				}
-				else {
-					refP.get().then(docP => {
-						if (docP.exists) add *= 2;
-					});
-				}
-
-				refP.update({
-					balance: bal + add
-				}).then(async () => {
-					const voter = await bot.users.fetch(userID).catch(() => undefined);
-
-					if (voter) {
-						bot.users.fetch(botConfig.botOwnerID).then(owner => {
-							owner.send(`**${voter.tag}** votou em nós!`);
-						});
-					}
-				});
-			});
-		}
-	}
-};
 
 const settings: any = new Object();
 const xpCooldown: Set<string> = new Set();
@@ -187,7 +121,7 @@ bot.on('messageCreate', async message => {
 
 	//  Obter as definições do bot para o servidor
 	const serverSettings = await getServerSettings(message.guild);
-	const prefix = serverSettings.prefix;
+	const prefix = 'dev!';
 	let language;
 
 	if (englishChannels.includes(message.channel.id)) language = 'en';
@@ -270,10 +204,10 @@ bot.on('messageCreate', async message => {
 		const pngs = ['boi', 'E', 'hmm', 'just monika', 'nice plan', 'no u', 'noice', 'shine'];
 		const gifs = ['distraction dance'];
 
-		if (pngs.includes(message.content.toLowerCase())) {
+		if (pngs.includes(message.content)) {
 			message.channel.send({ files: [`./src/img/automessages/${message.content}.png`] });
 		}
-		else if (gifs.includes(message.content.toLowerCase())) {
+		else if (gifs.includes(message.content)) {
 			message.channel.send({ files: [`./src/img/automessages/${message.content}.gif`] });
 		}
 	}
@@ -284,7 +218,7 @@ let newLanguage: string;
 bot.on('interactionCreate', async interaction => {
 	//  Obter as definições do bot para o servidor
 	const serverSettings = await getServerSettings(interaction.guild);
-	const prefix = serverSettings.prefix;
+	const prefix = 'dev!';
 	let language;
 
 	if (englishChannels.includes(interaction.channel.id)) language = 'en';
@@ -320,4 +254,4 @@ bot.on('guildDelete', async guildData => {
 });
 
 // Autenticação do bot
-bot.login(process.env.TOKEN);
+bot.login(process.env.TOKENDEV);

@@ -1,8 +1,5 @@
-.env
 .vscode
-.eslint*
+node_modules
+backups
 *.sh
 serviceAccountKey.json
-backups
-node_modules
-indexDev.ts
