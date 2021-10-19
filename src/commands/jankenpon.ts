@@ -66,13 +66,13 @@ export function execute(bot: undefined, message: Message, command: Cmd, db: Fire
 							const messageRes = getText(lang.jankenpon.threw, [gumballRes, pennyRes]);
 
 							if (finalRes === 0) {
-								msg.edit({ content: `${messageRes} ${lang.jankenpon.draw}`, files: [imageRes] });
+								message.reply({ content: `${messageRes} ${lang.jankenpon.draw}`, files: [imageRes] });
 							}
 							else if (finalRes !== guess) {
 								ref.update({
 									balance: bal - money
 								}).then(() => {
-									msg.edit({ content: `${messageRes} ${getText(lang.lost, [money])}`, files: [imageRes] });
+									message.reply({ content: `${messageRes} ${getText(lang.lost, [money])}`, files: [imageRes] });
 								});
 							}
 							else if (finalRes === guess) {
@@ -81,7 +81,7 @@ export function execute(bot: undefined, message: Message, command: Cmd, db: Fire
 								ref.update({
 									balance: bal + won
 								}).then(() => {
-									msg.edit({ content: `${messageRes} ${getText(lang.won, [won])}`, files: [imageRes] });
+									message.reply({ content: `${messageRes} ${getText(lang.won, [won])}`, files: [imageRes] });
 								});
 							}
 						});

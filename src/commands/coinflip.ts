@@ -50,7 +50,7 @@ export function execute(bot: undefined, message: Message, command: Cmd, db: Fire
 								ref.update({
 									balance: bal - money
 								}).then(() => {
-									msg.edit({ content: `${messageRes}! ${getText(lang.lost, [money])}`, files: [imageRes] });
+									message.reply({ content: `${messageRes}! ${getText(lang.lost, [money])}`, files: [imageRes] });
 								});
 							}
 							else if (lang.coinflip[res] === guess) {
@@ -59,7 +59,7 @@ export function execute(bot: undefined, message: Message, command: Cmd, db: Fire
 								ref.update({
 									balance: bal + won
 								}).then(() => {
-									msg.edit({ content: `${messageRes}! ${getText(lang.won, [won])}`, files: [imageRes] });
+									message.reply({ content: `${messageRes}! ${getText(lang.won, [won])}`, files: [imageRes] });
 								});
 							}
 						});
