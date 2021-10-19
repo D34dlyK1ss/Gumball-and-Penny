@@ -8,7 +8,7 @@ import { createShopPage } from '../functions/shopHandler';
 import getText from '../functions/getText';
 
 export const name = 'shop';
-export const naliases = ['s'];
+export const aliases = ['s'];
 export function execute(bot: undefined, message: Message, command: undefined, db: FirebaseFirestore.Firestore, lang: Record<string, any>, language: undefined, prefix: string, args: string[]) {
 	async function sendPreview(hudName: string) {
 		const hudCanvas = createCanvas(700, 400);
