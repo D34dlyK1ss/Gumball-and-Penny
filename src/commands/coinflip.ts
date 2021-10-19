@@ -40,29 +40,27 @@ export function execute(bot: undefined, message: Message, command: Cmd, db: Fire
 
 				message.channel.send({ files: ['src/img/coinflip/animation.gif'] }).then(msg => {
 					setTimeout(() => {
-						msg.delete().then(()=> {
-							value === 0 ? res = 'heads' : res = 'tails';
+						value === 0 ? res = 'heads' : res = 'tails';
 
-							const messageRes = titleCase(lang.coinflip[res]);
-							const imageRes = `src/img/coinflip/${res}.gif`;
+						const messageRes = titleCase(lang.coinflip[res]);
+						const imageRes = `src/img/coinflip/${res}.gif`;
 
-							if (lang.coinflip[res] !== guess) {
-								ref.update({
-									balance: bal - money
-								}).then(() => {
-									message.reply({ content: `${messageRes}! ${getText(lang.lost, [money])}`, files: [imageRes] });
-								});
-							}
-							else if (lang.coinflip[res] === guess) {
-								const won = money * 1.5;
+						if (lang.coinflip[res] !== guess) {
+							ref.update({
+								balance: bal - money
+							}).then(() => {
+								msg.edit({ content: `${messageRes}! ${getText(lang.lost, [money])}`, files: [imageRes] });
+							});
+						}
+						else if (lang.coinflip[res] === guess) {
+							const won = money * 1.5;
 
-								ref.update({
-									balance: bal + won
-								}).then(() => {
-									message.reply({ content: `${messageRes}! ${getText(lang.won, [won])}`, files: [imageRes] });
-								});
-							}
-						});
+							ref.update({
+								balance: bal + won
+							}).then(() => {
+								msg.edit({ content: `${messageRes}! ${getText(lang.won, [won])}`, files: [imageRes] });
+							});
+						}
 					}, 2000);
 				});
 			}

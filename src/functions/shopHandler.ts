@@ -11,7 +11,7 @@ export function createShopPage(userId: string, lang:Record<string, any>, prefix:
 		.setTitle(lang.awesomeStore)
 		.setDescription(lang.shop.welcome)
 		.addFields(
-			{ name: `- HUDs\n- PetHuds\n- Pets\n- ${lang.items}`, value: '\u200B' }
+			{ name: `- HUDs\n- Pet HUDs\n- Pets\n- ${lang.items}`, value: '\u200B' }
 		);
 
 	switch (embedName) {
@@ -27,7 +27,7 @@ export function createShopPage(userId: string, lang:Record<string, any>, prefix:
 						.setStyle('PRIMARY'),
 					new MessageButton()
 						.setCustomId(`shoppetHudEmbed0${userId}`)
-						.setLabel('PetHuds')
+						.setLabel('Pet HUDs')
 						.setStyle('PRIMARY'),
 					new MessageButton()
 						.setCustomId(`shoppetsEmbed0${userId}`)
@@ -451,7 +451,7 @@ export function createShopPage(userId: string, lang:Record<string, any>, prefix:
 		case 'shoppetHudEmbed0':
 			embedToExport = new MessageEmbed(mainEmbed)
 				.setImage('https://i.imgur.com/fCIJGQW.gif')
-				.setTitle(`${lang.awesomeStore} - PetHuds (${lang.colors})`)
+				.setTitle(`${lang.awesomeStore} - Pet HUDs (${lang.colors})`)
 				.setFooter(`${lang.page} 1/1`)
 				.spliceFields(0, mainEmbed.fields.length, [
 					{ name: `- ${lang.colors}\n - VIP`, value: '\u200B' }
@@ -479,7 +479,7 @@ export function createShopPage(userId: string, lang:Record<string, any>, prefix:
 			break;
 		case 'shoppetHudColorsEmbed0':
 			embedToExport = new MessageEmbed(mainEmbed)
-				.setTitle(`${lang.awesomeStore} - PetHuds (${lang.colors})`)
+				.setTitle(`${lang.awesomeStore} - Pet HUDs (${lang.colors})`)
 				.setDescription(getText(lang.shop.toBuyPetHud, [prefix, lang.shop.petHudName, prefix, lang.shop.petHudName]))
 				.setFooter(`${lang.page} 1/1`)
 				.spliceFields(0, mainEmbed.fields.length, [
@@ -508,7 +508,7 @@ export function createShopPage(userId: string, lang:Record<string, any>, prefix:
 			break;
 		case 'shoppetHudVIPEmbed0':
 			embedToExport = new MessageEmbed(mainEmbed)
-				.setTitle(`${lang.awesomeStore} - PetHuds (VIP)`)
+				.setTitle(`${lang.awesomeStore} - Pet HUDs (VIP)`)
 				.setDescription(getText(lang.shop.toBuyPetHud, [prefix, lang.shop.petHudName, prefix, lang.shop.petHudName]))
 				.setFooter(`${lang.page} 1/3`)
 				.spliceFields(0, mainEmbed.fields.length, [
@@ -546,7 +546,7 @@ export function createShopPage(userId: string, lang:Record<string, any>, prefix:
 			break;
 		case 'shoppetHudVIPEmbed1':
 			embedToExport = new MessageEmbed(mainEmbed)
-				.setTitle(`${lang.awesomeStore} - PetHuds (VIP)`)
+				.setTitle(`${lang.awesomeStore} - Pet HUDs (VIP)`)
 				.setDescription(getText(lang.shop.toBuyPetHud, [prefix, lang.shop.petHudName, prefix, lang.shop.petHudName]))
 				.setFooter(`${lang.page} 2/3`)
 				.spliceFields(0, mainEmbed.fields.length, [
@@ -583,7 +583,7 @@ export function createShopPage(userId: string, lang:Record<string, any>, prefix:
 			break;
 		case 'shoppetHudVIPEmbed2':
 			embedToExport = new MessageEmbed(mainEmbed)
-				.setTitle(`${lang.awesomeStore} - PetHuds (VIP)`)
+				.setTitle(`${lang.awesomeStore} - Pet HUDs (VIP)`)
 				.setDescription(getText(lang.shop.toBuyPetHud, [prefix, lang.shop.petHudName, prefix, lang.shop.petHudName]))
 				.setFooter(`${lang.page} 3/3`)
 				.spliceFields(0, mainEmbed.fields.length, [
