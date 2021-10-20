@@ -6,7 +6,7 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 		new MessageButton()
 			.setLabel('Link')
 			.setStyle('LINK')
-			.setURL('https://top.gg/bot/679041548955942914/vote')
+			.setURL('https://www.patreon.com/suicidekiss')
 	);
 
 	message.channel.send({ content: lang.vip.click, components: [row] });
