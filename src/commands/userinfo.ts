@@ -11,7 +11,7 @@ export async function execute(bot: undefined, message: Message, command: undefin
 	const joinedDate = moment(member.joinedAt).locale(language);
 	const createdAgo = createdDate.from(Date.now());
 	const joinedAgo = joinedDate.from(Date.now());
-	let roles = `<@&${(member as GuildMember).roles.join('>, <@&')}>`;
+	let roles = `<@&${member.roles.cache.join('>, <@&')}>`;
 	let nickname = member.nickname;
 
 	if (!nickname) nickname = lang.userinfo.none;
