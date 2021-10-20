@@ -209,14 +209,15 @@ bot.on('messageCreate', async message => {
 		message.channel.send(getText(lang.prefixMsg, [prefix]));
 	}
 	else if (serverSettings.automessages === true) {
-		const pngs = ['boi', 'E', 'hmm', 'just monika', 'nice plan', 'no u', 'noice', 'shine'];
-		const gifs = ['distraction dance'];
+		const content = message.content.toLowerCase();
+		const pngs = ['boi', 'e', 'hmm', 'just monika', 'no u', 'noice', 'shine'];
+		const gifs = ['distraction dance', 'sussy'];
 
-		if (pngs.includes(message.content.toLowerCase())) {
-			message.channel.send({ files: [`./src/img/automessages/${message.content}.png`] });
+		if (pngs.includes(content)) {
+			message.channel.send({ files: [`./src/img/automessages/${content}.png`] });
 		}
-		else if (gifs.includes(message.content.toLowerCase())) {
-			message.channel.send({ files: [`./src/img/automessages/${message.content}.gif`] });
+		else if (gifs.includes(content)) {
+			message.channel.send({ files: [`./src/img/automessages/${content}.gif`] });
 		}
 	}
 });
