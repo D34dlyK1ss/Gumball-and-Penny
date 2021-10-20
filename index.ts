@@ -86,10 +86,10 @@ es.onmessage = async messageEvent => {
 
 		switch (agent) {
 			case 'Top.gg Webhook/1.0.0':
-				if (data.event.body.type === 'upvote') giveVoteAwards(db, data.event.body.user);
+				if (data.event.body.type === 'upvote') giveVoteAwards(db, vips, data.event.body.user);
 				break;
 			case 'axios/0.21.1':
-				if (data.event.body.flags === 64) giveVoteAwards(db, data.event.body.id);
+				if (data.event.body.flags === 64) giveVoteAwards(db, vips, data.event.body.id);
 				break;
 		}
 	}
