@@ -36,7 +36,7 @@ export function execute(bot: BotClient, message: Message, command: Cmd, db: Fire
 
 				refU.get().then(docU => {
 					if (!docU.exists) {
-						message.reply(getText(lang.error.userNoProfile, [user.tag]));
+						message.reply(getText(lang.error.userHasNoProfile, [user.tag]));
 					}
 					else {
 						const balD: number = docD.get('balance');
