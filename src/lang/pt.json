@@ -36,6 +36,7 @@
 	"owner": "Proprietário",
 	"status": "Status",
 	"mention": "Menção",
+	"joinDate": "Data de Entrada",
 	"roles": "Cargos",
 	"ago": " atrás ",
 	"botNoProfile": "Nós não temos um perfil!",

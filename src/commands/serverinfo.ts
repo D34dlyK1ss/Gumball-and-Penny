@@ -10,7 +10,8 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 
 	const embed = new MessageEmbed()
 		.setColor('DARK_PURPLE')
-		.setThumbnail(`${message.guild.iconURL()}`)
+		.setAuthor(message.guild.name, message.guild.iconURL())
+		.setThumbnail(message.guild.iconURL())
 		.addFields(
 			{ name: `${lang.id}`, value: `${message.guild.id}` },
 			{ name: `${lang.verificationLevel}`, value: `${lang.serverinfo.verificationLevel[message.guild.verificationLevel]}`, inline: true },
@@ -20,14 +21,5 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 			{ name: `${lang.owner}`, value: `<@${message.guild.ownerId}>`, inline: true }
 		);
 
-	if (!message.guild.iconURL()) {
-		const lastEmbed = embed;
-		const newEmbed = new MessageEmbed(lastEmbed)
-			.setAuthor(`${message.guild.name}`)
-			.setThumbnail('');
-		message.channel.send({ embeds: [newEmbed] });
-	}
-	else {
-		message.channel.send({ embeds: [embed] });
-	}
+	message.channel.send({ embeds: [embed] });
 }
