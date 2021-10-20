@@ -1,4 +1,4 @@
-import { Message, MessageEmbed } from 'discord.js';
+import { GuildMember, Message, MessageEmbed } from 'discord.js';
 import moment from 'moment';
 import getText from '../functions/getText';
 
@@ -11,8 +11,10 @@ export async function execute(bot: undefined, message: Message, command: undefin
 	const joinedDate = moment(member.joinedAt).locale(language);
 	const createdAgo = createdDate.from(Date.now());
 	const joinedAgo = joinedDate.from(Date.now());
-	let roles = `<@&${(member as any)._roles.join('>, <@&')}>`;
+	let roles = `<@&${(member as GuildMember)._roles.join('>, <@&')}>`;
+	let nickname = member.nickname;
 
+	if (!nickname) nickname = lang.userinfo.none;
 	if (roles === '<@>') roles = 'None';
 
 	const embed = new MessageEmbed()
@@ -20,10 +22,10 @@ export async function execute(bot: undefined, message: Message, command: undefin
 		.setAuthor(user.tag, user.displayAvatarURL({ dynamic: true }))
 		.setThumbnail(`${user.displayAvatarURL({ dynamic: true })}`)
 		.addFields(
-			{ name: `${lang.id}`, value: `${user.id}` },
-			{ name: `${lang.nickname}`, value: `${member.nickname}`, inline: true },
+			{ name: `${lang.id}`, value: user.id },
+			{ name: `${lang.nickname}`, value: nickname, inline: true },
 			{ name: `${lang.joinDate}`, value: getText(lang.userinfo.joined, [joinedAgo, joinedDate.format('LLLL')]) },
-			{ name: `${lang.roles}`, value: `${roles}`}
+			{ name: `${lang.roles}`, value: roles }
 		)
 		.setFooter(getText(lang.userinfo.created, [createdAgo, createdDate.format('LLLL')]));
 

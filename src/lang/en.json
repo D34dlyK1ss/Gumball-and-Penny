@@ -31,7 +31,6 @@
 	"id": "ID",
 	"verificationLevel": "Verification Level",
 	"region": "Region",
-	"membersServerInfo": "Members",
 	"creation": "Creation",
 	"owner": "Owner",
 	"status": "Status",
@@ -328,6 +327,7 @@
 			"us-west": "US West"
 		},
 
+		"members": "Members",
 		"created": "Created $0$ ago ($1$)"
 	},
 
@@ -390,6 +390,7 @@
 			"offline": "Offline"
 		},
 
+		"none": "None",
 		"joined": "Joined $0$ ago ($1$)",
 		"created": "Created $0$ ago ($1$)"
 	},
