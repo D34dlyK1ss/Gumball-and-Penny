@@ -17,13 +17,13 @@ export async function execute(bot: undefined, message: Message, command: undefin
 
 	const embed = new MessageEmbed()
 		.setColor('DARK_PURPLE')
-		.setAuthor(user.tag, user.avatarURL())
-		.setThumbnail(`${user.displayAvatarURL()}`)
+		.setAuthor(user.tag, user.displayAvatarURL())
+		.setThumbnail(`${member.displayAvatarURL()}`)
 		.addFields(
 			{ name: `${lang.id}`, value: `${user.id}` },
-			{ name: `${lang.mention}`, value: `${user}`, inline: true },
+			{ name: `${lang.nickname}`, value: `${member.nickname}`, inline: true },
 			{ name: `${lang.joinDate}`, value: getText(lang.userinfo.joined, [joinedAgo, joinedDate.format('LLLL')]) },
-			{ name: `${lang.roles}`, value: `${roles}`, inline: true }
+			{ name: `${lang.roles}`, value: `${roles}`}
 		)
 		.setFooter(getText(lang.userinfo.created, [createdAgo, createdDate.format('LLLL')]));
 
