@@ -17,8 +17,8 @@ export async function execute(bot: undefined, message: Message, command: undefin
 
 	const embed = new MessageEmbed()
 		.setColor('DARK_PURPLE')
-		.setAuthor(user.tag, user.displayAvatarURL())
-		.setThumbnail(`${member.displayAvatarURL()}`)
+		.setAuthor(user.tag, user.displayAvatarURL({ dynamic: true }))
+		.setThumbnail(`${user.displayAvatarURL({ dynamic: true })}`)
 		.addFields(
 			{ name: `${lang.id}`, value: `${user.id}` },
 			{ name: `${lang.nickname}`, value: `${member.nickname}`, inline: true },

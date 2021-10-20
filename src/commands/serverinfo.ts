@@ -10,8 +10,8 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 
 	const embed = new MessageEmbed()
 		.setColor('DARK_PURPLE')
-		.setAuthor(message.guild.name, message.guild.iconURL())
-		.setThumbnail(message.guild.iconURL())
+		.setAuthor(message.guild.name, message.guild.iconURL({ dynamic: true }))
+		.setThumbnail(message.guild.iconURL({ dynamic: true }))
 		.addFields(
 			{ name: `${lang.id}`, value: `${message.guild.id}` },
 			{ name: `${lang.verificationLevel}`, value: `${lang.serverinfo.verificationLevel[message.guild.verificationLevel]}` },
