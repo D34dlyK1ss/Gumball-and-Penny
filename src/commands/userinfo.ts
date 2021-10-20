@@ -1,4 +1,4 @@
-import { GuildMember, Message, MessageEmbed } from 'discord.js';
+import { Message, MessageEmbed, Role } from 'discord.js';
 import moment from 'moment';
 import getText from '../functions/getText';
 
@@ -11,11 +11,11 @@ export async function execute(bot: undefined, message: Message, command: undefin
 	const joinedDate = moment(member.joinedAt).locale(language);
 	const createdAgo = createdDate.from(Date.now());
 	const joinedAgo = joinedDate.from(Date.now());
-	let roles = `<@&${member.roles.cache.join('>, <@&')}>`;
+	let roles = member.roles.map((r: Role) => `${r}`).join(', ');
 	let nickname = member.nickname;
 
 	if (!nickname) nickname = lang.userinfo.none;
-	if (roles === '<@>') roles = 'None';
+	if (roles === '') roles = 'None';
 
 	const embed = new MessageEmbed()
 		.setColor('DARK_PURPLE')
