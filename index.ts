@@ -78,10 +78,10 @@ es.onopen = () => {
 };
 
 es.onmessage = async messageEvent => {
+	const data = JSON.parse(messageEvent.data);
 	const authorization = data.event.headers.authorization;
 
 	if (authorization === 'Gumball&PennyDBL') {
-		const data = JSON.parse(messageEvent.data);
 		const agent = data.event.headers['user-agent'];
 
 		switch (agent) {
