@@ -31,11 +31,11 @@
 	"id": "ID",
 	"verificationLevel": "Verification Level",
 	"region": "Region",
-	"membersServerInfo": "Members",
 	"creation": "Creation",
 	"owner": "Owner",
 	"status": "Status",
-	"mention": "Mention",
+	"nickname": "Nickname",
+	"joinDate": "Join Date",
 	"roles": "Roles",
 	"ago": " ",
 	"botNoProfile": "We don't have a profile!",
@@ -327,6 +327,7 @@
 			"us-west": "US West"
 		},
 
+		"members": "Members",
 		"created": "Created $0$ ago ($1$)"
 	},
 
@@ -389,6 +390,7 @@
 			"offline": "Offline"
 		},
 
+		"none": "None",
 		"joined": "Joined $0$ ago ($1$)",
 		"created": "Created $0$ ago ($1$)"
 	},
@@ -398,7 +400,7 @@
 	},
 
 	"vote": {
-		"click": "Click on the button below to vote!"
+		"click": "Click on one of the buttons below to vote!"
 	},
 
 	"which": {

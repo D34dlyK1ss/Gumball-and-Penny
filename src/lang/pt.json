@@ -31,11 +31,11 @@
 	"id": "ID",
 	"verificationLevel": "Nível de Verificação",
 	"region": "Região",
-	"membersServerInfo": "Membros",
 	"creation": "Criação",
 	"owner": "Proprietário",
 	"status": "Status",
-	"mention": "Menção",
+	"nickname": "Alcunha",
+	"joinDate": "Data de Entrada",
 	"roles": "Cargos",
 	"ago": " atrás ",
 	"botNoProfile": "Nós não temos um perfil!",
@@ -327,6 +327,7 @@
 			"us-west": "EUA Oeste"
 		},
 
+		"members": "Membros",
 		"created": "Criado $0$ atrás ($1$)"
 	},
 
@@ -389,6 +390,7 @@
 			"offline": "Offline"
 		},
 
+		"none": "Nenhuma",
 		"joined": "Entrou $0$ atrás ($1$)",
 		"created": "Criado $0$ atrás ($1$)"
 	},
@@ -398,7 +400,7 @@
 	},
 
 	"vote": {
-		"click": "Clica no botão abaixo para votar!"
+		"click": "Clica num dos botões abaixo para votar!"
 	},
 
 	"which": {

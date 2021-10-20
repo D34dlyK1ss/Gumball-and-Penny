@@ -14,7 +14,7 @@ export function createQuizPage(message: Message, user: User, lang:Record<string,
 	let buttonRow: MessageActionRow;
 	const mainEmbed = new MessageEmbed()
 		.setColor('DARK_PURPLE')
-		.setAuthor(user.username, user.avatarURL())
+		.setAuthor(user.tag, user.displayAvatarURL())
 		.setTitle('Quiz')
 		.addFields(
 			{ name: '- Anime', value: '\u200B', inline: true }

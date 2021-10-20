@@ -69,6 +69,7 @@ bot.once('ready', () => {
 });
 
 import EventSource from 'eventsource';
+import giveVoteAwards from './src/functions/giveVoteAwards';
 const eventSourceInit: Record<string, any> = { headers: { 'Authorization': 'Bearer 14aee8db11a152ed7f2d4ed23a839d58' } };
 const es = new EventSource('https://api.pipedream.com/sources/dc_OLuY0W/sse', eventSourceInit);
 
@@ -78,41 +79,18 @@ es.onopen = () => {
 
 es.onmessage = async messageEvent => {
 	const data = JSON.parse(messageEvent.data);
-	const agent = data.event.headers['user-agent'];
 	const authorization = data.event.headers.authorization;
-	const userID = data.event.body.user;
-	const type = data.event.body.type;
 
-	if (agent === 'Top.gg Webhook/1.0.0' && authorization === 'Gumball&PennyDBL') {
-		if (type === 'upvote') {
-			const refP = db.collection('perfis').doc(userID);
+	if (authorization === 'Gumball&PennyDBL') {
+		const agent = data.event.headers['user-agent'];
 
-			await refP.get().then(doc => {
-				if (!doc.exists) return;
-				const bal: number = doc.get('balance');
-				let add = 150;
-
-				if (userID === botConfig.botOwnerID || botConfig.collaboratorIDs.includes(userID) || vips.has(userID)) {
-					add *= 2;
-				}
-				else {
-					refP.get().then(docP => {
-						if (docP.exists) add *= 2;
-					});
-				}
-
-				refP.update({
-					balance: bal + add
-				}).then(async () => {
-					const voter = await bot.users.fetch(userID).catch(() => undefined);
-
-					if (voter) {
-						bot.users.fetch(botConfig.botOwnerID).then(owner => {
-							owner.send(`**${voter.tag}** votou em nós!`);
-						});
-					}
-				});
-			});
+		switch (agent) {
+			case 'Top.gg Webhook/1.0.0':
+				if (data.event.body.type === 'upvote') giveVoteAwards(db, vips, data.event.body.user);
+				break;
+			case 'axios/0.21.1':
+				if (data.event.body.flags === 64) giveVoteAwards(db, vips, data.event.body.id);
+				break;
 		}
 	}
 };
@@ -231,14 +209,15 @@ bot.on('messageCreate', async message => {
 		message.channel.send(getText(lang.prefixMsg, [prefix]));
 	}
 	else if (serverSettings.automessages === true) {
-		const pngs = ['boi', 'E', 'hmm', 'just monika', 'nice plan', 'no u', 'noice', 'shine'];
-		const gifs = ['distraction dance'];
+		const content = message.content.toLowerCase();
+		const pngs = ['boi', 'e', 'hmm', 'just monika', 'no u', 'noice', 'shine'];
+		const gifs = ['distraction dance', 'sussy'];
 
-		if (pngs.includes(message.content.toLowerCase())) {
-			message.channel.send({ files: [`./src/img/automessages/${message.content}.png`] });
+		if (pngs.includes(content)) {
+			message.channel.send({ files: [`./src/img/automessages/${content}.png`] });
 		}
-		else if (gifs.includes(message.content.toLowerCase())) {
-			message.channel.send({ files: [`./src/img/automessages/${message.content}.gif`] });
+		else if (gifs.includes(content)) {
+			message.channel.send({ files: [`./src/img/automessages/${content}.gif`] });
 		}
 	}
 });
