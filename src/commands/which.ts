@@ -8,10 +8,10 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 	argsString = argsString.toLowerCase();
 	const last = message.member.id.slice(-1);
 
-	if (argsString === '' || !(which as any)[argsString]) {
+	if (argsString || !(which as Record<string, string[]>)[argsString]) {
 		message.reply(getText(lang.which.noSelect, [prefix, lang.forMoreInfo]));
 	}
 	else {
-		message.channel.send({ content: `${(which as any)[argsString][last]}!`, files: [`src/img/which/${argsString} (${last}).jpg`] });
+		message.channel.send({ content: `${(which as Record<string, string[]>)[argsString][last]}!`, files: [`src/img/which/${argsString} (${last}).jpg`] });
 	}
 }

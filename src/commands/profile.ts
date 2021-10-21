@@ -47,77 +47,82 @@ export function execute(bot: BotClient, message: Message, command: undefined, db
 				}
 			});
 			break;
-		case 'setnickname':
-			if (argsString === '') argsString = 'N/A';
-			db.collection('perfis').doc(message.author.id).get().then(doc => {
-				const nicknameMax = 40;
-				if (!doc.exists) {
-					if (user === message.author) {
-						message.reply(getText(lang.error.noProfile, [prefix]));
-					}
-				}
-				else if (argsString.length > nicknameMax) {
-					message.reply(getText(lang.profile.nicknameMaxIs, [nicknameMax, argsString.length]));
-				}
-				else {
-					db.collection('perfis').doc(message.author.id).update({
-						nickname: argsString
-					}).then(() => {
-						message.reply(getText(lang.profile.nicknameChangedTo, [argsString]));
-					});
-				}
-			});
-			break;
-		case 'setdescription':
-			db.collection('perfis').doc(message.author.id).get().then(doc => {
-				const descMax = 52;
-				if (!doc.exists) {
-					if (user === message.author) {
-						message.reply(getText(lang.error.noProfile, [prefix]));
-					}
-				}
-				else if (argsString.length > descMax) {
-					message.reply(getText(lang.profile.decMaxIs, [descMax, argsString.length]));
-				}
-				else {
-					db.collection('perfis').doc(message.author.id).update({
-						description: argsString
-					}).then(() => {
-						message.reply(getText(lang.profile.descChangedTo, [argsString]));
-					});
-				}
-			});
-			break;
-		case 'sethud':
-			db.collection('perfis').doc(message.author.id).get().then(docP => {
-				if (!docP.exists) {
-					if (user === message.author) {
-						message.reply(getText(lang.error.noProfile, [prefix]));
-					}
-				}
-				else {
-					refI.get().then(docI => {
-						const huds = docI.get('huds');
-						let newHud = '';
+		case 'set':
+			switch (args[1]) {
+				case 'nickname':
+					if (!argsString) argsString = 'N/A';
 
-						newHud = newHud.concat(argsString.slice(0)).toLowerCase().replace(/[ ]/g, '_');
-
-						if (!newHud || newHud === '') {
-							message.reply(lang.error.noHUDChosen);
+					db.collection('perfis').doc(message.author.id).get().then(doc => {
+						const nicknameMax = 40;
+						if (!doc.exists) {
+							if (user === message.author) {
+								message.reply(getText(lang.error.noProfile, [prefix]));
+							}
 						}
-						else if (!huds.includes(`${newHud}`) && message.author.id !== botConfig.botOwnerID && !botConfig.collaboratorIDs.includes(message.author.id)) {
-							message.reply(lang.error.noHaveHUD);
+						else if (argsString.length > nicknameMax) {
+							message.reply(getText(lang.profile.nicknameMaxIs, [nicknameMax, argsString.length]));
 						}
 						else {
 							db.collection('perfis').doc(message.author.id).update({
-								hud: newHud
+								nickname: argsString
 							}).then(() => {
-								message.reply(getText(lang.profile.hudChangedTo, [titleCase(argsString)]));
+								message.reply(getText(lang.profile.nicknameChangedTo, [argsString]));
 							});
 						}
 					});
-				}
-			});
+					break;
+				case 'description':
+					db.collection('perfis').doc(message.author.id).get().then(doc => {
+						const descMax = 52;
+						if (!doc.exists) {
+							if (user === message.author) {
+								message.reply(getText(lang.error.noProfile, [prefix]));
+							}
+						}
+						else if (argsString.length > descMax) {
+							message.reply(getText(lang.profile.decMaxIs, [descMax, argsString.length]));
+						}
+						else {
+							db.collection('perfis').doc(message.author.id).update({
+								description: argsString
+							}).then(() => {
+								message.reply(getText(lang.profile.descChangedTo, [argsString]));
+							});
+						}
+					});
+					break;
+				case 'hud':
+					db.collection('perfis').doc(message.author.id).get().then(docP => {
+						if (!docP.exists) {
+							if (user === message.author) {
+								message.reply(getText(lang.error.noProfile, [prefix]));
+							}
+						}
+						else {
+							refI.get().then(docI => {
+								const huds = docI.get('huds');
+								let newHud = '';
+
+								newHud = newHud.concat(argsString.slice(0)).toLowerCase().replace(/[ ]/g, '_');
+
+								if (!newHud) {
+									message.reply(lang.error.noHUDChosen);
+								}
+								else if (!huds.includes(`${newHud}`) && message.author.id !== botConfig.botOwnerID && !botConfig.collaboratorIDs.includes(message.author.id)) {
+									message.reply(lang.error.noHaveHUD);
+								}
+								else {
+									db.collection('perfis').doc(message.author.id).update({
+										hud: newHud
+									}).then(() => {
+										message.reply(getText(lang.profile.hudChangedTo, [titleCase(argsString)]));
+									});
+								}
+							});
+						}
+					});
+					break;
+			}
 			break;
 		default:
 			refP.get().then(async doc => {

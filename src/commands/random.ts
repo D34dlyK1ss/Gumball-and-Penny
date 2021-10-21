@@ -4,7 +4,7 @@ export const name = 'random';
 export function execute(bot: undefined, message: Message, command: undefined, db: undefined, lang: Record<string, string | any>, language: undefined, prefix: undefined, args: string[]) {
 	let rnd;
 
-	if (args[0] === '') {
+	if (!args[0]) {
 		rnd = Math.floor(Math.random() * 100) + 1;
 		message.channel.send(`${rnd}!`);
 	}

@@ -730,7 +730,7 @@ export function shopButtonHandler(button: ButtonInteraction, lang: Record<string
 	else {
 		const toSend:any = createShopPage(button.user.id, lang, prefix, button.customId.slice(0, -18));
 
-		if (toSend[2] === undefined) {
+		if (!toSend[2]) {
 			button.update({ embeds: [toSend[0]], components: [toSend[1]] });
 		}
 		else {

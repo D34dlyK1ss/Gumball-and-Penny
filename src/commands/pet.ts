@@ -47,7 +47,7 @@ export function execute(bot: BotClient, message: Message, command: undefined, db
 						if (!invItems.includes('name_license')) {
 							message.reply(lang.error.noNameLicense);
 						}
-						else if (!newName || newName === '') {
+						else if (!newName) {
 							message.reply(lang.error.noName);
 						}
 						else if (newName === doc.get('name')) {
@@ -86,7 +86,7 @@ export function execute(bot: BotClient, message: Message, command: undefined, db
 
 						newHud = newHud.concat(argsString.slice(0)).toLowerCase().replace(/[ ]/g, '_');
 
-						if (!newHud || newHud === '') {
+						if (!newHud) {
 							message.reply(lang.error.noPetHudChosen);
 						}
 						else if (!petHuds.includes(`${newHud}`) && message.author.id !== botConfig.botOwnerID && !botConfig.collaboratorIDs.includes(message.author.id)) {

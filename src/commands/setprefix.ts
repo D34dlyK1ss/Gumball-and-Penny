@@ -9,7 +9,7 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 		
 		message.reply(lang.error.noPerm);
 	}
-	else if (args[0] === '') {
+	else if (!args[0]) {
 		message.reply(lang.error.noPrefixChosen);
 	}
 	else {

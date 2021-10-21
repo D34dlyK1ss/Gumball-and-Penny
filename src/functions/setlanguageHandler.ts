@@ -12,7 +12,7 @@ export function confirmLanguage(button: ButtonInteraction, db: FirebaseFirestore
 	if (button.customId.startsWith('languageCancel')) {
 		button.update({ content: lang.userCancelled, components:[] });
 	}
-	else if (newLanguage === undefined) {
+	else if (!newLanguage) {
 		button.reply({ content: lang.setlanguage.noLanguage, ephemeral: true });
 	}
 	else {
