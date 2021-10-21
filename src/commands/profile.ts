@@ -119,7 +119,7 @@ export function execute(bot: BotClient, message: Message, command: undefined, db
 										return message.reply(lang.error.noHUD);
 									}
 									
-									db.collection('perfis').doc(message.author.id).update({
+									return db.collection('perfis').doc(message.author.id).update({
 										hud: newHud
 									}).then(() => {
 										return message.reply(getText(lang.profile.hudChangedTo, [titleCase(argsString)]));
