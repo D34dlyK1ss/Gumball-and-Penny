@@ -584,7 +584,7 @@
 
 		"profile": {
 			"category": "Economia e Perfil",
-			"description": "Vê o teu perfil ou o de alguém!\nOpções disponíveis: `create`, `sethud`, `setnickname`, `setdescription`.",
+			"description": "Vê o teu perfil ou o de alguém!\nOpções disponíveis: `create`, `set [description/hud/nickname]`.",
 			"usage": "profile [opcional - opção | @membro]"
 		},
 

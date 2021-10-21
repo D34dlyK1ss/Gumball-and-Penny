@@ -584,7 +584,7 @@
 
 		"profile": {
 			"category": "Economy and Profile",
-			"description": "Check your profile or someone's!\nAvailable options: `create`, `sethud`, `setnickname`, `setdescription`.",
+			"description": "Check your profile or someone's!\nAvailable options: `create`, `set [description/hud/nickname]`.",
 			"usage": "profile [optional - option | @member]"
 		},
 

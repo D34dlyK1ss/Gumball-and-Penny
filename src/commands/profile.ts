@@ -14,7 +14,7 @@ registerFont('src/fonts/comicz.ttf', { family: 'bold-italic Sans MS' });
 export const name = 'profile';
 export const aliases = ['p'];
 export function execute(bot: BotClient, message: Message, command: undefined, db: FirebaseFirestore.Firestore, lang: Record<string, string | any>, language: undefined, prefix: undefined, args: string[]) {
-	const user = message.mentions.users.first() || message.author;
+	const user = message.mentions.users.first();
 	const refP = db.collection('perfis').doc(user.id);
 	const refI = db.collection('inventario').doc(message.author.id);
 	const option = args[0];
@@ -55,7 +55,7 @@ export function execute(bot: BotClient, message: Message, command: undefined, db
 					db.collection('perfis').doc(message.author.id).get().then(doc => {
 						const nicknameMax = 40;
 						if (!doc.exists) {
-							if (user === message.author) {
+							if (!user) {
 								message.reply(getText(lang.error.noProfile, [prefix]));
 							}
 						}
@@ -75,7 +75,7 @@ export function execute(bot: BotClient, message: Message, command: undefined, db
 					db.collection('perfis').doc(message.author.id).get().then(doc => {
 						const descMax = 52;
 						if (!doc.exists) {
-							if (user === message.author) {
+							if (!user) {
 								message.reply(getText(lang.error.noProfile, [prefix]));
 							}
 						}
@@ -94,7 +94,7 @@ export function execute(bot: BotClient, message: Message, command: undefined, db
 				case 'hud':
 					db.collection('perfis').doc(message.author.id).get().then(docP => {
 						if (!docP.exists) {
-							if (user === message.author) {
+							if (!user) {
 								message.reply(getText(lang.error.noProfile, [prefix]));
 							}
 						}
@@ -127,7 +127,7 @@ export function execute(bot: BotClient, message: Message, command: undefined, db
 		default:
 			refP.get().then(async doc => {
 				if (!doc.exists) {
-					if (user === message.author) {
+					if (!user) {
 						message.reply(getText(lang.error.noProfile, [prefix]));
 					}
 					else if (user === bot.user) {
@@ -137,7 +137,7 @@ export function execute(bot: BotClient, message: Message, command: undefined, db
 						message.reply(lang.botsNoProfile);
 					}
 					else {
-						message.reply(getText(lang.error.userNoProfile, [user.tag]));
+						message.reply(getText(lang.error.userHasNoProfile, [user.tag]));
 					}
 				}
 				else {
