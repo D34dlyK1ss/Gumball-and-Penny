@@ -122,7 +122,7 @@ export function execute(bot: BotClient, message: Message, command: undefined, db
 									db.collection('perfis').doc(message.author.id).update({
 										hud: newHud
 									}).then(() => {
-										message.reply(getText(lang.profile.hudChangedTo, [titleCase(argsString)]));
+										return message.reply(getText(lang.profile.hudChangedTo, [titleCase(argsString)]));
 									});
 								}
 							});
