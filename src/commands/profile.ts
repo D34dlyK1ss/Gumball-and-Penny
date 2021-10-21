@@ -116,7 +116,7 @@ export function execute(bot: BotClient, message: Message, command: undefined, db
 										const bg = await loadImage(`src/img/profile/hud (${newHud}).png`);
 									}
 									catch {
-										message.reply(lang.error.noHUD);
+										return message.reply(lang.error.noHUD);
 									}
 									
 									db.collection('perfis').doc(message.author.id).update({
