@@ -18,7 +18,7 @@ export function execute(bot: BotClient, message: Message, command: undefined, db
 	const refP = db.collection('perfis').doc(user.id);
 	const refI = db.collection('inventario').doc(message.author.id);
 	const option = args[0];
-	let argsString = args.slice(1).join(' ');
+	let argsString = args.slice(2).join(' ');
 
 	switch (option) {
 		case 'create':
@@ -99,8 +99,8 @@ export function execute(bot: BotClient, message: Message, command: undefined, db
 							}
 						}
 						else {
-							refI.get().then(docI => {
-								const huds = docI.get('huds');
+							refI.get().then(async docI => {
+								const iHuds = docI.get('huds');
 								let newHud = '';
 
 								newHud = newHud.concat(argsString.slice(0)).toLowerCase().replace(/[ ]/g, '_');
@@ -108,10 +108,17 @@ export function execute(bot: BotClient, message: Message, command: undefined, db
 								if (!newHud) {
 									message.reply(lang.error.noHUDChosen);
 								}
-								else if (!huds.includes(`${newHud}`) && message.author.id !== botConfig.botOwnerID && !botConfig.collaboratorIDs.includes(message.author.id)) {
+								else if (!iHuds.includes(`${newHud}`) && message.author.id !== botConfig.botOwnerID && !botConfig.collaboratorIDs.includes(message.author.id)) {
 									message.reply(lang.error.noHaveHUD);
 								}
 								else {
+									try {
+										const bg = await loadImage(`src/img/profile/hud (${newHud}).png`);
+									}
+									catch {
+										message.reply(lang.error.noHUD);
+									}
+									
 									db.collection('perfis').doc(message.author.id).update({
 										hud: newHud
 									}).then(() => {
