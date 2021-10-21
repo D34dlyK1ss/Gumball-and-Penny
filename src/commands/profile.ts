@@ -106,14 +106,14 @@ export function execute(bot: BotClient, message: Message, command: undefined, db
 								newHud = newHud.concat(argsString.slice(0)).toLowerCase().replace(/[ ]/g, '_');
 
 								if (!newHud) {
-									message.reply(lang.error.noHUDChosen);
+									return message.reply(lang.error.noHUDChosen);
 								}
 								else if (!iHuds.includes(`${newHud}`) && message.author.id !== botConfig.botOwnerID && !botConfig.collaboratorIDs.includes(message.author.id)) {
-									message.reply(lang.error.noHaveHUD);
+									return message.reply(lang.error.noHaveHUD);
 								}
 								else {
 									try {
-										const bg = await loadImage(`src/img/profile/hud (${newHud}).png`);
+										await loadImage(`src/img/profile/hud (${newHud}).png`);
 									}
 									catch {
 										return message.reply(lang.error.noHUD);
