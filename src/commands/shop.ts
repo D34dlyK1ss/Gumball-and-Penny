@@ -1,4 +1,4 @@
-import { Message, MessageAttachment } from 'discord.js';
+import { Message, MessageActionRow, MessageAttachment, MessageEmbed } from 'discord.js';
 import { createCanvas, loadImage } from 'canvas';
 import * as items from '../data/itemlist.json';
 import * as natures from '../data/natures.json';
@@ -64,7 +64,7 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 		case 'buy':
 			switch (args[1]) {
 				case 'hud':
-					hud = slugify(hud.concat((args as any).slice(2)).toLowerCase().replace(/[,]/g, '_'));
+					hud = slugify(hud.concat(args as any).slice(2)).toLowerCase().replace(/[,]/g, '_');
 
 					refP.get().then(docP => {
 						if (!docP.exists) {
@@ -204,7 +204,7 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 					break;
 				case 'pet':
 					pet = slugify(pet.concat((args as any).slice(2)).toLowerCase().replace(/[,]/g, '_'));
-					refPet.get().then((docPet: any) => {
+					refPet.get().then(docPet => {
 						if (docPet.exists) {
 							message.reply(getText(lang.error.alreadyHasPet, [prefix]));
 						}
@@ -296,9 +296,9 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 			}
 			break;
 		default: {
-			const pageToSend: any = createShopPage(message.member.id, lang, prefix, 'shopmainEmbed0');
+			const pageToSend: (MessageEmbed|MessageActionRow)[] = createShopPage(message.member.id, lang, prefix, 'shopmainEmbed0');
 
-			message.reply({ embeds: [pageToSend[0]], components: [pageToSend[1]] });
+			message.reply({ embeds: [pageToSend[0] as MessageEmbed], components: [pageToSend[1] as MessageActionRow] });
 			break;
 		}
 	}

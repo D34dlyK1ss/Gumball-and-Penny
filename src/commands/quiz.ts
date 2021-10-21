@@ -1,4 +1,4 @@
-import { Message } from 'discord.js';
+import { Message, MessageActionRow, MessageEmbed } from 'discord.js';
 import { createQuizPage, alreadyPlaying } from '../functions/quizHandler';
 
 export const name = 'quiz';
@@ -8,8 +8,8 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 		message.reply(lang.quiz.alreadyPlaying);
 	}
 	else {
-		const pageToSend: any = createQuizPage(message, message.author, lang, prefix, 'quizmainEmbed');
+		const pageToSend: (MessageEmbed|MessageActionRow)[] = createQuizPage(message, message.author, lang, prefix, 'quizmainEmbed');
 
-		message.reply({ embeds: [pageToSend[0]], components: [pageToSend[1]] });
+		message.reply({ embeds: [pageToSend[0] as MessageEmbed], components: [pageToSend[1] as MessageActionRow] });
 	}
 }

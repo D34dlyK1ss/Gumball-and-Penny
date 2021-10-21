@@ -1,4 +1,4 @@
-import { GuildMember, Message, MessageEmbed } from 'discord.js';
+import { Message, MessageEmbed } from 'discord.js';
 import moment from 'moment';
 import getText from '../functions/getText';
 
