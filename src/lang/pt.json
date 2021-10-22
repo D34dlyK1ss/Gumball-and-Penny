@@ -422,7 +422,7 @@
 
 		"automessages": {
 			"category": "Definições",
-			"description": "Ativa/Desativa mensagens automáticas!\nCaso estejam ativas, nós iremos responder coisas engraçadas a certas mensagens.",
+			"description": "Ativa/Desativa as mensagens automáticas!\nCaso estejam ativas, nós iremos responder coisas engraçadas a certas mensagens.",
 			"usage": "automessages"
 		},
 
@@ -680,7 +680,7 @@
 
 		"vote": {
 			"category": "Economia e Perfil",
-			"description": "Vota por nós!",
+			"description": "Vota por nós para receber <a:gpCoin:898355693193662464>150 (<a:gpCoin:898355693193662464>300 para VIPs)!",
 			"usage": "vote"
 		},
 		

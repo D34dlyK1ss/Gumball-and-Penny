@@ -6,14 +6,18 @@ async function giveVoteAwards(db: FirebaseFirestore.Firestore, vips: Set<string>
 	await refP.get().then(docP => {
 		if (!docP.exists) return;
 		const bal: number = docP.get('balance');
-		let add = 150;
+		const xp: number = docP.get('xp');
+		let addMoney = 150;
+		let addXP = 60;
 
 		if (userID === botConfig.botOwnerID || botConfig.collaboratorIDs.includes(userID) || vips.has(userID)) {
-			add *= 2;
+			addMoney *= 2;
+			addXP *= 2;
 		}
 
 		refP.update({
-			balance: bal + add
+			balance: bal + addMoney,
+			xp: xp + addXP
 		});
 	});
 }

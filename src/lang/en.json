@@ -422,7 +422,7 @@
 
 		"automessages": {
 			"category": "Settings",
-			"description": "Enables/Disables automatic messages!\nIf enabled, we'll answer certain messages with funny things.",
+			"description": "Toggle the automatic messages!\nIf enabled, we'll answer certain messages with funny things.",
 			"usage": "automessages"
 		},
 
@@ -680,7 +680,7 @@
 
 		"vote": {
 			"category": "Economy and Profile",
-			"description": "Vote for us to receive <a:gpCoin:898355693193662464>150 (<a:gpCoin:898355693193662464>300 for VIPs)!",
+			"description": "Vote for us to receive <a:gpCoin:898355693193662464>150 (300 for VIP)!",
 			"usage": "vote"
 		},
 		

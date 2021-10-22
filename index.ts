@@ -160,7 +160,8 @@ bot.on('messageCreate', async message => {
 				}
 				else {
 					const xp: number = doc.get('xp');
-					const level = Math.floor(Math.sqrt(xp / 2000000) * 99) + 1;
+					const maxXP = 2000000;
+					const level = Math.floor(Math.sqrt(xp / maxXP) * 99) + 1;
 					let add = Math.floor(Math.random() * 10) + 50;
 					let	newXP: number;
 
@@ -168,9 +169,9 @@ bot.on('messageCreate', async message => {
 
 					newXP = xp + add;
 
-					if (newXP > 2000000) newXP = 2000000;
+					if (newXP > maxXP) newXP = maxXP;
 
-					const newLevel = Math.floor(Math.sqrt(newXP / 2000000) * 99) + 1;
+					const newLevel = Math.floor(Math.sqrt(newXP / maxXP) * 99) + 1;
 
 					db.collection('perfis').doc(message.author.id).update({
 						xp: newXP
