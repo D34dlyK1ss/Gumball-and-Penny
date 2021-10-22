@@ -11,21 +11,18 @@ export async function execute(bot: undefined, message: Message, command: undefin
 	const joinedDate = moment(member.joinedAt).locale(language);
 	const createdAgo = createdDate.from(Date.now());
 	const joinedAgo = joinedDate.from(Date.now());
-	let roles = `<@&${(member as any)._roles.join('>, <@&')}>`;
-	let nickname = member.nickname;
-
-	if (!nickname) nickname = lang.userinfo.none;
-	if (roles === '<@>') roles = 'None';
+	const allRoles = member.roles.cache.filter(role => role.id !== message.guildId).map(r => r.toString());
+	const nickname = member.nickname;
 
 	const embed = new MessageEmbed()
 		.setColor('DARK_PURPLE')
 		.setAuthor(user.tag, user.displayAvatarURL({ dynamic: true }))
 		.setThumbnail(`${user.displayAvatarURL({ dynamic: true })}`)
 		.addFields(
-			{ name: `${lang.id}`, value: user.id },
-			{ name: `${lang.nickname}`, value: nickname, inline: true },
-			{ name: `${lang.joinDate}`, value: getText(lang.userinfo.joined, [joinedAgo, joinedDate.format('LLLL')]) },
-			{ name: `${lang.roles}`, value: roles }
+			{ name: lang.id, value: user.id },
+			{ name: lang.nickname, value: nickname ? nickname : lang.userinfo.none, inline: true },
+			{ name: lang.joinDate, value: getText(lang.userinfo.joined, [joinedAgo, joinedDate.format('LLLL')]) },
+			{ name: lang.roles, value: allRoles ? `${allRoles}` : lang.userinfo.none }
 		)
 		.setFooter(getText(lang.userinfo.created, [createdAgo, createdDate.format('LLLL')]));
 
