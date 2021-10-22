@@ -48,9 +48,9 @@
 		"Mamoru Akasaka"
 	],
 	"jojo": [
-		"Giorno Giovanna",
-		"George Joestar I",
 		"Jotaro Kujo",
+		"George Joestar I",
+		"Giorno Giovanna",
 		"Johnny Joestar",
 		"Josuke Higashikata!",
 		"George Joestar II!",
@@ -107,17 +107,29 @@
 		"Fubuki",
 		"Saitama"
 	],
+	"parasyte": [
+		"Gotou",
+		"Kazuyuki Izumi",
+		"Migi",
+		"Satomi Murano",
+		"Joe",
+		"Uragami",
+		"Ryouko Tamiya",
+		"Mamoru Uda",
+		"Kana Kimishima",
+		"Shinichi Izumi"
+	],
 	"psycho-pass": [
 		"Kirito Kamui",
 		"Tomomi Masaoka",
-		"Akane Tsunemori",
+		"Shougo Makishima",
 		"Joushuu Kasei",
 		"Yayoi Kunizuka",
 		"Shuusei Kagari",
 		"Nobuchika Ginoza",
-		"Shougo Makishima",
+		"Shinya Kougami",
 		"Shion Karanomori",
-		"Shinya Kougami"
+		"Akane Tsunemori"
 	],
 	"steins;gate": [
 		"Moeka Kiryuu",
