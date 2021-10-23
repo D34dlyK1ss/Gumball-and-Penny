@@ -229,7 +229,7 @@
 
 	"match": {
 		"alreadyAPair": "Hey, nós já somos um par! 😠",
-		"youAre": "És **$0$%** compatível com **$1$**!"
+		"youAre": "Vocês são $0$% compatíveis!"
 	},
 
 	"members": {
