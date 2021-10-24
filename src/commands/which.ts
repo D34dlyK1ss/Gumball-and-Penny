@@ -8,7 +8,7 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 	argsString = argsString.toLowerCase();
 	const last = parseInt(message.member.id.slice(-1));
 
-	if (argsString || !(which as Record<string, string[]>)[argsString]) {
+	if (!argsString || !(which as Record<string, string[]>)[argsString]) {
 		message.reply(getText(lang.which.noSelect, [prefix, lang.forMoreInfo]));
 	}
 	else {
