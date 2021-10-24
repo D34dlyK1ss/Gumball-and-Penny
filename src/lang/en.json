@@ -686,7 +686,7 @@
 		
 		"which": {
 			"category": "Fun",
-			"description": "Which anime character are you?\nAvailable anime: `akame ga kill`, `code geass`, `death note`, `higurashi` , `jojo`, `kakegurui`, `mirai nikki`, `noragami`, `one punch man`, `parasyte`, `psycho-pass`, `steins;gate`.",
+			"description": "Which anime character are you?\nAvailable anime: `akame ga kill`, `attack on titan`, `code geass`, `death note`, `higurashi` , `jojo`, `kakegurui`, `mirai nikki`, `noragami`, `one punch man`, `parasyte`, `psycho-pass`, `steins;gate`.",
 			"usage": "which [anime]"
 		},
 
