@@ -162,7 +162,7 @@ bot.on('messageCreate', async message => {
 					const xp: number = doc.get('xp');
 					const maxXP = 2000000;
 					const level = Math.floor(Math.sqrt(xp / maxXP) * 99) + 1;
-					let add = Math.floor(Math.random() * 10) + 50;
+					let add = Math.floor(Math.random() * 10) + 20;
 					let	newXP: number;
 
 					if (vips.has(message.author.id) || message.author.id === botConfig.botOwnerID || botConfig.collaboratorIDs.includes(message.author.id)) add *= 2;
