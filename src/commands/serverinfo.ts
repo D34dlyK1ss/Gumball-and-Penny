@@ -17,7 +17,7 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 			{ name: `${lang.verificationLevel}`, value: lang.serverinfo.verificationLevel[message.guild.verificationLevel] },
 			{ name: `${lang.serverinfo.members}`, value: `${message.guild.memberCount}` },
 			{ name: `${lang.owner}`, value: `<@${message.guild.ownerId}>` },
-			{ name: `${lang.creation}`, value: getText(lang.serverinfo.created, [createdAgo, createdDate.format('LLLL')]) },
+			{ name: `${lang.creation}`, value: getText(lang.serverinfo.created, [createdAgo, createdDate.format('LLLL')]) }
 		);
 
 	message.channel.send({ embeds: [embed] });

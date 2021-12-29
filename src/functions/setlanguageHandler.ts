@@ -34,7 +34,7 @@ export function confirmLanguage(button: ButtonInteraction, db: FirebaseFirestore
 					settings: { 'language': newLanguage }
 				}, { merge: true });
 			}
-			lang = require(`../../lang/${newLanguage}.json`);
+			lang = require(`../lang/${newLanguage}.json`);
 			button.update({ content: lang.setlanguage.isNow, components: [] });
 		});
 	}

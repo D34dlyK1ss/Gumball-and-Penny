@@ -77,7 +77,7 @@ es.onopen = () => {
 	console.log('Atentos ao fluxo SSE em https://api.pipedream.com/sources/dc_OLuY0W/sse');
 };
 
-es.onmessage = async messageEvent => {
+es.onmessage = messageEvent => {
 	const data = JSON.parse(messageEvent.data);
 	const authorization = data.event.headers.authorization;
 

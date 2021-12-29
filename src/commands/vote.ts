@@ -10,7 +10,7 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 		new MessageButton()
 			.setLabel('Discord Bot List')
 			.setStyle('LINK')
-			.setURL('https://discordbotlist.com/bots/gumball-and-penny/upvote'),
+			.setURL('https://discordbotlist.com/bots/gumball-and-penny/upvote')
 	);
 
 	message.channel.send({ content: lang.vote.click, components: [row] });
