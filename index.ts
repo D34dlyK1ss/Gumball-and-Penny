@@ -25,7 +25,7 @@ import botConfig from './botConfig.json';
 
 function setBotStatus() {
 	const plural = bot.guilds.cache.size !== 1 ? 's' : '';
-	bot.user.setActivity({ name: `to ${bot.guilds.cache.size} server${plural}!`, type: 'LISTENING' });
+	bot.user.setActivity({ name: `${bot.guilds.cache.size} server${plural}!`, type: 'LISTENING' });
 }
 
 import * as fs from 'fs';
