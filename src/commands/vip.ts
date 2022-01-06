@@ -1,3 +1,4 @@
+/* DISCONTINUED
 import { Message, MessageActionRow, MessageButton } from 'discord.js';
 
 export const name = 'vip';
@@ -11,3 +12,4 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 
 	message.channel.send({ content: lang.vip.click, components: [row] });
 }
+*/
