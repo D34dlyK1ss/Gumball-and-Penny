@@ -75,7 +75,7 @@
 		"cmd": "Ocorreu um erro ao tentar executar esse comando!",
 		"noProfile": "Ainda não criaste um perfil! Para criares um perfil usa `$0$profile create`.",
 		"userHasNoProfile": "**$0$** ainda não criou um perfil!",
-		"noMention": "Tens de mencionar alguém!",
+		"noMention": "Tens de mencionar alguém! Garante que escreves a menção em vez de a copiares.",
 		"noPerm": "Não tens permissão para usar este comando! 💢",
 		"botNoBan": "Nós não temos permissão para banir membros!",
 		"botNoManageMsgs": "Nós não temos permissão para gerir mensagens!",
@@ -104,7 +104,7 @@
 		"notANumber": "Isso não é um número!",
 		"noPrefixChosen": "Precisamos de saber qual é o prefixo desejado!",
 		"noLinks": "Não podemos escrever links!",
-		"memberNotMuted": "**$0$** não está silenciado/a!",
+		"memberNotTimedOut": "**$0$** não está de castigo!",
 		"hasProfileAlready": "Já tens um perfil criado, não podes criar outro! 💢",
 		"noHUDChosen": "Não escolheste um HUD!",
 		"noHaveHUD": "Não tens esse HUD!",
@@ -120,7 +120,8 @@
 		"sameLanguage": "Essa linguagem é igual à que estamos a falar!",
 		"noDuration": "Não indicaste a duração!",
 		"notAuthor": "Isto não é para ti!",
-		"nothingSelected": "Nada selecionado"
+		"nothingSelected": "Nada selecionado",
+		"noModerateMembers": "Nós não temos permissão para moderar membros!"
 	},
 
 
@@ -234,14 +235,6 @@
 
 	"members": {
 		"message": "**$0$** tem **$1$** membros!"
-	},
-
-	"mute": {
-		"whyMuteUs": "Porque é que nos queres silenciar? 😦",
-		"muteSelf": "Acabaste de tentar silenciar-te? 😆",
-		"youCannotMute": "Não podes silenciar **$0$**!",
-		"cannotMute": "Não conseguimos silenciar ninguém. Verifica a ordem das roles!",
-		"isMutedFor": "**$0$** está silenciado durante **$1$**! 🔇"
 	},
 
 	"pat": {
@@ -378,8 +371,15 @@
 		"madeFallAsleep": "**$0$** fez **$1$** adormecer!"
 	},
 
-	"unmute": {
-		"isNowUnmuted": "**$0$** deixou de estar silenciado!"
+	"timeout": {
+		"whyTimeUsOut": "Porque é que nos queres castigar? 😦",
+		"timeSelfOut": "Acabaste de te tentar castigar? 😆",
+		"youCannotTimeOut": "Não podes castigar ou tirar **$0$** do castigo!",
+		"cannotTimeOut": "Não conseguimos castigar ninguém. Verifica a ordem das roles!",
+		"isNotTimedOut": "**$0$** não está de castigo!",
+		"isTimedOutFor": "**$0$** está de castigo durante **$1$**! 🔇",
+		"timeOutRemoved": "O castigo de **$0$** foi removido!",
+		"wrongTimeFormat": "Tens de indicar o tempo com um formato válido! (ex.: 30s / 30m / 3h / 3d)!"
 	},
 
 	"userinfo": {
@@ -400,7 +400,7 @@
 	},
 
 	"vote": {
-		"click": "Clica num dos botões abaixo para votar!"
+		"click": "Clica no botão abaixo para votar!"
 	},
 
 	"which": {
@@ -558,10 +558,10 @@
 			"usage": "members"
 		},
 
-		"mute": {
+		"timeout": {
 			"category": "Moderação",
-			"description": "Silenciaremos um membro do servidor por um tempo determinado!",
-			"usage": "mute [@membro] [duração(s/m/h/d)] [opcional - razão]"
+			"description": "Castigaremos um membro do servidor por um tempo determinado (máximo de 7 dias)! Para tirar alguém do castigo apenas não adiciones argumentos após a menção.",
+			"usage": "timeout [@membro] [opcional - duração(s/m/h/d)] [opcional - razão]"
 		},
 
 		"pat": {
@@ -660,10 +660,10 @@
 			"usage": "slap [opcional - @membro]"
 		},
 
-		"unmute": {
+		"unTimeOut": {
 			"category": "Moderação",
 			"description": "Põe qualquer membro a falar outra vez!",
-			"usage": "unmute [@membro]"
+			"usage": "unTimeOut [@membro]"
 		},
 
 		"userinfo": {

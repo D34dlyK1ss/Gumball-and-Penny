@@ -16,7 +16,7 @@ export function execute(bot: BotClient, message: Message, command: Cmd, db: unde
 			{ name: `🎰 ${lang.casino}`, value: '`coinflip`, `jankenpon`', inline: true },
 			{ name: `😁 ${lang.fun}`, value: '`fact`, `match`, `quiz`, `random`, `which`', inline: true },
 			{ name: `💰 ${lang.economyAndProfile}`, value: '`balance`, `daily`, `give`, `inventory`, `pet`, `profile`, `ranking`, `shop`', inline: true },
-			{ name: `⚠️ ${lang.moderation}`, value: '`ban`, `clear`, `kick`, `mute`, `unmute`', inline: true },
+			{ name: `⚠️ ${lang.moderation}`, value: '`ban`, `clear`, `kick`, `timeout`', inline: true },
 			{ name: `🌐 ${lang.server}`, value: '`members`, `serverinfo`, `userinfo`', inline: true },
 			{ name: `🛠️ ${lang.utility}`, value: '`avatar`, `invite`, `ping`, `vip`, `vote`', inline: true },
 			{ name: `⚙️ ${lang.settings}`, value: '`automessages`, `setlanguage`, `setprefix`', inline: true },

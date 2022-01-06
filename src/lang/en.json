@@ -75,7 +75,7 @@
 		"cmd": "There was an error when trying to execute that command!",
 		"noProfile": "You haven't created a profile yet! To create a profile use `$0$profile create`.",
 		"userHasNoProfile": "**$0$** hasn't created a profile yet!",
-		"noMention": "You have to mention someone!",
+		"noMention": "You have to mention someone! Make sure you write the mention instead of copying it.",
 		"noPerm": "You have no permisison to use this command! 💢",
 		"botNoBan": "We don't have permission to ban members!",
 		"botNoManageMsgs": "We don't have permission to manage messages!",
@@ -104,7 +104,7 @@
 		"notANumber": "That's not a number!",
 		"noPrefixChosen": "We need to know the desired prefix!",
 		"noLinks": "We can't write any links!",
-		"memberNotMuted": "**$0$** isn't muted!",
+		"memberNotTimedOut": "**$0$** isn't timed out!",
 		"hasProfileAlready": "You already have a profile created, you can't create another! 💢",
 		"noHUDChosen": "You didn't choose a HUD!",
 		"noHaveHUD": "You don't have that HUD!",
@@ -120,7 +120,8 @@
 		"sameLanguage": "That's the same language we're speaking right now!",
 		"noDuration": "You didn't indicate the duration!",
 		"notAuthor": "This isn't for you!",
-		"nothingSelected": "Nothing selected"
+		"nothingSelected": "Nothing selected",
+		"noModerateMembers": "We don't have permission to moderate members!"
 	},
 
 	
@@ -234,14 +235,6 @@
 
 	"members": {
 		"message": "**$0$** has **$1$** members!"
-	},
-
-	"mute": {
-		"whyMuteUs": "Why do you want to mute us? 😦",
-		"muteSelf": "Did you just try muting yourself? 😆",
-		"youCannotMute": "You can't mute **$0$**!",
-		"cannotMute": "We can't mute anybody. Check the role order!",
-		"isMutedFor": "**$0$** is muted for **$1$**! 🔇"
 	},
 
 	"pat": {
@@ -378,8 +371,15 @@
 		"madeFallAsleep": "**$0$** made **$1$** fall asleep!"
 	},
 
-	"unmute": {
-		"isNowUnmuted": "**$0$** is now unmuted!"
+	"timeout": {
+		"whyTimeUsOut": "Why do you want to time us out? 😦",
+		"timeSelfOut": "Did you just try time yourself out? 😆",
+		"youCannotTimeOut": "You can't timeout or remove **$0$**'s timeout!",
+		"cannotTimeOut": "We can't time anybody out. Check the role order!",
+		"isNotTimedOut": "**$0$** isn't timed out!",
+		"isTimedOutFor": "**$0$** is timed out for **$1$**! 🔇",
+		"timeOutRemoved": "**$0$**'s timeout was removed!",
+		"wrongTimeFormat": "You have to indicate the time with a valid format! (e.g.: 30s / 30m / 3h / 3d)!"
 	},
 
 	"userinfo": {
@@ -400,7 +400,7 @@
 	},
 
 	"vote": {
-		"click": "Click on one of the buttons below to vote!"
+		"click": "Click on the button below to vote!"
 	},
 
 	"which": {
@@ -558,10 +558,10 @@
 			"usage": "members"
 		},
 
-		"mute": {
+		"timeout": {
 			"category": "Moderation",
-			"description": "We'll mute a server member for a determined time!",
-			"usage": "mute [@member] [duration(s/m/h/d)] [optional - reason]"
+			"description": "We'll time a server member out for a determined duration (maximum of 7 days)! To remove a timeout just don't add any arguments after the mention.",
+			"usage": "timeout [@member] [optional - duration(s/m/h/d)] [optional - reason]"
 		},
 
 		"pat": {
@@ -658,12 +658,6 @@
 			"category": "Actions",
 			"description": "Fall asleep!",
 			"usage": "sleep [optional - @member]"
-		},
-
-		"unmute": {
-			"category": "Moderation",
-			"description": "Unmute anyone!",
-			"usage": "unmute [@member]"
 		},
 
 		"userinfo": {

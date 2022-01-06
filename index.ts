@@ -25,13 +25,10 @@ import botConfig from './botConfig.json';
 
 function setBotStatus() {
 	const plural = bot.guilds.cache.size !== 1 ? 's' : '';
-	bot.user.setActivity({ name: `${botConfig.settings.prefix}help on ${bot.guilds.cache.size} server${plural}!`, type: 'WATCHING' });
+	bot.user.setActivity({ name: `to ${bot.guilds.cache.size} server${plural}!`, type: 'LISTENING' });
 }
 
 import * as fs from 'fs';
-
-/*import DBL from 'dblapi.js';
-const dbl = new DBL(process.env.DBLTOKEN, bot);*/
 
 import * as admin from 'firebase-admin';
 
@@ -59,10 +56,6 @@ bot.once('ready', () => {
 	setBotStatus();
 
 	removeVIP(admin, bot, db, vips);
-
-	/*setInterval(() => {
-		dbl.postStats(bot.guilds.cache.size);
-	}, 1800000);*/
 
 	moment.locale('pt');
 	console.log(`Preparados! (${moment().format('LL')} ${moment().format('LTS')})`);

@@ -185,7 +185,6 @@ bot.on('messageCreate', async message => {
 let newLanguage: string;
 
 bot.on('interactionCreate', async interaction => {
-	//  Obter as definições do bot para o servidor
 	const serverSettings = await getServerSettings(interaction.guild);
 	const prefix = 'dev!';
 	let language;
