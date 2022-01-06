@@ -1,4 +1,4 @@
-import { BotClient } from 'index';
+/*import { BotClient } from 'index';
 
 async function removeVIP(admin: any, bot: BotClient, db: FirebaseFirestore.Firestore, vips: Set<string>) {
 	const refV = db.collection('vip');
@@ -25,4 +25,4 @@ async function removeVIP(admin: any, bot: BotClient, db: FirebaseFirestore.Fires
 	}
 }
 
-export default removeVIP;
+export default removeVIP;*/

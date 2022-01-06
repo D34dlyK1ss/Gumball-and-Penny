@@ -1,5 +1,4 @@
-/* DISCONTINUED
-import { Message, MessageActionRow, MessageButton } from 'discord.js';
+/*import { Message, MessageActionRow, MessageButton } from 'discord.js';
 
 export const name = 'vip';
 export function execute(bot: undefined, message: Message, command: undefined, db: undefined, lang: Record<string, string | any>) {

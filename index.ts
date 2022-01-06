@@ -43,14 +43,15 @@ admin.initializeApp({
 
 const db = admin.firestore();
 
-import moment from 'moment';
+
 import getText from './src/functions/getText';
-import removeVIP from './src/functions/removeVIP';
+// import moment from 'moment';
+// import removeVIP from './src/functions/removeVIP';
 import { shopButtonHandler } from './src/functions/shopHandler';
 import { quizButtonHandler } from './src/functions/quizHandler';
 import { confirmLanguage } from './src/functions/setlanguageHandler';
 
-const vips: Set<string> = new Set();
+/* const vips: Set<string> = new Set();
 
 bot.once('ready', () => {
 	setBotStatus();
@@ -59,7 +60,7 @@ bot.once('ready', () => {
 
 	moment.locale('pt');
 	console.log(`Preparados! (${moment().format('LL')} ${moment().format('LTS')})`);
-});
+}); */
 
 import EventSource from 'eventsource';
 import giveVoteAwards from './src/functions/giveVoteAwards';
@@ -79,10 +80,10 @@ es.onmessage = messageEvent => {
 
 		switch (agent) {
 			case 'Top.gg Webhook/1.0.0':
-				if (data.event.body.type === 'upvote') giveVoteAwards(db, vips, data.event.body.user);
+				if (data.event.body.type === 'upvote') giveVoteAwards(db, /*vips, */data.event.body.user);
 				break;
 			case 'axios/0.21.1':
-				if (data.event.body.flags === 64) giveVoteAwards(db, vips, data.event.body.id);
+				if (data.event.body.flags === 64) giveVoteAwards(db, /*vips, */data.event.body.id);
 				break;
 		}
 	}
@@ -158,7 +159,7 @@ bot.on('messageCreate', async message => {
 					let add = Math.floor(Math.random() * 10) + 20;
 					let	newXP: number;
 
-					if (vips.has(message.author.id) || message.author.id === botConfig.botOwnerID || botConfig.collaboratorIDs.includes(message.author.id)) add *= 2;
+					if (/*vips.has(message.author.id) || */message.author.id === botConfig.botOwnerID || botConfig.collaboratorIDs.includes(message.author.id)) add *= 2;
 
 					newXP = xp + add;
 
@@ -241,7 +242,7 @@ bot.on('interactionCreate', async interaction => {
 	}
 });
 
-bot.on('guildMemberUpdate', (oldMember, newMember) => {
+/*bot.on('guildMemberUpdate', (oldMember, newMember) => {
 	if (newMember.guild.id !== '738540548305977366') return;
 
 	if (!oldMember.roles.cache.has('757970567931363389') && newMember.roles.cache.has('757970567931363389')) {
@@ -255,7 +256,7 @@ bot.on('guildMemberUpdate', (oldMember, newMember) => {
 		
 		removeVIP(admin, bot, db, vips);
 	}
-});
+});*/
 
 bot.on('guildCreate', async guildData => {
 	setBotStatus();
