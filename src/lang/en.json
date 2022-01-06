@@ -396,7 +396,8 @@
 	},
 
 	"vip": {
-		"click": "Click on the button below to buy the VIP status!"
+		"click": "Click on the button below to buy the VIP status!",
+		"deprecated": "VIP status automatization has been temporarily deprecated (for a big while). To get VIP status please contact D34dlyK1ss#0101."
 	},
 
 	"vote": {
