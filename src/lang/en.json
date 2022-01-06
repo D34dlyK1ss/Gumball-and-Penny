@@ -560,8 +560,8 @@
 
 		"timeout": {
 			"category": "Moderation",
-			"description": "We'll time a server member out for a determined duration (maximum of 7 days)! To remove a timeout just don't add any arguments after the mention.",
-			"usage": "timeout [@member] [optional - duration(s/m/h/d)] [optional - reason]"
+			"description": "We'll time a server member out for a determined duration (maximum of 7 days)!",
+			"usage": "timeout [@member] [optional - duration(s/m/h/d) / remove] [optional - reason]"
 		},
 
 		"pat": {

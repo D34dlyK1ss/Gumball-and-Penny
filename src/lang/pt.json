@@ -560,8 +560,8 @@
 
 		"timeout": {
 			"category": "Moderação",
-			"description": "Castigaremos um membro do servidor por um tempo determinado (máximo de 7 dias)! Para tirar alguém do castigo apenas não adiciones argumentos após a menção.",
-			"usage": "timeout [@membro] [opcional - duração(s/m/h/d)] [opcional - razão]"
+			"description": "Castigaremos um membro do servidor por um tempo determinado (máximo de 7 dias)!",
+			"usage": "timeout [@membro] [opcional - duração(s/m/h/d) / remove] [opcional - razão]"
 		},
 
 		"pat": {

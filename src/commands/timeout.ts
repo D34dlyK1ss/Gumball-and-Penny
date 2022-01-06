@@ -29,7 +29,7 @@ export async function execute(bot: BotClient, message: Message, command: undefin
 			if (memberToTimeOut.roles.highest.position > message.guild.me.roles.highest.position) {
 				message.reply(getText(lang.timeout.youCannotTimeOut, [mention.tag]));
 			}
-			else if (!args[1]) {
+			else if (args[1] === 'remove') {
 				if (!memberToTimeOut.isCommunicationDisabled()) {
 					message.reply(getText(lang.timeout.isNotTimedOut, [mention.tag]));
 				}
@@ -39,33 +39,31 @@ export async function execute(bot: BotClient, message: Message, command: undefin
 					});
 				}
 			}
+			else if (!/[0-9][smhd]$/.test(args[1])) {
+				message.reply(lang.timeout.wrongTimeFormat);
+			}
 			else {
-				if (!/[0-9][smhd]$/.test(args[1])) {
-					message.reply(lang.timeout.wrongTimeFormat);
-				}
-				else {
-					let duration = Math.abs(ms(args[1]));
+				let duration = Math.abs(ms(args[1]));
 
-					if (duration > ms('7d')) duration = ms('7d');
+				if (duration > ms('7d')) duration = ms('7d');
 
-					args.shift();
-					args.shift();
+				args.shift();
+				args.shift();
 
-					const reason: string = args.join(' ') || lang.notIndicated;
+				const reason: string = args.join(' ') || lang.notIndicated;
 
-					memberToTimeOut.timeout(duration, reason).then(() => {
-						const embed = new MessageEmbed()
-							.setColor('DARK_PURPLE')
-							.setTitle(getText(lang.timeout.isTimedOutFor, [memberToTimeOut.user.tag, ms(duration)]))
-							.setThumbnail(`${memberToTimeOut.user.displayAvatarURL()}`)
-							.setDescription(`${lang.by} ${message.member.user.tag}`)
-							.addFields(
-								{ name: `${lang.reason}`, value: `${reason}` }
-							);
-		
-						message.channel.send({ embeds: [embed] });
-					});
-				}
+				memberToTimeOut.timeout(duration, reason).then(() => {
+					const embed = new MessageEmbed()
+						.setColor('DARK_PURPLE')
+						.setTitle(getText(lang.timeout.isTimedOutFor, [memberToTimeOut.user.tag, ms(duration)]))
+						.setThumbnail(`${memberToTimeOut.user.displayAvatarURL()}`)
+						.setDescription(`${lang.by} ${message.member.user.tag}`)
+						.addFields(
+							{ name: `${lang.reason}`, value: `${reason}` }
+						);
+	
+					message.channel.send({ embeds: [embed] });
+				});
 			}
 		}
 	}
