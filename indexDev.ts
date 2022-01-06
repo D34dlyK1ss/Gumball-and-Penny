@@ -79,7 +79,7 @@ async function getServerSettings(guild: Guild) {
 	return serverSettings;
 }
 
-const englishChannels = ['809182965607039007', '787661396652589077', '787674033331634196'];
+const englishChannels = ['928784346826047488', '928784416917061683'];
 
 bot.on('messageCreate', async message => {
 	if (!message.guild || message.channel.id === '810529155955032115' || message.author.bot) return;

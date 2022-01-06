@@ -112,7 +112,7 @@ async function getServerSettings(guild: Guild) {
 	return serverSettings;
 }
 
-const englishChannels = ['809182965607039007', '787661396652589077', '787674033331634196'];
+const englishChannels = ['928784346826047488', '928784416917061683'];
 
 bot.on('messageCreate', async message => {
 	if (!message.guild || message.channel.id === '810529155955032115' || message.author.bot) return;
@@ -242,10 +242,10 @@ bot.on('interactionCreate', async interaction => {
 	}
 });
 
-/*bot.on('guildMemberUpdate', (oldMember, newMember) => {
+bot.on('guildMemberUpdate', (oldMember, newMember) => {
 	if (newMember.guild.id !== '738540548305977366') return;
 
-	if (!oldMember.roles.cache.has('757970567931363389') && newMember.roles.cache.has('757970567931363389')) {
+	if (!oldMember.roles.cache.has('928782015971610624') && newMember.roles.cache.has('928782015971610624')) {
 		const timestamp = new Date(Date.now() + 2592000000);
 
 		db.collection('vip').doc(newMember.id).set({
@@ -256,7 +256,7 @@ bot.on('interactionCreate', async interaction => {
 		
 		removeVIP(admin, bot, db, vips);
 	}
-});*/
+});
 
 bot.on('guildCreate', async guildData => {
 	setBotStatus();
