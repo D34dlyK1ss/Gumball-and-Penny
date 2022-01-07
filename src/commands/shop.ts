@@ -64,7 +64,7 @@ export function execute(bot: undefined, message: Message, command: undefined, db
 		case 'buy':
 			switch (args[1]) {
 				case 'hud':
-					hud = slugify(hud.concat(args as any).slice(2)).toLowerCase().replace(/[,]/g, '_');
+					hud = slugify(hud.concat((args as any).slice(2)).toLowerCase().replace(/[,]/g, '_'));
 
 					refP.get().then(docP => {
 						if (!docP.exists) {
