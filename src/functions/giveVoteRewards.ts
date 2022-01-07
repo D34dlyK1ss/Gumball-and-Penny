@@ -1,6 +1,6 @@
 import botConfig from '../../botConfig.json';
 
-async function giveVoteAwards(db: FirebaseFirestore.Firestore, vips: Set<string>, userID: string) {
+async function giveVoteRewards(db: FirebaseFirestore.Firestore, vips: Set<string>, userID: string) {
 	const refP = db.collection('perfis').doc(userID);
 
 	await refP.get().then(docP => {
@@ -22,4 +22,4 @@ async function giveVoteAwards(db: FirebaseFirestore.Firestore, vips: Set<string>
 	});
 }
 
-export default giveVoteAwards;
+export default giveVoteRewards;

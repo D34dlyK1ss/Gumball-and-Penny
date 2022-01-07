@@ -63,7 +63,7 @@ bot.once('ready', () => {
 });
 
 import EventSource from 'eventsource';
-import giveVoteAwards from './src/functions/giveVoteAwards';
+import giveVoteRewards from './src/functions/giveVoteRewards';
 const eventSourceInit: Record<string, any> = { headers: { 'Authorization': 'Bearer 14aee8db11a152ed7f2d4ed23a839d58' } };
 const es = new EventSource('https://api.pipedream.com/sources/dc_OLuY0W/sse', eventSourceInit);
 
@@ -80,10 +80,10 @@ es.onmessage = messageEvent => {
 
 		switch (agent) {
 			case 'Top.gg Webhook/1.0.0':
-				if (data.event.body.type === 'upvote') giveVoteAwards(db, vips, data.event.body.user);
+				if (data.event.body.type === 'upvote') giveVoteRewards(db, vips, data.event.body.user);
 				break;
 			case 'axios/0.21.1':
-				if (data.event.body.flags === 64) giveVoteAwards(db, vips, data.event.body.id);
+				if (data.event.body.flags === 64) giveVoteRewards(db, vips, data.event.body.id);
 				break;
 		}
 	}
@@ -242,19 +242,24 @@ bot.on('interactionCreate', async interaction => {
 	}
 });
 
-bot.on('guildMemberUpdate', (oldMember, newMember) => {
-	if (newMember.guild.id !== '738540548305977366') return;
-
-	if (!oldMember.roles.cache.has('928782015971610624') && newMember.roles.cache.has('928782015971610624')) {
-		const timestamp = new Date(Date.now() + 2592000000);
-
-		db.collection('vip').doc(newMember.id).set({
-			until: timestamp
-		});
-
-		vips.add(newMember.id);
+bot.on('guildMemberUpdate', async (oldMember, newMember) => {
+	if (newMember.guild.id === '738540548305977366') {
+		if (!oldMember.roles.cache.has('928782015971610624') && newMember.roles.cache.has('928782015971610624')) {
+			const timestamp = new Date(Date.now() + 2592000000);
+	
+			db.collection('vip').doc(newMember.id).set({
+				until: timestamp
+			});
+	
+			vips.add(newMember.id);
+			
+			removeVIP(admin, bot, db, vips);
+		}
 		
-		removeVIP(admin, bot, db, vips);
+		if (oldMember.roles.cache.has('928782015971610624') && !newMember.roles.cache.has('928782015971610624')) {
+			vips.delete(newMember.id);
+			await db.collection('vip').doc(newMember.id).delete();
+		}
 	}
 });
 
