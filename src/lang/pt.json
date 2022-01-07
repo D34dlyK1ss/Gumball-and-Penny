@@ -396,8 +396,7 @@
 	},
 
 	"vip": {
-		"click": "Clica no botão abaixo comprar um estado VIP!",
-		"deprecated": "A automatização do estado VIP foi temporariamente descontinuada (por muito tempo). Para obter o estado VIP entra em contato com o D34dlyK1ss#0101. "
+		"click": "Clica no botão abaixo comprar um estado VIP!"
 	},
 
 	"vote": {
