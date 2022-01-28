@@ -4,6 +4,9 @@
   "description": "A melhor duo do Discord!",
   "main": "index.ts",
   "author": "D34dlyK1ss",
+  "scripts": {
+	  "start": "ts-node index"
+  },
   "dependencies": {
     "@types/eventsource": "^1.1.5",
     "@types/ms": "^0.7.31",
