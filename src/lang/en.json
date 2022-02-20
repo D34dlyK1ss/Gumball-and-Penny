@@ -572,7 +572,7 @@
 
 		"pet": {
 			"category": "Economy and Profile",
-			"description": "Check your pet or someone's!\nAvailable options: `set [name/hud]`, `sendtoadoption`.",
+			"description": "Check your pet or someone's!\nAvailable options: `set (name/hud)`, `sendtoadoption`.",
 			"usage": "pet [optional - option | @member]"
 		},
 
@@ -584,7 +584,7 @@
 
 		"profile": {
 			"category": "Economy and Profile",
-			"description": "Check your profile or someone's!\nAvailable options: `create`, `set [description/hud/nickname]`.",
+			"description": "Check your profile or someone's!\nAvailable options: `create`, `set (description/hud/nickname)`.",
 			"usage": "profile [optional - option | @member]"
 		},
 

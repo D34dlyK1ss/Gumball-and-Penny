@@ -336,8 +336,8 @@
 
 	"shop": {
 		"welcome": "Bem vindo à Loja Incrível!\nAqui poderás comprar algumas coisas com o dinheiro que acumulaste até agora.\nUsa os botões abaixo para navegar pela loja!",
-		"boughtHUD": "Compraste o HUD **$0$**! Para o equipares usa `$1$profile sethud [$2$]`.",
-		"boughtPetHud": "Compraste o Pet HUD **$0$**! Para o equipares usa `$1$pet sethud [$2$]`.",
+		"boughtHUD": "Compraste o HUD **$0$**! Para o equipares usa `$1$profile set hud [$2$]`.",
+		"boughtPetHud": "Compraste o Pet HUD **$0$**! Para o equipares usa `$1$pet set hud [$2$]`.",
 		"boughtItem": "Compraste 1 **$0$**!",
 		"boughtPet": "Compraste 1 **$0$*! Para lhe dares um nome usa `$1$pet setnickname [$2$]`.",
 		"hero": "Herói",
@@ -572,7 +572,7 @@
 
 		"pet": {
 			"category": "Economia e Perfil",
-			"description": "Vê o teu pet ou o de alguém!\nOpções disponíveis: `setname`, `sethud`, `sendtoadoption`.",
+			"description": "Vê o teu pet ou o de alguém!\nOpções disponíveis: `set (name/hud)`, `sendtoadoption`.",
 			"usage": "pet [opcional - opção | @membro]"
 		},
 
@@ -584,7 +584,7 @@
 
 		"profile": {
 			"category": "Economia e Perfil",
-			"description": "Vê o teu perfil ou o de alguém!\nOpções disponíveis: `create`, `set [description/hud/nickname]`.",
+			"description": "Vê o teu perfil ou o de alguém!\nOpções disponíveis: `create`, `set (description/hud/nickname)`.",
 			"usage": "profile [opcional - opção | @membro]"
 		},
 
