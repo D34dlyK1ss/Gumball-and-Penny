@@ -233,9 +233,14 @@
 		["mio"],
 		["rin", "rin kaga", "kaga rin", "りん", "鹿賀りん"],
 		["jonathan", "jonathan joestar"],
-		["caesar", "caesar anthonio zeppeli"],
+		["caesar", "caesar zeppeli", "caesar anthonio zeppeli"],
 		["koyomi", "koyomi araragi", "araragi koyomi", "暦", "阿良々木暦"],
 		["lisa lisa", "elizabeth", "elizabeth joestar"],
-		["dororo"]
+		["dororo"],
+		["krista", "historia", "krista lenz", "historia reiss"],
+		["marin", "marin kitagawa", "kitagawa marin", "海夢", "喜多川海夢"],
+		["nami"],
+		["tony", "chopper", "tony tony chopper"],
+		["bisco", "bisco akaboshi", "akaboshi bisco", "赤星ビスコ"]
 	]
 }
