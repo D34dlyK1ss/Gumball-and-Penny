@@ -281,7 +281,7 @@ export function createShopPage(userId: string, lang:Record<string, any>, prefix:
 				.setFooter(`${lang.page} 1/2`)
 				.spliceFields(0, mainEmbed.fields.length, [
 					{ name: 'Giorno', value: `Jojo's Bizarre Adventure\n<a:gpCoin:898355693193662464>${items.huds.price}`, inline: true },
-					{ name: 'Isaac', value: `Angel's of Death\n<a:gpCoin:898355693193662464>${items.huds.price}`, inline: true },
+					{ name: 'Isaac', value: `Angels of Death\n<a:gpCoin:898355693193662464>${items.huds.price}`, inline: true },
 					{ name: 'Itachi', value: `Naruto\n<a:gpCoin:898355693193662464>${items.huds.price}`, inline: true },
 					{ name: 'Kakashi', value: `Naruto\n<a:gpCoin:898355693193662464>${items.huds.price}`, inline: true },
 					{ name: 'Kaneki A', value: `Tokyo Ghoul\n<a:gpCoin:898355693193662464>${items.huds.price}`, inline: true },
@@ -355,13 +355,13 @@ export function createShopPage(userId: string, lang:Record<string, any>, prefix:
 				.setFooter(`${lang.page} 1/1`)
 				.spliceFields(0, mainEmbed.fields.length, [
 					{ name: 'Courage', value: `Courage the Cowardly Dog\n<a:gpCoin:898355693193662464>${items.huds.price}`, inline: true },
-					{ name: 'Gumball & Darwin', value: `The Amazing World of Gumball\n<a:gpCoin:898355693193662464>${items.huds.price}`, inline: true },
-					{ name: 'Jake A', value: `Adventure Time\n<a:gpCoin:898355693193662464>${items.huds.price}`, inline: true },
-					{ name: 'Jake B', value: `Adventure Time\n<a:gpCoin:898355693193662464>${items.huds.price}`, inline: true },
+					{ name: 'Gumball & Darwin', value: `${lang.shop.cartoon.tawog}\n<a:gpCoin:898355693193662464>${items.huds.price}`, inline: true },
+					{ name: 'Jake A', value: `${lang.shop.cartoon.adventureTime}\n<a:gpCoin:898355693193662464>${items.huds.price}`, inline: true },
+					{ name: 'Jake B', value: `${lang.shop.cartoon.adventureTime}\n<a:gpCoin:898355693193662464>${items.huds.price}`, inline: true },
 					{ name: 'Kenny McCormick', value: `South Park\n<a:gpCoin:898355693193662464>${items.huds.price}`, inline: true },
 					{ name: 'Professor Chaos', value: `South Park\n<a:gpCoin:898355693193662464>${items.huds.price}`, inline: true },
 					{ name: 'Stan Marsh', value: `South Park\n<a:gpCoin:898355693193662464>${items.huds.price}`, inline: true },
-					{ name: 'We Bare Bears', value: `<a:gpCoin:898355693193662464>${items.huds.price}`, inline: true }
+					{ name: 'We Bare Bears', value: `${lang.shop.cartoon.weBareBears}\n<a:gpCoin:898355693193662464>${items.huds.price}`, inline: true }
 				]);
 
 			buttonRow = new MessageActionRow()
@@ -550,12 +550,12 @@ export function createShopPage(userId: string, lang:Record<string, any>, prefix:
 				.setDescription(getText(lang.shop.toBuyPetHud, [prefix, lang.shop.petHudName, prefix, lang.shop.petHudName]))
 				.setFooter(`${lang.page} 2/3`)
 				.spliceFields(0, mainEmbed.fields.length, [
-					{ name: 'Gumball', value: `The Amazing World of Gumball\n<a:gpCoin:898355693193662464>${items.petHuds.vipPrice}`, inline: true },
+					{ name: 'Gumball', value: `${lang.shop.cartoon.tawog}\n<a:gpCoin:898355693193662464>${items.petHuds.vipPrice}`, inline: true },
 					{ name: 'Ladybugs', value: `<a:gpCoin:898355693193662464>${items.petHuds.vipPrice}`, inline: true },
 					{ name: 'Luna', value: `Sailor Moon\n<a:gpCoin:898355693193662464>${items.petHuds.vipPrice}`, inline: true },
 					{ name: 'Papyrus', value: `Undertale\n<a:gpCoin:898355693193662464>${items.petHuds.vipPrice}`, inline: true },
 					{ name: 'Penguins', value: `<a:gpCoin:898355693193662464>${items.petHuds.vipPrice}`, inline: true },
-					{ name: 'Pink Panther', value: `<a:gpCoin:898355693193662464>${items.petHuds.vipPrice}`, inline: true },
+					{ name: 'Pink Panther', value: `${lang.shop.cartoon.pinkPanther}\n<a:gpCoin:898355693193662464>${items.petHuds.vipPrice}`, inline: true },
 					{ name: 'Pink Pokémon', value: `<a:gpCoin:898355693193662464>${items.petHuds.vipPrice}`, inline: true },
 					{ name: 'Saitama', value: `One Punch Man\n<a:gpCoin:898355693193662464>${items.petHuds.vipPrice}`, inline: true },
 					{ name: 'Scooby-Doo', value: `<a:gpCoin:898355693193662464>${items.petHuds.vipPrice}`, inline: true }
@@ -692,6 +692,10 @@ export function createShopPage(userId: string, lang:Record<string, any>, prefix:
 					new MessageButton()
 						.setCustomId(`shoppetsEmbed0${userId}`)
 						.setLabel(lang.back)
+						.setStyle('DANGER'),
+					new MessageButton()
+						.setCustomId(`shopExit${userId}`)
+						.setLabel(lang.exit)
 						.setStyle('DANGER')
 				);
 			break;

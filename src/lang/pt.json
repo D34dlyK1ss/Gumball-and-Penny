@@ -69,6 +69,7 @@
 	"close": "Fechar",
 	"userCancelled": "_Operação cancelada pelo utilizador_",
 	"results": "Resultados",
+	"officialServer": "Servidor Oficial",
 
 
 	"error": {
@@ -266,10 +267,10 @@
 	},
 
 	"quiz": {
-		"mainDescription": "Estes são os temas de quiz disponíveis.\nTodos os quizzes vão ter 10 perguntas. Cada resposta correta dentro de 15 segundos irá dar-te 1 ponto, e qualquer um pode participar por apenas responder corretamente.",
-		"themeDescription": "Agora escolhe uma categoria!",
+		"mainDescription": "Estes são os temas de quiz disponíveis.\nTodos os quizzes vão ter 10 perguntas. Cada resposta correta dentro de 15 segundos irá dar-te 1 ponto.\nQualquer um pode participar por apenas responder corretamente.",
+		"themeDescription": "Escolhe uma categoria!",
 		"toStart": "Carrega no botão _Começar_ pra começar o quiz!",
-		"closed": "Fechaste a página de Quiz!",
+		"exited": "Saíste da página de Quiz!",
 		"alreadyPlaying": "Já há um quiz a ser jogado neste canal! Começa um novo noutro canal ou espera pelo fim do quiz.",
 		"starting": "Começando o quiz **$0$** em 5 segundos!",
 		"animeEyes": "Olhos de Anime",
@@ -350,7 +351,13 @@
 		"itemName": "Nome do Item",
 		"toBuyPet": "Usa `$0$shop buy pet [$1$]` para comprar.",
 		"toBuyItem": "Usa `$0$shop buy item [$1$]` para comprar.",
-		"exited": "Saíste da loja!"
+		"exited": "Saíste da loja!",
+		"cartoon": {
+			"adventureTime": "Hora de Aventuras",
+			"pinkPanther": "Pantera Cor-de-Rosa",
+			"tawog": "O Incrível Mundo de Gumball",
+			"weBareBears": "Nós, os Ursos"
+		}
 	},
 
 	"scared": {

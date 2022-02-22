@@ -79,7 +79,7 @@ export function createQuizPage(message: Message, user: User, lang:Record<string,
 						.setStyle('DANGER'),
 					new MessageButton()
 						.setCustomId(`quizClose${user.id}`)
-						.setLabel(lang.close)
+						.setLabel(lang.exit)
 						.setStyle('DANGER')
 				);
 			break;
@@ -223,7 +223,7 @@ export function quizButtonHandler(button: ButtonInteraction, lang: Record<string
 			createQuizQuestion(button, button.user, lang);
 		}
 		else if (button.customId.slice(0, -18).endsWith('Close')) {
-			button.update({ content: lang.quiz.closed, embeds: [], components: [] });
+			button.update({ content: lang.quiz.exited, embeds: [], components: [] });
 		}
 		else {
 			const toSend:any = createQuizPage(undefined, button.user, lang, prefix, button.customId.slice(0, -18));

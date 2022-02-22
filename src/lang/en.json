@@ -66,9 +66,9 @@
 	"ok": "OK",
 	"cancel": "Cancel",
 	"exit": "Exit",
-	"close": "Close",
 	"userCancelled": "_Operation cancelled by the user_",
 	"results": "Results",
+	"officialServer": "Official Server",
 
 
 	"error": {
@@ -266,10 +266,10 @@
 	},
 
 	"quiz": {
-		"mainDescription": "These are the available quiz themes.\nEvery quiz will take 10 questions. Each correct answer in 15 seconds gives you 1 point, and anyone can join just by answering correctly.",
-		"themeDescription": "Now choose a category!",
+		"mainDescription": "These are the available quiz themes.\nEvery quiz will take 10 questions. Each correct answer in 15 seconds gives you 1 point.\nAnyone can join just by answering correctly.",
+		"themeDescription": "Choose a category!",
 		"toStart": "Press the _Start_ button to start the quiz!",
-		"closed": "You closed the Quiz page!",
+		"exited": "You exited the Quiz page!",
 		"alreadyPlaying": "There's a quiz being played already in this channel! Start a new one on another channel or wait for the quiz to end.",
 		"starting": "Starting **$0$** quiz in 5 seconds!",
 		"animeEyes": "Anime Eyes",
@@ -350,7 +350,13 @@
 		"itemName": "Item Name",
 		"toBuyPet": "Use `$0$shop buy pet [$1$]` to buy.",
 		"toBuyItem": "Use `$0$shop buy item [$1$]` to buy.",
-		"exited": "You exited the store!"
+		"exited": "You exited the store!",
+		"cartoon": {
+			"adventureTime": "Adventure Time",
+			"pinkPanther": "Pink Panther",
+			"tawog": "The Amazing World of Gumball",
+			"weBareBears": "We Bare Bears"
+		}
 	},
 
 	"scared": {
