@@ -4,3 +4,5 @@ backups
 *.sh
 serviceAccountKey.json
 .env
+.eslintignore
+.eslintrc
