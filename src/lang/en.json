@@ -191,10 +191,10 @@
 
 		"daily": {
 			"category": "Economy and Profile",
-			"description": "You will receive <a:gpCoin:898355693193662464>300 each day you use this command!",
+			"description": "You will receive ¤300 each day you use this command!",
 			"usage": "/daily",
 			"againIn": "You can get money again in **$0$**.",
-			"received": "You received your **<a:gpCoin:898355693193662464>$0$** of today! To get more <a:gpCoin:898355693193662464>150 (x2 for VIP) use `$1$vote`."
+			"received": "You received your **<a:gpCoin:898355693193662464>$0$** of today! To get more <a:gpCoin:898355693193662464>150 (x2 for VIP) use `/vote`."
 		},
 
 		"dance": {

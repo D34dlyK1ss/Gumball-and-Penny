@@ -191,10 +191,10 @@
 
 		"daily": {
 			"category": "Economia e Perfil",
-			"description": "Receberás <a:gpCoin:898355693193662464>300 a cada dia que usares este comando!",
+			"description": "Receberás ¤300 a cada dia que usares este comando!",
 			"usage": "/daily",
 			"againIn": "Poderás receber dinheiro outra vez em **$0$**.",
-			"received": "Recebeste os teus **<a:gpCoin:898355693193662464>$0$** de hoje! Para receberes mais <a:gpCoin:898355693193662464>150 (x2 para VIPs) usa `$1$vote`."
+			"received": "Recebeste os teus **<a:gpCoin:898355693193662464>$0$** de hoje! Para receberes mais <a:gpCoin:898355693193662464>150 (x2 para VIPs) usa `/vote`."
 		},
 
 		"dance": {
@@ -473,7 +473,7 @@
 			"boughtHUD": "Compraste o HUD **$0$**! Para o equipares usa `/profile set hud [$1$]`.",
 			"boughtPetHud": "Compraste o Pet HUD **$0$**! Para o equipares usa `/pet set hud [$1$]`.",
 			"boughtItem": "Compraste 1 **$0$**!",
-			"boughtPet": "Compraste 1 **$0$*! Para lhe dares um nome usa `/pet setnickname [$1$]`.",
+			"boughtPet": "Compraste 1 **$0$*! Para lhe dares um nome usa `/pet set nickname [$1$]`.",
 			"hero": "Herói",
 			"villain": "Vilão",
 			"toBuyHud": "Usa `/shop buy hud [$0$]` para comprar ou `/shop view hud [$1$]` para ver.",
