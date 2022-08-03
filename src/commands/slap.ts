@@ -1,22 +1,30 @@
-import { Message } from 'discord.js';
-import { BotClient, Cmd } from 'index';
+import { ChatInputCommandInteraction, SlashCommandBuilder } from 'discord.js';
+import { BotClient } from 'index';
 import getText from '../functions/getText';
+import enLang from '../lang/en.json';
 
-export const name = 'slap';
-export function execute(bot: BotClient, message: Message, command: Cmd, db: undefined, lang: Record<string, string | any>, language: undefined, prefix: string) {
-	const user = message.mentions.users.first();
-	const rnd = Math.floor(Math.random() * 6);
+export = {
+	data: new SlashCommandBuilder()
+		.setName('slap')
+		.setDescription(enLang.command.slap.description)
+		.addUserOption(option =>
+			option.setName('member')
+				.setDescription(enLang.command.slap.memberDesc)
+				.setRequired(true)
+		),
 
-	if (!user) {
-		message.reply(getText(lang.error.wrongSyntax, [prefix, lang.command[command.name].usage]));
+	execute(bot: BotClient, interaction: ChatInputCommandInteraction, db: undefined, lang: Record<string, string | any>) {
+		const user = interaction.options.getUser('member');
+		const rnd = Math.floor(Math.random() * 6);
+		
+		if (user === interaction.user) {
+			interaction.reply({ content: getText(lang.command.slap.slappedSelf, [interaction.user.tag]), files: [`src/img/actions/${interaction.commandName} (${rnd}).gif`] });
+		}
+		else if (user === bot.user) {
+			interaction.reply({ content: getText(lang.command.slap.slappedUs, [interaction.user.tag]), files: [`src/img/actions/${interaction.commandName} (${rnd}).gif`] });
+		}
+		else {
+			interaction.reply({ content: getText(lang.command.slap.slapped, [interaction.user.tag, user.tag]), files: [`src/img/actions/${interaction.commandName} (${rnd}).gif`] });
+		}
 	}
-	else if (user === message.author) {
-		message.channel.send({ content: getText(lang.slap.slappedSelf, [message.author.tag]), files: [`src/img/actions/${command.name} (${rnd}).gif`] });
-	}
-	else if (user === bot.user) {
-		message.channel.send({ content: getText(lang.slap.slappedUs, [message.author.tag]), files: [`src/img/actions/${command.name} (${rnd}).gif`] });
-	}
-	else {
-		message.channel.send({ content: getText(lang.slap.slapped, [message.author.tag, user.tag]), files: [`src/img/actions/${command.name} (${rnd}).gif`] });
-	}
-}
+};

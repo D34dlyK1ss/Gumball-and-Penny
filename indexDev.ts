@@ -1,22 +1,19 @@
-import { Collection, Client, Intents, Guild, Message } from 'discord.js';
+import { ActivityType, Collection, Client, GatewayIntentBits, Guild, Interaction, Routes } from 'discord.js';
+import { REST } from '@discordjs/rest';
 
 export interface ServerSettings {
-	automessages: boolean;
 	language: string;
-	prefix: string;
 }
 
 export interface Cmd {
-	name: string;
-	aliases?: string[];
-	execute(bot: Client, message: Message, command: Cmd, db: FirebaseFirestore.Firestore, lang: Record<string, string>, language: string, prefix: string, args: string[], serverSettings: ServerSettings): void;
+	execute(bot: BotClient, interaction: Interaction, db: FirebaseFirestore.Firestore, lang: Record<string, string | any>, language: string, serverSettings: ServerSettings): void;
 }
 
 export class BotClient extends Client {
 	commands: Collection<string, Cmd> = new Collection<string, Cmd>();
 }
 
-const bot = new BotClient({ allowedMentions: { parse: ['users', 'roles'], repliedUser: true }, intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES] });
+const bot = new BotClient({ allowedMentions: { parse: ['users', 'roles'], repliedUser: true }, intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent] });
 
 import { config } from 'dotenv';
 config();
@@ -24,13 +21,13 @@ config();
 import botConfig from './botConfig.json';
 
 function setBotStatus() {
-	const plural = bot.guilds.cache.size === 1 ? '' : 's';
-	bot.user.setActivity({ name: `${botConfig.settings.prefix}help on ${bot.guilds.cache.size} server${plural}!`, type: 'WATCHING' });
+	const plural = bot.guilds.cache.size !== 1 ? 's' : '';
+	bot.user.setActivity({ name: `${bot.guilds.cache.size} server${plural}!`, type: ActivityType.Listening });
 }
 
-import * as fs from 'fs';
+import fs from 'fs';
 
-import * as admin from 'firebase-admin';
+import admin from 'firebase-admin';
 
 admin.initializeApp({
 	credential: admin.credential.cert({
@@ -43,8 +40,9 @@ admin.initializeApp({
 
 const db = admin.firestore();
 
-import moment from 'moment';
+
 import getText from './src/functions/getText';
+import moment from 'moment';
 import { shopButtonHandler } from './src/functions/shopHandler';
 import { quizButtonHandler } from './src/functions/quizHandler';
 import { confirmLanguage } from './src/functions/setlanguageHandler';
@@ -81,63 +79,81 @@ async function getServerSettings(guild: Guild) {
 
 const englishChannels = ['928784346826047488', '928784416917061683'];
 
-bot.on('messageCreate', async message => {
-	if (!message.guild || message.channel.id === '810529155955032115' || message.author.bot) return;
+const commands = [];
+const commandsPath = './src/commands/';
+const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.ts'));
 
-	const commandFiles = fs.readdirSync('./src/commands').filter(file => file.endsWith('.ts'));
-	if (commandFiles.length === 0) return;
-	for (const file of commandFiles) {
-		const props = require(`./src/commands/${file}`);
-		bot.commands.set(props.name, props);
+for (const file of commandFiles) {
+	const filePath = commandsPath + file;
+	const props = require(filePath);
+	commands.push(props.data.toJSON());
+	bot.commands.set(props.data.name, props);
+}
+
+const rest = new REST().setToken(process.env.TOKENDEV);
+const clientId = process.env.CLIENTDEV;
+const guildId = '738540548305977366';
+
+(async () => {
+	try {
+		await rest.put(
+			Routes.applicationGuildCommands(clientId, guildId),
+			{ body: commands }
+		);
+	} catch (error) {
+		console.error(error);
 	}
+})();
 
-	const serverSettings = await getServerSettings(message.guild);
-	const prefix = 'dev!';
-	let language;
+import items from './src/data/itemlist.json';
+import titleCase from './src/functions/titleCase';
 
-	if (englishChannels.includes(message.channel.id)) language = 'en';
-	else language = serverSettings.language;
+bot.on('interactionCreate', async interaction => {
+	if (!interaction.guild || interaction.channel.id === '810529155955032115' || interaction.user.bot) return;
 
-	const lang = require(`./src/lang/${language}.json`);
+	if (interaction.isChatInputCommand()) {
+		const serverSettings = await getServerSettings(interaction.guild);
+		let language;
 
-	if (message.content.toLowerCase().startsWith(prefix)) {
-		const array = message.content.split(' ');
-		const commandName = array[0].slice(prefix.length).toLowerCase();
-		const args = array.slice(1);
+		if (englishChannels.includes(interaction.channel.id)) language = 'en';
+		else language = serverSettings.language;
 
-		const command = bot.commands.get(commandName) || bot.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
+		const lang = require(`./src/lang/${language}.json`);
+
+		const command = bot.commands.get(interaction.commandName);
 
 		if (!command) return;
 
-		if (!xpCooldown.has(message.author.id)) {
-			xpCooldown.add(message.author.id);
+		if (!xpCooldown.has(interaction.user.id)) {
+			xpCooldown.add(interaction.user.id);
 			setTimeout(() => {
-				xpCooldown.delete(message.author.id);
+				xpCooldown.delete(interaction.user.id);
 			}, 60000);
 
-			db.collection('perfis').doc(message.author.id).get().then(doc => {
+			db.collection('perfis').doc(interaction.user.id).get().then(doc => {
 				if (!doc.exists) {
 					return;
 				}
 				else {
 					const xp: number = doc.get('xp');
-					const level = Math.floor(Math.sqrt(xp / 2000000) * 99) + 1;
-					let add = Math.floor(Math.random() * 10) + 50;
+					const maxXP = 2000000;
+					const level = Math.floor(Math.sqrt(xp / maxXP) * 99) + 1;
+					let add = Math.floor(Math.random() * 10) + 20;
 					let	newXP: number;
 
-					if (vips.has(message.author.id) || message.author.id === botConfig.botOwnerID || botConfig.collaboratorIDs.includes(message.author.id)) add *= 2;
+					if (vips.has(interaction.user.id) || interaction.user.id === botConfig.botOwnerID || botConfig.collaboratorIDs.includes(interaction.user.id)) add *= 2;
 
 					newXP = xp + add;
 
-					if (newXP > 2000000) newXP = 2000000;
+					if (newXP > maxXP) newXP = maxXP;
 
-					const newLevel = Math.floor(Math.sqrt(newXP / 2000000) * 99) + 1;
+					const newLevel = Math.floor(Math.sqrt(newXP / maxXP) * 99) + 1;
 
-					db.collection('perfis').doc(message.author.id).update({
+					db.collection('perfis').doc(interaction.user.id).update({
 						xp: newXP
 					}).then(() => {
 						if (newLevel > level) {
-							db.collection('perfis').doc(message.author.id).update({
+							db.collection('perfis').doc(interaction.user.id).update({
 								level: newLevel
 							});
 
@@ -145,12 +161,12 @@ bot.on('messageCreate', async message => {
 
 							if (newLevel % 10 === 0) {
 								const reward = newLevel * 500;
-								db.collection('perfis').doc(message.author.id).update({
+								db.collection('perfis').doc(interaction.user.id).update({
 									balance: bal + reward
-								}).then(async () => message.channel.send(getText(lang.levelUp.congratsReward, [message.author.tag, newLevel, reward])));
+								}).then( async () => interaction.channel.send(getText(lang.levelUp.congratsReward, [interaction.user.tag, newLevel, reward])));
 							}
 							else {
-								message.channel.send(getText(lang.levelUp.congrats, [message.author.tag, newLevel]));
+								interaction.channel.send(getText(lang.levelUp.congrats, [interaction.user.tag, newLevel]));
 							}
 						}
 					});
@@ -159,50 +175,69 @@ bot.on('messageCreate', async message => {
 		}
 
 		try {
-			command.execute(bot, message, command, db, lang, language, prefix, args, serverSettings);
+			command.execute(bot, interaction, db, lang, language, serverSettings);
 		}
 		catch (err) {
 			console.error(err);
-			message.reply(lang.error.cmd);
+			interaction.reply({ content: lang.error.cmd, ephemeral: true });
 		}
 	}
-	else if (message.content === `<@${bot.user.id}>`) {
-		message.channel.send(getText(lang.prefixMsg, [prefix]));
-	}
-	else if (serverSettings.automessages === true) {
-		const pngs = ['boi', 'E', 'hmm', 'just monika', 'nice plan', 'no u', 'noice', 'shine'];
-		const gifs = ['distraction dance'];
+	else
+	{
+		const serverSettings = await getServerSettings(interaction.guild);
+		let language: string, newLanguage: string;
 
-		if (pngs.includes(message.content)) {
-			message.channel.send({ files: [`./src/img/automessages/${message.content}.png`] });
+		if (englishChannels.includes(interaction.channel.id)) language = 'en';
+		else language = serverSettings.language;
+
+		const lang = require(`./src/lang/${language}.json`);
+
+		if (interaction.isButton()) {
+			if (interaction.customId.startsWith('shop')) shopButtonHandler(interaction, lang);
+			else if (interaction.customId.startsWith('quiz')) quizButtonHandler(interaction, lang);
+			else if (interaction.customId.startsWith('language')) confirmLanguage(interaction, db, newLanguage, lang, serverSettings);
 		}
-		else if (gifs.includes(message.content)) {
-			message.channel.send({ files: [`./src/img/automessages/${message.content}.gif`] });
+		else if	(interaction.isSelectMenu()) {
+			if (interaction.customId.startsWith('languageMenu')) {
+				newLanguage = interaction.values[0];
+			}
 		}
-	}
-});
+		else if (interaction.isAutocomplete()) {
+			const focusedOption = interaction.options.getFocused(true);
+			let choices;
 
-let newLanguage: string;
+			if (interaction.commandName === 'shop') {
+				switch(focusedOption.name) {
+					case 'hudname':
+						choices = Object.entries(items.huds);
+						choices.shift();
+						choices.shift();
+						break;
+					case 'pethudname':
+						choices = Object.entries(items.petHuds);
+						choices.shift();
+						choices.shift();
+						break;
+					case 'itemname':
+						choices = Object.entries(items.items);
+						break;
+					case 'petname':
+						choices = Object.entries(items.pets);
+						break;
+				}
 
-bot.on('interactionCreate', async interaction => {
-	const serverSettings = await getServerSettings(interaction.guild);
-	const prefix = 'dev!';
-	let language;
+				choices = Object.fromEntries(choices.map(([key, value]) => {
+					return [key.toLowerCase(), value];
+				}));
+			}
 
-	if (englishChannels.includes(interaction.channel.id)) language = 'en';
-	else language = serverSettings.language;
+			const filtered = Object.keys(choices).filter(choice =>
+				focusedOption.value !== '' ? focusedOption.value.length > 1 ? choice.includes(focusedOption.value.toLowerCase()) : choice.startsWith(focusedOption.value.toLowerCase()) : false
+			);
 
-	const lang = require(`./src/lang/${language}.json`);
-
-	if (interaction.isButton()) {
-		if (interaction.customId.startsWith('shop')) shopButtonHandler(interaction, lang, prefix);
-		else if (interaction.customId.startsWith('quiz')) quizButtonHandler(interaction, lang, prefix);
-		else if (interaction.customId.startsWith('language')) confirmLanguage(interaction, db, newLanguage, lang, prefix, serverSettings);
-	}
-	if	(interaction.isSelectMenu()) {
-		if (interaction.customId.startsWith('languageMenu')) {
-			newLanguage = interaction.values[0];
-			interaction.deferUpdate();
+			await interaction.respond(
+				filtered.map(choice => ({ name: titleCase(choice), value: titleCase(choice) }))
+			);
 		}
 	}
 });

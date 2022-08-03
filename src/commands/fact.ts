@@ -1,9 +1,15 @@
-import { Message } from 'discord.js';
+import { ChatInputCommandInteraction, SlashCommandBuilder } from 'discord.js';
 import facts from '../data/facts.json';
+import enLang from '../lang/en.json';
 
-export const name = 'fact';
-export function execute(bot: undefined, message: Message, command: undefined, db: undefined, lang: undefined, language: string) {
-	const rnd = Math.floor(Math.random() * 28);
+export = {
+	data: new SlashCommandBuilder()
+		.setName('fact')
+		.setDescription(enLang.command.fact.description),
 
-	message.channel.send((facts as Record<string, string[]>)[language][rnd]);
-}
+	execute(bot: undefined, interaction: ChatInputCommandInteraction, db: undefined, lang: undefined, language: string) {
+		const rnd = Math.floor(Math.random() * 28);
+
+		interaction.reply((facts as Record<string, string[]>)[language][rnd]);
+	}
+};

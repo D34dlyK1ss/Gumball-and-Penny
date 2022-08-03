@@ -1,17 +1,29 @@
-import { Message } from 'discord.js';
+import { ChatInputCommandInteraction, SlashCommandBuilder } from 'discord.js';
 import which from '../data/which.json';
-import getText from '../functions/getText';
+import enLang from '../lang/en.json';
 
-export const name = 'which';
-export function execute(bot: undefined, message: Message, command: undefined, db: undefined, lang: Record<string, string | any>, language: undefined, prefix: string, args: string[]) {
-	let argsString = args.join(' ');
-	argsString = argsString.toLowerCase();
-	const last = parseInt(message.member.id.slice(-1));
+export = {
+	data: new SlashCommandBuilder()
+		.setName('which')
+		.setDescription(enLang.command.which.description)
+		.addStringOption(option => {
+			option.setName('anime')
+				.setDescription(enLang.command.which.animeDesc)
+				.setRequired(true);
 
-	if (!argsString || !(which as Record<string, string[]>)[argsString]) {
-		message.reply(getText(lang.which.noSelect, [prefix, lang.forMoreInfo]));
+			const choices = Object.keys(which);
+
+			choices.forEach(element => {
+				option.addChoices({ name: element, value: element });
+			});
+			
+			return option;
+		}),
+
+	execute(bot: undefined, interaction: ChatInputCommandInteraction) {
+		const last = parseInt(interaction.user.id.slice(-1));
+		const anime = interaction.options.getString('anime');
+
+		interaction.reply({ content: `${(which as Record<string, string[]>)[anime][last]}!`, files: [`src/img/which/${anime} (${last}).jpg`] });
 	}
-	else {
-		message.channel.send({ content: `${(which as Record<string, string[]>)[argsString][last]}!`, files: [`src/img/which/${argsString} (${last}).jpg`] });
-	}
-}
+};

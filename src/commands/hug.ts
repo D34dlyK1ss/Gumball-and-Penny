@@ -1,22 +1,30 @@
-import { Message } from 'discord.js';
-import { BotClient, Cmd } from 'index';
+import { ChatInputCommandInteraction, SlashCommandBuilder } from 'discord.js';
+import { BotClient } from 'index';
 import getText from '../functions/getText';
+import enLang from '../lang/en.json';
 
-export const name = 'hug';
-export function execute(bot: BotClient, message: Message, command: Cmd, db: undefined, lang: Record<string, string | any>, language: undefined, prefix: string) {
-	const user = message.mentions.users.first();
-	const rnd = Math.floor(Math.random() * 6);
+export = {
+	data: new SlashCommandBuilder()
+		.setName('hug')
+		.setDescription(enLang.command.hug.description)
+		.addUserOption(option =>
+			option.setName('member')
+				.setDescription(enLang.command.hug.memberDesc)
+				.setRequired(true)
+		),
 
-	if (!user) {
-		message.reply(getText(lang.error.wrongSyntax, [prefix, lang.command[command.name].usage]));
+	execute(bot: BotClient, interaction: ChatInputCommandInteraction, db: undefined, lang: Record<string, string | any>) {
+		const user = interaction.options.getUser('member');
+		const rnd = Math.floor(Math.random() * 6);
+		
+		if (user === interaction.user) {
+			interaction.reply({ content: getText(lang.command.hug.huggedSelf, [interaction.user.tag]), files: [`src/img/actions/${interaction.commandName} (${rnd}).gif`] });
+		}
+		else if (user === bot.user) {
+			interaction.reply({ content: getText(lang.command.hug.huggedUs, [interaction.user.tag]), files: [`src/img/actions/${interaction.commandName} (${rnd}).gif`] });
+		}
+		else {
+			interaction.reply({ content: getText(lang.command.hug.hugged, [interaction.user.tag, user.tag]), files: [`src/img/actions/${interaction.commandName} (${rnd}).gif`] });
+		}
 	}
-	else if (user === message.author) {
-		message.channel.send({ content: getText(lang.hug.huggedSelf, [message.author.tag]), files: [`src/img/actions/${command.name} (${rnd}).gif`] });
-	}
-	else if (user === bot.user) {
-		message.channel.send({ content: getText(lang.hug.huggedUs, [message.author.tag]), files: [`src/img/actions/${command.name} (${rnd}).gif`] });
-	}
-	else {
-		message.channel.send({ content: getText(lang.hug.hugged, [message.author.tag, user.tag]), files: [`src/img/actions/${command.name} (${rnd}).gif`] });
-	}
-}
+};

@@ -1,9 +1,18 @@
-import { Message } from 'discord.js';
+import { ChatInputCommandInteraction, SlashCommandBuilder } from 'discord.js';
+import enLang from '../lang/en.json';
 
-export const name = 'avatar';
-export const aliases = ['icon', 'pfp'];
-export function execute(bot: undefined, message: Message) {
-	const user = message.mentions.users.first() || message.author;
-
-	message.channel.send({ files: [user.displayAvatarURL()] });
-}
+export = {
+	data: new SlashCommandBuilder()
+		.setName('avatar')
+		.setDescription(enLang.command.avatar.description)
+		.addUserOption(option =>
+			option.setName('member')
+				.setDescription(enLang.command.avatar.memberDesc)
+		),
+			
+	execute(bot: undefined, interaction: ChatInputCommandInteraction) {
+		const user = interaction.options.getUser('user') || interaction.user;
+		
+		interaction.reply({ files: [user.displayAvatarURL()] });
+	}
+};

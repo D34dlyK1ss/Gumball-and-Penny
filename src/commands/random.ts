@@ -1,22 +1,20 @@
-import { Message } from 'discord.js';
+import { ChatInputCommandInteraction, SlashCommandBuilder } from 'discord.js';
+import enLang from '../lang/en.json';
 
-export const name = 'random';
-export function execute(bot: undefined, message: Message, command: undefined, db: undefined, lang: Record<string, string | any>, language: undefined, prefix: undefined, args: string[]) {
-	let rnd;
+export = {
+	data: new SlashCommandBuilder()
+		.setName('random')
+		.setDescription(enLang.command.random.description)
+		.addIntegerOption(option =>
+			option.setName('number')
+				.setDescription(enLang.command.random.numberDesc)
+				.setMinValue(1)
+				.setRequired(true)
+		),
 
-	if (!args[0]) {
-		rnd = Math.floor(Math.random() * 100) + 1;
-		message.channel.send(`${rnd}!`);
+	execute(bot: undefined, interaction: ChatInputCommandInteraction) {
+		const rnd = Math.floor(Math.random() * interaction.options.getInteger('number')) + 1;
+
+		interaction.reply(`${rnd}!`);
 	}
-	else if (!Number.isInteger(parseInt(args[0]))) {
-		message.reply(lang.error.notANumber);
-	}
-	else if (parseInt(args[0]) <= 0) {
-		rnd = Math.floor(Math.random() * 100) + 1;
-		message.channel.send(`${rnd}!`);
-	}
-	else {
-		rnd = Math.floor(Math.random() * parseInt(args[0])) + 1;
-		message.channel.send(`${rnd}!`);
-	}
-}
+};

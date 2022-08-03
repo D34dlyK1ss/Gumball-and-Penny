@@ -1,52 +1,58 @@
-import { Message } from 'discord.js';
-import { BotClient, Cmd } from 'index';
+import { ChatInputCommandInteraction, SlashCommandBuilder } from 'discord.js';
+import { BotClient } from 'index';
 import getText from '../functions/getText';
 import botConfig from '../../botConfig.json';
+import enLang from '../lang/en.json';
 
-export const name = 'give';
-export function execute(bot: BotClient, message: Message, command: Cmd, db: FirebaseFirestore.Firestore, lang: Record<string, string | any>, language: undefined, prefix: string, args: string[]) {
-	const donor = message.author;
-	let amount = Math.abs(parseInt(args[1]));
+export = {
+	data: new SlashCommandBuilder()
+		.setName('give')
+		.setDescription(enLang.command.give.description)
+		.addUserOption(option =>
+			option.setName('member')
+				.setDescription(enLang.command.give.memberDesc)
+				.setRequired(true)
+		)
+		.addIntegerOption(option =>
+			option.setName('amount')
+				.setDescription(enLang.command.give.amountDesc)
+				.setRequired(true)
+		),
 
-	if (!args[0] || !args[1] || !Number.isInteger(amount)) {
-		message.reply(getText(lang.error.wrongSyntax, [prefix, lang.command[command.name].usage]));
-	}
-	else {
-		const user = message.mentions.users.first();
-		const refD = db.collection('perfis').doc(donor.id);
+	execute(bot: BotClient, interaction: ChatInputCommandInteraction, db: FirebaseFirestore.Firestore, lang: Record<string, string | any>) {
+		let amount = interaction.options.getInteger('amount');
+		const user = interaction.options.getUser('member');
+		const refD = db.collection('perfis').doc(interaction.user.id);
 
 		refD.get().then(docD => {
 			if (!docD.exists) {
-				message.reply(getText(lang.error.noProfile, [prefix]));
+				interaction.reply(lang.error.noProfile);
 			}
-			else if (!args[1] || !Number.isInteger(amount)) {
-				message.reply(getText(lang.error.wrongSyntax, [prefix, lang.command[command.name].usage]));
-			}
-			else if (message.author.id == user.id) {
-				message.reply(lang.give.self);
+			else if (interaction.user.id == user.id) {
+				interaction.reply(lang.command.give.self);
 			}
 			else if (user === bot.user) {
-				message.reply(lang.give.thanksBut);
+				interaction.reply(lang.command.give.thanksBut);
 			}
 			else if (user.bot) {
-				message.reply(lang.botsNoProfile);
+				interaction.reply(lang.botsNoProfile);
 			}
 			else {
 				const refU = db.collection('perfis').doc(user.id);
 
 				refU.get().then(docU => {
 					if (!docU.exists) {
-						message.reply(getText(lang.error.userHasNoProfile, [user.tag]));
+						interaction.reply(getText(lang.error.userHasNoProfile, [user.tag]));
 					}
 					else {
 						const balD: number = docD.get('balance');
 						const balU: number = docU.get('balance');
 
 						if (amount > balD) {
-							message.reply(lang.error.noMoney);
+							interaction.reply(lang.error.noMoney);
 						}
 						else if (balU === 1000000 || botConfig.botOwnerID === user.id ) {
-							message.reply(getText(lang.error.cannotGive, [user.tag]));
+							interaction.reply(getText(lang.error.cannotGive, [user.tag]));
 						}
 						else {
 							let newBalU = balU + amount;
@@ -62,7 +68,7 @@ export function execute(bot: BotClient, message: Message, command: Cmd, db: Fire
 								refD.update({
 									balance: balD - amount
 								}).then(() => {
-									message.reply(getText(lang.give.youGave, [amount, user.tag]));
+									interaction.reply(getText(lang.command.give.youGave, [amount, user.tag]));
 								});
 							});
 						}
@@ -71,4 +77,4 @@ export function execute(bot: BotClient, message: Message, command: Cmd, db: Fire
 			}
 		});
 	}
-}
+};

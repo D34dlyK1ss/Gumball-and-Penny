@@ -1,14 +1,20 @@
-import { Message, MessageEmbed } from 'discord.js';
+import { ChatInputCommandInteraction, EmbedBuilder, SlashCommandBuilder } from 'discord.js';
 import { BotClient } from 'index';
+import enLang from '../lang/en.json';
 
-export const name = 'ping';
-export function execute(bot: BotClient, message: Message, command: undefined, db: undefined, lang: Record<string, string | any>) {
-	const embed = new MessageEmbed()
-		.addFields([
-			{ name: 'Ping', value: `${Date.now() - message.createdTimestamp}ms` },
-			{ name: lang.ping.apiPing, value: `${bot.ws.ping}ms` }
-		])
-		.setColor('DARK_PURPLE');
+export = {
+	data: new SlashCommandBuilder()
+		.setName('ping')
+		.setDescription(enLang.command.ping.description),
 
-	message.reply({ content: 'Pong! 🏓', embeds: [embed] });
-}
+	execute(bot: BotClient, interaction: ChatInputCommandInteraction, db: undefined, lang: Record<string, string | any>) {
+		const embed = new EmbedBuilder()
+			.addFields([
+				{ name: 'Ping', value: `${Date.now() - interaction.createdTimestamp}ms` },
+				{ name: lang.command.ping.apiPing, value: `${bot.ws.ping}ms` }
+			])
+			.setColor('DarkPurple');
+		
+		interaction.reply({ content: 'Pong! 🏓', embeds: [embed] });
+	}
+};

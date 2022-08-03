@@ -1,5 +1,5 @@
 {
-	"♂️": [
+	"male": [
 		"Solitário",
 		"Corajoso",
 		"Dócil",
@@ -12,7 +12,8 @@
 		"Peculiar",
 		"Suicida"
 	],
-	"♀️": [
+	
+	"female": [
 		"Solitária",
 		"Corajosa",
 		"Dócil",

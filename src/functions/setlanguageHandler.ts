@@ -3,7 +3,7 @@ import botConfig from '../../botConfig.json';
 import { ServerSettings } from 'index';
 
 
-export function confirmLanguage(button: ButtonInteraction, db: FirebaseFirestore.Firestore, newLanguage: string|undefined, lang:Record<string, any>, prefix: string, serverSettings: ServerSettings) {
+export function confirmLanguage(button: ButtonInteraction, db: FirebaseFirestore.Firestore, newLanguage: string, lang:Record<string, any>, serverSettings: ServerSettings) {
 	const ref = db.collection('definicoes').doc(button.guild.id);
 
 	if (!button.customId.endsWith(button.user.id)) {
@@ -13,7 +13,7 @@ export function confirmLanguage(button: ButtonInteraction, db: FirebaseFirestore
 		button.update({ content: lang.userCancelled, components:[] });
 	}
 	else if (!newLanguage) {
-		button.reply({ content: lang.setlanguage.noLanguage, ephemeral: true });
+		button.reply({ content: lang.command.setlanguage.noLanguage, ephemeral: true });
 	}
 	else {
 		ref.get().then(doc => {
@@ -35,7 +35,7 @@ export function confirmLanguage(button: ButtonInteraction, db: FirebaseFirestore
 				}, { merge: true });
 			}
 			lang = require(`../lang/${newLanguage}.json`);
-			button.update({ content: lang.setlanguage.isNow, components: [] });
+			button.update({ content: lang.command.setlanguage.isNow, components: [] });
 		});
 	}
 }

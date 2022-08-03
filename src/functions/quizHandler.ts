@@ -1,20 +1,19 @@
-import { ButtonInteraction, Message, MessageAttachment, MessageEmbed, MessageActionRow, MessageButton, User } from 'discord.js';
-import { registerFont, createCanvas, loadImage } from 'canvas';
-import * as admin from 'firebase-admin';
-import * as answers from '../data/quizAnswers.json';
+import { ActionRowBuilder, AttachmentBuilder, ButtonBuilder, ButtonInteraction, ChatInputCommandInteraction, EmbedBuilder, Message, User } from 'discord.js';
+import { GlobalFonts, createCanvas, loadImage } from '@napi-rs/canvas';
+import admin from 'firebase-admin';
+import answers from '../data/quizAnswers.json';
 import slugify from './slugify';
 import getText from './getText';
-registerFont('src/fonts/comic.ttf', { family: 'Comic Sans MS' });
-registerFont('src/fonts/comicb.ttf', { family: 'bold Comic Sans MS' });
-registerFont('src/fonts/comici.ttf', { family: 'italic Comic Sans MS' });
-registerFont('src/fonts/comicz.ttf', { family: 'bold-italic Sans MS' });
+GlobalFonts.registerFromPath('src/fonts/comic.ttf', 'Comic Sans MS');
+GlobalFonts.registerFromPath('src/fonts/comicb.ttf', 'Comic Sans MS Bold');
+GlobalFonts.registerFromPath('src/fonts/comici.ttf', 'Comic Sans MS Italic');
+GlobalFonts.registerFromPath('src/fonts/comicz.ttf', 'Comic Sans MS Bold Italic');
 
-export function createQuizPage(message: Message, user: User, lang:Record<string, any>, prefix: string, embedName: string) {
-	let embedToExport: MessageEmbed;
-	let buttonRow: MessageActionRow;
-	const mainEmbed = new MessageEmbed()
-		.setColor('DARK_PURPLE')
-		.setAuthor(user.tag, user.displayAvatarURL())
+export function createQuizPage(interaction: ChatInputCommandInteraction, user: User, lang:Record<string, any>, embedName: string) {
+	let embed: EmbedBuilder;
+	let buttonRow: ActionRowBuilder<ButtonBuilder>;
+	const mainEmbed = new EmbedBuilder()
+		.setColor('DarkPurple')
 		.setTitle('Quiz')
 		.addFields(
 			{ name: '- Anime', value: '\u200B', inline: true }
@@ -22,84 +21,84 @@ export function createQuizPage(message: Message, user: User, lang:Record<string,
 
 	switch (embedName) {
 		case 'quizmainEmbed':
-			embedToExport = new MessageEmbed(mainEmbed)
-				.setDescription(lang.quiz.mainDescription);
+			embed = EmbedBuilder.from(mainEmbed)
+				.setDescription(lang.command.quiz.mainDescription);
 
-			buttonRow = new MessageActionRow()
+			buttonRow = new ActionRowBuilder<ButtonBuilder>()
 				.addComponents(
-					new MessageButton()
+					new ButtonBuilder()
 						.setCustomId(`quizanimeEmbed${user.id}`)
 						.setLabel('Anime')
-						.setStyle('PRIMARY'),
-					new MessageButton()
+						.setStyle(1),
+					new ButtonBuilder()
 						.setCustomId(`quizClose${user.id}`)
 						.setLabel(lang.exit)
-						.setStyle('DANGER')
+						.setStyle(4)
 				);
 			break;
 		case 'quizanimeEmbed':
-			embedToExport = new MessageEmbed(mainEmbed)
-				.setDescription(lang.quiz.themeDescription)
+			embed = EmbedBuilder.from(mainEmbed)
+				.setDescription(lang.command.quiz.themeDescription)
 				.setTitle('Quiz - Anime')
-				.spliceFields(0, mainEmbed.fields.length, [
+				.setFields([
 					{ name: `- ${lang.eyes}`, value: '\u200B', inline: true }
 				]);
 
-			buttonRow = new MessageActionRow()
+			buttonRow = new ActionRowBuilder<ButtonBuilder>()
 				.addComponents(
-					new MessageButton()
+					new ButtonBuilder()
 						.setCustomId(`quizanimeEyesEmbed${user.id}`)
 						.setLabel(lang.eyes)
-						.setStyle('PRIMARY'),
-					new MessageButton()
+						.setStyle(1),
+					new ButtonBuilder()
 						.setCustomId(`quizmainEmbed${user.id}`)
 						.setLabel(lang.back)
-						.setStyle('DANGER'),
-					new MessageButton()
+						.setStyle(4),
+					new ButtonBuilder()
 						.setCustomId(`quizClose${user.id}`)
 						.setLabel(lang.exit)
-						.setStyle('DANGER')
+						.setStyle(4)
 				);
 			break;
 		case 'quizanimeEyesEmbed':
-			embedToExport = new MessageEmbed(mainEmbed)
-				.setDescription(lang.quiz.toStart)
+			embed = EmbedBuilder.from(mainEmbed)
+				.setDescription(lang.command.quiz.toStart)
 				.setTitle(`Quiz - Anime (${lang.eyes})`)
-				.spliceFields(0, mainEmbed.fields.length);
+				.setFields();
 
-			buttonRow = new MessageActionRow()
+			buttonRow = new ActionRowBuilder<ButtonBuilder>()
 				.addComponents(
-					new MessageButton()
+					new ButtonBuilder()
 						.setCustomId(`quizanimeEyesStart${user.id}`)
 						.setLabel(lang.start)
-						.setStyle('SUCCESS'),
-					new MessageButton()
+						.setStyle(3),
+					new ButtonBuilder()
 						.setCustomId(`quizanimeEmbed${user.id}`)
 						.setLabel(lang.back)
-						.setStyle('DANGER'),
-					new MessageButton()
+						.setStyle(4),
+					new ButtonBuilder()
 						.setCustomId(`quizClose${user.id}`)
 						.setLabel(lang.exit)
-						.setStyle('DANGER')
+						.setStyle(4)
 				);
 			break;
 	}
 
-	return [embedToExport, buttonRow];
+	return {embed, buttonRow};
 }
 
 export const alreadyPlaying: Set<string> = new Set();
 
-export function createQuizQuestion(interaction: ButtonInteraction, user: User, lang:Record<string, any>) {
+export async function createQuizQuestion(interaction: ButtonInteraction, user: User, lang:Record<string, any>) {
 	if (alreadyPlaying.has(interaction.channelId)) {
-		interaction.reply(lang.quiz.alreadyPlaying);
+		await interaction.editReply(lang.command.quiz.alreadyPlaying);
 	}
 	else {
 		const quiz = interaction.customId.slice(0, -23);
 
 		switch (quiz) {
 			case 'quizanimeEyes': {
-				interaction.update({ content: getText(lang.quiz.starting, [lang.quiz.animeEyes]), embeds: [], components: [] }).then(() => {
+				interaction.update({ content: getText(lang.command.quiz.starting, [lang.command.quiz.animeEyes]), embeds: [], components: [] }).then(() => {
 
 					alreadyPlaying.add(interaction.channelId);
 			
@@ -137,9 +136,9 @@ export function createQuizQuestion(interaction: ButtonInteraction, user: User, l
 							ctx.shadowOffsetY = 2;
 							ctx.fillStyle = 'white';
 							ctx.textAlign = 'center';
-							ctx.fillText(lang.quiz.whoIsCharacter, 200, 76);
+							ctx.fillText(lang.command.quiz.whoIsCharacter, 200, 76);
 			
-							const attachment = new MessageAttachment(canvas.toBuffer(), 'question.png');
+							const attachment = new AttachmentBuilder(canvas.toBuffer('image/png'), { name: 'question.png' });
 			
 							interaction.channel.send({ files: [attachment] });
 			
@@ -147,25 +146,25 @@ export function createQuizQuestion(interaction: ButtonInteraction, user: User, l
 							const collector = interaction.channel.createMessageCollector({ filter, max: 1, time: 15000 });
 		
 							collector.on('collect', message => {
-								message.reply(lang.quiz.correct);
-			
+								message.reply(lang.command.quiz.correct);
+								
 								if (!score.has(message.member.id)) score.set(message.member.id, 0);
 			
 								score.set(message.member.id, score.get(message.member.id) + 1);
 							});
 			
 							collector.on('end', collected => {
-								if (collected.size === 0) interaction.channel.send(lang.quiz.noCorrectAnswer);
+								if (collected.size === 0) interaction.channel.send(lang.command.quiz.noCorrectAnswer);
 			
 								setTimeout(async () => {
 									if (--i) {
 										loopQuestions(i);
 									}
 									else {
-										const resultsEmbed = new MessageEmbed()
+										const resultsEmbed = new EmbedBuilder()
 											.setTitle(lang.results)
-											.setColor('DARK_PURPLE')
-											.setDescription(lang.quiz.noOneScored);
+											.setColor('DarkPurple')
+											.setDescription(lang.command.quiz.noOneScored);
 										
 										const sortedScore = new Map([...score.entries()].sort((a, b) => b[1] - a[1]));
 			
@@ -178,18 +177,18 @@ export function createQuizQuestion(interaction: ButtonInteraction, user: User, l
 
 											for (let j = 0; j < nParticipants; j++) {
 												const userId = userIds.next().value;
-												const punctuation = points.next().value;
+												const userScore = points.next().value;
 												const refP = admin.firestore().collection('perfis').doc(`${user}`);
 												let plural = '';
 
-												punctuation !== 1 ? plural = 's' : plural = '';
+												userScore !== 1 ? plural = 's' : plural = '';
 
-												description = description + getText(lang.quiz.points, [userId, punctuation]) + plural;
+												description = description + getText(lang.command.quiz.points, [userId, userScore]) + plural;
 
 												await refP.get().then(doc => {
 													if (!doc.exists) return;
 													const xp: number = doc.get('xp');
-													const xpGain = 25 * punctuation + 50 * (nParticipants - 1);
+													const xpGain = 25 * userScore + 50 * (nParticipants - 1);
 
 													refP.update({
 														xp: xp + xpGain
@@ -200,7 +199,7 @@ export function createQuizQuestion(interaction: ButtonInteraction, user: User, l
 											resultsEmbed.setDescription(description);
 										}
 			
-										interaction.channel.send({ content: lang.quiz.ended, embeds: [resultsEmbed] });
+										interaction.channel.send({ content: lang.command.quiz.ended, embeds: [resultsEmbed] });
 										alreadyPlaying.delete(interaction.channelId);
 									}
 								});
@@ -214,21 +213,21 @@ export function createQuizQuestion(interaction: ButtonInteraction, user: User, l
 	}
 }
 
-export function quizButtonHandler(button: ButtonInteraction, lang: Record<string, any>, prefix: string) {
+export function quizButtonHandler(button: ButtonInteraction, lang: Record<string, any>) {
 	if (!button.customId.endsWith(button.user.id)) {
-		button.reply({ content: lang.error.notAuthor, ephemeral: true });
+		button.reply({ content: lang.error.notAuthor });
 	}
 	else {
 		if (button.customId.slice(0, -18).endsWith('Start')) {
 			createQuizQuestion(button, button.user, lang);
 		}
 		else if (button.customId.slice(0, -18).endsWith('Close')) {
-			button.update({ content: lang.quiz.exited, embeds: [], components: [] });
+			button.update({ content: lang.command.quiz.exited, embeds: [], components: [] });
 		}
 		else {
-			const toSend:any = createQuizPage(undefined, button.user, lang, prefix, button.customId.slice(0, -18));
+			const page = createQuizPage(undefined, button.user, lang, button.customId.slice(0, -18));
 
-			button.update({ embeds: [toSend[0]], components: [toSend[1]] });
+			button.update({ embeds: [page.embed], components: [page.buttonRow] });
 		}
 	}
 }

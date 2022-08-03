@@ -1,11 +1,9 @@
 {
-	"prefixMsg": "Our prefix for this server is `$0$`.",
 	"notIndicated": "_Not indicated_",
 	"by": "by",
 	"reason": "Reason:",
 	"botsNoProfile": "Bots have no profiles!",
-	"help": "Help",
-	"helpDescription": "We're Gumball and Penny and we aim to make any server we're at in a fun place!\nWhen in doubt on any command use `$0$help [$1$]`.",
+	"commands": "Commands",
 	"commandName": "command name",
 	"actions": "Actions",
 	"casino": "Casino",
@@ -41,14 +39,12 @@
 	"botNoProfile": "We don't have a profile!",
 	"totalXP": "Total XP",
 	"level": "Level",
-	"balanceProfile": "Balance",
+	"balance": "Balance",
 	"awesomeStore": "Awesome Store",
 	"nameLicense": "Name License",
 	"page": "Page",
 	"toChangePage": "To change page use ",
 	"forMoreInfo": "for more information.",
-	"betAtLeast": "You have to bet at least <a:gpCoin:898355693193662464>$0$!",
-	"betAtMost": "You can't bet over <a:gpCoin:898355693193662464>$0$!",
 	"lost": "You lost **<a:gpCoin:898355693193662464>$0$**!",
 	"won": "You won **<a:gpCoin:898355693193662464>$0$**!",
 	"and": "and",
@@ -66,21 +62,23 @@
 	"ok": "OK",
 	"cancel": "Cancel",
 	"exit": "Exit",
+	"close": "Close",
 	"userCancelled": "_Operation cancelled by the user_",
 	"results": "Results",
 	"officialServer": "Official Server",
-
+	"areyousure": "Are you sure?",
+	"yes": "Yes",
+	"no": "No",
 
 	"error": {
 		"cmd": "There was an error when trying to execute that command!",
-		"noProfile": "You haven't created a profile yet! To create a profile use `$0$profile create`.",
+		"noProfile": "You haven't created a profile yet! To create a profile use `/profile create`.",
 		"userHasNoProfile": "**$0$** hasn't created a profile yet!",
 		"noMention": "You have to mention someone! Make sure you write the mention instead of copying it.",
 		"noPerm": "You have no permisison to use this command! 💢",
 		"botNoBan": "We don't have permission to ban members!",
 		"botNoManageMsgs": "We don't have permission to manage messages!",
-		"noNumberToDelete": "You have to indicate how many messages you want to delete!",
-		"wrongSyntax": "Wrong syntax! How to use: `$0$$1$`",
+		"wrongSyntax": "Wrong syntax! How to use: `$0$`",
 		"noAdd": "You can't get any more money! 😧",
 		"noMoney": "You don't have enough money!",
 		"noMessage": "You didn't write any message!",
@@ -92,7 +90,7 @@
 		"wontWorkOnBot": "That won't work on a bot! 😂",
 		"botNoManageRoles": "We don't have permission to manage roles!",
 		"botNoManageChannels": "We don't have permission to manage channels!",
-		"noPet": "You haven't bought a pet yet! To buy one go to the Awesome Store using ",
+		"noPet": "You haven't bought a pet yet! To buy one go to the Awesome Store using /shop!",
 		"noChangePetName": "You can't change your pet's name!",
 		"noNameLicense": "You don't have a **Name License**!",
 		"noName": "You didn't choose any name!",
@@ -102,7 +100,6 @@
 		"noPetToAdoption": "You have no pet to send to adoption!",
 		"userHasNoPet": " hasn't bought a pet yet!",
 		"notANumber": "That's not a number!",
-		"noPrefixChosen": "We need to know the desired prefix!",
 		"noLinks": "We can't write any links!",
 		"memberNotTimedOut": "**$0$** isn't timed out!",
 		"hasProfileAlready": "You already have a profile created, you can't create another! 💢",
@@ -113,10 +110,9 @@
 		"alreadyHasHUD": "You already have this HUD!",
 		"alreadyHasPetHud": "You already have this Pet HUD!",
 		"noVIPForPetHud": "You need to be VIP to buy this Pet HUD!",
-		"alreadyHasPet": "You already have a pet! If you want another one you have to give yours to adoption using `$0$pet sendtoadoption`.",
+		"alreadyHasPet": "You already have a pet! If you want another one you have to give yours to adoption using `/pet sendtoadoption`.",
 		"noItem": "That item doesn't exist!",
 		"noVIPForPet": "You need to be VIP to buy this pet!",
-		"samePrefix": "That's the same prefix we're using!",
 		"sameLanguage": "That's the same language we're speaking right now!",
 		"noDuration": "You didn't indicate the duration!",
 		"notAuthor": "This isn't for you!",
@@ -124,579 +120,460 @@
 		"noModerateMembers": "We don't have permission to moderate members!"
 	},
 
-	
 	"levelUp": {
 		"congrats": "🎉 Congratulations **$0$** you leveled up to level **$1$**! 🆙",
 		"congratsReward": "🎉 Congratulations **$0$** you leveled up to level **$1$** and received **<a:gpCoin:898355693193662464>$2$**! 🆙💰"
 	},
 
-	"angry": {
-		"gotAngry": "**$0$** got angry!",
-		"gotAngryWithUs": "**$0$** got angry with us! 😶",
-		"gotAngryWith": "**$0$** got angry with **$1$**!"
-	},
-
-	"automessages": {
-		"areNow": "_AutoMessages_ are now **$0$**."
-	},
-
-	"balance": {
-		"yourBalance": "Your balance"
-	},
-
-	"ban": {
-		"wasBanned": "**$0$** was banned! 🔨"
-	},
-
-	"blush": {
-		"weMadeBlush": "We made **$0$** blush! 😊",
-		"madeBlush": "**$0$** made **$1$** blush!"
-	},
-
-	"clear": {
-		"weDeleted": "We have deleted `$0$` $1$!",
-		"message": "message",
-		"messages": "messages"
-	},
-
-	"coinflip": {
-		"heads": "heads",
-		"tails": "tails"
-	},
-
-	"cry": {
-		"isCrying": "**$0$** is crying!",
-		"isCryingBecauseOfUs": "**$0$** is crying because of us! 😟",
-		"madeCry": "**$0$** made **$1$** cry!"
-	},
-
-	"daily": {
-		"againIn": "You can get money again in **$0$**.",
-		"received": "You received your **<a:gpCoin:898355693193662464>$0$** of today! To get more <a:gpCoin:898355693193662464>150 (x2 for VIP) use `$1$vote`."
-	},
-
-	"dance": {
-		"isDancing": "**$0$** is dancing!",
-		"isDancingForUs": "**$0$** is dancing for us! 😯",
-		"isDancingFor": "**$0$** is dancing for **$1$**!"
-	},
-
-	"give": {
-		"self": "Seriously you just tried to give yourself money?",
-		"thanksBut": "Thanks, but you'll need that money more than us! 😁",
-		"youGave": "You gave **<a:gpCoin:898355693193662464>$0$** to **$1$**!"
-	},
-
-	"happy": {
-		"madeHappy": "**$0$** made **$1$** happy!",
-		"weMadeHappy": "We made **$0$** happy!",
-		"isHappy": "**$0$** is happy!"
-	},
-
-	"hug": {
-		"huggedSelf": "**$0$** hugged themselves?",
-		"huggedUs": "**$0$** hugged us! 🤗",
-		"hugged": "**$0$** hugged **$1$**!"
-	},
-
-	"inventory": {
-		"inventoryFrom": "Inventory from **$0$**"
-	},
-
-	"jankenpon": {
-		"rock": "Rock",
-		"paper": "Paper",
-		"scissors": "Scissors",
-		"threw": "**Gumball** threw **$0$** and **Penny** threw **$1$**.",
-		"draw": "It's a draw! You have your money refunded."
-	},
-
-	"kick": {
-		"wasKicked": "**$0$** was kicked! 👋"
-	},
-
-	"kiss": {
-		"kissedSelf": "**$0$** kissed themselves?",
-		"kissedUs": "**$0$** kissed us! 😳",
-		"kissed": "**$0$** kissed **$1$!**!"
-	},
-
-	"laugh": {
-		"isLaughing": "**$0$** is laughing!",
-		"isLaughingFromSelf": "**$0$** is laughing from themselves!",
-		"isLaughingFromUs": "**$0$** is laughing from us! 😅",
-		"isLaughingFrom": "**$0$** is laughing from **$1$**!"
-	},
-
-	"match": {
-		"alreadyAPair": "Hey, we're already a pair! 😠",
-		"youAre": "You are $0$% compatible!"
-	},
-
-	"members": {
-		"message": "**$0$** has **$1$** members!"
-	},
-
-	"pat": {
-		"pattedSelf": "**$0$** patted themsleves?",
-		"pattedUs": "**$0$** patted us! 😊",
-		"patted": "**$0$** patted **$1$**!"
-	},
-
-	"pet": {
-		"nameMaxIs": "The name's maximum character limit is **$0$**. That name has **$0$**.",
-		"nameChangedTo": "You pet's name was changed to **$0$**.",
-		"petHudChangedTo": "Your Pet HUD was changed to **$0$**.",
-		"wasSentToAdoption": "**$0$** was sent to adoption!",
-		"botNoPet": "We don't have a pet! Yet...",
-		"botsNoPets": "Bots have no pets!"
-	},
-
-	"ping": {
-		"apiPing": "API ping"
-	},
-
-	"profile": {
-		"wasCreated": "You profile was created! Add a description with `$0$profile set description [$1$]`.",
-		"nicknameMaxIs": "The nickname's maximum character limit is **$0$**. That nickname has **$1$**.",
-		"nicknameChangedTo": "Your nickname was changed to **$0$**.",
-		"descMaxIs": "The description's maximum character limit is **$0$**. That description has **$1$**.",
-		"descChangedTo": "Your description was changed to **$0$**.",
-		"hudChangedTo": "Your HUD was changed to **$0$**."
-	},
-
-	"quiz": {
-		"mainDescription": "These are the available quiz themes.\nEvery quiz will take 10 questions. Each correct answer in 15 seconds gives you 1 point.\nAnyone can join just by answering correctly.",
-		"themeDescription": "Choose a category!",
-		"toStart": "Press the _Start_ button to start the quiz!",
-		"exited": "You exited the Quiz page!",
-		"alreadyPlaying": "There's a quiz being played already in this channel! Start a new one on another channel or wait for the quiz to end.",
-		"starting": "Starting **$0$** quiz in 5 seconds!",
-		"animeEyes": "Anime Eyes",
-		"whoIsCharacter": "Who is this character?",
-		"correct": "Correct!",
-		"wrong": "Wrong!",
-		"noCorrectAnswer": "No correct answer!",
-		"ended": "The quiz has ended!",
-		"points": "\n<@$0$> - $1$ point",
-		"noOneScored": "No one scored!"
-	},
-
-	"ranking": {
-		"updatedAt": "Updated at $0$ $1$ UTC"
-	},
-
-	"run": {
-		"ranAway": "**$0$** ran away!",
-		"ranAwayFromUs": "**$0$** ran away from us! 🤨",
-		"ranAwayFrom": "**$0$** ran away from **$1$**!"
-	},
-
-	"serverinfo": {
-		"verificationLevel": {
-			"NONE": "None",
-			"LOW": "Low",
-			"MEDIUM": "Medium",	
-			"HIGH": "High",			
-			"VERY_HIGH": "Very High"
-		},
-
-		"region": {
-			"brazil": "Brazil",
-			"europe": "Europe",
-			"eu-central": "Europe Central",
-			"eu-east": "Europe East",
-			"eu-west": "Europe West",
-			"hongkong": "Hong Kong",
-			"india": "india",
-			"japan": "Japan",
-			"russia": "Russia",
-			"singapore": "Singapore",
-			"southafrica": "South Africa",
-			"sydney": "Sydney",
-			"us-central": "US Central",
-			"us-east": "US East",
-			"us-south": "US South",
-			"us-west": "US West"
-		},
-
-		"members": "Members",
-		"created": "Created $0$ ago ($1$)"
-	},
-
-	"setlanguage": {
-		"noLanguage": "You have to select a language!",
-		"select": "Select one of the languages below.",
-		"isNow": "Now we'll speak in English 🇺🇸 in this server."
-	},
-
-	"setprefix": {
-		"isNow": "Our prefix for this server is now `$0$`."
-	},
-
-	"shop": {
-		"welcome": "Welcome to the Awesome Store!\nHere you can buy some stuff with the money you have saved so far.\nUse the buttons below to navigate through the store!",
-		"boughtHUD": "You bought the HUD **$0$**! To equip it use `$0$profile set hud [$1$]`.",
-		"boughtPetHud": "You bought the Pet HUD **$0$**! To equip it use `$0$profile set hud [$1$]`.",
-		"boughtItem": "You bought 1 **$0$**!",
-		"boughtPet": "You bought 1 **$0$**! To give it a name use `$1$pet set nickname [$2$]`.",
-		"hero": "Hero",
-		"villain": "Villain",
-		"toBuyHud": "Use `$0$shop buy hud [$1$]` to buy or `$2$shop view hud [$3$]` to see.",
-		"toBuyPetHud": "Use `$0$shop buy pethud [$1$]` to buy or `$2$shop view pethud [$3$]` to see.",
-		"hudName": "HUD Name",
-		"petHudName": "Pet HUD name",
-		"animalName": "Animal Name",
-		"itemName": "Item Name",
-		"toBuyPet": "Use `$0$shop buy pet [$1$]` to buy.",
-		"toBuyItem": "Use `$0$shop buy item [$1$]` to buy.",
-		"exited": "You exited the store!",
-		"cartoon": {
-			"adventureTime": "Adventure Time",
-			"pinkPanther": "Pink Panther",
-			"tawog": "The Amazing World of Gumball",
-			"weBareBears": "We Bare Bears"
-		}
-	},
-
-	"scared": {
-		"isScared": "**$0$** is scared!",
-		"isScaredOfUs": "**$0$** is scared of us! 👀",
-		"isScaredOf": "**$0$** is scared of **$1$**!"
-	},
-
-	"slap": {
-		"slappedSelf": "**$0$** slapped themselves?",
-		"slappedUs": "**$0$** slapped us! 😠",
-		"slapped": "**$0$** slapped **$1$**!"
-	},
-
-	"sleep": {
-		"fellAsleep": "**$0$** fell asleep!",
-		"weMadeFallAsleep": "We made **$0$** fall asleep! 😴",
-		"madeFallAsleep": "**$0$** made **$1$** fall asleep!"
-	},
-
-	"timeout": {
-		"whyTimeUsOut": "Why do you want to time us out? 😦",
-		"timeSelfOut": "Did you just try time yourself out? 😆",
-		"youCannotTimeOut": "You can't timeout or remove **$0$**'s timeout!",
-		"cannotTimeOut": "We can't time anybody out. Check the role order!",
-		"isNotTimedOut": "**$0$** isn't timed out!",
-		"isTimedOutFor": "**$0$** is timed out for **$1$**! 🔇",
-		"timeOutRemoved": "**$0$**'s timeout was removed!",
-		"wrongTimeFormat": "You have to indicate the time with a valid format! (e.g.: 30s / 30m / 3h / 3d)!"
-	},
-
-	"userinfo": {
-		"status": {
-			"online": "Online",
-			"idle":	"Idle",
-			"dnd": "Do not Disturb",
-			"offline": "Offline"
-		},
-
-		"none": "None",
-		"joined": "Joined $0$ ago ($1$)",
-		"created": "Created $0$ ago ($1$)"
-	},
-
-	"vip": {
-		"click": "Click on the button below to buy the VIP status!"
-	},
-
-	"vote": {
-		"click": "Click on the button below to vote!"
-	},
-
-	"which": {
-		"noSelect": "You have to select an available anime! Use `$0$help which` $1$"
-	},
-
-	"wink": {
-		"winkedAtUs": "**$0$** winked at us! 😉",
-		"winkedAt": "**$0$** winked at **$1$**!"
-	},
-
-
 	"command": {
 		"angry": {
 			"category": "Actions",
 			"description": "Get angry!",
-			"usage": "angry [optional - @member]"
-		},
-
-		"automessages": {
-			"category": "Settings",
-			"description": "Toggle the automatic messages!\nIf enabled, we'll answer certain messages with funny things.",
-			"usage": "automessages"
+			"usage": "/angry [optional - @member]",
+			"gotAngry": "**$0$** got angry!",
+			"gotAngryWithUs": "**$0$** got angry with us! 😶",
+			"gotAngryWith": "**$0$** got angry with **$1$**!",
+			"memberDesc": "Who are you angry with?"
 		},
 
 		"avatar": {
 			"category": "Utility",
 			"description": "Look at your avatar or at a server member's!",
-			"usage": "avatar [optional - @user]"
+			"usage": "/avatar [optional - @user]",
+			"memberDesc": "The member you want the avatar from"
 		},
 
 		"balance": {
 			"category": "Economy and Profile",
 			"description": "Check your balance!",
-			"usage": "balance"
-		},
-
-		"ban": {
-			"category": "Moderation",
-			"description": "We'll ban a server member!",
-			"usage": "ban [@member] [optional - reason]"
+			"usage": "/balance",
+			"yourBalance": "Your balance"
 		},
 
 		"blush": {
 			"category": "Actions",
 			"description": "Blush!",
-			"usage": "blush [@member]"
+			"usage": "/blush [@member]",
+			"weMadeBlush": "We made **$0$** blush! 😊",
+			"madeBlush": "**$0$** made **$1$** blush!",
+			"memberDesc": "Who's making you blush?"
 		},
 
 		"clear": {
 			"category": "Moderation",
 			"description": "We'll clean the chat.",
-			"usage": "clear [number]"
+			"usage": "/clear [number]",
+			"weDeleted": "We have deleted `$0$` $1$!",
+			"message": "message",
+			"messages": "messages",
+			"numberDesc": "How many messages do you want to delete?"
 		},
 
 		"coinflip": {
 			"category": "Casino",
-			"description": "Flip the coin and place your bets!",
-			"usage": "coinflip [heads/tails] [quantity]"
+			"description": "Flip the coin and place your bet!",
+			"usage": "/coinflip [heads/tails] [quantity]",
+			"heads": "Heads",
+			"tails": "Tails",
+			"amountDesc": "How much do you want to bet?",
+			"guessDesc": "Heads or Tails?"
 		},
 
 		"cry": {
 			"category": "Actions",
 			"description": "Cry!",
-			"usage": "cry [optional - @member]"
+			"usage": "/cry [optional - @member]",
+			"isCrying": "**$0$** is crying!",
+			"isCryingBecauseOfUs": "**$0$** is crying because of us! 😟",
+			"madeCry": "**$0$** made **$1$** cry!",
+			"memberDesc": "Who made you cry?"
 		},
 
 		"daily": {
 			"category": "Economy and Profile",
 			"description": "You will receive <a:gpCoin:898355693193662464>300 each day you use this command!",
-			"usage": "daily"
+			"usage": "/daily",
+			"againIn": "You can get money again in **$0$**.",
+			"received": "You received your **<a:gpCoin:898355693193662464>$0$** of today! To get more <a:gpCoin:898355693193662464>150 (x2 for VIP) use `$1$vote`."
 		},
 
 		"dance": {
 			"category": "Actions",
 			"description": "Dance!",
-			"usage": "dance [optional - @member]"
+			"usage": "/dance [optional - @member]",
+			"isDancing": "**$0$** is dancing!",
+			"isDancingForUs": "**$0$** is dancing for us! 😯",
+			"isDancingFor": "**$0$** is dancing for **$1$**!",
+			"memberDesc": "Who are you dancing for?"
 		},
 
 		"fact": {
 			"category": "Fun",
 			"description": "**Facts**.",
-			"usage": "fact"
+			"usage": "/fact"
 		},
 
 		"give": {
 			"category": "Economy and Profile",
 			"description": "Give money to someone!",
-			"usage": "give [@member] [quantity]"
+			"usage": "/give [@member] [quantity]",
+			"self": "Seriously you just tried to give yourself money?",
+			"thanksBut": "Thanks, but you'll need that money more than us! 😁",
+			"youGave": "You gave **<a:gpCoin:898355693193662464>$0$** to **$1$**!",
+			"memberDesc": "Who do you want to give money?",
+			"amountDesc": "How much do you want to give?"
 		},
 
 		"happy": {
 			"category": "Actions",
 			"description": "Get Happy!",
-			"usage": "happy"
+			"usage": "/happy",
+			"madeHappy": "**$0$** made **$1$** happy!",
+			"weMadeHappy": "We made **$0$** happy!",
+			"isHappy": "**$0$** is happy!",
+			"memberDesc": "Who made you happy?"
 		},
 
-		"help": {
-			"category": "Help",
-			"description": "If you don't know, it's your problem! :unamused:",
-			"usage": "help [optional - command name]"
+		"commands": {
+			"description": "If you don't know what this does, it's your problem! 😒",
+			"embedDescription": "Here are every single command available!"
 		},
 
 		"hug": {
 			"category": "Actions",
 			"description": "Hug!",
-			"usage": "hug [@member]"
+			"usage": "/hug [@member]",
+			"huggedSelf": "**$0$** hugged themselves?",
+			"huggedUs": "**$0$** hugged us! 🤗",
+			"hugged": "**$0$** hugged **$1$**!",
+			"memberDesc": "Who do you want to hug?"
 		},
 
 		"inventory": {
 			"category": "Profile",
 			"description": "Check your inventory!",
-			"usage": "inventory"
+			"usage": "/inventory",
+			"inventoryFrom": "Inventory from **$0$**"
 		},
 
 		"invite": {
 			"category": "Utility",
 			"description": "We'll send our invite link!",
-			"usage": "invite"
+			"usage": "/invite"
 		},
 
 		"jankenpon": {
 			"category": "Casino",
-			"description": "Let us play _Rock, Paper, Scissors_ and place your bet on who wins!",
-			"usage": "jankenpon [gumball/penny] [quantity]"
-		},
-
-		"kick": {
-			"category": "Moderation",
-			"description": "We'll kick a server member!",
-			"usage": "kick [@member] [optional - reason]"
+			"description": "Let us play Rock Paper Scissors and place your bet on who wins!",
+			"usage": "/jankenpon [gumball/penny] [quantity]",
+			"rock": "Rock",
+			"paper": "Paper",
+			"scissors": "Scissors",
+			"threw": "**Gumball** threw **$0$** and **Penny** threw **$1$**.",
+			"draw": "It's a draw! You have your money refunded.",
+			"guessDesc": "Who do you think will win?",
+			"amountDesc": "How much do you want to bet?"
 		},
 
 		"kiss": {
 			"category": "Actions",
 			"description": "Kiss!",
-			"usage": "kiss [@member]"
+			"usage": "/kiss [@member]",
+			"kissedSelf": "**$0$** kissed themselves on the mirror? 🪞",
+			"kissedUs": "**$0$** kissed us! 😳",
+			"kissed": "**$0$** kissed **$1$!**!",
+			"memberDesc": "Who do you want to kiss?"
 		},
 
 		"laugh": {
 			"category": "Actions",
 			"description": "Laugh!",
-			"usage": "laugh [optional - @member]"
+			"usage": "/laugh [optional - @member]",
+			"isLaughing": "**$0$** is laughing!",
+			"isLaughingFromSelf": "**$0$** is laughing from themselves!",
+			"isLaughingFromUs": "**$0$** is laughing from us! 😅",
+			"isLaughingFrom": "**$0$** is laughing from **$1$**!",
+			"memberDesc": "Who are you laughing from?"
 		},
 
 		"match": {
 			"category": "Fun",
 			"description": "Check if you're compatible with somebody!",
-			"usage": "match [@member]"
+			"usage": "/match [@member]",
+			"alreadyAPair": "Hey, we're already a pair! 😠",
+			"youAre": "You are $0$% compatible!",
+			"memberDesc": "Who do you want to check compatibility with?"
 		},
 
 		"members": {
 			"category": "Server",
 			"description": "We'll show the server's member count!",
-			"usage": "members"
-		},
-
-		"timeout": {
-			"category": "Moderation",
-			"description": "We'll time a server member out for a determined duration (maximum of 7 days)!",
-			"usage": "timeout [@member] [optional - duration(s/m/h/d) / remove] [optional - reason]"
+			"usage": "/members",
+			"message": "**$0$** has **$1$** members!"
 		},
 
 		"pat": {
 			"category": "Actions",
 			"description": "Pat!",
-			"usage": "pat [@member]"
+			"usage": "/pat [@member]",
+			"pattedSelf": "**$0$** patted themsleves?",
+			"pattedUs": "**$0$** patted us! 😊",
+			"patted": "**$0$** patted **$1$**!",
+			"memberDesc": "Who do you want to pat?"
 		},
 
 		"pet": {
 			"category": "Economy and Profile",
-			"description": "Check your pet or someone's!\nAvailable options: `set (name/hud)`, `sendtoadoption`.",
-			"usage": "pet [optional - option | @member]"
+			"description": "Available options: check, setname, sethud, sendtoadoption.",
+			"usage": "/pet [optional - option | @member]",
+			"nameChangedTo": "You pet's name was changed to **$0$**.",
+			"petHudChangedTo": "Your Pet HUD was changed to **$0$**.",
+			"wasSentToAdoption": "**$0$** was sent to adoption!",
+			"botNoPet": "We don't have a pet! Yet...",
+			"botsNoPets": "Bots have no pets!",
+			"memberDesc": "Whose pet do you want to see?",
+			"newNameDesc": "What will be your pet's new name?",
+			"newHudDesc": "What will be your pet's new HUD?",
+			"checkDesc": "Check your pet or someone's!",
+			"setnameDesc": "Give a new name to your pet (This will consume 1x Name License)",
+			"sethudDesc": "Give a new HUD to your pet",
+			"sendtoadoptionDesc": "Send your pet to adoption"
 		},
 
 		"ping": {
 			"category": "Utility",
 			"description": "Uhm... pong?",
-			"usage": "ping"
+			"usage": "/ping",
+			"apiPing": "API ping"
 		},
 
 		"profile": {
 			"category": "Economy and Profile",
-			"description": "Check your profile or someone's!\nAvailable options: `create`, `set (description/hud/nickname)`.",
-			"usage": "profile [optional - option | @member]"
+			"description": "Available options: create, setdescription, sethud, setnickname.",
+			"usage": "/profile [optional - option | @member]",
+			"wasCreated": "You profile was created! Add a description with `/profile set description [$0$]`.",
+			"nicknameChangedTo": "Your nickname was changed to **$0$**.",
+			"descChangedTo": "Your description was changed to **$0$**.",
+			"hudChangedTo": "Your HUD was changed to **$0$**.",
+			"checkDesc": "Check your profile or someone's!",
+			"memberDesc": "Whose profile do you want to check?",
+			"createDesc": "Create a profile!",
+			"setnicknameDesc": "Set your nickname",
+			"newnicknameDesc": "What will be your new nickname?",
+			"setdescriptionDesc": "Set your profile's description",
+			"newdescriptionDesc": "What will be your new profile description?",
+			"sethudDesc": "Set your profile's HUD",
+			"newhudDesc": "What will be your new profile HUD?"
 		},
 
 		"quiz": {
 			"category": "Fun",
 			"description": "Play several themed quizzes!",
-			"usage": "quiz"
+			"usage": "/quiz",
+			"mainDescription": "These are the available quiz themes.\nEvery quiz will take 10 questions. Each correct answer in 15 seconds gives you 1 point.\nAnyone can join just by answering correctly.",
+			"themeDescription": "Choose a category!",
+			"toStart": "Press the _Start_ button to start the quiz!",
+			"exited": "You exited the Quiz page!",
+			"alreadyPlaying": "There's a quiz being played already in this channel! Start a new one on another channel or wait for the quiz to end.",
+			"starting": "Starting **$0$** quiz in 5 seconds!",
+			"animeEyes": "Anime Eyes",
+			"whoIsCharacter": "Who is this character?",
+			"correct": "Correct!",
+			"wrong": "Wrong!",
+			"noCorrectAnswer": "No correct answer!",
+			"ended": "The quiz has ended!",
+			"points": "\n<@$0$> - $1$ point",
+			"noOneScored": "No one scored!"
 		},
 
 		"random": {
 			"category": "Fun",
 			"description": "We'll tell a number between 1 and the indicated number. The default is 100.",
-			"usage": "random [optional - number]"
+			"usage": "/random [optional - number]",
+			"numberDesc": "Choose a number"
 		},
 
 		"ranking": {
 			"category": "Economy and Profile",
 			"description": "Check the top 10 users who use us!",
-			"usage": "ranking"
+			"usage": "/ranking",
+			"updatedAt": "Updated at $0$ $1$ UTC",
+			"optionDesc": "Choose between XP or Balance ranking"
 		},
 
 		"run": {
 			"category": "Actions",
 			"description": "Run!",
-			"usage": "run [optional - @member]"
-		},
-
-		"say": {
-			"category": "Fun",
-			"description": "We'll say whatever you want! :slight_smile:",
-			"usage": "say [message]"
+			"usage": "/run [optional - @member]",
+			"ranAway": "**$0$** ran away!",
+			"ranAwayFromUs": "**$0$** ran away from us! 🤨",
+			"ranAwayFrom": "**$0$** ran away from **$1$**!",
+			"memberDesc": "Who are you running away from?"
 		},
 
 		"scared": {
 			"category": "Actions",
 			"description": "Become scared!",
-			"usage": "scared [optional - @member]"
+			"usage": "/scared [optional - @member]",
+			"isScared": "**$0$** is scared!",
+			"isScaredOfUs": "**$0$** is scared of us! 👀",
+			"isScaredOf": "**$0$** is scared of **$1$**!",
+			"memberDesc": "Who are you scared of?"
 		},
 
 		"serverinfo": {
 			"category": "Server",
 			"description": "All server's info!",
-			"usage": "serverinfo"
+			"usage": "/serverinfo",
+			"verificationLevel": {
+				"NONE": "None",
+				"LOW": "Low",
+				"MEDIUM": "Medium",
+				"HIGH": "High",
+				"VERY_HIGH": "Very High"
+			},
+
+			"region": {
+				"brazil": "Brazil",
+				"europe": "Europe",
+				"eu-central": "Europe Central",
+				"eu-east": "Europe East",
+				"eu-west": "Europe West",
+				"hongkong": "Hong Kong",
+				"india": "india",
+				"japan": "Japan",
+				"russia": "Russia",
+				"singapore": "Singapore",
+				"southafrica": "South Africa",
+				"sydney": "Sydney",
+				"us-central": "US Central",
+				"us-east": "US East",
+				"us-south": "US South",
+				"us-west": "US West"
+			},
+
+			"members": "Members",
+			"created": "Created $0$ ago ($1$)"
 		},
 
 		"setlanguage": {
 			"category": "Server",
 			"description": "Change our language for this server.",
-			"usage": "setlanguage [language]"
-		},
-
-		"setprefix": {
-			"category": "Server",
-			"description": "Change our prefix for this server.",
-			"usage": "setprefix [prefix]"
+			"usage": "/setlanguage [language]",
+			"noLanguage": "You have to select a language!",
+			"select": "Select one of the languages below.",
+			"isNow": "Now we'll speak in English 🇺🇸 in this server."
 		},
 
 		"shop": {
 			"category": "Economy and Profile",
 			"description": "Go shopping in the Awesome Store!\nAvailable options: `buy`, `view`.",
-			"usage": "shop"
+			"usage": "/shop",
+			"welcome": "Welcome to the Awesome Store!\nHere you can buy some stuff with the money you have saved so far.\nUse the buttons below to navigate through the store!",
+			"boughtHUD": "You bought the HUD **$0$**! To equip it use `/profile set hud [$1$]`.",
+			"boughtPetHud": "You bought the Pet HUD **$0$**! To equip it use `/profile set hud [$1$]`.",
+			"boughtItem": "You bought 1 **$0$**!",
+			"boughtPet": "You bought 1 **$0$**! To give it a name use `/pet set nickname [$1$]`.",
+			"hero": "Hero",
+			"villain": "Villain",
+			"toBuyHud": "Use `/shop buy hud [$0$]` to buy or `/shop view hud [$1$]` to see.",
+			"toBuyPetHud": "Use `/shop buy pethud [$0$]` to buy or `/shop view pethud [$1$]` to see.",
+			"hudName": "HUD Name",
+			"petHudName": "Pet HUD name",
+			"animalName": "Animal Name",
+			"itemName": "Item Name",
+			"toBuyPet": "Use `/shop buy pet [$0$]` to buy.",
+			"toBuyItem": "Use `/shop buy item [$0$]` to buy.",
+			"exited": "You exited the store!",
+			"cartoon": {
+				"adventureTime": "Adventure Time",
+				"pinkPanther": "Pink Panther",
+				"tawog": "The Amazing World of Gumball",
+				"weBareBears": "We Bare Bears"
+			},
+			"openDescription": "Enter the Awesome Store",
+			"buyDescription": "Buy something in-stock",
+			"buyHudDescription": "Buy a HUD",
+			"buyHudNameDescription": "Which HUD do you wish to buy?",
+			"buyPetHudDescription": "Buy a PetHUD",
+			"buyPetHudNameDescription": "Which PetHUD do you wish to buy?",
+			"buyItemDescription": "Buy an item",
+			"buyItemNameDescription": "Which item do you wish to buy?",
+			"buyPetDescription": "Buy a Pet",
+			"buyPetNameDescription": "Which Pet do you wish to buy?",
+			"viewDescription": "View something in-stock",
+			"viewHudDescription": "View a HUD",
+			"viewHudNameDescription": "Which HUD do you wish to view?",
+			"viewPetHudDescription": "View a PetHUD",
+			"viewPetHudNameDescription": "Which PetHUD do you wish to view?"
 		},
-		
+
 		"slap": {
 			"category": "Actions",
 			"description": "Slap someone!",
-			"usage": "slap [optional - @member]"
+			"usage": "/slap [optional - @member]",
+			"slappedSelf": "**$0$** slapped themselves?",
+			"slappedUs": "**$0$** slapped us! 😠",
+			"slapped": "**$0$** slapped **$1$**!",
+			"memberDesc": "Who do you want to slap?"
 		},
 
 		"sleep": {
 			"category": "Actions",
 			"description": "Fall asleep!",
-			"usage": "sleep [optional - @member]"
+			"usage": "/sleep [optional - @member]",
+			"fellAsleep": "**$0$** fell asleep!",
+			"weMadeFallAsleep": "We made **$0$** fall asleep! 😴",
+			"madeFallAsleep": "**$0$** made **$1$** fall asleep!",
+			"memberDesc": "Who made you fall aslep?"
 		},
 
 		"userinfo": {
 			"category": "Server",
 			"description": "All info from a server member!",
-			"usage": "userinfo [optional - @member]"
+			"usage": "/userinfo [optional - @member]",
+			"status": {
+				"online": "Online",
+				"idle": "Idle",
+				"dnd": "Do not Disturb",
+				"offline": "Offline"
+			},
+			"none": "None",
+			"joined": "Joined $0$ ago ($1$)",
+			"created": "Created $0$ ago ($1$)",
+			"memberDesc": "Whose info do you want to check?"
 		},
 
 		"vip": {
 			"category": "Economy and Profile",
 			"description": "Buy VIP to receive perks!",
-			"usage": "vip"
+			"usage": "/vip",
+			"click": "Click on the button below to buy the VIP status!"
 		},
 
 		"vote": {
 			"category": "Economy and Profile",
 			"description": "Vote for us to receive <a:gpCoin:898355693193662464>150 (300 for VIP)!",
-			"usage": "vote"
+			"usage": "/vote",
+			"click": "Click on the button below to vote!"
 		},
-		
+
 		"which": {
 			"category": "Fun",
-			"description": "Which anime character are you?\nAvailable anime: `akame ga kill`, `attack on titan`, `code geass`, `death note`, `higurashi` , `jojo`, `kakegurui`, `mirai nikki`, `noragami`, `one punch man`, `parasyte`, `psycho-pass`, `steins;gate`.",
-			"usage": "which [anime]"
+			"description": "Which anime character are you?",
+			"usage": "/which [anime]",
+			"animeDesc": "Choose an anime"
 		},
 
 		"wink": {
 			"category": "Actions",
 			"description": "Wink at someone!",
-			"usage": "wink [@member]"
+			"usage": "/wink [@member]",
+			"winkedAtUs": "**$0$** winked at us! 😉",
+			"winkedAt": "**$0$** winked at **$1$**!",
+			"memberDesc": "Who do you want to wink at?"
 		}
 	},
-
 
 	"pets": {
 		"species": {

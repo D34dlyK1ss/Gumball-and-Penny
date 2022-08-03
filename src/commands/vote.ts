@@ -1,13 +1,19 @@
-import { Message, MessageActionRow, MessageButton } from 'discord.js';
+import { ActionRowBuilder, ButtonBuilder, ChatInputCommandInteraction, SlashCommandBuilder } from 'discord.js';
+import enLang from '../lang/en.json';
 
-export const name = 'vote';
-export function execute(bot: undefined, message: Message, command: undefined, db: undefined, lang: Record<string, string | any>) {
-	const row = new MessageActionRow().addComponents(
-		new MessageButton()
-			.setLabel('Discord Bot List')
-			.setStyle('LINK')
-			.setURL('https://discordbotlist.com/bots/gumball-and-penny/upvote')
-	);
+export = {
+	data: new SlashCommandBuilder()
+		.setName('vote')
+		.setDescription(enLang.command.vote.description),
 
-	message.channel.send({ content: lang.vote.click, components: [row] });
-}
+	execute(bot: undefined, interaction: ChatInputCommandInteraction, db: undefined, lang: Record<string, string | any>) {
+		const row = new ActionRowBuilder<ButtonBuilder>().addComponents(
+			new ButtonBuilder()
+				.setLabel('Discord Bot List')
+				.setStyle(5)
+				.setURL('https://discordbotlist.com/bots/gumball-and-penny/upvote')
+		);
+		
+		interaction.reply({ content: lang.command.vote.click, components: [row] });
+	}
+};

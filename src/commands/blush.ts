@@ -1,19 +1,27 @@
-import { Message } from 'discord.js';
-import { BotClient, Cmd } from 'index';
+import { ChatInputCommandInteraction, SlashCommandBuilder } from 'discord.js';
+import { BotClient } from 'index';
 import getText from '../functions/getText';
+import enLang from '../lang/en.json';
 
-export const name = 'blush';
-export function execute(bot: BotClient, message: Message, command: Cmd, db: undefined, lang: Record<string, string | any>, language: undefined, prefix: string) {
-	const user = message.mentions.users.first();
-	const rnd = Math.floor(Math.random() * 6);
+export = {
+	data: new SlashCommandBuilder()
+		.setName('blush')
+		.setDescription(enLang.command.blush.description)
+		.addUserOption(option =>
+			option.setName('member')
+				.setDescription(enLang.command.blush.memberDesc)
+				.setRequired(true)
+		),
 
-	if (!user) {
-		message.reply(getText(lang.error.wrongSyntax, [prefix, lang.command[command.name].usage]));
+	execute(bot: BotClient, interaction: ChatInputCommandInteraction, db: undefined, lang: Record<string, string | any>) {
+		const user = interaction.options.getUser('member');
+		const rnd = Math.floor(Math.random() * 6);
+		
+		if (user === bot.user) {
+			interaction.reply({ content: getText(lang.command.blush.weMadeBlush, [interaction.user.tag]), files: [`src/img/actions/${interaction.commandName} (${rnd}).gif`] });
+		}
+		else {
+			interaction.reply({ content: getText(lang.command.blush.madeBlush, [user.tag, interaction.user.tag]), files: [`src/img/actions/${interaction.commandName} (${rnd}).gif`] });
+		}
 	}
-	else if (user === bot.user) {
-		message.channel.send({ content: getText(lang.blush.weMadeBlush, [message.author.tag]), files: [`src/img/actions/${command.name} (${rnd}).gif`] });
-	}
-	else {
-		message.channel.send({ content: getText(lang.blush.madeBlush, [user.tag, message.author.tag]), files: [`src/img/actions/${command.name} (${rnd}).gif`] });
-	}
-}
+};

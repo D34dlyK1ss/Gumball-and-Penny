@@ -1,15 +1,22 @@
-import { Message, MessageActionRow, MessageEmbed } from 'discord.js';
+import { ChatInputCommandInteraction, SlashCommandBuilder } from 'discord.js';
 import { createQuizPage, alreadyPlaying } from '../functions/quizHandler';
+import enLang from '../lang/en.json';
 
-export const name = 'quiz';
-export function execute(bot: undefined, message: Message, command: undefined, db: FirebaseFirestore.Firestore, lang: Record<string, any>, language: string, prefix: string) {
+export = {
+	data: new SlashCommandBuilder()
+		.setName('quiz')
+		.setDescription(enLang.command.quiz.description),
 
-	if (alreadyPlaying.has(message.channelId)) {
-		message.reply(lang.quiz.alreadyPlaying);
+	async execute(bot: undefined, interaction: ChatInputCommandInteraction, db: FirebaseFirestore.Firestore, lang: Record<string, any>) {
+		if (alreadyPlaying.has(interaction.channelId)) {
+			interaction.reply(lang.command.quiz.alreadyPlaying);
+		}
+		else {
+			await interaction.deferReply();
+
+			const page = createQuizPage(interaction, interaction.user, lang, 'quizmainEmbed');
+		
+			await interaction.editReply({ embeds: [page.embed], components: [page.buttonRow] });
+		}
 	}
-	else {
-		const pageToSend: (MessageEmbed|MessageActionRow)[] = createQuizPage(message, message.author, lang, prefix, 'quizmainEmbed');
-
-		message.reply({ embeds: [pageToSend[0] as MessageEmbed], components: [pageToSend[1] as MessageActionRow] });
-	}
-}
+};

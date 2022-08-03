@@ -1,56 +1,61 @@
-import { Message } from 'discord.js';
-import { Cmd } from 'index';
+import { ChatInputCommandInteraction, SlashCommandBuilder } from 'discord.js';
 import getText from '../functions/getText';
-import titleCase from '../functions/titleCase';
+import enLang from '../lang/en.json';
 
-export const name = 'coinflip';
-export function execute(bot: undefined, message: Message, command: Cmd, db: FirebaseFirestore.Firestore, lang: Record<string, string | any>, language: undefined, prefix: string, args: string[]) {
-	const user = message.author;
-	const ref = db.collection('perfis').doc(user.id);
+const least = 50;
+const most = 1000;
 
-	ref.get().then(doc => {
-		const money = Math.floor(parseInt(args[1]));
-		if (!doc.exists) {
-			message.reply(getText(lang.error.noProfile, [prefix]));
-		}
-		else if (!Number.isInteger(money) || args[0] !== lang.coinflip.heads && args[0] !== lang.coinflip.tails) {
-			message.channel.send(getText(lang.error.wrongSyntax, [prefix, lang.command[command.name].usage]));
-		}
-		else {
-			const bal: number = doc.get('balance');
-			const least = 50;
-			const most = 1000;
+export = {
+	data: new SlashCommandBuilder()
+		.setName('coinflip')
+		.setDescription(enLang.command.coinflip.description)
+		.addStringOption(option =>
+			option.setName('guess')
+				.setDescription(enLang.command.coinflip.guessDesc)
+				.setChoices(
+					{ name: 'Heads', value: 'Heads' },
+					{ name: 'Tails', value: 'Tails' }
+				)
+				.setRequired(true)
+		)
+		.addIntegerOption(option =>
+			option.setName('amount')
+				.setDescription(enLang.command.coinflip.amountDesc)
+				.setMinValue(least)
+				.setMaxValue(most)
+				.setRequired(true)
+		),
 
-			if (bal + money > 1000000) {
-				message.reply(lang.error.noAdd);
-			}
-			else if (money > bal) {
-				message.reply(lang.error.noMoney);
-			}
-			else if (money < least) {
-				message.reply(getText(lang.betAtLeast, [least]));
-			}
-			else if (money > most) {
-				message.reply(getText(lang.betAtMost, [most]));
+	execute(bot: undefined, interaction: ChatInputCommandInteraction, db: FirebaseFirestore.Firestore, lang: Record<string, string | any>) {
+		const ref = db.collection('perfis').doc(interaction.user.id);
+
+		ref.get().then(doc => {
+			if (!doc.exists) {
+				interaction.reply(lang.error.noProfile);
 			}
 			else {
-				const value = Math.round(Math.random());
-				const guess = args[0].toLowerCase();
-				let res: string;
+				const money = Math.floor(interaction.options.getInteger('amount'));
+				const bal = doc.get('balance') as number;
 
-				message.channel.send({ files: ['src/img/coinflip/animation.gif'] }).then(msg => {
-					setTimeout(() => {
-						msg.delete().then(()=> {
-							value === 0 ? res = 'heads' : res = 'tails';
+				if (bal + money > 1000000) {
+					interaction.reply(lang.error.noAdd);
+				}
+				else if (money > bal) {
+					interaction.reply(lang.error.noMoney);
+				}
+				else {
+					interaction.reply({ files: ['src/img/coinflip/animation.gif'] }).then(() => {
+						const guess = interaction.options.getString('guess');
+						const res = Math.round(Math.random()) ? 'Heads' : 'Tails';
+						const messageRes = lang.coinflip[res];
+						const imageRes = `src/img/coinflip/${res}.gif`;
 
-							const messageRes = titleCase(lang.coinflip[res]);
-							const imageRes = `src/img/coinflip/${res}.gif`;
-
+						setTimeout(() => {
 							if (lang.coinflip[res] !== guess) {
 								ref.update({
 									balance: bal - money
-								}).then(() => {
-									message.reply({ content: `${messageRes}! ${getText(lang.lost, [money])}`, files: [imageRes] });
+								}).then(async () => {
+									await interaction.editReply({ content: `${messageRes}! ${getText(lang.lost, [money])}`, files: [imageRes] });
 								});
 							}
 							else if (lang.coinflip[res] === guess) {
@@ -58,14 +63,14 @@ export function execute(bot: undefined, message: Message, command: Cmd, db: Fire
 
 								ref.update({
 									balance: bal + won
-								}).then(() => {
-									message.reply({ content: `${messageRes}! ${getText(lang.won, [won])}`, files: [imageRes] });
+								}).then(async () => {
+									await interaction.editReply({ content: `${messageRes}! ${getText(lang.won, [won])}`, files: [imageRes] });
 								});
 							}
-						});
-					}, 2000);
-				});
+						}, 2000);
+					});
+				}
 			}
-		}
-	});
-}
+		});
+	}
+};

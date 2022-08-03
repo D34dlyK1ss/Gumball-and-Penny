@@ -1,19 +1,29 @@
-import { Message } from 'discord.js';
-import { BotClient, Cmd } from 'index';
+import { ChatInputCommandInteraction, SlashCommandBuilder } from 'discord.js';
+import { BotClient } from 'index';
 import getText from '../functions/getText';
+import enLang from '../lang/en.json';
 
-export const name = 'angry';
-export function execute(bot: BotClient, message: Message, command: Cmd, db: undefined, lang: Record<string, string | any>) {
-	const user = message.mentions.users.first();
-	const rnd = Math.floor(Math.random() * 6);
+export = {
+	data: new SlashCommandBuilder()
+		.setName('angry')
+		.setDescription(enLang.command.angry.description)
+		.addUserOption(option =>
+			option.setName('member')
+				.setDescription(enLang.command.angry.memberDesc)
+		),
 
-	if (!user || user === message.author) {
-		message.channel.send({ content: getText(lang.angry.gotAngry, [message.author.tag]), files: [`src/img/actions/${command.name} (${rnd}).gif`] });
+	execute(bot: BotClient, interaction: ChatInputCommandInteraction, db: undefined, lang: Record<string, string | any>) {
+		const user = interaction.options.getUser('member');
+		const rnd = Math.floor(Math.random() * 6);
+	
+		if (!user || user === interaction.user) {
+			interaction.reply({ content: getText(lang.command.angry.gotAngry, [interaction.user.tag]), files: [`src/img/actions/${interaction.commandName} (${rnd}).gif`] });
+		}
+		else if (user === bot.user) {
+			interaction.reply({ content: getText(lang.command.angry.gotAngryWithUs, [interaction.user.tag]), files: [`src/img/actions/${interaction.commandName} (${rnd}).gif`] });
+		}
+		else {
+			interaction.reply({ content: getText(lang.command.angry.gotAngryWith, [interaction.user.tag, user.tag]), files: [`src/img/actions/${interaction.commandName} (${rnd}).gif`] });
+		}
 	}
-	else if (user === bot.user) {
-		message.channel.send({ content: getText(lang.angry.gotAngryWithUs, [message.author.tag]), files: [`src/img/actions/${command.name} (${rnd}).gif`] });
-	}
-	else {
-		message.channel.send({ content: getText(lang.angry.gotAngryWith, [message.author.tag, user.tag]), files: [`src/img/actions/${command.name} (${rnd}).gif`] });
-	}
-}
+};

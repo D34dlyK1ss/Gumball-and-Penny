@@ -1,46 +1,88 @@
-import { Message, MessageEmbed } from 'discord.js';
+import { ChatInputCommandInteraction, EmbedBuilder, SlashCommandBuilder } from 'discord.js';
 import { BotClient } from 'index';
 import moment from 'moment';
 import getText from '../functions/getText';
-
-export const name = 'ranking';
-export const aliases = ['leaderboard'];
+import enLang from '../lang/en.json';
 
 let lastUpdateAt = 0;
-const rankingEmbed = new MessageEmbed()
-	.setColor('DARK_PURPLE')
+const rankingEmbed = new EmbedBuilder()
+	.setColor('DarkPurple')
 	.setThumbnail('https://i.imgur.com/0lJXooH.png');
 
-export async function execute(bot: BotClient, message: Message, command: undefined, db: FirebaseFirestore.Firestore, lang: Record<string, string | any>, language: string) {
-	moment.locale(language);
+export = {
+	data: new SlashCommandBuilder()
+		.setName('ranking')
+		.setDescription(enLang.command.ranking.description)
+		.addStringOption(option => 
+			option.setName('option')
+				.setDescription(enLang.command.ranking.optionDesc)
+				.setChoices(
+					{ name: 'XP', value: 'XP' },
+					{ name: enLang.balance, value: enLang.balance }
+				)
+				.setRequired(true)
+		),
 
-	const refP = db.collection('perfis');
-	const query = await refP.orderBy('xp', 'desc').limit(10).get();
-	const users: FirebaseFirestore.QueryDocumentSnapshot<FirebaseFirestore.DocumentData>[] = [];
-	query.forEach((doc) => users.push(doc));
-	
-	if (Date.now() - lastUpdateAt > 1800000) {
+	async execute(bot: BotClient, interaction: ChatInputCommandInteraction, db: FirebaseFirestore.Firestore, lang: Record<string, string | any>, language: string) {
+		await interaction.deferReply();
+		moment.locale(language);
+		
+		const refP = db.collection('perfis');
+		
 		let i = 0;
 		let column = '';
 		let column2 = '';
 
-		for (const doc of users) {
-			const user = await bot.users.fetch(doc.id);
+		if (interaction.options.getString('XP')) {
+			const query = await refP.orderBy('xp', 'desc').limit(10).get();
+			const users: FirebaseFirestore.QueryDocumentSnapshot<FirebaseFirestore.DocumentData>[] = [];
+			query.forEach((doc) => users.push(doc));
 
-			i++;
-			column += `${i}. ${user.tag}\n`;
-			column2 += `${doc.get('xp')} XP, ${lang.level} ${doc.get('level')}\n`;
+			if (Date.now() - lastUpdateAt > 1800000) {
+			
+				for (const doc of users) {
+					const user = await bot.users.fetch(doc.id);
+
+					i++;
+					column += `${i}. ${user.tag}\n`;
+					column2 += `${doc.get('xp')} XP, ${lang.level} ${doc.get('level')}\n`;
+				}
+				
+				lastUpdateAt = Date.now();
+
+				rankingEmbed
+					.setFields([
+						{ name: 'Top 10', value: column, inline: true },
+						{ name: 'XP', value: column2, inline: true }
+					])
+					.setFooter({ text: getText(lang.command.ranking.updatedAt, [moment(lastUpdateAt).utc().format('LL'), moment(lastUpdateAt).utc().format('LTS')]) });
+			}
+		}
+		else {
+			const query = await refP.orderBy('balance', 'desc').limit(10).get();
+			const users: FirebaseFirestore.QueryDocumentSnapshot<FirebaseFirestore.DocumentData>[] = [];
+			query.forEach((doc) => users.push(doc));
+
+			if (Date.now() - lastUpdateAt > 1800000) {			
+				for (const doc of users) {
+					const user = await bot.users.fetch(doc.id);
+
+					i++;
+					column += `${i}. ${user.tag}\n`;
+					column2 += `¤${doc.get('balance')}, ${lang.level} ${doc.get('level')}\n`;
+				}
+
+				lastUpdateAt = Date.now();
+
+				rankingEmbed
+					.setFields([
+						{ name: 'Top 10', value: column, inline: true },
+						{ name: lang.balance, value: column2, inline: true }
+					])
+					.setFooter({ text: getText(lang.command.ranking.updatedAt, [moment(lastUpdateAt).utc().format('LL'), moment(lastUpdateAt).utc().format('LTS')]) });
+			}
 		}
 		
-		lastUpdateAt = Date.now();
-		rankingEmbed.spliceFields(0, 10);
-		rankingEmbed
-			.addFields([
-				{ name: 'Top 10', value: column, inline: true },
-				{ name: 'XP', value: column2, inline: true }
-			])
-			.setFooter(getText(lang.ranking.updatedAt, [moment(lastUpdateAt).utc().format('LL'), moment(lastUpdateAt).utc().format('LTS')]));
+		await interaction.editReply({ embeds: [rankingEmbed] });
 	}
-
-	message.channel.send({ embeds: [rankingEmbed] });
-}
+};

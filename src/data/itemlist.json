@@ -2,491 +2,636 @@
 	"huds": {
 		"colorPrice": 7500,
 		"price": 15000,
-		"black": {
+
+		"Black": {
 			"hex": "#202020"
 		},
-		"blue": {
+
+		"Blue": {
 			"hex": "#0040e0"
 		},
-		"brown": {
+
+		"Brown": {
 			"hex": "#802000"
 		},
-		"green": {
+
+		"Green": {
 			"hex": "#00e000"
 		},
-		"grey": {
+
+		"Grey": {
 			"hex": "#808080"
 		},
-		"orange": {
+
+		"Orange": {
 			"hex": "#ff1000"
 		},
-		"pink": {
+
+		"Pink": {
 			"hex": "#e000e0"
 		},
-		"purple": {
+
+		"Purple": {
 			"hex": "#9900ff"
 		},
-		"red": {
+
+		"Red": {
 			"hex": "#ff0000"
 		},
-		"yellow": {
+
+		"Yellow": {
 			"hex": "#e0e000"
 		},
-		"among_us": {
+
+		"Among Us": {
 			"hex": "#c00000"
 		},
-		"akuma": {
+
+		"Akuma": {
 			"hex": "#c00000"
 		},
-		"batman": {
+
+		"Batman": {
 			"hex": "#101010"
 		},
-		"captain_america": {
+
+		"Captain America": {
 			"hex": "#c00000"
 		},
-		"chaos_king": {
+
+		"Chaos King": {
 			"hex": "#400080"
 		},
-		"courage": {
+
+		"Courage": {
 			"hex": "#e0a0e0"
 		},
-		"clown_gremlins": {
+
+		"Clown Gremlins": {
 			"hex": "#e0e0e0"
 		},
-		"cuphead": {
+
+		"Cuphead": {
 			"hex": "#400000"
 		},
-		"diamonds": {
+
+		"Diamonds": {
 			"hex": "#00e0e0"
 		},
-		"ditto": {
+
+		"Ditto": {
 			"hex": "#e0a0e0"
 		},
-		"eclipse_leona": {
+
+		"Eclipse Leona": {
 			"hex": "#e0c000"
 		},
-		"flappy_bird": {
+
+		"Flappy Bird": {
 			"hex": "#e0c000"
 		},
-		"funtime_foxy": {
+
+		"Funtime Foxy": {
 			"hex": "#e00080"
 		},
-		"giorno": {
+
+		"Giorno": {
 			"hex": "#e0c000"
 		},
-		"glitchtrap": {
+
+		"Glitchtrap": {
 			"hex": "#9040b0"
 		},
-		"green_goblin": {
+
+		"Green Goblin": {
 			"hex": "#008000"
 		},
-		"gumball_&_darwin": {
+
+		"Gumball & Darwin": {
 			"hex": "#e0c0a0"
 		},
-		"gumball_&_penny": {
+
+		"Gumball & Penny": {
 			"hex": "#00c0e0"
 		},
-		"hollow_knight": {
+
+		"Hollow Knight": {
 			"hex": "#202030"
 		},
-		"iron_man": {
+
+		"Iron Man": {
 			"hex": "#c00000"
 		},
-		"ink_bendy": {
+
+		"Ink Bendy": {
 			"hex": "#602000"
 		},
-		"isaac": {
+
+		"Isaac": {
 			"hex": "#101010"
 		},
-		"itachi": {
+
+		"Itachi": {
 			"hex": "#101010"
 		},
-		"joker": {
+
+		"Joker": {
 			"hex": "#101010"
 		},
-		"jake_a": {
+
+		"Jake A": {
 			"hex": "#e0c000"
 		},
-		"jake_b": {
+
+		"Jake B": {
 			"hex": "#c40020"
 		},
-		"kakashi": {
+
+		"Kakashi": {
 			"hex": "#101010"
 		},
-		"kaneki_a": {
+
+		"Kaneki A": {
 			"hex": "#404040"
 		},
-		"kaneki_b": {
+
+		"Kaneki B": {
 			"hex": "#404040"
 		},
-		"kda_ahri": {
+
+		"Kda Ahri": {
 			"hex": "#9050e0"
 		},
-		"kda_akali": {
+
+		"Kda Akali": {
 			"hex": "#c000a0"
 		},
-		"kenny_mccormick": {
+
+		"Kenny Mccormick": {
 			"hex": "#405030"
 		},
-		"kirby_a": {
+
+		"Kirby A": {
 			"hex": "#ffa0c0"
 		},
-		"kirby_b": {
+
+		"Kirby B": {
 			"hex": "#e0a0c0"
 		},
-		"l": {
+
+		"L": {
 			"hex": "#101010"
 		},
-		"lelouch_a": {
+
+		"Lelouch A": {
 			"hex": "#400080"
 		},
-		"lelouch_b": {
+
+		"Lelouch B": {
 			"hex": "#600080"
 		},
-		"lux": {
+
+		"Lux": {
 			"hex": "#500090"
 		},
-		"miku_hatsune": {
+
+		"Miku Hatsune": {
 			"hex": "#00c0ff"
 		},
-		"morioh_gang": {
+
+		"Morioh Gang": {
 			"hex": "#00a0c0"
 		},
-		"murder_monkeys": {
+
+		"Murder Monkeys": {
 			"hex": "#601020"
 		},
-		"naruto": {
+
+		"Naruto": {
 			"hex": "#e0c000"
 		},
-		"nathan_drake": {
+
+		"Nathan Drake": {
 			"hex": "#000040"
 		},
-		"nezuko_kamado": {
+
+		"Nezuko Kamado": {
 			"hex": "#ff98a0"
 		},
-		"nightmare_chica": {
+
+		"Nightmare Chica": {
 			"hex": "#e0c000"
 		},
-		"nightmare_foxy": {
+
+		"Nightmare Foxy": {
 			"hex": "#101010"
 		},
-		"nunu_&_willump": {
+
+		"Nunu & Willump": {
 			"hex": "#00c0ff"
 		},
-		"onslaught": {
+
+		"Onslaught": {
 			"hex": "#c00000"
 		},
-		"poros": {
+
+		"Poros": {
 			"hex": "#8090b0"
 		},
-		"professor_chaos": {
+
+		"Professor Chaos": {
 			"hex": "#405030"
 		},
-		"reaper_soraka": {
+
+		"Reaper Soraka": {
 			"hex": "#a080e0"
 		},
-		"rin_kagamine": {
+
+		"Rin Kagamine": {
 			"hex": "#e0c000"
 		},
-		"saitama": {
+
+		"Saitama": {
 			"hex": "#c00000"
 		},
-		"sans": {
+
+		"Sans": {
 			"hex": "#0080ff"
 		},
-		"scorpion_a": {
+
+		"Scorpion A": {
 			"hex": "#e0c000"
 		},
-		"scorpion_b": {
+
+		"Scorpion B": {
 			"hex": "#e0c000"
 		},
-		"shiro": {
+
+		"Shiro": {
 			"hex": "#9020b0"
 		},
-		"six": {
+
+		"Six": {
 			"hex": "#909090"
 		},
-		"spider-man": {
+
+		"Spider-man": {
 			"hex": "#c00000"
 		},
-		"springtrap": {
+
+		"Springtrap": {
 			"hex": "#202040"
 		},
-		"sora_&_shiro": {
+
+		"Sora & Shiro": {
 			"hex": "#600000"
 		},
-		"stan_marsh": {
+
+		"Stan Marsh": {
 			"hex": "#405030"
 		},
-		"sub-zero": {
+
+		"Sub-zero": {
 			"hex": "#00c0ff"
 		},
-		"superman": {
+
+		"Superman": {
 			"hex": "#000080"
 		},
-		"thanos": {
+
+		"Thanos": {
 			"hex": "#606080"
 		},
-		"the_hillbilly": {
+
+		"The Hillbilly": {
 			"hex": "#806020"
 		},
-		"the_runaway_kid": {
+
+		"The Runaway Kid": {
 			"hex": "#6070a0"
 		},
-		"warly": {
+
+		"Warly": {
 			"hex": "#603020"
 		},
-		"we_bare_bears": {
+
+		"We Bare Bears": {
 			"hex": "#405030"
 		},
-		"willow": {
+
+		"Willow": {
 			"hex": "#602000"
 		},
-		"wormwood": {
+
+		"Wormwood": {
 			"hex": "#308070"
 		},
-		"yasuo": {
+
+		"Yasuo": {
 			"hex": "#606040"
 		},
-		"yone": {
+
+		"Yone": {
 			"hex": "#203070"
 		},
-		"yukiteru_&_yuno": {
+
+		"Yukiteru & Yuno": {
 			"hex": "#e0a0a0"
 		},
-		"yuno": {
+
+		"Yuno": {
 			"hex": "#a01030"
 		},
-		"zero_two_a": {
+
+		"Zero Two A": {
 			"hex": "#105090"
 		},
-		"zero_two_b": {
+
+		"Zero Two B": {
 			"hex": "#e05080"
 		}
 	},
+
 	"petHuds": {
 		"price": 6000,
 		"vipPrice": 12000,
-		"black": {
+		
+		"Black": {
 			"vip": false
 		},
-		"blue": {
+
+		"Blue": {
 			"vip": false
 		},
-		"brown": {
+
+		"Brown": {
 			"vip": false
 		},
-		"green": {
+
+		"Green": {
 			"vip": false
 		},
-		"grey": {
+
+		"Grey": {
 			"vip": false
 		},
-		"orange": {
+
+		"Orange": {
 			"vip": false
 		},
-		"pink": {
+
+		"Pink": {
 			"vip": false
 		},
-		"purple": {
+
+		"Purple": {
 			"vip": false
 		},
-		"red": {
+
+		"Red": {
 			"vip": false
 		},
-		"yellow": {
+
+		"Yellow": {
 			"vip": false
 		},
-		"among_us_a": {
+
+		"Among Us A": {
 			"vip": true
 		},
-		"among_us_b": {
+
+		"Among Us B": {
 			"vip": true
 		},
-		"bones": {
+
+		"Bones": {
 			"vip": true
 		},
-		"butterflies": {
+
+		"Butterflies": {
 			"vip": true
 		},
-		"cats": {
+
+		"Cats": {
 			"vip": true
 		},
-		"circles_a": {
+
+		"Circles A": {
 			"vip": true
 		},
-		"circles_b": {
+
+		"Circles B": {
 			"vip": true
 		},
-		"crabs": {
+
+		"Crabs": {
 			"vip": true
 		},
-		"dogs": {
+
+		"Dogs": {
 			"vip": true
 		},
-		"dolphins": {
+
+		"Dolphins": {
 			"vip": true
 		},
-		"doraemon": {
+
+		"Doraemon": {
 			"vip": true
 		},
-		"fish": {
+
+		"Fish": {
 			"vip": true
 		},
-		"foxes": {
+
+		"Foxes": {
 			"vip": true
 		},
-		"geometry_a": {
+
+		"Geometry A": {
 			"vip": true
 		},
-		"geometry_b": {
+
+		"Geometry B": {
 			"vip": true
 		},
-		"geometry_c": {
+
+		"Geometry C": {
 			"vip": true
 		},
-		"ghost-type": {
+
+		"Ghost-type": {
 			"vip": true
 		},
-		"gumball": {
+
+		"Gumball": {
 			"vip": true
 		},
-		"ladybugs": {
+
+		"Ladybugs": {
 			"vip": true
 		},
-		"luna": {
+
+		"Luna": {
 			"vip": true
 		},
-		"papyrus": {
+
+		"Papyrus": {
 			"vip": true
 		},
-		"penguins": {
+
+		"Penguins": {
 			"vip": true
 		},
-		"pink_panther": {
+
+		"Pink Panther": {
 			"vip": true
 		},
-		"pink_pokemon": {
+
+		"Pink Pokemon": {
 			"vip": true
 		},
-		"saitama": {
+
+		"Saitama": {
 			"vip": true
 		},
-		"scooby-doo": {
+
+		"Scooby-doo": {
 			"vip": true
 		},
-		"snoopy": {
+
+		"Snoopy": {
 			"vip": true
 		},
-		"tigers": {
+
+		"Tigers": {
 			"vip": true
 		},
-		"totoro": {
+
+		"Totoro": {
 			"vip": true
 		},
-		"unicorns": {
+
+		"Unicorns": {
 			"vip": true
 		},
-		"undertale": {
+
+		"Undertale": {
 			"vip": true
 		},
-		"winter": {
+
+		"Winter": {
 			"vip": true
 		}
 	},
+
 	"pets": {
-		"goat": {
+		"Goat": {
 			"species": "Cabra",
-			"gender": "random",
+			"gender": "Random",
 			"price": 8000,
 			"vip": false
 		},
-		"dog": {
+
+		"Dog": {
 			"species": "Cão",
-			"gender": "random",
+			"gender": "Random",
 			"price": 15000,
 			"vip": false
 		},
-		"scorpion": {
+
+		"Scorpion": {
 			"species": "Escorpião",
-			"gender": "random",
+			"gender": "Random",
 			"price": 20000,
 			"vip": false
 		},
-		"ant": {
+
+		"Ant": {
 			"species": "Formiga",
-			"gender": "random",
+			"gender": "Random",
 			"price": 1,
 			"vip": false
 		},
-		"chicken": {
+
+		"Chicken": {
 			"species": "Galinha",
-			"gender": "♀️",
+			"gender": "Female",
 			"price": 8000,
 			"vip": false
 		},
-		"cat": {
+
+		"Cat": {
 			"species": "Gato",
-			"gender": "random",
+			"gender": "Random",
 			"price": 15000,
 			"vip": false
 		},
-		"dolphin": {
+
+		"Dolphin": {
 			"species": "Golfinho",
-			"gender": "random",
+			"gender": "Random",
 			"price": 18000,
 			"vip": false
 		},
-		"hamster": {
+
+		"Hamster": {
 			"species": "Hamster",
-			"gender": "random",
+			"gender": "Random",
 			"price": 12000,
 			"vip": false
 		},
-		"pony": {
+
+		"Pony": {
 			"species": "Cavalo (Pónei)",
-			"gender": "random",
+			"gender": "Random",
 			"price": 18000,
 			"vip": false
 		},
-		"frog": {
+
+		"Frog": {
 			"species": "Sapo",
-			"gender": "random",
+			"gender": "Random",
 			"price": 12000,
 			"vip": false
 		},
-		"akamaru": {
-			"name": "Akamaru",
+
+		"Akamaru": {
+			"Name": "Akamaru",
 			"species": "Cão",
-			"gender": "♂️",
+			"gender": "Male",
 			"price": 25000,
 			"vip": true
 		},
-		"frosch": {
-			"name": "Frosch",
+
+		"Frosch": {
+			"Name": "Frosch",
 			"species": "Gato",
-			"gender": "♀️",
+			"gender": "Female",
 			"price": 25000,
 			"vip": true
 		},
-		"happy": {
-			"name": "Happy",
+
+		"Happy": {
+			"Name": "Happy",
 			"species": "Gato",
-			"gender": "♂️",
+			"gender": "Male",
 			"price": 25000,
 			"vip": true
 		},
-		"iggy": {
-			"name": "Iggy",
+
+		"Iggy": {
+			"Name": "Iggy",
 			"species": "Cão",
-			"gender": "♂️",
+			"gender": "Male",
 			"price": 25000,
 			"vip": true
 		}
 	},
+
 	"items": {
-		"name_license": {
-			"price": 2000
+		"Name License": {
+			"price": 5000
 		}
 	}
 }

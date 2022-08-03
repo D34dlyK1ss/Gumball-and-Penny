@@ -1,40 +1,48 @@
-import { Message, MessageActionRow, MessageButton, MessageSelectMenu } from 'discord.js';
+import { ActionRowBuilder, ButtonBuilder, ChatInputCommandInteraction, SelectMenuBuilder, SlashCommandBuilder } from 'discord.js';
+import enLang from '../lang/en.json';
 
-export const name = 'setlanguage';
-export function execute(bot: undefined, message: Message, command: undefined, db: FirebaseFirestore.Firestore, lang: Record<string, string | any>) {
-	if (!message.member.permissions.has('MANAGE_GUILD')) {
-		message.reply(lang.error.noPerm);
-	}
-	else {
-		const menuRow = new MessageActionRow()
-			.addComponents(
-				new MessageSelectMenu()
-					.setCustomId(`languageMenu${message.member.id}`)
-					.setPlaceholder(lang.error.nothingSelected)
-					.addOptions([
-						{
-							label: 'English',
-							value: 'en'
-						},
-						{
-							label: 'Português',
-							value: 'pt'
-						}
-					])
-			);
-		const buttonRow = new MessageActionRow()
-			.addComponents(
-				new MessageButton()
-					.setCustomId(`languageOK${message.member.id}`)
-					.setLabel(lang.ok)
-					.setStyle('SUCCESS'),
-				
-				new MessageButton()
-					.setCustomId(`languageCancel${message.member.id}`)
-					.setLabel(lang.cancel)
-					.setStyle('DANGER')
-			);
+export = {
+	data: new SlashCommandBuilder()
+		.setName('setlanguage')
+		.setDescription(enLang.command.setlanguage.description),
 
-		message.reply({ content: lang.setlanguage.select, components: [menuRow, buttonRow] });
+	async execute(bot: undefined, interaction: ChatInputCommandInteraction, db: FirebaseFirestore.Firestore, lang: Record<string, string | any>) {
+		await interaction.deferReply();
+
+		if (!interaction.memberPermissions.has('ManageGuild')) {
+			await interaction.editReply(lang.error.noPerm);
+		}
+		else {
+			const menuRow = new ActionRowBuilder<SelectMenuBuilder>()
+				.setComponents(
+					new SelectMenuBuilder()
+						.setCustomId(`languageMenu${interaction.user.id}`)
+						.setPlaceholder(lang.error.nothingSelected)
+						.setOptions([
+							{
+								label: 'English',
+								value: 'en'
+							},
+							{
+								label: 'Português',
+								value: 'pt'
+							}
+						])
+				);
+			const buttonRow = new ActionRowBuilder<ButtonBuilder>()
+				.setComponents(
+					new ButtonBuilder()
+						.setCustomId(`languageOK${interaction.user.id}`)
+						.setLabel(lang.ok)
+						.setStyle(3),
+						
+					new ButtonBuilder()
+						.setCustomId(`languageCancel${interaction.user.id}`)
+						.setLabel(lang.cancel)
+						.setStyle(4)
+				);
+		
+			await interaction.editReply({ content: lang.command.setlanguage.select, components: [menuRow, buttonRow] });
+		}
 	}
-}
+};

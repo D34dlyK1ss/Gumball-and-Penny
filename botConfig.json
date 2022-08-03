@@ -2,8 +2,6 @@
 	"botOwnerID": "287953505992572929",
 	"collaboratorIDs": ["503009296267608066"],
 	"settings": {
-		"automessages": false,
-		"language": "en",
-		"prefix": "gp!"
+		"language": "en"
 	}
 }

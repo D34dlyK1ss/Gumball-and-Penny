@@ -1,38 +1,44 @@
-import { Message } from 'discord.js';
+import { ChatInputCommandInteraction, SlashCommandBuilder } from 'discord.js';
 import ms from 'ms';
 import getText from '../functions/getText';
+import enLang from '../lang/en.json';
 
-export const name = 'daily';
-export const aliases = ['d'];
-export function execute(bot: undefined, message: Message, command: undefined, db: FirebaseFirestore.Firestore, lang: Record<string, string | any>, language: string, prefix: string) {
-	const user = message.author;
-	const ref = db.collection('perfis').doc(user.id);
-	const daily = 300;
+const daily = 300;
 
-	ref.get().then(doc => {
-		const today = Date.now();
-		const lastDaily: number = doc.get('lastDaily');
-		const nextDaily = lastDaily + 86400000;
-		if (!doc.exists) {
-			message.reply(getText(lang.error.noProfile, [prefix]));
-		}
-		else if (today < nextDaily) {
-			message.reply(getText(lang.daily.againIn, [ms(nextDaily - today)]));
-		}
-		else {
-			const bal: number = doc.get('balance');
+export = {
+	data: new SlashCommandBuilder()
+		.setName('daily')
+		.setDescription(enLang.command.daily.description),
 
-			if (bal + daily > 1000000) {
-				message.reply(lang.error.noAdd);
+	execute(bot: undefined, interaction: ChatInputCommandInteraction, db: FirebaseFirestore.Firestore, lang: Record<string, string | any>) {
+		const ref = db.collection('perfis').doc(interaction.user.id);
+		
+		ref.get().then(doc => {
+			const today = Date.now();
+			const lastDaily: number = doc.get('lastDaily');
+			const nextDaily = lastDaily + 86400000;
+
+			if (!doc.exists) {
+				interaction.reply(lang.error.noProfile);
+			}
+			else if (today < nextDaily) {
+				interaction.reply(getText(lang.command.daily.againIn, [ms(nextDaily - today)]));
 			}
 			else {
-				ref.update({
-					balance: bal + daily,
-					lastDaily: today
-				}).then(() => {
-					message.reply(getText(lang.daily.received, [daily, prefix]));
-				});
+				const bal: number = doc.get('balance');
+		
+				if (bal + daily > 1000000) {
+					interaction.reply(lang.error.noAdd);
+				}
+				else {
+					ref.update({
+						balance: bal + daily,
+						lastDaily: today
+					}).then(() => {
+						interaction.reply(getText(lang.command.daily.received, [daily]));
+					});
+				}
 			}
-		}
-	});
-}
+		});
+	}
+};

@@ -1,59 +1,61 @@
-import { Message, MessageEmbed } from 'discord.js';
+import { ChatInputCommandInteraction, EmbedBuilder, SlashCommandBuilder } from 'discord.js';
 import getText from '../functions/getText';
+import enLang from '../lang/en.json';
 
-export const name = 'inventory';
-export const aliases = ['i'];
-export function execute(bot: undefined, message: Message, command: undefined, db: FirebaseFirestore.Firestore, lang: Record<string, string | any>, language: string, prefix: string) {
-	const refP = db.collection('perfis').doc(message.author.id);
-	const refI = db.collection('inventario').doc(message.author.id);
-	let iEmbed = new MessageEmbed()
-		.setColor('DARK_PURPLE')
-		.setTitle(getText(lang.inventory.inventoryFrom, [message.author.tag]))
-		.setThumbnail(message.author.displayAvatarURL());
+export = {
+	data: new SlashCommandBuilder()
+		.setName('inventory')
+		.setDescription(enLang.command.inventory.description),
 
-	refP.get().then(docP => {
-		if (!docP.exists) {
-			message.reply(getText(lang.error.noProfile, [prefix]));
-		}
-		else {
-			refI.get().then(docI => {
-				let iHuds = docI.get('huds');
-				let iPetHuds = docI.get('petHuds');
-				let iItems = docI.get('items');
-				iHuds.sort();
-				iHuds = iHuds.map((s: string) => s.replace(/[_]/g, ' '));
-				const allHuds = `\`${iHuds.join('`, `')}\``;
-				iEmbed = new MessageEmbed(iEmbed)
-					.addFields(
-						{ name: 'HUDs', value: `${allHuds}`, inline: true }
-					);
+	execute(bot: undefined, interaction: ChatInputCommandInteraction, db: FirebaseFirestore.Firestore, lang: Record<string, string | any>) {
+		const refP = db.collection('perfis').doc(interaction.user.id);
+		const refI = db.collection('inventario').doc(interaction.user.id);
+		let iEmbed = new EmbedBuilder()
+			.setColor('DarkPurple')
+			.setTitle(getText(lang.command.inventory.inventoryFrom, [interaction.user.tag]))
+			.setThumbnail(interaction.user.displayAvatarURL());
 
-				if (!docI.exists) {
-					message.reply(lang.error.noInventory);
-				}
-
-				if (iPetHuds) {
-					iPetHuds.sort();
-					iPetHuds = iPetHuds.map((s: string) => s.replace(/[_]/g, ' '));
-					const allPetHuds = `\`${iPetHuds.join('`, `')}\``;
-					iEmbed = new MessageEmbed(iEmbed)
+		refP.get().then(docP => {
+			if (!docP.exists) {
+				interaction.reply(lang.error.noProfile);
+			}
+			else {
+				refI.get().then(docI => {
+					const iHuds = docI.get('huds');
+					const iPetHuds = docI.get('petHuds');
+					const iItems = docI.get('items');
+					iHuds.sort();
+					const allHuds = `\`${iHuds.join('`, `')}\``;
+					iEmbed = EmbedBuilder.from(iEmbed)
 						.addFields(
-							{ name: 'Pet HUDs', value: `${allPetHuds}` }
+							{ name: 'HUDs', value: `${allHuds}`, inline: true }
 						);
-				}
 
-				if (iItems) {
-					iItems.sort();
-					iItems = iItems.map((s: string) => s.replace(/[_]/g, ' '));
-					const allItems = `\`${iItems.join('`, `')}\``;
-					iEmbed = new MessageEmbed(iEmbed)
-						.addFields(
-							{ name: 'Items', value: `${allItems}` }
-						);
-				}
+					if (!docI.exists) {
+						interaction.reply(lang.error.noInventory);
+					}
 
-				message.channel.send({ embeds: [iEmbed] });
-			});
-		}
-	});
-}
+					if (iPetHuds) {
+						iPetHuds.sort();
+						const allPetHuds = `\`${iPetHuds.join('`, `')}\``;
+						iEmbed = EmbedBuilder.from(iEmbed)
+							.addFields(
+								{ name: 'Pet HUDs', value: `${allPetHuds}` }
+							);
+					}
+
+					if (iItems) {
+						iItems.sort();
+						const allItems = `\`${iItems.join('`, `')}\``;
+						iEmbed = EmbedBuilder.from(iEmbed)
+							.addFields(
+								{ name: 'Items', value: `${allItems}` }
+							);
+					}
+		
+					interaction.reply({ embeds: [iEmbed] });
+				});
+			}
+		});
+	}
+};

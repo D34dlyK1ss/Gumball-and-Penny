@@ -1,7 +1,13 @@
-import { Message } from 'discord.js';
+import { ChatInputCommandInteraction, SlashCommandBuilder } from 'discord.js';
 import getText from '../functions/getText';
+import enLang from '../lang/en.json';
 
-export const name = 'members';
-export function execute(bot: undefined, message: Message, command: undefined, db: undefined, lang: Record<string, string | any>) {
-	message.channel.send(getText(lang.members.message, [message.guild.name, message.guild.memberCount]));
-}
+export = {
+	data: new SlashCommandBuilder()
+		.setName('members')
+		.setDescription(enLang.command.members.description),
+
+	execute(bot: undefined, interaction: ChatInputCommandInteraction, db: undefined, lang: Record<string, string | any>) {
+		interaction.reply(getText(lang.command.members.message, [interaction.guild.name, interaction.guild.memberCount]));
+	}
+};

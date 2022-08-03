@@ -1,11 +1,9 @@
 {
-	"prefixMsg": "O nosso prefixo para este servidor é `$0$`.",
 	"notIndicated": "_Não indicada_",
 	"by": "por",
 	"reason": "Razão:",
 	"botsNoProfile": "Os bots não têm perfis!",
-	"help": "Ajuda",
-	"helpDescription": "Nós somos o Gumball e a Penny e temos como objetivo tornar qualquer servidor onde estamos num lugar divertido!\nEm caso de dúvida nalgum comando usa `$0$help [$1$]`.",
+	"commands": "Comandos",
 	"commandName": "nome do comando",
 	"actions": "Ações",
 	"casino": "Casino",
@@ -41,14 +39,12 @@
 	"botNoProfile": "Nós não temos um perfil!",
 	"totalXP": "XP Total",
 	"level": "Nível",
-	"balanceProfile": "Saldo",
+	"balance": "Saldo",
 	"awesomeStore": "Loja Incrível",
 	"nameLicense": "Licença de Nome",
 	"page": "Página",
 	"toChangePage": "Para mudar de página usa ",
 	"forMoreInfo": "para mais informação.",
-	"betAtLeast": "Tens de apostar no mínimo <a:gpCoin:898355693193662464>$0$!",
-	"betAtMost": "Não podes apostar mais que <a:gpCoin:898355693193662464>$0$!",
 	"lost": "Perdeste **<a:gpCoin:898355693193662464>$0$**!",
 	"won": "Ganhaste **<a:gpCoin:898355693193662464>$0$**!",
 	"and": "e",
@@ -70,18 +66,19 @@
 	"userCancelled": "_Operação cancelada pelo utilizador_",
 	"results": "Resultados",
 	"officialServer": "Servidor Oficial",
-
+	"areyousure": "Are you sure?",
+	"yes": "Sim",
+	"no": "Não",
 
 	"error": {
 		"cmd": "Ocorreu um erro ao tentar executar esse comando!",
-		"noProfile": "Ainda não criaste um perfil! Para criares um perfil usa `$0$profile create`.",
+		"noProfile": "Ainda não criaste um perfil! Para criares um perfil usa `/profile create`.",
 		"userHasNoProfile": "**$0$** ainda não criou um perfil!",
 		"noMention": "Tens de mencionar alguém! Garante que escreves a menção em vez de a copiares.",
 		"noPerm": "Não tens permissão para usar este comando! 💢",
 		"botNoBan": "Nós não temos permissão para banir membros!",
 		"botNoManageMsgs": "Nós não temos permissão para gerir mensagens!",
-		"noNumberToDelete": "Tens de definir o número de mensagens que queres apagar!",
-		"wrongSyntax": "Sintaxe errada! Como usar: `$0$$1$`",
+		"wrongSyntax": "Sintaxe errada! Como usar: `$0$`",
 		"noAdd": "Não podes ganhar mais dinheiro! 😧",
 		"noMoney": "Não tens dinheiro suficiente!",
 		"noMessage": "Não escreveste mensagem nenhuma!",
@@ -103,7 +100,6 @@
 		"noPetToAdoption": "Não tens pet nenhum para dar para adoção!",
 		"userHasNoPet": " ainda não comprou um pet!",
 		"notANumber": "Isso não é um número!",
-		"noPrefixChosen": "Precisamos de saber qual é o prefixo desejado!",
 		"noLinks": "Não podemos escrever links!",
 		"memberNotTimedOut": "**$0$** não está de castigo!",
 		"hasProfileAlready": "Já tens um perfil criado, não podes criar outro! 💢",
@@ -114,10 +110,9 @@
 		"alreadyHasHUD": "Já tens este HUD!",
 		"alreadyHasPetHud": "Já tens este Pet HUD!",
 		"noVIPForPetHud": "Precisas de ser VIP para comprares este Pet HUD!",
-		"alreadyHasPet": "Já tens um pet! Se quiseres outro tens de dar o que tens para adoção usando `$0$pet sendtoadoption`.",
+		"alreadyHasPet": "Já tens um pet! Se quiseres outro tens de dar o que tens para adoção usando `/pet sendtoadoption`.",
 		"noItem": "Esse item não existe!",
 		"noVIPForPet": "Precisas de ser VIP para comprares este pet!",
-		"samePrefix": "Esse prefixo é igual ao que usamos!",
 		"sameLanguage": "Essa linguagem é igual à que estamos a falar!",
 		"noDuration": "Não indicaste a duração!",
 		"notAuthor": "Isto não é para ti!",
@@ -125,585 +120,460 @@
 		"noModerateMembers": "Nós não temos permissão para moderar membros!"
 	},
 
-
 	"levelUp": {
 		"congrats": "🎉 Parabéns **$0$** subiste para o nível **$1$**! 🆙",
 		"congratsReward": "🎉 Parabéns **$0$** subiste para o nível **$1$** e recebeste **<a:gpCoin:898355693193662464>$2$**! 🆙💰"
 	},
 
-	"angry": {
-		"gotAngry": "**$0$** chateou-se!",
-		"gotAngryWithUs": "**$0$** chateou-se connosco! 😶",
-		"gotAngryWith": "**$0$** chateou-se com **$1$**!"
-	},
-
-	"automessages": {
-		"areNow": "_Mensagens Automáticas_ estão agora **$0$**."
-	},
-
-	"balance": {
-		"yourBalance": "O teu saldo"
-	},
-
-	"ban": {
-		"wasBanned": "**$0$** foi banido! 🔨"
-	},
-
-	"blush": {
-		"weMadeBlush": "Nós fizémos **$0$** corar! 😊",
-		"madeBlush": "**$0$** fez **$1$** corar!"
-	},
-
-	"clear": {
-		"weDeleted": "Apagámos `$0$` $1$!",
-		"message": "mensagem",
-		"messages": "mensagens"
-	},
-
-	"coinflip": {
-		"heads": "cara",
-		"tails": "coroa"
-	},
-
-	"cry": {
-		"isCrying": "**$0$** está chorar!",
-		"isCryingBecauseOfUs": "**$0$** está a chorar por causa de nós! 😟",
-		"madeCry": "**$0$** fez **$1$** chorar!"
-	},
-
-	"daily": {
-		"againIn": "Poderás receber dinheiro outra vez em **$0$**.",
-		"received": "Recebeste os teus **<a:gpCoin:898355693193662464>$0$** de hoje! Para receberes mais <a:gpCoin:898355693193662464>150 (x2 para VIPs) usa `$1$vote`."
-	},
-
-	"dance": {
-		"isDancing": "**$0$** está a dançar!",
-		"isDancingForUs": "**$0$** está a dançar para nós! 😯",
-		"isDancingFor": "**$0$** está a dançar para **$1$**!"
-	},
-
-	"give": {
-		"self": "A sério que acabaste de tentar dar dinheiro a ti mesmo?",
-		"thanksBut": "Obrigado, mas vais precisar mais desse dinheiro do que nós! 😁",
-		"youGave": "Deste **<a:gpCoin:898355693193662464>$0$** a **$1$**!"
-	},
-
-	"happy": {
-		"madeHappy": "**$0$** fez **$1$** feliz!",
-		"weMadeHappy": "Nós fizémos **$0$** feliz! 🙂",
-		"isHappy": "**$0$** está feliz!"
-	},
-
-	"hug": {
-		"huggedSelf": "**$0$** abraçou-se?",
-		"huggedUs": "**$0$** abraçou-nos! 🤗",
-		"hugged": "**$0$** abraçou **$1$**!"
-	},
-
-	"inventory": {
-		"inventoryFrom": "Inventário de **$0$**"
-	},
-
-	"jankenpon": {
-		"rock": "Pedra",
-		"paper": "Papel",
-		"scissors": "Tesoura",
-		"threw": "**Gumball** jogou **$0$** e **Penny** jogou **$1$**.",
-		"draw": "É um empate! Tens o teu dinheiro reembolsado."
-	},
-
-	"kick": {
-		"wasKicked": "**$0$** foi expulso! 👋"
-	},
-
-	"kiss": {
-		"kissedSelf": "**$0$** beijou-se a si mesmo?",
-		"kissedUs": "**$0$** beijou-nos! 😳",
-		"kissed": "**$0$** beijou **$1$**!"
-	},
-
-	"laugh": {
-		"isLaughing": "**$0$** está a rir-se!",
-		"isLaughingFromSelf": "**$0$** está a rir-se de si mesmo!",
-		"isLaughingFromUs": "**$0$** está a rir-se de nós! 😅",
-		"isLaughingFrom": "**$0$** está a rir-se de **$1$**!"
-	},
-
-	"match": {
-		"alreadyAPair": "Hey, nós já somos um par! 😠",
-		"youAre": "Vocês são $0$% compatíveis!"
-	},
-
-	"members": {
-		"message": "**$0$** tem **$1$** membros!"
-	},
-
-	"pat": {
-		"pattedSelf": "**$0$** acariciou-se?",
-		"pattedUs": "**$0$** acariciou-nos! 😊",
-		"patted": "**$0$** acariciou **$1$**!"
-	},
-
-	"pet": {
-		"nameMaxIs": "O limite máximo de caracteres para o nome é **$0$**. Esse nome tem **$1$**.",
-		"nameChangedTo": "O nome do teu pet foi alterado para **$0$**.",
-		"petHudChangedTo": "O teu Pet HUD foi alterado para **$0$**.",
-		"wasSentToAdoption": "**$0$** foi para adoção!",
-		"botNoPet": "Nós não temos um pet! Ainda...",
-		"botsNoPets": "Os bots não têm pets!"
-	},
-
-	"ping": {
-		"apiPing": "Ping da API"
-	},
-
-	"profile": {
-		"wasCreated": "O teu perfil foi criado! Adiciona uma descrição com `$0$profile setdescription [$1$]`.",
-		"nicknameMaxIs": "O limite máximo de caracteres para alcunha é **$0$**. Essa alcunha tem **$1$**.",
-		"nicknameChangedTo": "A tua alcunha foi alterada para **$0$**.",
-		"descMaxIs": "O limite máximo de caracteres para a descrição é **$0$**. Essa descrição tem **$1$**.",
-		"descChangedTo": "A tua descrição foi alterada para **$0$**.",
-		"hudChangedTo": "O teu HUD foi alterado para **$0$**."
-	},
-
-	"quiz": {
-		"mainDescription": "Estes são os temas de quiz disponíveis.\nTodos os quizzes vão ter 10 perguntas. Cada resposta correta dentro de 15 segundos irá dar-te 1 ponto.\nQualquer um pode participar por apenas responder corretamente.",
-		"themeDescription": "Escolhe uma categoria!",
-		"toStart": "Carrega no botão _Começar_ pra começar o quiz!",
-		"exited": "Saíste da página de Quiz!",
-		"alreadyPlaying": "Já há um quiz a ser jogado neste canal! Começa um novo noutro canal ou espera pelo fim do quiz.",
-		"starting": "Começando o quiz **$0$** em 5 segundos!",
-		"animeEyes": "Olhos de Anime",
-		"whoIsCharacter": "Quem é esta personagem?",
-		"correct": "Correto!",
-		"wrong": "Errado!",
-		"noCorrectAnswer": "Sem resposta correta!",
-		"ended": "O quiz acabou!",
-		"points": "\n<@$0$> - $1$ ponto",
-		"noOneScored": "Ninguém pontoou!"
-	},
-
-	"ranking": {
-		"updatedAt": "Atualizado a $0$ $1$ UTC"
-	},
-
-	"run": {
-		"ranAway": "**$0$** fugiu!",
-		"ranAwayFromUs": "**$0$** fugiu para longe de nós! 🤨",
-		"ranAwayFrom": "**$0$** fugiu para longe de **$1$**!"
-	},
-
-	"serverinfo": {
-		"verificationLevel": {
-			"NONE": "Nenhum",
-			"LOW": "Baixo",
-			"MEDIUM": "Médio",	
-			"HIGH": "Alto",			
-			"VERY_HIGH": "Muito Alto"
-		},
-
-		"region": {
-			"brazil": "Brasil",
-			"europe": "Europa",
-			"eu-central": "Europa Central",
-			"eu-east": "Europa Este",
-			"eu-west": "Europa Oeste",
-			"hongkong": "Hong Kong",
-			"india": "Índia",
-			"japan": "Japão",
-			"russia": "Rússia",
-			"singapore": "Singapura",
-			"southafrica": "África do Sul",
-			"sydney": "Sydney",
-			"us-central": "EUA Central",
-			"us-east": "EUA Este",
-			"us-south": "EUA Sul",
-			"us-west": "EUA Oeste"
-		},
-
-		"members": "Membros",
-		"created": "Criado $0$ atrás ($1$)"
-	},
-
-	"setlanguage": {
-		"noLanguage": "Tens de selecionar uma linguagem!",
-		"select": "Seleciona uma das linguagens abaixo.",
-		"isNow": "Agora falaremos em Português 🇵🇹 neste servidor."
-	},
-
-	"setprefix": {
-		"isNow": "O nosso prefixo para este servidor agora é `$0$`."
-	},
-
-	"shop": {
-		"welcome": "Bem vindo à Loja Incrível!\nAqui poderás comprar algumas coisas com o dinheiro que acumulaste até agora.\nUsa os botões abaixo para navegar pela loja!",
-		"boughtHUD": "Compraste o HUD **$0$**! Para o equipares usa `$1$profile set hud [$2$]`.",
-		"boughtPetHud": "Compraste o Pet HUD **$0$**! Para o equipares usa `$1$pet set hud [$2$]`.",
-		"boughtItem": "Compraste 1 **$0$**!",
-		"boughtPet": "Compraste 1 **$0$*! Para lhe dares um nome usa `$1$pet setnickname [$2$]`.",
-		"hero": "Herói",
-		"villain": "Vilão",
-		"toBuyHud": "Usa `$0$shop buy hud [$1$]` para comprar ou `$2$shop view hud [$3$]` para ver.",
-		"toBuyPetHud": "Usa `$0$shop buy pethud [$1$]` para comprar ou `$2$shop view pethud [$3$]` para ver.",
-		"hudName": "Nome do HUD",
-		"petHudName": "Nome do Pet HUD",
-		"animalName": "Nome do Animal",
-		"itemName": "Nome do Item",
-		"toBuyPet": "Usa `$0$shop buy pet [$1$]` para comprar.",
-		"toBuyItem": "Usa `$0$shop buy item [$1$]` para comprar.",
-		"exited": "Saíste da loja!",
-		"cartoon": {
-			"adventureTime": "Hora de Aventuras",
-			"pinkPanther": "Pantera Cor-de-Rosa",
-			"tawog": "O Incrível Mundo de Gumball",
-			"weBareBears": "Nós, os Ursos"
-		}
-	},
-
-	"scared": {
-		"isScared": "**$0$** está com medo!",
-		"isScaredOfUs": "**$0$** está com medo de nós! 👀",
-		"isScaredOf": "**$0$** está com medo de **$1$**!"
-	},
-
-	"slap": {
-		"slappedSelf": "**$0$** deu uma chapada a si mesmo?",
-		"slappedUs": "**$0$** deu-nos uma chapada! 😠",
-		"slapped": "**$0$** deu uma chapada a **$1$**!"
-	},
-
-	"sleep": {
-		"fellAsleep": "**$0$** adormeceu!",
-		"weMadeFallAsleep": "Nós fizémos **$0$** adormecer! 😴",
-		"madeFallAsleep": "**$0$** fez **$1$** adormecer!"
-	},
-
-	"timeout": {
-		"whyTimeUsOut": "Porque é que nos queres castigar? 😦",
-		"timeSelfOut": "Acabaste de te tentar castigar? 😆",
-		"youCannotTimeOut": "Não podes castigar ou tirar **$0$** do castigo!",
-		"cannotTimeOut": "Não conseguimos castigar ninguém. Verifica a ordem das roles!",
-		"isNotTimedOut": "**$0$** não está de castigo!",
-		"isTimedOutFor": "**$0$** está de castigo durante **$1$**! 🔇",
-		"timeOutRemoved": "O castigo de **$0$** foi removido!",
-		"wrongTimeFormat": "Tens de indicar o tempo com um formato válido! (ex.: 30s / 30m / 3h / 3d)!"
-	},
-
-	"userinfo": {
-		"status": {
-			"online": "Online",
-			"idle":	"Ausente",
-			"dnd": "Não Perturbar",
-			"offline": "Offline"
-		},
-
-		"none": "Nenhuma",
-		"joined": "Entrou $0$ atrás ($1$)",
-		"created": "Criado $0$ atrás ($1$)"
-	},
-
-	"vip": {
-		"click": "Clica no botão abaixo comprar um estado VIP!"
-	},
-
-	"vote": {
-		"click": "Clica no botão abaixo para votar!"
-	},
-
-	"which": {
-		"noSelect": "Tens de selecionar um anime disponível! Usa `$0$help which` $1$"
-	},
-
-	"wink": {
-		"winkedAtUs": "**$0$** piscou-nos o olho! 😉",
-		"winkedAt": "**$0$** piscou o olho a **$1$**!"
-	},
-
-
 	"command": {
 		"angry": {
 			"category": "Ações",
 			"description": "Fica chateado!",
-			"usage": "angry [opcional - @membro]"
-		},
-
-		"automessages": {
-			"category": "Definições",
-			"description": "Ativa/Desativa as mensagens automáticas!\nCaso estejam ativas, nós iremos responder coisas engraçadas a certas mensagens.",
-			"usage": "automessages"
+			"usage": "/angry [opcional - @membro]",
+			"gotAngry": "**$0$** chateou-se!",
+			"gotAngryWithUs": "**$0$** chateou-se connosco! 😶",
+			"gotAngryWith": "**$0$** chateou-se com **$1$**!",
+			"memberDesc": "Com quem estás chateado?"
 		},
 
 		"avatar": {
 			"category": "Utilidade",
 			"description": "Vê o avatar de um membro do servidor!",
-			"usage": "avatar [opcional - @utilizador]"
+			"usage": "/avatar [opcional - @utilizador]",
+			"memberDesc": "O membro de quem queres o avatar"
 		},
 
 		"balance": {
 			"category": "Economia e Perfil",
 			"description": "Verifica o teu saldo!",
-			"usage": "balance"
-		},
-
-		"ban": {
-			"category": "Moderação",
-			"description": "Baniremos um membro do servidor!",
-			"usage": "ban [@membro] [opcional - razão]"
+			"usage": "/balance",
+			"yourBalance": "O teu saldo"
 		},
 
 		"blush": {
 			"category": "Ações",
 			"description": "Fica corado!",
-			"usage": "blush [@member]"
+			"usage": "/blush [@member]",
+			"weMadeBlush": "Nós fizémos **$0$** corar! 😊",
+			"madeBlush": "**$0$** fez **$1$** corar!",
+			"memberDesc": "Quem te está a fazer corar?"
 		},
 
 		"clear": {
 			"category": "Moderação",
 			"description": "Iremos limpar o chat.",
-			"usage": "clear [número]"
+			"usage": "/clear [número]",
+			"weDeleted": "Apagámos `$0$` $1$!",
+			"message": "mensagem",
+			"messages": "mensagens",
+			"numberDesc": "Quantas mensagens queres apagar?"
 		},
 
 		"coinflip": {
 			"category": "Casino",
-			"description": "Roda a moeda e aposta no que vai calhar!",
-			"usage": "coinflip [cara/coroa] [quantidade]"
+			"description": "Lança a moeda e faz a tua aposta!",
+			"usage": "/coinflip [cara/coroa] [quantidade]",
+			"heads": "Cara",
+			"tails": "Coroa",
+			"amountDesc": "Quanto queres apostar?",
+			"guessDesc": "Cara ou Coroa?"
 		},
 
 		"cry": {
 			"category": "Ações",
 			"description": "Chora!",
-			"usage": "cry [opcional - @membro]"
+			"usage": "/cry [opcional - @membro]",
+			"isCrying": "**$0$** está chorar!",
+			"isCryingBecauseOfUs": "**$0$** está a chorar por causa de nós! 😟",
+			"madeCry": "**$0$** fez **$1$** chorar!",
+			"memberDesc": "Quem te fez chorar?"
 		},
 
 		"daily": {
 			"category": "Economia e Perfil",
 			"description": "Receberás <a:gpCoin:898355693193662464>300 a cada dia que usares este comando!",
-			"usage": "daily"
+			"usage": "/daily",
+			"againIn": "Poderás receber dinheiro outra vez em **$0$**.",
+			"received": "Recebeste os teus **<a:gpCoin:898355693193662464>$0$** de hoje! Para receberes mais <a:gpCoin:898355693193662464>150 (x2 para VIPs) usa `$1$vote`."
 		},
 
 		"dance": {
 			"category": "Ações",
 			"description": "Dança!",
-			"usage": "dance [opcional - @membro]"
+			"usage": "/dance [opcional - @membro]",
+			"isDancing": "**$0$** está a dançar!",
+			"isDancingForUs": "**$0$** está a dançar para nós! 😯",
+			"isDancingFor": "** $0$ ** está a dançar para ** $1$ **!",
+			"memberDesc ": "Para quem estás a dançar?"
 		},
 
 		"fact": {
 			"category": "Diversão",
-			"description": "**Factos**.",
-			"usage": "fact"
+			"description": "**Factos**",
+			"usage": "/fact"
 		},
 
 		"give": {
-			"category": "Economia e Perfil",
+			"category": "Economia e Perfil ",
 			"description": "Dá dinheiro a alguém!",
-			"usage": "give [@membro] [quantia]"
+			"usage": "/give[@membro][quantia]",
+			"self": "A sério que acabaste de tentar dar dinheiro a ti mesmo?",
+			"thanksBut": "Obrigado,mas vais precisar mais desse dinheiro do que nós! 😁",
+			"youGave": "Deste **<a:gpCoin:898355693193662464>$0$** a **$1$**!",
+			"memberDesc": "A quem queres dar dinheiro?",
+			"amountDesc": "Quanto queres dar?"
 		},
 
 		"happy": {
 			"category": "Ações",
 			"description": "Fica feliz!",
-			"usage": "happy"
+			"usage": "/happy",
+			"madeHappy": "**$0$** fez **$1$** feliz!",
+			"weMadeHappy": "Nós fizémos **$0$** feliz! 🙂",
+			"isHappy": "**$0$** está feliz!",
+			"memberDesc": "Quem te fez feliz?"
 		},
 
-		"help": {
-			"category": "Ajuda",
-			"description": "Se não sabes, soubesses! :unamused:",
-			"usage": "help [opcional - nome do comando]"
+		"commands": {
+			"description": "Se não sabes o que isto faz, soubesses! 😒",
+			"embedDescription": "Aqui estão todos os comandos disponíveis!"
 		},
 
 		"hug": {
 			"category": "Ações",
 			"description": "Abraça!",
-			"usage": "hug [@membro]"
+			"usage": "/hug [@membro]",
+			"huggedSelf": "**$0$** abraçou-se?",
+			"huggedUs": "**$0$** abraçou-nos! 🤗",
+			"hugged": "**$0$** abraçou **$1$**!",
+			"memberDesc": "Quem queres abraçar?"
 		},
 
 		"inventory": {
 			"category": "Perfil",
 			"description": "Verifica o teu inventário!",
-			"usage": "inventory"
+			"usage": "/inventory",
+			"inventoryFrom": "Inventário de **$0$**"
 		},
 
 		"invite": {
 			"category": "Utilidade",
 			"description": "Enviaremos o link para nos convidares para um servidor!",
-			"usage": "invite"
+			"usage": "/invite"
 		},
 
 		"jankenpon": {
 			"category": "Casino",
-			"description": "Deixa-nos jogar _Rock, Paper, Scissors_ e aposta em quem ganha!",
-			"usage": "jankenpon [gumball/penny] [quantidade]"
-		},
-
-		"kick": {
-			"category": "Moderação",
-			"description": "Expulsaremos um membro do servidor!",
-			"usage": "kick [@membro] [opcional - razão]"
+			"description": "Deixa-nos jogar Rock Paper Scissors e aposta em quem ganha!",
+			"usage": "/jankenpon [gumball/penny] [quantidade]",
+			"rock": "Pedra",
+			"paper": "Papel",
+			"scissors": "Tesoura",
+			"threw": "**Gumball** jogou **$0$** e **Penny** jogou **$1$**.",
+			"draw": "É um empate! Tens o teu dinheiro reembolsado.",
+			"guessDesc": "Quem achas que irá ganhar?",
+			"amountDesc": "Quanto queres apostar?"
 		},
 
 		"kiss": {
 			"category": "Ações",
 			"description": "Beija!",
-			"usage": "kiss [@membro]"
+			"usage": "/kiss [@membro]",
+			"kissedSelf": "**$0$** beijou-se a si mesmo no espelho? 🪞",
+			"kissedUs": "**$0$** beijou-nos! 😳",
+			"kissed": "**$0$** beijou **$1$**!",
+			"memberDesc": "Quem queres beijar?"
 		},
 
 		"laugh": {
 			"category": "Ações",
 			"description": "Ri-te!",
-			"usage": "laugh [opcional - @membro]"
+			"usage": "/laugh [opcional - @membro]",
+			"isLaughing": "**$0$** está a rir-se!",
+			"isLaughingFromSelf": "**$0$** está a rir-se de si mesmo!",
+			"isLaughingFromUs": "**$0$** está a rir-se de nós! 😅",
+			"isLaughingFrom": "**$0$** está a rir-se de **$1$**!",
+			"memberDesc": "De quem te estás a rir?"
 		},
 
 		"match": {
 			"category": "Diversão",
 			"description": "Verifica se és compatível com alguém!",
-			"usage": "match [@membro]"
+			"usage": "/match [@membro]",
+			"alreadyAPair": "Hey, nós já somos um par! 😠",
+			"youAre": "Vocês são $0$% compatíveis!",
+			"memberDesc": "Com quem queres verificar compatibilidade?"
 		},
 
 		"members": {
 			"category": "Servidor",
 			"description": "Mostraremos a quantidade de membros no servidor!",
-			"usage": "members"
-		},
-
-		"timeout": {
-			"category": "Moderação",
-			"description": "Castigaremos um membro do servidor por um tempo determinado (máximo de 7 dias)!",
-			"usage": "timeout [@membro] [opcional - duração(s/m/h/d) / remove] [opcional - razão]"
+			"usage": "/members",
+			"message": "**$0$** tem **$1$** membros!"
 		},
 
 		"pat": {
 			"category": "Ações",
 			"description": "Acaricia!",
-			"usage": "pat [@membro]"
+			"usage": "/pat [@membro]",
+			"pattedSelf": "**$0$** acariciou-se?",
+			"pattedUs": "**$0$** acariciou-nos! 😊",
+			"patted": "**$0$** acariciou **$1$**!",
+			"memberDesc": "Quem queres acariciar?"
 		},
 
 		"pet": {
 			"category": "Economia e Perfil",
-			"description": "Vê o teu pet ou o de alguém!\nOpções disponíveis: `set (name/hud)`, `sendtoadoption`.",
-			"usage": "pet [opcional - opção | @membro]"
+			"description": "Opções disponíveis: check, setname, sethud, sendtoadoption",
+			"usage": "/pet [opcional - opção | @membro]",
+			"nameChangedTo": "O nome do teu pet foi alterado para **$0$**.",
+			"petHudChangedTo": "O teu Pet HUD foi alterado para **$0$**.",
+			"wasSentToAdoption": "**$0$** foi para adoção!",
+			"botNoPet": "Nós não temos um pet! Ainda...",
+			"botsNoPets": "Os bots não têm pets!",
+			"memberDesc": "De quem é que queres ver o pet?",
+			"newNameDesc": "Qual vai ser o novo nome do teu pet?",
+			"newHudDesc": "Qual vai ser o novo HUD do teu pet?",
+			"checkDesc": "De quem é que queres ver o pet?",
+			"setnameDesc": "Dá um novo nome ao teu pet",
+			"sethudDesc": "Dá um novo HUD ao teu pet",
+			"sendtoadoptionDesc": "Envia o teu pet para adoção"
 		},
 
 		"ping": {
 			"category": "Utilidade",
 			"description": "Uhm... pong?",
-			"usage": "ping"
+			"usage": "/ping",
+			"apiPing": "Ping da API"
 		},
 
 		"profile": {
 			"category": "Economia e Perfil",
-			"description": "Vê o teu perfil ou o de alguém!\nOpções disponíveis: `create`, `set (description/hud/nickname)`.",
-			"usage": "profile [opcional - opção | @membro]"
+			"description": "Opções disponíveis: create, setdescription, sethud, setnickname.",
+			"usage": "/profile [opcional - opção | @membro]",
+			"wasCreated": "O teu perfil foi criado! Adiciona uma descrição com `/profile setdescription [$0$]`.",
+			"nicknameChangedTo": "A tua alcunha foi alterada para **$0$**.",
+			"descChangedTo": "A tua descrição foi alterada para **$0$**.",
+			"hudChangedTo": "O teu HUD foi alterado para **$0$**.",
+			"checkDesc": "Vê o teu perfil ou o de alguém!",
+			"memberDesc": "De quem queres ver o perfil?",
+			"createDesc": "Create a profile!",
+			"setnicknameDesc": "Define a tua alcunha",
+			"newnicknameDesc": "Qual vai ser a tua nova alcunha?",
+			"setdescriptionDesc": "Define a descrição do teu perfil",
+			"newdescriptionDesc": "Qual vai ser a nova descrição do teu perfil?",
+			"sethudDesc": "Define o HUD do teu perfil",
+			"newhudDesc": "Qual vai ser o novo HUD do teu perfil?"
 		},
 
 		"quiz": {
 			"category": "Diversão",
 			"description": "Joga quizzes de diversos temas!",
-			"usage": "quiz"
+			"usage": "/quiz",
+			"mainDescription": "Estes são os temas de quiz disponíveis.\nTodos os quizzes vão ter 10 perguntas. Cada resposta correta dentro de 15 segundos irá dar-te 1 ponto.\nQualquer um pode participar por apenas responder corretamente.",
+			"themeDescription": "Escolhe uma categoria!",
+			"toStart": "Carrega no botão _Começar_ pra começar o quiz!",
+			"exited": "Saíste da página de Quiz!",
+			"alreadyPlaying": "Já há um quiz a ser jogado neste canal! Começa um novo noutro canal ou espera pelo fim do quiz.",
+			"starting": "Começando o quiz **$0$** em 5 segundos!",
+			"animeEyes": "Olhos de Anime",
+			"whoIsCharacter": "Quem é esta personagem?",
+			"correct": "Correto!",
+			"wrong": "Errado!",
+			"noCorrectAnswer": "Sem resposta correta!",
+			"ended": "O quiz acabou!",
+			"points": "\n<@$0$> - $1$ ponto",
+			"noOneScored": "Ninguém pontoou!"
 		},
 
 		"random": {
 			"category": "Diversão",
-			"description": "Diremos um número aleatório entre 1 e o número indicado. O predefinido é 100.",
-			"usage": "random [opcional - número]"
+			"description": "Diremos um número aleatório entre 1 e o número indicado",
+			"usage": "/random [opcional - número]",
+			"numberDesc": "Escolhe um número"
 		},
 
 		"ranking": {
 			"category": "Economia e Perfil",
 			"description": "Verifica o top 10 de utilizadores que nos usam!",
-			"usage": "ranking"
+			"usage": "/ranking",
+			"updatedAt": "Atualizado a $0$ $1$ UTC",
+			"optionDesc": "Escolhe entre ranking de XP ou de Saldo"
 		},
 
 		"run": {
 			"category": "Ações",
 			"description": "Foge!",
-			"usage": "run [opcional - @membro]"
-		},
-
-		"say": {
-			"category": "Diversão",
-			"description": "Diremos o que quiseres! :slight_smile:",
-			"usage": "say [mensagem]"
+			"usage": "/run [opcional - @membro]",
+			"ranAway": "**$0$** fugiu!",
+			"ranAwayFromUs": "**$0$** fugiu para longe de nós! 🤨",
+			"ranAwayFrom": "**$0$** fugiu para longe de **$1$**!",
+			"memberDesc": "De quem estás a fugir?"
 		},
 
 		"scared": {
 			"category": "Ações",
 			"description": "Fica assusado!",
-			"usage": "scared [opcional - @member]"
+			"usage": "/scared [opcional - @member]",
+			"isScared": "**$0$** está com medo!",
+			"isScaredOfUs": "**$0$** está com medo de nós! 👀",
+			"isScaredOf": "**$0$** está com medo de **$1$**!",
+			"memberDesc": "De quem estás com medo?"
 		},
 
 		"serverinfo": {
 			"category": "Servidor",
 			"description": "Todas as informações do servidor!",
-			"usage": "serverinfo"
+			"usage": "/serverinfo",
+			"verificationLevel": {
+				"NONE": "Nenhum",
+				"LOW": "Baixo",
+				"MEDIUM": "Médio",
+				"HIGH": "Alto",
+				"VERY_HIGH": "Muito Alto"
+			},
+
+			"region": {
+				"brazil": "Brasil",
+				"europe": "Europa",
+				"eu-central": "Europa Central",
+				"eu-east": "Europa Este",
+				"eu-west": "Europa Oeste",
+				"hongkong": "Hong Kong",
+				"india": "Índia",
+				"japan": "Japão",
+				"russia": "Rússia",
+				"singapore": "Singapura",
+				"southafrica": "África do Sul",
+				"sydney": "Sydney",
+				"us-central": "EUA Central",
+				"us-east": "EUA Este",
+				"us-south": "EUA Sul",
+				"us-west": "EUA Oeste"
+			},
+
+			"members": "Membros",
+			"created": "Criado $0$ atrás ($1$)"
 		},
 
 		"setlanguage": {
 			"category": "Servidor",
 			"description": "Muda a nossa linguagem para este servidor.",
-			"usage": "setlanguage"
-		},
-
-		"setprefix": {
-			"category": "Servidor",
-			"description": "Muda o nosso prefixo para este servidor.",
-			"usage": "setprefix [prefixo]"
+			"usage": "/setlanguage",
+			"noLanguage": "Tens de selecionar uma linguagem!",
+			"select": "Seleciona uma das linguagens abaixo.",
+			"isNow": "Agora falaremos em Português 🇵🇹 neste servidor."
 		},
 
 		"shop": {
 			"category": "Economia e Perfil",
-			"description": "Faz compras na Loja Incrível!\nOpções disponíveis: `buy`, `view`.",
-			"usage": "shop"
+			"description": "Faz compras na Loja Incrível!\nO Opções disponíveis: `buy`, `view`.",
+			"usage": "/shop",
+			"welcome": "Bem vindo à Loja Incrível!\nAqui poderás comprar algumas coisas com o dinheiro que acumulaste até agora.\nUsa os botões abaixo para navegar pela loja!",
+			"boughtHUD": "Compraste o HUD **$0$**! Para o equipares usa `/profile set hud [$1$]`.",
+			"boughtPetHud": "Compraste o Pet HUD **$0$**! Para o equipares usa `/pet set hud [$1$]`.",
+			"boughtItem": "Compraste 1 **$0$**!",
+			"boughtPet": "Compraste 1 **$0$*! Para lhe dares um nome usa `/pet setnickname [$1$]`.",
+			"hero": "Herói",
+			"villain": "Vilão",
+			"toBuyHud": "Usa `/shop buy hud [$0$]` para comprar ou `/shop view hud [$1$]` para ver.",
+			"toBuyPetHud": "Usa `/shop buy pethud [$0$]` para comprar ou `/shop view pethud [$1$]` para ver.",
+			"hudName": "Nome do HUD",
+			"petHudName": "Nome do Pet HUD",
+			"animalName": "Nome do Animal",
+			"itemName": "Nome do Item",
+			"toBuyPet": "Usa `/shop buy pet [$0$]` para comprar.",
+			"toBuyItem": "Usa `/shop buy item [$0$]` para comprar.",
+			"exited": "Saíste da loja!",
+			"cartoon": {
+				"adventureTime": "Hora de Aventuras",
+				"pinkPanther": "Pantera Cor-de-Rosa",
+				"tawog": "O Incrível Mundo de Gumball",
+				"weBareBears": "Nós, os Ursos"
+			},
+			"openDescription": "Entra na Loja Incrível",
+			"buyDescription": "Cmopra algo em stock",
+			"buyHudDescription": "Compra um HUD",
+			"buyHudNameDescription": "Qual HUD desejas comprar?",
+			"buyPetHudDescription": "Compra um PetHUD",
+			"buyPetHudNameDescription": "Qual PetHUD desejas comprar?",
+			"buyItemDescription": "Compra um item",
+			"buyItemNameDescription": "Qual item desejas comprar?",
+			"buyPetDescription": "Compra um Pet",
+			"buyPetNameDescription": "Qual Pet desejas comprar?",
+			"viewDescription": "Vê algo em stock",
+			"viewHudDescription": "Vê um HUD",
+			"viewHudNameDescription": "Qual HUD desejas ver?",
+			"viewPetHudDescription": "Vê um PetHUD",
+			"viewPetHudNameDescription": "Qual PetHUD desejas ver?"
 		},
-		
+
 		"slap": {
 			"category": "Ações",
 			"description": "Dá uma chapada!",
-			"usage": "slap [opcional - @membro]"
+			"usage": "/slap [opcional - @membro]",
+			"slappedSelf": "**$0$** deu uma chapada a si mesmo?",
+			"slappedUs": "**$0$** deu-nos uma chapada! 😠",
+			"slapped": "**$0$** deu uma chapada a **$1$**!",
+			"memberDesc": "A quem queres dar uma chapada?"
 		},
-		
+
 		"sleep": {
 			"category": "Ações",
 			"description": "Adormece!",
-			"usage": "slap [opcional - @membro]"
-		},
-
-		"unTimeOut": {
-			"category": "Moderação",
-			"description": "Põe qualquer membro a falar outra vez!",
-			"usage": "unTimeOut [@membro]"
+			"usage": "/slap [opcional - @membro]",
+			"fellAsleep": "**$0$** adormeceu!",
+			"weMadeFallAsleep": "Nós fizemos **$0$** adormecer! 😴",
+			"madeFallAsleep": "**$0$** fez **$1$** adormecer!",
+			"memberDesc": "Quem te fez adormecer?"
 		},
 
 		"userinfo": {
 			"category": "Servidor",
 			"description": "Todas as informações de um membro do servidor!",
-			"usage": "userinfo [opcional - @membro]"
+			"usage": "/userinfo [opcional - @membro]",
+			"status": {
+				"online": "Online",
+				"idle": "Ausente",
+				"dnd": "Não Perturbar",
+				"offline": "Offline"
+			},
+			"none": "Nenhuma",
+			"joined": "Entrou $0$ atrás ($1$)",
+			"created": "Criado $0$ atrás ($1$)",
+			"memberDesc": "De quem queres ver a informação?"
 		},
 
 		"vip": {
 			"category": "Economia e Perfil",
 			"description": "Compra VIP para receberes vantagens!",
-			"usage": "vip"
+			"usage": "/vip",
+			"click": "Clica no botão abaixo comprar um estado VIP!"
 		},
 
 		"vote": {
 			"category": "Economia e Perfil",
 			"description": "Vota por nós para receber <a:gpCoin:898355693193662464>150 (<a:gpCoin:898355693193662464>300 para VIPs)!",
-			"usage": "vote"
+			"usage": "/vote",
+			"click": "Clica no botão abaixo para votar!"
 		},
-		
+
 		"which": {
 			"category": "Diversão",
-			"description": "Que personagem de anime és?\nAnimes disponíveis: `akame ga kill`, `attack on titan`, `code geass`, `death note`, `higurashi` , `jojo`, `kakegurui`, `mirai nikki`, `noragami`, `one punch man`, `parasyte`, `psycho-pass`, `steins;gate`.",
-			"usage": "which [anime]"
+			"description": "Que personagem de anime és?",
+			"usage": "/which [anime]",
+			"animeDesc": "Escolhe um anime"
 		},
 
 		"wink": {
 			"category": "Ações",
 			"description": "Pisca o olho a alguém!",
-			"usage": "wink [@member]"
+			"usage": "/wink [@member]",
+			"winkedAtUs": "**$0$** piscou-nos o olho! 😉",
+			"winkedAt": "**$0$** piscou o olho a **$1$**!",
+			"memberDesc": "A quem queres piscar o olho?"
 		}
 	},
-
 
 	"pets": {
 		"species": {
