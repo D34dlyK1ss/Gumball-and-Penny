@@ -186,10 +186,10 @@ bot.on('interactionCreate', async interaction => {
 								
 								await db.collection('perfis').doc(interaction.user.id).update({
 									balance: bal + reward
-								}).then( async () => interaction.channel.send(getText(lang.levelUp.congratsReward, [interaction.user.tag, newLevel, reward])));
+								}).then( async () => await interaction.channel.send(getText(lang.levelUp.congratsReward, [interaction.user.tag, newLevel, reward])));
 							}
 							else {
-								interaction.channel.send(getText(lang.levelUp.congrats, [interaction.user.tag, newLevel]));
+								await interaction.channel.send(getText(lang.levelUp.congrats, [interaction.user.tag, newLevel]));
 							}
 						}
 					});
