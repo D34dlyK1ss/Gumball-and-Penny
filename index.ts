@@ -123,7 +123,7 @@ for (const file of commandFiles) {
 }
 	
 const rest = new REST().setToken(process.env.TOKEN);
-const clientId = process.env.CLIENTDEV;
+const clientId = process.env.CLIENT;
 	
 (async () => {
 	try {
