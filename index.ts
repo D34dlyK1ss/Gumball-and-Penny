@@ -1,4 +1,4 @@
-import { ActivityType, Collection, Client, GatewayIntentBits, Guild, Interaction, Routes } from 'discord.js';
+import { /*ActivityType, */Collection, Client, GatewayIntentBits, Guild, Interaction, Routes } from 'discord.js';
 import { REST } from '@discordjs/rest';
 
 export interface ServerSettings {
@@ -21,8 +21,7 @@ config();
 import botConfig from './botConfig.json';
 
 function setBotStatus() {
-	const plural = bot.guilds.cache.size !== 1 ? 's' : '';
-	bot.user.setActivity({ name: `${bot.guilds.cache.size} server${plural}!`, type: ActivityType.Listening });
+	bot.user.setActivity({ name: /*`${bot.guilds.cache.size} server${bot.guilds.cache.size !== 1 ? 's' : ''}!`*/'Reinvite us to get access to Slash Commands!'/*, type: ActivityType.Listening*/ });
 }
 
 import fs from 'fs';
