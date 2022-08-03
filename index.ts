@@ -40,7 +40,6 @@ admin.initializeApp({
 
 const db = admin.firestore();
 
-
 import getText from './src/functions/getText';
 import moment from 'moment';
 import removeVIP from './src/functions/removeVIP';
@@ -123,15 +122,17 @@ for (const file of commandFiles) {
 }
 	
 const rest = new REST().setToken(process.env.TOKEN);
-const clientId = process.env.CLIENT;
-	
+
 (async () => {
 	try {
 		await rest.put(
-			Routes.applicationCommands(clientId),
+			Routes.applicationCommands(process.env.CLIENT),
 			{ body: commands }
 		);
-	} catch (error) {
+		
+		console.log('Slash commands recarregados!');
+	}
+	catch (error) {
 		console.error(error);
 	}
 })();
