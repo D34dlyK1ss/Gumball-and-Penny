@@ -135,13 +135,14 @@ const clientId = process.env.CLIENTDEV;
 		console.error(error);
 	}
 })();
-	
+
+import items from './src/data/itemlist.json';
+import titleCase from './src/functions/titleCase';
+
 bot.on('interactionCreate', async interaction => {
 	if (!interaction.guild || interaction.channel.id === '810529155955032115' || interaction.user.bot) return;
 
 	if (interaction.isChatInputCommand()) {
-		await interaction.deferReply();
-
 		const serverSettings = await getServerSettings(interaction.guild);
 		let language;
 
@@ -223,18 +224,51 @@ bot.on('interactionCreate', async interaction => {
 		const lang = require(`./src/lang/${language}.json`);
 
 		if (interaction.isButton()) {
-			await interaction.deferUpdate();
-
 			if (interaction.customId.startsWith('shop')) shopButtonHandler(interaction, lang);
 			else if (interaction.customId.startsWith('quiz')) quizButtonHandler(interaction, lang);
 			else if (interaction.customId.startsWith('language')) confirmLanguage(interaction, db, newLanguage, lang, serverSettings);
 		}
-		if	(interaction.isSelectMenu()) {
-			await interaction.deferUpdate();
-
+		else if	(interaction.isSelectMenu()) {
 			if (interaction.customId.startsWith('languageMenu')) {
 				newLanguage = interaction.values[0];
 			}
+		}
+		else if (interaction.isAutocomplete()) {
+			const focusedOption = interaction.options.getFocused(true);
+			let choices;
+
+			if (interaction.commandName === 'shop') {
+				switch(focusedOption.name) {
+					case 'hudname':
+						choices = Object.entries(items.huds);
+						choices.shift();
+						choices.shift();
+						break;
+					case 'pethudname':
+						choices = Object.entries(items.petHuds);
+						choices.shift();
+						choices.shift();
+						break;
+					case 'itemname':
+						choices = Object.entries(items.items);
+						break;
+					case 'petname':
+						choices = Object.entries(items.pets);
+						break;
+				}
+				
+				choices = Object.fromEntries(choices.map(([key, value]) => {
+					return [key.toLowerCase(), value];
+				}));
+			}
+
+			const filtered = Object.keys(choices).filter(choice =>
+				focusedOption.value !== '' ? focusedOption.value.length > 1 ? choice.includes(focusedOption.value.toLowerCase()) : choice.startsWith(focusedOption.value.toLowerCase()) : false
+			);
+
+			await interaction.respond(
+				filtered.map(choice => ({ name: titleCase(choice), value: titleCase(choice) }))
+			);
 		}
 	}
 });
