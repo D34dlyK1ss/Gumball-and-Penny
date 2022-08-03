@@ -13,7 +13,7 @@ export class BotClient extends Client {
 	commands: Collection<string, Cmd> = new Collection<string, Cmd>();
 }
 
-const bot = new BotClient({ allowedMentions: { parse: ['users', 'roles'], repliedUser: true }, intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent] });
+const bot = new BotClient({ allowedMentions: { parse: ['users', 'roles'], repliedUser: true }, intents: [GatewayIntentBits.Guilds] });
 
 import { config } from 'dotenv';
 config();
@@ -39,7 +39,6 @@ admin.initializeApp({
 });
 
 const db = admin.firestore();
-
 
 import getText from './src/functions/getText';
 import moment from 'moment';
@@ -91,16 +90,17 @@ for (const file of commandFiles) {
 }
 
 const rest = new REST().setToken(process.env.TOKENDEV);
-const clientId = process.env.CLIENTDEV;
-const guildId = '738540548305977366';
 
 (async () => {
 	try {
 		await rest.put(
-			Routes.applicationGuildCommands(clientId, guildId),
+			Routes.applicationGuildCommands(process.env.CLIENTDEV, '738540548305977366'),
 			{ body: commands }
 		);
-	} catch (error) {
+		
+		console.log('Slash commands recarregados!');
+	}
+	catch (error) {
 		console.error(error);
 	}
 })();
