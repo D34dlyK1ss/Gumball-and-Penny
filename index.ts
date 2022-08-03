@@ -69,19 +69,9 @@ es.onopen = () => {
 
 es.onmessage = messageEvent => {
 	const data = JSON.parse(messageEvent.data);
-	const authorization = data.event.headers.authorization;
-
-	if (authorization === 'Gumball&PennyDBL') {
-		const agent = data.event.headers['user-agent'];
-
-		switch (agent) {
-			case 'Top.gg Webhook/1.0.0':
-				if (data.event.body.type === 'upvote') giveVoteRewards(db, vips, data.event.body.user);
-				break;
-			case 'axios/0.21.1':
-				if (data.event.body.flags === 64) giveVoteRewards(db, vips, data.event.body.id);
-				break;
-		}
+	
+	if (data.event.headers.authorization === 'Gumball&PennyDBL' && data.event.headers['user-agent'] === 'axios/0.21.1' && data.event.body.flags === 64) {
+		giveVoteRewards(db, vips, data.event.body.id);
 	}
 };
 
