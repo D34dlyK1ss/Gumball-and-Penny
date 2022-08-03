@@ -13,7 +13,7 @@ export class BotClient extends Client {
 	commands: Collection<string, Cmd> = new Collection<string, Cmd>();
 }
 
-const bot = new BotClient({ allowedMentions: { parse: ['users', 'roles'], repliedUser: true }, intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent] });
+const bot = new BotClient({ allowedMentions: { parse: ['users', 'roles'], repliedUser: true }, intents: [GatewayIntentBits.Guilds] });
 
 import { config } from 'dotenv';
 config();
