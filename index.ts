@@ -173,9 +173,9 @@ bot.on('interactionCreate', async interaction => {
 
 					db.collection('perfis').doc(interaction.user.id).update({
 						xp: newXP
-					}).then(() => {
+					}).then(async () => {
 						if (newLevel > level) {
-							db.collection('perfis').doc(interaction.user.id).update({
+							await db.collection('perfis').doc(interaction.user.id).update({
 								level: newLevel
 							});
 
@@ -183,7 +183,8 @@ bot.on('interactionCreate', async interaction => {
 
 							if (newLevel % 10 === 0) {
 								const reward = newLevel * 500;
-								db.collection('perfis').doc(interaction.user.id).update({
+								
+								await db.collection('perfis').doc(interaction.user.id).update({
 									balance: bal + reward
 								}).then( async () => interaction.channel.send(getText(lang.levelUp.congratsReward, [interaction.user.tag, newLevel, reward])));
 							}
