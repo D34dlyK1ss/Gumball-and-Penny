@@ -188,10 +188,13 @@ export async function createQuizQuestion(interaction: ButtonInteraction, user: U
 												await refP.get().then(doc => {
 													if (!doc.exists) return;
 													const xp: number = doc.get('xp');
-													const xpGain = 25 * userScore + 50 * (nParticipants - 1);
+													const balance: number = doc.get('balance');
+													const xpGain = 20 * userScore + (50 * nParticipants - 1);
+													const moneyGain = (100 * userScore + 50) * (nParticipants - 1);
 
 													refP.update({
-														xp: xp + xpGain
+														xp: xp + xpGain,
+														balance: balance + moneyGain
 													});
 												});
 											}

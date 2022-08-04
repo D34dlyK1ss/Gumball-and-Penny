@@ -3,6 +3,7 @@ import { REST } from '@discordjs/rest';
 
 export interface ServerSettings {
 	language: string;
+	prefix: string;
 }
 
 export interface Cmd {
@@ -13,7 +14,7 @@ export class BotClient extends Client {
 	commands: Collection<string, Cmd> = new Collection<string, Cmd>();
 }
 
-const bot = new BotClient({ allowedMentions: { parse: ['users', 'roles'], repliedUser: true }, intents: [GatewayIntentBits.Guilds] });
+const bot = new BotClient({ allowedMentions: { parse: ['users', 'roles'], repliedUser: true }, intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent] });
 
 import { config } from 'dotenv';
 config();
@@ -63,7 +64,7 @@ const eventSourceInit: Record<string, any> = { headers: { 'Authorization': 'Bear
 const es = new EventSource('https://api.pipedream.com/sources/dc_OLuY0W/sse', eventSourceInit);
 
 es.onopen = () => {
-	console.log('Atentos ao fluxo SSE em https://api.pipedream.com/sources/dc_OLuY0W/sse');
+	console.log(`Atentos ao fluxo SSE em ${es.url}`);
 };
 
 es.onmessage = messageEvent => {
@@ -129,7 +130,15 @@ const rest = new REST().setToken(process.env.TOKEN);
 import items from './src/data/itemlist.json';
 import titleCase from './src/functions/titleCase';
 
+bot.on('messageCreate', async msg => {
+	const serverSettings = await getServerSettings(msg.guild);
+	if (msg.content === (serverSettings.prefix || bot.user.tag)) {
+		msg.reply('Slash commands now available! Please reinvite us to this server if you haven\'t!');
+	}
+});
+
 bot.on('interactionCreate', async interaction => {
+	
 	if (!interaction.guild || interaction.channel.id === '810529155955032115' || interaction.user.bot) return;
 
 	if (interaction.isChatInputCommand()) {
@@ -181,7 +190,7 @@ bot.on('interactionCreate', async interaction => {
 							const bal: number = doc.get('balance');
 
 							if (newLevel % 10 === 0) {
-								const reward = newLevel * 500;
+								const reward = newLevel / 10 * 500;
 								
 								await db.collection('perfis').doc(interaction.user.id).update({
 									balance: bal + reward
