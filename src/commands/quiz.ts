@@ -8,7 +8,7 @@ export = {
 		.setDescription(enLang.command.quiz.description),
 
 	async execute(bot: undefined, interaction: ChatInputCommandInteraction, db: FirebaseFirestore.Firestore, lang: Record<string, any>) {
-		await interaction.editReply('This command is disabled while our creators work on it!');
+		await interaction.reply('This command is disabled while our creators work on it!');
 
 		/*if (alreadyPlaying.has(interaction.channelId)) {
 			interaction.reply(lang.command.quiz.alreadyPlaying);
