@@ -21,7 +21,7 @@ config();
 import botConfig from './botConfig.json';
 
 function setBotStatus() {
-	bot.user.setActivity({ name: /*`${bot.guilds.cache.size} server${bot.guilds.cache.size !== 1 ? 's' : ''}!`*/'Reinvite us to get access to Slash Commands!'/*, type: ActivityType.Listening*/ });
+	bot.user.setActivity({ name: /*`${bot.guilds.cache.size} server${bot.guilds.cache.size !== 1 ? 's' : ''}!`*/'Reinvite us to access our Slash Commands!'/*, type: ActivityType.Listening*/ });
 }
 
 import fs from 'fs';
