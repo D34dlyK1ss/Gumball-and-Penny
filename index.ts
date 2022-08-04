@@ -3,7 +3,6 @@ import { REST } from '@discordjs/rest';
 
 export interface ServerSettings {
 	language: string;
-	prefix: string;
 }
 
 export interface Cmd {
@@ -14,7 +13,7 @@ export class BotClient extends Client {
 	commands: Collection<string, Cmd> = new Collection<string, Cmd>();
 }
 
-const bot = new BotClient({ allowedMentions: { parse: ['users', 'roles'], repliedUser: true }, intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent] });
+const bot = new BotClient({ allowedMentions: { parse: ['users', 'roles'], repliedUser: true }, intents: [GatewayIntentBits.Guilds] });
 
 import { config } from 'dotenv';
 config();
@@ -130,15 +129,7 @@ const rest = new REST().setToken(process.env.TOKEN);
 import items from './src/data/itemlist.json';
 import titleCase from './src/functions/titleCase';
 
-bot.on('messageCreate', async msg => {
-	const serverSettings = await getServerSettings(msg.guild);
-	if (msg.content === (serverSettings.prefix || bot.user.tag)) {
-		msg.reply('Slash commands now available! Please reinvite us to this server if you haven\'t!');
-	}
-});
-
-bot.on('interactionCreate', async interaction => {
-	
+bot.on('interactionCreate', async interaction => {	
 	if (!interaction.guild || interaction.channel.id === '810529155955032115' || interaction.user.bot) return;
 
 	if (interaction.isChatInputCommand()) {

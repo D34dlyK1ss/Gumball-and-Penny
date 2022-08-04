@@ -9,7 +9,6 @@
 	"casino": "Casino",
 	"fun": "Diversão",
 	"economyAndProfile": "Economia e Perfil",
-	"moderation": "Moderação",
 	"server": "Servidor",
 	"utility": "Utilidade",
 	"settings": "Definições",
@@ -116,8 +115,7 @@
 		"sameLanguage": "Essa linguagem é igual à que estamos a falar!",
 		"noDuration": "Não indicaste a duração!",
 		"notAuthor": "Isto não é para ti!",
-		"nothingSelected": "Nada selecionado",
-		"noModerateMembers": "Nós não temos permissão para moderar membros!"
+		"nothingSelected": "Nada selecionado"
 	},
 
 	"levelUp": {
@@ -160,7 +158,7 @@
 		},
 
 		"clear": {
-			"category": "Moderação",
+			"category": "Utilidade",
 			"description": "Iremos limpar o chat.",
 			"usage": "/clear [número]",
 			"weDeleted": "Apagámos `$0$` $1$!",
