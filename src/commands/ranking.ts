@@ -69,7 +69,7 @@ export = {
 
 					i++;
 					column += `${i}. ${user.tag}\n`;
-					column2 += `¤${doc.get('balance')}}\n`;
+					column2 += `¤${doc.get('balance')}\n`;
 				}
 
 				lastUpdateAt = Date.now();
