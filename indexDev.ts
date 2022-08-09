@@ -1,4 +1,4 @@
-import { ActivityType, Collection, Client, GatewayIntentBits, Guild, Interaction, Routes } from 'discord.js';
+import { Collection, Client, GatewayIntentBits, Guild, Interaction, Routes } from 'discord.js';
 import { REST } from '@discordjs/rest';
 
 export interface ServerSettings {
@@ -21,7 +21,7 @@ config();
 import botConfig from './botConfig.json';
 
 function setBotStatus() {
-	bot.user.setActivity({ name: `${bot.guilds.cache.size} server${bot.guilds.cache.size !== 1 ? 's' : ''}!`, type: ActivityType.Listening });
+	bot.user.setActivity({ name: `${bot.guilds.cache.size} server${bot.guilds.cache.size !== 1 ? 's' : ''}!`, type: 3 });
 }
 
 import fs from 'fs';
@@ -48,6 +48,8 @@ import { confirmLanguage } from './src/functions/setlanguageHandler';
 const vips: Set<string> = new Set();
 
 bot.once('ready', () => {
+	setBotStatus();
+	
 	moment.locale('pt');
 	console.log(`Preparados! (${moment().format('LL')} ${moment().format('LTS')})`);
 });
@@ -150,22 +152,23 @@ bot.on('interactionCreate', async interaction => {
 
 					db.collection('perfis').doc(interaction.user.id).update({
 						xp: newXP
-					}).then(() => {
+					}).then(async () => {
 						if (newLevel > level) {
-							db.collection('perfis').doc(interaction.user.id).update({
+							await db.collection('perfis').doc(interaction.user.id).update({
 								level: newLevel
 							});
 
 							const bal: number = doc.get('balance');
 
 							if (newLevel % 10 === 0) {
-								const reward = newLevel * 500;
-								db.collection('perfis').doc(interaction.user.id).update({
+								const reward = newLevel / 10 * 500;
+								
+								await db.collection('perfis').doc(interaction.user.id).update({
 									balance: bal + reward
-								}).then( async () => interaction.channel.send(getText(lang.levelUp.congratsReward, [interaction.user.tag, newLevel, reward])));
+								}).then( async () => await interaction.channel.send(getText(lang.levelUp.congratsReward, [interaction.user.tag, newLevel, reward])));
 							}
 							else {
-								interaction.channel.send(getText(lang.levelUp.congrats, [interaction.user.tag, newLevel]));
+								await interaction.channel.send(getText(lang.levelUp.congrats, [interaction.user.tag, newLevel]));
 							}
 						}
 					});
