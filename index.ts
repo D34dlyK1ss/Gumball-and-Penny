@@ -1,5 +1,6 @@
-import { /*ActivityType, */Collection, Client, GatewayIntentBits, Guild, Interaction, Routes } from 'discord.js';
+import { Collection, Client, GatewayIntentBits, Guild, Interaction, Routes } from 'discord.js';
 import { REST } from '@discordjs/rest';
+import https from 'https';
 
 export interface ServerSettings {
 	language: string;
@@ -21,7 +22,32 @@ config();
 import botConfig from './botConfig.json';
 
 function setBotStatus() {
-	bot.user.setActivity({ name: /*`${bot.guilds.cache.size} server${bot.guilds.cache.size !== 1 ? 's' : ''}!`*/'Reinvite us to access our Slash Commands!'/*, type: ActivityType.Listening*/ });
+	bot.user.setActivity({ name: 'Reinvite us to access our Slash Commands!', type: 3 }); //`${bot.guilds.cache.size} server${bot.guilds.cache.size !== 1 ? 's' : ''}!`, type: 3
+}
+
+function sendStats() {
+	const options = {
+		hostname: 'discordbotlist.com',
+		port: 443,
+		path: `/api/v1/bots/${bot.user.id}/stats`,
+		method: 'POST',
+		headers: { authorization: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0IjoxLCJpZCI6IjY3OTA0MTU0ODk1NTk0MjkxNCIsImlhdCI6MTY1OTk1NTcwNn0.8nz5bBOSGBvi43obJd5UczPH1OgzywtAK2ZE5ZNBtnA', 'Content-Type': 'application/x-www-form-urlencoded' }
+	};
+
+	const req = https.request(options, res => {
+		console.log(`statusCode: ${res.statusCode}`);
+	  
+		res.on('data', d => {
+			process.stdout.write(d);
+		});
+	});
+	  
+	req.on('error', error => {
+		console.error(error);
+	});
+
+	req.write(`guilds=${bot.guilds.cache.size}`); //users=${bot.guilds.cache.reduce((a, g) => a+g.memberCount, 0)}
+	req.end();
 }
 
 import fs from 'fs';
@@ -50,7 +76,6 @@ const vips: Set<string> = new Set();
 
 bot.once('ready', () => {
 	setBotStatus();
-
 	removeVIP(admin, bot, db, vips);
 
 	moment.locale('pt');
@@ -69,7 +94,7 @@ es.onopen = () => {
 es.onmessage = messageEvent => {
 	const data = JSON.parse(messageEvent.data);
 	
-	if (data.event.headers.authorization === 'Gumball&PennyDBL' && data.event.headers['user-agent'] === 'axios/0.21.1' && data.event.body.flags === 64) {
+	if (data.event.headers.authorization === 'Gumball&PennyDBL' && data.event.headers['x-dbl-signature']) {
 		giveVoteRewards(db, vips, data.event.body.id);
 	}
 };
@@ -287,6 +312,8 @@ bot.on('guildMemberUpdate', async (oldMember, newMember) => {
 
 bot.on('guildCreate', async guildData => {
 	setBotStatus();
+	sendStats();
+
 	await db.collection('definicoes').doc(guildData.id).set({
 		settings: botConfig.settings
 	});
@@ -294,6 +321,8 @@ bot.on('guildCreate', async guildData => {
 
 bot.on('guildDelete', async guildData => {
 	setBotStatus();
+	sendStats();
+
 	await db.collection('definicoes').doc(guildData.id).delete();
 });
 
