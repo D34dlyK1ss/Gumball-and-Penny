@@ -33,7 +33,7 @@ export = {
 		let column = '';
 		let column2 = '';
 
-		if (interaction.options.getString('XP')) {
+		if (interaction.options.getString('option') === 'XP') {
 			const query = await refP.orderBy('xp', 'desc').limit(10).get();
 			const users: FirebaseFirestore.QueryDocumentSnapshot<FirebaseFirestore.DocumentData>[] = [];
 			query.forEach((doc) => users.push(doc));
