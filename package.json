@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "@discordjs/rest": "^1.0.0",
-    "@napi-rs/canvas": "^0.1.26",
+    "@napi-rs/canvas": "^0.1.27",
     "@types/eventsource": "^1.1.5",
     "@types/ms": "^0.7.31",
     "discord.js": "^14.1.1",
