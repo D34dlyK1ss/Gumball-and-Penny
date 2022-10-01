@@ -22,7 +22,7 @@ config();
 import botConfig from './botConfig.json';
 
 function setBotStatus() {
-	bot.user.setActivity({ name: 'Reinvite us to access our Slash Commands!', type: 3 }); //`${bot.guilds.cache.size} server${bot.guilds.cache.size !== 1 ? 's' : ''}!`, type: 3
+	bot.user.setActivity({ name: `${bot.guilds.cache.size} server${bot.guilds.cache.size !== 1 ? 's' : ''}!`, type: 3 });
 }
 
 function sendStats() {
