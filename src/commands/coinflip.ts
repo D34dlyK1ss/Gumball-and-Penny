@@ -50,22 +50,22 @@ export = {
 						const messageRes = lang.coinflip[res];
 						const imageRes = `src/img/coinflip/${res}.gif`;
 
-						setTimeout(() => {
+						setTimeout(async () => {
 							if (lang.coinflip[res] !== guess) {
 								ref.update({
 									balance: bal - money
-								}).then(async () => {
-									await interaction.editReply({ content: `${messageRes}! ${getText(lang.lost, [money])}`, files: [imageRes] });
 								});
+								
+								await interaction.editReply({ content: `${messageRes}! ${getText(lang.lost, [money])}`, files: [imageRes] });
 							}
 							else if (lang.coinflip[res] === guess) {
 								const won = money * 1.5;
 
 								ref.update({
 									balance: bal + won
-								}).then(async () => {
-									await interaction.editReply({ content: `${messageRes}! ${getText(lang.won, [won])}`, files: [imageRes] });
 								});
+								
+								await interaction.editReply({ content: `${messageRes}! ${getText(lang.won, [won])}`, files: [imageRes] });
 							}
 						}, 2000);
 					});

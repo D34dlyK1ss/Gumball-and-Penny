@@ -4,8 +4,12 @@ import moment from 'moment';
 import getText from '../functions/getText';
 import enLang from '../lang/en.json';
 
-let lastUpdateAt = 0;
-const rankingEmbed = new EmbedBuilder()
+let lastXPUpdateAt = 0;
+let lastBalanceUpdateAt = 0;
+const xpRankingEmbed = new EmbedBuilder()
+	.setColor('DarkPurple')
+	.setThumbnail('https://i.imgur.com/0lJXooH.png');
+const balanceRankingEmbed = new EmbedBuilder()
 	.setColor('DarkPurple')
 	.setThumbnail('https://i.imgur.com/0lJXooH.png');
 
@@ -38,8 +42,7 @@ export = {
 			const users: FirebaseFirestore.QueryDocumentSnapshot<FirebaseFirestore.DocumentData>[] = [];
 			query.forEach((doc) => users.push(doc));
 
-			if (Date.now() - lastUpdateAt > 1800000) {
-			
+			if (Date.now() - lastXPUpdateAt > 1800000) {
 				for (const doc of users) {
 					const user = await bot.users.fetch(doc.id);
 
@@ -48,22 +51,24 @@ export = {
 					column2 += `${doc.get('xp')} XP, ${lang.level} ${doc.get('level')}\n`;
 				}
 				
-				lastUpdateAt = Date.now();
+				lastXPUpdateAt = Date.now();
 
-				rankingEmbed
+				xpRankingEmbed
 					.setFields([
 						{ name: 'Top 10', value: column, inline: true },
 						{ name: 'XP', value: column2, inline: true }
 					])
-					.setFooter({ text: getText(lang.command.ranking.updatedAt, [moment(lastUpdateAt).utc().format('LL'), moment(lastUpdateAt).utc().format('LTS')]) });
+					.setFooter({ text: getText(lang.command.ranking.updatedAt, [moment(lastXPUpdateAt).utc().format('LL'), moment(lastXPUpdateAt).utc().format('LTS')]) });
 			}
+		
+			await interaction.editReply({ embeds: [xpRankingEmbed] });
 		}
 		else {
 			const query = await refP.orderBy('balance', 'desc').limit(10).get();
 			const users: FirebaseFirestore.QueryDocumentSnapshot<FirebaseFirestore.DocumentData>[] = [];
 			query.forEach((doc) => users.push(doc));
 
-			if (Date.now() - lastUpdateAt > 1800000) {			
+			if (Date.now() - lastBalanceUpdateAt > 1800000) {			
 				for (const doc of users) {
 					const user = await bot.users.fetch(doc.id);
 
@@ -72,17 +77,17 @@ export = {
 					column2 += `¤${doc.get('balance')}\n`;
 				}
 
-				lastUpdateAt = Date.now();
+				lastBalanceUpdateAt = Date.now();
 
-				rankingEmbed
+				balanceRankingEmbed
 					.setFields([
 						{ name: 'Top 10', value: column, inline: true },
 						{ name: lang.balance, value: column2, inline: true }
 					])
-					.setFooter({ text: getText(lang.command.ranking.updatedAt, [moment(lastUpdateAt).utc().format('LL'), moment(lastUpdateAt).utc().format('LTS')]) });
+					.setFooter({ text: getText(lang.command.ranking.updatedAt, [moment(lastBalanceUpdateAt).utc().format('LL'), moment(lastBalanceUpdateAt).utc().format('LTS')]) });
 			}
-		}
 		
-		await interaction.editReply({ embeds: [rankingEmbed] });
+			await interaction.editReply({ embeds: [balanceRankingEmbed] });
+		}
 	}
 };
