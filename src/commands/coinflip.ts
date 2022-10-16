@@ -48,7 +48,7 @@ export = {
 						const guess = interaction.options.getString('guess');
 						const res = Math.round(Math.random()) ? 'Heads' : 'Tails';
 						const messageRes = lang.coinflip[res];
-						const imageRes = `src/img/coinflip/${res}.gif`;
+						const imageRes = `src/img/coinflip/${res.toLowerCase()}.gif`;
 
 						setTimeout(async () => {
 							if (lang.coinflip[res] !== guess) {
