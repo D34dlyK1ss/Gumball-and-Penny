@@ -51,14 +51,14 @@ export = {
 						const imageRes = `src/img/coinflip/${res.toLowerCase()}.gif`;
 
 						setTimeout(async () => {
-							if (lang.coinflip[res] !== guess) {
+							if (lang.command.coinflip[res] !== guess) {
 								ref.update({
 									balance: bal - money
 								});
 								
 								await interaction.editReply({ content: `${messageRes}! ${getText(lang.lost, [money])}`, files: [imageRes] });
 							}
-							else if (lang.coinflip[res] === guess) {
+							else if (lang.command.coinflip[res] === guess) {
 								const won = money * 1.5;
 
 								ref.update({
