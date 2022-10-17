@@ -46,7 +46,7 @@ export = {
 				else {
 					interaction.reply({ files: ['src/img/coinflip/animation.gif'] }).then(() => {
 						const guess = interaction.options.getString('guess');
-						const res = Math.round(Math.random()) ? 'Heads' : 'Tails';
+						const res = Math.round(Math.random() * 1) ? 'Heads' : 'Tails';
 						const messageRes = lang.coinflip[res.toLowerCase()];
 						const imageRes = `src/img/coinflip/${res.toLowerCase()}.gif`;
 
